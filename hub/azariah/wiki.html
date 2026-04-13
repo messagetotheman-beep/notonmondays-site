@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Azariah — Team Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #003087;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .cover {
+    background: #003087;
+    padding: 0 72px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    border-bottom: 3px solid #005EB8;
+    min-height: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-hex-bg {
+    position: absolute;
+    top: -40px; right: -40px;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .cover-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  .cover-name {
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    line-height: 1;
+    letter-spacing: -0.2px;
+  }
+  .cover-name strong { font-weight: 600; }
+
+  .cover-descriptor {
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .cover-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+  }
+
+  .cover-doc-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .cover-version {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #003087;
+    padding: 56px 72px 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #5BA3E0;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    font-weight: 300;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .hero-title strong { font-weight: 600; }
+
+  .hero-rule { width: 56px; height: 2px; background: #005EB8; margin: 24px 0; }
+
+  .hero-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    max-width: 480px;
+    line-height: 1.75;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .hero-meta-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    font-weight: 500;
+  }
+
+  .hero-meta-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 72px 80px;
+  }
+
+  /* ── SEARCH ── */
+  .search-wrap {
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0,48,135,0.35);
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 13px 18px 13px 44px;
+    border: 1.5px solid rgba(0,94,184,0.2);
+    border-radius: 10px;
+    background: #F2F6FC;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #003087;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .search-wrap input:focus {
+    border-color: #005EB8;
+    background: #ffffff;
+  }
+
+  .search-wrap input::placeholder { color: rgba(0,48,135,0.35); }
+
+  /* ── TOC ── */
+  .toc {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .toc-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(0,48,135,0.4);
+    font-weight: 500;
+    margin-right: 6px;
+  }
+
+  .toc a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    border: 1px solid transparent;
+  }
+  .toc a:hover { opacity: 0.7; }
+  .toc a.nhs     { background: #E8F1FA; color: #003087; border-color: rgba(0,94,184,0.15); }
+  .toc a.funding { background: #FDF0E0; color: #7A4210; border-color: rgba(122,66,16,0.15); }
+  .toc a.tools   { background: #E8F4EC; color: #1A5C2A; border-color: rgba(26,92,42,0.15); }
+
+  /* ── SECTION ── */
+  .section-block { margin-bottom: 72px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,48,135,0.1);
+  }
+
+  .section-number {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #005EB8;
+    font-weight: 600;
+    text-transform: uppercase;
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 300;
+    color: #003087;
+    letter-spacing: -0.3px;
+  }
+  .section-title strong { font-weight: 600; }
+
+  .section-count {
+    margin-left: auto;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(0,48,135,0.35);
+    font-weight: 500;
+  }
+
+  /* ── ENTRY ── */
+  .entry {
+    border: 1px solid rgba(0,94,184,0.12);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background: #ffffff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .entry:hover { border-color: rgba(0,94,184,0.25); box-shadow: 0 2px 8px rgba(0,48,135,0.06); }
+  .entry.open  { border-color: rgba(0,94,184,0.3);  box-shadow: 0 2px 12px rgba(0,48,135,0.08); }
+
+  .entry-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.12s;
+  }
+  .entry-header:hover     { background: #F2F6FC; }
+  .entry.open .entry-header { background: #F2F6FC; }
+
+  .entry-term {
+    font-size: 15px;
+    font-weight: 600;
+    color: #003087;
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .entry-abbr {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(0,48,135,0.4);
+    font-weight: 500;
+    background: #F2F6FC;
+    border: 1px solid rgba(0,94,184,0.12);
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
+  .entry-tag {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+  }
+  .tag-nhs     { background: #E8F1FA; color: #003087; border-color: rgba(0,94,184,0.15); }
+  .tag-funding { background: #FDF0E0; color: #7A4210; border-color: rgba(122,66,16,0.15); }
+  .tag-tools   { background: #E8F4EC; color: #1A5C2A; border-color: rgba(26,92,42,0.15); }
+  .tag-grant   { background: #F0EBF8; color: #5B2D8E; border-color: rgba(91,45,142,0.15); }
+  .tag-roles   { background: #FFF0F0; color: #9B2335; border-color: rgba(155,35,53,0.15); }
+
+  .entry-chevron {
+    color: rgba(0,48,135,0.35);
+    font-size: 11px;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .entry.open .entry-chevron { transform: rotate(180deg); }
+
+  .entry-body {
+    display: none;
+    padding: 6px 22px 22px;
+    border-top: 1px solid rgba(0,94,184,0.08);
+  }
+  .entry.open .entry-body { display: block; }
+
+  .entry-definition {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.7);
+    line-height: 1.75;
+    margin-top: 16px;
+    max-width: 680px;
+  }
+
+  .entry-callout {
+    margin-top: 14px;
+    background: #F2F6FC;
+    border-left: 3px solid #005EB8;
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+  }
+
+  .entry-callout-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #005EB8;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .entry-callout p {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.65);
+    line-height: 1.65;
+  }
+
+  /* ── FOOTER ── */
+  .wiki-footer {
+    background: #F2F6FC;
+    border-top: 3px solid #005EB8;
+    padding: 20px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(0,48,135,0.4);
+  }
+  .wiki-footer strong { font-weight: 600; color: rgba(0,48,135,0.65); }
+
+  @media (max-width: 640px) {
+    .cover, .hero, .page, .wiki-footer { padding-left: 24px; padding-right: 24px; }
+    .hero-title { font-size: 34px; }
+    .entry-abbr { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="cover">
+  <svg class="cover-hex-bg" width="400" height="400" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="300,30 510,155 510,405 300,530 90,405 90,155" fill="none" stroke="white" stroke-width="2"/>
+    <polygon points="300,100 445,182 445,348 300,430 155,348 155,182" fill="none" stroke="white" stroke-width="1.5"/>
+    <polygon points="300,170 378,214 378,302 300,346 222,302 222,214" fill="none" stroke="white" stroke-width="1"/>
+    <line x1="300" y1="155" x2="300" y2="405" stroke="white" stroke-width="0.8"/>
+    <line x1="118" y1="255" x2="482" y2="305" stroke="white" stroke-width="0.8"/>
+    <line x1="482" y1="255" x2="118" y2="305" stroke="white" stroke-width="0.8"/>
+  </svg>
+  <div class="cover-left">
+    <svg width="40" height="40" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="72" rx="14" fill="rgba(255,255,255,0.08)"/>
+      <polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1.8"/>
+      <line x1="36" y1="23" x2="36" y2="45" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="23" y1="30" x2="49" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="49" y1="30" x2="23" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="36" cy="34" r="5" fill="white"/>
+    </svg>
+    <div>
+      <div class="cover-name">The <strong>Azariah</strong></div>
+      <div class="cover-descriptor">Clinical Compliance</div>
+    </div>
+  </div>
+  <div class="cover-right">
+    <div class="cover-doc-label">Team Wiki</div>
+    <div class="cover-divider"></div>
+    <span class="cover-version">v1.0 · 2026</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Internal Reference</div>
+  <div class="hero-title">Team <strong>Wiki</strong></div>
+  <div class="hero-rule"></div>
+  <div class="hero-desc">A shared reference for key terms across clinical, funding, and tooling. Use it to get on the same page quickly, without needing to ask.</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Last updated</span>
+      <span class="hero-meta-value">April 2026</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Maintained by</span>
+      <span class="hero-meta-value">David</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Total entries</span>
+      <span class="hero-meta-value">47</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Status</span>
+      <span class="hero-meta-value">Live — add suggestions in Slack</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Search terms — e.g. ICB, Seed round, Confluence…" />
+  </div>
+
+  <div class="toc">
+    <span class="toc-label">Jump to</span>
+    <a href="#nhs" class="nhs">NHS &amp; Clinical <span class="toc-count">12</span></a>
+    <a href="#funding" class="funding">Funding &amp; Business <span class="toc-count">10</span></a>
+    <a href="#tools" class="tools">Tools &amp; Systems <span class="toc-count">8</span></a>
+    <a href="#grant" style="background:#F0EBF8;color:#5B2D8E;border:1px solid rgba(91,45,142,0.15);">NIHR &amp; Grant Terms <span class="toc-count">10</span></a>
+    <a href="#roles" style="background:#FFF0F0;color:#9B2335;border:1px solid rgba(155,35,53,0.15);">Roles &amp; Operations <span class="toc-count">7</span></a>
+  </div>
+
+
+  <!-- 01 NHS & CLINICAL -->
+  <div class="section-block" id="nhs">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">NHS &amp; <strong>Clinical</strong></h2>
+      <span class="section-count">12 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">NHS</span>
+        <span class="entry-abbr">National Health Service</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The National Health Service is the publicly funded healthcare system of the United Kingdom. It provides most healthcare services free at the point of use, funded through taxation. The NHS is made up of separate systems in England, Scotland, Wales, and Northern Ireland. When we refer to the NHS, we typically mean NHS England unless stated otherwise.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>NHS clinicians, commissioners, and organisations are our primary partners and end users. Understanding how the NHS is structured helps us communicate credibly and position our solutions correctly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Integrated Care Board</span>
+        <span class="entry-abbr">ICB</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">ICBs are statutory NHS organisations that plan and commission health services for a defined geographic area. They replaced Clinical Commissioning Groups (CCGs) in 2022 under the Health and Care Act. There are 42 ICBs in England. They hold significant budgets and are key decision-makers when it comes to adopting new technology and services.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>ICBs are a primary commissioning audience. Proposals or solutions pitched at this level need to align with system-wide priorities, not just individual trust needs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">NHS Trust</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">An NHS Trust is an organisational unit within the NHS in England and Wales. Trusts manage hospitals, ambulance services, mental health services, and community care. Foundation Trusts (FTs) are a subset with greater financial and operational autonomy. Trusts are often the direct employer of the clinicians we work with.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>When working at site level, the Trust is typically our contracting and operational counterpart. Understanding whether a site is a Foundation Trust or a standard Trust affects procurement routes and decision-making structures.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Clinical Compliance</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Clinical compliance refers to the adherence of healthcare professionals and organisations to established clinical guidelines, protocols, and regulatory standards. This includes mandatory training completion, audit requirements, CQC standards, and adherence to NICE guidelines. Non-compliance can result in regulatory action, patient harm, or reputational risk for a provider.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>This is our core domain. Azariah's products and services are designed to make clinical compliance easier, more visible, and more manageable for NHS organisations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Care Quality Commission</span>
+        <span class="entry-abbr">CQC</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The CQC is the independent regulator of health and social care in England. It registers, monitors, and inspects services to ensure they meet fundamental standards of quality and safety. CQC inspections result in ratings: Outstanding, Good, Requires Improvement, and Inadequate. These ratings are publicly visible and carry significant reputational weight.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>CQC readiness is a key driver of demand for compliance tools. NHS organisations want to be inspection-ready at all times, not just when a visit is imminent.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">NICE Guidelines</span>
+        <span class="entry-abbr">NICE</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">NICE (National Institute for Health and Care Excellence) produces evidence-based guidelines and technology appraisals that NHS organisations are expected to follow. Guidelines cover clinical practice, medicines, social care, and public health. Adherence to NICE guidance is often referenced in CQC inspections and commissioning contracts.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Compliance with NICE guidelines is one measurable dimension of clinical quality. Our systems may need to reference or map to NICE guidance in how they track compliance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Commissioner</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A commissioner is an organisation or individual responsible for planning, purchasing, and monitoring health services on behalf of a population. In the NHS, commissioning is primarily done by ICBs. Commissioners set the standards and requirements that providers such as Trusts and GP practices must meet in exchange for funding.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Commissioners influence what compliance standards look like on the ground. Aligning our language and evidence base with commissioner priorities strengthens our proposals.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Primary Care</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Primary care is the first point of contact in the healthcare system, delivered through GP practices, community pharmacies, dental practices, and optometry services. It is distinct from secondary care (hospitals) and is increasingly under pressure due to workforce shortages and rising demand.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Primary care is a distinct operational environment with different compliance frameworks and procurement routes. Understanding the difference between primary and secondary care helps us tailor solutions appropriately.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Secondary Care</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Secondary care refers to specialist health services provided in hospitals, typically after referral from primary care. This includes acute, elective, emergency, and specialist services. NHS Trusts are the main providers of secondary care.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Our initial focus is likely secondary care given the scale of compliance requirements at Trust level. Contracts, procurement routes, and stakeholder structures differ significantly from primary care.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Mandatory Training</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Mandatory training refers to the core learning that all NHS staff are required to complete at regular intervals. Set by national frameworks such as the Core Skills Training Framework (CSTF), it includes modules on fire safety, infection control, manual handling, and safeguarding. Completion rates are monitored and form part of CQC and commissioner reporting.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Tracking and improving mandatory training completion is a core use case for clinical compliance technology. Low completion rates are a common and visible problem across the NHS.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Clinical Audit</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A clinical audit is a quality improvement process that seeks to improve patient care and outcomes through systematic review of care against explicit criteria. Results are used to identify where practice needs to change and to track improvement over time. National audits sit alongside local Trust-level audits.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Audit management is part of the compliance landscape. Systems that support audit planning, data collection, and reporting tie directly into our value proposition.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">NHS England</span>
+        <span class="entry-abbr">NHSE</span>
+        <span class="entry-tag tag-nhs">NHS</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">NHS England is the national body responsible for overseeing and improving NHS services in England. It sets national priorities, allocates funding to ICBs, and leads on major programmes including digital transformation and workforce planning. In 2023 it merged with NHS Digital and Health Education England, consolidating several national functions.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>National policy direction from NHSE shapes what ICBs and Trusts prioritise. Aligning with NHSE strategic programmes can strengthen our positioning with commissioners and funders.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 02 FUNDING & BUSINESS -->
+  <div class="section-block" id="funding">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Funding &amp; <strong>Business</strong></h2>
+      <span class="section-count">10 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Pre-Seed</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Pre-seed is the earliest stage of formal funding, typically used to take a business from idea to initial product or proof of concept. Investments at this stage are usually small (often £50k to £500k in the UK) and come from founders, friends and family, angel investors, or early-stage funds. The focus is on validating the problem and building the core team.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>This is the stage we are operating in or moving through. Understanding what pre-seed investors look for helps us shape our narrative around problem validation, team strength, and early traction.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Seed Round</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A seed round is the first significant external investment round, typically used to build and launch the product, hire initial team members, and begin acquiring customers. In the UK, seed rounds typically range from £250k to £2m. Investors at this stage include angel investors, seed VCs, and programmes like Innovate UK.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Seed funding is a key near-term milestone. The decisions we make now around product, team, and traction directly affect our ability to raise at seed stage.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Series A</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Series A is the first major venture capital round, typically raised once a company has demonstrated product-market fit and early revenue. In the UK medtech space, Series A rounds often range from £2m to £10m. Investors expect a clear growth plan, a scalable business model, and a team capable of executing at pace.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Series A is a medium-term horizon goal. Knowing what this milestone requires helps us build the right foundations now, particularly around evidence of impact and NHS adoption.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Pitch Deck</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A pitch deck is a short presentation (typically 10 to 15 slides) used to communicate the business opportunity to potential investors. It usually covers the problem, solution, market size, traction, team, and funding ask. It needs to work both as a standalone document and as a live presentation tool.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Jok and Jeff are leading on pitch materials. Understanding what a strong pitch deck looks like helps all of us contribute useful input and review effectively.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Due Diligence</span>
+        <span class="entry-abbr">DD</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Due diligence is the process by which an investor investigates a company before committing capital. It typically covers financials, legal structure, IP, team background, customer contracts, and technical architecture. The depth of due diligence increases at later funding stages. Being prepared requires good documentation and clean internal records from early on.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Building clean documentation and clear team structures now means we are not scrambling when a serious investor asks for them. Good ops hygiene is an investment in future fundraising.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Innovate UK</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Innovate UK is the UK government's innovation agency, part of UK Research and Innovation (UKRI). It provides grant funding and loans to businesses developing new products, processes, and services. Programmes relevant to healthtech include Smart Grants, the Biomedical Catalyst, and various NHS-specific innovation funds. Grant funding does not dilute equity, making it particularly attractive at early stages.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Non-dilutive grant funding can extend our runway without giving up equity. Worth tracking relevant funding calls actively.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Runway</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Runway is the amount of time a company can continue operating at its current burn rate before running out of cash. It is calculated by dividing current cash reserves by monthly spend. Extending runway means raising more money, reducing costs, or generating revenue faster. Most early-stage companies aim to maintain at least 12 months of runway at any given time.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Runway is a core operational metric. Our tooling and team decisions should always factor in the effect on burn rate and how long that gives us before the next funding milestone.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Burn Rate</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Burn rate is the speed at which a company is spending its cash reserves, usually expressed as a monthly figure. Gross burn is total monthly spend. Net burn is total spend minus any revenue coming in. A high burn rate is not inherently bad if it reflects deliberate investment in growth, but it must be tracked carefully against runway.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Understanding our net burn helps us make informed decisions about hiring, tooling, and investment. Every tool or team member we add changes this number.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Equity</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Equity refers to ownership in the company, usually expressed as a percentage of total shares. When a company raises investment, it typically issues new shares in exchange for cash, diluting the percentage held by existing shareholders. Founders, employees (via options), and investors all hold equity. Protecting founder equity in early rounds requires careful negotiation of valuations and terms.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Equity is how value is ultimately distributed. Understanding it means we can have informed conversations with Jok about the structure of funding rounds and what we are giving up versus gaining.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Product-Market Fit</span>
+        <span class="entry-abbr">PMF</span>
+        <span class="entry-tag tag-funding">Funding</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Product-market fit is the degree to which a product satisfies a strong market demand. It is typically evidenced by strong user retention, organic growth, and customers who would be very disappointed if the product disappeared. Achieving PMF is a key milestone between seed and Series A, and investors use it as a signal that a business is ready to scale.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Demonstrating PMF with NHS partners will be critical to credible fundraising. Early adoption by a Trust or ICB is a meaningful signal in this space.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 03 TOOLS & SYSTEMS -->
+  <div class="section-block" id="tools">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Tools &amp; <strong>Systems</strong></h2>
+      <span class="section-count">8 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Jira</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Jira is our project management and issue tracking tool, hosted at azariahhq.atlassian.net. It is used to log, assign, and track tasks and bugs across all workstreams. Tasks (called tickets or issues) are organised into projects, assigned to team members, and tracked through a workflow: To Do, In Progress, Review, Done. Rico manages day-to-day project tracking in Jira.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Jira is our single source of truth for what is being worked on, by whom, and what is outstanding. If it is not in Jira, it does not exist.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Confluence</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Confluence is our internal documentation and knowledge base, also hosted on Atlassian and linked to our Jira space. It is where we store team documentation, guides, templates, and reference materials including this wiki. Pages are organised into spaces, and Jira tickets can be linked directly to Confluence pages for context.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Confluence is where institutional knowledge lives. If you need to understand how something works or find a reference document, this is where to look first. If it matters beyond today, write it down.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Slack</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Slack is our primary team communication tool, organised into channels by topic or project. We use it for async-first communication, keeping email for external stakeholders. Decisions made in Slack should be documented in Confluence or Jira if they need to be referenced later. Default to channels, not DMs.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Slack keeps communication fast and searchable. The discipline to move decisions to Confluence or Jira prevents important context from being lost in conversation threads.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Google Workspace</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Google Workspace is our email and cloud storage platform. It includes Gmail (using our Azariah domain), Google Drive for file storage and sharing, Google Docs and Sheets for collaborative documents, and Google Meet for video calls. The full transition to Workspace email is being phased in, with email forwarding in place in the interim.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Workspace gives us a professional email address and a central place to store and share files. Everything that matters should be in Drive, not sitting in someone's local downloads folder.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Atlassian</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Atlassian is the company behind Jira and Confluence. When we refer to Atlassian we typically mean our shared account at azariahhq.atlassian.net, which hosts both tools under one login. Jok holds the admin role on the account. We are currently on free tiers for both tools, which supports up to 10 users.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>The free tier is sufficient for now, but as the team grows we will need to plan for paid tiers. Budget scenarios have been documented for Jok's planning visibility.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Ticket</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A ticket (also called an issue) is a unit of work tracked in Jira. Every piece of work, whether a task, bug, feature, or request, should have a ticket. Tickets have a title, description, assignee, priority, and status. Ticket numbers such as AZA-12 are used to reference work in Slack and Confluence.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Tickets are how we make work visible and accountable. If something needs to happen, create a ticket. This stops things falling through the gaps.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Sprint</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A sprint is a fixed time period (usually one or two weeks) during which the team commits to completing a specific set of tickets. Sprints come from the Agile/Scrum framework and are managed in Jira. At the start, tickets are selected from the backlog. At the end, completed work is reviewed and anything outstanding is carried forward or re-prioritised.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Sprints create regular rhythm and accountability. They give Rico and Jeff visibility over what is moving and what is blocked, without needing constant check-ins.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">Backlog</span>
+        <span class="entry-tag tag-tools">Tool</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The backlog is the full list of tickets that have been created but not yet scheduled into a sprint. It is maintained in Jira and should be regularly reviewed and prioritised (a process called backlog refinement). Items are ranked roughly by priority so that the most important work is always at the top, ready to be pulled into the next sprint.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>A well-maintained backlog means the team always knows what is coming next and can start new work immediately when a sprint ends. A messy backlog creates confusion and missed priorities.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 04 NIHR & GRANT TERMS -->
+  <div class="section-block" id="grant">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">NIHR &amp; <strong>Grant Terms</strong></h2>
+      <span class="section-count">10 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">NIHR</span>
+        <span class="entry-abbr">National Institute for Health and Care Research</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The National Institute for Health and Care Research is the UK government's primary funder of health and care research. It funds research across the NHS and social care system, with a focus on research that improves patient and public outcomes. NIHR funding is highly competitive and peer-reviewed. It operates several programmes including i4i, which is focused on health technology innovation.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>NIHR is the primary funder we are pursuing through the i4i THRIVE application. Securing NIHR funding signals credibility to NHS partners and other investors as well as providing non-dilutive capital to develop the prototype.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">i4i</span>
+        <span class="entry-abbr">Invention for Innovation</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">i4i (Invention for Innovation) is an NIHR funding programme that supports the development and evaluation of innovative medical devices, diagnostics, and health technologies. It bridges the gap between early-stage research and clinical adoption. The programme has several strands including THRIVE, FAST, and PDA, each with different scopes and funding levels.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>We are pursuing three i4i strands in parallel: THRIVE (deadline 17 April), FAST (29 April), and PDA (27 May). Each has different eligibility and scope requirements. THRIVE is the primary submission.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">THRIVE</span>
+        <span class="entry-abbr">i4i THRIVE Programme</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">THRIVE is a specific call within the NIHR i4i programme focused on technologies that address health inequalities. It funds projects up to £150,000 over a maximum of 9 months. The lead applicant must be a Research Institute, NHS provider, charity, or Community Interest Company (CIC). Standard private limited companies cannot lead. The programme has a strong focus on underserved communities and measurable patient benefit.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>This is our primary funding application, with a deadline of 17 April 2026. The lead applicant eligibility requirement is a critical open question that Jok needs to confirm. If Azariah is incorporated as a standard Ltd, a named NHS Trust or university partner may need to lead the application.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">PPIE</span>
+        <span class="entry-abbr">Patient and Public Involvement and Engagement</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">PPIE refers to the meaningful involvement of patients and members of the public in the design, delivery, and evaluation of health research. It is distinct from participation in research as a subject. NIHR requires PPIE to be embedded throughout a project, not added as an afterthought. Strong PPIE plans name the patient group, the engagement mechanism, and the specific points in the project where involvement happens.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>PPIE is a scored criterion in our THRIVE application. The current plan is drafted but needs to move from intent to a named group, mechanism, and engagement points. NIHR reviewers regularly downgrade applications with weak PPIE sections.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">DBS</span>
+        <span class="entry-abbr">Disclosure and Barring Service</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The Disclosure and Barring Service carries out criminal record checks for individuals working with vulnerable groups, including NHS patients. DBS checks are a mandatory part of NHS employment compliance and come in different levels: Basic, Standard, and Enhanced. Enhanced DBS checks are required for most clinical roles. These checks form part of the NHS Employment Check Standards that Azariah's system is designed to support.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>DBS is one of the core compliance checks included in the portable compliance profile. It is a key component of what we mean by "verified once" — a valid, in-date DBS should not need to be repeated every time a clinician moves between trusts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">ECS</span>
+        <span class="entry-abbr">NHS Employment Check Standards</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The NHS Employment Check Standards are the national framework setting out the mandatory pre-employment checks that NHS organisations must carry out before hiring staff. They cover identity verification, right to work, DBS checks, employment history, professional registration, and occupational health clearance. All NHS employers are required to follow these standards regardless of staff type or contract.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>ECS is the foundational standard our portable compliance profile is built on. "Verified once, trusted everywhere" means verified once to the ECS standard. Every component of our compliance dataset maps directly to these requirements.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">ICS</span>
+        <span class="entry-abbr">Integrated Care System</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">An Integrated Care System is a partnership of NHS organisations, local authorities, and other bodies responsible for planning and delivering health and care services in a geographic area. Each ICS is led by an Integrated Care Board (ICB) and is designed to join up care across hospitals, community services, and social care. There are 42 ICS areas in England, each covering a population of around 500,000 to 3 million people.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>ICS-level adoption is a realistic medium-term goal for the portable compliance profile. A solution that works across an entire ICS — enabling staff to move between trusts within the same system — is a natural expansion from a two-trust pilot.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">EDI</span>
+        <span class="entry-abbr">Equality, Diversity and Inclusion</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Equality, Diversity and Inclusion refers to the principles and practices that ensure fair treatment and representation of all groups within an organisation or system. In an NHS and NIHR context, EDI requirements extend to both the workforce and the populations being served. Grant applications are assessed on whether they actively consider who might be excluded from a solution and how that is addressed.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>EDI is a scored criterion in our THRIVE application. We need to address it for both staff (e.g. do all clinicians have equal access to and benefit from the compliance profile?) and patients (e.g. does faster deployment disproportionately benefit or disadvantage certain communities?).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">TRL</span>
+        <span class="entry-abbr">Technology Readiness Level</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Technology Readiness Levels are a nine-point scale used to assess how mature a technology is, from basic research (TRL 1) through to full commercial deployment (TRL 9). NIHR i4i THRIVE requires applicants to be at TRL 3 or above, which means the technology concept has been experimentally validated. The TRL must be stated clearly in the application.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>We need to clearly state our TRL in the THRIVE application. Based on where we are (concept validated, model designed, not yet prototyped) we are likely at TRL 3 to 4. This needs to be confirmed and stated explicitly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">CIC</span>
+        <span class="entry-abbr">Community Interest Company</span>
+        <span class="entry-tag tag-grant">Grant</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A Community Interest Company is a type of limited company designed for organisations that want to use their profits and assets for the public good. CICs are registered with Companies House and must pass a community interest test. They are a recognised legal structure in the NIHR i4i THRIVE eligibility criteria, alongside NHS providers, Research Institutes, and charities. Standard private limited companies (Ltd) are not eligible to lead THRIVE applications.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Azariah's legal structure determines whether it can lead the THRIVE application. If incorporated as a standard Ltd rather than a CIC, Azariah cannot be the named lead applicant. Jok needs to confirm the Companies House registration status as a priority before 17 April.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grant -->
+
+
+  <!-- 05 ROLES & OPERATIONS -->
+  <div class="section-block" id="roles">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Roles &amp; <strong>Operations</strong></h2>
+      <span class="section-count">7 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">CTO</span>
+        <span class="entry-abbr">Chief Technology Officer</span>
+        <span class="entry-tag tag-roles">Roles</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The Chief Technology Officer is the senior leader responsible for an organisation's technology strategy, architecture, and engineering output. At Azariah, Jun is acting in a CTO capacity, leading the development team and overseeing technical direction. The CTO role covers architectural decisions, technical standards, developer management, and ensuring that what is built is robust, scalable, and fit for an NHS context.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Jun's CTO role is a key strength in our THRIVE application and investor conversations. As the team formalises, this role should be explicitly named in team documentation and the grant application to give reviewers confidence in technical delivery capability.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">PM</span>
+        <span class="entry-abbr">Project Manager</span>
+        <span class="entry-tag tag-roles">Roles</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A Project Manager is responsible for planning, coordinating, and tracking work across a project or team. At Azariah, Rico holds this role, managing day-to-day task tracking in Jira, coordinating between team members, and keeping delivery on schedule. The PM role is distinct from strategic or operational leadership and focuses on making sure planned work actually gets done.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Rico's PM function is what keeps the team's week-to-week delivery visible and accountable. A clear PM role is also something NIHR grant reviewers look for when assessing whether a project team can actually deliver a 9-month programme.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">CRM</span>
+        <span class="entry-abbr">Customer Relationship Management</span>
+        <span class="entry-tag tag-roles">Roles</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A Customer Relationship Management system is a tool used to track and manage interactions with current and prospective customers, partners, or stakeholders. CRM systems typically store contact details, communication history, pipeline status, and notes. In a B2B context like Azariah, a CRM helps manage relationships with NHS Trusts, commissioners, and potential investors.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>CRM sits within the Systems and Enablement function. As NHS outreach grows, a simple CRM becomes important for tracking who we have spoken to, what was discussed, and what follow-up is needed. This is especially critical during the pilot engagement phase.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">HR</span>
+        <span class="entry-abbr">Human Resources</span>
+        <span class="entry-tag tag-roles">Roles</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Human Resources refers to the function responsible for managing an organisation's workforce, including recruitment, onboarding, compliance, payroll, and employee relations. In the NHS, HR teams are the primary owners of employment check processes and compliance administration. They manage DBS checks, right to work verification, and mandatory training records for clinical staff.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>NHS HR teams are one of our primary end users. The compliance duplication problem we are solving sits directly in their workflow. User research with HR and workforce leads is also a requirement for the evidence section of our THRIVE application.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">IP</span>
+        <span class="entry-abbr">Intellectual Property</span>
+        <span class="entry-tag tag-roles">Roles</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">Intellectual Property refers to creations of the mind — software, inventions, designs, brand identity — that can be legally owned and protected. IP ownership determines who controls a technology and how it can be commercialised. In a grant-funded project, IP agreements between the applicant, NHS partners, and any development contractors must be clearly defined.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>IP ownership is a specific scored criterion in the THRIVE application. Reviewers want to know who owns the technology and what the route to market looks like after the grant ends. This needs to be addressed before submission.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">RMS</span>
+        <span class="entry-abbr">Research Management System</span>
+        <span class="entry-tag tag-roles">Roles</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">The NIHR Research Management System (also referred to as the NIHR awards management system) is the online portal through which NIHR grant applications are submitted and managed. Applicants must register and create an account before submitting. Account validation can take up to two working days, so registration needs to happen well in advance of any application deadline.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>RMS registration is a pre-submission requirement for the THRIVE application. With a deadline of 17 April, this needs to be confirmed as done now. If Jok or the lead applicant has not yet registered, this must happen immediately.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header" onclick="toggle(this)">
+        <span class="entry-term">GP</span>
+        <span class="entry-abbr">General Practitioner</span>
+        <span class="entry-tag tag-roles">Roles</span>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-definition">A General Practitioner is a doctor who provides primary care to patients in a community setting, typically through a GP practice. GPs are usually the first point of contact within the NHS for non-emergency health concerns and refer patients to specialist secondary care services when needed. GP practices are independently contracted by the NHS rather than directly employed by Trusts.</p>
+        <div class="entry-callout">
+          <div class="entry-callout-label">Why it matters to Azariah</div>
+          <p>Our current focus is secondary care (hospital-based Trusts), not primary care GP settings. Understanding this distinction matters when scoping the pilot and when communicating with commissioners about where our solution applies.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /roles -->
+
+</div><!-- /page -->
+
+<div class="wiki-footer">
+  <span>The <strong>Azariah</strong> · Team Wiki · Internal use only</span>
+  <span>We enable better care through better systems</span>
+</div>
+
+<script>
+  function toggle(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.entry').forEach(entry => {
+      const match = !q || entry.textContent.toLowerCase().includes(q);
+      entry.style.display = match ? '' : 'none';
+      if (q && match) entry.classList.add('open');
+      else if (!q) entry.classList.remove('open');
+    });
+    document.querySelectorAll('.section-block').forEach(section => {
+      const visible = [...section.querySelectorAll('.entry')].some(e => e.style.display !== 'none');
+      section.style.display = visible ? '' : 'none';
+    });
+  });
+</script>
+
+</body>
+</html>

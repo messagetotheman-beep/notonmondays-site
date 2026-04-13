@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Not On Mondays</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231a2ad4'/><text x='8' y='23' font-family='monospace' font-size='18' fill='%23f2f0e8'>m</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #1a2ad4;
+  --deep-blue: #0d1880;
+  --off-white: #f2f0e8;
+  --muted: #8a8fa8;
+  --light-blue: #bfc6f0;
+  --dark: #111124;
+  --mid: #2a2a4a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--off-white);
+  color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+
+.nav-logo {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.nav-logo .nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  display: block;
+}
+
+.nom-initial.n { color: rgba(26,42,212,0.25); }
+.nom-initial.o { color: rgba(26,42,212,0.45); }
+.nom-initial.m { color: var(--blue); }
+
+.nav-back {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.nav-back:hover { color: var(--blue); }
+.nav-back::before { content: '←'; }
+
+/* MAIN */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 140px 2rem 6rem;
+}
+
+.page-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--dark);
+  margin-bottom: 0.75rem;
+}
+
+.page-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--blue);
+  margin-bottom: 3rem;
+  opacity: 0.4;
+}
+
+.last-updated {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  padding: 0.75rem 1rem;
+  border-left: 2px solid rgba(26,42,212,0.2);
+  background: rgba(26,42,212,0.03);
+}
+
+/* SECTIONS */
+.policy-section {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+
+.policy-section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.25rem;
+}
+
+p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #3a3a5a;
+  margin-bottom: 1rem;
+}
+
+p:last-child { margin-bottom: 0; }
+
+ul {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+ul li {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #3a3a5a;
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+
+ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  opacity: 0.5;
+  font-family: 'DM Mono', monospace;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-block {
+  background: var(--dark);
+  color: var(--off-white);
+  padding: 2rem;
+  margin-top: 1.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+}
+
+.contact-block a {
+  color: var(--light-blue);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(26,42,212,0.08);
+}
+
+@media (max-width: 600px) {
+  nav { padding: 0 1.5rem; }
+  main { padding: 120px 1.5rem 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="Not On Mondays">
+    <span class="nom-initial n">n</span>
+    <span class="nom-initial o">o</span>
+    <span class="nom-initial m">m</span>
+  </a>
+  <a href="/" class="nav-back">Back to site</a>
+</nav>
+
+<main>
+
+  <p class="page-label">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p class="page-subtitle">Straight answers about what we collect and why.</p>
+  <div class="divider"></div>
+
+  <div class="last-updated">Last updated: April 2026</div>
+
+  <div class="policy-section">
+    <h2>Who we are</h2>
+    <p>Not On Mondays (NOM) is an embedded operating partner for founders and leadership teams. This policy covers notonmondays.com and applies to anyone who visits or interacts with the site.</p>
+    <p>We are the data controller for the personal information collected through this site. We operate in accordance with the UK GDPR and the Data Protection Act 2018.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>What we collect</h2>
+    <p>We only collect information you actively provide or that is generated by standard site analytics tools.</p>
+    <ul>
+      <li><strong>Contact form submissions:</strong> name, email address, and any message content you submit via our enquiry form.</li>
+      <li><strong>Analytics data:</strong> pages visited, time on site, referring source, and approximate location (country/city level). This is collected via Google Analytics and is anonymised — we do not track individuals.</li>
+      <li><strong>Cookie consent preference:</strong> a record of whether you accepted or rejected cookies, stored locally in your browser.</li>
+    </ul>
+    <p>We do not collect payment information, and we do not build profiles on individual visitors.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>How we use it</h2>
+    <ul>
+      <li>Contact form data is used solely to respond to your enquiry.</li>
+      <li>Analytics data is used to understand how the site is performing and to improve it. We do not use it for advertising.</li>
+      <li>We do not sell, rent, or share your data with third parties for marketing purposes.</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <h2>Cookies</h2>
+    <p>Cookies are small files stored in your browser. We use two types:</p>
+    <ul>
+      <li><strong>Essential:</strong> stores your cookie consent preference. No consent required.</li>
+      <li><strong>Analytics (Google Analytics):</strong> only set if you accept cookies. These help us understand site traffic at an aggregate level.</li>
+    </ul>
+    <p>You can withdraw consent at any time by clearing your browser cookies. The banner will reappear on your next visit.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Third-party services</h2>
+    <p>The following third-party services may process data in connection with your use of this site:</p>
+    <ul>
+      <li><strong>Google Analytics</strong> — analytics (only active with your consent). <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><strong>Google Fonts</strong> — fonts loaded from Google's CDN on page load. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><strong>Web3Forms</strong> — processes contact form submissions on our behalf. Your name, email, and message are transmitted through their service when you submit an enquiry. <a href="https://web3forms.com/privacy" target="_blank" rel="noopener">Web3Forms Privacy Policy</a></li>
+      <li><strong>Cloudflare</strong> — our hosting and DNS provider. Processes server logs including IP addresses in the normal course of serving the site. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <h2>Retention</h2>
+    <p>Contact form submissions are retained only as long as needed to respond to and close your enquiry. Analytics data is retained for 14 months in line with Google Analytics defaults, after which it is deleted automatically.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Your rights</h2>
+    <p>Under UK GDPR you have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Request correction of inaccurate data</li>
+      <li>Request deletion of your data</li>
+      <li>Object to or restrict processing</li>
+      <li>Withdraw consent at any time (where processing is based on consent)</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at the address below. We will respond within 30 days.</p>
+    <p>You also have the right to lodge a complaint with the <a href="https://ico.org.uk" target="_blank" rel="noopener">ICO</a> (Information Commissioner's Office) if you believe your data has been handled unlawfully.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Contact</h2>
+    <p>Questions about this policy or your data:</p>
+    <div class="contact-block">
+      Not On Mondays<br>
+      <a href="#" id="privacy-email-link"></a><br>
+      notonmondays.com
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 Not On Mondays &nbsp;·&nbsp; <a href="/">notonmondays.com</a>
+</footer>
+
+<script>
+  (function() {
+    const el = document.getElementById('privacy-email-link');
+    if (el) {
+      const e = 'hello' + '@' + 'notonmondays' + '.com';
+      el.href = 'mailto:' + e;
+      el.textContent = e;
+    }
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azariah — Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --navy:       #003087;
+  --nhs:        #005EB8;
+  --mid:        #378ADD;
+  --light:      #B5D4F4;
+  --pale:       #E8F1FA;
+  --white:      #FFFFFF;
+  --green:      #1D9E75;
+  --red:        #C84040;
+  --amber:      #D4780A;
+
+  --text-primary:   #003087;
+  --text-secondary: rgba(0,48,135,0.6);
+  --text-tertiary:  rgba(0,48,135,0.38);
+  --border:         rgba(0,94,184,0.14);
+  --border-strong:  rgba(0,94,184,0.28);
+  --surface:        #F4F8FD;
+  --surface-2:      #FAFCFF;
+
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+
+  --font-sans:  'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:  'DM Mono', 'Courier New', monospace;
+
+  --sidebar-w: 240px;
+  --header-h:  56px;
+}
+
+/* ═══════════════════════════════════════
+   RESET
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-sans); background: var(--surface); color: var(--text-primary); line-height: 1.6; }
+
+/* ═══════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════ */
+.shell { display: flex; min-height: 100vh; }
+
+/* ── TOP BAR ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--header-h);
+  background: var(--navy); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px 0 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.topbar-brand {
+  display: flex; align-items: center; gap: 0;
+  width: var(--sidebar-w);
+  padding: 0 20px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  height: 100%;
+}
+.topbar-brand svg { flex-shrink: 0; }
+.topbar-brand-name {
+  font-size: 15px; font-weight: 300; color: white; margin-left: 12px; white-space: nowrap;
+}
+.topbar-brand-name strong { font-weight: 600; }
+.topbar-right {
+  display: flex; align-items: center; gap: 16px;
+}
+.topbar-badge {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 3px 10px; border-radius: 20px;
+}
+.topbar-search {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: 6px 14px;
+}
+.topbar-search input {
+  background: none; border: none; outline: none;
+  font-family: var(--font-sans); font-size: 13px;
+  color: white; width: 180px;
+}
+.topbar-search input::placeholder { color: rgba(255,255,255,0.35); }
+.topbar-search-icon { color: rgba(255,255,255,0.4); font-size: 14px; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: fixed; top: var(--header-h); left: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: white;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 90;
+  padding: 20px 0 40px;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.nav-section { margin-bottom: 4px; }
+.nav-section-label {
+  font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text-tertiary); font-weight: 600;
+  padding: 14px 20px 6px;
+}
+.nav-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 20px;
+  font-size: 13px; font-weight: 400; color: var(--text-secondary);
+  text-decoration: none; cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all 0.12s;
+}
+.nav-link:hover { color: var(--navy); background: var(--pale); }
+.nav-link.active {
+  color: var(--nhs); font-weight: 600;
+  border-left-color: var(--nhs);
+  background: var(--pale);
+}
+.nav-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border); flex-shrink: 0;
+}
+.nav-link.active .nav-dot { background: var(--nhs); }
+
+/* ── MAIN CONTENT ── */
+.main {
+  margin-left: var(--sidebar-w);
+  margin-top: var(--header-h);
+  flex: 1;
+  padding: 48px 52px 80px;
+  max-width: 960px;
+}
+
+/* ═══════════════════════════════════════
+   SECTION BLOCKS
+═══════════════════════════════════════ */
+.ds-section {
+  margin-bottom: 72px;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+.ds-section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.ds-section-title {
+  font-size: 24px; font-weight: 300; color: var(--navy); letter-spacing: -0.3px;
+}
+.ds-section-title strong { font-weight: 600; }
+.ds-section-sub {
+  font-size: 14px; color: var(--text-secondary); font-weight: 300;
+  margin-bottom: 28px; line-height: 1.7; max-width: 580px;
+}
+.ds-rule {
+  border: none; border-top: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.ds-subsection-label {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-tertiary); font-weight: 600;
+  margin-bottom: 12px; margin-top: 32px;
+}
+.ds-subsection-label:first-of-type { margin-top: 0; }
+
+/* ═══════════════════════════════════════
+   COPY BUTTON & CODE BLOCKS
+═══════════════════════════════════════ */
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: var(--radius-sm);
+  font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  background: var(--pale); color: var(--nhs);
+  border: 1px solid var(--border); cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.15s;
+}
+.copy-btn:hover { background: var(--nhs); color: white; border-color: var(--nhs); }
+.copy-btn.copied { background: var(--green); color: white; border-color: var(--green); }
+
+.code-block {
+  background: #0D1B2E;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 8px;
+}
+.code-block-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.code-block-lang {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); font-weight: 500;
+}
+.code-block pre {
+  padding: 16px 18px; overflow-x: auto;
+  font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7;
+  color: #B5D4F4;
+}
+.code-block pre .tok-key   { color: #5BA3E0; }
+.code-block pre .tok-val   { color: #A8D8A8; }
+.code-block pre .tok-str   { color: #F4C06A; }
+.code-block pre .tok-cmt   { color: rgba(255,255,255,0.28); font-style: italic; }
+.code-block pre .tok-prop  { color: #E8A0D0; }
+
+/* ═══════════════════════════════════════
+   PREVIEW CARD
+═══════════════════════════════════════ */
+.preview-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.preview-area {
+  padding: 40px 36px;
+  background: white;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 120px;
+}
+.preview-area.pale   { background: var(--pale); }
+.preview-area.navy   { background: var(--navy); }
+.preview-area.nhs    { background: var(--nhs); }
+.preview-area.grid   { display: grid; gap: 16px; justify-content: start; }
+.preview-area.wrap   { flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
+.preview-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+.preview-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-tertiary); font-weight: 500; }
+
+/* ═══════════════════════════════════════
+   COLOUR TOKENS
+═══════════════════════════════════════ */
+.swatch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.swatch-card {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.swatch-block { height: 72px; }
+.swatch-body { padding: 10px 12px 12px; background: white; }
+.swatch-name { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+.swatch-hex  { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); margin-bottom: 2px; }
+.swatch-var  { font-size: 10px; color: var(--nhs); font-family: var(--font-mono); }
+
+/* ═══════════════════════════════════════
+   LOGO CELLS
+═══════════════════════════════════════ */
+.logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.logo-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.logo-cell { border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; }
+.logo-preview {
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 24px 28px;
+}
+.lp-w   { background: #fff; }
+.lp-p   { background: var(--pale); }
+.lp-n   { background: var(--navy); }
+.lp-b   { background: var(--nhs); }
+.logo-cap {
+  padding: 9px 14px 10px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-tertiary); font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+/* ═══════════════════════════════════════
+   TYPE SCALE
+═══════════════════════════════════════ */
+.type-row {
+  display: flex; align-items: baseline; gap: 20px;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.type-row:last-child { border-bottom: none; }
+.type-meta { min-width: 200px; font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+.type-sample { color: var(--navy); flex: 1; }
+
+/* ═══════════════════════════════════════
+   UI COMPONENTS
+═══════════════════════════════════════ */
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 20px; border-radius: var(--radius-md);
+  font-family: var(--font-sans); font-size: 14px; font-weight: 500;
+  cursor: pointer; border: none; text-decoration: none;
+  transition: all 0.15s; line-height: 1;
+}
+.btn-primary   { background: var(--nhs); color: white; }
+.btn-primary:hover { background: var(--navy); }
+.btn-secondary { background: var(--pale); color: var(--nhs); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--nhs); color: white; }
+.btn-outline   { background: transparent; color: var(--nhs); border: 1.5px solid var(--nhs); }
+.btn-outline:hover { background: var(--nhs); color: white; }
+.btn-ghost     { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--nhs); color: var(--nhs); }
+.btn-danger    { background: #FDF2F2; color: var(--red); border: 1px solid rgba(200,64,64,0.2); }
+.btn-danger:hover { background: var(--red); color: white; }
+.btn-sm { padding: 6px 14px; font-size: 12px; border-radius: var(--radius-sm); }
+.btn-lg { padding: 14px 28px; font-size: 15px; border-radius: var(--radius-lg); }
+
+/* Badges */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.badge-blue    { background: var(--pale); color: var(--navy); border: 1px solid rgba(0,94,184,0.15); }
+.badge-green   { background: #E8F7F2; color: #0F6E56; border: 1px solid rgba(29,158,117,0.2); }
+.badge-amber   { background: #FEF3E2; color: #854F0B; border: 1px solid rgba(212,120,10,0.2); }
+.badge-red     { background: #FDF2F2; color: #A32D2D; border: 1px solid rgba(200,64,64,0.15); }
+.badge-navy    { background: var(--navy); color: white; }
+.badge-nhs     { background: var(--nhs); color: white; }
+
+/* Cards */
+.ds-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+}
+.ds-card-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.ds-card-body  { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+.ds-card-footer {
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ds-card-meta { font-size: 11px; color: var(--text-tertiary); }
+
+.ds-card-accent {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+  border-left: 4px solid var(--nhs);
+}
+
+/* Callout */
+.callout {
+  padding: 16px 20px; border-radius: var(--radius-md);
+  border-left: 3px solid var(--nhs);
+  background: var(--pale);
+}
+.callout.success { border-left-color: var(--green); background: #EAF7F2; }
+.callout.warning { border-left-color: var(--amber); background: #FEF3E2; }
+.callout.error   { border-left-color: var(--red);   background: #FDF2F2; }
+.callout-label {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 5px; color: var(--nhs);
+}
+.callout.success .callout-label { color: var(--green); }
+.callout.warning .callout-label { color: var(--amber); }
+.callout.error   .callout-label { color: var(--red); }
+.callout-body { font-size: 13px; color: var(--text-primary); line-height: 1.6; }
+
+/* Table */
+.ds-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ds-table thead th {
+  text-align: left; padding: 10px 14px;
+  background: var(--pale);
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--nhs); font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+.ds-table tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid rgba(0,94,184,0.06);
+  color: var(--text-secondary); vertical-align: top; line-height: 1.5;
+}
+.ds-table tbody td:first-child { font-weight: 500; color: var(--navy); }
+.ds-table tbody tr:last-child td { border-bottom: none; }
+.ds-table tbody tr:hover td { background: var(--pale); }
+
+/* Form elements */
+.ds-input {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans); font-size: 14px;
+  color: var(--navy); background: white;
+  outline: none; transition: border-color 0.15s;
+}
+.ds-input:focus { border-color: var(--nhs); box-shadow: 0 0 0 3px rgba(0,94,184,0.1); }
+.ds-input::placeholder { color: var(--text-tertiary); }
+.ds-label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: var(--navy); margin-bottom: 6px; letter-spacing: 0.2px;
+}
+.ds-helper { font-size: 11px; color: var(--text-tertiary); margin-top: 5px; }
+.ds-field { margin-bottom: 16px; }
+.ds-select {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans); font-size: 14px;
+  color: var(--navy); background: white;
+  outline: none; cursor: pointer;
+}
+.ds-select:focus { border-color: var(--nhs); }
+
+/* Status dots */
+.status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500;
+}
+.status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.status-live    .status-dot { background: var(--green); box-shadow: 0 0 0 2px rgba(29,158,117,0.2); }
+.status-pending .status-dot { background: var(--amber); }
+.status-draft   .status-dot { background: var(--text-tertiary); }
+.status-error   .status-dot { background: var(--red); }
+
+/* ═══════════════════════════════════════
+   PAGE TEMPLATES
+═══════════════════════════════════════ */
+.template-thumb {
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  overflow: hidden; cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.template-thumb:hover { box-shadow: 0 4px 16px rgba(0,48,135,0.12); transform: translateY(-1px); }
+.template-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tmpl-header { background: var(--navy); padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+.tmpl-body { background: white; padding: 14px 16px; }
+.tmpl-bar { height: 7px; border-radius: 2px; margin-bottom: 5px; background: var(--navy); }
+.tmpl-bar.md { width: 60%; background: var(--pale); }
+.tmpl-bar.sm { width: 80%; height: 4px; background: rgba(0,48,135,0.08); }
+.tmpl-bar.xs { width: 55%; height: 4px; background: rgba(0,48,135,0.08); }
+.tmpl-2col { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; margin-top: 8px; }
+.tmpl-sidebar-col { background: var(--pale); border-radius: 4px; padding: 6px; }
+.tmpl-main-col { display: flex; flex-direction: column; gap: 4px; }
+.tmpl-footer { background: var(--pale); border-top: 3px solid var(--nhs); padding: 7px 16px; display: flex; justify-content: space-between; align-items: center; }
+.tmpl-label { padding: 10px 14px; background: var(--surface-2); border-top: 1px solid var(--border); font-size: 11px; font-weight: 600; color: var(--navy); }
+
+/* ═══════════════════════════════════════
+   TOV
+═══════════════════════════════════════ */
+.tov-principle {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px 24px;
+}
+.tov-principle-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.tov-principle-icon { width: 28px; height: 28px; border-radius: var(--radius-sm); background: var(--pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tov-principle-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 12px; }
+.tov-eg { background: var(--pale); border-left: 3px solid var(--nhs); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 10px 14px; font-size: 13px; color: var(--navy); font-style: italic; }
+.tov-eg-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--nhs); font-style: normal; font-weight: 600; margin-bottom: 4px; }
+.tov-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tov-grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tov-do   { background: #EAF7F2; border: 1px solid rgba(29,158,117,0.18); border-radius: var(--radius-lg); padding: 20px; }
+.tov-dont { background: #FDF2F2; border: 1px solid rgba(200,64,64,0.15); border-radius: var(--radius-lg); padding: 20px; }
+.tov-do-title   { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+.tov-dont-title { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+.tov-item { font-size: 12px; color: var(--navy); margin-bottom: 7px; padding-left: 14px; position: relative; line-height: 1.5; }
+.tov-item::before { content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; }
+.tov-do   .tov-item::before { background: var(--green); }
+.tov-dont .tov-item::before { background: var(--red); }
+
+/* ═══════════════════════════════════════
+   INTRO HERO
+═══════════════════════════════════════ */
+.ds-hero {
+  background: var(--navy); border-radius: var(--radius-xl);
+  padding: 48px 48px 44px; margin-bottom: 48px;
+  position: relative; overflow: hidden;
+}
+.ds-hero-bg {
+  position: absolute; top: -40px; right: -40px; opacity: 0.05; pointer-events: none;
+}
+.ds-hero-eyebrow {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #5BA3E0; font-weight: 600; margin-bottom: 14px;
+}
+.ds-hero-title {
+  font-size: 38px; font-weight: 300; color: white;
+  line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 12px;
+}
+.ds-hero-title strong { font-weight: 600; }
+.ds-hero-rule { width: 40px; height: 2px; background: var(--nhs); margin: 20px 0; }
+.ds-hero-desc { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.6); max-width: 440px; line-height: 1.75; }
+.ds-hero-meta {
+  display: flex; gap: 32px; margin-top: 28px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap;
+}
+.ds-hero-meta-item { display: flex; flex-direction: column; gap: 3px; }
+.ds-hero-meta-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); font-weight: 500; }
+.ds-hero-meta-val   { font-size: 12px; color: rgba(255,255,255,0.65); }
+
+/* ═══════════════════════════════════════
+   MISC
+═══════════════════════════════════════ */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.spacer-sm { height: 12px; }
+.spacer-md { height: 24px; }
+
+/* search highlight */
+.search-hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TOP BAR
+══════════════════════════════════════ -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <svg width="28" height="28" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="72" rx="14" fill="rgba(255,255,255,0.1)"/>
+      <polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1.8"/>
+      <line x1="36" y1="23" x2="36" y2="45" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="23" y1="30" x2="49" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="49" y1="30" x2="23" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="36" cy="34" r="5" fill="white"/>
+    </svg>
+    <span class="topbar-brand-name"><strong>Azariah</strong></span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <span class="topbar-search-icon">⌕</span>
+      <input type="text" id="searchInput" placeholder="Search components…" oninput="handleSearch(this.value)">
+    </div>
+    <span class="topbar-badge">Design System v1.0</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════ -->
+<nav class="sidebar" id="sidebar">
+  <div class="nav-section">
+    <div class="nav-section-label">Overview</div>
+    <a class="nav-link active" onclick="navScrollTo('intro')"><span class="nav-dot"></span>Introduction</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Brand</div>
+    <a class="nav-link" onclick="navScrollTo('logo')"><span class="nav-dot"></span>Logo &amp; Mark</a>
+    <a class="nav-link" onclick="navScrollTo('colour')"><span class="nav-dot"></span>Colour</a>
+    <a class="nav-link" onclick="navScrollTo('typography')"><span class="nav-dot"></span>Typography</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Components</div>
+    <a class="nav-link" onclick="navScrollTo('buttons')"><span class="nav-dot"></span>Buttons</a>
+    <a class="nav-link" onclick="navScrollTo('badges')"><span class="nav-dot"></span>Badges &amp; Status</a>
+    <a class="nav-link" onclick="navScrollTo('cards')"><span class="nav-dot"></span>Cards</a>
+    <a class="nav-link" onclick="navScrollTo('callouts')"><span class="nav-dot"></span>Callouts</a>
+    <a class="nav-link" onclick="navScrollTo('tables')"><span class="nav-dot"></span>Tables</a>
+    <a class="nav-link" onclick="navScrollTo('forms')"><span class="nav-dot"></span>Forms</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Patterns</div>
+    <a class="nav-link" onclick="navScrollTo('templates')"><span class="nav-dot"></span>Page Templates</a>
+    <a class="nav-link" onclick="navScrollTo('tov')"><span class="nav-dot"></span>Tone of Voice</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     MAIN
+══════════════════════════════════════ -->
+<main class="main" id="mainContent">
+
+<!-- ─── INTRO ─── -->
+<div class="ds-section" id="intro">
+  <div class="ds-hero">
+    <svg class="ds-hero-bg" width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="200,20 340,100 340,260 200,340 60,260 60,100" fill="none" stroke="white" stroke-width="1.5"/>
+      <polygon points="200,70 300,127 300,243 200,300 100,243 100,127" fill="none" stroke="white" stroke-width="1"/>
+      <line x1="200" y1="100" x2="200" y2="300" stroke="white" stroke-width="0.6"/>
+      <line x1="75" y1="175" x2="325" y2="225" stroke="white" stroke-width="0.6"/>
+      <line x1="325" y1="175" x2="75" y2="225" stroke="white" stroke-width="0.6"/>
+      <circle cx="200" cy="200" r="12" fill="white" opacity="0.15"/>
+      <circle cx="200" cy="200" r="5" fill="white" opacity="0.25"/>
+    </svg>
+    <div class="ds-hero-eyebrow">Clinical Compliance Technology</div>
+    <div class="ds-hero-title"><strong>Azariah</strong><br>Design System</div>
+    <div class="ds-hero-rule"></div>
+    <div class="ds-hero-desc">A single source of truth for how we build and communicate. Use this to keep every surface — from a pitch deck to a product screen — consistently on-brand.</div>
+    <div class="ds-hero-meta">
+      <div class="ds-hero-meta-item">
+        <span class="ds-hero-meta-label">Version</span>
+        <span class="ds-hero-meta-val">1.0 · 2026</span>
+      </div>
+      <div class="ds-hero-meta-item">
+        <span class="ds-hero-meta-label">Maintained by</span>
+        <span class="ds-hero-meta-val">David · Not On Mondays</span>
+      </div>
+      <div class="ds-hero-meta-item">
+        <span class="ds-hero-meta-label">Palette</span>
+        <span class="ds-hero-meta-val">NHS Blue family</span>
+      </div>
+      <div class="ds-hero-meta-item">
+        <span class="ds-hero-meta-label">Typeface</span>
+        <span class="ds-hero-meta-val">DM Sans</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LOGO ─── -->
+<div class="ds-section" id="logo">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title">Logo &amp; <strong>Mark</strong></h2>
+  </div>
+  <p class="ds-section-sub">The hex node mark is a precise geometric form — science, data, structure. Use the horizontal lockup for most contexts. Use the icon mark alone when space is limited.</p>
+  <hr class="ds-rule">
+
+  <div class="ds-subsection-label">Primary lockups</div>
+  <div class="logo-grid" style="margin-bottom:12px;">
+    <div class="logo-cell">
+      <div class="logo-preview lp-w">
+        <svg width="230" height="60" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
+          <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="30" cy="26" r="5" fill="#005EB8"/>
+          <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="600">Azariah</tspan></text>
+          <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
+          <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
+        </svg>
+      </div>
+      <div class="logo-cap"><span class="preview-label">On white</span><button class="copy-btn" onclick="copyLogo('lockup-light', this)">Copy SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-preview lp-n">
+        <svg width="230" height="60" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <line x1="30" y1="15" x2="30" y2="37" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="17" y1="22" x2="43" y2="30" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="43" y1="22" x2="17" y2="30" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="30" cy="26" r="5" fill="white"/>
+          <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="white" xml:space="preserve"><tspan font-weight="600">Azariah</tspan></text>
+          <line x1="64" y1="29" x2="228" y2="29" stroke="rgba(255,255,255,0.2)" stroke-width="0.6"/>
+          <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="rgba(255,255,255,0.55)">CLINICAL COMPLIANCE</text>
+        </svg>
+      </div>
+      <div class="logo-cap" style="background:#002270;border-top-color:rgba(255,255,255,0.08);"><span style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">On navy</span><button class="copy-btn" onclick="copyLogo('lockup-dark', this)">Copy SVG</button></div>
+    </div>
+  </div>
+
+  <div class="ds-subsection-label">Icon mark</div>
+  <div class="logo-grid-3">
+    <div class="logo-cell">
+      <div class="logo-preview lp-w" style="padding:24px;">
+        <svg width="64" height="64" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <rect width="72" height="72" rx="16" fill="#005EB8"/>
+          <polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="rgba(255,255,255,0.12)" stroke="white" stroke-width="1.8"/>
+          <line x1="36" y1="23" x2="36" y2="45" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="23" y1="30" x2="49" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="49" y1="30" x2="23" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="36" cy="34" r="5" fill="white"/>
+        </svg>
+      </div>
+      <div class="logo-cap"><span class="preview-label">NHS blue</span><button class="copy-btn" onclick="copyLogo('icon-blue', this)">Copy SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-preview lp-w" style="padding:24px;">
+        <svg width="64" height="64" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <rect width="72" height="72" rx="16" fill="#003087"/>
+          <polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.7)" stroke-width="1.8"/>
+          <line x1="36" y1="23" x2="36" y2="45" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="23" y1="30" x2="49" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="49" y1="30" x2="23" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="36" cy="34" r="5" fill="white"/>
+        </svg>
+      </div>
+      <div class="logo-cap"><span class="preview-label">Navy</span><button class="copy-btn" onclick="copyLogo('icon-navy', this)">Copy SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-preview lp-p" style="padding:24px;">
+        <svg width="64" height="64" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <rect width="72" height="72" rx="16" fill="white" stroke="#005EB8" stroke-width="1.5"/>
+          <polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="#E8F1FA" stroke="#005EB8" stroke-width="1.8"/>
+          <line x1="36" y1="23" x2="36" y2="45" stroke="#005EB8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="23" y1="30" x2="49" y2="38" stroke="#005EB8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="49" y1="30" x2="23" y2="38" stroke="#005EB8" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="36" cy="34" r="5" fill="#005EB8"/>
+        </svg>
+      </div>
+      <div class="logo-cap"><span class="preview-label">Outline</span><button class="copy-btn" onclick="copyLogo('icon-outline', this)">Copy SVG</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── COLOUR ─── -->
+<div class="ds-section" id="colour">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title">Colour <strong>Tokens</strong></h2>
+  </div>
+  <p class="ds-section-sub">All colours are available as CSS custom properties. Import the token block into any project and reference by variable name.</p>
+  <hr class="ds-rule">
+
+  <div class="ds-subsection-label">Palette</div>
+  <div class="swatch-grid" style="margin-bottom:24px;">
+    <div class="swatch-card"><div class="swatch-block" style="background:#003087;"></div><div class="swatch-body"><div class="swatch-name">NHS Navy</div><div class="swatch-hex">#003087</div><div class="swatch-var">--navy</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#005EB8;"></div><div class="swatch-body"><div class="swatch-name">NHS Blue</div><div class="swatch-hex">#005EB8</div><div class="swatch-var">--nhs</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#378ADD;"></div><div class="swatch-body"><div class="swatch-name">Mid Blue</div><div class="swatch-hex">#378ADD</div><div class="swatch-var">--mid</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#B5D4F4;"></div><div class="swatch-body"><div class="swatch-name">Light Blue</div><div class="swatch-hex">#B5D4F4</div><div class="swatch-var">--light</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#E8F1FA;"></div><div class="swatch-body"><div class="swatch-name">Pale Blue</div><div class="swatch-hex">#E8F1FA</div><div class="swatch-var">--pale</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#fff;border-bottom:1px solid #E8F1FA;"></div><div class="swatch-body"><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-var">--white</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#1D9E75;"></div><div class="swatch-body"><div class="swatch-name">Success</div><div class="swatch-hex">#1D9E75</div><div class="swatch-var">--green</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#D4780A;"></div><div class="swatch-body"><div class="swatch-name">Warning</div><div class="swatch-hex">#D4780A</div><div class="swatch-var">--amber</div></div></div>
+    <div class="swatch-card"><div class="swatch-block" style="background:#C84040;"></div><div class="swatch-body"><div class="swatch-name">Error</div><div class="swatch-hex">#C84040</div><div class="swatch-var">--red</div></div></div>
+  </div>
+
+  <div class="ds-subsection-label">CSS tokens — copy into any project</div>
+  <div class="code-block">
+    <div class="code-block-header">
+      <span class="code-block-lang">CSS</span>
+      <button class="copy-btn" onclick=\"copyCode('css-tokens', this)\">Copy</button>
+    </div>
+    <pre id="css-tokens"><span class="tok-key">:root</span> {
+  <span class="tok-cmt">/* Brand blues */</span>
+  <span class="tok-prop">--navy</span>:    <span class="tok-val">#003087</span>;
+  <span class="tok-prop">--nhs</span>:     <span class="tok-val">#005EB8</span>;
+  <span class="tok-prop">--mid</span>:     <span class="tok-val">#378ADD</span>;
+  <span class="tok-prop">--light</span>:   <span class="tok-val">#B5D4F4</span>;
+  <span class="tok-prop">--pale</span>:    <span class="tok-val">#E8F1FA</span>;
+  <span class="tok-prop">--white</span>:   <span class="tok-val">#FFFFFF</span>;
+
+  <span class="tok-cmt">/* Semantic */</span>
+  <span class="tok-prop">--green</span>:   <span class="tok-val">#1D9E75</span>;
+  <span class="tok-prop">--amber</span>:   <span class="tok-val">#D4780A</span>;
+  <span class="tok-prop">--red</span>:     <span class="tok-val">#C84040</span>;
+
+  <span class="tok-cmt">/* Text */</span>
+  <span class="tok-prop">--text-primary</span>:   <span class="tok-val">#003087</span>;
+  <span class="tok-prop">--text-secondary</span>: <span class="tok-val">rgba(0,48,135,0.6)</span>;
+  <span class="tok-prop">--text-tertiary</span>:  <span class="tok-val">rgba(0,48,135,0.38)</span>;
+
+  <span class="tok-cmt">/* Surfaces */</span>
+  <span class="tok-prop">--border</span>:         <span class="tok-val">rgba(0,94,184,0.14)</span>;
+  <span class="tok-prop">--surface</span>:        <span class="tok-val">#F4F8FD</span>;
+  <span class="tok-prop">--surface-2</span>:      <span class="tok-val">#FAFCFF</span>;
+
+  <span class="tok-cmt">/* Radius */</span>
+  <span class="tok-prop">--radius-sm</span>: <span class="tok-val">6px</span>;
+  <span class="tok-prop">--radius-md</span>: <span class="tok-val">10px</span>;
+  <span class="tok-prop">--radius-lg</span>: <span class="tok-val">14px</span>;
+  <span class="tok-prop">--radius-xl</span>: <span class="tok-val">20px</span>;
+
+  <span class="tok-cmt">/* Type */</span>
+  <span class="tok-prop">--font-sans</span>: <span class="tok-val">'DM Sans', 'Helvetica Neue', Arial, sans-serif</span>;
+  <span class="tok-prop">--font-mono</span>: <span class="tok-val">'DM Mono', 'Courier New', monospace</span>;
+}</pre>
+  </div>
+</div>
+
+<!-- ─── TYPOGRAPHY ─── -->
+<div class="ds-section" id="typography">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title">Typo<strong>graphy</strong></h2>
+  </div>
+  <p class="ds-section-sub">DM Sans across all surfaces. Light 300 for display and large headings. Regular 400 for body. SemiBold 600 for labels, headings and UI.</p>
+  <hr class="ds-rule">
+
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area" style="flex-direction:column;align-items:flex-start;gap:0;padding:32px 36px;">
+      <div class="type-row">
+        <span class="type-meta">Display · 48px · 300</span>
+        <span class="type-sample" style="font-size:42px;font-weight:300;letter-spacing:-0.8px;line-height:1;">The <strong style="font-weight:600;">Azariah</strong></span>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">H1 · 32px · 300/600</span>
+        <span class="type-sample" style="font-size:28px;font-weight:300;letter-spacing:-0.3px;">Clinical <strong style="font-weight:600;">Compliance</strong></span>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">H2 · 22px · 600</span>
+        <span class="type-sample" style="font-size:20px;font-weight:600;">Enable Better Care</span>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">H3 · 16px · 600</span>
+        <span class="type-sample" style="font-size:16px;font-weight:600;">NHS Compliance Technology</span>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">Body · 15px · 400</span>
+        <span class="type-sample" style="font-size:15px;font-weight:400;color:rgba(0,48,135,0.65);">We enable better care through better systems for NHS clinicians.</span>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">Small · 13px · 400</span>
+        <span class="type-sample" style="font-size:13px;color:rgba(0,48,135,0.55);">Supporting detail, helper text, secondary information.</span>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">Label · 11px · 600</span>
+        <span class="type-sample" style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#005EB8;">Clinical Compliance · NHS</span>
+      </div>
+    </div>
+    <div class="preview-footer">
+      <span class="preview-label">Type scale</span>
+      <button class="copy-btn" onclick=\"copyCode('type-css', this)\">Copy CSS</button>
+    </div>
+  </div>
+  <pre id="type-css" style="display:none;">/* DM Sans via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+
+h1 { font-size: 32px; font-weight: 300; letter-spacing: -0.3px; }
+h1 strong { font-weight: 600; }
+h2 { font-size: 22px; font-weight: 600; }
+h3 { font-size: 16px; font-weight: 600; }
+p  { font-size: 15px; font-weight: 400; line-height: 1.7; color: var(--text-secondary); }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }</pre>
+</div>
+
+<!-- ─── BUTTONS ─── -->
+<div class="ds-section" id="buttons">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title"><strong>Buttons</strong></h2>
+  </div>
+  <p class="ds-section-sub">Five button styles. Use primary for the main action on a page. Never more than one primary per view.</p>
+  <hr class="ds-rule">
+
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area wrap">
+      <button class="btn btn-primary">Primary action</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-outline">Outline</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-danger">Destructive</button>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Variants</span></div>
+  </div>
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area wrap">
+      <button class="btn btn-primary btn-sm">Small</button>
+      <button class="btn btn-primary">Default</button>
+      <button class="btn btn-primary btn-lg">Large</button>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Sizes</span></div>
+  </div>
+  <div class="code-block">
+    <div class="code-block-header"><span class="code-block-lang">HTML</span><button class="copy-btn" onclick=\"copyCode('btn-code', this)\">Copy</button></div>
+    <pre id="btn-code"><span class="tok-cmt">&lt;!-- Variants --&gt;</span>
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-primary"</span>&gt;Primary action&lt;/button&gt;
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-secondary"</span>&gt;Secondary&lt;/button&gt;
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-outline"</span>&gt;Outline&lt;/button&gt;
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-ghost"</span>&gt;Ghost&lt;/button&gt;
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-danger"</span>&gt;Destructive&lt;/button&gt;
+
+<span class="tok-cmt">&lt;!-- Sizes --&gt;</span>
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-primary btn-sm"</span>&gt;Small&lt;/button&gt;
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-primary"</span>&gt;Default&lt;/button&gt;
+&lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-primary btn-lg"</span>&gt;Large&lt;/button&gt;</pre>
+  </div>
+</div>
+
+<!-- ─── BADGES ─── -->
+<div class="ds-section" id="badges">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title">Badges &amp; <strong>Status</strong></h2>
+  </div>
+  <p class="ds-section-sub">Badges for categorisation and status indicators. Use green/amber/red semantically — not decoratively.</p>
+  <hr class="ds-rule">
+
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area wrap">
+      <span class="badge badge-blue">Clinical</span>
+      <span class="badge badge-green">Compliant</span>
+      <span class="badge badge-amber">Pending</span>
+      <span class="badge badge-red">Overdue</span>
+      <span class="badge badge-navy">NHS</span>
+      <span class="badge badge-nhs">Verified</span>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Badge variants</span></div>
+  </div>
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area wrap" style="gap:20px;">
+      <span class="status status-live" style="color:#003087;">Live</span>
+      <span class="status status-pending" style="color:#003087;">Pending review</span>
+      <span class="status status-draft" style="color:#003087;">Draft</span>
+      <span class="status status-error" style="color:#003087;">Requires action</span>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Status indicators</span></div>
+  </div>
+  <div class="code-block">
+    <div class="code-block-header"><span class="code-block-lang">HTML</span><button class="copy-btn" onclick=\"copyCode('badge-code', this)\">Copy</button></div>
+    <pre id="badge-code">&lt;<span class="tok-key">span</span> class=<span class="tok-str">"badge badge-blue"</span>&gt;Clinical&lt;/span&gt;
+&lt;<span class="tok-key">span</span> class=<span class="tok-str">"badge badge-green"</span>&gt;Compliant&lt;/span&gt;
+&lt;<span class="tok-key">span</span> class=<span class="tok-str">"badge badge-amber"</span>&gt;Pending&lt;/span&gt;
+&lt;<span class="tok-key">span</span> class=<span class="tok-str">"badge badge-red"</span>&gt;Overdue&lt;/span&gt;
+
+<span class="tok-cmt">&lt;!-- Status dots --&gt;</span>
+&lt;<span class="tok-key">span</span> class=<span class="tok-str">"status status-live"</span>&gt;Live&lt;/span&gt;
+&lt;<span class="tok-key">span</span> class=<span class="tok-str">"status status-pending"</span>&gt;Pending review&lt;/span&gt;
+&lt;<span class="tok-key">span</span> class=<span class="tok-str">"status status-draft"</span>&gt;Draft&lt;/span&gt;
+&lt;<span class="tok-key">span</span> class=<span class="tok-str">"status status-error"</span>&gt;Requires action&lt;/span&gt;</pre>
+  </div>
+</div>
+
+<!-- ─── CARDS ─── -->
+<div class="ds-section" id="cards">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title"><strong>Cards</strong></h2>
+  </div>
+  <p class="ds-section-sub">Three card patterns. Use the standard card for content blocks, the accent card to highlight important information, and compose with badges and status as needed.</p>
+  <hr class="ds-rule">
+
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area grid" style="grid-template-columns:1fr 1fr;padding:28px;">
+      <div class="ds-card">
+        <div class="ds-card-title">Compliance profile <span class="badge badge-green" style="font-size:10px;padding:2px 8px;vertical-align:middle;">Verified</span></div>
+        <div class="ds-card-body">This profile has passed all NHS Employment Check Standards for Epsom and St Helier Trust.</div>
+        <div class="ds-card-footer">
+          <span class="ds-card-meta">Last checked 3 Apr 2026</span>
+          <button class="btn btn-secondary btn-sm">View</button>
+        </div>
+      </div>
+      <div class="ds-card-accent">
+        <div class="ds-card-title">Action required</div>
+        <div class="ds-card-body">DBS certificate expires in 14 days. Upload a renewed certificate to maintain compliance status.</div>
+        <div class="ds-card-footer">
+          <span class="status status-error" style="color:#003087;font-size:12px;">Expires 22 Apr</span>
+          <button class="btn btn-primary btn-sm">Upload now</button>
+        </div>
+      </div>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Card variants</span></div>
+  </div>
+  <div class="code-block">
+    <div class="code-block-header"><span class="code-block-lang">HTML</span><button class="copy-btn" onclick=\"copyCode('card-code', this)\">Copy</button></div>
+    <pre id="card-code"><span class="tok-cmt">&lt;!-- Standard card --&gt;</span>
+&lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-card"</span>&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-card-title"</span>&gt;Card title&lt;/div&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-card-body"</span>&gt;Card content goes here.&lt;/div&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-card-footer"</span>&gt;
+    &lt;<span class="tok-key">span</span> class=<span class="tok-str">"ds-card-meta"</span>&gt;Meta info&lt;/span&gt;
+    &lt;<span class="tok-key">button</span> class=<span class="tok-str">"btn btn-secondary btn-sm"</span>&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<span class="tok-cmt">&lt;!-- Accent card (left border) --&gt;</span>
+&lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-card-accent"</span>&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-card-title"</span>&gt;Important notice&lt;/div&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-card-body"</span>&gt;Highlighted content.&lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+</div>
+
+<!-- ─── CALLOUTS ─── -->
+<div class="ds-section" id="callouts">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title"><strong>Callouts</strong></h2>
+  </div>
+  <p class="ds-section-sub">Four callout variants. Use for contextual alerts, inline notices, and important supplementary information.</p>
+  <hr class="ds-rule">
+
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area" style="flex-direction:column;align-items:stretch;gap:10px;padding:24px;">
+      <div class="callout"><div class="callout-label">Information</div><div class="callout-body">Profiles verified under the NHS Employment Check Standards are trusted across all participating Trusts.</div></div>
+      <div class="callout success"><div class="callout-label">Success</div><div class="callout-body">Your compliance profile has been verified and is now active across the network.</div></div>
+      <div class="callout warning"><div class="callout-label">Warning</div><div class="callout-body">Your DBS certificate expires in 14 days. Renew before the deadline to avoid suspension.</div></div>
+      <div class="callout error"><div class="callout-label">Action required</div><div class="callout-body">Your mandatory training record is incomplete. Complete the outstanding modules before your next shift.</div></div>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Callout variants</span></div>
+  </div>
+  <div class="code-block">
+    <div class="code-block-header"><span class="code-block-lang">HTML</span><button class="copy-btn" onclick=\"copyCode('callout-code', this)\">Copy</button></div>
+    <pre id="callout-code">&lt;<span class="tok-key">div</span> class=<span class="tok-str">"callout"</span>&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"callout-label"</span>&gt;Information&lt;/div&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"callout-body"</span>&gt;Message here.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;<span class="tok-key">div</span> class=<span class="tok-str">"callout success"</span>&gt;...&lt;/div&gt;
+&lt;<span class="tok-key">div</span> class=<span class="tok-str">"callout warning"</span>&gt;...&lt;/div&gt;
+&lt;<span class="tok-key">div</span> class=<span class="tok-str">"callout error"</span>&gt;...&lt;/div&gt;</pre>
+  </div>
+</div>
+
+<!-- ─── TABLES ─── -->
+<div class="ds-section" id="tables">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title"><strong>Tables</strong></h2>
+  </div>
+  <p class="ds-section-sub">Standard data table with NHS blue header row, hover states, and optional badges inline.</p>
+  <hr class="ds-rule">
+
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area" style="padding:0;display:block;">
+      <table class="ds-table">
+        <thead>
+          <tr>
+            <th>Clinician</th>
+            <th>Role</th>
+            <th>Trust</th>
+            <th>Status</th>
+            <th>Expires</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sarah Mensah</td>
+            <td>Band 5 Nurse</td>
+            <td>Epsom &amp; St Helier</td>
+            <td><span class="badge badge-green">Compliant</span></td>
+            <td>14 Jan 2027</td>
+          </tr>
+          <tr>
+            <td>James Okafor</td>
+            <td>Theatre Practitioner</td>
+            <td>Epsom &amp; St Helier</td>
+            <td><span class="badge badge-amber">Pending</span></td>
+            <td>30 Apr 2026</td>
+          </tr>
+          <tr>
+            <td>Priya Nair</td>
+            <td>Band 6 Nurse</td>
+            <td>Epsom &amp; St Helier</td>
+            <td><span class="badge badge-red">Overdue</span></td>
+            <td>12 Mar 2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Data table</span></div>
+  </div>
+  <div class="code-block">
+    <div class="code-block-header"><span class="code-block-lang">HTML</span><button class="copy-btn" onclick=\"copyCode('table-code', this)\">Copy</button></div>
+    <pre id="table-code">&lt;<span class="tok-key">table</span> class=<span class="tok-str">"ds-table"</span>&gt;
+  &lt;<span class="tok-key">thead</span>&gt;
+    &lt;<span class="tok-key">tr</span>&gt;
+      &lt;<span class="tok-key">th</span>&gt;Column&lt;/th&gt;
+      &lt;<span class="tok-key">th</span>&gt;Column&lt;/th&gt;
+      &lt;<span class="tok-key">th</span>&gt;Status&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;<span class="tok-key">tbody</span>&gt;
+    &lt;<span class="tok-key">tr</span>&gt;
+      &lt;<span class="tok-key">td</span>&gt;Row data&lt;/td&gt;
+      &lt;<span class="tok-key">td</span>&gt;Row data&lt;/td&gt;
+      &lt;<span class="tok-key">td</span>&gt;&lt;<span class="tok-key">span</span> class=<span class="tok-str">"badge badge-green"</span>&gt;Compliant&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+  </div>
+</div>
+
+<!-- ─── FORMS ─── -->
+<div class="ds-section" id="forms">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title"><strong>Forms</strong></h2>
+  </div>
+  <p class="ds-section-sub">Input, select, and field patterns. Focus states use the NHS blue ring. Always pair inputs with a label and optional helper text.</p>
+  <hr class="ds-rule">
+
+  <div class="preview-card" style="margin-bottom:12px;">
+    <div class="preview-area" style="display:block;max-width:480px;margin:0 auto;">
+      <div class="ds-field">
+        <label class="ds-label">Full name</label>
+        <input class="ds-input" type="text" placeholder="e.g. Sarah Mensah">
+        <div class="ds-helper">As it appears on your NHS ID badge.</div>
+      </div>
+      <div class="ds-field">
+        <label class="ds-label">NHS Trust</label>
+        <select class="ds-select">
+          <option>Select a Trust…</option>
+          <option>Epsom and St Helier NHS Trust</option>
+          <option>King's College Hospital NHS Trust</option>
+          <option>St George's University Hospitals</option>
+        </select>
+      </div>
+      <div class="ds-field">
+        <label class="ds-label">Role</label>
+        <input class="ds-input" type="text" placeholder="e.g. Band 5 Nurse">
+      </div>
+      <button class="btn btn-primary" style="width:100%;">Submit profile</button>
+    </div>
+    <div class="preview-footer"><span class="preview-label">Form fields</span></div>
+  </div>
+  <div class="code-block">
+    <div class="code-block-header"><span class="code-block-lang">HTML</span><button class="copy-btn" onclick=\"copyCode('form-code', this)\">Copy</button></div>
+    <pre id="form-code">&lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-field"</span>&gt;
+  &lt;<span class="tok-key">label</span> class=<span class="tok-str">"ds-label"</span>&gt;Label&lt;/label&gt;
+  &lt;<span class="tok-key">input</span> class=<span class="tok-str">"ds-input"</span> type=<span class="tok-str">"text"</span> placeholder=<span class="tok-str">"Placeholder"</span>&gt;
+  &lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-helper"</span>&gt;Helper text.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;<span class="tok-key">div</span> class=<span class="tok-str">"ds-field"</span>&gt;
+  &lt;<span class="tok-key">label</span> class=<span class="tok-str">"ds-label"</span>&gt;Select&lt;/label&gt;
+  &lt;<span class="tok-key">select</span> class=<span class="tok-str">"ds-select"</span>&gt;
+    &lt;<span class="tok-key">option</span>&gt;Option one&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</pre>
+  </div>
+</div>
+
+<!-- ─── TEMPLATES ─── -->
+<div class="ds-section" id="templates">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title">Page <strong>Templates</strong></h2>
+  </div>
+  <p class="ds-section-sub">Three layout patterns for internal and external documents. All share the navy header and NHS blue footer rule.</p>
+  <hr class="ds-rule">
+
+  <div class="template-grid">
+    <div class="template-thumb">
+      <div class="tmpl-header">
+        <svg width="56" height="16" viewBox="0 0 56 16"><polygon points="8,2 14,5 14,11 8,14 2,11 2,5" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1"/><circle cx="8" cy="8" r="2" fill="white"/><text x="18" y="10" font-family="sans-serif" font-size="5.5" font-weight="600" fill="white">Azariah</text></svg>
+        <div style="flex:1;text-align:right;font-size:7px;color:rgba(255,255,255,0.5);font-family:sans-serif;letter-spacing:0.5px;">DOCUMENT TITLE</div>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-bar" style="width:55%;height:9px;margin-bottom:4px;"></div>
+        <div class="tmpl-bar md" style="margin-bottom:10px;"></div>
+        <div class="tmpl-bar sm"></div>
+        <div class="tmpl-bar xs"></div>
+        <div class="tmpl-bar sm" style="width:70%;"></div>
+        <div style="margin-top:10px;"><div class="tmpl-bar" style="width:30%;height:5px;background:#005EB8;margin-bottom:6px;opacity:0.6;"></div>
+        <div class="tmpl-bar sm"></div><div class="tmpl-bar xs"></div></div>
+      </div>
+      <div class="tmpl-footer">
+        <div style="width:32px;height:8px;background:#E8F1FA;border-radius:2px;"></div>
+        <div style="font-size:6px;color:rgba(0,48,135,0.4);font-family:sans-serif;">Clinical Compliance · Page 1</div>
+      </div>
+      <div class="tmpl-label">Document / report</div>
+    </div>
+
+    <div class="template-thumb">
+      <div class="tmpl-header" style="background:#003087;padding:20px 16px 16px;">
+        <div style="width:100%;">
+          <div style="font-size:7px;color:rgba(255,255,255,0.45);font-family:sans-serif;letter-spacing:1.5px;margin-bottom:6px;">PITCH DECK</div>
+          <div style="font-size:13px;font-weight:700;color:white;font-family:sans-serif;line-height:1.2;">Verified Once,<br>Trusted Everywhere</div>
+        </div>
+      </div>
+      <div class="tmpl-body" style="background:#F4F8FD;display:flex;gap:8px;padding:12px;">
+        <div style="flex:1;background:white;border-radius:4px;padding:8px;border:1px solid rgba(0,94,184,0.1);">
+          <div class="tmpl-bar" style="width:80%;height:4px;background:#005EB8;margin-bottom:4px;opacity:0.5;"></div>
+          <div class="tmpl-bar sm"></div><div class="tmpl-bar xs"></div>
+        </div>
+        <div style="flex:1;background:white;border-radius:4px;padding:8px;border:1px solid rgba(0,94,184,0.1);">
+          <div class="tmpl-bar" style="width:80%;height:4px;background:#005EB8;margin-bottom:4px;opacity:0.5;"></div>
+          <div class="tmpl-bar sm"></div><div class="tmpl-bar xs"></div>
+        </div>
+      </div>
+      <div class="tmpl-footer">
+        <div style="width:32px;height:8px;background:#E8F1FA;border-radius:2px;"></div>
+        <div style="font-size:6px;color:rgba(0,48,135,0.4);font-family:sans-serif;">Confidential · 2026</div>
+      </div>
+      <div class="tmpl-label">Pitch / presentation slide</div>
+    </div>
+
+    <div class="template-thumb">
+      <div class="tmpl-header">
+        <svg width="56" height="16" viewBox="0 0 56 16"><polygon points="8,2 14,5 14,11 8,14 2,11 2,5" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1"/><circle cx="8" cy="8" r="2" fill="white"/><text x="18" y="10" font-family="sans-serif" font-size="5.5" font-weight="600" fill="white">Azariah</text></svg>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-2col">
+          <div class="tmpl-sidebar-col">
+            <div style="height:5px;background:rgba(0,94,184,0.2);border-radius:2px;margin-bottom:4px;"></div>
+            <div style="height:4px;background:rgba(0,94,184,0.1);border-radius:2px;margin-bottom:3px;"></div>
+            <div style="height:4px;background:rgba(0,94,184,0.1);border-radius:2px;margin-bottom:3px;"></div>
+            <div style="height:4px;background:rgba(0,94,184,0.1);border-radius:2px;"></div>
+          </div>
+          <div class="tmpl-main-col">
+            <div class="tmpl-bar" style="height:6px;background:#003087;width:70%;"></div>
+            <div class="tmpl-bar sm"></div>
+            <div class="tmpl-bar xs"></div>
+            <div class="tmpl-bar sm" style="width:85%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tmpl-footer">
+        <div style="width:32px;height:8px;background:#E8F1FA;border-radius:2px;"></div>
+        <div style="font-size:6px;color:rgba(0,48,135,0.4);font-family:sans-serif;">Clinical Compliance · Page 1</div>
+      </div>
+      <div class="tmpl-label">Two-column layout</div>
+    </div>
+
+    <div class="template-thumb">
+      <div class="tmpl-header" style="background:#005EB8;">
+        <svg width="56" height="16" viewBox="0 0 56 16"><polygon points="8,2 14,5 14,11 8,14 2,11 2,5" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1"/><circle cx="8" cy="8" r="2" fill="white"/><text x="18" y="10" font-family="sans-serif" font-size="5.5" font-weight="600" fill="white">Azariah</text></svg>
+        <div style="flex:1;text-align:right;font-size:7px;color:rgba(255,255,255,0.6);font-family:sans-serif;letter-spacing:0.5px;">NHS COMMISSIONER BRIEF</div>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-bar" style="width:60%;height:8px;margin-bottom:4px;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px;">
+          <div style="background:#E8F1FA;border-radius:3px;padding:6px;"><div style="height:4px;background:#005EB8;border-radius:2px;width:70%;margin-bottom:3px;opacity:0.4;"></div><div style="height:3px;background:rgba(0,48,135,0.1);border-radius:2px;"></div></div>
+          <div style="background:#E8F1FA;border-radius:3px;padding:6px;"><div style="height:4px;background:#005EB8;border-radius:2px;width:70%;margin-bottom:3px;opacity:0.4;"></div><div style="height:3px;background:rgba(0,48,135,0.1);border-radius:2px;"></div></div>
+        </div>
+      </div>
+      <div class="tmpl-footer">
+        <div style="width:32px;height:8px;background:#E8F1FA;border-radius:2px;"></div>
+        <div style="font-size:6px;color:rgba(0,48,135,0.4);font-family:sans-serif;">Confidential · 2026</div>
+      </div>
+      <div class="tmpl-label">Commissioner one-pager</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TONE OF VOICE ─── -->
+<div class="ds-section" id="tov">
+  <div class="ds-section-header">
+    <h2 class="ds-section-title">Tone of <strong>Voice</strong></h2>
+  </div>
+  <p class="ds-section-sub">Plain English. Short sentences. Active voice. We write for busy clinicians, commissioners and funders who do not have time for corporate filler.</p>
+  <hr class="ds-rule">
+
+  <div class="tov-grid-4" style="margin-bottom:20px;">
+    <div class="tov-principle">
+      <div class="tov-principle-title">
+        <div class="tov-principle-icon"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" fill="none" stroke="#005EB8" stroke-width="1.4"/><path d="M4.5 7l2 2 3-3" fill="none" stroke="#005EB8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        Clear and direct
+      </div>
+      <div class="tov-principle-desc">Say what you mean. Short sentences. Active voice. No unnecessary words between the reader and the point.</div>
+      <div class="tov-eg"><div class="tov-eg-label">Example</div>"This platform helps clinicians stay compliant, faster."</div>
+    </div>
+    <div class="tov-principle">
+      <div class="tov-principle-title">
+        <div class="tov-principle-icon"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1.5" y="3" width="11" height="8" rx="1.5" fill="none" stroke="#005EB8" stroke-width="1.4"/><line x1="4" y1="6.5" x2="10" y2="6.5" stroke="#005EB8" stroke-width="1.2" stroke-linecap="round"/><line x1="4" y1="8.5" x2="7.5" y2="8.5" stroke="#005EB8" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        Human and grounded
+      </div>
+      <div class="tov-principle-desc">Write for people, not organisations. Acknowledge that compliance is hard work.</div>
+      <div class="tov-eg"><div class="tov-eg-label">Example</div>"Compliance paperwork shouldn't take time away from patients."</div>
+    </div>
+    <div class="tov-principle">
+      <div class="tov-principle-title">
+        <div class="tov-principle-icon"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,1.5 12.5,4.5 12.5,9.5 7,12.5 1.5,9.5 1.5,4.5" fill="none" stroke="#005EB8" stroke-width="1.4"/><circle cx="7" cy="7" r="2" fill="#005EB8"/></svg></div>
+        Specific and evidenced
+      </div>
+      <div class="tov-principle-desc">Make claims you can back up. Specific numbers, real outcomes, named NHS partners.</div>
+      <div class="tov-eg"><div class="tov-eg-label">Example</div>"Reduced documentation time by 40% across three NHS trusts."</div>
+    </div>
+    <div class="tov-principle">
+      <div class="tov-principle-title">
+        <div class="tov-principle-icon"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1.5C4 1.5 1.5 4 1.5 7s2.5 5.5 5.5 5.5S12.5 10 12.5 7" fill="none" stroke="#005EB8" stroke-width="1.4" stroke-linecap="round"/><path d="M10 1.5L12.5 1.5L12.5 4" fill="none" stroke="#005EB8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        Optimistic but honest
+      </div>
+      <div class="tov-principle-desc">Excited about improving NHS compliance. But no over-promising. Trust earned through honesty.</div>
+      <div class="tov-eg"><div class="tov-eg-label">Example</div>"We're early stage. The problem is real, and the approach works."</div>
+    </div>
+  </div>
+
+  <div class="ds-subsection-label">Do / don't</div>
+  <div class="tov-grid-2">
+    <div class="tov-do">
+      <div class="tov-do-title">Do write like this</div>
+      <div class="tov-item">Use short, active sentences</div>
+      <div class="tov-item">Name the specific benefit for the clinician</div>
+      <div class="tov-item">Use "we" and "you" — keep it personal</div>
+      <div class="tov-item">Back claims with numbers or examples</div>
+      <div class="tov-item">Use plain English for clinical jargon</div>
+      <div class="tov-item">Start with the outcome, not the process</div>
+    </div>
+    <div class="tov-dont">
+      <div class="tov-dont-title">Don't write like this</div>
+      <div class="tov-item">Don't use passive voice or corporate filler</div>
+      <div class="tov-item">Don't say "solution", "leverage" or "ecosystem"</div>
+      <div class="tov-item">Don't pad sentences to sound authoritative</div>
+      <div class="tov-item">Don't make claims you can't evidence</div>
+      <div class="tov-item">Don't use em dashes — use commas instead</div>
+      <div class="tov-item">Don't bury the point in a long preamble</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ══════════════════════════════════════
+     SVG STORE (hidden, for copy)
+══════════════════════════════════════ -->
+<div id="svgStore" style="display:none;">
+  <svg id="lockup-light" xmlns="http://www.w3.org/2000/svg" width="280" height="72" viewBox="0 0 280 72"><polygon points="33,5 55,18 55,42 33,55 11,42 11,18" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/><line x1="33" y1="18" x2="33" y2="42" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/><line x1="19" y1="25" x2="47" y2="35" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/><line x1="47" y1="25" x2="19" y2="35" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/><circle cx="33" cy="30" r="5.5" fill="#005EB8"/><text x="72" y="26" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="22" fill="#003087" xml:space="preserve"><tspan font-weight="600">Azariah</tspan></text><line x1="72" y1="33" x2="278" y2="33" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/><text x="72" y="48" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7.5" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text></svg>
+  <svg id="lockup-dark" xmlns="http://www.w3.org/2000/svg" width="280" height="72" viewBox="0 0 280 72"><rect width="280" height="72" fill="#003087"/><polygon points="33,5 55,18 55,42 33,55 11,42 11,18" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/><line x1="33" y1="18" x2="33" y2="42" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="19" y1="25" x2="47" y2="35" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="47" y1="25" x2="19" y2="35" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="33" cy="30" r="5.5" fill="white"/><text x="72" y="26" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="22" fill="white" xml:space="preserve"><tspan font-weight="600">Azariah</tspan></text><line x1="72" y1="33" x2="278" y2="33" stroke="rgba(255,255,255,0.2)" stroke-width="0.6"/><text x="72" y="48" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7.5" font-weight="500" letter-spacing="3" fill="rgba(255,255,255,0.55)">CLINICAL COMPLIANCE</text></svg>
+  <svg id="icon-blue" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72"><rect width="72" height="72" rx="16" fill="#005EB8"/><polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="rgba(255,255,255,0.12)" stroke="white" stroke-width="1.8"/><line x1="36" y1="23" x2="36" y2="45" stroke="white" stroke-width="1.6" stroke-linecap="round"/><line x1="23" y1="30" x2="49" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/><line x1="49" y1="30" x2="23" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="36" cy="34" r="5" fill="white"/></svg>
+  <svg id="icon-navy" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72"><rect width="72" height="72" rx="16" fill="#003087"/><polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.7)" stroke-width="1.8"/><line x1="36" y1="23" x2="36" y2="45" stroke="white" stroke-width="1.6" stroke-linecap="round"/><line x1="23" y1="30" x2="49" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/><line x1="49" y1="30" x2="23" y2="38" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="36" cy="34" r="5" fill="white"/></svg>
+  <svg id="icon-outline" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72"><rect width="72" height="72" rx="16" fill="white" stroke="#005EB8" stroke-width="1.5"/><polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="#E8F1FA" stroke="#005EB8" stroke-width="1.8"/><line x1="36" y1="23" x2="36" y2="45" stroke="#005EB8" stroke-width="1.6" stroke-linecap="round"/><line x1="23" y1="30" x2="49" y2="38" stroke="#005EB8" stroke-width="1.6" stroke-linecap="round"/><line x1="49" y1="30" x2="23" y2="38" stroke="#005EB8" stroke-width="1.6" stroke-linecap="round"/><circle cx="36" cy="34" r="5" fill="#005EB8"/></svg>
+</div>
+
+<script>
+// ── NAV: renamed to avoid clash with window.scrollTo ──
+function navScrollTo(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const link = document.querySelector('.nav-link[onclick*="' + id + '"]');
+  if (link) link.classList.add('active');
+}
+
+// ── SCROLL SPY: keeps nav in sync while scrolling ──
+const _sections = ['intro','logo','colour','typography','buttons','badges','cards','callouts','tables','forms','templates','tov'];
+const _observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('.nav-link[onclick*="' + e.target.id + '"]');
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -65% 0px' });
+_sections.forEach(id => { const el = document.getElementById(id); if (el) _observer.observe(el); });
+
+// ── COPY SVG: btn passed explicitly via this ──
+function copyLogo(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const svgStr = new XMLSerializer().serializeToString(el);
+  navigator.clipboard.writeText(svgStr).then(() => showCopied(btn)).catch(() => fallbackCopy(svgStr, btn));
+}
+
+// ── COPY CODE: btn passed explicitly via this ──
+function copyCode(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  // Strip HTML tags to get plain text code
+  const tmp = document.createElement('div');
+  tmp.innerHTML = el.innerHTML;
+  const text = tmp.innerText || tmp.textContent;
+  navigator.clipboard.writeText(text).then(() => showCopied(btn)).catch(() => fallbackCopy(text, btn));
+}
+
+// ── FALLBACK for browsers/contexts where clipboard API is blocked ──
+function fallbackCopy(text, btn) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); showCopied(btn); } catch(e) { btn.textContent = 'Error'; }
+  document.body.removeChild(ta);
+}
+
+// ── SHOW COPIED FEEDBACK ──
+function showCopied(btn) {
+  if (!btn) return;
+  const orig = btn.dataset.origLabel || btn.textContent;
+  btn.dataset.origLabel = orig;
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+}
+// Store original labels on load
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.copy-btn').forEach(b => { b.dataset.origLabel = b.textContent; });
+});
+
+// ── SEARCH ──
+function handleSearch(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.ds-section').forEach(s => {
+    s.classList.toggle('search-hidden', q.length > 0 && !s.textContent.toLowerCase().includes(q));
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Net Zero & Environmental Policy — Not On Mondays</title>
+<meta name="description" content="Not On Mondays' commitment to net zero and responsible environmental practice as a boutique operating partner business.">
+<link rel="canonical" href="https://www.notonmondays.com/net-zero">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #1a2ad4;
+  --deep-blue: #0d1880;
+  --off-white: #f2f0e8;
+  --light-blue: #bfc6f0;
+  --dark: #111124;
+  --mid: #2a2a4a;
+  --muted: #8a8fa8;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+
+.nav-logo { display: inline-flex; flex-direction: row; align-items: center; gap: 0.9rem; text-decoration: none; }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; opacity: 0.7; }
+.nav-descriptor span { font-family: 'DM Mono', monospace; font-size: 0.52rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(17,17,36,0.35); display: block; line-height: 1; }
+.nav-back { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; }
+.nav-back:hover { color: var(--blue); }
+.nav-cta { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 0.65rem 1.4rem; text-decoration: none; transition: background 0.3s ease; }
+.nav-cta:hover { background: var(--deep-blue); }
+
+/* PAGE LAYOUT */
+.page-header {
+  padding-top: 72px;
+  background: var(--dark);
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 5rem;
+  padding-top: calc(72px + 5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  bottom: -200px; right: -200px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,42,212,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 2rem; }
+
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.0;
+  color: var(--off-white);
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+.header-title em { font-style: italic; color: var(--light-blue); }
+
+.header-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.25);
+}
+
+/* CONTENT */
+.policy-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 7rem 4rem;
+}
+
+.policy-section {
+  margin-bottom: 4rem;
+}
+
+.policy-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.policy-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(26,42,212,0.15);
+}
+
+.policy-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--dark);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.policy-body {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--mid);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+
+.policy-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.policy-list li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--mid);
+  font-weight: 300;
+}
+
+.policy-list li::before {
+  content: '◆';
+  color: var(--blue);
+  font-size: 0.4rem;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+.policy-updated {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(26,42,212,0.1);
+}
+
+/* FOOTER */
+footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 2.5rem; list-style: none; }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover { color: rgba(255,255,255,0.6); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.15); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-descriptor, .nav-divider { display: none; }
+  .page-header { padding: calc(72px + 3rem) 1.5rem 3rem; }
+  .policy-content { padding: 4rem 1.5rem; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="notonmondays.html" class="nav-logo">
+    <div class="nav-logo-initials">
+      <span class="nom-initial fade-1">n</span>
+      <span class="nom-initial fade-2">o</span>
+      <span class="nom-initial landing">m</span>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-descriptor">
+      <span>The</span>
+      <span>Operating</span>
+      <span>Partner</span>
+    </div>
+  </a>
+  <a href="notonmondays.html" class="nav-back">← Back</a>
+  <a href="notonmondays.html#contact" class="nav-cta">Start a conversation</a>
+</nav>
+
+<div class="page-header">
+  <div class="header-label">Policy</div>
+  <h1 class="header-title">Net Zero &<br><em>Environmental Policy</em></h1>
+  <div class="header-meta">Not On Mondays · Last updated April 2026</div>
+</div>
+
+<div class="policy-content">
+
+  <div class="policy-section">
+    <div class="policy-section-label">Our Commitment</div>
+    <h2 class="policy-title">We take our environmental responsibilities seriously.</h2>
+    <p class="policy-body">Not On Mondays is a lean, knowledge-based business. We do not manufacture products, operate large offices, or maintain significant physical infrastructure. But we recognise that every business — however small — has an environmental footprint, and that responsible practice matters regardless of scale.</p>
+    <p class="policy-body">We are committed to reaching net zero carbon emissions and to conducting our work in a way that is honest about our impact and deliberate about reducing it.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-label">Our Footprint</div>
+    <h2 class="policy-title">Where our emissions come from.</h2>
+    <p class="policy-body">As a primarily remote, digitally-native business, our carbon footprint is modest relative to traditional consultancies. Our primary sources of emissions are:</p>
+    <ul class="policy-list">
+      <li>Business travel — client meetings, site visits, and workshops</li>
+      <li>Digital infrastructure — cloud computing, SaaS tools, and AI platforms</li>
+      <li>Hot desk and co-working space usage</li>
+      <li>Home office energy consumption</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-label">What We Do</div>
+    <h2 class="policy-title">Practical steps, not performative ones.</h2>
+    <ul class="policy-list">
+      <li>We default to remote working and virtual meetings, travelling only where the work genuinely requires it</li>
+      <li>Where travel is necessary, we prioritise rail over air for domestic and short-haul journeys</li>
+      <li>We choose digital-first tools and avoid unnecessary printing or physical production</li>
+      <li>We select suppliers and partners who can demonstrate environmental responsibility</li>
+      <li>We offset unavoidable emissions through verified carbon offset schemes, reviewed annually</li>
+      <li>We track our estimated annual footprint and report on it internally each year</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-label">AI & Digital</div>
+    <h2 class="policy-title">A note on AI energy use.</h2>
+    <p class="policy-body">AI tools are central to how we work and how we help our clients work. We are aware that large language models and AI platforms carry an energy cost that is not always visible to end users.</p>
+    <p class="policy-body">We are committed to using AI purposefully — not experimentally or wastefully — and to staying informed about the environmental commitments of the platforms we rely on. Where meaningful alternatives exist with lower energy footprints, we will consider them.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-label">Our Path to Net Zero</div>
+    <h2 class="policy-title">Where we are heading.</h2>
+    <p class="policy-body">We are committed to achieving net zero across our operations. As the business grows, we will:</p>
+    <ul class="policy-list">
+      <li>Formalise our carbon measurement process using a recognised methodology</li>
+      <li>Set a clear net zero target date aligned with the UK Government's 2050 commitment — and aim to exceed it</li>
+      <li>Publish an annual environmental statement as part of our broader business reporting</li>
+      <li>Embed environmental considerations into client work where relevant, particularly in AI governance and operational design</li>
+    </ul>
+    <p class="policy-body">We recognise that net zero is a journey, not a moment. We will be honest about where we are on that journey and avoid overstating our progress.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-label">Accountability</div>
+    <h2 class="policy-title">Who owns this.</h2>
+    <p class="policy-body">Environmental responsibility sits with the leadership of Not On Mondays. This policy is reviewed annually and updated to reflect changes in our operations, growth, and the evolving standards of responsible business practice.</p>
+    <p class="policy-body">If you have questions about our environmental commitments or would like to discuss how we approach sustainability in our work, please contact us at <a href="mailto:hello@notonmondays.com" style="color:var(--blue);text-decoration:underline;text-underline-offset:3px;">hello@notonmondays.com</a>.</p>
+  </div>
+
+  <div class="policy-updated">Last updated: April 2026 · Not On Mondays · notonmondays.com</div>
+
+</div>
+
+<footer>
+  <a href="notonmondays.html" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;">m</span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="notonmondays.html">Home</a></li>
+    <li><a href="notonmondays.html#offerings">Offerings</a></li>
+    <li><a href="notonmondays.html#contact">Contact</a></li>
+    <li><a href="why-not-on-mondays.html">Our Story</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 notonmondays.com</span>
+</footer>
+
+</body>
+</html>

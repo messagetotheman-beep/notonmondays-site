@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingston Wildcats · Client Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue:       #1a2ad4;
+  --deep-blue:  #0d1880;
+  --navy:       #0b0f2e;
+  --dark:       #111124;
+  --mid-dark:   #161830;
+  --off-white:  #f2f0e8;
+  --muted:      #5a5f7a;
+  --light-blue: #bfc6f0;
+  --orange:     #e8501a;
+  --amber:      #d4900a;
+  --green:      #18a06a;
+  --border:     rgba(255,255,255,0.06);
+  --border-med: rgba(255,255,255,0.1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0d1024;
+  color: var(--off-white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(11,15,46,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-left { display: flex; align-items: center; gap: 1rem; }
+.nav-logo-mark {
+  width: 30px; height: 30px;
+  background: var(--blue);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-mark svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 1.8; }
+.nav-client {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--off-white);
+}
+.nav-sep {
+  width: 1px; height: 16px;
+  background: rgba(255,255,255,0.12);
+}
+.nav-hub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-user {
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.nav-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.nav-user-email {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.4);
+}
+.nav-signout {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-signout:hover { color: rgba(255,255,255,0.5); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 2.5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,42,212,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,42,212,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,42,212,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  bottom: -80px; left: 30%;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,80,26,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-inner { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.hero-eyebrow span { color: rgba(255,255,255,0.25); margin: 0 0.5rem; }
+.hero-greeting {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.2rem;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--off-white);
+  margin-bottom: 0.75rem;
+}
+.hero-title em { font-style: italic; color: var(--light-blue); }
+.hero-sub {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.meta-item label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.meta-item span {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 300;
+}
+
+/* ── BODY ── */
+.body { padding: 2rem 2.5rem 4rem; max-width: 1300px; margin: 0 auto; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── DEADLINE BANNER ── */
+.deadline-banner {
+  background: rgba(26,42,212,0.08);
+  border: 1px solid rgba(26,42,212,0.25);
+  border-left: 3px solid var(--orange);
+  border-radius: 8px;
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.5s ease both;
+}
+.deadline-left { display: flex; align-items: center; gap: 0.8rem; }
+.deadline-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.deadline-name {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--off-white);
+}
+.deadline-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.3);
+  margin-top: 3px;
+}
+.deadline-timer {
+  display: flex;
+  gap: 1.25rem;
+  align-items: baseline;
+}
+.timer-unit { text-align: center; }
+.timer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--orange);
+  line-height: 1;
+  display: block;
+}
+.timer-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-top: 3px;
+  display: block;
+}
+
+/* ── STATUS CARDS ── */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.status-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: border-color 0.2s ease;
+}
+.status-card:hover { border-color: var(--border-med); }
+.status-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 0.5rem;
+}
+.status-card-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.status-card-sub {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  font-weight: 300;
+}
+.val-amber { color: var(--amber); }
+.val-orange { color: var(--orange); }
+.val-blue { color: var(--light-blue); }
+.val-green { color: var(--green); }
+.status-pending {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--amber);
+  font-weight: 400;
+}
+
+/* ── DELIVERABLES ── */
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.deliverable {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.deliverable:hover { border-color: rgba(255,255,255,0.12); }
+
+/* UNLOCKED */
+.deliverable.unlocked {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+.deliverable.unlocked:hover { border-color: var(--blue); }
+
+/* LIVE */
+.deliverable.live {
+  background: rgba(24,160,106,0.05);
+  border-color: rgba(24,160,106,0.2);
+}
+.deliverable.live:hover { border-color: rgba(24,160,106,0.4); }
+
+/* LOCKED */
+.deliverable.locked {
+  opacity: 0.5;
+  filter: saturate(0.3);
+}
+.deliverable.locked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 6px,
+    rgba(255,255,255,0.012) 6px,
+    rgba(255,255,255,0.012) 7px
+  );
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.deliverable-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+.deliverable-icon {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.deliverable-icon svg { width: 18px; height: 18px; }
+
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 400;
+}
+.badge-live { background: rgba(24,160,106,0.15); color: var(--green); border: 1px solid rgba(24,160,106,0.25); }
+.badge-active { background: rgba(26,42,212,0.15); color: var(--light-blue); border: 1px solid rgba(26,42,212,0.3); }
+.badge-pending { background: rgba(212,144,10,0.12); color: var(--amber); border: 1px solid rgba(212,144,10,0.25); }
+.badge-locked { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.08); }
+.badge-locked svg { width: 8px; height: 8px; stroke: currentColor; fill: none; stroke-width: 2; margin-right: 4px; vertical-align: middle; }
+
+.deliverable-cat {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 0.4rem;
+}
+.deliverable-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--off-white);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.deliverable-desc {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.3);
+  font-weight: 300;
+  margin-bottom: 0.8rem;
+}
+
+.deliverable-progress {
+  margin-top: 0.75rem;
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+.progress-label span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.25);
+}
+.progress-track {
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+.progress-fill.blue { background: var(--blue); }
+.progress-fill.green { background: var(--green); }
+.progress-fill.amber { background: var(--amber); }
+
+.deliverable-unlock-note {
+  margin-top: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.deliverable-unlock-note svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+/* icon colours */
+.icon-blue { background: rgba(26,42,212,0.15); }
+.icon-blue svg { stroke: var(--light-blue); fill: none; stroke-width: 1.6; }
+.icon-orange { background: rgba(232,80,26,0.12); }
+.icon-orange svg { stroke: var(--orange); fill: none; stroke-width: 1.6; }
+.icon-green { background: rgba(24,160,106,0.12); }
+.icon-green svg { stroke: var(--green); fill: none; stroke-width: 1.6; }
+.icon-amber { background: rgba(212,144,10,0.12); }
+.icon-amber svg { stroke: var(--amber); fill: none; stroke-width: 1.6; }
+.icon-muted { background: rgba(255,255,255,0.04); }
+.icon-muted svg { stroke: rgba(255,255,255,0.2); fill: none; stroke-width: 1.6; }
+
+/* ── STORYBOARD TIMELINE ── */
+.timeline-section { margin-bottom: 2rem; }
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 19px; top: 28px;
+  bottom: 28px;
+  width: 1px;
+  background: var(--border);
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1.25rem;
+  padding: 0.75rem 0;
+  align-items: start;
+  animation: fadeUp 0.4s ease both;
+}
+.tl-node {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.tl-node.done { background: rgba(24,160,106,0.15); border: 1px solid rgba(24,160,106,0.35); }
+.tl-node.done svg { stroke: var(--green); width: 14px; height: 14px; fill: none; stroke-width: 2; }
+.tl-node.active { background: rgba(26,42,212,0.2); border: 1px solid rgba(26,42,212,0.5); }
+.tl-node.active svg { stroke: var(--light-blue); width: 14px; height: 14px; fill: none; stroke-width: 2; }
+.tl-node.future { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+.tl-node.future svg { stroke: rgba(255,255,255,0.2); width: 14px; height: 14px; fill: none; stroke-width: 2; }
+
+.tl-content {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.tl-item:last-child .tl-content { border-bottom: none; }
+.tl-phase {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 0.3rem;
+}
+.tl-title {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--off-white);
+  margin-bottom: 0.3rem;
+}
+.tl-title.muted { color: rgba(255,255,255,0.35); font-weight: 300; }
+.tl-desc {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.25);
+  font-weight: 300;
+}
+.tl-when {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  margin-top: 0.4rem;
+  display: inline-block;
+}
+.tl-when.green { color: var(--green); }
+.tl-when.blue { color: var(--light-blue); }
+.tl-when.muted { color: rgba(255,255,255,0.15); }
+
+/* ── 2-COL LAYOUT ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ── NEXT STEPS ── */
+.next-steps { }
+.next-step-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.5s ease both;
+}
+.next-step-item:last-child { border-bottom: none; }
+.ns-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.15);
+  padding-top: 2px;
+  min-width: 20px;
+}
+.ns-content { }
+.ns-title {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.2rem;
+}
+.ns-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.25);
+  font-weight: 300;
+  line-height: 1.55;
+}
+.ns-owner {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-top: 0.3rem;
+}
+
+/* ── SIDEBAR ── */
+.sidebar { display: flex; flex-direction: column; gap: 0.75rem; }
+.sidebar-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+.sidebar-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 0.8rem;
+}
+.sidebar-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--off-white);
+  margin-bottom: 0.5rem;
+}
+.contact-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.contact-row:last-child { border-bottom: none; }
+.contact-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.av-nom { background: rgba(26,42,212,0.2); color: var(--light-blue); }
+.av-kwc { background: rgba(232,80,26,0.15); color: var(--orange); }
+.contact-info { }
+.contact-name { font-size: 0.8rem; color: rgba(255,255,255,0.65); font-weight: 300; }
+.contact-role { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
+
+.decision-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.decision-item:last-child { border-bottom: none; }
+.decision-q {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+}
+.decision-need {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  color: var(--amber);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.delay-1 { animation-delay: 0.05s; }
+.delay-2 { animation-delay: 0.1s; }
+.delay-3 { animation-delay: 0.15s; }
+.delay-4 { animation-delay: 0.2s; }
+.delay-5 { animation-delay: 0.25s; }
+.delay-6 { animation-delay: 0.3s; }
+
+.section-gap { margin-bottom: 2rem; }
+
+/* ── CLICKABLE DELIVERABLE ── */
+.deliverable.clickable {
+  cursor: pointer;
+  position: relative;
+}
+.deliverable.clickable::before {
+  content: '↗ View asset';
+  position: absolute;
+  bottom: 1.25rem; right: 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.deliverable.clickable:hover::before { opacity: 1; }
+.deliverable.clickable:hover { border-color: rgba(24,160,106,0.5); box-shadow: 0 0 20px rgba(24,160,106,0.06); }
+
+/* ── WIREFRAME MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #0d1024;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 0.3s ease both;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--off-white);
+}
+.modal-badge { display: flex; align-items: center; gap: 0.6rem; }
+.modal-close {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.12); }
+.modal-close svg { width: 12px; height: 12px; stroke: rgba(255,255,255,0.5); fill: none; stroke-width: 2; }
+.modal-body {
+  overflow-y: auto;
+  padding: 2rem 1.75rem;
+  flex: 1;
+}
+.wireframe-intro {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2rem;
+  max-width: 580px;
+  font-weight: 300;
+}
+
+/* wireframe pages */
+.wf-page {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+}
+.wf-page-label {
+  padding: 0.7rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wf-page-label .pg-status { color: var(--green); }
+.wf-canvas {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* wireframe skeleton elements */
+.wf-nav-bar {
+  height: 36px;
+  background: rgba(26,42,212,0.12);
+  border-radius: 4px;
+  border: 1px solid rgba(26,42,212,0.2);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.6rem;
+}
+.wf-nav-logo { width: 60px; height: 10px; background: rgba(255,255,255,0.15); border-radius: 2px; }
+.wf-spacer { flex: 1; }
+.wf-nav-link { width: 40px; height: 8px; background: rgba(255,255,255,0.08); border-radius: 2px; }
+.wf-nav-cta { width: 60px; height: 20px; background: rgba(26,42,212,0.4); border-radius: 3px; }
+
+.wf-hero-block {
+  height: 140px;
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed rgba(255,255,255,0.07);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.wf-hero-block::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,42,212,0.15) 0%, transparent 70%);
+}
+.wf-line { height: 8px; background: rgba(255,255,255,0.12); border-radius: 2px; }
+.wf-line.lg { width: 65%; }
+.wf-line.md { width: 45%; }
+.wf-line.sm { width: 30%; }
+.wf-line.xs { width: 20%; }
+.wf-line.accent { background: rgba(26,42,212,0.4); width: 80px; }
+.wf-line.btn { width: 100px; height: 24px; background: var(--blue); border-radius: 3px; opacity: 0.6; }
+.wf-line.tag { width: 70px; height: 16px; background: rgba(24,160,106,0.2); border-radius: 3px; }
+
+.wf-row-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; }
+.wf-row-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.5rem; }
+.wf-card-block {
+  height: 80px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.wf-card-img {
+  height: 100px;
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed rgba(255,255,255,0.07);
+  border-radius: 4px;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wf-img-ph {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.1);
+  text-transform: uppercase;
+}
+.wf-text-block { height: 6px; background: rgba(255,255,255,0.06); border-radius: 2px; }
+.wf-section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.25rem 0;
+}
+.wf-footer {
+  height: 50px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+.wf-cta-strip {
+  height: 48px;
+  background: rgba(26,42,212,0.12);
+  border: 1px solid rgba(26,42,212,0.2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.modal-footer {
+  padding: 1rem 1.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.modal-footer-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.2);
+}
+.modal-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--blue);
+  color: var(--off-white);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.modal-cta:hover { background: var(--deep-blue); }
+
+/* ── PRICING SECTION ── */
+.pricing-section {
+  margin-bottom: 2.5rem;
+}
+.pricing-intro {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 0.35rem;
+  font-weight: 300;
+  max-width: 600px;
+}
+
+/* Community discount banner */
+.discount-banner {
+  background: linear-gradient(135deg, rgba(24,160,106,0.08) 0%, rgba(26,42,212,0.08) 100%);
+  border: 1px solid rgba(24,160,106,0.2);
+  border-left: 3px solid var(--green);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.4s ease both;
+}
+.discount-icon {
+  width: 36px; height: 36px;
+  background: rgba(24,160,106,0.12);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.discount-icon svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 1.8; }
+.discount-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.2rem;
+}
+.discount-text {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  line-height: 1.4;
+}
+.discount-text strong { color: var(--green); font-weight: 400; }
+.discount-badge-pill {
+  margin-left: auto;
+  flex-shrink: 0;
+  background: var(--green);
+  color: #0b1a11;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+}
+
+/* pricing cards */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.pricing-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.pricing-card:hover { transform: translateY(-2px); }
+.pricing-card.featured {
+  border-color: rgba(26,42,212,0.4);
+  background: rgba(26,42,212,0.05);
+}
+.pricing-card.featured:hover { border-color: rgba(26,42,212,0.65); }
+
+.pricing-card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.tag-foundation { color: rgba(255,255,255,0.3); }
+.tag-growth { color: var(--light-blue); }
+.tag-academy { color: var(--amber); }
+
+.featured-pill {
+  display: inline-block;
+  background: rgba(26,42,212,0.25);
+  color: var(--light-blue);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 100px;
+  border: 1px solid rgba(26,42,212,0.35);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.pricing-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--off-white);
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+.pricing-tagline {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+/* price display */
+.price-block {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.price-was {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.2);
+  text-decoration: line-through;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+.price-now {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.price-currency {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--green);
+  font-weight: 400;
+}
+.price-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--green);
+  line-height: 1;
+}
+.price-suffix {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.1em;
+}
+.price-saving {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.price-saving::before {
+  content: '↓';
+  font-size: 0.7rem;
+}
+
+/* feature list */
+.pricing-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  line-height: 1.4;
+}
+.pricing-features li svg {
+  width: 12px; height: 12px;
+  stroke: var(--green);
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.pricing-features li.muted svg { stroke: rgba(255,255,255,0.15); }
+.pricing-features li.muted { color: rgba(255,255,255,0.2); }
+
+/* buy button */
+.pricing-buy-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-foundation {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.btn-foundation:hover { background: rgba(255,255,255,0.1); }
+.btn-growth {
+  background: var(--blue);
+  color: var(--off-white);
+}
+.btn-growth:hover { background: var(--deep-blue); }
+.btn-academy {
+  background: rgba(212,144,10,0.12);
+  color: var(--amber);
+  border: 1px solid rgba(212,144,10,0.2);
+}
+.btn-academy:hover { background: rgba(212,144,10,0.2); }
+
+/* payment modal */
+.pay-modal-box {
+  background: #0d1024;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 480px;
+  animation: fadeUp 0.3s ease both;
+  overflow: hidden;
+}
+.pay-modal-header {
+  padding: 1.5rem 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.pay-pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--off-white);
+  margin-bottom: 0.2rem;
+}
+.pay-pkg-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.25);
+}
+.pay-modal-body {
+  padding: 1.5rem 1.75rem;
+}
+.pay-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+.pay-summary-label { color: rgba(255,255,255,0.4); font-weight: 300; }
+.pay-summary-val { color: var(--off-white); font-weight: 300; }
+.pay-summary-val.strikethrough { text-decoration: line-through; color: rgba(255,255,255,0.25); }
+.pay-summary-val.highlight { color: var(--green); }
+.pay-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1rem 0 0;
+}
+.pay-total-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.pay-total-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--green);
+}
+.pay-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.2);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-top: 1rem;
+  padding: 0.85rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+.pay-modal-footer {
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.pay-confirm-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background: var(--green);
+  color: #0b1a11;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 6px;
+  font-weight: 400;
+}
+.pay-confirm-btn:hover { background: #14c07e; }
+.pay-cancel {
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.2);
+  cursor: pointer;
+}
+.pay-cancel:hover { color: rgba(255,255,255,0.4); }
+
+/* success state */
+.pay-success {
+  padding: 2.5rem 1.75rem;
+  text-align: center;
+  display: none;
+}
+.pay-success.show { display: block; }
+.pay-success-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(24,160,106,0.12);
+  border: 1px solid rgba(24,160,106,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+.pay-success-icon svg { width: 22px; height: 22px; stroke: var(--green); fill: none; stroke-width: 2; }
+.pay-success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--off-white);
+  margin-bottom: 0.5rem;
+}
+.pay-success-sub {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.65;
+  font-weight: 300;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-client">Kingston Wildcats</span>
+    <div class="nav-sep"></div>
+    <span class="nav-hub">Client Portal</span>
+  </div>
+  <div class="nav-right">
+    <div class="nav-user">
+      <div class="nav-status-dot"></div>
+      <span class="nav-user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="56303f393837163d3f383125223938213f3a32353722257835393b">[email&#160;protected]</a></span>
+    </div>
+    <span class="nav-signout">Sign out</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Client workspace <span>·</span> April 2026</div>
+    <div class="hero-greeting">Good to see you, Fiona.</div>
+    <div class="hero-title">Here's where<br><em>everything stands.</em></div>
+    <div class="hero-sub">Your new website, design system, and digital infrastructure — tracked in one place. See what's live, what's in progress, and what unlocks next.</div>
+    <div class="hero-meta">
+      <div class="meta-item"><label>Project</label><span>Website &amp; Digital Presence</span></div>
+      <div class="meta-item"><label>Agency</label><span>Not On Mondays</span></div>
+      <div class="meta-item"><label>Stage</label><span>Discovery &amp; Proposal</span></div>
+      <div class="meta-item"><label>Your contact</label><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a323f3636351a34352e35343735343e3b232974393537">[email&#160;protected]</a></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- ACTIVE DEADLINES -->
+  <div class="section-gap">
+    <div class="section-label">Active deadlines</div>
+    <div class="deadline-banner">
+      <div class="deadline-left">
+        <div class="deadline-dot"></div>
+        <div>
+          <div class="deadline-name">Proposal decision window</div>
+          <div class="deadline-sub">Discovery call to be booked — work starts the week we agree</div>
+        </div>
+      </div>
+      <div class="deadline-timer">
+        <div class="timer-unit"><span class="timer-num" id="t-days">--</span><span class="timer-label">Days</span></div>
+        <div class="timer-unit"><span class="timer-num" id="t-hrs">--</span><span class="timer-label">Hrs</span></div>
+        <div class="timer-unit"><span class="timer-num" id="t-min">--</span><span class="timer-label">Min</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS CARDS -->
+  <div class="section-gap">
+    <div class="section-label">Project at a glance</div>
+    <div class="status-grid">
+      <div class="status-card">
+        <div class="status-card-label">Deliverables</div>
+        <div class="status-card-val val-blue">6</div>
+        <div class="status-card-sub">total across project</div>
+      </div>
+      <div class="status-card">
+        <div class="status-card-label">Currently unlocked</div>
+        <div class="status-card-val val-green">2</div>
+        <div class="status-card-sub">proposal &amp; wireframes</div>
+      </div>
+      <div class="status-card">
+        <div class="status-card-label">Next milestone</div>
+        <div class="status-card-val val-amber" style="font-size:1.1rem;padding-top:6px;">
+          <div class="status-pending">Discovery call</div>
+        </div>
+        <div class="status-card-sub">unlocks design &amp; build</div>
+      </div>
+      <div class="status-card">
+        <div class="status-card-label">Estimated go-live</div>
+        <div class="status-card-val val-blue" style="font-size:1.2rem;padding-top:6px;">Week 7</div>
+        <div class="status-card-sub">from project start</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELIVERABLES -->
+  <div class="section-gap">
+    <div class="section-label">Your deliverables</div>
+    <div class="deliverables-grid">
+
+      <!-- LIVE: Proposal -->
+      <div class="deliverable live clickable" onclick="openWireframeModal()">
+        <div class="deliverable-header">
+          <div class="deliverable-icon icon-green">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <span class="badge badge-live">Live</span>
+        </div>
+        <div class="deliverable-cat">Strategy</div>
+        <div class="deliverable-title">Website proposal &amp; wireframes</div>
+        <div class="deliverable-desc">Full storyboard deck including homepage, sessions, pathways, about, and contact page wireframes. You're looking at it.</div>
+        <div class="deliverable-progress">
+          <div class="progress-label"><span>Complete</span><span>100%</span></div>
+          <div class="progress-track"><div class="progress-fill green" style="width:100%;"></div></div>
+        </div>
+      </div>
+
+      <!-- ACTIVE: Discovery -->
+      <div class="deliverable unlocked">
+        <div class="deliverable-header">
+          <div class="deliverable-icon icon-blue">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span class="badge badge-active">Up next</span>
+        </div>
+        <div class="deliverable-cat">Discovery</div>
+        <div class="deliverable-title">Discovery &amp; content session</div>
+        <div class="deliverable-desc">90-minute working session with the Wildcats team. We'll map user journeys, gather content, agree tone of voice, and lock in the brief.</div>
+        <div class="deliverable-progress">
+          <div class="progress-label"><span>Awaiting booking</span><span>0%</span></div>
+          <div class="progress-track"><div class="progress-fill blue" style="width:0%;"></div></div>
+        </div>
+        <div class="deliverable-unlock-note">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Unlocked — ready to book
+        </div>
+      </div>
+
+      <!-- LOCKED: Design System -->
+      <div class="deliverable locked">
+        <div class="deliverable-header">
+          <div class="deliverable-icon icon-muted">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <span class="badge badge-locked">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Locked
+          </span>
+        </div>
+        <div class="deliverable-cat">Design</div>
+        <div class="deliverable-title">Design system &amp; brand tokens</div>
+        <div class="deliverable-desc">Colour palette, typography, component library, and icon set — the visual language your new site is built on. Consistent across every page and device.</div>
+        <div class="deliverable-unlock-note">
+          <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Unlocks after: Discovery session
+        </div>
+      </div>
+
+      <!-- LOCKED: New Website -->
+      <div class="deliverable locked">
+        <div class="deliverable-header">
+          <div class="deliverable-icon icon-muted">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <span class="badge badge-locked">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Locked
+          </span>
+        </div>
+        <div class="deliverable-cat">Build</div>
+        <div class="deliverable-title">New website — fully built</div>
+        <div class="deliverable-desc">All pages designed, built, tested, and launched. Session finder, register interest form, results feed, news CMS, mobile-first. Yours to manage.</div>
+        <div class="deliverable-unlock-note">
+          <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Unlocks after: Design sign-off
+        </div>
+      </div>
+
+      <!-- LOCKED: Digital Infrastructure -->
+      <div class="deliverable locked">
+        <div class="deliverable-header">
+          <div class="deliverable-icon icon-muted">
+            <svg viewBox="0 0 24 24"><path d="M22 12H2"/><path d="M5 12V5a7 7 0 0 1 14 0v7"/><path d="M17 12v5a5 5 0 0 1-10 0v-5"/></svg>
+          </div>
+          <span class="badge badge-locked">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Locked
+          </span>
+        </div>
+        <div class="deliverable-cat">Infrastructure</div>
+        <div class="deliverable-title">Digital infrastructure setup</div>
+        <div class="deliverable-desc">Domain configuration, email capture and welcome sequence, Google Analytics, Google Business, and SEO foundations. Set up once, working forever.</div>
+        <div class="deliverable-unlock-note">
+          <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Unlocks after: Website build
+        </div>
+      </div>
+
+      <!-- LOCKED: Hosting & Support -->
+      <div class="deliverable locked">
+        <div class="deliverable-header">
+          <div class="deliverable-icon icon-muted">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <span class="badge badge-locked">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Locked
+          </span>
+        </div>
+        <div class="deliverable-cat">Ongoing</div>
+        <div class="deliverable-title">Hosting &amp; ongoing support</div>
+        <div class="deliverable-desc">Managed hosting, security updates, and 3-month post-launch check-ins. We're here after go-live — not just until it. Covered under the Growth package.</div>
+        <div class="deliverable-unlock-note">
+          <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Unlocks after: Go-live
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRICING / PACKAGES -->
+  <div class="pricing-section section-gap">
+    <div class="section-label">Choose your package</div>
+    <p class="pricing-intro">Three clear options built for where you are now — with room to grow. All prices shown include your <strong style="color:rgba(255,255,255,0.6);font-weight:400;">community organisation discount</strong>.</p>
+
+    <!-- Community discount banner -->
+    <div class="discount-banner">
+      <div class="discount-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div>
+        <div class="discount-label">Community organisation benefit</div>
+        <div class="discount-text">As a registered community club, Kingston Wildcats qualifies for a <strong>60% discount</strong> on all NOM packages. Prices below already reflect this saving.</div>
+      </div>
+      <div class="discount-badge-pill">60% off</div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Foundation -->
+      <div class="pricing-card" style="animation: fadeUp 0.4s ease 0.05s both;">
+        <div class="pricing-card-tag tag-foundation">Foundation</div>
+        <div class="pricing-name">Foundation</div>
+        <div class="pricing-tagline">A clean, professional digital home. Everything you need to be found and trusted online.</div>
+        <div class="price-block">
+          <div class="price-was">Was £6,250</div>
+          <div class="price-now">
+            <span class="price-currency">£</span>
+            <span class="price-num">2,500</span>
+            <span class="price-suffix">one-off</span>
+          </div>
+          <div class="price-saving">You save £3,750</div>
+        </div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 pages, fully built</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first responsive design</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wireframes & design sign-off</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form + basic SEO</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Google Analytics setup</li>
+          <li class="muted"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Session finder / register interest</li>
+          <li class="muted"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>News CMS</li>
+          <li class="muted"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Post-launch support</li>
+        </ul>
+        <button class="pricing-buy-btn btn-foundation" onclick="openPayModal('Foundation','£6,250','£2,500','£3,750')">Select Foundation →</button>
+      </div>
+
+      <!-- Growth (featured) -->
+      <div class="pricing-card featured" style="animation: fadeUp 0.4s ease 0.1s both;">
+        <div class="pricing-card-tag tag-growth">Most popular <span class="featured-pill">Recommended</span></div>
+        <div class="pricing-name">Growth</div>
+        <div class="pricing-tagline">The full picture — built to grow with the club, engage parents, and fill sessions.</div>
+        <div class="price-block">
+          <div class="price-was">Was £11,250</div>
+          <div class="price-now">
+            <span class="price-currency">£</span>
+            <span class="price-num">4,500</span>
+            <span class="price-suffix">one-off</span>
+          </div>
+          <div class="price-saving">You save £6,750</div>
+        </div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Up to 8 pages, fully built</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first responsive design</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wireframes & design sign-off</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Session finder + register interest form</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>News CMS (manage your own content)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Email capture + welcome sequence</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Google Analytics + SEO foundations</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>3-month post-launch support</li>
+        </ul>
+        <button class="pricing-buy-btn btn-growth" onclick="openPayModal('Growth','£11,250','£4,500','£6,750')">Select Growth →</button>
+      </div>
+
+      <!-- Academy -->
+      <div class="pricing-card" style="animation: fadeUp 0.4s ease 0.15s both;">
+        <div class="pricing-card-tag tag-academy">Academy</div>
+        <div class="pricing-name">Academy</div>
+        <div class="pricing-tagline">Full digital infrastructure — for clubs ready to operate like a serious organisation.</div>
+        <div class="price-block">
+          <div class="price-was">Was £18,750</div>
+          <div class="price-now">
+            <span class="price-currency">£</span>
+            <span class="price-num">7,500</span>
+            <span class="price-suffix">one-off</span>
+          </div>
+          <div class="price-saving">You save £11,250</div>
+        </div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything in Growth</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Unlimited pages</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Results feed + league table</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Photography session included</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Domain + hosting setup (year 1 free)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Google Business optimisation</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Team training session</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>6-month post-launch support</li>
+        </ul>
+        <button class="pricing-buy-btn btn-academy" onclick="openPayModal('Academy','£18,750','£7,500','£11,250')">Select Academy →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TIMELINE + SIDEBAR -->
+  <div class="two-col section-gap">
+    <div>
+      <div class="section-label">Project story</div>
+      <div class="timeline">
+
+        <div class="tl-item delay-1">
+          <div class="tl-node done">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 0 · Complete</div>
+            <div class="tl-title">Proposal &amp; wireframes delivered</div>
+            <div class="tl-desc">Full storyboard of homepage, sessions page, pathways, about, and contact — plus budget options and a clear rationale for every design decision.</div>
+            <span class="tl-when green">Done · April 2026</span>
+          </div>
+        </div>
+
+        <div class="tl-item delay-2">
+          <div class="tl-node active">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 1 · You are here</div>
+            <div class="tl-title">Discovery &amp; decision</div>
+            <div class="tl-desc">A 45-minute conversation to choose the right package and book the discovery session. Then a 90-minute working session with your team to lock in the brief, content, and tone.</div>
+            <span class="tl-when blue">This week — ready when you are</span>
+          </div>
+        </div>
+
+        <div class="tl-item delay-3">
+          <div class="tl-node future">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 2 · Weeks 1–2</div>
+            <div class="tl-title tl-title muted">Design — visual identity &amp; system</div>
+            <div class="tl-desc">Colour palette, typography, and component design. Two rounds of feedback. You sign off before a line of code is written.</div>
+            <span class="tl-when muted">Starts after: Discovery session</span>
+          </div>
+        </div>
+
+        <div class="tl-item delay-4">
+          <div class="tl-node future">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 3 · Weeks 3–6</div>
+            <div class="tl-title muted">Build &amp; test</div>
+            <div class="tl-desc">Full site built on a staging environment. You review on real devices — phone, tablet, desktop — before we touch your live domain.</div>
+            <span class="tl-when muted">Starts after: Design sign-off</span>
+          </div>
+        </div>
+
+        <div class="tl-item delay-5">
+          <div class="tl-node future">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 4 · Week 7</div>
+            <div class="tl-title muted">Go-live &amp; handover</div>
+            <div class="tl-desc">Site goes live. We train your team to manage content, and your 3-month support window begins. You own everything: code, content, domain.</div>
+            <span class="tl-when muted">Target: 7 weeks from project start</span>
+          </div>
+        </div>
+
+        <div class="tl-item delay-6">
+          <div class="tl-node future">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 5 · Ongoing</div>
+            <div class="tl-title muted">30 &amp; 90-day check-ins</div>
+            <div class="tl-desc">We review performance, answer questions, and make small adjustments. This is not a handoff-and-disappear project.</div>
+            <span class="tl-when muted">Post-launch · Included in Growth package</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Your team</div>
+        <div class="contact-row">
+          <div class="contact-avatar av-kwc">FK</div>
+          <div class="contact-info">
+            <div class="contact-name">Fiona K.</div>
+            <div class="contact-role">Commissioner · Kingston Wildcats</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-avatar av-nom">NM</div>
+          <div class="contact-info">
+            <div class="contact-name">Not On Mondays</div>
+            <div class="contact-role"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="721a171e1e1d321c1d061d1c1f1d1c16130b015c111d1f">[email&#160;protected]</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Decisions needed</div>
+        <div class="decision-item">
+          <div class="decision-q">Which package — Foundation (£2,500), Growth (£4,500) or Academy (£7,500)?</div>
+          <div class="decision-need">↳ Needed to start</div>
+        </div>
+        <div class="decision-item">
+          <div class="decision-q">Do you have existing photography, or do we plan a photography session?</div>
+          <div class="decision-need">↳ Needed at discovery</div>
+        </div>
+        <div class="decision-item">
+          <div class="decision-q">Who from the Wildcats team joins the discovery session?</div>
+          <div class="decision-need">↳ Needed at discovery</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Next step</div>
+        <div class="sidebar-card-title">Start a conversation</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.3);line-height:1.65;margin-bottom:1rem;font-weight:300;">45 minutes. We answer every question, agree on the right option, and book the discovery session. No commitment needed to have that conversation.</div>
+        <a href="/cdn-cgi/l/email-protection#5b333e3737341b35342f34353634353f3a22287538343664282e39313e382f661032353c282f34357b0c32373f383a2f287bb9dbcf7b173e2f7c287b2f3a3730" style="display:block;text-align:center;background:var(--blue);color:var(--off-white);font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.85rem;text-decoration:none;transition:background 0.2s ease;" onmouseover="this.style.background='#0d1880'" onmouseout="this.style.background='#1a2ad4'"><span class="__cf_email__" data-cfemail="b4dcd1d8d8dbf4dadbc0dbdad9dbdad0d5cdc79ad7dbd9">[email&#160;protected]</span> →</a>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /body -->
+
+<!-- WIREFRAME MODAL -->
+<div class="modal-overlay" id="wireframeModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-badge">
+        <span class="badge badge-live">Live</span>
+        <div class="modal-title">Website proposal &amp; wireframes</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <span style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;color:rgba(255,255,255,0.2);">5 pages · April 2026</span>
+        <button class="modal-close" onclick="closeWireframeModal()">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p class="wireframe-intro">Full page-by-page storyboard of your new website. Each frame shows layout, content hierarchy, and user flow — designed around how parents and players actually find and use a club website.</p>
+
+      <!-- Page 1: Homepage -->
+      <div class="wf-page">
+        <div class="wf-page-label">
+          <span>01 · Homepage</span>
+          <span class="pg-status">✓ Complete</span>
+        </div>
+        <div class="wf-canvas">
+          <div class="wf-nav-bar">
+            <div class="wf-nav-logo"></div>
+            <div class="wf-spacer"></div>
+            <div class="wf-nav-link"></div>
+            <div class="wf-nav-link"></div>
+            <div class="wf-nav-link"></div>
+            <div class="wf-nav-cta"></div>
+          </div>
+          <div class="wf-hero-block">
+            <div class="wf-line tag"></div>
+            <div class="wf-line lg" style="height:14px;background:rgba(255,255,255,0.18);"></div>
+            <div class="wf-line md" style="height:14px;background:rgba(255,255,255,0.1);"></div>
+            <div class="wf-line sm"></div>
+            <div style="display:flex;gap:0.5rem;margin-top:0.3rem;">
+              <div class="wf-line btn"></div>
+              <div class="wf-line" style="width:80px;height:24px;background:rgba(255,255,255,0.06);border-radius:3px;border:1px solid rgba(255,255,255,0.1);"></div>
+            </div>
+          </div>
+          <div class="wf-row-3">
+            <div class="wf-card-block"><div class="wf-text-block"></div><div class="wf-text-block" style="width:70%"></div><div class="wf-text-block" style="width:50%"></div></div>
+            <div class="wf-card-block"><div class="wf-text-block"></div><div class="wf-text-block" style="width:60%"></div><div class="wf-text-block" style="width:40%"></div></div>
+            <div class="wf-card-block"><div class="wf-text-block"></div><div class="wf-text-block" style="width:80%"></div><div class="wf-text-block" style="width:55%"></div></div>
+          </div>
+          <div class="wf-section-divider"></div>
+          <div class="wf-row-2">
+            <div style="display:flex;flex-direction:column;gap:0.4rem;">
+              <div class="wf-line md" style="height:10px;"></div>
+              <div class="wf-line lg"></div><div class="wf-line sm"></div><div class="wf-line md"></div>
+              <div class="wf-line btn" style="margin-top:0.3rem;"></div>
+            </div>
+            <div class="wf-card-img"><div class="wf-img-ph">Photo / action shot</div></div>
+          </div>
+          <div class="wf-cta-strip"><div class="wf-line" style="width:200px;height:8px;background:rgba(255,255,255,0.1);"></div><div class="wf-nav-cta"></div></div>
+          <div class="wf-footer"><div class="wf-line xs"></div><div class="wf-spacer"></div><div class="wf-nav-link"></div><div class="wf-nav-link"></div></div>
+        </div>
+      </div>
+
+      <!-- Page 2: Sessions -->
+      <div class="wf-page">
+        <div class="wf-page-label">
+          <span>02 · Sessions &amp; pathways</span>
+          <span class="pg-status">✓ Complete</span>
+        </div>
+        <div class="wf-canvas">
+          <div class="wf-nav-bar">
+            <div class="wf-nav-logo"></div><div class="wf-spacer"></div><div class="wf-nav-link"></div><div class="wf-nav-link"></div><div class="wf-nav-link" style="background:rgba(26,42,212,0.4);"></div><div class="wf-nav-cta"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;padding:0.5rem 0;">
+            <div class="wf-line md" style="height:10px;"></div>
+            <div class="wf-line lg" style="height:14px;background:rgba(255,255,255,0.14);"></div>
+            <div class="wf-line sm"></div>
+          </div>
+          <!-- Filter bar -->
+          <div style="display:flex;gap:0.4rem;padding:0.3rem 0;">
+            <div style="width:80px;height:24px;background:rgba(26,42,212,0.3);border-radius:4px;"></div>
+            <div style="width:60px;height:24px;background:rgba(255,255,255,0.05);border-radius:4px;border:1px solid var(--border);"></div>
+            <div style="width:70px;height:24px;background:rgba(255,255,255,0.05);border-radius:4px;border:1px solid var(--border);"></div>
+          </div>
+          <div class="wf-row-2">
+            <div class="wf-card-block" style="height:100px;"><div class="wf-line tag"></div><div class="wf-text-block"></div><div class="wf-text-block" style="width:60%"></div><div style="margin-top:auto;"><div class="wf-line btn" style="width:80px;height:18px;"></div></div></div>
+            <div class="wf-card-block" style="height:100px;"><div class="wf-line tag"></div><div class="wf-text-block"></div><div class="wf-text-block" style="width:70%"></div><div style="margin-top:auto;"><div class="wf-line btn" style="width:80px;height:18px;"></div></div></div>
+            <div class="wf-card-block" style="height:100px;"><div class="wf-line tag"></div><div class="wf-text-block"></div><div class="wf-text-block" style="width:50%"></div><div style="margin-top:auto;"><div class="wf-line btn" style="width:80px;height:18px;"></div></div></div>
+            <div class="wf-card-block" style="height:100px;"><div class="wf-line tag"></div><div class="wf-text-block"></div><div class="wf-text-block" style="width:65%"></div><div style="margin-top:auto;"><div class="wf-line btn" style="width:80px;height:18px;"></div></div></div>
+          </div>
+          <div class="wf-cta-strip"><div class="wf-line" style="width:180px;height:8px;background:rgba(255,255,255,0.1);"></div><div class="wf-nav-cta"></div></div>
+        </div>
+      </div>
+
+      <!-- Page 3: About -->
+      <div class="wf-page">
+        <div class="wf-page-label">
+          <span>03 · About the club</span>
+          <span class="pg-status">✓ Complete</span>
+        </div>
+        <div class="wf-canvas">
+          <div class="wf-nav-bar">
+            <div class="wf-nav-logo"></div><div class="wf-spacer"></div><div class="wf-nav-link"></div><div class="wf-nav-link" style="background:rgba(26,42,212,0.4);"></div><div class="wf-nav-link"></div><div class="wf-nav-cta"></div>
+          </div>
+          <div class="wf-row-2" style="align-items:center;">
+            <div style="display:flex;flex-direction:column;gap:0.4rem;">
+              <div class="wf-line xs"></div>
+              <div class="wf-line lg" style="height:12px;background:rgba(255,255,255,0.15);"></div>
+              <div class="wf-line md"></div><div class="wf-line lg"></div><div class="wf-line sm"></div>
+            </div>
+            <div class="wf-card-img" style="height:130px;"><div class="wf-img-ph">Team photo</div></div>
+          </div>
+          <div class="wf-section-divider"></div>
+          <div class="wf-row-3">
+            <div class="wf-card-block"><div class="wf-text-block"></div><div class="wf-text-block" style="width:70%"></div><div class="wf-text-block" style="width:40%"></div></div>
+            <div class="wf-card-block"><div class="wf-text-block"></div><div class="wf-text-block" style="width:60%"></div><div class="wf-text-block" style="width:50%"></div></div>
+            <div class="wf-card-block"><div class="wf-text-block"></div><div class="wf-text-block" style="width:80%"></div><div class="wf-text-block" style="width:35%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 4: Contact -->
+      <div class="wf-page">
+        <div class="wf-page-label">
+          <span>04 · Contact &amp; find us</span>
+          <span class="pg-status">✓ Complete</span>
+        </div>
+        <div class="wf-canvas">
+          <div class="wf-nav-bar">
+            <div class="wf-nav-logo"></div><div class="wf-spacer"></div><div class="wf-nav-link"></div><div class="wf-nav-link"></div><div class="wf-nav-link" style="background:rgba(26,42,212,0.4);"></div><div class="wf-nav-cta"></div>
+          </div>
+          <div class="wf-row-2">
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <div class="wf-line lg" style="height:12px;background:rgba(255,255,255,0.14);"></div>
+              <div class="wf-line sm"></div>
+              <div style="height:32px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;margin-top:0.3rem;"></div>
+              <div style="height:32px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;"></div>
+              <div style="height:60px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;"></div>
+              <div class="wf-line btn"></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <div class="wf-card-img" style="height:120px;background:rgba(26,42,212,0.08);border-color:rgba(26,42,212,0.15);"><div class="wf-img-ph">Map embed</div></div>
+              <div class="wf-card-block"><div class="wf-text-block"></div><div class="wf-text-block" style="width:60%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <span class="modal-footer-note">5 pages · Delivered April 2026 · NOM × Kingston Wildcats</span>
+      <a href="mailto:hello@notonmondays.com" class="modal-cta">Discuss this proposal →</a>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payModal">
+  <div class="pay-modal-box">
+    <div class="pay-modal-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div class="pay-pkg-name" id="pay-pkg-name">Growth Package</div>
+        <div class="pay-pkg-sub">Community organisation pricing · 60% discount applied</div>
+      </div>
+      <button class="modal-close" onclick="closePayModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="pay-form-view">
+      <div class="pay-modal-body">
+        <div class="pay-summary-row">
+          <span class="pay-summary-label">Standard price</span>
+          <span class="pay-summary-val strikethrough" id="pay-was"></span>
+        </div>
+        <div class="pay-summary-row">
+          <span class="pay-summary-label">Community discount (60%)</span>
+          <span class="pay-summary-val highlight" id="pay-saving"></span>
+        </div>
+        <div class="pay-summary-row">
+          <span class="pay-summary-label">Package</span>
+          <span class="pay-summary-val" id="pay-pkg-label2"></span>
+        </div>
+        <div class="pay-total-row">
+          <span class="pay-total-label">Your price</span>
+          <span class="pay-total-val" id="pay-total"></span>
+        </div>
+        <div class="pay-note">
+          💡 Clicking confirm sends your package selection to the NOM team. We'll get in touch within 24 hours to arrange a call, confirm details, and send an invoice. No payment is taken today.
+        </div>
+      </div>
+      <div class="pay-modal-footer">
+        <button class="pay-confirm-btn" onclick="confirmPackage()">Confirm selection — we'll be in touch →</button>
+        <div class="pay-cancel" onclick="closePayModal()">Cancel — take me back</div>
+      </div>
+    </div>
+    <div class="pay-success" id="pay-success-view">
+      <div class="pay-success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="pay-success-title">Selection confirmed.</div>
+      <div class="pay-success-sub">Your package choice has been logged. The NOM team will email you within 24 hours to confirm next steps and arrange your discovery session. You're nearly there, Fiona.</div>
+      <button class="modal-cta" style="margin-top:1.5rem;display:inline-flex;" onclick="closePayModal()">Back to your portal</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Live countdown — 10-day proposal decision window from April 9 2026
+function updateTimer() {
+  const target = new Date('2026-04-19T23:59:59');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('t-days').textContent = '00';
+    document.getElementById('t-hrs').textContent = '00';
+    document.getElementById('t-min').textContent = '00';
+    return;
+  }
+  const days = Math.floor(diff / 86400000);
+  const hrs  = Math.floor((diff % 86400000) / 3600000);
+  const min  = Math.floor((diff % 3600000) / 60000);
+  document.getElementById('t-days').textContent = String(days).padStart(2,'0');
+  document.getElementById('t-hrs').textContent  = String(hrs).padStart(2,'0');
+  document.getElementById('t-min').textContent  = String(min).padStart(2,'0');
+}
+updateTimer();
+setInterval(updateTimer, 30000);
+
+// progress bar animation on load
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.progress-fill').forEach(el => {
+    const w = el.style.width;
+    el.style.width = '0%';
+    setTimeout(() => { el.style.width = w; }, 300);
+  });
+});
+
+// ── WIREFRAME MODAL ──
+function openWireframeModal() {
+  document.getElementById('wireframeModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWireframeModal() {
+  document.getElementById('wireframeModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── PAYMENT MODAL ──
+function openPayModal(pkgName, was, now, saving) {
+  document.getElementById('pay-pkg-name').textContent = pkgName + ' Package';
+  document.getElementById('pay-pkg-label2').textContent = pkgName;
+  document.getElementById('pay-was').textContent = was;
+  document.getElementById('pay-saving').textContent = '−' + saving;
+  document.getElementById('pay-total').textContent = now;
+  document.getElementById('pay-form-view').style.display = 'block';
+  document.getElementById('pay-success-view').classList.remove('show');
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePayModal() {
+  document.getElementById('payModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function confirmPackage() {
+  document.getElementById('pay-form-view').style.display = 'none';
+  document.getElementById('pay-success-view').classList.add('show');
+}
+
+// close modals on overlay click
+document.getElementById('wireframeModal').addEventListener('click', function(e) {
+  if (e.target === this) closeWireframeModal();
+});
+document.getElementById('payModal').addEventListener('click', function(e) {
+  if (e.target === this) closePayModal();
+});
+</script>
+</body>
+</html>

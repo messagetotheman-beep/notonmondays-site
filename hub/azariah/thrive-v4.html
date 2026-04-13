@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azariah — NIHR i4i THRIVE Application (Working Draft)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #003087;
+    --nhs:     #005EB8;
+    --mid:     #378ADD;
+    --lblue:   #B5D4F4;
+    --pblue:   #E8F1FA;
+    --white:   #ffffff;
+    --text:    #1a2038;
+    --muted:   rgba(0,48,135,0.45);
+    --div:     #dce8f5;
+    --bg:      #f4f7fb;
+    --red:     #b91c1c;
+    --amber:   #b45309;
+    --green:   #15803d;
+    --gap-bg:  rgba(185,28,28,0.07);
+    --wip-bg:  rgba(180,83,9,0.07);
+    --done-bg: rgba(21,128,61,0.07);
+    --sidebar: 260px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR NAV ─────────────────────────────────────── */
+  .sidebar {
+    width: var(--sidebar);
+    min-width: var(--sidebar);
+    background: var(--navy);
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+  .sidebar-logo {
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .sidebar-wordmark { display: flex; flex-direction: column; }
+  .sidebar-the { font-size: 9px; font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+  .sidebar-name { font-size: 16px; font-weight: 500; color: #fff; line-height: 1.1; }
+  .sidebar-desc { font-size: 7px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+  .sidebar-deadline {
+    margin: 12px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+  .dl-label { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 3px; }
+  .dl-date { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.2; }
+  .dl-sub { font-size: 9px; font-weight: 300; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+  .sidebar-progress {
+    margin: 4px 16px 12px;
+  }
+  .progress-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 6px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .progress-bar {
+    height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--nhs); border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .nav-section-label {
+    padding: 8px 20px 4px;
+    font-size: 9px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.12s;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.06); }
+  .nav-item.active { background: rgba(0,94,184,0.25); border-left-color: var(--nhs); }
+
+  .nav-num {
+    font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.3);
+    letter-spacing: 1px; min-width: 20px; flex-shrink: 0;
+  }
+  .nav-text { font-size: 11.5px; font-weight: 400; color: rgba(255,255,255,0.7); line-height: 1.3; flex: 1; }
+  .nav-item.active .nav-text { color: #fff; font-weight: 500; }
+
+  .nav-dot {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(255,255,255,0.15);
+  }
+  .nav-dot.gap   { background: var(--red); }
+  .nav-dot.wip   { background: #f59e0b; }
+  .nav-dot.done  { background: #22c55e; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 9px; color: rgba(255,255,255,0.25);
+    line-height: 1.6;
+  }
+  .sidebar-footer em { font-style: italic; color: rgba(255,255,255,0.35); }
+
+  /* ── MAIN CONTENT ────────────────────────────────────── */
+  .main {
+    margin-left: var(--sidebar);
+    flex: 1;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── TOP BAR ─────────────────────────────────────────── */
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--div);
+    padding: 0 40px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .topbar-title {
+    font-size: 12px; font-weight: 500; color: var(--navy); letter-spacing: 0.3px;
+  }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .topbar-badge {
+    font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 20px;
+    background: var(--pblue); color: var(--navy);
+  }
+  .topbar-badge.warn { background: rgba(180,83,9,0.12); color: var(--amber); }
+  .topbar-divider { width: 1px; height: 20px; background: var(--div); }
+
+  /* collab notice */
+  .collab-notice {
+    background: rgba(180,83,9,0.07);
+    border: 1px solid rgba(180,83,9,0.2);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin: 20px 40px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .collab-icon {
+    font-size: 18px; flex-shrink: 0; line-height: 1.4;
+  }
+  .collab-text { flex: 1; }
+  .collab-title {
+    font-size: 11px; font-weight: 600; color: var(--amber);
+    letter-spacing: 0.3px; margin-bottom: 3px;
+  }
+  .collab-body {
+    font-size: 12px; font-weight: 300; color: var(--text); line-height: 1.6;
+  }
+  .collab-body strong { font-weight: 600; color: var(--text); }
+  .btn-save-all {
+    background: var(--navy); color: #fff;
+    border: none; padding: 6px 14px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .btn-save-all:hover { background: var(--nhs); }
+
+  .btn-rms {
+    background: var(--nhs); color: #fff;
+    border: none; padding: 6px 14px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+    cursor: pointer; transition: background 0.15s;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+  }
+  .btn-rms:hover { background: var(--mid); }
+  .btn-rms svg { flex-shrink: 0; }
+
+  /* submitted status */
+  .status-submitted {
+    background: rgba(0,94,184,0.1); color: var(--nhs);
+    cursor: pointer; opacity: 0.9;
+  }
+  .nav-dot.submitted { background: var(--nhs); }
+
+  /* ── SECTION WRAPPER ─────────────────────────────────── */
+  .section {
+    margin: 28px 40px 0;
+    background: var(--white);
+    border: 1px solid var(--div);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--div);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .section-meta { flex: 1; }
+
+  .section-num {
+    font-size: 9px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--nhs); margin-bottom: 3px;
+  }
+  .section-title {
+    font-size: 19px; font-weight: 300; color: var(--navy); line-height: 1.2; margin-bottom: 4px;
+  }
+  .section-subtitle {
+    font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.5;
+  }
+
+  .section-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .status-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 9px; border-radius: 20px;
+    cursor: pointer; border: none; font-family: 'DM Sans', sans-serif;
+    transition: opacity 0.15s;
+  }
+  .status-badge:hover { opacity: 0.8; }
+  .status-gap  { background: var(--gap-bg);  color: var(--red); }
+  .status-wip  { background: var(--wip-bg);  color: var(--amber); }
+  .status-done { background: var(--done-bg); color: var(--green); }
+
+  .btn-copy {
+    background: var(--pblue); color: var(--navy);
+    border: none; padding: 5px 10px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    cursor: pointer; transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .btn-copy:hover { background: var(--lblue); }
+  .btn-copy.copied { background: var(--done-bg); color: var(--green); }
+
+  /* ── GUIDANCE BOX ────────────────────────────────────── */
+  .guidance {
+    margin: 0 28px;
+    padding: 12px 16px;
+    background: var(--pblue);
+    border-left: 3px solid var(--nhs);
+    margin-top: 16px;
+    border-radius: 0 4px 4px 0;
+  }
+  .guidance-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--nhs); margin-bottom: 4px;
+  }
+  .guidance p {
+    font-size: 12px; font-weight: 300; color: var(--navy); line-height: 1.6; margin: 0;
+  }
+  .guidance p + p { margin-top: 6px; }
+
+  /* ── CALLOUT ─────────────────────────────────────────── */
+  .callout-display {
+    margin: 0 28px 0;
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: var(--navy);
+    border-left: 3px solid var(--nhs);
+  }
+  .callout-display p {
+    font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.9);
+    font-style: italic; line-height: 1.6; margin: 0;
+  }
+
+  /* ── TEXTAREA FIELD ──────────────────────────────────── */
+  .field-wrap {
+    padding: 16px 28px 20px;
+  }
+  .field-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .word-count {
+    font-size: 11px; font-weight: 400; color: var(--muted);
+    letter-spacing: 0; text-transform: none;
+  }
+  .word-count.over { color: var(--red); font-weight: 600; }
+  .word-count.near { color: var(--amber); }
+
+  textarea {
+    width: 100%;
+    min-height: 160px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--div);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.7;
+    resize: vertical;
+    outline: none;
+    background: var(--bg);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  textarea:focus {
+    border-color: var(--nhs);
+    background: var(--white);
+  }
+  textarea.has-content { background: var(--white); }
+
+  /* ── SECTION DIVIDER (paired sections) ───────────────── */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--div);
+    margin: 0 28px;
+  }
+
+  /* ── HERO SECTION ────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    padding: 40px 40px 32px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .hero-left { flex: 1; }
+  .hero-tag {
+    font-size: 9px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 8px;
+  }
+  .hero-title {
+    font-size: 28px; font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 8px;
+  }
+  .hero-title em { font-style: italic; color: var(--lblue); }
+  .hero-desc {
+    font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5);
+    line-height: 1.65; max-width: 560px; margin-top: 12px;
+  }
+  .hero-rule { width: 40px; height: 2px; background: var(--nhs); margin-bottom: 12px; }
+  .hero-right { text-align: right; flex-shrink: 0; }
+  .hero-deadline-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 4px;
+  }
+  .hero-deadline-date {
+    font-size: 22px; font-weight: 600; color: #fff; line-height: 1.15;
+  }
+  .hero-deadline-sub {
+    font-size: 10px; font-weight: 300; color: rgba(255,255,255,0.35); margin-top: 4px;
+  }
+  .hero-nom {
+    margin-top: 20px; display: flex; align-items: center; gap: 10px;
+    padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .nom-circle {
+    width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nom-circle-text {
+    font-size: 7px; font-weight: 700; letter-spacing: 1px; color: rgba(255,255,255,0.55);
+  }
+  .nom-info { display: flex; flex-direction: column; gap: 1px; }
+  .nom-prepared { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); }
+  .nom-brand { font-size: 11px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.45); }
+
+  /* ── ELIGIBILITY STRIP ───────────────────────────────── */
+  .elig-strip {
+    margin: 28px 40px 0;
+    background: rgba(185,28,28,0.06);
+    border: 1px solid rgba(185,28,28,0.2);
+    border-radius: 8px;
+    padding: 16px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .elig-item {}
+  .elig-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 4px;
+  }
+  .elig-val {
+    font-size: 11.5px; font-weight: 400; color: var(--text); line-height: 1.55;
+  }
+  .elig-val strong { color: var(--red); font-weight: 600; }
+  .elig-strip-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 10px;
+    grid-column: 1 / -1;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .elig-strip-label::after {
+    content: ''; flex: 1; height: 1px; background: rgba(185,28,28,0.2);
+  }
+
+  /* ── SAVED INDICATOR ─────────────────────────────────── */
+  .saved-indicator {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--green);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    z-index: 200;
+  }
+  .saved-indicator.show { opacity: 1; transform: translateY(0); }
+
+</style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══════════════════════════════════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <svg width="28" height="28" viewBox="0 0 38 38" fill="none">
+      <polygon points="19,2 34,10.5 34,27.5 19,36 4,27.5 4,10.5" stroke="rgba(255,255,255,0.75)" stroke-width="1.4" fill="none"/>
+      <circle cx="19" cy="2"    r="1.6" fill="rgba(255,255,255,0.65)"/>
+      <circle cx="34" cy="10.5" r="1.6" fill="rgba(255,255,255,0.65)"/>
+      <circle cx="34" cy="27.5" r="1.6" fill="rgba(255,255,255,0.65)"/>
+      <circle cx="19" cy="36"   r="1.6" fill="rgba(255,255,255,0.65)"/>
+      <circle cx="4"  cy="27.5" r="1.6" fill="rgba(255,255,255,0.65)"/>
+      <circle cx="4"  cy="10.5" r="1.6" fill="rgba(255,255,255,0.65)"/>
+      <circle cx="19" cy="19"   r="2.8" fill="rgba(255,255,255,0.88)"/>
+      <line x1="19" y1="19" x2="19"   y2="2"    stroke="rgba(255,255,255,0.18)" stroke-width="0.7"/>
+      <line x1="19" y1="19" x2="34"   y2="10.5" stroke="rgba(255,255,255,0.18)" stroke-width="0.7"/>
+      <line x1="19" y1="19" x2="34"   y2="27.5" stroke="rgba(255,255,255,0.18)" stroke-width="0.7"/>
+      <line x1="19" y1="19" x2="19"   y2="36"   stroke="rgba(255,255,255,0.18)" stroke-width="0.7"/>
+      <line x1="19" y1="19" x2="4"    y2="27.5" stroke="rgba(255,255,255,0.18)" stroke-width="0.7"/>
+      <line x1="19" y1="19" x2="4"    y2="10.5" stroke="rgba(255,255,255,0.18)" stroke-width="0.7"/>
+    </svg>
+    <div class="sidebar-wordmark">
+      <span class="sidebar-the">The</span>
+      <span class="sidebar-name">Azariah</span>
+      <span class="sidebar-desc">Clinical Compliance</span>
+    </div>
+  </div>
+
+  <div class="sidebar-deadline">
+    <div class="dl-label">Submission deadline</div>
+    <div class="dl-date">17 April 2026</div>
+    <div class="dl-sub">1pm sharp · RMS online form</div>
+  </div>
+  <div style="margin: 0 16px 12px;">
+    <a href="https://www.nihr.ac.uk/funding/i4i-thrive-march-2026/2026363" target="_blank" class="btn-rms" style="width:100%; justify-content:center; font-size:10px; padding:7px 12px;">
+      <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M9 2h5v5M14 2L8 8M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Open NIHR THRIVE page
+    </a>
+  </div>
+
+  <div class="sidebar-progress">
+    <div class="progress-label">
+      <span>Completion</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <div class="nav-section-label">Application</div>
+
+  <a class="nav-item active" href="#s01" onclick="setActive(this)">
+    <span class="nav-num">01</span>
+    <span class="nav-text">Plain English Summary</span>
+    <span class="nav-dot" id="dot-01"></span>
+  </a>
+  <a class="nav-item" href="#s02" onclick="setActive(this)">
+    <span class="nav-num">02</span>
+    <span class="nav-text">The Problem</span>
+    <span class="nav-dot" id="dot-02"></span>
+  </a>
+  <a class="nav-item" href="#s03" onclick="setActive(this)">
+    <span class="nav-num">03</span>
+    <span class="nav-text">The Innovation</span>
+    <span class="nav-dot" id="dot-03"></span>
+  </a>
+  <a class="nav-item" href="#s04" onclick="setActive(this)">
+    <span class="nav-num">04</span>
+    <span class="nav-text">Patient &amp; NHS Benefit</span>
+    <span class="nav-dot" id="dot-04"></span>
+  </a>
+  <a class="nav-item" href="#s05" onclick="setActive(this)">
+    <span class="nav-num">05</span>
+    <span class="nav-text">Stage of Development</span>
+    <span class="nav-dot" id="dot-05"></span>
+  </a>
+  <a class="nav-item" href="#s06" onclick="setActive(this)">
+    <span class="nav-num">06</span>
+    <span class="nav-text">Evidence &amp; Validation</span>
+    <span class="nav-dot" id="dot-06"></span>
+  </a>
+  <a class="nav-item" href="#s07" onclick="setActive(this)">
+    <span class="nav-num">07</span>
+    <span class="nav-text">Project Plan</span>
+    <span class="nav-dot" id="dot-07"></span>
+  </a>
+  <a class="nav-item" href="#s08" onclick="setActive(this)">
+    <span class="nav-num">08</span>
+    <span class="nav-text">Implementation &amp; Adoption</span>
+    <span class="nav-dot" id="dot-08"></span>
+  </a>
+  <a class="nav-item" href="#s09" onclick="setActive(this)">
+    <span class="nav-num">09</span>
+    <span class="nav-text">Value for Money</span>
+    <span class="nav-dot" id="dot-09"></span>
+  </a>
+  <a class="nav-item" href="#s10" onclick="setActive(this)">
+    <span class="nav-num">10</span>
+    <span class="nav-text">Commercialisation</span>
+    <span class="nav-dot" id="dot-10"></span>
+  </a>
+  <a class="nav-item" href="#s11" onclick="setActive(this)">
+    <span class="nav-num">11</span>
+    <span class="nav-text">Team &amp; Capability</span>
+    <span class="nav-dot" id="dot-11"></span>
+  </a>
+  <a class="nav-item" href="#s12" onclick="setActive(this)">
+    <span class="nav-num">12</span>
+    <span class="nav-text">PPIE</span>
+    <span class="nav-dot" id="dot-12"></span>
+  </a>
+  <a class="nav-item" href="#s13" onclick="setActive(this)">
+    <span class="nav-num">13</span>
+    <span class="nav-text">Equality, Diversity &amp; Inclusion</span>
+    <span class="nav-dot" id="dot-13"></span>
+  </a>
+  <a class="nav-item" href="#s14" onclick="setActive(this)">
+    <span class="nav-num">14</span>
+    <span class="nav-text">Risks &amp; Mitigation</span>
+    <span class="nav-dot" id="dot-14"></span>
+  </a>
+
+  <div class="sidebar-footer">
+    <div style="display:flex; flex-direction:column; gap:5px; margin-bottom:10px;">
+      <div style="display:flex; align-items:center; gap:7px;"><div style="width:7px;height:7px;border-radius:50%;background:#b91c1c;flex-shrink:0;"></div><span>Gap — needs work</span></div>
+      <div style="display:flex; align-items:center; gap:7px;"><div style="width:7px;height:7px;border-radius:50%;background:#f59e0b;flex-shrink:0;"></div><span>Draft done — in progress</span></div>
+      <div style="display:flex; align-items:center; gap:7px;"><div style="width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;"></div><span>Ready for RMS</span></div>
+      <div style="display:flex; align-items:center; gap:7px;"><div style="width:7px;height:7px;border-radius:50%;background:#005EB8;flex-shrink:0;"></div><span>Submitted to RMS ✓</span></div>
+    </div>
+    Prepared by <em>Not On Mondays</em><br>
+    Operating as The Operating Layer<br>
+    notonmondays.com
+  </div>
+</nav>
+
+<!-- ══ MAIN ══════════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-title">NIHR i4i THRIVE — Application Working Draft</div>
+    <div class="topbar-right">
+      <span class="topbar-badge warn" id="gaps-badge">6 gaps remaining</span>
+      <div class="topbar-divider"></div>
+      <a href="https://www.nihr.ac.uk/funding/i4i-thrive-march-2026/2026363" target="_blank" class="btn-rms">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M9 2h5v5M14 2L8 8M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        NIHR RMS
+      </a>
+      <button class="btn-save-all" onclick="saveAll()">Save to browser</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-rule"></div>
+      <div class="hero-tag">NIHR i4i THRIVE · Application Draft · March 2026</div>
+      <div class="hero-title">Verified Once,<br><em>Trusted Everywhere</em></div>
+      <div class="hero-desc">Use this page to draft your answers directly. Each section has a word count, a status toggle, and a copy button. When you're ready to submit, paste each section into the NIHR RMS online form. Your drafts are saved to your browser automatically.</div>
+      <div class="hero-nom">
+        <div class="nom-circle"><div class="nom-circle-text">NOM</div></div>
+        <div class="nom-info">
+          <span class="nom-prepared">Prepared by</span>
+          <span class="nom-brand">Not On Mondays · The Operating Layer</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-deadline-label">Deadline</div>
+      <div class="hero-deadline-date">17 Apr<br>2026</div>
+      <div class="hero-deadline-sub">1pm · No exceptions</div>
+    </div>
+  </div>
+
+  <!-- COLLABORATION NOTICE -->
+  <div class="collab-notice">
+    <div class="collab-icon">⚠</div>
+    <div class="collab-text">
+      <div class="collab-title">One editor at a time</div>
+      <div class="collab-body">This file saves to <strong>your browser only</strong> — it does not sync between people. If two people edit simultaneously, their changes will not merge and the last person to save will overwrite the other. <strong>Agree on a single owner for typing</strong> . Everyone else sends edits via Slack. When a section is ready, the owner marks it "Ready for RMS" and pastes it into the <a href="https://www.nihr.ac.uk/funding/i4i-thrive-march-2026/2026363" target="_blank" style="color:var(--nhs);">NIHR RMS form</a>.</div>
+    </div>
+  </div>
+
+  <!-- ELIGIBILITY STRIP -->
+  <div class="elig-strip">
+    <div class="elig-strip-label">Eligibility — confirm these before submitting</div>
+    <div class="elig-item">
+      <div class="elig-label">Legal structure</div>
+      <div class="elig-val">Lead must be a Research Institute, NHS provider, charity or CIC. <strong>SMEs cannot lead.</strong> Confirm Azariah's structure with Jok.</div>
+    </div>
+    <div class="elig-item">
+      <div class="elig-label">Technology readiness</div>
+      <div class="elig-val">Must be TRL 3 or above (experimental proof of concept as a minimum). State your TRL clearly in the form.</div>
+    </div>
+    <div class="elig-item">
+      <div class="elig-label">Technology type</div>
+      <div class="elig-val">Must be a Tier C digital health technology per the NICE evidence standards framework. Tier A and B are not eligible.</div>
+    </div>
+    <div class="elig-item">
+      <div class="elig-label">RMS account</div>
+      <div class="elig-val">Register now at nihr.ac.uk. Account validation can take up to two working days. Do not leave this until the last minute.</div>
+    </div>
+  </div>
+
+  <!-- S01 PLAIN ENGLISH SUMMARY -->
+  <div class="section" id="s01">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">01 — Plain English Summary</div>
+        <div class="section-title">What this project does</div>
+        <div class="section-subtitle">Public-facing · ~300 words · Scored heavily · Must be jargon-free and human</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="01" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta01', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="callout-display">
+      <p>The NHS is built on care and trust. We are improving the systems that trust depends on.</p>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">NIHR guidance</div>
+      <p>This is the first thing reviewers read and is used on the NIHR website if funded. Write for a non-specialist: a clinician, a commissioner, or a member of the public. Answer four questions: what is the problem, who does it affect, what does Azariah do, and why does it matter now. Lead with care and trust.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc01">0 words</span>
+      </div>
+      <textarea id="ta01" placeholder="The NHS depends on trust to deliver safe care. This includes trusting that staff are properly verified, compliant and authorised to work.
+
+Currently, that trust is maintained through processes that are repeated across organisations. Healthcare professionals often complete the same checks multiple times, as compliance information cannot be easily shared or relied upon between trusts. This creates delays in onboarding, increases administrative burden, and slows the deployment of staff into roles where they are needed.
+
+Azariah is developing a portable compliance profile for healthcare professionals. This enables staff to be verified once, in line with NHS Employment Check Standards, and for that verification to be trusted and reused across participating organisations within defined governance boundaries.
+
+By reducing duplication and enabling safe reuse of compliance information, the system aims to support faster workforce deployment, reduce administrative overhead, and improve the NHS's ability to respond to patient demand.
+
+This project will test whether a shared, trusted approach to compliance can be implemented safely and adopted in practice." oninput="updateWC(this,'wc01',300)" onchange="autosave('ta01')"></textarea>
+    </div>
+  </div>
+
+  <!-- S02 THE PROBLEM -->
+  <div class="section" id="s02">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">02 — The Problem</div>
+        <div class="section-title">Unmet need</div>
+        <div class="section-subtitle">~250 words · Frame as system failure, not people failure · Needs 2–3 real data points</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="02" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta02', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">NIHR guidance + what this needs</div>
+      <p>The deployment problem framing is solid. What is still missing: 2–3 specific data points from a named NHS source or published report. For example: average onboarding time, agency spend per trust, or percentage of unfilled bank shifts. Without these, the problem reads as assertion rather than evidence.</p>
+      <p>Key line: "The NHS does not just have a workforce shortage. It has a deployment problem. Capacity exists. The system cannot activate it fast enough."</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc02">0 words</span>
+      </div>
+      <textarea id="ta02" placeholder="The NHS has well-defined compliance requirements for employing healthcare staff: identity checks, right to work, qualifications and background checks. These are essential to patient safety.
+
+However, compliance processes are currently managed at an organisational level and are not transferable across trusts. This is not a failure of people. It is a failure of systems.
+
+As a result:
+— Healthcare professionals repeat the same checks each time they move between organisations
+— Compliance data cannot be consistently trusted across organisational boundaries
+— Onboarding is duplicated and time-consuming for staff and HR teams alike
+— Workforce mobility is constrained, even when staff are available and willing
+
+This creates a structural bottleneck. Staff may be fully compliant, but cannot be deployed quickly because there is no portable, trusted mechanism for organisations to confirm it.
+
+When healthcare staff cannot be deployed quickly and safely, services slow down, waiting times increase, and patients in the most vulnerable communities are impacted the most.
+
+There is currently no standardised mechanism for enabling compliance information to be reused safely across NHS organisations. Capacity exists. The system cannot activate it fast enough." oninput="updateWC(this,'wc02',250)" onchange="autosave('ta02')"></textarea>
+    </div>
+  </div>
+
+  <!-- S03 INNOVATION -->
+  <div class="section" id="s03">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">03 — The Innovation</div>
+        <div class="section-title">Compliance as infrastructure</div>
+        <div class="section-subtitle">~250 words · Strongest scoring section · Describe novelty clearly</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="03" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta03', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="callout-display">
+      <p>Compliance should not be a barrier to care. It should be the infrastructure that enables it.</p>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">NIHR guidance</div>
+      <p>Describe what it is, how it works, and what is genuinely new about it. Be specific — reviewers need to understand the three components: the portable profile, the governance framework, and the audit trail. State clearly why this is different from existing approaches.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc03">0 words</span>
+      </div>
+      <textarea id="ta03" placeholder="Azariah proposes a portable compliance profile built on a simple principle: staff should be verified once, and that verification should be trusted across participating organisations within defined governance boundaries.
+
+The solution has three core components:
+
+1. Structured Compliance Profile. A digital record containing verified compliance data — identity, right to work, DBS, employment history, mandatory training and occupational health clearance — maintained to a defined and auditable standard aligned to NHS Employment Check Standards.
+
+2. Trust and Governance Framework. Clear rules defining what can be reused, under what conditions, and how trust is established between participating organisations. Checks carry expiry dates and full audit trails. Trusts can accept, request a refresh, or add local checks above the baseline.
+
+3. Auditability and Assurance. Full traceability of who verified information, when it was verified, and whether it remains current. This is not blind trust — it is structured, auditable, and governed trust.
+
+This approach does not remove compliance requirements. It reduces duplication, maintains safety, and enables compliance to function across organisational boundaries. The innovation is structural: compliance as shared infrastructure rather than repeated local process." oninput="updateWC(this,'wc03',250)" onchange="autosave('ta03')"></textarea>
+    </div>
+  </div>
+
+  <!-- S04 PATIENT BENEFIT -->
+  <div class="section" id="s04">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">04 — Patient and NHS Benefit</div>
+        <div class="section-title">Who this helps and how</div>
+        <div class="section-subtitle">~200 words · Safety maintained, speed improved · Link benefits to specific users</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="04" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta04', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">NIHR guidance</div>
+      <p>THRIVE specifically targets health inequalities. Make sure this section names the underserved community or setting explicitly. Link each benefit to a specific user: patients, bank staff, HR teams, service managers. Avoid generic claims — reviewers look for specificity.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc04">0 words</span>
+      </div>
+      <textarea id="ta04" placeholder="When compliance systems are reliable and trusted, the whole system moves faster. Staff can be onboarded more quickly, vacancies can be filled sooner, and services can respond more effectively to patient demand.
+
+Azariah is expected to deliver:
+— Reduced delays in staffing high-pressure and critical services
+— Lower administrative burden on NHS HR and workforce teams
+— Improved utilisation of existing staff, reducing the need for last-minute agency cover
+— Stronger continuity of care through faster, more reliable deployment
+
+For patients, this means shorter waits, greater care continuity, and more resilient services. The impact is greatest in settings where delays in staffing directly affect patient outcomes, particularly those serving vulnerable or underserved communities.
+
+These benefits are achieved without lowering safety standards. Compliance remains aligned to NHS Employment Check Standards, with improved transparency and auditability throughout.
+
+The goal is not to make compliance easier to bypass. It is to make compliance easier to trust." oninput="updateWC(this,'wc04',200)" onchange="autosave('ta04')"></textarea>
+    </div>
+  </div>
+
+  <!-- S05 STAGE OF DEVELOPMENT -->
+  <div class="section" id="s05">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">05 — Stage of Development</div>
+        <div class="section-title">Where we are now</div>
+        <div class="section-subtitle">~150 words · State TRL explicitly · Be honest about what is and is not built yet</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="05" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta05', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">NIHR guidance</div>
+      <p>THRIVE requires TRL 3 as a minimum — experimental proof of concept. State your TRL clearly and explain what evidence you have. Be direct about what is built versus what will be built with the funding. Reviewers value honesty over overstatement.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc05">0 words</span>
+      </div>
+      <textarea id="ta05" placeholder="This project is at an early development stage (TRL 3). Work to date has focused on defining the problem, designing an initial model, and grounding the concept in NHS operational reality.
+
+Work completed to date includes:
+— Problem defined through direct engagement with NHS workforce and compliance challenges
+— Initial portable compliance model designed and aligned to NHS Employment Check Standards
+— Use case scoped: employment check reuse for bank and temporary staff across participating trusts
+— Phase 1 checks identified: identity and right to work, DBS, employment history, mandatory training, occupational health clearance
+
+The proposed project will validate feasibility, develop a working prototype, and test the approach with NHS partners in a real-world setting." oninput="updateWC(this,'wc05',150)" onchange="autosave('ta05')"></textarea>
+    </div>
+  </div>
+
+  <!-- S06 EVIDENCE -->
+  <div class="section" id="s06">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">06 — Evidence and Validation</div>
+        <div class="section-title">What we already know</div>
+        <div class="section-subtitle">~180 words · Needs named sources · 2–3 real data points still required</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-gap" data-section="06" onclick="cycleStatus(this)">Gap — needs data</button>
+        <button class="btn-copy" onclick="copySection('ta06', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">What is missing</div>
+      <p>The framing is right but this section needs supporting data from named NHS sources or published reports. Good options: NHS Workforce Statistics (NHS England), NHS Improvement agency spend reports, published research on onboarding delays, or a reference to the NHS Long Term Workforce Plan. Even 2–3 cited figures make this significantly more credible.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc06">0 words</span>
+      </div>
+      <textarea id="ta06" placeholder="There is strong existing evidence of systemic workforce inefficiency across the NHS: well-documented agency spend levels, delays in recruitment and onboarding, and fragmentation across workforce systems at trust and ICS level.
+
+[ADD: Specific data point — e.g. NHS agency spend figure from NHSI report, or published average onboarding time]
+
+The NHS spends an estimated £8bn to £10bn annually on agency and bank staff. Even modest inefficiencies in deployment — 10 to 20% — represent £800m to £2bn in avoidable annual cost.
+
+[ADD: Reference to NHS Employment Check Standards duplication evidence or published research]
+
+No standardised cross-organisational trust mechanism for compliance currently exists in the system.
+
+This project will generate new evidence on whether a portable compliance profile can reduce onboarding time, reduce duplicated checks, and improve staff and HR team confidence in deployment." oninput="updateWC(this,'wc06',180)" onchange="autosave('ta06')"></textarea>
+    </div>
+  </div>
+
+  <!-- S07 PROJECT PLAN -->
+  <div class="section" id="s07">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">07 — Project Plan</div>
+        <div class="section-title">How we will deliver this</div>
+        <div class="section-subtitle">~250 words · THRIVE is 9 months max · Three phases · Include success criteria</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-gap" data-section="07" onclick="cycleStatus(this)">Needs updating</button>
+        <button class="btn-copy" onclick="copySection('ta07', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">Important: duration correction</div>
+      <p>THRIVE funds up to £150,000 over 9 months — not 12–15 months as in the PDF draft. The project plan must be compressed. Compress Discovery to 2–3 months, Alpha to 3–4 months, Pilot to 2–3 months. The test question: can a clinician verified in Trust A be safely deployed in Trust B within 48–72 hours?</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc07">0 words</span>
+      </div>
+      <textarea id="ta07" placeholder="Duration: 9 months · Three phases
+
+Phase 1 — Discovery (Months 1–2)
+Engage NHS partners across HR, workforce and operational teams. Map current compliance and onboarding processes. Define the minimum viable compliance dataset for safe reuse. Confirm pilot setting: Band 5 bank nurses, 1–2 trusts.
+
+Phase 2 — Alpha Development (Months 3–6)
+Build a working prototype compliance profile. Define the trust and governance framework with partner organisations. Test usability, clarity and reliability in controlled settings. Iterate based on feedback from staff, HR teams and operational leads.
+
+Phase 3 — Pilot (Months 7–9)
+Deploy the prototype within 1–2 NHS organisations. Test reuse of compliance across organisational boundaries. Measure impact against baseline. Capture evidence to support wider adoption decisions.
+
+Test question: Can a clinician verified in Trust A be safely deployed in Trust B within 48–72 hours?
+
+Success criteria:
+— Demonstrated reduction in onboarding time (target: weeks to days)
+— Measurable reduction in duplicated compliance checks per staff member
+— Reduction in last-minute agency usage during the pilot period
+— Positive feedback from staff, HR teams and participating organisations
+— Clear evidence base to inform a decision on wider adoption" oninput="updateWC(this,'wc07',250)" onchange="autosave('ta07')"></textarea>
+    </div>
+  </div>
+
+  <!-- S08 IMPLEMENTATION -->
+  <div class="section" id="s08">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">08 — Implementation and Adoption</div>
+        <div class="section-title">How this gets used</div>
+        <div class="section-subtitle">~220 words · Named NHS partner needed here · Adoption credibility is a key scoring criterion</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-gap" data-section="08" onclick="cycleStatus(this)">Gap — needs NHS partner</button>
+        <button class="btn-copy" onclick="copySection('ta08', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">What is missing</div>
+      <p>This section needs a named NHS partner or at least a named organisation you are in conversation with. Without it, "adoption approach" reads as theoretical. Even naming the trust and the role of the person you have spoken to transforms this section. This is Priority 01 on the checklist.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc08">0 words</span>
+      </div>
+      <textarea id="ta08" placeholder="Initial use case: reuse of employment checks for bank and temporary staff moving across participating trusts. This is where cross-organisational movement is already common and the friction is well understood by HR teams.
+
+[ADD: Named NHS partner or organisation in conversation — e.g. 'We are in early discussions with [Trust Name], where the workforce team has confirmed that repeated onboarding checks are a material operational burden.']
+
+Adoption approach:
+— Start with one defined, low-risk use case with a small number of NHS partners
+— Establish agreed standards for what can be trusted and reused across organisations
+— Validate governance and assurance processes before expanding scope
+— Demonstrate measurable value before scaling to additional settings
+
+Key barriers and mitigations:
+— Organisational trust in externally verified data: clear governance model, full auditability, and co-design with participating organisations
+— Data sharing constraints: align to NHS data standards and existing legal frameworks from outset of discovery
+— Variation in local processes: minimum standard baseline, with flexibility for local requirements above it
+
+Adoption will be earned through demonstrated reliability, not assumed from the availability of the technology." oninput="updateWC(this,'wc08',220)" onchange="autosave('ta08')"></textarea>
+    </div>
+  </div>
+
+  <!-- S09 VALUE -->
+  <div class="section" id="s09">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">09 — Value for Money</div>
+        <div class="section-title">Why this is worth funding</div>
+        <div class="section-subtitle">~180 words · Include pilot-level saving estimate · Budget is up to £150k (£25k ring-fenced for training)</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="09" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta09', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc09">0 words</span>
+      </div>
+      <textarea id="ta09" placeholder="The NHS spends £8bn to £10bn annually on temporary staffing. A significant portion of this cost is driven by deployment friction: slow onboarding, duplicated checks, unfilled shifts. Workforce deployment inefficiencies are estimated to cost the NHS in the region of £3bn to £6bn per year.
+
+By enabling compliance to be verified once and reused safely:
+— Administrative effort per staff deployment is reduced
+— Time to onboard is shortened, improving responsiveness to demand
+— Existing staff capacity is better utilised, reducing avoidable agency dependency
+— A 10 to 15% improvement in deployment efficiency within a single organisation could translate to £5m to £15m annual value
+
+At pilot scale, even modest improvements in onboarding speed and agency reduction could demonstrate an annualised saving that significantly exceeds the cost of the intervention.
+
+This is a low-cost intervention addressing a structural inefficiency. It does not require new compliance obligations. It removes unnecessary duplication within existing ones." oninput="updateWC(this,'wc09',180)" onchange="autosave('ta09')"></textarea>
+    </div>
+  </div>
+
+  <!-- S10 COMMERCIALISATION -->
+  <div class="section" id="s10">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">10 — Commercialisation and Scaling</div>
+        <div class="section-title">Route beyond the project</div>
+        <div class="section-subtitle">~150 words · IP ownership must be addressed · Route to market needed</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-gap" data-section="10" onclick="cycleStatus(this)">Gap — IP and route to market</button>
+        <button class="btn-copy" onclick="copySection('ta10', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">What is missing</div>
+      <p>NIHR specifically scores IP strategy and commercialisation pathway. You need to state: who owns the IP, what the intended route to market is (subscription, NHS procurement framework, spin-out, licence), and what the plan is if THRIVE funding ends. Even an early-stage answer is expected — vagueness on IP is a common reason applications are downgraded.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc10">0 words</span>
+      </div>
+      <textarea id="ta10" placeholder="[ADD: Who owns the IP — Azariah, the lead organisation, jointly?]
+
+Azariah will be developed as a sustainable digital service, with scaling grounded in demonstrated pilot value.
+
+Route to market:
+— Initial deployment within NHS partner organisations following a successful pilot
+— Expansion across trusts and regions based on pilot evidence
+— Alignment with existing NHS workforce and digital transformation strategies
+
+[ADD: Specific route — e.g. 'We intend to commercialise through a subscription model for participating NHS organisations, with potential integration into existing workforce management platforms. Spin-out / licence is also being considered.']
+
+Sustainability after THRIVE: [ADD specific plan]" oninput="updateWC(this,'wc10',150)" onchange="autosave('ta10')"></textarea>
+    </div>
+  </div>
+
+  <!-- S11 TEAM -->
+  <div class="section" id="s11">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">11 — Team and Capability</div>
+        <div class="section-title">Who is delivering this</div>
+        <div class="section-subtitle">~150 words · Name individuals · State relevant NHS experience directly</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-gap" data-section="11" onclick="cycleStatus(this)">Gap — needs names</button>
+        <button class="btn-copy" onclick="copySection('ta11', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">What is missing</div>
+      <p>The current draft is deliberately high-level. Before submission: add Jok (founder, [relevant background]), Jeff (delivery, [relevant background]), Jun (CTO, [relevant background]). If there are any clinical or compliance advisors involved, name them here. State any prior NHS digital delivery experience directly — this is what assessors look for.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc11">0 words</span>
+      </div>
+      <textarea id="ta11" placeholder="[Lead applicant name] — [Role] · [Relevant NHS/healthtech/compliance experience]
+[Co-applicant name] — [Role] · [Relevant experience]
+[Technical lead name] — [Role, e.g. CTO] · [Technical background]
+
+[ADD: Any clinical advisor, compliance specialist, or NHS partner lead who is involved in the project]
+
+The team brings direct experience in NHS digital delivery, operational service design, and the implementation of systems in complex health environments. Core strengths include:
+— NHS digital delivery and user-centred service design
+— Workforce process improvement in health settings
+— Compliance domain knowledge and clinical governance
+
+The project will be supported by NHS partners providing domain expertise, a technical team for prototype development, and specialist compliance and governance input as required.
+
+Gaps: [Acknowledge any gaps and how they will be filled — e.g. 'We will engage a clinical compliance advisor during the discovery phase']" oninput="updateWC(this,'wc11',150)" onchange="autosave('ta11')"></textarea>
+    </div>
+  </div>
+
+  <!-- S12 PPIE -->
+  <div class="section" id="s12">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">12 — Patient and Public Involvement (PPIE)</div>
+        <div class="section-title">How patients shape this</div>
+        <div class="section-subtitle">~150 words · Mandatory · Must be a plan, not an intention · Scored heavily</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-gap" data-section="12" onclick="cycleStatus(this)">Gap — needs specific plan</button>
+        <button class="btn-copy" onclick="copySection('ta12', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-label">What is missing</div>
+      <p>Applications with weak PPIE are regularly downgraded. You need to name: (1) the patient or public group you will engage, (2) the mechanism — patient panel, interviews, advisory group, or involvement in a specific NHS patient group, and (3) the exact project points where involvement will happen (discovery, prototype review, pilot feedback). The current draft states intent. This needs to be a plan.</p>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc12">0 words</span>
+      </div>
+      <textarea id="ta12" placeholder="[ADD: Name the patient/public group — e.g. 'We will engage patients from [specific community or setting] who have experience of delayed care due to staffing gaps']
+
+[ADD: Mechanism — e.g. 'Through [named patient panel / interviews / existing NHS patient group at partner trust]']
+
+Involvement will focus on three areas:
+— Understanding how delays in workforce availability affect patient experience, particularly in high-pressure and underserved settings
+— Defining what good looks like from a patient perspective: timely, continuous care
+— Reviewing pilot outputs and providing feedback on real-world outcomes at [specific project point, e.g. Month 6]
+
+[ADD: PPIE Lead — name the person responsible for managing PPIE within the project]
+
+PPIE findings will be documented, shared with NHS partners, and used directly to inform design and prioritisation throughout the project." oninput="updateWC(this,'wc12',150)" onchange="autosave('ta12')"></textarea>
+    </div>
+  </div>
+
+  <!-- S13 EDI -->
+  <div class="section" id="s13">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">13 — Equality, Diversity and Inclusion</div>
+        <div class="section-title">Equity by design</div>
+        <div class="section-subtitle">~120 words · THRIVE focuses on health inequalities — this section matters more here than in other i4i calls</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="13" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta13', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc13">0 words</span>
+      </div>
+      <textarea id="ta13" placeholder="Faster, safer workforce deployment is not a neutral benefit. Its effects are most significant where care gaps are already widest.
+
+The project will prioritise settings where delays in staffing have the greatest impact on underserved or vulnerable groups. This includes:
+— Priority given to services where staffing delays most impact patients in underserved communities
+— Inclusive design for both staff and patients, with attention to access and usability across diverse groups
+— Differential impact monitored throughout the pilot phase
+— Any risks of differential impact identified and addressed during the governance framework development
+
+We recognise that the workforce delivering care in underserved areas is itself often from underrepresented communities. The project will consider how portability of compliance profiles could specifically reduce friction for staff who work across multiple trusts." oninput="updateWC(this,'wc13',120)" onchange="autosave('ta13')"></textarea>
+    </div>
+  </div>
+
+  <!-- S14 RISKS -->
+  <div class="section" id="s14">
+    <div class="section-header">
+      <div class="section-meta">
+        <div class="section-num">14 — Risks and Mitigation</div>
+        <div class="section-title">What could go wrong</div>
+        <div class="section-subtitle">~150 words · Each risk needs a specific mitigation — not a generic one</div>
+      </div>
+      <div class="section-controls">
+        <button class="status-badge status-wip" data-section="14" onclick="cycleStatus(this)">Draft done</button>
+        <button class="btn-copy" onclick="copySection('ta14', this)">Copy text</button>
+      </div>
+    </div>
+    <div class="field-wrap">
+      <div class="field-label">
+        <span>Your answer</span>
+        <span class="word-count" id="wc14">0 words</span>
+      </div>
+      <textarea id="ta14" placeholder="Risk 1: Organisations do not trust compliance verified elsewhere.
+Mitigation: Clear governance model with full auditability, limited initial scope, and demonstrated reliability before any expansion. Co-design with participating organisations from the outset.
+
+Risk 2: Data sharing constraints prevent progress.
+Mitigation: Align to NHS data standards and existing legal frameworks from the outset of discovery. Engage NHS legal and information governance leads early.
+
+Risk 3: Variation in local compliance processes creates implementation barriers.
+Mitigation: Define a minimum standard baseline aligned to NHS Employment Check Standards. Allow flexibility for local requirements above that baseline.
+
+Risk 4: Limited adoption beyond early partners.
+Mitigation: Evidence-led expansion only. No premature scaling. Demonstrate measurable value at pilot scale before approaching additional organisations.
+
+Risk 5: Technical complexity in prototype development causes delay.
+Mitigation: Start simple. Build incrementally based on what works in practice with real users. Scope Phase 2 tightly to the minimum viable compliance profile." oninput="updateWC(this,'wc14',150)" onchange="autosave('ta14')"></textarea>
+    </div>
+  </div>
+
+  <!-- BOTTOM PADDING -->
+  <div style="height:40px;"></div>
+
+</main>
+
+<!-- SAVED INDICATOR -->
+<div class="saved-indicator" id="saved-indicator">Saved to browser</div>
+
+<script>
+  const SECTIONS = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14'];
+  const STATUS_CYCLE = ['gap','wip','done','submitted'];
+  const STATUS_LABELS = {
+    gap:       'Gap',
+    wip:       'Draft done',
+    done:      'Ready for RMS',
+    submitted: 'Submitted to RMS'
+  };
+  const STATUS_CLASSES = {
+    gap:       'status-gap',
+    wip:       'status-wip',
+    done:      'status-done',
+    submitted: 'status-submitted'
+  };
+
+  // ── LOAD SAVED DATA ───────────────────────────────────
+  function loadSaved() {
+    SECTIONS.forEach(id => {
+      const ta = document.getElementById('ta' + id);
+      const saved = localStorage.getItem('thrive_ta' + id);
+      if (saved && ta) {
+        ta.value = saved;
+        ta.classList.add('has-content');
+        updateWC(ta, 'wc' + id, getTarget(id));
+      }
+      const status = localStorage.getItem('thrive_status' + id);
+      if (status) {
+        const btn = document.querySelector('[data-section="' + id + '"]');
+        if (btn) applyStatus(btn, status);
+      }
+    });
+    updateProgress();
+  }
+
+  function getTarget(id) {
+    const targets = {
+      '01':300,'02':250,'03':250,'04':200,'05':150,
+      '06':180,'07':250,'08':220,'09':180,'10':150,
+      '11':150,'12':150,'13':120,'14':150
+    };
+    return targets[id] || 200;
+  }
+
+  // ── AUTOSAVE ──────────────────────────────────────────
+  function autosave(id) {
+    const ta = document.getElementById(id);
+    if (!ta) return;
+    localStorage.setItem('thrive_' + id, ta.value);
+    ta.classList.toggle('has-content', ta.value.trim().length > 0);
+    showSaved();
+    updateProgress();
+  }
+
+  function saveAll() {
+    SECTIONS.forEach(id => autosave('ta' + id));
+    showSaved();
+  }
+
+  function showSaved() {
+    const el = document.getElementById('saved-indicator');
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2000);
+  }
+
+  // ── WORD COUNT ────────────────────────────────────────
+  function updateWC(ta, wcId, target) {
+    const words = ta.value.trim() === '' ? 0 : ta.value.trim().split(/\s+/).length;
+    const el = document.getElementById(wcId);
+    if (!el) return;
+    el.textContent = words + ' / ' + target + ' words';
+    el.className = 'word-count';
+    if (words > target) el.classList.add('over');
+    else if (words > target * 0.9) el.classList.add('near');
+  }
+
+  // ── STATUS CYCLE ──────────────────────────────────────
+  function cycleStatus(btn) {
+    const sectionId = btn.dataset.section;
+    const current = btn.dataset.status || getCurrentStatus(btn);
+    const idx = STATUS_CYCLE.indexOf(current);
+    const next = STATUS_CYCLE[(idx + 1) % STATUS_CYCLE.length];
+    applyStatus(btn, next);
+    localStorage.setItem('thrive_status' + sectionId, next);
+    updateProgress();
+  }
+
+  function getCurrentStatus(btn) {
+    if (btn.classList.contains('status-gap'))       return 'gap';
+    if (btn.classList.contains('status-done'))      return 'done';
+    if (btn.classList.contains('status-submitted')) return 'submitted';
+    return 'wip';
+  }
+
+  function applyStatus(btn, status) {
+    btn.className = 'status-badge ' + STATUS_CLASSES[status];
+    btn.textContent = STATUS_LABELS[status];
+    btn.dataset.status = status;
+    const sectionId = btn.dataset.section;
+    const dot = document.getElementById('dot-' + sectionId);
+    if (dot) {
+      dot.className = 'nav-dot ' + status;
+    }
+    // Lock textarea if submitted
+    const ta = document.getElementById('ta' + sectionId);
+    if (ta) {
+      ta.readOnly = (status === 'submitted');
+      ta.style.opacity = (status === 'submitted') ? '0.65' : '';
+      ta.style.cursor = (status === 'submitted') ? 'not-allowed' : '';
+      ta.title = (status === 'submitted') ? 'Submitted to RMS — click status to unlock' : '';
+    }
+  }
+
+  // ── PROGRESS ──────────────────────────────────────────
+  function updateProgress() {
+    let done = 0;
+    let gaps = 0;
+    let submitted = 0;
+    SECTIONS.forEach(id => {
+      const btn = document.querySelector('[data-section="' + id + '"]');
+      const current = btn ? getCurrentStatus(btn) : (localStorage.getItem('thrive_status' + id) || 'gap');
+      if (current === 'done' || current === 'submitted') done++;
+      if (current === 'submitted') submitted++;
+      if (current === 'gap') gaps++;
+    });
+    const pct = Math.round((done / SECTIONS.length) * 100);
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('progress-fill').style.width = pct + '%';
+
+    const badge = document.getElementById('gaps-badge');
+    if (submitted === SECTIONS.length) {
+      badge.textContent = 'All sections submitted';
+      badge.className = 'topbar-badge';
+    } else if (gaps === 0) {
+      badge.textContent = submitted > 0 ? submitted + ' of 14 submitted to RMS' : 'All gaps resolved';
+      badge.className = 'topbar-badge';
+    } else {
+      badge.textContent = gaps + ' gap' + (gaps === 1 ? '' : 's') + ' remaining';
+      badge.className = 'topbar-badge warn';
+    }
+  }
+
+  // ── COPY SECTION ──────────────────────────────────────
+  function copySection(taId, btn) {
+    const ta = document.getElementById(taId);
+    if (!ta) return;
+    navigator.clipboard.writeText(ta.value).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy text';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  // ── NAV ACTIVE ────────────────────────────────────────
+  function setActive(el) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Scroll spy
+  function updateActiveNav() {
+    const sections = document.querySelectorAll('.section[id]');
+    let current = '';
+    sections.forEach(s => {
+      if (s.getBoundingClientRect().top < 120) current = s.id;
+    });
+    if (current) {
+      document.querySelectorAll('.nav-item').forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#' + current);
+      });
+    }
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+  // ── INIT ──────────────────────────────────────────────
+  loadSaved();
+</script>
+
+</body>
+</html>

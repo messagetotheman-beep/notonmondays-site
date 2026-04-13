@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Not On Mondays — Our Story</title>
+<meta name="description" content="Why Not On Mondays exists — the story behind the name, the people, and the conviction that ambitious businesses deserve better.">
+<link rel="canonical" href="https://www.notonmondays.com/why-not-on-mondays">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #1a2ad4;
+  --deep-blue: #0d1880;
+  --off-white: #f2f0e8;
+  --light-blue: #bfc6f0;
+  --dark: #111124;
+  --mid: #2a2a4a;
+  --muted: #8a8fa8;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+
+.nav-logo {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+}
+
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+
+.nav-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; opacity: 0.7; }
+.nav-descriptor span { font-family: 'DM Mono', monospace; font-size: 0.52rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(17,17,36,0.35); display: block; line-height: 1; }
+
+.nav-back { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; }
+.nav-back:hover { color: var(--blue); }
+
+.nav-cta { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 0.65rem 1.4rem; text-decoration: none; transition: background 0.3s ease; }
+.nav-cta:hover { background: var(--deep-blue); }
+
+/* HERO */
+.page-hero {
+  padding-top: 72px;
+  background: var(--dark);
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,42,212,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 2rem; }
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 300;
+  line-height: 0.95;
+  color: var(--off-white);
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+.hero-title em { font-style: italic; color: var(--light-blue); }
+
+.hero-sub {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: rgba(242,240,232,0.5);
+  font-weight: 300;
+  max-width: 520px;
+}
+
+/* SECTIONS */
+.story-section { padding: 8rem 4rem; max-width: 1100px; margin: 0 auto; }
+
+.story-grid { display: grid; grid-template-columns: 200px 1fr; gap: 6rem; margin-bottom: 6rem; }
+.story-grid:last-child { margin-bottom: 0; }
+
+.story-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); padding-top: 0.4rem; }
+
+.story-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.1; color: var(--dark); margin-bottom: 2rem; }
+.story-title em { font-style: italic; color: var(--blue); }
+
+.story-body { font-size: 0.92rem; line-height: 1.9; color: var(--mid); font-weight: 300; margin-bottom: 1.5rem; }
+
+/* DARK BAND */
+.dark-band { background: var(--dark); padding: 8rem 4rem; }
+.dark-band-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
+
+.dark-band-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.1; color: var(--off-white); margin-bottom: 2rem; }
+.dark-band-title em { font-style: italic; color: var(--light-blue); }
+
+.dark-band-body { font-size: 0.9rem; line-height: 1.9; color: rgba(242,240,232,0.5); font-weight: 300; margin-bottom: 1.5rem; }
+
+.credential { border-left: 2px solid var(--blue); padding-left: 2.5rem; }
+.credential-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: var(--blue); line-height: 1; margin-bottom: 0.8rem; }
+.credential-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 1.2rem; }
+.credential-body { font-size: 0.88rem; line-height: 1.85; color: rgba(242,240,232,0.45); font-weight: 300; }
+
+/* CTA */
+.cta-band { background: var(--blue); padding: 6rem 4rem; text-align: center; }
+.cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 300; color: #fff; margin-bottom: 2.5rem; line-height: 1.15; }
+.cta-title em { font-style: italic; color: rgba(255,255,255,0.6); }
+.cta-btn { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); background: var(--off-white); padding: 1rem 2.5rem; text-decoration: none; display: inline-block; transition: background 0.3s ease; }
+.cta-btn:hover { background: #fff; }
+
+/* FOOTER */
+footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 2.5rem; list-style: none; }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover { color: rgba(255,255,255,0.6); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.15); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-descriptor, .nav-divider { display: none; }
+  .page-hero { padding: 6rem 1.5rem 4rem; }
+  .story-section { padding: 5rem 1.5rem; }
+  .story-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .dark-band { padding: 6rem 1.5rem; }
+  .dark-band-inner { grid-template-columns: 1fr; gap: 4rem; }
+  .cta-band { padding: 5rem 1.5rem; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="notonmondays.html" class="nav-logo">
+    <div class="nav-logo-initials">
+      <span class="nom-initial fade-1">n</span>
+      <span class="nom-initial fade-2">o</span>
+      <span class="nom-initial landing">m</span>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-descriptor">
+      <span>The</span>
+      <span>Operating</span>
+      <span>Partner</span>
+    </div>
+  </a>
+  <a href="notonmondays.html" class="nav-back">← Back</a>
+  <a href="notonmondays.html#contact" class="nav-cta">Start a conversation</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-eyebrow">Why Not On Mondays?</div>
+  <h1 class="hero-title">Mondays got <em>broken</em><br>somewhere along<br>the way.</h1>
+  <p class="hero-sub">The story behind the name, the conviction behind the work, and why we believe ambitious businesses deserve something genuinely different.</p>
+</div>
+
+<div class="story-section">
+  <div class="story-grid">
+    <div class="story-label">The Name</div>
+    <div>
+      <h2 class="story-title">It's not about <em>avoiding Mondays.</em></h2>
+      <p class="story-body">The weekend creates distance. By Monday morning, inboxes are full, decisions have reset, and half the day is spent reconstructing last week before anyone can move forward. The operating headspace you planned for never quite arrives.</p>
+      <p class="story-body">Not On Mondays isn't a rejection of the working week. It's a rejection of the patterns that make it so hard to actually lead. The noise that drowns out the important. The reactive mode that crowds out the strategic. The busyness that masquerades as progress.</p>
+      <p class="story-body">We're built around reclaiming that. Less noise, more momentum. The systems, rhythms, and clarity that mean Mondays stop being a recovery exercise and start being the day you actually lead.</p>
+    </div>
+  </div>
+
+  <div class="story-grid">
+    <div class="story-label">The Conviction</div>
+    <div>
+      <h2 class="story-title">The best people we've worked with were <em>consistently underserved.</em></h2>
+      <p class="story-body">Not On Mondays exists because of a pattern we kept seeing. Extraordinary people — sharp, driven, building something real — surrounded by support that didn't match their ambition.</p>
+      <p class="story-body">Agencies that didn't understand their world. Consultants who delivered decks and disappeared. Advisors with opinions but no skin in the game. The gap between what these people needed and what was available to them was glaring.</p>
+      <p class="story-body">So we built the thing we kept wishing existed. A collective of operators, strategists, and builders who actually embed. Who get in the work and stay in the work. The critical friend every leader needs but rarely finds.</p>
+    </div>
+  </div>
+
+  <div class="story-grid">
+    <div class="story-label">How We Work</div>
+    <div>
+      <h2 class="story-title">Embedded, not <em>parachuted.</em></h2>
+      <p class="story-body">The difference between advice and real change is proximity. Anyone can observe from the outside and tell you what they see. Very few people are willing to get inside the machine, understand how it actually works, and help you build it into something better.</p>
+      <p class="story-body">That's what we do. We don't hand over a report. We sit alongside you. We attend the meetings. We understand the politics. We know the history. And because of that, what we build actually lands — rather than gathering dust in a shared drive somewhere.</p>
+    </div>
+  </div>
+</div>
+
+<div class="dark-band">
+  <div class="dark-band-inner">
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--light-blue);margin-bottom:2rem;">The Experience</div>
+      <h2 class="dark-band-title">We understand how change <em>actually lands.</em></h2>
+      <p class="dark-band-body">Not how it's planned. Not how it looks in the slide. How it actually lands — on real people, in real organisations, with all the friction and politics and competing priorities that no consulting framework accounts for.</p>
+      <p class="dark-band-body">That understanding comes from doing it. Repeatedly. Across sectors and scales that most operators never see in a single career.</p>
+    </div>
+    <div class="credential">
+      <div class="credential-num">20+</div>
+      <div class="credential-label">Years of doing the actual work</div>
+      <p class="credential-body">Organisational design, digital product, and business operations across UK public services, private practices, US product companies, and high-growth startups. We've seen what works, what doesn't, and why the gap between the two is almost never what people expect.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2 class="cta-title">Ready to work with<br><em>people who get it?</em></h2>
+  <a href="notonmondays.html#contact" class="cta-btn">Start a conversation →</a>
+</div>
+
+<footer>
+  <a href="notonmondays.html" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;">m</span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="notonmondays.html#offerings">Offerings</a></li>
+    <li><a href="notonmondays.html#ai">AI</a></li>
+    <li><a href="notonmondays.html#case-studies">Work</a></li>
+    <li><a href="notonmondays.html#contact">Contact</a></li>
+    <li><a href="net-zero.html">Net Zero Policy</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 notonmondays.com</span>
+</footer>
+
+</body>
+</html>

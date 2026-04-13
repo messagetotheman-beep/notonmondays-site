@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Azariah — Clinical Compliance</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:       #003087;
+    --nhs-blue:   #005EB8;
+    --mid-blue:   #378ADD;
+    --light-blue: #B5D4F4;
+    --pale-blue:  #E8F1FA;
+    --white:      #ffffff;
+    --body-text:  rgba(0,48,135,0.72);
+    --muted:      rgba(0,48,135,0.42);
+    --border:     rgba(0,94,184,0.14);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+
+  .nav-logo-text { display: flex; flex-direction: column; gap: 1px; line-height: 1; }
+
+  .nav-logo-wordmark { font-size: 15px; font-weight: 300; color: var(--navy); letter-spacing: -0.2px; }
+  .nav-logo-wordmark strong { font-weight: 600; }
+
+  .nav-logo-descriptor {
+    font-size: 7px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--nhs-blue); opacity: 0.7;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+  .nav-links a { font-size: 0.875rem; font-weight: 400; color: var(--body-text); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-cta {
+    background: var(--navy) !important; color: var(--white) !important;
+    padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--nhs-blue) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 8rem 2rem 6rem;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-hex-bg {
+    position: absolute; top: -80px; right: -80px;
+    opacity: 0.05; pointer-events: none;
+  }
+
+  .hero-inner { max-width: 1080px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--mid-blue); margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 300; line-height: 1.1; letter-spacing: -0.8px;
+    color: var(--white); max-width: 760px; margin-bottom: 1.5rem;
+  }
+  .hero h1 strong { font-weight: 600; }
+
+  .hero-rule { width: 56px; height: 2px; background: var(--nhs-blue); margin-bottom: 1.75rem; }
+
+  .hero-sub {
+    font-size: 1.0625rem; font-weight: 300;
+    color: rgba(255,255,255,0.58); max-width: 520px; line-height: 1.8; margin-bottom: 2.5rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block; padding: 0.8125rem 1.75rem;
+    background: var(--nhs-blue); color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9375rem; font-weight: 500;
+    text-decoration: none; border-radius: 6px; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--mid-blue); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block; padding: 0.8125rem 1.75rem;
+    border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.75);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9375rem; font-weight: 300;
+    text-decoration: none; border-radius: 6px; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+  /* STAT BAR */
+  .stat-bar {
+    background: var(--pale-blue);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 2.25rem 2rem;
+  }
+
+  .stat-bar-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+
+  .stat-bar-item { padding-left: 1.5rem; border-left: 2px solid var(--nhs-blue); }
+
+  .stat-bar-num {
+    font-size: 1.875rem; font-weight: 300;
+    color: var(--navy); line-height: 1; margin-bottom: 0.25rem; letter-spacing: -0.5px;
+  }
+  .stat-bar-num strong { font-weight: 600; }
+
+  .stat-bar-label { font-size: 0.8125rem; font-weight: 400; color: var(--body-text); line-height: 1.5; }
+
+  /* SECTIONS */
+  section { padding: 5.5rem 2rem; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--nhs-blue); margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(1.625rem, 3vw, 2.375rem); font-weight: 300;
+    color: var(--navy); line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 1rem;
+  }
+  .section-title strong { font-weight: 600; }
+
+  .section-lead {
+    font-size: 1rem; font-weight: 300; color: var(--body-text);
+    max-width: 580px; line-height: 1.8;
+  }
+
+  /* WHAT WE DO */
+  #what-we-do { background: var(--white); }
+
+  .mission-block {
+    background: var(--navy); border-radius: 14px; padding: 3rem 3.5rem;
+    margin: 3rem 0; position: relative; overflow: hidden;
+  }
+
+  .mission-block::before {
+    content: '"'; position: absolute; top: -1.5rem; right: 2.5rem;
+    font-size: 12rem; line-height: 1; color: rgba(0,94,184,0.2);
+    font-weight: 300; pointer-events: none;
+  }
+
+  .mission-block p {
+    font-size: clamp(1.0625rem, 2.2vw, 1.375rem); font-weight: 300;
+    line-height: 1.7; color: var(--white); max-width: 680px; position: relative; z-index: 1;
+  }
+  .mission-block p strong { font-weight: 600; }
+  .mission-block p em { font-style: italic; color: rgba(255,255,255,0.5); }
+
+  .capabilities { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+
+  .capability-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.75rem; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .capability-card:hover { border-color: var(--light-blue); box-shadow: 0 4px 20px rgba(0,48,135,0.07); }
+
+  .capability-icon {
+    width: 38px; height: 38px; background: var(--pale-blue); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 1.125rem;
+  }
+  .capability-icon svg { width: 18px; height: 18px; color: var(--nhs-blue); }
+
+  .capability-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+  .capability-card p { font-size: 0.9rem; font-weight: 300; color: var(--body-text); line-height: 1.75; }
+
+  /* WHO WE SERVE */
+  #who-we-serve { background: var(--pale-blue); }
+
+  .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
+
+  .audience-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+
+  .audience-card h3 { font-size: 1.0625rem; font-weight: 600; color: var(--navy); margin-bottom: 0.625rem; }
+  .audience-card p { font-size: 0.9rem; font-weight: 300; color: var(--body-text); line-height: 1.8; margin-bottom: 1.25rem; }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+  .tag {
+    font-size: 0.75rem; font-weight: 500; color: var(--nhs-blue);
+    background: var(--pale-blue); padding: 0.25rem 0.625rem;
+    border-radius: 100px; border: 1px solid var(--light-blue); letter-spacing: 0.2px;
+  }
+
+  /* VALUES */
+  .values-strip { background: var(--navy); padding: 5.5rem 2rem; }
+
+  .values-strip-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+
+  .values-strip .section-label { color: var(--mid-blue); }
+  .values-strip .section-title { color: var(--white); }
+  .values-strip .section-lead { color: rgba(255,255,255,0.52); max-width: none; }
+
+  .values-list { display: flex; flex-direction: column; gap: 1.125rem; }
+
+  .value-item {
+    display: grid; grid-template-columns: 28px 1fr; gap: 1rem;
+    padding-bottom: 1.125rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .value-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .value-num { font-size: 10px; font-weight: 500; color: var(--nhs-blue); padding-top: 0.2rem; letter-spacing: 1px; }
+
+  .value-content h4 { font-size: 0.9375rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+  .value-content p { font-size: 0.8125rem; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.6; font-style: italic; }
+
+  /* ABOUT */
+  #about { background: var(--white); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+
+  .about-text p { font-size: 0.9375rem; font-weight: 300; color: var(--body-text); line-height: 1.85; margin-bottom: 1.125rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { font-weight: 600; color: var(--navy); }
+
+  .about-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+
+  .stats-panel { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+
+  .stats-panel-stat {
+    padding: 1.375rem 1.75rem; border-bottom: 1px solid var(--border);
+    display: flex; gap: 1.25rem; align-items: flex-start;
+  }
+  .stats-panel-stat:last-child { border-bottom: none; }
+
+  .stat-val { font-size: 1.75rem; font-weight: 300; color: var(--navy); line-height: 1; white-space: nowrap; min-width: 80px; letter-spacing: -0.4px; }
+  .stat-val strong { font-weight: 600; }
+
+  .stat-desc { font-size: 0.8125rem; font-weight: 300; color: var(--body-text); line-height: 1.55; padding-top: 0.25rem; }
+
+  .nhs-callout { background: var(--navy); border-radius: 14px; padding: 1.75rem; }
+
+  .nhs-logo-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.875rem; }
+
+  .nhs-badge {
+    background: var(--nhs-blue); color: var(--white); font-size: 0.875rem;
+    font-weight: 700; padding: 0.25rem 0.625rem; border-radius: 4px; letter-spacing: 0.03em;
+  }
+
+  .nhs-badge-label { font-size: 0.8125rem; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+
+  .nhs-callout p { font-size: 0.875rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.75; }
+  .nhs-callout strong { color: var(--white); font-weight: 500; }
+
+  /* CONTACT */
+  #contact { background: var(--navy); padding: 5.5rem 2rem; }
+
+  #contact .section-label { color: var(--mid-blue); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-lead { color: rgba(255,255,255,0.55); }
+
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 0.875rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+
+  .form-group label { font-size: 0.8125rem; font-weight: 400; color: rgba(255,255,255,0.45); letter-spacing: 0.3px; }
+
+  .form-group input, .form-group select, .form-group textarea {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 6px; padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9375rem; font-weight: 300;
+    color: var(--white); outline: none; transition: border-color 0.2s, background 0.2s;
+    width: 100%; -webkit-appearance: none;
+  }
+
+  .form-group select option { background: var(--navy); }
+
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--nhs-blue); background: rgba(255,255,255,0.09);
+  }
+
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.22); }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+
+  .form-submit {
+    background: var(--nhs-blue); color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9375rem; font-weight: 500;
+    padding: 0.8125rem 1.75rem; border: none; border-radius: 6px;
+    cursor: pointer; transition: background 0.2s, transform 0.15s; align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--mid-blue); transform: translateY(-1px); }
+
+  .contact-info { display: flex; flex-direction: column; }
+
+  .contact-detail { padding: 1.375rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .contact-detail:first-child { padding-top: 0; }
+  .contact-detail:last-child { border-bottom: none; }
+
+  .contact-detail h4 {
+    font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 0.375rem;
+  }
+
+  .contact-detail p, .contact-detail a {
+    font-size: 0.9375rem; font-weight: 300; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.65;
+  }
+  .contact-detail a:hover { color: var(--light-blue); }
+
+  /* FOOTER */
+  footer { background: var(--navy); border-top: 3px solid var(--nhs-blue); padding: 1.5rem 2rem; }
+
+  .footer-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .footer-wordmark { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.6); }
+  .footer-wordmark strong { font-weight: 600; color: rgba(255,255,255,0.85); }
+
+  footer p { font-size: 0.75rem; font-weight: 300; color: rgba(255,255,255,0.3); }
+
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.75rem; font-weight: 300; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.6); }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--navy); }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .hamburger { display: flex; }
+
+    .nav-links {
+      display: none; position: absolute; top: 64px; left: 0; right: 0;
+      background: var(--white); flex-direction: column;
+      padding: 1rem 2rem 1.5rem; border-bottom: 1px solid var(--border); gap: 1rem;
+    }
+    .nav-links.open { display: flex; }
+
+    .stat-bar-inner, .audience-grid, .about-grid,
+    .contact-layout, .values-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+    .form-row { grid-template-columns: 1fr; }
+    .mission-block { padding: 2rem; }
+    section, .values-strip, #contact { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" rx="12" fill="#003087"/>
+        <polygon points="36,10 58,23 58,49 36,62 14,49 14,23" fill="rgba(255,255,255,0.08)" stroke="white" stroke-width="1.6"/>
+        <line x1="36" y1="23" x2="36" y2="49" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="18" y1="33" x2="54" y2="43" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="54" y1="33" x2="18" y2="43" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="36" cy="38" r="5" fill="white"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="nav-logo-wordmark">The <strong>Azariah</strong></span>
+        <span class="nav-logo-descriptor">Clinical Compliance</span>
+      </div>
+    </a>
+    <button class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#what-we-do">What we do</a></li>
+      <li><a href="#who-we-serve">Who we serve</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-hex-bg" width="700" height="700" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="300,30 510,155 510,405 300,530 90,405 90,155" fill="none" stroke="white" stroke-width="1.5"/>
+    <polygon points="300,100 445,182 445,348 300,430 155,348 155,182" fill="none" stroke="white" stroke-width="1"/>
+    <polygon points="300,170 378,214 378,302 300,346 222,302 222,214" fill="none" stroke="white" stroke-width="0.6"/>
+    <line x1="300" y1="155" x2="300" y2="405" stroke="white" stroke-width="0.6"/>
+    <line x1="118" y1="255" x2="482" y2="305" stroke="white" stroke-width="0.6"/>
+    <line x1="482" y1="255" x2="118" y2="305" stroke="white" stroke-width="0.6"/>
+    <circle cx="300" cy="280" r="18" fill="white" opacity="0.1"/>
+    <circle cx="300" cy="280" r="8" fill="white" opacity="0.18"/>
+  </svg>
+  <div class="hero-inner">
+    <p class="eyebrow">NHS workforce compliance technology</p>
+    <div class="hero-rule"></div>
+    <h1>The NHS has nearly 103,000 vacancies. <strong>Compliance shouldn't be adding to the pressure.</strong></h1>
+    <p class="hero-sub">Azariah helps NHS trusts and healthcare providers take the weight off workforce compliance — automating the checks, paperwork, and audit trails that too often fall on already-stretched teams.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#what-we-do" class="btn-outline">What we do</a>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat-bar-item">
+      <div class="stat-bar-num"><strong>103,000</strong></div>
+      <div class="stat-bar-label">NHS vacancies. Compliance admin slows every placement.</div>
+    </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num"><strong>9.9%</strong></div>
+      <div class="stat-bar-label">Annual NHS workforce turnover means compliance checks never stop.</div>
+    </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num"><strong>1%</strong> min</div>
+      <div class="stat-bar-label">Cost reduction required from all NHS trusts in 2025/26.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<section id="what-we-do">
+  <div class="section-inner">
+    <p class="section-label">Our purpose</p>
+    <h2 class="section-title">The NHS is under pressure to do more with less. <strong>We help with the systems part.</strong></h2>
+    <p class="section-lead">NHS England's 2025/26 guidance requires trusts to reduce costs by at least 1% and improve productivity by 4%. Workforce compliance done manually works against both goals. Azariah automates the checks, reduces the admin, and gives your team visibility without the overhead.</p>
+
+    <div class="mission-block">
+      <p>We enable the people who show up to care, <em>by improving the systems that support them,</em> so those who need help receive it <strong>when it matters most.</strong></p>
+    </div>
+
+    <div class="capabilities">
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3>Workforce verification</h3>
+        <p>Automated checks on credentials, right-to-work, DBS, and professional registrations including NMC, GMC, and HCPC. Stop chasing paperwork. Start having confidence in every person on your books.</p>
+      </div>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>NHS framework compliance</h3>
+        <p>Built around NHS Workforce Alliance and Health Trust Europe framework requirements. Stay audit-ready across your entire workforce without the manual tracking, missed renewals, or last-minute scrambles.</p>
+      </div>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3>Faster time to deployment</h3>
+        <p>Trusts under pressure to fill vacancies quickly need compliance processes that keep pace. Azariah reduces the time between identifying a worker and deploying them safely, without cutting corners.</p>
+      </div>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3>Workforce oversight</h3>
+        <p>As the NHS moves towards the 2026/27 Oversight Framework, organisations need clear visibility of workforce health metrics. Azariah gives managers real-time insight, not quarterly reports built from spreadsheets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="who-we-serve">
+  <div class="section-inner">
+    <p class="section-label">Who we work with</p>
+    <h2 class="section-title">Built for the realities of <strong>UK healthcare</strong></h2>
+    <p class="section-lead">With nearly 1 in 3 NHS staff thinking about leaving their organisation and a workforce turnover rate approaching 10%, the pressure on HR and compliance teams has never been higher. Azariah is built for organisations working in that reality.</p>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>NHS trusts and ICBs</h3>
+        <p>As NHS England moves towards the 2026/27 Oversight Framework, with workforce health and compliance metrics reported more prominently than ever, trusts need systems that make audit-readiness the default, not a fire drill. We help you get there without adding headcount.</p>
+        <div class="tag-list">
+          <span class="tag">Acute trusts</span>
+          <span class="tag">Community providers</span>
+          <span class="tag">Mental health</span>
+          <span class="tag">ICBs</span>
+        </div>
+      </div>
+      <div class="audience-card">
+        <h3>Healthcare staffing and agencies</h3>
+        <p>NHS framework suppliers face increasing scrutiny on compliance. Trusts are looking more closely at their supply chains. Azariah gives agencies the infrastructure to demonstrate compliance at speed, reducing time to placement and protecting framework positions.</p>
+        <div class="tag-list">
+          <span class="tag">NHS framework suppliers</span>
+          <span class="tag">Staffing agencies</span>
+          <span class="tag">Managed services</span>
+        </div>
+      </div>
+      <div class="audience-card">
+        <h3>Private healthcare providers</h3>
+        <p>CQC inspection readiness, right-to-work obligations, and professional registration monitoring don't get easier as your workforce grows. Azariah brings the same rigour applied in NHS settings to independent hospitals, care homes, and specialist providers.</p>
+        <div class="tag-list">
+          <span class="tag">Independent hospitals</span>
+          <span class="tag">Care homes</span>
+          <span class="tag">Specialist providers</span>
+        </div>
+      </div>
+      <div class="audience-card">
+        <h3>Healthcare commissioners</h3>
+        <p>Commissioners need confidence that the workforce behind the services they fund is safe, compliant, and properly managed. Azariah gives you that confidence through transparency, not just assurances.</p>
+        <div class="tag-list">
+          <span class="tag">CQC compliance</span>
+          <span class="tag">Procurement</span>
+          <span class="tag">Governance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<div class="values-strip">
+  <div class="values-strip-inner">
+    <div>
+      <p class="section-label">How we make decisions</p>
+      <h2 class="section-title">The questions <strong>we ask ourselves</strong></h2>
+      <p class="section-lead">Six principles that guide every product decision, every partnership, and every conversation with the people we work with.</p>
+    </div>
+    <div class="values-list">
+      <div class="value-item"><span class="value-num">01</span><div class="value-content"><h4>Start with care</h4><p>"Have we spoken to the people delivering this?"</p></div></div>
+      <div class="value-item"><span class="value-num">02</span><div class="value-content"><h4>Make complexity work</h4><p>"Have we made this clearer, or just added more?"</p></div></div>
+      <div class="value-item"><span class="value-num">03</span><div class="value-content"><h4>Enable, don't obstruct</h4><p>"Does this make someone's job easier?"</p></div></div>
+      <div class="value-item"><span class="value-num">04</span><div class="value-content"><h4>Take responsibility</h4><p>"Who owns this outcome?"</p></div></div>
+      <div class="value-item"><span class="value-num">05</span><div class="value-content"><h4>Improve what matters</h4><p>"Does this actually improve anything?"</p></div></div>
+      <div class="value-item"><span class="value-num">06</span><div class="value-content"><h4>Work as one system</h4><p>"Who else needs to be part of this?"</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">About us</p>
+    <h2 class="section-title">A team that knows <strong>what's at stake</strong></h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Azariah was built by people who understand the operational realities of UK healthcare. Not from the outside, but from having worked within and alongside NHS systems where compliance failures have real consequences.</p>
+        <p>The NHS is at a turning point. The 10-Year Workforce Plan, the shift from analogue to digital, new oversight frameworks, and the ESR system transition are creating both pressure and opportunity. Organisations that build the right infrastructure now will be better placed on the other side of that change.</p>
+        <p><strong>We are not a consultancy, and we are not trying to sell you a complex platform.</strong> We build focused, practical systems that solve specific problems. We measure ourselves on whether they actually make your team's work easier.</p>
+        <p>We are based in the UK and work exclusively within the British healthcare market. We are early stage, which means you get direct access to the people building the product.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="stats-panel">
+          <div class="stats-panel-stat">
+            <div class="stat-val"><strong>103k</strong></div>
+            <div class="stat-desc">NHS vacancies. Compliance admin slows every placement.</div>
+          </div>
+          <div class="stats-panel-stat">
+            <div class="stat-val"><strong>9.9<span style="font-size:1rem">%</span></strong></div>
+            <div class="stat-desc">Annual NHS workforce turnover. Compliance checks never stop.</div>
+          </div>
+          <div class="stats-panel-stat">
+            <div class="stat-val"><strong>1<span style="font-size:1rem">%</span></strong></div>
+            <div class="stat-desc">Minimum cost reduction required from all NHS trusts in 2025/26.</div>
+          </div>
+        </div>
+        <div class="nhs-callout">
+          <div class="nhs-logo-row">
+            <span class="nhs-badge">NHS</span>
+            <span class="nhs-badge-label">Framework aligned</span>
+          </div>
+          <p>Our systems are designed around <strong>NHS Workforce Alliance frameworks, DSPT requirements, and CQC regulatory standards</strong>. You are not adapting a generic tool. It fits from the start.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title">Tell us <strong>what you're dealing with</strong></h2>
+    <p class="section-lead">Compliance challenges in NHS settings are rarely simple. Tell us what's going on and we'll give you an honest view of whether and how we can help. No sales pitch, no obligation.</p>
+
+    <div class="contact-layout">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none"><input name="bot-field"></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" name="first-name" placeholder="Jane" autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" name="last-name" placeholder="Smith" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Work email</label>
+          <input type="email" id="email" name="email" placeholder="jane.smith@nhstrust.nhs.uk" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="organisation" placeholder="Your trust, organisation, or company">
+        </div>
+        <div class="form-group">
+          <label for="org-type">Organisation type</label>
+          <select id="org-type" name="organisation-type">
+            <option value="" disabled selected>Select type</option>
+            <option>NHS trust</option>
+            <option>Integrated care board (ICB)</option>
+            <option>Healthcare staffing agency</option>
+            <option>Private healthcare provider</option>
+            <option>Healthcare commissioner</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell us about your situation</label>
+          <textarea id="message" name="message" placeholder="What's the challenge you're trying to solve?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message</button>
+      </form>
+
+      <div class="contact-info">
+        <div class="contact-detail">
+          <h4>Based in</h4>
+          <p>United Kingdom</p>
+        </div>
+        <div class="contact-detail">
+          <h4>Email</h4>
+          <a href="/cdn-cgi/l/email-protection#e48c8188888ba4908c81859e85968d858cca878b89"><span class="__cf_email__" data-cfemail="fc9499909093bc8894999d869d8e959d94d29f9391">[email&#160;protected]</span></a>
+        </div>
+        <div class="contact-detail">
+          <h4>Website</h4>
+          <a href="https://theazariah.com" target="_blank">theazariah.com</a>
+        </div>
+        <div class="contact-detail">
+          <h4>Response time</h4>
+          <p>We aim to respond within one working day. We are a small team. You will speak to someone who actually works here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">
+      <svg width="22" height="22" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" rx="12" fill="rgba(0,94,184,0.3)"/>
+        <polygon points="36,10 58,23 58,49 36,62 14,49 14,23" fill="none" stroke="white" stroke-width="1.6"/>
+        <line x1="36" y1="23" x2="36" y2="49" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="18" y1="33" x2="54" y2="43" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="54" y1="33" x2="18" y2="43" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="36" cy="38" r="5" fill="white"/>
+      </svg>
+      <span class="footer-wordmark">The <strong>Azariah</strong></span>
+    </a>
+    <p>© 2026 The Azariah. Registered in England and Wales.</p>
+    <div class="footer-links">
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // Show success message if Netlify redirects back with ?success

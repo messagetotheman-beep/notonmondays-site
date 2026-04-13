@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azariah — Team Playbook 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:      #003087;
+    --blue:      #005EB8;
+    --mid-blue:  #378ADD;
+    --light-blue:#B5D4F4;
+    --pale-blue: #E8F1FA;
+    --white:     #ffffff;
+    --off-white: #F7FAFD;
+  }
+
+  body {
+    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── WATERMARK ─── */
+  .watermark {
+    position: fixed;
+    bottom: 32px;
+    right: 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.13;
+    pointer-events: none;
+    z-index: 9999;
+    user-select: none;
+  }
+  .watermark-line {
+    width: 1px;
+    height: 28px;
+    background: var(--navy);
+  }
+  .watermark-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .watermark-label {
+    font-size: 7.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .watermark-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── PAGE SHELL ─── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    page-break-after: always;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    background: var(--navy);
+    width: 210mm;
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-hex-field {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .cover-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-hex {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .logo-name {
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+    letter-spacing: -0.2px;
+    line-height: 1;
+  }
+  .logo-name strong { font-weight: 600; }
+
+  .logo-sub {
+    font-size: 7.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .cover-doc-tag {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    font-weight: 500;
+  }
+
+  .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 52px 64px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid-blue);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-size: 64px;
+    font-weight: 300;
+    color: white;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 6px;
+  }
+  .cover-title strong { font-weight: 600; }
+
+  .cover-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--blue);
+    margin: 28px 0;
+  }
+
+  .cover-tagline {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    max-width: 340px;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .cover-meta-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    font-weight: 500;
+  }
+
+  .cover-meta-value {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ─── CONTENTS PAGE ─── */
+  .contents-page {
+    padding: 56px 52px 64px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0,48,135,0.1);
+    margin-bottom: 48px;
+  }
+
+  .page-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-logo-hex {
+    width: 28px;
+    height: 28px;
+  }
+
+  .page-logo-name {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--navy);
+    letter-spacing: -0.2px;
+  }
+  .page-logo-name strong { font-weight: 600; }
+
+  .page-folio {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(0,48,135,0.3);
+    font-weight: 500;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--navy);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+  .page-title strong { font-weight: 600; }
+
+  /* ─── CONTENTS LIST ─── */
+  .contents-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contents-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0,48,135,0.07);
+  }
+
+  .contents-num {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .contents-title {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--navy);
+    letter-spacing: -0.2px;
+  }
+  .contents-title strong { font-weight: 600; }
+
+  .contents-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.4);
+    letter-spacing: 0.2px;
+  }
+
+  /* ─── INNER PAGES ─── */
+  .inner-page {
+    padding: 52px 52px 64px;
+    display: flex;
+    flex-direction: column;
+    min-height: 297mm;
+  }
+
+  /* ─── SECTION NUMBER BLOCK ─── */
+  .section-num-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 52px;
+  }
+
+  .section-num-large {
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--pale-blue);
+    line-height: 1;
+    letter-spacing: -4px;
+    flex-shrink: 0;
+    margin-top: -8px;
+  }
+
+  .section-num-content {
+    padding-top: 4px;
+  }
+
+  .section-heading {
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--navy);
+    letter-spacing: -0.8px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .section-heading strong { font-weight: 600; }
+
+  .section-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.5);
+    line-height: 1.6;
+    max-width: 380px;
+  }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(0,48,135,0.08);
+    margin-bottom: 36px;
+  }
+
+  /* ─── VISION PAGE ─── */
+  .vision-statement {
+    background: var(--navy);
+    padding: 48px 52px;
+    margin: 0 -52px;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .vision-hex-bg {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    opacity: 0.04;
+  }
+
+  .vision-quote-mark {
+    font-size: 96px;
+    font-weight: 300;
+    color: var(--blue);
+    line-height: 0.8;
+    margin-bottom: 24px;
+    opacity: 0.5;
+  }
+
+  .vision-text {
+    font-size: 24px;
+    font-weight: 300;
+    color: white;
+    line-height: 1.6;
+    letter-spacing: -0.3px;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+  }
+  .vision-text strong {
+    font-weight: 600;
+    color: var(--light-blue);
+  }
+
+  .vision-note {
+    margin-top: 32px;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    max-width: 400px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─── VALUES ─── */
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .value-card {
+    border: 1px solid rgba(0,94,184,0.12);
+    border-radius: 10px;
+    padding: 24px 26px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--blue);
+    opacity: 0.4;
+  }
+
+  .value-num {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .value-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+  }
+
+  .value-question {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.5);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ─── PRINCIPLES ─── */
+  .principles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .principle-item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(0,48,135,0.07);
+  }
+
+  .principle-num {
+    width: 32px;
+    height: 32px;
+    background: var(--pale-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .principle-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.5;
+    padding-top: 6px;
+  }
+
+  .principle-text em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--blue);
+  }
+
+  /* ─── TOOLS ─── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .tool-card {
+    border: 1px solid rgba(0,94,184,0.12);
+    border-radius: 10px;
+    padding: 28px 28px 24px;
+    background: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .tool-icon-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tool-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tool-category {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    border: 1px solid rgba(0,94,184,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: white;
+  }
+
+  .tool-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: -0.3px;
+  }
+
+  .tool-purpose {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(0,48,135,0.4);
+    font-weight: 500;
+  }
+
+  .tool-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px solid rgba(0,94,184,0.08);
+    padding-top: 14px;
+  }
+
+  .tool-items li {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.65);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+
+  .tool-items li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--blue);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+    opacity: 0.5;
+  }
+
+  .tool-note {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--blue);
+    font-style: italic;
+    border-top: 1px solid rgba(0,94,184,0.08);
+    padding-top: 12px;
+  }
+
+  /* ─── RHYTHM ─── */
+  .rhythm-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .rhythm-card {
+    border: 1px solid rgba(0,94,184,0.12);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .rhythm-header {
+    background: var(--navy);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rhythm-when {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+  }
+
+  .rhythm-duration {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--light-blue);
+    letter-spacing: 0.3px;
+  }
+
+  .rhythm-body {
+    padding: 20px 24px;
+  }
+
+  .rhythm-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+  }
+
+  .rhythm-subtitle {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .rhythm-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .rhythm-items li {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.65);
+    display: flex;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .rhythm-items li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--blue);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+    opacity: 0.5;
+  }
+
+  .rhythm-output {
+    margin-top: 14px;
+    background: var(--pale-blue);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--navy);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .rhythm-output-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  /* ─── STANDARDS ─── */
+  .standards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .standards-col-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+  }
+
+  .standards-col-label.aim { color: #1A6B3A; border-color: #1A6B3A; }
+  .standards-col-label.avoid { color: #C0392B; border-color: #C0392B; }
+
+  .standards-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .standards-list li {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--navy);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .check {
+    font-size: 13px;
+    color: #1A6B3A;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .cross {
+    font-size: 13px;
+    color: #C0392B;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+
+  .standards-footer {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: var(--pale-blue);
+    border-radius: 10px;
+    border-left: 3px solid var(--blue);
+  }
+
+  .standards-footer p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.7;
+  }
+
+  .standards-footer strong {
+    font-weight: 600;
+  }
+
+  /* ─── PAGE FOOTER ─── */
+  .page-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0,48,135,0.08);
+  }
+
+  .footer-left {
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(0,48,135,0.3);
+    letter-spacing: 0.3px;
+  }
+
+  .footer-partnership {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.4;
+  }
+
+  .footer-partner-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .footer-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(0,48,135,0.3);
+  }
+
+  .footer-partner-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+
+  @media print {
+    .page { page-break-after: always; }
+    .watermark { position: fixed; }
+  }
+</style>
+</head>
+<body>
+
+<!-- GLOBAL WATERMARK -->
+<div class="watermark">
+  <div class="watermark-line"></div>
+  <div class="watermark-text">
+    <span class="watermark-label">In partnership with</span>
+    <span class="watermark-name">Not On Mondays</span>
+  </div>
+</div>
+
+<!-- ─── COVER ─── -->
+<div class="page cover">
+  <svg class="cover-hex-field" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <g stroke="white" fill="none">
+      <polygon points="480,100 560,146 560,238 480,284 400,238 400,146" stroke-width="1.5"/>
+      <polygon points="480,160 530,189 530,247 480,276 430,247 430,189" stroke-width="1"/>
+      <polygon points="380,300 460,346 460,438 380,484 300,438 300,346" stroke-width="1.5"/>
+      <polygon points="500,400 560,434 560,502 500,536 440,502 440,434" stroke-width="1"/>
+      <polygon points="320,500 400,546 400,638 320,684 240,638 240,546" stroke-width="1.5"/>
+      <polygon points="440,580 500,614 500,682 440,716 380,682 380,614" stroke-width="1"/>
+      <polygon points="200,200 260,234 260,302 200,336 140,302 140,234" stroke-width="1"/>
+      <line x1="480" y1="146" x2="480" y2="284" stroke-width="0.6"/>
+      <line x1="400" y1="192" x2="560" y2="192" stroke-width="0.6"/>
+      <line x1="380" y1="346" x2="380" y2="484" stroke-width="0.6"/>
+    </g>
+  </svg>
+
+  <div class="cover-top-bar">
+    <div class="logo-mark">
+      <svg class="logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" rx="14" fill="rgba(255,255,255,0.08)"/>
+        <polygon points="36,12 56,23 56,45 36,56 16,45 16,23" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        <line x1="36" y1="23" x2="36" y2="45" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+        <line x1="23" y1="30" x2="49" y2="38" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+        <line x1="49" y1="30" x2="23" y2="38" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+        <circle cx="36" cy="34" r="5" fill="white" opacity="0.9"/>
+      </svg>
+      <div class="logo-wordmark">
+        <div class="logo-name">The <strong>Azariah</strong></div>
+        <div class="logo-sub">Clinical Compliance</div>
+      </div>
+    </div>
+    <div class="cover-doc-tag">Team Playbook · 2026</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Internal · All Team</div>
+    <div class="cover-title">Team<br><strong>Playbook</strong></div>
+    <div class="cover-rule"></div>
+    <div class="cover-tagline">How we work. What we value.<br>How we move as one team.</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Version</span>
+        <span class="cover-meta-value">2026 Edition</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Status</span>
+        <span class="cover-meta-value">Live Document</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Maintained by</span>
+        <span class="cover-meta-value">David · Not On Mondays</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONTENTS ─── -->
+<div class="page contents-page">
+  <div class="page-header">
+    <div class="page-logo">
+      <svg class="page-logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,10 58,22 58,46 36,58 14,46 14,22" fill="none" stroke="#005EB8" stroke-width="2"/>
+        <line x1="36" y1="22" x2="36" y2="46" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="50" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="22" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="36" cy="34" r="4.5" fill="#005EB8"/>
+      </svg>
+      <span class="page-logo-name">The <strong>Azariah</strong></span>
+    </div>
+    <span class="page-folio">Contents</span>
+  </div>
+
+  <div class="section-label">Contents</div>
+  <div class="page-title"><strong>What's</strong><br>inside</div>
+
+  <ul class="contents-list">
+    <li class="contents-item">
+      <span class="contents-num">01</span>
+      <span class="contents-title"><strong>Vision</strong></span>
+      <span class="contents-desc">Why we exist</span>
+    </li>
+    <li class="contents-item">
+      <span class="contents-num">02</span>
+      <span class="contents-title"><strong>Values</strong></span>
+      <span class="contents-desc">How we make decisions</span>
+    </li>
+    <li class="contents-item">
+      <span class="contents-num">03</span>
+      <span class="contents-title"><strong>How We Work</strong></span>
+      <span class="contents-desc">Simple principles</span>
+    </li>
+    <li class="contents-item">
+      <span class="contents-num">04</span>
+      <span class="contents-title"><strong>Tools</strong></span>
+      <span class="contents-desc">Where things live</span>
+    </li>
+    <li class="contents-item">
+      <span class="contents-num">05</span>
+      <span class="contents-title"><strong>Weekly Rhythm</strong></span>
+      <span class="contents-desc">How we collaborate</span>
+    </li>
+    <li class="contents-item">
+      <span class="contents-num">06</span>
+      <span class="contents-title"><strong>Standards</strong></span>
+      <span class="contents-desc">What good looks like</span>
+    </li>
+  </ul>
+
+  <div class="page-footer" style="margin-top:auto; padding-top:32px;">
+    <span class="footer-left">Azariah Team Playbook · 2026</span>
+    <div class="footer-partnership">
+      <span class="footer-partner-label">In partnership with</span>
+      <div class="footer-divider"></div>
+      <span class="footer-partner-name">Not On Mondays</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 01 VISION ─── -->
+<div class="page inner-page">
+  <div class="page-header">
+    <div class="page-logo">
+      <svg class="page-logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,10 58,22 58,46 36,58 14,46 14,22" fill="none" stroke="#005EB8" stroke-width="2"/>
+        <line x1="36" y1="22" x2="36" y2="46" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="50" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="22" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="36" cy="34" r="4.5" fill="#005EB8"/>
+      </svg>
+      <span class="page-logo-name">The <strong>Azariah</strong></span>
+    </div>
+    <span class="page-folio">01 — Vision</span>
+  </div>
+
+  <div class="section-num-block">
+    <div class="section-num-large">01</div>
+    <div class="section-num-content">
+      <h2 class="section-heading"><strong>Vision</strong></h2>
+      <p class="section-sub">A principle that grounds every decision we make.</p>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <div class="vision-statement">
+    <svg class="vision-hex-bg" width="320" height="320" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="300,30 510,155 510,405 300,530 90,405 90,155" fill="none" stroke="white" stroke-width="1.5"/>
+      <polygon points="300,100 445,182 445,348 300,430 155,348 155,182" fill="none" stroke="white" stroke-width="1"/>
+    </svg>
+    <div class="vision-quote-mark">"</div>
+    <p class="vision-text">We enable the people who show up to care, by <strong>improving the systems that support them</strong>, so those who need help receive it when it matters most.</p>
+    <p class="vision-note">This is not a tagline. It is a principle that should be grounded in every decision we make — what we build, who we partner with, and how we work.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-left">Azariah Team Playbook · 2026</span>
+    <div class="footer-partnership">
+      <span class="footer-partner-label">In partnership with</span>
+      <div class="footer-divider"></div>
+      <span class="footer-partner-name">Not On Mondays</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 02 VALUES ─── -->
+<div class="page inner-page">
+  <div class="page-header">
+    <div class="page-logo">
+      <svg class="page-logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,10 58,22 58,46 36,58 14,46 14,22" fill="none" stroke="#005EB8" stroke-width="2"/>
+        <line x1="36" y1="22" x2="36" y2="46" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="50" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="22" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="36" cy="34" r="4.5" fill="#005EB8"/>
+      </svg>
+      <span class="page-logo-name">The <strong>Azariah</strong></span>
+    </div>
+    <span class="page-folio">02 — Values</span>
+  </div>
+
+  <div class="section-num-block">
+    <div class="section-num-large">02</div>
+    <div class="section-num-content">
+      <h2 class="section-heading"><strong>Values</strong></h2>
+      <p class="section-sub">Six questions that guide how we work, decide, and partner.</p>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-num">01</div>
+      <div class="value-title">Start With Care</div>
+      <div class="value-question">"Have we spoken to the people delivering this?"</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">02</div>
+      <div class="value-title">Make Complexity Work</div>
+      <div class="value-question">"Have we made this clearer, or just added more?"</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">03</div>
+      <div class="value-title">Enable, Don't Obstruct</div>
+      <div class="value-question">"Does this make someone's job easier?"</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">04</div>
+      <div class="value-title">Take Responsibility</div>
+      <div class="value-question">"Who owns this outcome?"</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">05</div>
+      <div class="value-title">Improve What Matters</div>
+      <div class="value-question">"Does this actually improve anything?"</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">06</div>
+      <div class="value-title">Work As One System</div>
+      <div class="value-question">"Who else needs to be part of this?"</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-left">Azariah Team Playbook · 2026</span>
+    <div class="footer-partnership">
+      <span class="footer-partner-label">In partnership with</span>
+      <div class="footer-divider"></div>
+      <span class="footer-partner-name">Not On Mondays</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 03 HOW WE WORK ─── -->
+<div class="page inner-page">
+  <div class="page-header">
+    <div class="page-logo">
+      <svg class="page-logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,10 58,22 58,46 36,58 14,46 14,22" fill="none" stroke="#005EB8" stroke-width="2"/>
+        <line x1="36" y1="22" x2="36" y2="46" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="50" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="22" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="36" cy="34" r="4.5" fill="#005EB8"/>
+      </svg>
+      <span class="page-logo-name">The <strong>Azariah</strong></span>
+    </div>
+    <span class="page-folio">03 — How We Work</span>
+  </div>
+
+  <div class="section-num-block">
+    <div class="section-num-large">03</div>
+    <div class="section-num-content">
+      <h2 class="section-heading"><strong>How We Work</strong></h2>
+      <p class="section-sub">Five principles that cover most situations. Simple, visible, outcome-focused.</p>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <div class="principles-list">
+    <div class="principle-item">
+      <div class="principle-num">1</div>
+      <div class="principle-text">If it's not on <em>Jira</em>, it doesn't exist</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">2</div>
+      <div class="principle-text">Keep work <em>small and clear</em></div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">3</div>
+      <div class="principle-text">Focus on <em>outcomes</em>, not activity</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">4</div>
+      <div class="principle-text">Talk early — <em>don't stay blocked</em></div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">5</div>
+      <div class="principle-text">Make work <em>visible to everyone</em></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-left">Azariah Team Playbook · 2026</span>
+    <div class="footer-partnership">
+      <span class="footer-partner-label">In partnership with</span>
+      <div class="footer-divider"></div>
+      <span class="footer-partner-name">Not On Mondays</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 04 TOOLS ─── -->
+<div class="page inner-page">
+  <div class="page-header">
+    <div class="page-logo">
+      <svg class="page-logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,10 58,22 58,46 36,58 14,46 14,22" fill="none" stroke="#005EB8" stroke-width="2"/>
+        <line x1="36" y1="22" x2="36" y2="46" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="50" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="22" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="36" cy="34" r="4.5" fill="#005EB8"/>
+      </svg>
+      <span class="page-logo-name">The <strong>Azariah</strong></span>
+    </div>
+    <span class="page-folio">04 — Tools</span>
+  </div>
+
+  <div class="section-num-block">
+    <div class="section-num-large">04</div>
+    <div class="section-num-content">
+      <h2 class="section-heading"><strong>Tools</strong></h2>
+      <p class="section-sub">Four tools, each with a clear purpose. No overlap, no confusion.</p>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon-row">
+        <div class="tool-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="8" height="8" rx="1.5" fill="white" opacity="0.9"/>
+            <rect x="13" y="3" width="8" height="8" rx="1.5" fill="white" opacity="0.5"/>
+            <rect x="3" y="13" width="8" height="8" rx="1.5" fill="white" opacity="0.5"/>
+            <rect x="13" y="13" width="8" height="8" rx="1.5" fill="white" opacity="0.3"/>
+          </svg>
+        </div>
+        <span class="tool-category">Work</span>
+      </div>
+      <div>
+        <div class="tool-name">Jira</div>
+        <div class="tool-purpose">Work lives here</div>
+      </div>
+      <ul class="tool-items">
+        <li>All tasks go here</li>
+        <li>Track progress</li>
+        <li>Manage priorities</li>
+      </ul>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon-row">
+        <div class="tool-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="tool-category">Comms</span>
+      </div>
+      <div>
+        <div class="tool-name">Slack</div>
+        <div class="tool-purpose">Conversation happens here</div>
+      </div>
+      <ul class="tool-items">
+        <li>Questions and updates</li>
+        <li>Quick decisions</li>
+      </ul>
+      <div class="tool-note">Default to channels, not DMs.</div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon-row">
+        <div class="tool-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="white" stroke-width="1.8" fill="none"/>
+            <polyline points="14 2 14 8 20 8" stroke="white" stroke-width="1.8" fill="none"/>
+            <line x1="8" y1="13" x2="16" y2="13" stroke="white" stroke-width="1.5"/>
+            <line x1="8" y1="17" x2="13" y2="17" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="tool-category">Knowledge</span>
+      </div>
+      <div>
+        <div class="tool-name">Confluence</div>
+        <div class="tool-purpose">Knowledge lives here</div>
+      </div>
+      <ul class="tool-items">
+        <li>Playbooks and decisions</li>
+        <li>Documentation</li>
+      </ul>
+      <div class="tool-note">If it matters beyond today, write it down.</div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon-row">
+        <div class="tool-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="1.8" fill="none"/>
+            <line x1="16" y1="2" x2="16" y2="6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="8" y1="2" x2="8" y2="6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="tool-category">Time</span>
+      </div>
+      <div>
+        <div class="tool-name">Calendar</div>
+        <div class="tool-purpose">Time is visible here</div>
+      </div>
+      <ul class="tool-items">
+        <li>Ceremonies and key sessions</li>
+        <li>Milestones</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-left">Azariah Team Playbook · 2026</span>
+    <div class="footer-partnership">
+      <span class="footer-partner-label">In partnership with</span>
+      <div class="footer-divider"></div>
+      <span class="footer-partner-name">Not On Mondays</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 05 WEEKLY RHYTHM ─── -->
+<div class="page inner-page">
+  <div class="page-header">
+    <div class="page-logo">
+      <svg class="page-logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,10 58,22 58,46 36,58 14,46 14,22" fill="none" stroke="#005EB8" stroke-width="2"/>
+        <line x1="36" y1="22" x2="36" y2="46" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="50" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="22" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="36" cy="34" r="4.5" fill="#005EB8"/>
+      </svg>
+      <span class="page-logo-name">The <strong>Azariah</strong></span>
+    </div>
+    <span class="page-folio">05 — Weekly Rhythm</span>
+  </div>
+
+  <div class="section-num-block">
+    <div class="section-num-large">05</div>
+    <div class="section-num-content">
+      <h2 class="section-heading"><strong>Weekly Rhythm</strong></h2>
+      <p class="section-sub">A simple weekly cycle to create clarity and momentum without overhead.</p>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <div class="rhythm-grid">
+    <div class="rhythm-card">
+      <div class="rhythm-header">
+        <span class="rhythm-when">Start of week</span>
+        <span class="rhythm-duration">30 to 45 mins</span>
+      </div>
+      <div class="rhythm-body">
+        <div class="rhythm-title">Sprint Planning</div>
+        <div class="rhythm-subtitle">Align on what matters</div>
+        <ul class="rhythm-items">
+          <li>What are we trying to achieve this week?</li>
+          <li>What are the top 3 to 5 priorities?</li>
+          <li>Who owns each item?</li>
+        </ul>
+        <div class="rhythm-output">
+          <span class="rhythm-output-label">Output</span>
+          Clear weekly goal and agreed priorities
+        </div>
+      </div>
+    </div>
+
+    <div class="rhythm-card">
+      <div class="rhythm-header">
+        <span class="rhythm-when">Midweek · Twice</span>
+        <span class="rhythm-duration">15 mins</span>
+      </div>
+      <div class="rhythm-body">
+        <div class="rhythm-title">Standup</div>
+        <div class="rhythm-subtitle">Stay on track, unblock fast</div>
+        <ul class="rhythm-items">
+          <li>What am I working on?</li>
+          <li>Am I blocked?</li>
+          <li>What's next?</li>
+        </ul>
+        <div class="rhythm-output">
+          <span class="rhythm-output-label">Note</span>
+          No deep dives. Take those offline.
+        </div>
+      </div>
+    </div>
+
+    <div class="rhythm-card">
+      <div class="rhythm-header">
+        <span class="rhythm-when">End of week</span>
+        <span class="rhythm-duration">45 to 60 mins</span>
+      </div>
+      <div class="rhythm-body">
+        <div class="rhythm-title">Review, Demo and Reflect</div>
+        <div class="rhythm-subtitle">Learn, improve, show progress</div>
+        <ul class="rhythm-items">
+          <li>Show and Tell: what have we shipped and what value does it deliver?</li>
+          <li>Reflect: what worked, what didn't, what should change?</li>
+          <li>Wrap-up: what's carrying over? Any blockers going into next week?</li>
+        </ul>
+        <div class="rhythm-output">
+          <span class="rhythm-output-label">Output</span>
+          Visibility, learning, and continuous improvement
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-left">Azariah Team Playbook · 2026</span>
+    <div class="footer-partnership">
+      <span class="footer-partner-label">In partnership with</span>
+      <div class="footer-divider"></div>
+      <span class="footer-partner-name">Not On Mondays</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 06 STANDARDS ─── -->
+<div class="page inner-page">
+  <div class="page-header">
+    <div class="page-logo">
+      <svg class="page-logo-hex" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,10 58,22 58,46 36,58 14,46 14,22" fill="none" stroke="#005EB8" stroke-width="2"/>
+        <line x1="36" y1="22" x2="36" y2="46" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="50" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="22" y2="38" stroke="#005EB8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="36" cy="34" r="4.5" fill="#005EB8"/>
+      </svg>
+      <span class="page-logo-name">The <strong>Azariah</strong></span>
+    </div>
+    <span class="page-folio">06 — Standards</span>
+  </div>
+
+  <div class="section-num-block">
+    <div class="section-num-large">06</div>
+    <div class="section-num-content">
+      <h2 class="section-heading"><strong>Standards</strong></h2>
+      <p class="section-sub">What good looks like. Two lists worth keeping visible.</p>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <div class="standards-grid">
+    <div>
+      <div class="standards-col-label aim">We aim for</div>
+      <ul class="standards-list">
+        <li><span class="check">✓</span> Clear weekly goal</li>
+        <li><span class="check">✓</span> 3 to 5 focused priorities</li>
+        <li><span class="check">✓</span> Work visible to everyone</li>
+        <li><span class="check">✓</span> Fast unblocking</li>
+        <li><span class="check">✓</span> Regular demos of progress</li>
+        <li><span class="check">✓</span> Continuous improvement every week</li>
+      </ul>
+    </div>
+    <div>
+      <div class="standards-col-label avoid">We avoid</div>
+      <ul class="standards-list">
+        <li><span class="cross">✕</span> Big, unclear tasks</li>
+        <li><span class="cross">✕</span> Hidden work</li>
+        <li><span class="cross">✕</span> Overloaded meetings</li>
+        <li><span class="cross">✕</span> Silent blockers</li>
+        <li><span class="cross">✕</span> Building without user value</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="standards-footer">
+    <p>This is intentionally <strong>lightweight</strong>. Try it. Learn from it. Improve it together.<br>
+    The goal is not process. The goal is <strong>better outcomes for real people.</strong></p>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-left">Azariah Team Playbook · 2026</span>
+    <div class="footer-partnership">
+      <span class="footer-partner-label">In partnership with</span>
+      <div class="footer-divider"></div>
+      <span class="footer-partner-name">Not On Mondays</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
