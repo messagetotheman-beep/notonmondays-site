@@ -126,43 +126,9 @@
 }
 </script>
 
+<link rel="stylesheet" href="/assets/nom.css">
+
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --blue: #1a2ad4;
-  --deep-blue: #0d1880;
-  --off-white: #f2f0e8;
-  --warm-white: #faf8f2;
-  --muted: #8a8fa8;
-  --light-blue: #bfc6f0;
-  --dark: #111124;
-  --mid: #2a2a4a;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--off-white);
-  color: var(--dark);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-}
-
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000;
-  padding: 0 4rem;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(242,240,232,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(26,42,212,0.08);
-}
 
 .nav-logo {
   display: inline-flex;
@@ -230,20 +196,6 @@ nav {
   font-weight: 300;
 }
 .nav-links a:hover { color: var(--blue); }
-
-.nav-cta {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--off-white);
-  background: var(--blue);
-  padding: 0.65rem 1.4rem;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  font-weight: 300;
-}
-.nav-cta:hover { background: var(--deep-blue); }
 
 /* HERO */
 #home {

@@ -9,34 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/nom.css">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --blue: #1a2ad4;
-  --deep-blue: #0d1880;
-  --off-white: #f2f0e8;
-  --light-blue: #bfc6f0;
-  --dark: #111124;
-  --mid: #2a2a4a;
-  --muted: #8a8fa8;
-}
-
-html { scroll-behavior: smooth; }
-body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
-
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000;
-  padding: 0 4rem;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(242,240,232,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(26,42,212,0.08);
-}
 
 .nav-logo {
   display: inline-flex;
@@ -58,9 +32,6 @@ nav {
 
 .nav-back { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; }
 .nav-back:hover { color: var(--blue); }
-
-.nav-cta { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 0.65rem 1.4rem; text-decoration: none; transition: background 0.3s ease; }
-.nav-cta:hover { background: var(--deep-blue); }
 
 /* HERO */
 .page-hero {
