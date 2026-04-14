@@ -126,7 +126,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   z-index: 99999;
   transition: top 0.2s ease;
 }
-.skip-link:focus { top: 1rem; }
+.skip-link:focus-visible { top: 1rem; }
 
 /* =====================================================
    FOCUS STATES — visible for all interactive elements
@@ -380,7 +380,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 /* =====================================================
    CASE STUDIES
    ===================================================== */
-#case-studies { background: var(--warm-white); padding: 9rem 4rem; }
+#case-studies { background: var(--warm-white); padding: 6rem 4rem 9rem; }
 .case-feature { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
 .case-left { background: var(--dark); padding: 4rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
 .case-left::before { content: '001'; position: absolute; bottom: -2rem; right: -1rem; font-family: 'Cormorant Garamond', serif; font-size: 12rem; font-weight: 300; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
@@ -560,7 +560,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 /* =====================================================
    CASE STUDY CARDS
    ===================================================== */
-#case-studies { background: var(--warm-white); padding: 9rem 4rem; }
+#case-studies { background: var(--warm-white); padding: 6rem 4rem 9rem; }
 
 .cs-grid {
   display: grid;
@@ -1294,7 +1294,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
     const banner = document.getElementById('nom-cookie');
     banner.classList.remove('visible');
     // Return focus to a sensible element after dismissal
-    document.querySelector('.skip-link').focus();
+    document.querySelector('.nav-logo').focus();
   }
   (function() {
     if (!localStorage.getItem('nom-cookie')) {
