@@ -763,6 +763,31 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   .cs-logo-slot:first-child { padding-left: 0; }
 }
 
+/* =====================================================
+   OFFERING OUTCOME — one-line result summary per service
+   ===================================================== */
+.offering-outcome {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+  margin-top: 0.5rem;
+}
+
+/* =====================================================
+   SECTOR TEXT — contextual band between work and contact
+   ===================================================== */
+.sector-text {
+  background: var(--off-white);
+  padding: 1.5rem 4rem;
+  border-top: 1px solid rgba(26,42,212,0.08);
+}
+
+@media (max-width: 900px) {
+  .sector-text { padding: 1.5rem; }
+  .hero-actions { flex-wrap: wrap; }
+}
+
 </style>
 </head>
 <body>
@@ -820,7 +845,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
         <h1 id="hero-heading" class="hero-headline">
           The thinking<br>and the doing.<br><em>Without the overhead.</em>
         </h1>
-        <p class="hero-sub">For founders, leadership teams, and growing organisations where delivery is not working as it should. We join you as an embedded operating partner — building the systems, making the decisions, and keeping the work moving. The result is calmer, more scalable operations, without the cost of a full-time senior hire.</p>
+        <p class="hero-sub">We help leadership teams bring structure to growth — so delivery lands, teams stay aligned, and progress is predictable.</p>
         <div class="hero-actions">
           <a href="#offerings" class="btn-primary">See our services</a>
           <a href="#case-studies" class="btn-ghost">View our work →</a>
@@ -921,6 +946,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
         <div>
           <p class="offering-tag">Retained · Monthly</p>
           <h3 class="offering-name">Operating Partner Support</h3>
+          <p class="offering-outcome">Your delivery runs, your team stays aligned, and you get back to leading.</p>
         </div>
         <div>
           <p class="offering-body">We join your organisation as a fractional COO or operating partner — leading delivery, managing operational decisions, and keeping the work on track on a monthly retainer.</p>
@@ -934,6 +960,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
         <div>
           <p class="offering-tag">Fixed Scope · 2–3 Weeks</p>
           <h3 class="offering-name">Project Strategy</h3>
+          <p class="offering-outcome">Leave with a clear, prioritised plan — so you know what to do next, and in what order.</p>
         </div>
         <div>
           <p class="offering-body">We review your current situation, identify what is blocking progress, and produce a prioritised plan with clear reasoning — so you know exactly what to do and in what order.</p>
@@ -948,6 +975,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
           <p class="offering-tag" style="color:var(--muted);">Delivery &amp; Digital</p>
           <p class="offering-tag" style="margin-top:0.2rem;">Project · Scoped</p>
           <h3 class="offering-name">Website Design</h3>
+          <p class="offering-outcome">A site that works for the people using it — accessible, clearly structured, and built around real needs.</p>
         </div>
         <div>
           <p class="offering-body">We design and build websites structured around what users need to do — accessible, clearly structured, and built around real user needs rather than visual preference.</p>
@@ -961,6 +989,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
         <div>
           <p class="offering-tag">Retained or Project</p>
           <h3 class="offering-name">Digital &amp; Service Design</h3>
+          <p class="offering-outcome">Digital services that get used — researched, designed, and delivered to spec.</p>
         </div>
         <div>
           <p class="offering-body">We help organisations build or improve digital services — researching user needs, designing the service, and supporting the team that delivers it.</p>
@@ -1074,8 +1103,8 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
     </div>
 
     <!-- LOGO STRIP -->
-    <div class="cs-logos" aria-label="Organisations we have worked with">
-      <span class="cs-logos-label" aria-hidden="true">Organisations we have worked with</span>
+    <div class="cs-logos" aria-label="A selection of organisations we have worked with">
+      <span class="cs-logos-label" aria-hidden="true">Trusted by teams across…</span>
       <ul class="cs-logos-row" role="list">
 
         <!-- Azariah — SVG lockup from design system -->
@@ -1108,8 +1137,8 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   </section>
 
   <!-- SECTOR POSITIONING — inline, no layout weight -->
-  <div style="background:var(--off-white);padding:1.5rem 4rem;border-top:1px solid rgba(26,42,212,0.08);">
-    <p style="max-width:780px;margin:0 auto;font-size:0.9rem;line-height:1.9;color:var(--mid);font-weight:300;">We work across sectors. We have particular experience in healthcare and MedTech, and professional services. We are increasingly working with law firms and legal tech teams, where similar operational challenges exist. <a href="legal-tech-operations.html" style="color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(26,42,212,0.3);">Read about our legal tech work.</a></p>
+  <div class="sector-text">
+    <p style="max-width:780px;margin:0 auto;font-size:0.9rem;line-height:1.9;color:var(--mid);font-weight:300;">We work across sectors — with particular depth in healthcare and MedTech, professional services, and law firms navigating digital change. <a href="legal-tech-operations.html" style="color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(26,42,212,0.3);">Read about our legal tech work.</a></p>
   </div>
 
   <!-- CONTACT -->
