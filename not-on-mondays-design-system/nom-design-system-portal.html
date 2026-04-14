@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOM Design System — Internal Portal</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&family=Sora:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { height: 100%; }
+
+/* ─── ROOT TOKENS ─── */
+:root {
+  --blue: #1a2ad4;
+  --deep-blue: #0d1880;
+  --off-white: #f2f0e8;
+  --warm-white: #faf8f2;
+  --muted: #8a8fa8;
+  --dark: #111124;
+  --mid: #2a2a4a;
+  --border: rgba(17,17,36,0.1);
+
+  /* Motion tokens — updated by JS */
+  --t-duration: 150ms;
+  --t-easing: ease;
+
+  /* Live tokens — updated by JS */
+  --t-font-heading: 'DM Sans', sans-serif;
+  --t-font-body: 'DM Sans', sans-serif;
+  --t-font-mono: 'DM Mono', monospace;
+  --t-heading-size: 26px;
+  --t-body-weight: 300;
+  --t-brand: #1a2ad4;
+  --t-surface: #f2f0e8;
+  --t-radius-sm: 0px;
+  --t-radius-md: 0px;
+  --t-radius-card: 0px;
+  --t-space-base: 16px;
+  --t-space-section: 28px;
+}
+
+/* ─── LAYOUT ─── */
+body {
+  background: #e8e5dc;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  color: var(--dark);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Portal top bar */
+.portal-topbar {
+  height: 52px;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.portal-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.portal-nom {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.portal-nom span {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.45em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+}
+
+.portal-nom .pn1 { color: rgba(242,240,232,0.18); }
+.portal-nom .pn2 { color: rgba(242,240,232,0.12); }
+.portal-nom .pn3 { color: var(--blue); }
+
+.portal-divider {
+  width: 0.5px;
+  height: 24px;
+  background: rgba(255,255,255,0.1);
+}
+
+.portal-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: rgba(242,240,232,0.4);
+  text-transform: uppercase;
+}
+
+.portal-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.portal-version {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(242,240,232,0.25);
+}
+
+.portal-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(242,240,232,0.35);
+}
+
+.live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #0F6E56;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ─── THREE-COLUMN SHELL ─── */
+.shell {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ─── LEFT SIDEBAR ─── */
+.sidebar {
+  width: 188px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 8px;
+}
+
+.nav-group-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.28);
+  padding: 10px 8px 5px;
+  display: block;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: var(--t-radius-sm, 2px);
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: rgba(17,17,36,0.45);
+  transition: all 0.1s;
+  user-select: none;
+  border: 0.5px solid transparent;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: rgba(26,42,212,0.04);
+  color: var(--dark);
+}
+
+.nav-item.active {
+  background: var(--off-white);
+  color: var(--blue);
+  border-color: rgba(26,42,212,0.15);
+  font-weight: 400;
+}
+
+.nav-item.locked {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.nav-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-badge {
+  margin-left: auto;
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  padding: 2px 5px;
+  background: rgba(26,42,212,0.08);
+  color: var(--blue);
+  border-radius: 2px;
+}
+
+.sidebar-footer {
+  padding: 12px 16px;
+  border-top: 0.5px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: rgba(17,17,36,0.3);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* ─── PREVIEW PANEL ─── */
+.preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--t-surface, #f2f0e8);
+  transition: background 0.2s;
+}
+
+.preview-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.85);
+  border-bottom: 0.5px solid var(--border);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.preview-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+}
+
+.preview-url {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: rgba(17,17,36,0.25);
+}
+
+.preview-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 2px;
+  background: rgba(17,17,36,0.06);
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.mode-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  color: rgba(17,17,36,0.4);
+  background: transparent;
+  transition: all 0.1s;
+}
+
+.mode-btn.active {
+  background: var(--dark);
+  color: #f0ede4;
+}
+
+.preview-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.preview-canvas {
+  padding: var(--t-space-section, 28px) 32px;
+  transition: padding 0.2s;
+}
+
+/* ─── SITE PREVIEW ELEMENTS ─── */
+
+/* Site nav */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border: 0.5px solid var(--border);
+  border-radius: var(--t-radius-sm, 0px);
+  margin-bottom: 28px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+}
+
+.site-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-nav-initials {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.site-nav-initials span {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: lowercase;
+  line-height: 1.3;
+}
+
+.site-nav-sep {
+  width: 0.5px;
+  height: 26px;
+  background: rgba(17,17,36,0.15);
+}
+
+.site-nav-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.4);
+  line-height: 1.5;
+}
+
+.site-nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.site-nav-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.5);
+}
+
+.site-nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  border: none;
+  cursor: pointer;
+  background: var(--t-brand, #1a2ad4);
+  color: #fff;
+  border-radius: var(--t-radius-sm, 0px);
+  transition: background var(--t-duration, 150ms) var(--t-easing, ease);
+}
+
+/* Hero */
+.hero {
+  margin-bottom: 32px;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--t-brand, #1a2ad4);
+  margin-bottom: 12px;
+}
+
+.hero-h1 {
+  font-family: var(--t-font-heading, 'DM Sans', sans-serif);
+  font-size: var(--t-heading-size, 26px);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin-bottom: 14px;
+  transition: font-size 0.2s, font-family 0.15s;
+}
+
+.hero-h1 em {
+  font-style: italic;
+  color: var(--t-brand, #1a2ad4);
+}
+
+.hero-body {
+  font-family: var(--t-font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: var(--t-body-weight, 300);
+  line-height: 1.75;
+  color: rgba(17,17,36,0.52);
+  max-width: 440px;
+  margin-bottom: 20px;
+  transition: font-family 0.15s;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-primary {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: var(--t-brand, #1a2ad4);
+  color: #fff;
+  border-radius: var(--t-radius-sm, 0px);
+  transition: all var(--t-duration, 150ms) var(--t-easing, ease);
+}
+
+.btn-ghost {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  background: transparent;
+  border: 0.5px solid rgba(17,17,36,0.2);
+  color: rgba(17,17,36,0.5);
+  cursor: pointer;
+  border-radius: var(--t-radius-sm, 0px);
+}
+
+/* Stats strip */
+.stats-strip {
+  display: flex;
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 32px;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 18px 20px;
+  border-left: 0.5px solid var(--border);
+}
+
+.stat-item:first-child { border-left: none; }
+
+.stat-num {
+  font-family: var(--t-font-heading, 'DM Sans');
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--t-brand, #1a2ad4);
+  margin-bottom: 5px;
+  letter-spacing: -0.02em;
+  transition: font-family 0.15s;
+}
+
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.38);
+  margin-bottom: 4px;
+}
+
+.stat-desc {
+  font-family: var(--t-font-body, 'DM Sans');
+  font-size: 11px;
+  font-weight: var(--t-body-weight, 300);
+  color: rgba(17,17,36,0.42);
+  line-height: 1.55;
+  transition: font-family 0.15s;
+}
+
+/* Section label */
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--t-brand, #1a2ad4);
+  margin-bottom: 8px;
+}
+
+.section-heading {
+  font-family: var(--t-font-heading, 'DM Sans');
+  font-size: calc(var(--t-heading-size, 26px) * 0.72);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--dark);
+  margin-bottom: 20px;
+  transition: font-family 0.15s, font-size 0.2s;
+}
+
+.section-heading em {
+  font-style: italic;
+  color: var(--t-brand, #1a2ad4);
+}
+
+/* ─── ICON CARDS ─── */
+.icon-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.icon-card {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: var(--t-radius-card, 0px);
+  padding: 18px 20px;
+  position: relative;
+  transition: border-color var(--t-duration, 150ms) var(--t-easing, ease), border-radius var(--t-duration, 150ms) var(--t-easing, ease), background var(--t-duration, 150ms) var(--t-easing, ease);
+}
+
+.icon-card:hover {
+  border-color: rgba(26,42,212,0.25);
+}
+
+/* Numbered tab — inspired by the numbered card style you liked */
+.card-number {
+  position: absolute;
+  top: -1px;
+  left: 18px;
+  background: var(--t-brand, #1a2ad4);
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  padding: 3px 7px;
+  line-height: 1;
+  border-radius: 0 0 3px 3px;
+}
+
+.card-icon-wrap {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--t-brand, #1a2ad4);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card-h {
+  font-family: var(--t-font-heading, 'DM Sans');
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 7px;
+  transition: font-family 0.15s;
+}
+
+.card-p {
+  font-family: var(--t-font-body, 'DM Sans');
+  font-size: 11px;
+  font-weight: var(--t-body-weight, 300);
+  color: rgba(17,17,36,0.5);
+  line-height: 1.65;
+  transition: font-family 0.15s;
+}
+
+.card-footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 0.5px solid rgba(17,17,36,0.07);
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(17,17,36,0.28);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-footer-cta {
+  color: var(--t-brand, #1a2ad4);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* Form sample */
+.form-section {
+  border-top: 0.5px solid var(--border);
+  padding-top: 24px;
+  margin-bottom: 8px;
+}
+
+.form-heading {
+  font-family: var(--t-font-heading, 'DM Sans');
+  font-size: calc(var(--t-heading-size, 26px) * 0.65);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--dark);
+  margin-bottom: 4px;
+  transition: font-family 0.15s;
+}
+
+.form-sub {
+  font-family: var(--t-font-body, 'DM Sans');
+  font-size: 12px;
+  font-weight: var(--t-body-weight, 300);
+  color: rgba(17,17,36,0.42);
+  margin-bottom: 16px;
+  transition: font-family 0.15s;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.38);
+}
+
+.form-input {
+  padding: 9px 12px;
+  font-family: var(--t-font-body, 'DM Sans');
+  font-size: 12px;
+  font-weight: 300;
+  border: 0.5px solid rgba(17,17,36,0.18);
+  border-radius: var(--t-radius-sm, 0px);
+  background: #fff;
+  color: var(--dark);
+  outline: none;
+  transition: border-color var(--t-duration, 150ms) var(--t-easing, ease), border-radius var(--t-duration, 150ms) var(--t-easing, ease), background var(--t-duration, 150ms) var(--t-easing, ease);
+}
+
+.form-input:focus { border-color: var(--t-brand, #1a2ad4); }
+
+/* ─── CONFIG PANEL ─── */
+.config {
+  width: 244px;
+  flex-shrink: 0;
+  background: #fff;
+  border-left: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.config-header {
+  flex-shrink: 0;
+  padding: 14px 16px 11px;
+  border-bottom: 0.5px solid var(--border);
+  background: #fff;
+}
+
+.config-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+
+.config-subtitle {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  color: rgba(17,17,36,0.35);
+  letter-spacing: 0.04em;
+}
+
+.config-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* ─── CONTROLS ─── */
+.ctrl { margin-bottom: 20px; }
+
+.ctrl-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.32);
+  margin-bottom: 8px;
+}
+
+.ctrl-divider {
+  height: 0.5px;
+  background: rgba(17,17,36,0.07);
+  margin: 14px 0;
+}
+
+/* Preset option cards */
+.preset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.preset-card {
+  padding: 10px 12px;
+  border: 0.5px solid rgba(17,17,36,0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  background: #fafaf8;
+  transition: border-color 0.1s, background 0.1s;
+  position: relative;
+}
+
+.preset-card:hover { border-color: rgba(26,42,212,0.3); }
+
+.preset-card.active {
+  border-color: var(--blue);
+  background: rgba(26,42,212,0.02);
+}
+
+.preset-card.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--blue);
+  border-radius: 3px 0 0 3px;
+}
+
+.preset-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 3px;
+}
+
+.preset-card.active .preset-name { color: var(--blue); }
+
+.preset-detail {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 300;
+  color: rgba(17,17,36,0.38);
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.preset-sample {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Pill groups */
+.pill-row {
+  display: flex;
+  gap: 4px;
+}
+
+.pill {
+  flex: 1;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 6px 4px;
+  border: 0.5px solid rgba(17,17,36,0.12);
+  border-radius: 3px;
+  cursor: pointer;
+  color: rgba(17,17,36,0.4);
+  background: #fafaf8;
+  transition: all 0.1s;
+  user-select: none;
+}
+
+.pill:hover { border-color: rgba(26,42,212,0.3); color: var(--dark); }
+
+.pill.active {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: rgba(26,42,212,0.03);
+  font-weight: 400;
+}
+
+/* Radius pills */
+.radius-row { display: flex; gap: 4px; }
+
+.rpill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 4px;
+  border: 0.5px solid rgba(17,17,36,0.12);
+  border-radius: 3px;
+  cursor: pointer;
+  background: #fafaf8;
+  transition: border-color 0.1s;
+  user-select: none;
+}
+
+.rpill:hover { border-color: rgba(26,42,212,0.3); }
+.rpill.active { border-color: var(--blue); }
+
+.rpill-box {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid rgba(17,17,36,0.22);
+  background: transparent;
+}
+
+.rpill-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  color: rgba(17,17,36,0.4);
+}
+
+/* Token readout */
+.token-block {
+  border: 0.5px solid rgba(17,17,36,0.08);
+  border-radius: 3px;
+  background: #f8f7f2;
+  overflow: hidden;
+}
+
+.token-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border-bottom: 0.5px solid rgba(17,17,36,0.06);
+}
+
+.token-row:last-child { border-bottom: none; }
+
+.token-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 300;
+  color: rgba(17,17,36,0.32);
+  letter-spacing: 0.02em;
+}
+
+.token-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 400;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.token-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(17,17,36,0.15);
+  flex-shrink: 0;
+}
+
+/* ─── EXPORT PANEL ─── */
+.export-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 0.5px solid rgba(17,17,36,0.1);
+  margin-bottom: 12px;
+}
+
+.exp-tab {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: rgba(17,17,36,0.38);
+  border-bottom: 1.5px solid transparent;
+  margin-bottom: -0.5px;
+  transition: all 0.1s;
+}
+
+.exp-tab:hover { color: var(--dark); }
+.exp-tab.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 400; }
+
+.exp-code {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(17,17,36,0.62);
+  background: #f8f7f2;
+  border: 0.5px solid rgba(17,17,36,0.08);
+  padding: 12px;
+  border-radius: 3px;
+  white-space: pre;
+  overflow-x: auto;
+  max-height: 310px;
+  overflow-y: auto;
+}
+
+.exp-copy-btn {
+  width: 100%;
+  margin-top: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 9px;
+  background: var(--dark);
+  color: var(--off-white);
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity 0.15s;
+}
+
+.exp-copy-btn:active { opacity: 0.8; }
+
+/* ─── PROCESS STRIP ─── */
+.process-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 0.5px solid var(--border);
+  border-radius: var(--t-radius-card, 0px);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.process-step {
+  padding: 18px 20px;
+  border-right: 0.5px solid var(--border);
+  position: relative;
+}
+
+.process-step:last-child { border-right: none; }
+
+.process-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--t-brand, #1a2ad4);
+  margin-bottom: 10px;
+}
+
+.process-h {
+  font-family: var(--t-font-heading, 'DM Sans');
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  transition: font-family 0.15s;
+}
+
+.process-p {
+  font-family: var(--t-font-body, 'DM Sans');
+  font-size: 11px;
+  font-weight: var(--t-body-weight, 300);
+  color: rgba(17,17,36,0.48);
+  line-height: 1.65;
+  transition: font-family 0.15s;
+}
+
+/* ─── QUOTE BLOCK ─── */
+.quote-block {
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  padding: 28px 24px;
+  margin-bottom: 28px;
+  text-align: center;
+  position: relative;
+}
+
+.quote-mark {
+  font-family: var(--t-font-heading, 'DM Sans');
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--t-brand, #1a2ad4);
+  line-height: 0.6;
+  display: block;
+  margin-bottom: 14px;
+  opacity: 0.35;
+  font-style: italic;
+  transition: font-family 0.15s;
+}
+
+.quote-text {
+  font-family: var(--t-font-heading, 'DM Sans');
+  font-size: calc(var(--t-heading-size, 26px) * 0.6);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--dark);
+  max-width: 520px;
+  margin: 0 auto 12px;
+  transition: font-family 0.15s, font-size 0.2s;
+}
+
+.quote-attr {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.35);
+}
+
+/* ─── SITE FOOTER ─── */
+.site-footer {
+  border-top: 0.5px solid var(--border);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.site-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-footer-initials {
+  display: flex;
+  gap: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: lowercase;
+}
+
+.site-footer-initials .fi-m { color: var(--t-brand, #1a2ad4); }
+.site-footer-initials .fi-no { color: rgba(17,17,36,0.18); }
+
+.site-footer-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+}
+
+.site-footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(17,17,36,0.25);
+}
+
+/* ─── DARK MODE OVERRIDES ─── */
+body.dark-mode .preview {
+  background: #0d1020;
+}
+
+body.dark-mode .preview-bar {
+  background: rgba(13,16,32,0.92);
+  border-color: rgba(255,255,255,0.06);
+}
+
+body.dark-mode .preview-label,
+body.dark-mode .preview-url {
+  color: rgba(200,210,255,0.25);
+}
+
+body.dark-mode .site-nav {
+  background: rgba(30,40,80,0.7);
+  border-color: rgba(255,255,255,0.07);
+}
+
+body.dark-mode .site-nav-sep { background: rgba(255,255,255,0.08); }
+body.dark-mode .site-nav-role,
+body.dark-mode .site-nav-link { color: rgba(200,210,255,0.4); }
+
+body.dark-mode .hero-h1,
+body.dark-mode .section-heading,
+body.dark-mode .form-heading { color: #e0e4ff; }
+
+body.dark-mode .hero-body,
+body.dark-mode .stat-desc,
+body.dark-mode .card-p,
+body.dark-mode .form-sub { color: rgba(200,210,255,0.42); }
+
+body.dark-mode .stats-strip,
+body.dark-mode .stat-item { border-color: rgba(255,255,255,0.06); }
+
+body.dark-mode .stat-label { color: rgba(200,210,255,0.28); }
+
+body.dark-mode .icon-card {
+  background: #13182e;
+  border-color: rgba(255,255,255,0.07);
+}
+
+body.dark-mode .card-h { color: #e0e4ff; }
+body.dark-mode .card-footer { border-color: rgba(255,255,255,0.06); color: rgba(200,210,255,0.22); }
+
+body.dark-mode .form-section { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .form-input {
+  background: #13182e;
+  border-color: rgba(255,255,255,0.1);
+  color: #e0e4ff;
+}
+
+body.dark-mode .form-label { color: rgba(200,210,255,0.32); }
+body.dark-mode .btn-ghost { border-color: rgba(255,255,255,0.15); color: rgba(200,210,255,0.45); }
+
+body.dark-mode .process-strip { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .process-step { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .process-h { color: #e0e4ff; }
+body.dark-mode .process-p { color: rgba(200,210,255,0.42); }
+
+body.dark-mode .quote-block { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .quote-text { color: #e0e4ff; }
+body.dark-mode .quote-attr { color: rgba(200,210,255,0.28); }
+
+body.dark-mode .site-footer { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .site-footer-tagline,
+body.dark-mode .site-footer-copy { color: rgba(200,210,255,0.22); }
+body.dark-mode .site-footer-initials .fi-no { color: rgba(200,210,255,0.1); }
+
+/* ─── SNIPPET BLOCKS ─── */
+.snippet-code {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(17,17,36,0.62);
+  background: #f8f7f2;
+  border: 0.5px solid rgba(17,17,36,0.08);
+  padding: 10px 12px;
+  border-radius: 3px;
+  white-space: pre;
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.snip-copy-btn {
+  width: 100%;
+  margin-top: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px;
+  background: rgba(17,17,36,0.07);
+  color: rgba(17,17,36,0.5);
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.1s;
+}
+
+.snip-copy-btn:hover { background: rgba(17,17,36,0.12); color: var(--dark); }
+.snip-copy-btn:active { opacity: 0.8; }
+
+/* ─── PANEL VISIBILITY ─── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ─── SCROLLBAR STYLING ─── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(17,17,36,0.12); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(17,17,36,0.22); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .sidebar { width: 160px; }
+  .config { width: 220px; }
+}
+
+@media (max-width: 720px) {
+  .shell { flex-direction: column; }
+  .sidebar { width: 100%; height: 48px; }
+  .config { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     TOP BAR
+═══════════════════════════════════════ -->
+<div class="portal-topbar">
+  <div class="portal-brand">
+    <div class="portal-nom">
+      <span class="pn1">n</span>
+      <span class="pn2">o</span>
+      <span class="pn3">m</span>
+    </div>
+    <div class="portal-divider"></div>
+    <span class="portal-title">Design System · Internal Portal</span>
+  </div>
+  <div class="portal-meta">
+    <span class="portal-version">v1.0 · April 2026</span>
+    <div class="portal-live">
+      <span class="live-dot"></span>
+      Preview live
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SHELL
+═══════════════════════════════════════ -->
+<div class="shell">
+
+  <!-- ─── SIDEBAR ─── -->
+  <nav class="sidebar">
+    <div class="sidebar-scroll">
+
+      <span class="nav-group-label">Tokens</span>
+
+      <div class="nav-item active" data-nav="typography" onclick="setNav('typography', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <path d="M2 3h10M7 3v8M4 11h6"/>
+          </svg>
+        </div>
+        Typography
+      </div>
+
+      <div class="nav-item" data-nav="colours" onclick="setNav('colours', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <circle cx="7" cy="7" r="5"/>
+            <path d="M7 2a5 5 0 0 1 0 10"/>
+          </svg>
+        </div>
+        Colours
+      </div>
+
+      <div class="nav-item" data-nav="spacing" onclick="setNav('spacing', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <path d="M2 4h10M2 7h7M2 10h9"/>
+          </svg>
+        </div>
+        Spacing &amp; Radius
+      </div>
+
+      <div class="nav-item" data-nav="motion" onclick="setNav('motion', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <circle cx="7" cy="7" r="5"/>
+            <path d="M7 4v3l2 1.5"/>
+          </svg>
+        </div>
+        Motion
+      </div>
+
+      <span class="nav-group-label">Components</span>
+
+      <div class="nav-item" data-nav="buttons" onclick="setNav('buttons', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <rect x="1" y="4" width="12" height="6" rx="1.5"/>
+          </svg>
+        </div>
+        Buttons
+      </div>
+
+      <div class="nav-item" data-nav="cards" onclick="setNav('cards', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <rect x="1" y="2" width="12" height="10" rx="1.5"/>
+            <path d="M1 5.5h12"/>
+          </svg>
+        </div>
+        Cards &amp; Icons
+      </div>
+
+      <div class="nav-item" data-nav="forms" onclick="setNav('forms', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <rect x="1" y="2.5" width="12" height="3" rx="1"/>
+            <rect x="1" y="8.5" width="8" height="3" rx="1"/>
+          </svg>
+        </div>
+        Forms
+      </div>
+
+      <span class="nav-group-label">Output</span>
+
+      <div class="nav-item" data-nav="export" onclick="setNav('export', this)">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <path d="M7 1v8M4 6l3 3 3-3M2 11h10"/>
+          </svg>
+        </div>
+        Export
+        <span class="nav-badge">CSS · JSON</span>
+      </div>
+
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="portal-live" style="color:rgba(17,17,36,0.35);">
+        <span class="live-dot"></span>
+        All controls live
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── PREVIEW ─── -->
+  <main class="preview" id="preview">
+    <div class="preview-bar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="preview-label">Live Preview</span>
+        <span class="preview-url">notonmondays.com</span>
+      </div>
+      <div class="preview-controls">
+        <div class="mode-toggle">
+          <button class="mode-btn active" data-group="mode" data-value="light" onclick="setMode('light', this)">Light</button>
+          <button class="mode-btn" data-group="mode" data-value="dark" onclick="setMode('dark', this)">Dark</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-scroll">
+    <div class="preview-canvas" id="preview-canvas">
+
+      <!-- Site nav -->
+      <div class="site-nav">
+        <div class="site-nav-logo">
+          <div class="site-nav-initials">
+            <span style="color:rgba(17,17,36,0.18)">n</span>
+            <span style="color:rgba(17,17,36,0.12)">o</span>
+            <span id="pv-nom-m" style="color:#1a2ad4">m</span>
+          </div>
+          <div class="site-nav-sep"></div>
+          <div class="site-nav-role">The Operating<br>Partner</div>
+        </div>
+        <div class="site-nav-links">
+          <span class="site-nav-link">About</span>
+          <span class="site-nav-link">Services</span>
+          <span class="site-nav-link">AI</span>
+          <span class="site-nav-link">Work</span>
+        </div>
+        <button class="site-nav-cta" id="pv-nav-cta">Start a Conversation</button>
+      </div>
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-eyebrow">Built for the people who own the outcomes</div>
+        <div class="hero-h1" id="pv-h1">The thinking<br>and the doing.<br><em>Without the overhead.</em></div>
+        <div class="hero-body" id="pv-body">We embed alongside leadership teams as fractional operating partners: building the systems, strategy, and clarity that let ambitious businesses grow without losing themselves in the process.</div>
+        <div class="hero-actions">
+          <button class="btn-primary" id="pv-btn-p">See how we work</button>
+          <button class="btn-ghost" id="pv-btn-g">Read our story →</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-num" id="pv-sn1">20+</div>
+          <div class="stat-label">Years of doing the actual work</div>
+          <div class="stat-desc" id="pv-sd1">Across UK public services, private practices, US product companies, and high-growth startups.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="pv-sn2">4</div>
+          <div class="stat-label">Distinct offerings</div>
+          <div class="stat-desc" id="pv-sd2">From single sprint to full retained partnership.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="pv-sn3">1</div>
+          <div class="stat-label">Critical friend</div>
+          <div class="stat-desc" id="pv-sd3">One relationship. Strategy to execution.</div>
+        </div>
+      </div>
+
+      <!-- Services with icon cards -->
+      <div style="margin-bottom:14px;">
+        <div class="section-eyebrow">What we offer</div>
+        <div class="section-heading" id="pv-sh">Four ways to <em>work with us.</em></div>
+      </div>
+
+      <div class="icon-cards">
+
+        <div class="icon-card" id="ic1">
+          <div class="card-number">01</div>
+          <div class="card-icon-wrap">
+            <div class="card-icon">
+              <!-- Layers / retained icon -->
+              <svg viewBox="0 0 24 24">
+                <path d="M2 8l10-5 10 5-10 5-10-5z"/>
+                <path d="M2 12l10 5 10-5"/>
+                <path d="M2 16l10 5 10-5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-h" id="ic1h">The Operating Layer</div>
+          <div class="card-p" id="ic1p">Retained fractional operating partnership — chief of staff, PMO, and brand guardian in one ongoing relationship.</div>
+          <div class="card-footer">Retained · Monthly <span class="card-footer-cta">Let's talk →</span></div>
+        </div>
+
+        <div class="icon-card" id="ic2">
+          <div class="card-number">02</div>
+          <div class="card-icon-wrap">
+            <div class="card-icon">
+              <!-- Blueprint / compass icon -->
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>
+                <circle cx="12" cy="12" r="2"/>
+                <path d="M8.5 8.5l7 7M15.5 8.5l-7 7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-h" id="ic2h">The Blueprint</div>
+          <div class="card-p" id="ic2p">Fixed-scope diagnostic and strategy sprint. Audit, gap analysis, and a prioritised operating plan.</div>
+          <div class="card-footer">Fixed scope · Fixed fee <span class="card-footer-cta">Let's talk →</span></div>
+        </div>
+
+        <div class="icon-card" id="ic3">
+          <div class="card-number">03</div>
+          <div class="card-icon-wrap">
+            <div class="card-icon">
+              <!-- Build / hammer-and-wrench icon -->
+              <svg viewBox="0 0 24 24">
+                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-h" id="ic3h">The Build</div>
+          <div class="card-p" id="ic3p">Brand, systems, go-to-market, investor materials, website builds, and VA placement — executed.</div>
+          <div class="card-footer">Project based <span class="card-footer-cta">Let's talk →</span></div>
+        </div>
+
+        <div class="icon-card" id="ic4">
+          <div class="card-number">04</div>
+          <div class="card-icon-wrap">
+            <div class="card-icon">
+              <!-- AI / circuit/brain icon -->
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a4 4 0 014 4v1h1a3 3 0 010 6h-1v1a4 4 0 01-8 0v-1H7a3 3 0 010-6h1V6a4 4 0 014-4z"/>
+                <path d="M8 9v6M16 9v6M9 7H7M17 7h-2M9 17H7M17 17h-2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-h" id="ic4h">AI Advisory</div>
+          <div class="card-p" id="ic4p">AI strategy, operations integration, team training, ethics and governance for growing businesses.</div>
+          <div class="card-footer">On request <span class="card-footer-cta">Let's talk →</span></div>
+        </div>
+
+      </div>
+
+      <!-- Process strip -->
+      <div style="margin-bottom:14px;">
+        <div class="section-eyebrow">How we work</div>
+        <div class="section-heading" id="pv-ph">Three steps. <em>No fluff.</em></div>
+      </div>
+
+      <div class="process-strip">
+        <div class="process-step">
+          <div class="process-num">01 — Diagnose</div>
+          <div class="process-h">Map the gap</div>
+          <div class="process-p">We audit where you are, where you need to be, and what's in the way. You get a clear picture, not a deck.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02 — Design</div>
+          <div class="process-h">Build the plan</div>
+          <div class="process-p">Systems, structures, strategy and the collateral to communicate it. Built for your team to own, not depend on.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03 — Deliver</div>
+          <div class="process-h">Execute together</div>
+          <div class="process-p">We work alongside you until it sticks. Embedded, accountable, and gone when the job is done.</div>
+        </div>
+      </div>
+
+      <!-- Quote block -->
+      <div class="quote-block">
+        <span class="quote-mark">"</span>
+        <div class="quote-text">Most businesses don't have a strategy problem. They have an execution gap — and no one accountable for closing it.</div>
+        <div class="quote-attr">Sasu Ristimäki · Founder, Not On Mondays</div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-section">
+        <div class="form-heading" id="pv-fh">Start a conversation.</div>
+        <div class="form-sub" id="pv-fsub">Tell us about your business and where you want to get to.</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Full name</label>
+            <input class="form-input" id="fi1" placeholder="Sarah Chen" type="text">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email</label>
+            <input class="form-input" id="fi2" placeholder="sarah@company.com" type="email">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">What's on your mind</label>
+          <input class="form-input" id="fi3" placeholder="We're Series A, scaling fast, and need…" type="text">
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="site-footer">
+        <div class="site-footer-brand">
+          <div class="site-footer-initials">
+            <span class="fi-no">n</span><span class="fi-no">o</span><span class="fi-m">m</span>
+          </div>
+          <span class="site-footer-tagline">The Operating Partner</span>
+        </div>
+        <span class="site-footer-copy">© 2026 Not On Mondays Ltd · notonmondays.com</span>
+      </div>
+
+    </div><!-- preview-canvas -->
+    </div><!-- preview-scroll -->
+  </main>
+
+  <!-- ─── CONFIG PANEL ─── -->
+  <aside class="config">
+    <div class="config-header">
+      <div class="config-title" id="cfg-title">Typography</div>
+      <div class="config-subtitle" id="cfg-sub">Select a type system</div>
+    </div>
+
+    <div class="config-scroll">
+
+      <!-- ══ TYPOGRAPHY PANEL ══ -->
+      <div class="panel active" id="panel-typography">
+
+        <div class="ctrl">
+          <span class="ctrl-label">Type Preset</span>
+          <div class="preset-list">
+
+            <div class="preset-card active" data-group="preset" data-value="operator" onclick="setPreset('operator', this)">
+              <div class="preset-name">Operator Clean</div>
+              <div class="preset-detail">Heading: DM Sans · Body: DM Sans<br>Mono: DM Mono</div>
+              <div class="preset-sample" style="font-family:'DM Sans',sans-serif;">Not On Mondays</div>
+            </div>
+
+            <div class="preset-card" data-group="preset" data-value="editorial" onclick="setPreset('editorial', this)">
+              <div class="preset-name">Editorial Serif</div>
+              <div class="preset-detail">Heading: Cormorant · Body: DM Sans<br>Mono: DM Mono</div>
+              <div class="preset-sample" style="font-family:'Cormorant Garamond',serif;font-weight:400;">Not On Mondays</div>
+            </div>
+
+            <div class="preset-card" data-group="preset" data-value="technical" onclick="setPreset('technical', this)">
+              <div class="preset-name">Technical Precision</div>
+              <div class="preset-detail">Heading: IBM Plex Sans · Body: IBM Plex Sans<br>Mono: IBM Plex Mono</div>
+              <div class="preset-sample" style="font-family:'IBM Plex Sans',sans-serif;">Not On Mondays</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Heading Scale</span>
+          <div class="pill-row" id="scale-pills">
+            <div class="pill" data-group="scale" data-value="sm" onclick="setScale('sm', this)">Small</div>
+            <div class="pill active" data-group="scale" data-value="md" onclick="setScale('md', this)">Mid</div>
+            <div class="pill" data-group="scale" data-value="lg" onclick="setScale('lg', this)">Large</div>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Body Weight</span>
+          <div class="pill-row" id="weight-pills">
+            <div class="pill active" data-group="weight" data-value="light" onclick="setWeight('light', this)">Light 300</div>
+            <div class="pill" data-group="weight" data-value="regular" onclick="setWeight('regular', this)">Regular 400</div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Active Tokens</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--font-heading</span>
+              <span class="token-val" id="tk-hf">"DM Sans"</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--font-body</span>
+              <span class="token-val" id="tk-bf">"DM Sans"</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--font-mono</span>
+              <span class="token-val" id="tk-mf">"DM Mono"</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--heading-size</span>
+              <span class="token-val" id="tk-hs">26px</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--body-weight</span>
+              <span class="token-val" id="tk-bw">300</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-typography -->
+
+      <!-- ══ COLOURS PANEL ══ -->
+      <div class="panel" id="panel-colours">
+
+        <div class="ctrl">
+          <span class="ctrl-label">Brand Colour</span>
+          <div class="preset-list">
+
+            <div class="preset-card active" data-group="brand" data-value="#1a2ad4" onclick="setBrand('#1a2ad4', this)">
+              <div style="display:flex;align-items:center;gap:9px;">
+                <div style="width:18px;height:18px;border-radius:3px;background:#1a2ad4;flex-shrink:0;"></div>
+                <div>
+                  <div class="preset-name">Cobalt · #1a2ad4</div>
+                  <div class="preset-detail">Current brand blue</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="preset-card" data-group="brand" data-value="#0d1880" onclick="setBrand('#0d1880', this)">
+              <div style="display:flex;align-items:center;gap:9px;">
+                <div style="width:18px;height:18px;border-radius:3px;background:#0d1880;flex-shrink:0;"></div>
+                <div>
+                  <div class="preset-name">Deep Navy · #0d1880</div>
+                  <div class="preset-detail">Deeper, more formal</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="preset-card" data-group="brand" data-value="#1E35D4" onclick="setBrand('#1E35D4', this)">
+              <div style="display:flex;align-items:center;gap:9px;">
+                <div style="width:18px;height:18px;border-radius:3px;background:#1E35D4;flex-shrink:0;"></div>
+                <div>
+                  <div class="preset-name">Electric · #1E35D4</div>
+                  <div class="preset-detail">More saturated variant</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Page Surface</span>
+          <div class="pill-row" id="surface-pills">
+            <div class="pill active" data-group="surface" data-value="#f2f0e8" onclick="setSurface('#f2f0e8', this)">Off-white</div>
+            <div class="pill" data-group="surface" data-value="#ffffff" onclick="setSurface('#ffffff', this)">White</div>
+            <div class="pill" data-group="surface" data-value="#faf8f2" onclick="setSurface('#faf8f2', this)">Warm</div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Active Tokens</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--color-brand</span>
+              <span class="token-val">
+                <span class="token-swatch" id="tk-bsw" style="background:#1a2ad4;"></span>
+                <span id="tk-bc">#1a2ad4</span>
+              </span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--color-surface</span>
+              <span class="token-val" id="tk-surf">#f2f0e8</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--color-text</span>
+              <span class="token-val">#111124</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--color-muted</span>
+              <span class="token-val">#8a8fa8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Semantic Colours</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--color-error</span>
+              <span class="token-val">
+                <span class="token-swatch" style="background:#d93025;"></span>
+                <span>#d93025</span>
+              </span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--color-success</span>
+              <span class="token-val">
+                <span class="token-swatch" style="background:#0F6E56;"></span>
+                <span>#0F6E56</span>
+              </span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--color-warning</span>
+              <span class="token-val">
+                <span class="token-swatch" style="background:#c97d20;"></span>
+                <span>#c97d20</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-colours -->
+
+      <!-- ══ SPACING PANEL ══ -->
+      <div class="panel" id="panel-spacing">
+
+        <div class="ctrl">
+          <span class="ctrl-label">Density</span>
+          <div class="pill-row" id="density-pills">
+            <div class="pill" data-group="density" data-value="compact" onclick="setDensity('compact', this)">Compact</div>
+            <div class="pill active" data-group="density" data-value="default" onclick="setDensity('default', this)">Default</div>
+            <div class="pill" data-group="density" data-value="open" onclick="setDensity('open', this)">Open</div>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Border Radius</span>
+          <div class="radius-row" id="radius-pills">
+            <div class="rpill active" data-group="radius" data-value="sharp" onclick="setRadius('sharp', this)">
+              <div class="rpill-box" style="border-radius:0;"></div>
+              <span class="rpill-label">Sharp</span>
+            </div>
+            <div class="rpill" data-group="radius" data-value="soft" onclick="setRadius('soft', this)">
+              <div class="rpill-box" style="border-radius:5px;"></div>
+              <span class="rpill-label">Soft</span>
+            </div>
+            <div class="rpill" data-group="radius" data-value="round" onclick="setRadius('round', this)">
+              <div class="rpill-box" style="border-radius:12px;"></div>
+              <span class="rpill-label">Round</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Active Tokens</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--space-base</span>
+              <span class="token-val" id="tk-spb">16px</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--space-section</span>
+              <span class="token-val" id="tk-sps">28px</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--radius-sm</span>
+              <span class="token-val" id="tk-rsm">0px</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--radius-card</span>
+              <span class="token-val" id="tk-rcard">0px</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-spacing -->
+
+      <!-- ══ MOTION PANEL ══ -->
+      <div class="panel" id="panel-motion">
+
+        <div class="ctrl">
+          <span class="ctrl-label">Duration</span>
+          <div class="pill-row" id="duration-pills">
+            <div class="pill" data-group="duration" data-value="0ms" onclick="setDuration('0ms', this)">Instant</div>
+            <div class="pill active" data-group="duration" data-value="150ms" onclick="setDuration('150ms', this)">Fast</div>
+            <div class="pill" data-group="duration" data-value="250ms" onclick="setDuration('250ms', this)">Natural</div>
+            <div class="pill" data-group="duration" data-value="400ms" onclick="setDuration('400ms', this)">Slow</div>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Easing</span>
+          <div class="pill-row" id="easing-pills">
+            <div class="pill" data-group="easing" data-value="linear" onclick="setEasing('linear', this)">Linear</div>
+            <div class="pill active" data-group="easing" data-value="ease" onclick="setEasing('ease', this)">Ease</div>
+            <div class="pill" data-group="easing" data-value="cubic-bezier(0.34,1.56,0.64,1)" onclick="setEasing('cubic-bezier(0.34,1.56,0.64,1)', this)">Spring</div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Active Tokens</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--duration-base</span>
+              <span class="token-val" id="tk-dur">150ms</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--easing-base</span>
+              <span class="token-val" id="tk-ease">ease</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-motion -->
+
+      <!-- ══ BUTTONS PANEL ══ -->
+      <div class="panel" id="panel-buttons">
+
+        <div class="ctrl">
+          <span class="ctrl-label">Primary Style</span>
+          <div class="preset-list">
+            <div class="preset-card active" data-group="btnStyle" data-value="solid" onclick="setBtnStyle('solid', this)">
+              <div class="preset-name">Solid Fill</div>
+              <div style="margin-top:8px;">
+                <button style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:8px 14px;background:#1a2ad4;color:#fff;border:none;border-radius:0;cursor:default;">Start a Conversation</button>
+              </div>
+            </div>
+            <div class="preset-card" data-group="btnStyle" data-value="outline" onclick="setBtnStyle('outline', this)">
+              <div class="preset-name">Outline</div>
+              <div style="margin-top:8px;">
+                <button style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:8px 14px;background:transparent;color:#1a2ad4;border:1.5px solid #1a2ad4;border-radius:0;cursor:default;">Start a Conversation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Button Radius</span>
+          <div class="pill-row" id="btn-radius-pills">
+            <div class="pill active" data-group="btnRadius" data-value="0px" onclick="setBtnRadius('0px', this)">Sharp</div>
+            <div class="pill" data-group="btnRadius" data-value="4px" onclick="setBtnRadius('4px', this)">Soft</div>
+            <div class="pill" data-group="btnRadius" data-value="24px" onclick="setBtnRadius('24px', this)">Pill</div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Active Tokens</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--btn-style</span>
+              <span class="token-val" id="tk-bst">solid</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--btn-radius</span>
+              <span class="token-val" id="tk-brd">0px</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">HTML Snippet</span>
+          <pre class="snippet-code" id="snip-buttons"></pre>
+          <button class="snip-copy-btn" onclick="copySnippet('buttons')">Copy snippet</button>
+        </div>
+
+      </div><!-- /panel-buttons -->
+
+      <!-- ══ CARDS PANEL ══ -->
+      <div class="panel" id="panel-cards">
+
+        <div class="ctrl">
+          <span class="ctrl-label">Card Style</span>
+          <div class="preset-list">
+            <div class="preset-card active" data-group="cardStyle" data-value="bordered" onclick="setCardStyle('bordered', this)">
+              <div class="preset-name">Bordered</div>
+              <div class="preset-detail">0.5px border, white background, numbered tab accent</div>
+            </div>
+            <div class="preset-card" data-group="cardStyle" data-value="tinted" onclick="setCardStyle('tinted', this)">
+              <div class="preset-name">Tinted</div>
+              <div class="preset-detail">Light brand tint fill, branded border</div>
+            </div>
+            <div class="preset-card" data-group="cardStyle" data-value="flat" onclick="setCardStyle('flat', this)">
+              <div class="preset-name">Flat Divider</div>
+              <div class="preset-detail">No border, top divider line only</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Icon Weight</span>
+          <div class="pill-row" id="icon-weight-pills">
+            <div class="pill active" data-group="iconWeight" data-value="1.4" onclick="setIconWeight('1.4', this)">Fine</div>
+            <div class="pill" data-group="iconWeight" data-value="1.8" onclick="setIconWeight('1.8', this)">Medium</div>
+            <div class="pill" data-group="iconWeight" data-value="2.4" onclick="setIconWeight('2.4', this)">Bold</div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Active Tokens</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--card-style</span>
+              <span class="token-val" id="tk-cst">bordered</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--icon-stroke</span>
+              <span class="token-val" id="tk-ico">1.4px</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">HTML Snippet</span>
+          <pre class="snippet-code" id="snip-cards"></pre>
+          <button class="snip-copy-btn" onclick="copySnippet('cards')">Copy snippet</button>
+        </div>
+
+      </div><!-- /panel-cards -->
+
+      <!-- ══ FORMS PANEL ══ -->
+      <div class="panel" id="panel-forms">
+
+        <div class="ctrl">
+          <span class="ctrl-label">Input Style</span>
+          <div class="preset-list">
+            <div class="preset-card active" data-group="formStyle" data-value="underline" onclick="setFormStyle('underline', this)">
+              <div class="preset-name">Underline</div>
+              <div class="preset-detail">Border-bottom only, open editorial feel</div>
+            </div>
+            <div class="preset-card" data-group="formStyle" data-value="outline" onclick="setFormStyle('outline', this)">
+              <div class="preset-name">Outlined</div>
+              <div class="preset-detail">Full border all sides, structured</div>
+            </div>
+            <div class="preset-card" data-group="formStyle" data-value="filled" onclick="setFormStyle('filled', this)">
+              <div class="preset-name">Filled</div>
+              <div class="preset-detail">Tinted background, no visible border</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">Active Tokens</span>
+          <div class="token-block">
+            <div class="token-row">
+              <span class="token-key">--input-style</span>
+              <span class="token-val" id="tk-ist">underline</span>
+            </div>
+            <div class="token-row">
+              <span class="token-key">--input-border</span>
+              <span class="token-val" id="tk-ibrd">bottom only</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-divider"></div>
+
+        <div class="ctrl">
+          <span class="ctrl-label">HTML Snippet</span>
+          <pre class="snippet-code" id="snip-forms"></pre>
+          <button class="snip-copy-btn" onclick="copySnippet('forms')">Copy snippet</button>
+        </div>
+
+      </div><!-- /panel-forms -->
+
+      <!-- ══ EXPORT PANEL ══ -->
+      <div class="panel" id="panel-export">
+
+        <div class="export-tabs">
+          <div class="exp-tab active" onclick="setExpTab('css', this)">CSS Vars</div>
+          <div class="exp-tab" onclick="setExpTab('json', this)">JSON</div>
+          <div class="exp-tab" onclick="setExpTab('summary', this)">Summary</div>
+        </div>
+
+        <div class="exp-code" id="exp-output"></div>
+
+        <button class="exp-copy-btn" onclick="copyExport()">Copy to Clipboard</button>
+
+      </div><!-- /panel-export -->
+
+    </div><!-- config-scroll -->
+  </aside>
+
+</div><!-- shell -->
+
+<script>
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+const S = {
+  preset: 'operator',
+  scale: 'md',
+  weight: 'light',
+  brand: '#1a2ad4',
+  surface: '#f2f0e8',
+  density: 'default',
+  radius: 'sharp',
+  btnStyle: 'solid',
+  btnRadius: '0px',
+  cardStyle: 'bordered',
+  iconWeight: '1.4',
+  formStyle: 'underline',
+  mode: 'light',
+  expTab: 'css',
+  duration: '150ms',
+  easing: 'ease'
+};
+
+/* ═══════════════════════════════════════════
+   DATA TABLES
+═══════════════════════════════════════════ */
+const PRESETS = {
+  operator:  { hf: "'DM Sans',sans-serif",           bf: "'DM Sans',sans-serif",          mf: "'DM Mono',monospace",        tkH: '"DM Sans"',             tkB: '"DM Sans"',            tkM: '"DM Mono"' },
+  editorial: { hf: "'Cormorant Garamond',serif",      bf: "'DM Sans',sans-serif",          mf: "'DM Mono',monospace",        tkH: '"Cormorant Garamond"',  tkB: '"DM Sans"',            tkM: '"DM Mono"' },
+  technical: { hf: "'IBM Plex Sans',sans-serif",      bf: "'IBM Plex Sans',sans-serif",    mf: "'IBM Plex Mono',monospace",  tkH: '"IBM Plex Sans"',       tkB: '"IBM Plex Sans"',      tkM: '"IBM Plex Mono"' }
+};
+
+const SCALES = {
+  sm: { h1: '20px', stat: '22px', sec: '14px', val: '20px' },
+  md: { h1: '26px', stat: '28px', sec: '18px', val: '26px' },
+  lg: { h1: '34px', stat: '36px', sec: '24px', val: '34px' }
+};
+
+const DENSITY_MAP = {
+  compact: { pad: '16px 24px', tkB: '12px', tkS: '20px' },
+  default: { pad: '28px 32px', tkB: '16px', tkS: '28px' },
+  open:    { pad: '44px 40px', tkB: '24px', tkS: '44px' }
+};
+
+const RADIUS_MAP = {
+  sharp: { sm: '0px',  card: '0px',  tkSm: '0px',  tkCard: '0px'  },
+  soft:  { sm: '3px',  card: '6px',  tkSm: '3px',  tkCard: '6px'  },
+  round: { sm: '8px',  card: '14px', tkSm: '8px',  tkCard: '14px' }
+};
+
+const DURATION_MAP = {
+  '0ms':   { label: 'Instant', easing: 'linear' },
+  '150ms': { label: 'Fast'    },
+  '250ms': { label: 'Natural' },
+  '400ms': { label: 'Slow'    }
+};
+
+const EASING_MAP = {
+  'linear':                         { label: 'Linear'  },
+  'ease':                           { label: 'Ease'    },
+  'cubic-bezier(0.34,1.56,0.64,1)': { label: 'Spring'  }
+};
+
+/* ═══════════════════════════════════════════
+   APPLY FUNCTIONS
+═══════════════════════════════════════════ */
+
+function applyToken(name, value) {
+  document.documentElement.style.setProperty(name, value);
+}
+
+function applyPreset() {
+  const p = PRESETS[S.preset];
+  applyToken('--t-font-heading', p.hf);
+  applyToken('--t-font-body', p.bf);
+  applyToken('--t-font-mono', p.mf);
+  document.getElementById('tk-hf').textContent = p.tkH;
+  document.getElementById('tk-bf').textContent = p.tkB;
+  document.getElementById('tk-mf').textContent = p.tkM;
+}
+
+function applyScale() {
+  const sc = SCALES[S.scale];
+  applyToken('--t-heading-size', sc.h1);
+  document.getElementById('tk-hs').textContent = sc.val;
+}
+
+function applyWeight() {
+  const w = S.weight === 'light' ? '300' : '400';
+  applyToken('--t-body-weight', w);
+  document.getElementById('tk-bw').textContent = w;
+}
+
+function applyBrand() {
+  applyToken('--t-brand', S.brand);
+  const sw = document.getElementById('tk-bsw');
+  if (sw) sw.style.background = S.brand;
+  const bc = document.getElementById('tk-bc');
+  if (bc) bc.textContent = S.brand;
+  // also refresh btn style since it depends on brand
+  applyBtnStyle();
+}
+
+function applySurface() {
+  if (S.mode === 'light') {
+    applyToken('--t-surface', S.surface);
+    document.getElementById('preview').style.background = S.surface;
+  }
+  const tk = document.getElementById('tk-surf');
+  if (tk) tk.textContent = S.surface;
+}
+
+function applyDensity() {
+  const d = DENSITY_MAP[S.density];
+  document.getElementById('preview-canvas').style.padding = d.pad;
+  document.getElementById('tk-spb').textContent = d.tkB;
+  document.getElementById('tk-sps').textContent = d.tkS;
+}
+
+function applyRadius() {
+  const r = RADIUS_MAP[S.radius];
+  applyToken('--t-radius-sm', r.sm);
+  applyToken('--t-radius-card', r.card);
+  document.getElementById('tk-rsm').textContent = r.tkSm;
+  document.getElementById('tk-rcard').textContent = r.tkCard;
+}
+
+function applyBtnStyle() {
+  const isOutline = S.btnStyle === 'outline';
+  document.querySelectorAll('.btn-primary, .site-nav-cta').forEach(el => {
+    if (isOutline) {
+      el.style.background = 'transparent';
+      el.style.color = S.brand;
+      el.style.border = `1.5px solid ${S.brand}`;
+    } else {
+      el.style.background = S.brand;
+      el.style.color = '#fff';
+      el.style.border = 'none';
+    }
+  });
+  const tk = document.getElementById('tk-bst');
+  if (tk) tk.textContent = S.btnStyle;
+}
+
+function applyBtnRadius() {
+  document.querySelectorAll('.btn-primary, .btn-ghost, .site-nav-cta').forEach(el => {
+    el.style.borderRadius = S.btnRadius;
+  });
+  const tk = document.getElementById('tk-brd');
+  if (tk) tk.textContent = S.btnRadius;
+}
+
+function applyCardStyle() {
+  document.querySelectorAll('.icon-card').forEach(card => {
+    if (S.cardStyle === 'bordered') {
+      card.style.background = '#fff';
+      card.style.border = '0.5px solid rgba(17,17,36,0.1)';
+      card.style.borderTop = '';
+    } else if (S.cardStyle === 'tinted') {
+      const hex = S.brand;
+      card.style.background = hex + '08';
+      card.style.border = `0.5px solid ${hex}22`;
+    } else {
+      card.style.background = 'transparent';
+      card.style.border = 'none';
+      card.style.borderTop = '0.5px solid rgba(17,17,36,0.12)';
+    }
+  });
+  const tk = document.getElementById('tk-cst');
+  if (tk) tk.textContent = S.cardStyle;
+}
+
+function applyIconWeight() {
+  document.querySelectorAll('.card-icon svg').forEach(svg => {
+    svg.style.strokeWidth = S.iconWeight;
+  });
+  const tk = document.getElementById('tk-ico');
+  if (tk) tk.textContent = S.iconWeight + 'px';
+}
+
+function applyFormStyle() {
+  document.querySelectorAll('.form-input').forEach(input => {
+    if (S.formStyle === 'underline') {
+      input.style.border = 'none';
+      input.style.borderBottom = '0.5px solid rgba(17,17,36,0.22)';
+      input.style.background = 'transparent';
+      input.style.padding = '8px 0';
+    } else if (S.formStyle === 'outline') {
+      input.style.border = '0.5px solid rgba(17,17,36,0.2)';
+      input.style.background = '#fff';
+      input.style.padding = '9px 12px';
+    } else {
+      input.style.border = 'none';
+      input.style.background = 'rgba(17,17,36,0.05)';
+      input.style.padding = '9px 12px';
+    }
+  });
+  const tkIst = document.getElementById('tk-ist');
+  const tkIbrd = document.getElementById('tk-ibrd');
+  const labels = { underline: 'bottom only', outline: 'all sides', filled: 'none' };
+  if (tkIst) tkIst.textContent = S.formStyle;
+  if (tkIbrd) tkIbrd.textContent = labels[S.formStyle];
+}
+
+function applyMotion() {
+  applyToken('--t-duration', S.duration);
+  applyToken('--t-easing', S.easing);
+  const tkDur = document.getElementById('tk-dur');
+  const tkEase = document.getElementById('tk-ease');
+  if (tkDur) tkDur.textContent = S.duration;
+  if (tkEase) tkEase.textContent = S.easing;
+}
+
+function applyAll() {
+  applyPreset();
+  applyScale();
+  applyWeight();
+  applyBrand();
+  applySurface();
+  applyDensity();
+  applyRadius();
+  applyBtnStyle();
+  applyBtnRadius();
+  applyCardStyle();
+  applyIconWeight();
+  applyFormStyle();
+  applyMotion();
+  refreshSnippets();
+}
+
+/* ═══════════════════════════════════════════
+   SETTERS (called from UI)
+═══════════════════════════════════════════ */
+
+function setNav(id, el) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+
+  const titles = {
+    typography: ['Typography', 'Select a type system'],
+    colours:    ['Colours', 'Brand & surface palette'],
+    spacing:    ['Spacing & Radius', 'Layout density and corners'],
+    motion:     ['Motion', 'Duration and easing tokens'],
+    buttons:    ['Buttons', 'Primary & ghost styles'],
+    cards:      ['Cards & Icons', 'Card surface and icon weight'],
+    forms:      ['Forms', 'Input field treatment'],
+    export:     ['Export', 'CSS variables & JSON config']
+  };
+
+  const [title, sub] = titles[id] || [id, ''];
+  document.getElementById('cfg-title').textContent = title;
+  document.getElementById('cfg-sub').textContent = sub;
+
+  if (id === 'export') refreshExport();
+}
+
+function setPreset(id, el) {
+  document.querySelectorAll('#panel-typography .preset-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  S.preset = id;
+  applyPreset();
+  refreshExport();
+  saveState();
+}
+
+function setScale(id, el) {
+  document.querySelectorAll('#scale-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.scale = id;
+  applyScale();
+  refreshExport();
+  saveState();
+}
+
+function setWeight(id, el) {
+  document.querySelectorAll('#weight-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.weight = id;
+  applyWeight();
+  refreshExport();
+  saveState();
+}
+
+function setBrand(hex, el) {
+  document.querySelectorAll('#panel-colours .preset-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  S.brand = hex;
+  applyBrand();
+  refreshExport();
+  saveState();
+}
+
+function setSurface(hex, el) {
+  document.querySelectorAll('#surface-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.surface = hex;
+  applySurface();
+  refreshExport();
+  saveState();
+}
+
+function setDensity(id, el) {
+  document.querySelectorAll('#density-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.density = id;
+  applyDensity();
+  refreshExport();
+  saveState();
+}
+
+function setRadius(id, el) {
+  document.querySelectorAll('#radius-pills .rpill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.radius = id;
+  applyRadius();
+  refreshExport();
+  saveState();
+}
+
+function setBtnStyle(id, el) {
+  document.querySelectorAll('#panel-buttons .preset-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  S.btnStyle = id;
+  applyBtnStyle();
+  refreshExport();
+  saveState();
+}
+
+function setBtnRadius(id, el) {
+  document.querySelectorAll('#btn-radius-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.btnRadius = id;
+  applyBtnRadius();
+  refreshExport();
+  saveState();
+}
+
+function setCardStyle(id, el) {
+  document.querySelectorAll('#panel-cards .preset-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  S.cardStyle = id;
+  applyCardStyle();
+  refreshExport();
+  saveState();
+}
+
+function setIconWeight(w, el) {
+  document.querySelectorAll('#icon-weight-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.iconWeight = w;
+  applyIconWeight();
+  refreshExport();
+  saveState();
+}
+
+function setFormStyle(id, el) {
+  document.querySelectorAll('#panel-forms .preset-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  S.formStyle = id;
+  applyFormStyle();
+  refreshExport();
+  saveState();
+}
+
+function setDuration(val, el) {
+  document.querySelectorAll('#duration-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.duration = val;
+  applyMotion();
+  refreshExport();
+  saveState();
+}
+
+function setEasing(val, el) {
+  document.querySelectorAll('#easing-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  S.easing = val;
+  applyMotion();
+  refreshExport();
+  saveState();
+}
+
+function setMode(mode, el) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  S.mode = mode;
+  if (mode === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('preview').style.background = '#0d1020';
+  } else {
+    document.body.classList.remove('dark-mode');
+    document.getElementById('preview').style.background = S.surface;
+  }
+  saveState();
+}
+
+function setExpTab(id, el) {
+  document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  S.expTab = id;
+  refreshExport();
+}
+
+/* ═══════════════════════════════════════════
+   EXPORT GENERATOR
+═══════════════════════════════════════════ */
+function refreshExport() {
+  refreshSnippets();
+  const p = PRESETS[S.preset];
+  const r = RADIUS_MAP[S.radius];
+  const d = DENSITY_MAP[S.density];
+  const sc = SCALES[S.scale];
+  const out = document.getElementById('exp-output');
+  if (!out) return;
+
+  if (S.expTab === 'css') {
+    out.textContent =
+`:root {
+  /* ── Typography ── */
+  --font-heading: ${p.tkH}, sans-serif;
+  --font-body: ${p.tkB}, sans-serif;
+  --font-mono: ${p.tkM}, monospace;
+  --heading-size: ${sc.val};
+  --body-weight: ${S.weight === 'light' ? 300 : 400};
+
+  /* ── Brand & Colour ── */
+  --color-brand: ${S.brand};
+  --color-surface: ${S.surface};
+  --color-text: #111124;
+  --color-muted: #8a8fa8;
+  --color-off-white: #f2f0e8;
+  --color-error: #d93025;
+  --color-success: #0F6E56;
+  --color-warning: #c97d20;
+
+  /* ── Spacing ── */
+  --space-base: ${d.tkB};
+  --space-section: ${d.tkS};
+
+  /* ── Border Radius ── */
+  --radius-sm: ${r.tkSm};
+  --radius-card: ${r.tkCard};
+
+  /* ── Motion ── */
+  --duration-base: ${S.duration};
+  --easing-base: ${S.easing};
+
+  /* ── Components ── */
+  --btn-style: ${S.btnStyle};
+  --btn-radius: ${S.btnRadius};
+  --card-style: ${S.cardStyle};
+  --icon-stroke: ${S.iconWeight}px;
+  --input-style: ${S.formStyle};
+}`;
+
+  } else if (S.expTab === 'json') {
+    out.textContent = JSON.stringify({
+      meta: {
+        system: 'Not On Mondays — Design System',
+        version: '1.0',
+        generated: new Date().toISOString().split('T')[0]
+      },
+      typography: {
+        preset: S.preset,
+        headingFont: p.tkH,
+        bodyFont: p.tkB,
+        monoFont: p.tkM,
+        headingSize: sc.val,
+        bodyWeight: S.weight === 'light' ? 300 : 400
+      },
+      colours: {
+        brand: S.brand,
+        surface: S.surface,
+        text: '#111124',
+        muted: '#8a8fa8',
+        semantic: { error: '#d93025', success: '#0F6E56', warning: '#c97d20' }
+      },
+      spacing: {
+        density: S.density,
+        base: d.tkB,
+        section: d.tkS
+      },
+      radius: {
+        preset: S.radius,
+        sm: r.tkSm,
+        card: r.tkCard
+      },
+      motion: {
+        duration: S.duration,
+        easing: S.easing
+      },
+      components: {
+        buttonStyle: S.btnStyle,
+        buttonRadius: S.btnRadius,
+        cardStyle: S.cardStyle,
+        iconStroke: S.iconWeight + 'px',
+        inputStyle: S.formStyle
+      }
+    }, null, 2);
+
+  } else {
+    const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    out.textContent =
+`NOT ON MONDAYS — Design System
+Generated: ${date}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TYPOGRAPHY
+  Preset         → ${S.preset}
+  Heading font   → ${p.tkH}
+  Body font      → ${p.tkB}
+  Mono font      → ${p.tkM}
+  Heading size   → ${sc.val}
+  Body weight    → ${S.weight === 'light' ? 'Light (300)' : 'Regular (400)'}
+
+COLOUR
+  Brand          → ${S.brand}
+  Surface        → ${S.surface}
+  Text           → #111124
+  Muted          → #8a8fa8
+  Error          → #d93025
+  Success        → #0F6E56
+  Warning        → #c97d20
+
+LAYOUT
+  Density        → ${S.density}
+  Space base     → ${d.tkB}
+  Space section  → ${d.tkS}
+  Radius         → ${S.radius} (${r.tkCard})
+
+MOTION
+  Duration       → ${S.duration}
+  Easing         → ${S.easing}
+
+COMPONENTS
+  Button style   → ${S.btnStyle}
+  Button radius  → ${S.btnRadius}
+  Card style     → ${S.cardStyle}
+  Icon stroke    → ${S.iconWeight}px
+  Input style    → ${S.formStyle}`;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   SNIPPETS
+═══════════════════════════════════════════ */
+function refreshSnippets() {
+  const btnEl = document.getElementById('snip-buttons');
+  const cardEl = document.getElementById('snip-cards');
+  const formEl = document.getElementById('snip-forms');
+
+  if (btnEl) {
+    const styleNote = S.btnStyle === 'outline'
+      ? `border: 1.5px solid ${S.brand}; color: ${S.brand};`
+      : `background: ${S.brand}; color: #fff;`;
+    btnEl.textContent =
+`<!-- btn-style: ${S.btnStyle} · radius: ${S.btnRadius} -->
+<button class="btn-primary" style="
+  ${styleNote}
+  border-radius: ${S.btnRadius};
+">See how we work</button>
+
+<button class="btn-ghost" style="
+  border-radius: ${S.btnRadius};
+">Read our story →</button>`;
+  }
+
+  if (cardEl) {
+    cardEl.textContent =
+`<!-- card-style: ${S.cardStyle} · icon-stroke: ${S.iconWeight}px -->
+<div class="icon-card">
+  <div class="card-number">01</div>
+  <div class="card-icon-wrap">
+    <div class="card-icon">
+      <!-- SVG icon here -->
+    </div>
+  </div>
+  <div class="card-h">The Operating Layer</div>
+  <div class="card-p">Retained fractional operating
+  partnership.</div>
+  <div class="card-footer">
+    Retained · Monthly
+    <span class="card-footer-cta">
+      Let's talk →
+    </span>
+  </div>
+</div>`;
+  }
+
+  if (formEl) {
+    const inputStyle = S.formStyle === 'underline'
+      ? 'border: none; border-bottom: 0.5px solid rgba(17,17,36,0.22); background: transparent;'
+      : S.formStyle === 'filled'
+        ? 'border: none; background: rgba(17,17,36,0.05);'
+        : 'border: 0.5px solid rgba(17,17,36,0.2); background: #fff;';
+    formEl.textContent =
+`<!-- input-style: ${S.formStyle} -->
+<div class="form-field">
+  <label class="form-label">Full name</label>
+  <input class="form-input" type="text"
+    placeholder="Sarah Chen"
+    style="${inputStyle}">
+</div>`;
+  }
+}
+
+function copySnippet(id) {
+  const el = document.getElementById('snip-' + id);
+  if (!el || !navigator.clipboard) return;
+  navigator.clipboard.writeText(el.textContent).then(() => {
+    const btn = el.nextElementSibling;
+    const orig = btn.textContent;
+    btn.textContent = 'Copied';
+    setTimeout(() => btn.textContent = orig, 1800);
+  });
+}
+
+function copyExport() {
+  const txt = document.getElementById('exp-output').textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(() => {
+      const btn = document.querySelector('.exp-copy-btn');
+      const orig = btn.textContent;
+      btn.textContent = 'Copied to clipboard';
+      setTimeout(() => btn.textContent = orig, 1800);
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════
+   PERSISTENCE
+═══════════════════════════════════════════ */
+const STORAGE_KEY = 'nom-ds';
+const STORAGE_VERSION = 1;
+
+function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: STORAGE_VERSION, state: S }));
+  } catch(e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    // Reject missing/wrong version or non-object state
+    if (!parsed || parsed.version !== STORAGE_VERSION || typeof parsed.state !== 'object' || parsed.state === null) return;
+    // Merge only keys that already exist in S — ignore unknown/extra keys
+    Object.keys(S).forEach(function(k) {
+      if (Object.prototype.hasOwnProperty.call(parsed.state, k)) S[k] = parsed.state[k];
+    });
+  } catch(e) {}
+}
+
+function restoreUI() {
+  const groups = {
+    preset: S.preset, scale: S.scale, weight: S.weight,
+    brand: S.brand, surface: S.surface, density: S.density,
+    radius: S.radius, btnStyle: S.btnStyle, btnRadius: S.btnRadius,
+    cardStyle: S.cardStyle, iconWeight: S.iconWeight,
+    formStyle: S.formStyle, mode: S.mode,
+    duration: S.duration, easing: S.easing
+  };
+  Object.entries(groups).forEach(function([group, value]) {
+    if (value === undefined) return;
+    document.querySelectorAll('[data-group="' + group + '"]').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.value === String(value));
+    });
+  });
+}
+
+/* ── INIT ── */
+loadState();
+applyAll();
+restoreUI();
+</script>
+</body>
+</html>

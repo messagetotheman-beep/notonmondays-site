@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NOM · Meet Background</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1920px; height:1080px; overflow:hidden;
+    background:#111124;
+    font-family:'DM Mono',monospace;
+  }
+
+  .light-zone {
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 1100px 900px at 72% 52%, rgba(255,255,255,0.055) 0%, transparent 70%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(26,42,212,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 500px 400px at 0% 100%, rgba(26,42,212,0.06) 0%, transparent 60%);
+  }
+
+  .grid {
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(242,240,232,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(242,240,232,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .accent-bar { position:absolute; left:0; top:0; bottom:0; width:5px; background:#1a2ad4; }
+
+  .top-rule {
+    position:absolute; top:52px; left:56px; right:56px; height:1px;
+    background:linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.3) 40%, transparent 100%);
+  }
+  .bottom-rule {
+    position:absolute; bottom:52px; left:56px; right:56px; height:1px;
+    background:linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.3) 40%, transparent 100%);
+  }
+
+  .logo-mark {
+    position:absolute; top:62px; left:56px;
+    line-height:1.05; font-family:'DM Mono',monospace; font-weight:300;
+    font-size:38px; letter-spacing:-0.02em;
+  }
+  .logo-mark .n { color:rgba(242,240,232,0.18); display:block; }
+  .logo-mark .o { color:rgba(242,240,232,0.18); display:block; }
+  .logo-mark .m { color:#1a2ad4; display:block; }
+
+  .brand-name {
+    position:absolute; top:68px; left:104px;
+    font-family:'DM Mono',monospace; font-weight:300; font-size:11px;
+    letter-spacing:0.22em; text-transform:uppercase;
+    color:rgba(242,240,232,0.5); line-height:1.6;
+  }
+  .brand-name strong {
+    display:block; font-weight:400; font-size:13px;
+    letter-spacing:0.18em; color:rgba(242,240,232,0.85);
+  }
+
+  .tagline {
+    position:absolute; top:192px; left:56px;
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:20px; color:rgba(242,240,232,0.38); letter-spacing:0.02em;
+  }
+
+  .offerings-left {
+    position:absolute; left:56px; top:232px; width:320px;
+    display:flex; flex-direction:column; gap:0;
+  }
+  .offering { padding:13px 0; border-bottom:1px solid rgba(242,240,232,0.07); }
+  .offering:first-child { border-top:1px solid rgba(242,240,232,0.07); }
+  .offering-name {
+    font-family:'DM Mono',monospace; font-weight:400; font-size:11px;
+    letter-spacing:0.14em; text-transform:uppercase; color:#f2f0e8; margin-bottom:4px;
+  }
+  .offering-name span { color:#1a2ad4; margin-right:6px; }
+  .offering-desc {
+    font-family:'DM Mono',monospace; font-weight:300; font-size:9.5px;
+    letter-spacing:0.06em; color:rgba(242,240,232,0.36); line-height:1.55;
+  }
+
+  .footer-left { position:absolute; bottom:62px; left:56px; }
+  .footer-url {
+    font-family:'DM Mono',monospace; font-weight:300; font-size:10px;
+    letter-spacing:0.2em; color:rgba(26,42,212,0.85); text-transform:uppercase;
+  }
+  .footer-line {
+    font-family:'DM Mono',monospace; font-weight:300; font-size:9.5px;
+    letter-spacing:0.12em; color:rgba(242,240,232,0.22); margin-top:5px;
+  }
+
+  .corner-label {
+    position:absolute; bottom:62px; right:56px; text-align:right;
+    font-family:'DM Mono',monospace; font-weight:300; font-size:10px;
+    letter-spacing:0.18em; text-transform:uppercase;
+    color:rgba(242,240,232,0.18); line-height:1.8;
+  }
+
+  .top-right {
+    position:absolute; top:68px; right:56px;
+    font-family:'DM Mono',monospace; font-weight:300; font-size:10px;
+    letter-spacing:0.22em; text-transform:uppercase;
+    color:rgba(242,240,232,0.2); text-align:right; line-height:1.9;
+  }
+
+  /* ── Orbit system ── */
+  .orbit-system {
+    position:absolute;
+    left:1190px; top:540px;
+    transform:translate(-50%,-50%);
+    width:760px; height:760px;
+    pointer-events:none;
+  }
+
+  @keyframes spin-cw  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+  @keyframes spin-ccw { from{transform:rotate(0deg)}   to{transform:rotate(-360deg)} }
+  @keyframes pulse-a  { 0%,100%{opacity:0.6} 50%{opacity:1} }
+  @keyframes pulse-b  { 0%,100%{opacity:0.3} 50%{opacity:0.75} }
+  @keyframes pulse-c  { 0%,100%{opacity:0.5} 50%{opacity:0.9} }
+  @keyframes breathe  { 0%,100%{opacity:0.14} 50%{opacity:0.26} }
+
+  .ring-outer { animation:spin-cw  40s linear infinite; transform-origin:380px 380px; }
+  .ring-mid   { animation:spin-ccw 28s linear infinite; transform-origin:380px 380px; }
+  .ring-inner { animation:spin-cw  18s linear infinite; transform-origin:380px 380px; }
+
+  .dot-a { animation:pulse-a 4s ease-in-out infinite; }
+  .dot-b { animation:pulse-b 2.8s ease-in-out infinite; }
+  .dot-c { animation:pulse-c 2s ease-in-out infinite; }
+  .nom-centre { animation:breathe 7s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<div class="light-zone"></div>
+<div class="grid"></div>
+<div class="accent-bar"></div>
+<div class="top-rule"></div>
+<div class="bottom-rule"></div>
+
+<!-- Orbit animation — behind all text, centre-right -->
+<div class="orbit-system">
+  <svg viewBox="0 0 760 760" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Outer ring: large, very faint, slow CW -->
+    <g class="ring-outer">
+      <!-- Ring track -->
+      <circle cx="380" cy="380" r="340" fill="none" stroke="rgba(26,42,212,0.07)" stroke-width="1"/>
+      <!-- Dashed arc accent -->
+      <circle cx="380" cy="380" r="340" fill="none" stroke="rgba(26,42,212,0.12)" stroke-width="1"
+        stroke-dasharray="60 280" stroke-dashoffset="0"/>
+      <!-- Orbiting dot -->
+      <g class="dot-a">
+        <circle cx="720" cy="380" r="5" fill="#1a2ad4" opacity="0.7"/>
+        <!-- Trailing glow -->
+        <circle cx="720" cy="380" r="10" fill="none" stroke="#1a2ad4" stroke-width="1" opacity="0.2"/>
+      </g>
+      <!-- Second dot, opposite -->
+      <g class="dot-b">
+        <circle cx="40" cy="380" r="3" fill="rgba(242,240,232,0.4)"/>
+      </g>
+    </g>
+
+    <!-- Mid ring: medium, slightly brighter, CCW -->
+    <g class="ring-mid">
+      <circle cx="380" cy="380" r="230" fill="none" stroke="rgba(26,42,212,0.1)" stroke-width="1"/>
+      <circle cx="380" cy="380" r="230" fill="none" stroke="rgba(26,42,212,0.18)" stroke-width="1"
+        stroke-dasharray="40 180" stroke-dashoffset="0"/>
+      <!-- Orbiting dot -->
+      <g class="dot-c">
+        <circle cx="610" cy="380" r="4" fill="#1a2ad4" opacity="0.8"/>
+        <circle cx="610" cy="380" r="8"  fill="none" stroke="#1a2ad4" stroke-width="1" opacity="0.25"/>
+      </g>
+      <!-- Counter dot -->
+      <g class="dot-a">
+        <circle cx="150" cy="380" r="2.5" fill="rgba(242,240,232,0.35)"/>
+      </g>
+    </g>
+
+    <!-- Inner ring: tight, CW, most visible -->
+    <g class="ring-inner">
+      <circle cx="380" cy="380" r="130" fill="none" stroke="rgba(26,42,212,0.14)" stroke-width="1"/>
+      <circle cx="380" cy="380" r="130" fill="none" stroke="rgba(26,42,212,0.28)" stroke-width="1.5"
+        stroke-dasharray="30 90" stroke-dashoffset="0"/>
+      <!-- Orbiting dot -->
+      <g class="dot-b">
+        <circle cx="510" cy="380" r="3.5" fill="#1a2ad4" opacity="0.9"/>
+        <circle cx="510" cy="380" r="7"   fill="none" stroke="#1a2ad4" stroke-width="1" opacity="0.3"/>
+      </g>
+    </g>
+
+    <!-- NOM centre mark — very quiet, breathes -->
+    <g class="nom-centre">
+      <!-- Outer soft ring -->
+      <circle cx="380" cy="380" r="36" fill="none" stroke="rgba(26,42,212,0.35)" stroke-width="1"/>
+      <circle cx="380" cy="380" r="28" fill="rgba(26,42,212,0.08)"/>
+      <!-- n o m stacked -->
+      <text x="380" y="368" text-anchor="middle"
+        font-family="DM Mono, monospace" font-size="11" font-weight="300"
+        fill="rgba(242,240,232,0.5)" letter-spacing="0.1em">n</text>
+      <text x="380" y="381" text-anchor="middle"
+        font-family="DM Mono, monospace" font-size="11" font-weight="300"
+        fill="rgba(242,240,232,0.5)" letter-spacing="0.1em">o</text>
+      <text x="380" y="394" text-anchor="middle"
+        font-family="DM Mono, monospace" font-size="11" font-weight="400"
+        fill="#1a2ad4" letter-spacing="0.1em">m</text>
+    </g>
+
+  </svg>
+</div>
+
+<div class="logo-mark">
+  <span class="n">n</span>
+  <span class="o">o</span>
+  <span class="m">m</span>
+</div>
+
+<div class="brand-name">
+  <strong>Not On Mondays</strong>
+  The Operating Partner
+</div>
+
+<div class="tagline">in the work, not above it.</div>
+
+<div class="offerings-left">
+
+  <div class="offering">
+    <div class="offering-name"><span>&#x2192;</span>The Operating Layer</div>
+    <div class="offering-desc">Fractional COO &middot; DDaT &middot; PMO &middot; Delivery Management &mdash; retained, embedded, running.</div>
+  </div>
+
+  <div class="offering">
+    <div class="offering-name"><span>&#x2192;</span>The Blueprint</div>
+    <div class="offering-desc">Diagnostic strategy sprint. Audit, gaps, prioritised operating plan.</div>
+  </div>
+
+  <div class="offering">
+    <div class="offering-name"><span>&#x2192;</span>The Build</div>
+    <div class="offering-desc">Scoped execution &mdash; systems, brand, go-to-market, websites, VA placement.</div>
+  </div>
+
+  <div class="offering">
+    <div class="offering-name"><span>&#x2192;</span>AI Advisory</div>
+    <div class="offering-desc">Strategy, integration, team training &amp; governance. AI-serious, not AI-curious.</div>
+  </div>
+
+  <div class="offering">
+    <div class="offering-name"><span>&#x2192;</span>The Room</div>
+    <div class="offering-desc">Facilitated leadership intensives &amp; workshop sessions.</div>
+  </div>
+
+  <div class="offering">
+    <div class="offering-name"><span>&#x2192;</span>The Inner Layer</div>
+    <div class="offering-desc">Coaching for emerging leaders navigating growth and complexity.</div>
+  </div>
+
+</div>
+
+<div class="footer-left">
+  <div class="footer-url">notonmondays.com</div>
+  <div class="footer-line">Executable clarity. No overhead.</div>
+</div>
+
+<div class="top-right">
+  London &mdash; Worldwide<br>
+  Remote&#x2011;first
+</div>
+
+<div class="corner-label">
+  hello@notonmondays.com
+</div>
+
+</body>
+</html>
