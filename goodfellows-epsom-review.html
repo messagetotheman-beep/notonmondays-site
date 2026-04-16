@@ -447,6 +447,51 @@
       background: var(--wf-bg-dark);
     }
 
+    /* ─── Contact block ────────────────────────── */
+    .contact-block {
+      margin-bottom: 32px;
+    }
+
+    .contact-block-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    .contact-list {
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact-row:last-child {
+      border-bottom: none;
+    }
+
+    .contact-row dt {
+      padding: 11px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      background: var(--bg-subtle);
+      border-right: 1px solid var(--rule);
+    }
+
+    .contact-row dd {
+      padding: 11px 16px;
+      font-size: 15px;
+      color: var(--ink-mid);
+    }
+
     /* ─── Soft close ────────────────────────────── */
     .close-section {
       margin-top: 52px;
@@ -508,6 +553,10 @@
 
       .soft-note { border-color: #ccc; background: #f5f5f5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
+      .contact-list { border-color: #ccc; }
+      .contact-row { border-color: #ccc; }
+      .contact-row dt { background: #f0f0f0; border-color: #ccc; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
       a { color: inherit; text-decoration: none; }
 
       .close-section { page-break-inside: avoid; }
@@ -527,7 +576,7 @@
 
     <!-- ── 1. Title block ─────────────────────── -->
     <header class="title-block">
-      <span class="eyebrow">Draft &nbsp;|&nbsp; For Goodfellows Epsom</span>
+      <span class="eyebrow">For Goodfellows Epsom</span>
       <h1>Digital First Impressions Review</h1>
       <p class="intro-note">
         What a potential client sees when they look you up today,
@@ -715,10 +764,27 @@
 
       <div class="soft-note" role="note">
         <p>
-          If it would be useful to talk any of this through, I am happy to do that.
-          No agenda. I help firms like this get the digital basics right,
-          quickly and without overcomplicating things.
+          If any of this would be useful to talk through, I am happy to do that.
+          No pitch, no pressure. Just a straightforward conversation about what might help.
         </p>
+      </div>
+
+      <div class="contact-block">
+        <p class="contact-block-label">Contact</p>
+        <dl class="contact-list">
+          <div class="contact-row">
+            <dt>Email</dt>
+            <dd>david@notonmondays.com</dd>
+          </div>
+          <div class="contact-row">
+            <dt>Phone</dt>
+            <dd>07XXX XXX XXX</dd>
+          </div>
+          <div class="contact-row">
+            <dt>Web</dt>
+            <dd>notonmondays.com</dd>
+          </div>
+        </dl>
       </div>
 
       <div class="sign-off">
@@ -729,8 +795,7 @@
         <address class="sig" aria-label="Sender details">
           <strong>David Akai</strong>
           Not On Mondays<br>
-          Based in Epsom<br>
-          notonmondays.com
+          Based in Epsom
         </address>
       </div>
 
