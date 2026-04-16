@@ -3,289 +3,738 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A short review of the current digital presence of Goodfellows Epsom, with practical suggestions for a stronger first impression.">
   <title>Goodfellows Epsom — Digital First Impressions Review</title>
   <style>
-    * {
+
+    /* ─── Reset ─────────────────────────────────── */
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #1a1a1a;
-      background: #fff;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 48px 32px 80px;
+    /* ─── Base ──────────────────────────────────── */
+    :root {
+      --ink:        #1a1a1a;
+      --ink-mid:    #3d3d3d;
+      --ink-soft:   #555555;
+      --rule:       #d6d6d6;
+      --bg:         #ffffff;
+      --bg-subtle:  #f5f5f4;
+      --bg-evidence:#f0efed;
+      --accent:     #2c2c2c;
+      --tag-bg:     #efefed;
+      --tag-ink:    #444;
+      --wf-bg:      #e8e7e4;
+      --wf-bg-dark: #d0cfc9;
+      --wf-ink:     #4a4a48;
     }
 
-    .label {
-      font-size: 12px;
+    html {
+      font-size: 17px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Layout ────────────────────────────────── */
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 56px 32px 96px;
+    }
+
+    /* ─── Title block ───────────────────────────── */
+    .title-block {
+      margin-bottom: 52px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #6b7280;
-      margin-bottom: 24px;
+      color: var(--ink-soft);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 3px 8px;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 26px;
+      font-size: clamp(22px, 4vw, 28px);
       font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 6px;
-      color: #111;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
     }
 
-    .subtitle {
-      font-size: 14px;
-      color: #6b7280;
-      margin-bottom: 40px;
+    .intro-note {
+      font-size: 16px;
+      color: var(--ink-mid);
+      max-width: 560px;
+      margin-bottom: 20px;
     }
 
-    .divider {
-      border: none;
-      border-top: 1px solid #e5e7eb;
-      margin: 36px 0;
+    .meta {
+      font-size: 13px;
+      color: var(--ink-soft);
+      border-top: 1px solid var(--rule);
+      padding-top: 14px;
+    }
+
+    /* ─── Sections ──────────────────────────────── */
+    section {
+      margin-bottom: 48px;
     }
 
     h2 {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 10px;
-      color: #111;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
     }
 
     p {
+      font-size: 16px;
+      color: var(--ink-mid);
       margin-bottom: 14px;
-      color: #374151;
+      max-width: 620px;
     }
 
-    ul {
-      margin: 12px 0 14px 0;
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 7px;
-      color: #374151;
-    }
-
-    .callout {
-      background: #f9fafb;
-      border-left: 3px solid #d1d5db;
-      padding: 16px 20px;
-      margin: 20px 0;
-      border-radius: 0 4px 4px 0;
-    }
-
-    .callout p {
-      margin: 0;
-      font-size: 15px;
-      color: #4b5563;
-    }
-
-    .wireframe {
-      border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      padding: 20px;
-      margin: 20px 0;
-      background: #fafafa;
-    }
-
-    .wireframe-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 14px;
-    }
-
-    .wf-block {
-      background: #e5e7eb;
-      border-radius: 3px;
-      padding: 10px 14px;
-      margin-bottom: 8px;
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .wf-block.dark {
-      background: #d1d5db;
-      color: #4b5563;
-      font-weight: 600;
-    }
-
-    .wf-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .wf-row .wf-block {
-      flex: 1;
+    p:last-child {
       margin-bottom: 0;
     }
 
-    .soft-offer {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
+    /* ─── Section label ─────────────────────────── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    /* ─── Horizontal rule ───────────────────────── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0 0 48px;
+    }
+
+    /* ─── Evidence panel ────────────────────────── */
+    .evidence-panel {
+      background: var(--bg-evidence);
+      border: 1px solid var(--rule);
       border-radius: 6px;
-      padding: 18px 20px;
-      margin: 20px 0;
+      padding: 20px 22px;
+      margin: 20px 0 24px;
     }
 
-    .soft-offer p {
+    .evidence-panel .panel-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    .evidence-panel .panel-text {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+    }
+
+    .evidence-panel p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin-bottom: 0;
+    }
+
+    /* ─── Gap list ──────────────────────────────── */
+    .gap-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+
+    .gap-list li {
+      font-size: 15.5px;
+      color: var(--ink-mid);
+      padding: 9px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .gap-list li:last-child {
+      border-bottom: none;
+    }
+
+    .gap-list li::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rule);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ─── Why it matters: 3 cards ───────────────── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 18px 18px 20px;
+    }
+
+    .card-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.5;
       margin: 0;
-      font-size: 15px;
-      color: #166534;
     }
 
-    .close {
+    /* ─── Good looks like: checklist ────────────── */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+
+    .checklist li {
+      font-size: 15.5px;
+      color: var(--ink-mid);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .checklist strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ─── Prioritised steps ─────────────────────── */
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+      counter-reset: steps;
+    }
+
+    .steps li {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 15.5px;
+      color: var(--ink-mid);
+    }
+
+    .steps li:last-child {
+      border-bottom: none;
+    }
+
+    .steps li::before {
+      content: counter(steps);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--ink);
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .steps strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ─── Wireframe ─────────────────────────────── */
+    .wireframe-wrapper {
+      margin-top: 32px;
+    }
+
+    .wireframe-caption {
+      font-size: 12px;
+      color: var(--ink-soft);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .wf {
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .wf-bar {
+      background: var(--accent);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .wf-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .wf-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .wf-url {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      font-family: monospace;
+      flex: 1;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 2px 8px;
+    }
+
+    .wf-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .wf-block {
+      background: var(--wf-bg);
+      border-radius: 4px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      color: var(--wf-ink);
+      font-weight: 500;
+    }
+
+    .wf-block.wf-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-subtle);
+      border: 1px solid var(--rule);
+    }
+
+    .wf-block.wf-hero {
+      background: var(--wf-bg-dark);
+      padding: 20px 14px;
+    }
+
+    .wf-hero-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .wf-hero-sub {
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    .wf-cta {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--accent);
+      border-radius: 3px;
+      padding: 5px 12px;
+    }
+
+    .wf-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .wf-grid .wf-block {
+      text-align: center;
+      font-size: 11.5px;
+    }
+
+    .wf-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .wf-block.wf-contact {
+      background: var(--wf-bg-dark);
+    }
+
+    /* ─── Soft close ────────────────────────────── */
+    .close-section {
+      margin-top: 52px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .soft-note {
+      background: var(--bg-subtle);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 22px 24px;
+      margin-bottom: 32px;
+    }
+
+    .soft-note p {
+      font-size: 15.5px;
+      color: var(--ink-mid);
+      margin: 0;
+    }
+
+    .sign-off p {
       font-size: 15px;
-      color: #4b5563;
-      margin-top: 8px;
+      color: var(--ink-mid);
+      margin-bottom: 20px;
     }
 
     .sig {
-      margin-top: 32px;
       font-size: 14px;
-      color: #6b7280;
+      color: var(--ink-soft);
+      line-height: 1.7;
     }
 
     .sig strong {
       display: block;
-      color: #111;
       font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
     }
 
+    /* ─── Print ─────────────────────────────────── */
     @media print {
-      body {
-        padding: 32px 40px;
-        max-width: 100%;
-      }
+      html { font-size: 15px; }
 
-      .soft-offer {
-        border: 1px solid #ccc;
-        background: #f9f9f9;
-      }
+      body { background: #fff; color: #000; }
+
+      .page { padding: 24px 32px 48px; max-width: 100%; }
+
+      .eyebrow, .meta { color: #555; border-color: #ccc; }
+
+      h1 { font-size: 22px; }
+      h2 { font-size: 16px; }
+
+      .cards { grid-template-columns: repeat(3, 1fr); }
+
+      .wf-bar { background: #333; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .wf-cta { background: #333; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .steps li::before { background: #333; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      .soft-note { border-color: #ccc; background: #f5f5f5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      a { color: inherit; text-decoration: none; }
+
+      .close-section { page-break-inside: avoid; }
     }
+
+    /* ─── Responsive ────────────────────────────── */
+    @media (max-width: 540px) {
+      .page { padding: 36px 20px 64px; }
+      .cards { grid-template-columns: 1fr; }
+      .wf-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
+  <main class="page">
 
-  <p class="label">Draft — For Goodfellows Epsom</p>
+    <!-- ── 1. Title block ─────────────────────── -->
+    <header class="title-block">
+      <span class="eyebrow">Draft &nbsp;|&nbsp; For Goodfellows Epsom</span>
+      <h1>Digital First Impressions Review</h1>
+      <p class="intro-note">
+        A short review of what a potential client sees when they look you up
+        online today, and a few simple things worth addressing early.
+        This is not a proposal. It is just useful information.
+      </p>
+      <p class="meta">
+        Prepared by Not On Mondays &nbsp;&middot;&nbsp; April 2026 &nbsp;&middot;&nbsp; Informal and without obligation
+      </p>
+    </header>
 
-  <h1>Digital First Impressions Review</h1>
-  <p class="subtitle">Prepared by Not On Mondays &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; Informal and without obligation</p>
+    <hr class="rule">
 
-  <hr class="divider">
+    <!-- ── 2. Current picture ─────────────────── -->
+    <section aria-labelledby="current-heading">
+      <p class="section-label">Section 1</p>
+      <h2 id="current-heading">What a potential client sees right now</h2>
 
-  <!-- 1. Opening -->
-  <h2>A quick note before you're fully open</h2>
+      <p>
+        If someone searches for Goodfellows Epsom and clicks through to the
+        website, here is what they find:
+      </p>
 
-  <p>Congratulations on the new opening. Getting a firm off the ground takes real effort, and the operational side rarely gets the attention it deserves at the start.</p>
+      <div class="evidence-panel" role="region" aria-label="Website evidence">
+        <p class="panel-label">Website — as seen today</p>
+        <div class="panel-text">Index of /</div>
+        <p>
+          A plain directory listing. No firm name, no content, no way to
+          find out who you are or how to get in touch.
+        </p>
+      </div>
 
-  <p>This is a short, honest review of what a potential client sees when they look you up online today — and a few simple things worth fixing early. It's not a proposal. It's just useful information.</p>
+      <p>
+        In plain terms: the web server is live, but nothing has been published
+        to it yet. To most visitors this looks broken, or as though the firm
+        is not yet open.
+      </p>
 
-  <hr class="divider">
+      <ul class="gap-list" aria-label="Current gaps">
+        <li>No firm name, logo, or description visible</li>
+        <li>No services listed or areas of law explained</li>
+        <li>No phone number, email address, or office location</li>
+        <li>No signal that the firm is open and accepting clients</li>
+        <li>Nothing that builds trust or credibility at first glance</li>
+      </ul>
+    </section>
 
-  <!-- 2. What they see today -->
-  <h2>What a potential client sees right now</h2>
+    <hr class="rule">
 
-  <p>If someone searches for Goodfellows Epsom and finds your website, this is what they get:</p>
+    <!-- ── 3. Why this matters ─────────────────── -->
+    <section aria-labelledby="matters-heading">
+      <p class="section-label">Section 2</p>
+      <h2 id="matters-heading">Why this matters</h2>
 
-  <div class="callout">
-    <p><strong>Index of /</strong><br>
-    A plain directory listing. No content, no branding, no information about the firm.</p>
-  </div>
+      <p>
+        Most people choosing a solicitor in a new area follow the same pattern.
+        They search, they look at two or three options, and they decide quickly.
+      </p>
 
-  <p>In plain terms: the website exists, but nothing has been published to it yet. To most people, that looks like something is broken — or that the firm isn't quite ready.</p>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <p class="card-number">01</p>
+          <p>The decision often happens in under 30 seconds. If the site is unclear or broken, people move on without calling to check.</p>
+        </article>
+        <article class="card" role="listitem">
+          <p class="card-number">02</p>
+          <p>Your existing network will find you regardless. But anyone new to Epsom searching for legal help will not wait.</p>
+        </article>
+        <article class="card" role="listitem">
+          <p class="card-number">03</p>
+          <p>A weak digital presence does not just cost first impressions. Over time it affects how the firm appears in local search results.</p>
+        </article>
+      </div>
+    </section>
 
-  <p>Specific gaps right now:</p>
-  <ul>
-    <li>No firm name, logo, or basic description visible</li>
-    <li>No list of services or areas of law</li>
-    <li>No contact details, address, or phone number</li>
-    <li>No indication the firm is open and taking clients</li>
-    <li>Nothing to build trust or credibility at first glance</li>
-  </ul>
+    <hr class="rule">
 
-  <hr class="divider">
+    <!-- ── 4. What good looks like ────────────── -->
+    <section aria-labelledby="good-heading">
+      <p class="section-label">Section 3</p>
+      <h2 id="good-heading">What good looks like at this stage</h2>
 
-  <!-- 3. Why this matters -->
-  <h2>Why this matters now</h2>
+      <p>
+        You do not need anything complicated right now. A straightforward,
+        working website with the right basics in place is enough.
+      </p>
 
-  <p>Most people choosing a solicitor in a new area do the same thing: they search, they look at a few options, and they make a quick decision.</p>
+      <ul class="checklist" aria-label="What good looks like">
+        <li><span><strong>Clear services.</strong> What areas of law you cover, in plain language.</span></li>
+        <li><span><strong>Immediate trust.</strong> Firm name, who you are, SRA registration visible.</span></li>
+        <li><span><strong>Simple contact.</strong> Phone number, email, and address easy to find.</span></li>
+        <li><span><strong>Mobile-friendly.</strong> Most visitors will arrive on a phone.</span></li>
+        <li><span><strong>Fast and accessible.</strong> Loads quickly, readable for everyone.</span></li>
+        <li><span><strong>Local relevance.</strong> Mentions Epsom, serves the area, feels grounded.</span></li>
+      </ul>
 
-  <p>That decision often happens within 30 seconds. If the website is unclear, broken, or missing basic information — they move on. They don't call to check. They don't come back later.</p>
+      <!-- Wireframe -->
+      <div class="wireframe-wrapper" aria-label="Homepage layout concept">
+        <div class="wf" role="img" aria-label="Low-fidelity wireframe showing a suggested homepage layout">
 
-  <p>This is especially true for people who don't already know you. Your existing network will find you regardless. But anyone new in Epsom searching for legal help won't wait.</p>
+          <!-- Browser chrome simulation -->
+          <div class="wf-bar" aria-hidden="true">
+            <div class="wf-dots">
+              <span class="wf-dot"></span>
+              <span class="wf-dot"></span>
+              <span class="wf-dot"></span>
+            </div>
+            <span class="wf-url">goodfellows-epsom.co.uk</span>
+          </div>
 
-  <hr class="divider">
+          <div class="wf-body" aria-hidden="true">
 
-  <!-- 4. What good looks like -->
-  <h2>What good looks like (at this stage)</h2>
+            <!-- Nav -->
+            <div class="wf-block wf-nav">
+              <span><strong>Goodfellows</strong> &nbsp;Solicitors, Epsom</span>
+              <span style="font-size:11px;color:#888;">Services &nbsp; About &nbsp; Contact</span>
+            </div>
 
-  <p>You don't need anything complicated right now. A straightforward, working website with the right basics in place is enough to make the right first impression.</p>
+            <!-- Hero -->
+            <div class="wf-block wf-hero">
+              <div class="wf-hero-title">Straightforward legal advice in Epsom</div>
+              <div class="wf-hero-sub">Family law, conveyancing, wills and probate. Local solicitors you can talk to.</div>
+              <span class="wf-cta">Call us or send an enquiry</span>
+            </div>
 
-  <ul>
-    <li><strong>Clear services</strong> — what areas of law you cover, in plain language</li>
-    <li><strong>Immediate trust</strong> — firm name, who you are, SRA registration visible</li>
-    <li><strong>Simple contact</strong> — phone number, email, address — easy to find</li>
-    <li><strong>Mobile-friendly</strong> — most people will arrive on a phone</li>
-    <li><strong>Fast and accessible</strong> — loads quickly, readable for everyone</li>
-    <li><strong>Local relevance</strong> — mentions Epsom, serves the area, feels local</li>
-  </ul>
+            <!-- Services -->
+            <span class="wf-label">Services</span>
+            <div class="wf-grid">
+              <div class="wf-block">Family Law</div>
+              <div class="wf-block">Conveyancing</div>
+              <div class="wf-block">Wills &amp; Probate</div>
+            </div>
 
-  <!-- Wireframe concept -->
-  <div class="wireframe">
-    <p class="wireframe-title">Suggested homepage layout (concept)</p>
-    <div class="wf-block dark">Header — Firm name · Navigation: Services / About / Contact</div>
-    <div class="wf-block">Hero — One clear sentence: what you do and where. Phone number prominent.</div>
-    <div class="wf-row">
-      <div class="wf-block">Service 1</div>
-      <div class="wf-block">Service 2</div>
-      <div class="wf-block">Service 3</div>
+            <!-- Trust -->
+            <div class="wf-block">
+              <span class="wf-label">About &amp; Trust signals</span>
+              SRA regulated &nbsp;&middot;&nbsp; Based in Epsom &nbsp;&middot;&nbsp; [Brief firm description]
+            </div>
+
+            <!-- Contact -->
+            <div class="wf-block wf-contact">
+              <span class="wf-label">Contact</span>
+              Address &nbsp;&middot;&nbsp; Phone &nbsp;&middot;&nbsp; Email &nbsp;&middot;&nbsp; Simple enquiry form
+            </div>
+
+          </div>
+        </div>
+        <p class="wireframe-caption">Concept only. Layout and content would be confirmed with you before build.</p>
+      </div>
+
+    </section>
+
+    <hr class="rule">
+
+    <!-- ── 5. Recommended first steps ────────── -->
+    <section aria-labelledby="steps-heading">
+      <p class="section-label">Section 4</p>
+      <h2 id="steps-heading">Recommended first steps</h2>
+
+      <p>In rough order of priority:</p>
+
+      <ol class="steps" aria-label="Recommended first steps">
+        <li>
+          <span>
+            <strong>Get something live quickly.</strong>
+            A single, well-structured page is far better than what is there now.
+            It does not need to be perfect at launch.
+          </span>
+        </li>
+        <li>
+          <span>
+            <strong>Structure content for clarity.</strong>
+            Services, who you are, and how to get in touch. Written in plain English,
+            not legal language.
+          </span>
+        </li>
+        <li>
+          <span>
+            <strong>Add a simple enquiry flow.</strong>
+            A contact form or clear call to action so people can take the next
+            step without having to search for a phone number.
+          </span>
+        </li>
+        <li>
+          <span>
+            <strong>Lay the right foundations.</strong>
+            Done properly from the start, this also sets you up for search
+            visibility, future client systems, and growth over time.
+          </span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ── 6 + 7. Soft close ──────────────────── -->
+    <div class="close-section">
+
+      <div class="soft-note" role="note">
+        <p>
+          If any of this would be useful to talk through, I am happy to have
+          a short conversation with no obligation. I work with professional
+          services firms on exactly this kind of thing: getting the digital
+          basics right quickly, without overcomplicating it.
+        </p>
+      </div>
+
+      <div class="sign-off">
+        <p>
+          I hope this is useful as you get started. Good luck with the
+          opening. If the timing is not right, feel free to keep this for later.
+        </p>
+        <address class="sig" aria-label="Sender details">
+          <strong>Not On Mondays</strong>
+          Operating Partner &mdash; Delivery and Operations<br>
+          notonmondays.com
+        </address>
+      </div>
+
     </div>
-    <div class="wf-block">Trust signals — SRA regulated · Est. in Epsom · [Brief about line]</div>
-    <div class="wf-block dark">Contact section — Address · Phone · Simple enquiry form</div>
-  </div>
 
-  <hr class="divider">
-
-  <!-- 5. What to focus on first -->
-  <h2>What I would focus on first</h2>
-
-  <p>In rough order of priority:</p>
-
-  <ul>
-    <li><strong>Get something live quickly</strong> — even a single, well-structured page is far better than what's there now</li>
-    <li><strong>Structure content for clarity</strong> — services, who you are, how to get in touch</li>
-    <li><strong>Simple enquiry flow</strong> — a contact form or clear call-to-action so people can take the next step easily</li>
-    <li><strong>Lay the right foundations</strong> — done properly from the start, this also sets you up well for search visibility and future systems</li>
-  </ul>
-
-  <hr class="divider">
-
-  <!-- 6. Optional support -->
-  <div class="soft-offer">
-    <p>If it would be helpful, I'm happy to have a short conversation about any of this — no obligation. I work with professional services firms on exactly this kind of thing: getting the digital basics right quickly, without overcomplicating it.</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 7. Close -->
-  <p class="close">I hope this is useful as you get started. Good luck with the opening — and if the timing isn't right, feel free to keep this for later.</p>
-
-  <div class="sig">
-    <strong>Not On Mondays</strong>
-    Operating Partner — Delivery and Operations<br>
-    notonmondays.com
-  </div>
-
+  </main>
 </body>
 </html>
