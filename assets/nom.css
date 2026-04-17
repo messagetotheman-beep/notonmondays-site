@@ -259,6 +259,13 @@ nav {
    inline if a page needs it.                                   */
 
 .article-toc {
+  /* Reset nom.css bare nav{} selector — position, height, background must all be explicit */
+  position: static;
+  top: auto; left: auto; right: auto;
+  z-index: auto;
+  height: auto;
+  background: transparent;
+  backdrop-filter: none;
   border-top: 1px solid var(--article-border);
   border-bottom: 1px solid var(--article-border);
   padding: 1.25rem 0;
