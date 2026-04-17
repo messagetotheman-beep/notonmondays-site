@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A short note on the digital first impression of Goodfellows Solicitors Epsom, with practical suggestions for improving online visibility.">
   <title>Goodfellows Epsom — Digital First Impressions Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
   <style>
 
     /* ─── Reset ─────────────────────────────────── */
@@ -16,17 +19,18 @@
 
     /* ─── Base ──────────────────────────────────── */
     :root {
-      --ink:        #1a1a1a;
-      --ink-mid:    #3d3d3d;
-      --ink-soft:   #555555;
-      --rule:       #d6d6d6;
-      --bg:         #ffffff;
-      --bg-subtle:  #f5f5f4;
-      --bg-evidence:#f0efed;
-      --accent:     #2c2c2c;
-      --wf-bg:      #e8e7e4;
-      --wf-bg-dark: #d0cfc9;
-      --wf-ink:     #4a4a48;
+      --ink:        #111124;
+      --ink-mid:    #2a2a4a;
+      --ink-soft:   #5a5f78;
+      --rule:       rgba(17,17,36,0.13);
+      --bg:         #faf8f2;
+      --bg-subtle:  #f2f0e8;
+      --bg-evidence:#ede9de;
+      --accent:     #1a2ad4;
+      --wf-bg:      #e8e6dc;
+      --wf-bg-dark: #d4d1c4;
+      --wf-ink:     #3a3a58;
+      --nom-mono:   'DM Mono', 'IBM Plex Mono', ui-monospace, monospace;
     }
 
     html {
@@ -34,8 +38,9 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                   "Helvetica Neue", Arial, sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-weight: 300;
       line-height: 1.65;
       color: var(--ink);
       background: var(--bg);
@@ -56,13 +61,14 @@
 
     .eyebrow {
       display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-family: var(--nom-mono);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink-soft);
-      border: 1px solid var(--rule);
-      border-radius: 3px;
+      color: var(--accent);
+      border: 1px solid rgba(26,42,212,0.2);
+      border-radius: 2px;
       padding: 3px 8px;
       margin-bottom: 20px;
     }
@@ -98,7 +104,10 @@
     }
 
     .meta {
-      font-size: 13px;
+      font-family: var(--nom-mono);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
       color: var(--ink-soft);
       border-top: 1px solid var(--rule);
       padding-top: 14px;
@@ -135,9 +144,10 @@
 
     /* ─── Section label ─────────────────────────── */
     .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.09em;
+      font-family: var(--nom-mono);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-soft);
       margin-bottom: 8px;
@@ -160,9 +170,10 @@
     }
 
     .evidence-panel .panel-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-family: var(--nom-mono);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-soft);
       margin-bottom: 10px;
@@ -342,7 +353,9 @@
     }
 
     .wireframe-caption {
-      font-size: 12px;
+      font-family: var(--nom-mono);
+      font-size: 11px;
+      font-weight: 300;
       color: var(--ink-soft);
       text-align: center;
       margin-top: 10px;
@@ -450,9 +463,10 @@
 
     .wf-label {
       display: block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.07em;
+      font-family: var(--nom-mono);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-soft);
       margin-bottom: 4px;
@@ -468,9 +482,10 @@
     }
 
     .contact-block-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.09em;
+      font-family: var(--nom-mono);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-soft);
       margin-bottom: 10px;
@@ -494,8 +509,10 @@
 
     .contact-row dt {
       padding: 11px 14px;
-      font-size: 12px;
-      font-weight: 600;
+      font-family: var(--nom-mono);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
       color: var(--ink-soft);
       background: var(--bg-subtle);
       border-right: 1px solid var(--rule);
@@ -551,11 +568,13 @@
     @media print {
       html { font-size: 15px; }
 
-      body { background: #fff; color: #000; }
+      body { background: #fff; color: #111; }
 
       .page { padding: 24px 36px 48px; max-width: 100%; }
 
-      .eyebrow, .meta { color: #555; border-color: #ccc; }
+      .eyebrow { color: #222; border-color: #bbb; background: none; }
+      .meta, .section-label, .panel-label,
+      .contact-block-label, .wireframe-caption { color: #555; }
 
       h1 { font-size: 22px; }
       h2 { font-size: 16px; }
@@ -567,9 +586,11 @@
       .steps li::before { background: #333; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
       .soft-note  { border-color: #ccc; background: #f5f5f5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .evidence-panel { background: #f5f5f5; border-color: #ccc; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .contact-list { border-color: #ccc; }
       .contact-row  { border-color: #ccc; }
-      .contact-row dt { background: #f0f0f0; border-color: #ccc; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .contact-row dt { background: #efefef; border-color: #ccc; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card { background: #f9f9f9; border-color: #ddd; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
       a { color: inherit; text-decoration: none; }
 
