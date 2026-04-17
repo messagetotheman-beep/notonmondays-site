@@ -668,16 +668,36 @@
         border-right: 1px solid #b5b2a8;
       }
 
+      /* ─── Print spacing — tighten screen margins for A4 rhythm ─── */
+      .title-block       { margin-bottom: 28px; }
+      section            { margin-bottom: 24px; }
+      .rule              { margin-bottom: 20px; }
+      h2                 { margin-bottom: 12px; }
+      p                  { margin-bottom: 10px; }
+      .wireframe-wrapper { margin-top: 16px; }
+
       /* ─── Page breaks ─── */
-      section            { break-inside: avoid; }
+
+      /* Allow sections to flow across pages — they are too large to pin */
+      /* Control breaks at the element level instead */
+
+      /* Keep headings with what follows */
+      .section-label  { break-after: avoid; }
+      h2              { break-after: avoid; }
+
+      /* Keep small grouped elements together */
+      .title-block       { break-inside: avoid; }
       .evidence-panel    { break-inside: avoid; }
-      .wireframe-wrapper { break-inside: avoid; }
+      .gap-list          { break-inside: avoid; }
       .cards             { break-inside: avoid; }
-      .close-section     { break-inside: avoid; }
+      .checklist         { break-inside: avoid; }
+      .steps             { break-inside: avoid; }
+      .platforms-note    { break-inside: avoid; }
+      .wireframe-wrapper { break-inside: avoid; }
+      .soft-note         { break-inside: avoid; }
       .contact-block     { break-inside: avoid; }
       .sign-off          { break-inside: avoid; }
-      .soft-note         { break-inside: avoid; }
-      .title-block       { break-inside: avoid; }
+      .close-section     { break-inside: avoid; }
 
       a { color: inherit; text-decoration: none; }
     }
