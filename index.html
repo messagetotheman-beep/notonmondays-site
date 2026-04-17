@@ -689,78 +689,158 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 }
 
 /* =====================================================
-   LOGO STRIP
+   LOGO STRIP — marquee social proof rail
    ===================================================== */
-.cs-logos {
-  max-width: 1100px;
-  margin: 4rem auto 0;
+
+.logo-section {
+  padding: 4rem 0 3rem;
   border-top: 1px solid rgba(26,42,212,0.1);
-  padding: 3rem 0 1rem;
   overflow: hidden;
 }
-.cs-logos-label {
+
+/* Eyebrow label above the rail */
+.logo-section-eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 0.52rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
+  text-align: center;
   display: block;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
-.cs-logos-row {
+
+/* Full-width rail — overflow hidden + soft edge fades */
+.logo-rail {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+}
+
+/* Scrolling track — contains 3 identical logo sets for a gap-free loop
+   on screens up to ~2800px wide. Animates by 1 set width (33.333%). */
+.logo-rail-track {
   display: flex;
   align-items: center;
-  list-style: none;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  height: 100px;
-  border-top: 1px solid rgba(26,42,212,0.06);
-  border-bottom: 1px solid rgba(26,42,212,0.06);
+  width: max-content;
+  animation: logo-scroll 38s linear infinite;
 }
-.cs-logos-row::-webkit-scrollbar { display: none; }
 
-.cs-logo-slot {
+/* Pause on hover */
+.logo-rail:hover .logo-rail-track {
+  animation-play-state: paused;
+}
+
+/* One repeated set of logos */
+.logo-set {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Individual logo item */
+.logo-item {
   flex: 0 0 auto;
-  height: 100px;
-  min-width: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid rgba(26,42,212,0.05);
-  padding: 0 2.5rem;
-  opacity: 0.45;
-  transition: opacity 0.2s ease;
+  padding: 0 3.5rem;
+  height: 80px;
+  opacity: 0.42;
+  transition: opacity 0.3s ease;
 }
-.cs-logo-slot:first-child { padding-left: 0; justify-content: flex-start; }
-.cs-logo-slot:last-child { border-right: none; }
-.cs-logo-slot:hover { opacity: 0.75; }
 
-.cs-logo-svg {
-  height: 32px;
+.logo-item:hover { opacity: 0.88; }
+
+/* SVG logos */
+.logo-svg {
+  height: 34px;
   width: auto;
-  max-width: 150px;
+  max-width: 160px;
   display: block;
   filter: grayscale(1) contrast(0.55);
-  transition: filter 0.2s ease;
+  transition: filter 0.3s ease;
 }
-.cs-logo-slot:hover .cs-logo-svg { filter: grayscale(0.2) contrast(0.75); }
+.logo-item:hover .logo-svg { filter: grayscale(0.15) contrast(0.8); }
 
-.cs-logo-placeholder {
+/* Image logos (for future <img> logos) */
+.logo-img {
+  height: 34px;
+  width: auto;
+  max-width: 160px;
+  display: block;
+  object-fit: contain;
+  filter: grayscale(1) contrast(0.55);
+  transition: filter 0.3s ease;
+}
+.logo-item:hover .logo-img { filter: grayscale(0.15) contrast(0.8); }
+
+/* NDA / confidential placeholder pill */
+.logo-placeholder {
   font-family: 'DM Mono', monospace;
   font-size: 0.48rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
-  border: 1px solid rgba(26,42,212,0.1);
-  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(26,42,212,0.12);
+  padding: 0.35rem 0.9rem;
   white-space: nowrap;
+}
+
+/* Supporting line below the rail */
+.logo-section-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-top: 2.5rem;
+  padding: 0 2rem;
+}
+
+/* Scroll animation — moves exactly one set's width (33.333% of 3 sets) */
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+/* Respect reduced-motion: show static centred grid, hide duplicates */
+@media (prefers-reduced-motion: reduce) {
+  .logo-rail {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .logo-set--dupe { display: none; }
+  .logo-rail-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .logo-set {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .logo-item { opacity: 0.6; padding: 1rem 2rem; }
 }
 
 @media (max-width: 900px) {
   .cs-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .cs-logo-slot { min-width: 120px; padding: 0 1.5rem; }
-  .cs-logo-slot:first-child { padding-left: 0; }
+  .logo-item { padding: 0 2.5rem; height: 70px; }
+  .logo-svg, .logo-img { height: 28px; max-width: 120px; }
 }
 
 /* =====================================================
