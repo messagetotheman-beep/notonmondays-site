@@ -339,7 +339,7 @@
         <p class="article-toc-label" aria-hidden="true">On this page</p>
         <ul class="article-toc-list">
           <li><a href="#shift">The shift firms need to recognise</a></li>
-          <li><a href="#wrong">Where things go wrong</a></li>
+          <li><a href="#wrong">Where firms get stuck</a></li>
           <li><a href="#good">What good looks like</a></li>
           <li><a href="#matters">Why it matters</a></li>
         </ul>
@@ -383,31 +383,33 @@
            visuals are ready — swap for <img class="..."> inside
            <div class="article-img">.
            ======================================================== -->
-      <div class="article-cards" aria-label="Key patterns in legal digital change">
+      <!-- role="group" is required for aria-label to be announced on a plain div -->
+      <div class="article-cards" role="group" aria-label="Key patterns in legal digital change">
 
-        <!-- Card 1 -->
-        <article class="article-card">
+        <!-- Card 1 — use <div> not <article>: cards are fragments of this article, not standalone content -->
+        <div class="article-card">
           <p class="article-card-label" aria-hidden="true">01</p>
-          <div class="article-img-placeholder" role="img" aria-label="Illustration: How users start now" style="margin-bottom: 1rem;">Image placeholder</div>
+          <!-- Replace with <div class="article-img"><img src="..." alt="..."></div> when image is ready -->
+          <div class="article-img-placeholder" role="img" aria-label="How users start now" style="margin-bottom: 1rem;"></div>
           <h3 class="article-card-heading">How users start now</h3>
           <p class="article-card-body">Most journeys now begin with a search, not a phone call.</p>
-        </article>
+        </div>
 
         <!-- Card 2 -->
-        <article class="article-card">
+        <div class="article-card">
           <p class="article-card-label" aria-hidden="true">02</p>
-          <div class="article-img-placeholder" role="img" aria-label="Illustration: Where friction happens" style="margin-bottom: 1rem;">Image placeholder</div>
+          <div class="article-img-placeholder" role="img" aria-label="Where friction happens" style="margin-bottom: 1rem;"></div>
           <h3 class="article-card-heading">Where friction happens</h3>
           <p class="article-card-body">Slow replies and unclear next steps reduce trust quickly.</p>
-        </article>
+        </div>
 
         <!-- Card 3 -->
-        <article class="article-card">
+        <div class="article-card">
           <p class="article-card-label" aria-hidden="true">03</p>
-          <div class="article-img-placeholder" role="img" aria-label="Illustration: What better looks like" style="margin-bottom: 1rem;">Image placeholder</div>
+          <div class="article-img-placeholder" role="img" aria-label="What better looks like" style="margin-bottom: 1rem;"></div>
           <h3 class="article-card-heading">What better looks like</h3>
           <p class="article-card-body">Clear, simple journeys help people move forward with confidence.</p>
-        </article>
+        </div>
 
       </div>
       <!-- /3-CARD STRIP -->
@@ -505,7 +507,7 @@
         Not a marketing problem. A service design one. We can help you understand what is creating friction and what to do about it.
       </p>
 
-      <a href="/#contact" class="article-cta-link">Start a conversation</a>
+      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Start a conversation</a>
 
     </div>
   </aside>

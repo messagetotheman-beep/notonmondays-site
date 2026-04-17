@@ -109,7 +109,7 @@ nav {
 }
 
 .article-section {
-  padding: 3.5rem 1.5rem;
+  padding: 3.5rem 0; /* horizontal gutters are handled by article-container, not the section */
 }
 
 .article-section--warm {
@@ -251,6 +251,10 @@ nav {
   color: rgba(26,42,212,0.25);
   user-select: none;
 }
+/* On dark backgrounds the blue-tinted separator disappears — use a light opacity instead */
+.article-meta--dark .article-meta-sep {
+  color: rgba(242,240,232,0.2);
+}
 
 
 /* ── 5. On-page anchor nav (TOC) ─────────────────────────────
@@ -333,6 +337,11 @@ nav {
   font-weight: 300;
   margin-bottom: 2rem;
 }
+/* Specificity fix: .article-body p (0,1,1) beats .article-lede (0,1,0) on margin-bottom.
+   Two-class selector (0,2,0) restores the intended 2rem spacing. */
+.article-body .article-lede {
+  margin-bottom: 2rem;
+}
 
 /* Mono eyebrow label above a section heading */
 .article-section-label {
@@ -369,6 +378,11 @@ nav {
   color: var(--dark);
   margin-top: 2.25rem;
   margin-bottom: 0.65rem;
+}
+/* When h3 directly follows h2 it's a subheading, not a new section — reduce the gap */
+.article-body h2 + h3,
+.article-section-heading + .article-subsection-heading {
+  margin-top: 0.85rem;
 }
 
 /* h4 equivalent — mono label style */
@@ -660,7 +674,7 @@ nav {
 
 .article-img-placeholder {
   width: 100%;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 3 / 2; /* works for both standalone images and cards; use style override for wide banners */
   background: var(--article-callout-bg);
   border: 1px solid var(--article-border);
   display: flex;
@@ -791,7 +805,7 @@ nav {
   }
 
   .article-section {
-    padding: 5rem 4rem;
+    padding: 5rem 0; /* horizontal gutters live on article-container */
   }
 
   .article-hero {
