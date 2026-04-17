@@ -600,7 +600,7 @@
       /* ─── Labels and metadata ─── */
       .eyebrow {
         color: #1a2ad4;
-        border-color: rgba(26,42,212,0.35);
+        border-color: #9aa0df;
         background: none;
       }
 
@@ -610,37 +610,41 @@
       }
 
       /* ─── Dividers — replace rgba with solid ─── */
-      .rule { border-top: 1px solid #c2bfb6; }
+      .rule { border-top: 1px solid #aaa79e; }
 
-      .gap-list li    { border-bottom-color: #c2bfb6; }
-      .checklist li   { border-bottom-color: #c2bfb6; }
-      .steps li       { border-bottom-color: #c2bfb6; }
-      .platforms-note { border-top-color: #c2bfb6; }
+      .gap-list li    { border-bottom-color: #b5b2a8; }
+      .checklist li   { border-bottom-color: #b5b2a8; }
+      .steps li       { border-bottom-color: #b5b2a8; }
+      .platforms-note { border-top-color: #b5b2a8; }
 
       /* ─── Cards ─── */
       .cards { grid-template-columns: repeat(3, 1fr); }
 
       .card {
         background: #f2f0e8;
-        border: 1px solid #c2bfb6;
+        border: 1px solid #b5b2a8;
       }
 
       /* ─── Evidence panel ─── */
       .evidence-panel {
         background: #ede9de;
-        border: 1px solid #c2bfb6;
+        border: 1px solid #b5b2a8;
       }
 
       .evidence-panel .panel-text {
         background: #ffffff;
-        border: 1px solid #c2bfb6;
+        border: 1px solid #b5b2a8;
       }
 
       /* ─── Wireframe ─── */
-      .wf { border: 1px solid #c2bfb6; }
+      .wf { border: 1px solid #b5b2a8; }
 
-      .wf-bar { background: #1a2ad4; }
-      .wf-cta { background: #1a2ad4; }
+      .wf-bar { background: #2535c0; }
+      .wf-cta { background: #2535c0; }
+
+      /* Replace low-opacity rgba inside browser chrome so they render */
+      .wf-dot { background: rgba(255,255,255,0.55); }
+      .wf-url { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.18); }
 
       .wf-block          { background: #e8e6dc; }
       .wf-block.wf-nav   { background: #f2f0e8; border: 1px solid #c2bfb6; }
@@ -653,15 +657,15 @@
       /* ─── Soft note ─── */
       .soft-note {
         background: #f2f0e8;
-        border: 1px solid #c2bfb6;
+        border: 1px solid #b5b2a8;
       }
 
       /* ─── Contact block ─── */
-      .contact-list { border: 1px solid #c2bfb6; }
-      .contact-row  { border-bottom: 1px solid #c2bfb6; }
+      .contact-list { border: 1px solid #b5b2a8; }
+      .contact-row  { border-bottom: 1px solid #b5b2a8; }
       .contact-row dt {
         background: #ede9de;
-        border-right: 1px solid #c2bfb6;
+        border-right: 1px solid #b5b2a8;
       }
 
       /* ─── Page breaks ─── */
