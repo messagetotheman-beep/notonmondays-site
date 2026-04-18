@@ -776,7 +776,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 }
 .logo-item:hover .logo-svg { filter: grayscale(0.15) contrast(0.8); }
 
-/* Image logos (for future <img> logos) */
+/* Image logos */
 .logo-img {
   height: 34px;
   width: auto;
@@ -787,6 +787,12 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   transition: filter 0.3s ease;
 }
 .logo-item:hover .logo-img { filter: grayscale(0.15) contrast(0.8); }
+
+/* Wide logos (e.g. Salesforce — very horizontal wordmark) */
+.logo-img--wide { max-width: 200px; }
+
+/* Square / crest logos (e.g. Kingston Wildcats — badge shape) */
+.logo-img--contain { max-width: 120px; }
 
 /* NDA / confidential placeholder pill */
 .logo-placeholder {
@@ -1205,52 +1211,40 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 
           <!-- ============================================================
                SET 1 — edit this set only. Keep sets 2 and 3 in sync.
+               To add a logo: copy one .logo-item block, update src and alt,
+               then mirror the same block in SET 2 and SET 3 below.
+               Logo files live in /assets/logos/
                ============================================================ -->
           <div class="logo-set">
 
             <!-- Azariah -->
             <div class="logo-item">
-              <svg class="logo-svg" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg"
-                   role="img" aria-label="Azariah — clinical compliance platform">
-                <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
-                <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="30" cy="26" r="5" fill="#005EB8"/>
-                <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="300">The </tspan><tspan font-weight="600">Azariah</tspan></text>
-                <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
-                <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
-              </svg>
+              <img class="logo-img" src="/assets/logos/azariah.png"
+                   alt="Azariah" loading="lazy">
             </div>
 
-            <!-- Confidential client — replace placeholder with logo when cleared -->
+            <!-- Alzheimer's Society -->
             <div class="logo-item">
-              <span class="logo-placeholder">Confidential</span>
+              <img class="logo-img" src="/assets/logos/alzheimers-society.webp"
+                   alt="Alzheimer's Society" loading="lazy">
             </div>
 
-            <!-- Confidential client -->
+            <!-- Kingston Wildcats -->
             <div class="logo-item">
-              <span class="logo-placeholder">Confidential</span>
+              <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg"
+                   alt="Kingston Wildcats" loading="lazy">
             </div>
 
-            <!-- Confidential client -->
+            <!-- Salesforce -->
             <div class="logo-item">
-              <span class="logo-placeholder">Confidential</span>
+              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png"
+                   alt="Salesforce" loading="lazy">
             </div>
 
-            <!-- Confidential client -->
+            <!-- UK Border Agency -->
             <div class="logo-item">
-              <span class="logo-placeholder">Confidential</span>
-            </div>
-
-            <!-- Confidential client -->
-            <div class="logo-item">
-              <span class="logo-placeholder">Confidential</span>
-            </div>
-
-            <!-- Confidential client -->
-            <div class="logo-item">
-              <span class="logo-placeholder">Confidential</span>
+              <img class="logo-img" src="/assets/logos/uk-border-agency.jpg"
+                   alt="UK Border Agency" loading="lazy">
             </div>
 
           </div><!-- /SET 1 -->
@@ -1261,23 +1255,20 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
                ============================================================ -->
           <div class="logo-set logo-set--dupe" aria-hidden="true">
             <div class="logo-item">
-              <svg class="logo-svg" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
-                <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="30" cy="26" r="5" fill="#005EB8"/>
-                <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="300">The </tspan><tspan font-weight="600">Azariah</tspan></text>
-                <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
-                <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
-              </svg>
+              <img class="logo-img" src="/assets/logos/azariah.png" alt="">
             </div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item">
+              <img class="logo-img" src="/assets/logos/alzheimers-society.webp" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img" src="/assets/logos/uk-border-agency.jpg" alt="">
+            </div>
           </div><!-- /SET 2 -->
 
           <!-- ============================================================
@@ -1285,23 +1276,20 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
                ============================================================ -->
           <div class="logo-set logo-set--dupe" aria-hidden="true">
             <div class="logo-item">
-              <svg class="logo-svg" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
-                <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="30" cy="26" r="5" fill="#005EB8"/>
-                <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="300">The </tspan><tspan font-weight="600">Azariah</tspan></text>
-                <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
-                <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
-              </svg>
+              <img class="logo-img" src="/assets/logos/azariah.png" alt="">
             </div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
-            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item">
+              <img class="logo-img" src="/assets/logos/alzheimers-society.webp" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img" src="/assets/logos/uk-border-agency.jpg" alt="">
+            </div>
           </div><!-- /SET 3 -->
 
         </div><!-- /.logo-rail-track -->
