@@ -736,7 +736,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   display: flex;
   align-items: center;
   width: max-content;
-  animation: logo-scroll 38s linear infinite;
+  animation: logo-scroll 50s linear infinite;
 }
 
 /* Pause on hover */
@@ -757,13 +757,13 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 3.5rem;
+  padding: 0 4rem;
   height: 80px;
-  opacity: 0.42;
-  transition: opacity 0.3s ease;
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
 }
 
-.logo-item:hover { opacity: 0.88; }
+.logo-item:hover { opacity: 0.7; }
 
 /* SVG logos */
 .logo-svg {
@@ -771,10 +771,10 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   width: auto;
   max-width: 160px;
   display: block;
-  filter: grayscale(1) contrast(0.55);
+  filter: grayscale(1) contrast(0.5);
   transition: filter 0.3s ease;
 }
-.logo-item:hover .logo-svg { filter: grayscale(0.15) contrast(0.8); }
+.logo-item:hover .logo-svg { filter: grayscale(0.25) contrast(0.7); }
 
 /* Image logos */
 .logo-img {
@@ -783,10 +783,10 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   max-width: 160px;
   display: block;
   object-fit: contain;
-  filter: grayscale(1) contrast(0.55);
+  filter: grayscale(1) contrast(0.5);
   transition: filter 0.3s ease;
 }
-.logo-item:hover .logo-img { filter: grayscale(0.15) contrast(0.8); }
+.logo-item:hover .logo-img { filter: grayscale(0.25) contrast(0.7); }
 
 /* Wide logos (e.g. Salesforce — very horizontal wordmark) */
 .logo-img--wide { max-width: 200px; }
@@ -1223,6 +1223,18 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
                    alt="Azariah" loading="lazy">
             </div>
 
+            <!-- Salesforce -->
+            <div class="logo-item">
+              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png"
+                   alt="Salesforce" loading="lazy">
+            </div>
+
+            <!-- ublend -->
+            <div class="logo-item">
+              <img class="logo-img" src="/assets/logos/ublend.png"
+                   alt="ublend" loading="lazy">
+            </div>
+
             <!-- Alzheimer's Society -->
             <div class="logo-item">
               <img class="logo-img" src="/assets/logos/alzheimers-society.webp"
@@ -1233,18 +1245,6 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
             <div class="logo-item">
               <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg"
                    alt="Kingston Wildcats" loading="lazy">
-            </div>
-
-            <!-- ublend -->
-            <div class="logo-item">
-              <img class="logo-img" src="/assets/logos/ublend.png"
-                   alt="ublend" loading="lazy">
-            </div>
-
-            <!-- Salesforce -->
-            <div class="logo-item">
-              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png"
-                   alt="Salesforce" loading="lazy">
             </div>
 
             <!-- UK Border Agency -->
@@ -1264,16 +1264,16 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
               <img class="logo-img" src="/assets/logos/azariah.png" alt="">
             </div>
             <div class="logo-item">
-              <img class="logo-img" src="/assets/logos/alzheimers-society.webp" alt="">
-            </div>
-            <div class="logo-item">
-              <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg" alt="">
+              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png" alt="">
             </div>
             <div class="logo-item">
               <img class="logo-img" src="/assets/logos/ublend.png" alt="">
             </div>
             <div class="logo-item">
-              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png" alt="">
+              <img class="logo-img" src="/assets/logos/alzheimers-society.webp" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg" alt="">
             </div>
             <div class="logo-item">
               <img class="logo-img" src="/assets/logos/uk-border-agency.jpg" alt="">
@@ -1288,16 +1288,16 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
               <img class="logo-img" src="/assets/logos/azariah.png" alt="">
             </div>
             <div class="logo-item">
-              <img class="logo-img" src="/assets/logos/alzheimers-society.webp" alt="">
-            </div>
-            <div class="logo-item">
-              <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg" alt="">
+              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png" alt="">
             </div>
             <div class="logo-item">
               <img class="logo-img" src="/assets/logos/ublend.png" alt="">
             </div>
             <div class="logo-item">
-              <img class="logo-img logo-img--wide" src="/assets/logos/salesforce.png" alt="">
+              <img class="logo-img" src="/assets/logos/alzheimers-society.webp" alt="">
+            </div>
+            <div class="logo-item">
+              <img class="logo-img logo-img--contain" src="/assets/logos/kingston-wildcats.jpeg" alt="">
             </div>
             <div class="logo-item">
               <img class="logo-img" src="/assets/logos/uk-border-agency.jpg" alt="">
