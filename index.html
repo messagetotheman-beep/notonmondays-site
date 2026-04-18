@@ -1182,37 +1182,133 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 
     </div>
 
-    <!-- LOGO STRIP -->
-    <div class="cs-logos" aria-label="A selection of organisations we have worked with">
-      <span class="cs-logos-label" aria-hidden="true">Trusted by teams across…</span>
-      <ul class="cs-logos-row" role="list">
+    <!-- LOGO STRIP — TRUSTED THROUGH EXPERIENCE
+         ============================================================
+         How to add or swap a logo:
+           1. Drop the file in /assets/logos/ (create the folder if needed)
+           2. In SET 1 below, copy one .logo-item block and update the
+              <img> src / <svg> content and the aria-label
+           3. Copy the same block into SET 2 and SET 3 (marked as duplicates)
+              so the scroll loop stays seamless
+         To add an <img> logo use:
+           <div class="logo-item">
+             <img class="logo-img" src="/assets/logos/yourlogo.svg"
+                  alt="Organisation name" width="120" height="34">
+           </div>
+         ============================================================ -->
+    <div class="logo-section">
+      <span class="logo-section-eyebrow" aria-hidden="true">Trusted through experience</span>
 
-        <!-- Azariah — SVG lockup from design system -->
-        <li class="cs-logo-slot" aria-label="Azariah">
-          <svg class="cs-logo-svg" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Azariah logo">
-            <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
-            <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="30" cy="26" r="5" fill="#005EB8"/>
-            <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="300">The </tspan><tspan font-weight="600">Azariah</tspan></text>
-            <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
-            <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
-          </svg>
-        </li>
+      <!-- Scrolling rail — logos are decorative; screen readers read SET 1 only -->
+      <div class="logo-rail" role="region" aria-label="Organisations we have worked with or alongside">
+        <div class="logo-rail-track">
 
-        <li class="cs-logo-slot" aria-label="Client name withheld">
-          <span class="cs-logo-placeholder">Confidential</span>
-        </li>
-        <li class="cs-logo-slot" aria-label="Client name withheld">
-          <span class="cs-logo-placeholder">Confidential</span>
-        </li>
-        <li class="cs-logo-slot" aria-label="Client name withheld">
-          <span class="cs-logo-placeholder">Confidential</span>
-        </li>
+          <!-- ============================================================
+               SET 1 — edit this set only. Keep sets 2 and 3 in sync.
+               ============================================================ -->
+          <div class="logo-set">
 
-      </ul>
-    </div>
+            <!-- Azariah -->
+            <div class="logo-item">
+              <svg class="logo-svg" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg"
+                   role="img" aria-label="Azariah — clinical compliance platform">
+                <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
+                <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="30" cy="26" r="5" fill="#005EB8"/>
+                <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="300">The </tspan><tspan font-weight="600">Azariah</tspan></text>
+                <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
+                <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
+              </svg>
+            </div>
+
+            <!-- Confidential client — replace placeholder with logo when cleared -->
+            <div class="logo-item">
+              <span class="logo-placeholder">Confidential</span>
+            </div>
+
+            <!-- Confidential client -->
+            <div class="logo-item">
+              <span class="logo-placeholder">Confidential</span>
+            </div>
+
+            <!-- Confidential client -->
+            <div class="logo-item">
+              <span class="logo-placeholder">Confidential</span>
+            </div>
+
+            <!-- Confidential client -->
+            <div class="logo-item">
+              <span class="logo-placeholder">Confidential</span>
+            </div>
+
+            <!-- Confidential client -->
+            <div class="logo-item">
+              <span class="logo-placeholder">Confidential</span>
+            </div>
+
+            <!-- Confidential client -->
+            <div class="logo-item">
+              <span class="logo-placeholder">Confidential</span>
+            </div>
+
+          </div><!-- /SET 1 -->
+
+          <!-- ============================================================
+               SET 2 — duplicate of SET 1. Do not edit independently.
+               aria-hidden so screen readers skip the repeated content.
+               ============================================================ -->
+          <div class="logo-set logo-set--dupe" aria-hidden="true">
+            <div class="logo-item">
+              <svg class="logo-svg" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
+                <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="30" cy="26" r="5" fill="#005EB8"/>
+                <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="300">The </tspan><tspan font-weight="600">Azariah</tspan></text>
+                <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
+                <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
+              </svg>
+            </div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+          </div><!-- /SET 2 -->
+
+          <!-- ============================================================
+               SET 3 — duplicate of SET 1. Do not edit independently.
+               ============================================================ -->
+          <div class="logo-set logo-set--dupe" aria-hidden="true">
+            <div class="logo-item">
+              <svg class="logo-svg" viewBox="0 0 230 60" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="30,4 50,15 50,37 30,48 10,37 10,15" fill="#E8F1FA" stroke="#005EB8" stroke-width="2"/>
+                <line x1="30" y1="15" x2="30" y2="37" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="22" x2="43" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="43" y1="22" x2="17" y2="30" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="30" cy="26" r="5" fill="#005EB8"/>
+                <text x="64" y="22" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="20" fill="#003087" xml:space="preserve"><tspan font-weight="300">The </tspan><tspan font-weight="600">Azariah</tspan></text>
+                <line x1="64" y1="29" x2="228" y2="29" stroke="#005EB8" stroke-width="0.6" opacity="0.18"/>
+                <text x="64" y="43" font-family="'DM Sans','Helvetica Neue',sans-serif" font-size="7" font-weight="500" letter-spacing="3" fill="#005EB8" opacity="0.6">CLINICAL COMPLIANCE</text>
+              </svg>
+            </div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+            <div class="logo-item"><span class="logo-placeholder">Confidential</span></div>
+          </div><!-- /SET 3 -->
+
+        </div><!-- /.logo-rail-track -->
+      </div><!-- /.logo-rail -->
+
+      <p class="logo-section-note">Delivered through direct work and trusted partnerships</p>
+    </div><!-- /.logo-section -->
 
   </section>
 
