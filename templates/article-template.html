@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     SEO — update every [REPLACE] field before publishing.
+     See CLAUDE.md for the full checklist.
+     ============================================================ -->
+<title>[REPLACE: Article Title] | Not On Mondays</title>
+<meta name="description" content="[REPLACE: One-sentence description, ~155 chars. Plain English, no jargon.]">
+<link rel="canonical" href="https://www.notonmondays.com/insights/[REPLACE-slug]">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.notonmondays.com/insights/[REPLACE-slug]">
+<meta property="og:title" content="[REPLACE: Article Title] | Not On Mondays">
+<meta property="og:description" content="[REPLACE: Short OG description, ~100 chars.]">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+<meta property="article:published_time" content="[REPLACE: YYYY-MM-DD]T00:00:00+00:00">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/insights/[REPLACE-slug]">
+<meta name="twitter:title" content="[REPLACE: Article Title] | Not On Mondays">
+<meta name="twitter:description" content="[REPLACE: Short Twitter description.]">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<!-- Fonts — required by nom.css article system -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<!-- Shared base styles + full article system (sections 1–17) -->
+<link rel="stylesheet" href="/assets/nom.css">
+
+<!-- ============================================================
+     Page-specific chrome only below.
+     Do NOT redeclare: :focus-visible, prefers-reduced-motion,
+     or .site-footer nav — all three live in nom.css.
+     Do NOT add article-system classes here — they are in nom.css.
+     ============================================================ -->
+<style>
+
+/* ── Skip link ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ───────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.65rem 1.4rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-weight: 300;
+}
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--deep-blue); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ──────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* .site-footer nav reset lives in nom.css — no override needed */
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── Mobile nav ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .nav-cta { display: none; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+</style>
+
+<!-- ============================================================
+     STRUCTURED DATA — required for Google Article rich results.
+     Update headline, description, datePublished, dateModified,
+     mainEntityOfPage/@id, and url before publishing.
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "[REPLACE: Matches the h1 text]",
+  "description": "[REPLACE: Matches meta description]",
+  "image": "https://www.notonmondays.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "datePublished": "[REPLACE: YYYY-MM-DD]",
+  "dateModified": "[REPLACE: YYYY-MM-DD]",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.notonmondays.com/insights/[REPLACE-slug]"
+  },
+  "url": "https://www.notonmondays.com/insights/[REPLACE-slug]"
+}
+</script>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     SITE HEADER — copy this block unchanged to every article page.
+     ============================================================ -->
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+<!-- /SITE HEADER -->
+
+
+<main id="main-content" class="article-layout">
+
+  <!-- ============================================================
+       HERO — dark, full-bleed.
+       Update: back link href, eyebrow text, h1, standfirst,
+               datetime attribute, display date, read time, tags.
+       ============================================================ -->
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="article-hero-inner">
+
+      <!-- Back link: typically /insights/ — update if pointing elsewhere -->
+      <a href="/insights/" class="article-back-link" aria-label="Back to Insights">← Insights</a>
+
+      <!-- Eyebrow: two or three mono topic labels, e.g. "Operations · Delivery" -->
+      <!-- aria-hidden: purely decorative label, heading carries the accessible name -->
+      <p class="article-hero-eyebrow" aria-hidden="true">[REPLACE: Topic] · [REPLACE: Sector or audience]</p>
+
+      <!-- h1: one per page, always inside the hero -->
+      <h1 id="article-heading" class="article-hero-headline">
+        [REPLACE: Article title. Use <em>emphasis</em> on a key phrase if it reads naturally.]
+      </h1>
+
+      <!-- Standfirst: one sentence — what the reader gains from this article -->
+      <p class="article-hero-standfirst">
+        [REPLACE: One clear, plain-English sentence framing what this article delivers.]
+      </p>
+
+      <!-- Metadata strip: always use <time datetime="..."> for the date -->
+      <div class="article-meta article-meta--dark">
+        <time datetime="[REPLACE: YYYY-MM-DD]">[REPLACE: Month YYYY]</time>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span>[REPLACE: N] min read</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">[REPLACE: Primary topic tag]</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">[REPLACE: Secondary topic tag]</span>
+      </div>
+
+    </div>
+  </section>
+  <!-- /HERO -->
+
+
+  <!-- ============================================================
+       ARTICLE BODY — one light section wraps the content column.
+       article-container handles centring and horizontal gutters.
+       ============================================================ -->
+  <section class="article-section article-section--light" aria-label="Article body">
+    <div class="article-container">
+
+
+      <!-- ========================================================
+           ON THIS PAGE (TOC / anchor nav)
+           href values must exactly match the id attributes on h2s.
+           Remove this block for shorter articles (under ~3 min read).
+           ======================================================== -->
+      <nav class="article-toc" aria-label="On this page">
+        <p class="article-toc-label" aria-hidden="true">On this page</p>
+        <ul class="article-toc-list">
+          <li><a href="#section-one">[REPLACE: First section label]</a></li>
+          <li><a href="#section-two">[REPLACE: Second section label]</a></li>
+          <li><a href="#section-three">[REPLACE: Third section label]</a></li>
+          <li><a href="#section-four">[REPLACE: Fourth section label]</a></li>
+        </ul>
+      </nav>
+      <!-- /TOC -->
+
+
+      <!-- ========================================================
+           LEDE — opening paragraphs.
+           article-lede: slightly larger and softer than body text.
+           Use 1–2 lede paragraphs, then regular <p> for context.
+           ======================================================== -->
+      <div class="article-body">
+
+        <p class="article-lede">[REPLACE: Opening line. One strong idea, short sentence.]</p>
+        <p class="article-lede">[REPLACE: Optional second lede — companion or contrast to the first.]</p>
+
+        <p>[REPLACE: Context paragraph — what has changed, what is at stake, why this matters now.]</p>
+
+      </div>
+      <!-- /lede -->
+
+
+      <!-- ========================================================
+           TL;DR / KEY POINTS
+           Optional. Place here (after lede, before first h2) for
+           readers who scan first. Or move to the end as a recap.
+           Remove entirely for short or very focused articles.
+           Classes: article-tldr, article-tldr-label
+           ======================================================== -->
+      <div class="article-tldr">
+        <p class="article-tldr-label" aria-hidden="true">Key points</p>
+        <ul>
+          <li>[REPLACE: First takeaway — one plain sentence.]</li>
+          <li>[REPLACE: Second takeaway.]</li>
+          <li>[REPLACE: Third takeaway.]</li>
+          <!-- Add or remove list items as needed -->
+        </ul>
+      </div>
+      <!-- /TL;DR -->
+
+
+      <!-- ========================================================
+           MAIN ARTICLE BODY
+           h2 id values must match the TOC hrefs above.
+           Use article-body for all prose. Start each new block of
+           prose in a fresh div.article-body if a non-prose component
+           (stat cards, callout, quote) breaks the flow.
+           ======================================================== -->
+      <div class="article-body">
+
+        <h2 id="section-one">[REPLACE: First section heading]</h2>
+        <p>[REPLACE: Body copy. Plain English. Short sentences.]</p>
+        <p>[REPLACE: Second paragraph.]</p>
+
+        <h3>[REPLACE: Sub-heading — use h3 for topics within a section]</h3>
+        <p>[REPLACE: Body copy under the sub-heading.]</p>
+
+        <h3>[REPLACE: Another sub-heading]</h3>
+        <p>[REPLACE: Body copy.]</p>
+
+
+        <!-- ── Callout / insight box ─────────────────────────────
+             Use for a specific observation worth isolating from the
+             main prose. Not a generic aside — it should add nuance.
+             article-callout-label: optional type label.
+             Common labels: "Key insight", "Note", "Worth knowing"
+             ────────────────────────────────────────────────────── -->
+        <div class="article-callout">
+          <p class="article-callout-label">[REPLACE: label, e.g. "Key insight"]</p>
+          <p>[REPLACE: The callout content. A specific point worth foregrounding. One or two sentences.]</p>
+        </div>
+        <!-- /callout -->
+
+
+        <h2 id="section-two">[REPLACE: Second section heading]</h2>
+        <p>[REPLACE: Body copy.]</p>
+
+        <h3>[REPLACE: Sub-heading]</h3>
+        <p>[REPLACE: Body copy.]</p>
+
+
+        <!-- ── Pull quote (blockquote) ────────────────────────────
+             Use sparingly — one per article is usually enough.
+             Choose a sentence that earns the extra emphasis.
+             <cite> is optional; include when quoting a source.
+             ────────────────────────────────────────────────────── -->
+        <blockquote>
+          <p>[REPLACE: A specific, memorable sentence from the article — or a direct quote. Not a cliché.]</p>
+          <cite>[REPLACE: Source or attribution — omit this line if paraphrasing your own text.]</cite>
+        </blockquote>
+        <!-- /pull quote -->
+
+
+        <p>[REPLACE: Paragraph continuing after the pull quote.]</p>
+
+      </div>
+      <!-- /article-body -->
+
+
+      <!-- ========================================================
+           STAT CARD STRIP
+           Data-led three-card pattern. Full container width.
+           Only use with real, sourced data — remove if unavailable.
+           role="group" is required for aria-label to be announced.
+           ======================================================== -->
+      <div class="article-stat-cards" role="group" aria-label="[REPLACE: Describe what these stats show]">
+
+        <!-- Card 1 -->
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">[REPLACE: Theme label, e.g. "Where the journey begins"]</p>
+          <p class="article-stat-card-number">[REPLACE: NN%]</p>
+          <p class="article-stat-card-subtext">[REPLACE: The stat in plain English. What does this number mean?]</p>
+          <p class="article-stat-card-source">[REPLACE: Source Name, Report Title, Year]</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">[REPLACE: Short card heading]</h3>
+          <p class="article-stat-card-body">[REPLACE: One-sentence editorial take on this stat.]</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">[REPLACE: Theme label]</p>
+          <p class="article-stat-card-number">[REPLACE: NN%]</p>
+          <p class="article-stat-card-subtext">[REPLACE: Stat in plain English.]</p>
+          <p class="article-stat-card-source">[REPLACE: Source, Year]</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">[REPLACE: Short card heading]</h3>
+          <p class="article-stat-card-body">[REPLACE: Editorial take.]</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">[REPLACE: Theme label]</p>
+          <p class="article-stat-card-number">[REPLACE: NN%]</p>
+          <p class="article-stat-card-subtext">[REPLACE: Stat in plain English.]</p>
+          <p class="article-stat-card-source">[REPLACE: Source, Year]</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">[REPLACE: Short card heading]</h3>
+          <p class="article-stat-card-body">[REPLACE: Editorial take.]</p>
+        </div>
+
+      </div>
+      <!-- /STAT CARD STRIP -->
+
+
+      <!-- Continue article prose after the strip -->
+      <div class="article-body">
+
+        <h2 id="section-three">[REPLACE: Third section heading]</h2>
+        <p>[REPLACE: Body copy.]</p>
+
+        <h3>[REPLACE: Sub-heading]</h3>
+        <p>[REPLACE: Body copy.]</p>
+
+        <h3>[REPLACE: Sub-heading]</h3>
+        <p>[REPLACE: Body copy.]</p>
+
+
+        <!-- ── Unordered list ─────────────────────────────────────
+             article-list: em-dash marker, left-aligned.
+             Use inside article-body or standalone.
+             ────────────────────────────────────────────────────── -->
+        <ul class="article-list">
+          <li>[REPLACE: List item]</li>
+          <li>[REPLACE: List item]</li>
+          <li>[REPLACE: List item]</li>
+        </ul>
+
+
+        <h2 id="section-four">[REPLACE: Fourth section heading]</h2>
+        <p>[REPLACE: Body copy.]</p>
+        <p>[REPLACE: Body copy.]</p>
+
+
+        <!-- ── Ordered list ───────────────────────────────────────
+             article-list--ordered: zero-padded mono counter.
+             ────────────────────────────────────────────────────── -->
+        <ol class="article-list--ordered">
+          <li>[REPLACE: Step or item]</li>
+          <li>[REPLACE: Step or item]</li>
+          <li>[REPLACE: Step or item]</li>
+        </ol>
+
+
+        <!-- ── Expandable (details/summary) ──────────────────────
+             Native HTML — no JavaScript required.
+             Use for supplementary detail not every reader needs:
+             examples, FAQs, extended lists, caveats.
+             Stack multiple .article-details for a grouped set.
+             ────────────────────────────────────────────────────── -->
+        <details class="article-details">
+          <summary>
+            <span class="article-details-title">[REPLACE: Expand label, e.g. "See the full list of common issues"]</span>
+            <span class="article-details-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="article-details-content">
+            <ul class="article-list">
+              <li>[REPLACE: Item]</li>
+              <li>[REPLACE: Item]</li>
+              <li>[REPLACE: Item]</li>
+              <li>[REPLACE: Item]</li>
+            </ul>
+          </div>
+        </details>
+        <!-- /expandable -->
+
+      </div>
+      <!-- /article-body (final prose block) -->
+
+
+      <!-- ========================================================
+           RELATED READING (optional)
+           Uncomment when related articles exist.
+           article-cards: 1 col mobile → 3 col desktop.
+           Use <div> not <article> — these are navigation fragments.
+           ======================================================== -->
+      <!--
+      <div class="article-cards" role="group" aria-label="Related reading">
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Related</p>
+          <h3 class="article-card-heading">[REPLACE: Related article title]</h3>
+          <p class="article-card-body">[REPLACE: One sentence on what the reader will find.]</p>
+          <a href="/insights/[REPLACE-slug]" class="article-card-link">Read →</a>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Related</p>
+          <h3 class="article-card-heading">[REPLACE: Related article title]</h3>
+          <p class="article-card-body">[REPLACE: One sentence.]</p>
+          <a href="/insights/[REPLACE-slug]" class="article-card-link">Read →</a>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Related</p>
+          <h3 class="article-card-heading">[REPLACE: Related article title]</h3>
+          <p class="article-card-body">[REPLACE: One sentence.]</p>
+          <a href="/insights/[REPLACE-slug]" class="article-card-link">Read →</a>
+        </div>
+
+      </div>
+      -->
+      <!-- /RELATED READING -->
+
+
+    </div><!-- /article-container -->
+  </section>
+  <!-- /ARTICLE BODY -->
+
+
+  <!-- ============================================================
+       SOFT CTA — always the last section before the footer.
+       Use article-cta-link--ghost for the softer outlined style.
+       The heading should feel connected to the article's subject,
+       not generic. Update: cta-label, cta-heading, cta-body text.
+       ============================================================ -->
+  <aside class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+
+      <!-- CTA label: short, factual, e.g. "Work with us", "Get in touch" -->
+      <p class="article-cta-label" aria-hidden="true">[REPLACE: CTA label]</p>
+
+      <!-- CTA heading: connect back to the article's subject.
+           Use <em> on the key phrase. Keep it calm, not salesy. -->
+      <h2 id="cta-heading" class="article-cta-heading">
+        [REPLACE: CTA heading — make it feel related to what the article covers.
+        <em>Emphasis on the key idea.</em>]
+      </h2>
+
+      <!-- CTA body: 1–2 sentences. Describe what working with NOM looks like.
+           Honest and specific — not a list of benefits. -->
+      <p class="article-cta-body">
+        [REPLACE: One or two plain sentences. What does engaging with NOM on this topic look like?]
+      </p>
+
+      <!-- Ghost variant is preferred for article context — less pressure -->
+      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Start a conversation</a>
+
+    </div>
+  </aside>
+  <!-- /SOFT CTA -->
+
+
+</main>
+<!-- /ARTICLE LAYOUT -->
+
+
+<!-- ============================================================
+     SITE FOOTER — copy this block unchanged to every article page.
+     ============================================================ -->
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+<!-- /SITE FOOTER -->
+
+
+<!-- ============================================================
+     SCRIPTS — keep minimal.
+     Only the mobile nav toggle is needed for article pages.
+     No article-system JavaScript is required.
+     ============================================================ -->
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
