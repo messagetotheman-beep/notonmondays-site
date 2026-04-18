@@ -16,6 +16,7 @@ There are no commands to run. Editing files is the development workflow.
 
 ```
 assets/nom.css                        — shared stylesheet for all public pages
+templates/article-template.html      — article starter with all components and [REPLACE] markers
 index.html                            — homepage (has its own inline CSS, not article system)
 insights/index.html                   — Insights landing page
 insights/legal-digital-change.html   — canonical article (reference implementation)
@@ -48,6 +49,7 @@ All asset paths use root-relative URLs (`/assets/nom.css`, `/assets/nomlogo400.p
 | Callouts | `article-callout`, `article-callout-label` |
 | Card strip | `article-cards`, `article-card`, `article-card-label`, `article-card-heading`, `article-card-body` |
 | Stat cards | `article-stat-cards`, `article-stat-card`, `article-stat-card-label`, `article-stat-card-number`, `article-stat-card-subtext`, `article-stat-card-source`, `article-stat-card-rule`, `article-stat-card-heading`, `article-stat-card-body` |
+| TL;DR | `article-tldr`, `article-tldr-label` |
 | Expandable | `article-details`, `article-details-title`, `article-details-icon`, `article-details-content` |
 | Images | `article-img`, `article-img-placeholder`, `article-img-caption` |
 | CTA | `article-cta`, `article-cta-inner`, `article-cta-label`, `article-cta-heading`, `article-cta-body`, `article-cta-link`, `article-cta-link--ghost` |
@@ -81,7 +83,7 @@ The Insights landing page uses a separate `insights-` prefix for its own layout 
 
 ## When creating a new article page
 
-1. Copy `insights/legal-digital-change.html` as the starting point — it is the reference implementation.
+1. Copy `templates/article-template.html` as the starting point. It has all components in place with `[REPLACE]` markers throughout. `insights/legal-digital-change.html` is the reference implementation for how a finished article looks.
 2. Update in the copy: `<title>`, `<meta name="description">`, `link[canonical]`, all `og:*` and `twitter:*` tags, JSON-LD structured data (`headline`, `url`, `mainEntityOfPage/@id`, `datePublished`, `dateModified`), the `<h1>`, standfirst, eyebrow, back link, metadata strip, TOC anchors, and all article body content.
 3. The page-specific `<style>` block should contain **only**: skip link, `.site-header`, `.site-nav`, `.nav-logo` and related nav classes, `.site-footer` and `.footer-links`, and mobile nav breakpoint. Do not put article system classes there.
 4. Do not re-declare `:focus-visible`, `prefers-reduced-motion`, or `.site-footer nav` — all three live in `nom.css`.

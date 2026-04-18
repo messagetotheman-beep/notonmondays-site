@@ -105,6 +105,7 @@ nav {
      14. Stat card strip
      15. Focus states
      16. Responsive breakpoints
+     17. TL;DR / key takeaways block
    ================================================================ */
 
 
@@ -958,5 +959,54 @@ nav {
     gap: 0.35rem;
   }
 }
+
+
+/* ── 17. TL;DR / Key takeaways ───────────────────────────────
+   Summary block for quick-scanning readers. Place after the
+   lede (before the first h2) or at the end as a recap.
+   Classes: article-tldr, article-tldr-label                  */
+
+.article-tldr {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.75rem;
+  background: var(--warm-white);
+  border-top: 2px solid var(--blue);
+}
+
+.article-tldr-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+.article-tldr ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.article-tldr ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--dark);
+}
+.article-tldr ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  top: 0.15em;
+}
+.article-tldr ul li:last-child { margin-bottom: 0; }
+
 
 /* ── End of article system ─────────────────────────────────── */
