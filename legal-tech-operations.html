@@ -614,12 +614,12 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
             <input id="contact-email-input" type="email" name="email" class="form-input" placeholder="Your email" required autocomplete="email" aria-required="true">
           </div>
           <div class="form-group">
-            <label class="form-label" for="contact-org">Organisation</label>
-            <input id="contact-org" type="text" name="organisation" class="form-input" placeholder="Your firm or organisation" autocomplete="organization">
+            <label class="form-label" for="contact-org">Organisation <span aria-label="required">*</span></label>
+            <input id="contact-org" type="text" name="organisation" class="form-input" placeholder="Your firm or organisation" required autocomplete="organization" aria-required="true">
           </div>
           <div class="form-group">
-            <label class="form-label" for="contact-message">What is going on?</label>
-            <textarea id="contact-message" name="message" class="form-textarea" placeholder="Describe the challenge. What are you trying to improve, and what has made it difficult so far?"></textarea>
+            <label class="form-label" for="contact-message">What is going on? <span aria-label="required">*</span></label>
+            <textarea id="contact-message" name="message" class="form-textarea" placeholder="Describe the challenge. What are you trying to improve, and what has made it difficult so far?" required aria-required="true"></textarea>
           </div>
           <button type="submit" class="form-submit" id="form-submit-btn">Send it →</button>
           <p id="form-success" role="status" aria-live="polite" style="display:none;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;color:var(--light-blue);margin-top:1rem;">Got it. We will be in touch shortly.</p>
@@ -704,6 +704,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
       const btn = document.getElementById('form-submit-btn');
       const success = document.getElementById('form-success');
       const error = document.getElementById('form-error');
