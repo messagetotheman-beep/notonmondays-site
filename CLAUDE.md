@@ -33,7 +33,7 @@ All asset paths use root-relative URLs (`/assets/nom.css`, `/assets/nomlogo400.p
 
 1. **Base styles** — reset, CSS custom properties, the bare `nav {}` rule (known technical debt — see below), `.nav-cta`, global `:focus-visible`, `.site-footer nav` reset, reduced-motion rule.
 
-2. **Article system** (sections 1–16, from line ~83 onward) — a complete, self-contained set of reusable classes for editorial pages. All classes use the `article-` prefix.
+2. **Article system** (sections 1–17, from line ~83 onward) — a complete, self-contained set of reusable classes for editorial pages. All classes use the `article-` prefix.
 
 **Always read `assets/nom.css` before writing any new styles.** The system covers:
 
