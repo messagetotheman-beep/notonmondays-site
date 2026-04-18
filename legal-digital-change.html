@@ -298,7 +298,7 @@
 
       <!-- Metadata strip: date · read time · category tags -->
       <div class="article-meta article-meta--dark">
-        <span>April 2026</span>
+        <time datetime="2026-04-17">April 2026</time>
         <span class="article-meta-sep" aria-hidden="true">·</span>
         <span>6 min read</span>
         <span class="article-meta-sep" aria-hidden="true">·</span>
@@ -365,45 +365,54 @@
 
 
       <!-- ========================================================
-           SECTION 4 — 3-CARD VISUAL STRIP
-           Sits outside article-body so it spans the full container.
-           Classes: article-cards, article-card, article-card-label,
-                    article-img-placeholder, article-card-heading,
-                    article-card-body
+           SECTION 4 — STAT CARD STRIP
+           Data-led three-card pattern. Sits outside article-body so
+           it spans the full container width.
+           Classes: article-stat-cards, article-stat-card,
+                    article-stat-card-label, article-stat-card-number,
+                    article-stat-card-subtext, article-stat-card-source,
+                    article-stat-card-rule, article-stat-card-heading,
+                    article-stat-card-body
            Replace article-img-placeholder with a real <img> when
            visuals are ready — swap for <img class="..."> inside
            <div class="article-img">.
            ======================================================== -->
       <!-- role="group" is required for aria-label to be announced on a plain div -->
-      <div class="article-cards" role="group" aria-label="Key patterns in legal digital change">
+      <div class="article-stat-cards" role="group" aria-label="Key patterns in legal digital change">
 
-        <!-- Card 1 — use <div> not <article>: cards are fragments of this article, not standalone content -->
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">01</p>
-          <!-- Replace with <div class="article-img"><img src="..." alt="..."></div> when image is ready -->
-          <div class="article-img-placeholder" role="img" aria-label="How users start now" style="margin-bottom: 1rem;"></div>
-          <h3 class="article-card-heading">How users start now</h3>
-          <p class="article-card-body">Most journeys now begin with a search, not a phone call.</p>
+        <!-- Card — use <div> not <article>: cards are fragments of this page, not standalone content -->
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Where the journey begins</p>
+          <p class="article-stat-card-number">44%</p>
+          <p class="article-stat-card-subtext">of consumers now shop around before choosing a lawyer, up from 28% in 2019.</p>
+          <p class="article-stat-card-source">Legal Services Consumer Panel, Tracker Survey 2025</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">How users start now</h3>
+          <p class="article-stat-card-body">Most journeys now begin with a search, not a phone call.</p>
         </div>
 
-        <!-- Card 2 -->
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">02</p>
-          <div class="article-img-placeholder" role="img" aria-label="Where friction happens" style="margin-bottom: 1rem;"></div>
-          <h3 class="article-card-heading">Where friction happens</h3>
-          <p class="article-card-body">Slow replies and unclear next steps reduce trust quickly.</p>
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Where firms fall short</p>
+          <p class="article-stat-card-number">61%</p>
+          <p class="article-stat-card-subtext">found it easy to locate information on services, staff or timelines on solicitor websites — down from 66% the year before.</p>
+          <p class="article-stat-card-source">Legal Services Consumer Panel, Tracker Survey 2024</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">Where friction happens</h3>
+          <p class="article-stat-card-body">Slow replies and unclear next steps reduce trust quickly.</p>
         </div>
 
-        <!-- Card 3 -->
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">03</p>
-          <div class="article-img-placeholder" role="img" aria-label="What better looks like" style="margin-bottom: 1rem;"></div>
-          <h3 class="article-card-heading">What better looks like</h3>
-          <p class="article-card-body">Clear, simple journeys help people move forward with confidence.</p>
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">The competitive stakes</p>
+          <p class="article-stat-card-number">42%</p>
+          <p class="article-stat-card-subtext">of shoppers compare three or more solicitor websites before deciding who to call.</p>
+          <p class="article-stat-card-source">Legal Services Consumer Panel, Tracker Survey 2024</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">What better looks like</h3>
+          <p class="article-stat-card-body">Clear, simple journeys help people move forward with confidence.</p>
         </div>
 
       </div>
-      <!-- /3-CARD STRIP -->
+      <!-- /STAT CARD STRIP -->
 
 
       <!-- Continue article body after the visual strip -->
