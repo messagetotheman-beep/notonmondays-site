@@ -102,8 +102,9 @@ nav {
      11. Details / summary expandable
      12. Image & placeholder
      13. Soft CTA section
-     14. Focus states
-     15. Responsive breakpoints
+     14. Stat card strip
+     15. Focus states
+     16. Responsive breakpoints
    ================================================================ */
 
 
@@ -803,7 +804,7 @@ nav {
 }
 
 
-/* ── 16. Stat card strip ──────────────────────────────────────
+/* ── 14. Stat card strip ──────────────────────────────────────
    Data-led three-card pattern. Combines a stat citation with
    editorial framing. 1px grid-gap separator trick — background
    colour shows through the gap.
@@ -890,7 +891,7 @@ nav {
 }
 
 
-/* ── 14. Focus states ─────────────────────────────────────────
+/* ── 15. Focus states ─────────────────────────────────────────
    Base focus ring comes from the global :focus-visible rule in
    nom.css (see top of file). Only dark-background overrides live
    here, switching the ring to light-blue for adequate contrast.  */
@@ -901,7 +902,7 @@ nav {
 }
 
 
-/* ── 15. Responsive breakpoints ──────────────────────────────
+/* ── 16. Responsive breakpoints ──────────────────────────────
    Mobile-first. Key breakpoints: 640px (tablet), 900px (desktop).
    Padding and card columns scale up at each step.             */
 
