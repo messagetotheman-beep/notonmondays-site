@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>You Don't Need a Full Digital Team — You Need the Right Operating Layer | Not On Mondays</title>
+<meta name="description" content="Most organisations trying to move faster digitally are not short of ideas or skills. They are short of the coordination layer that turns direction into delivery.">
+<link rel="canonical" href="https://www.notonmondays.com/insights/operating-layer">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.notonmondays.com/insights/operating-layer">
+<meta property="og:title" content="You Don't Need a Full Digital Team — You Need the Right Operating Layer | Not On Mondays">
+<meta property="og:description" content="Most organisations trying to move faster digitally are not short of ideas or skills. They are short of the coordination layer that turns direction into delivery.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+<meta property="article:published_time" content="2026-04-18T00:00:00+00:00">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/insights/operating-layer">
+<meta name="twitter:title" content="You Don't Need a Full Digital Team — You Need the Right Operating Layer | Not On Mondays">
+<meta name="twitter:description" content="Most organisations are not short of ideas or skills. They are short of the coordination layer that turns direction into delivery.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<!-- Shared base styles + article system -->
+<link rel="stylesheet" href="/assets/nom.css">
+
+<!-- ============================================================
+     Dependencies (required on every article page):
+       1. Google Fonts link (Cormorant Garamond, DM Mono, DM Sans)
+       2. /assets/nom.css  — base styles, article system, focus states,
+                             reduced-motion reset, footer nav reset
+
+     Page-specific overrides only below.
+     Do not re-declare :focus-visible, prefers-reduced-motion,
+     or .site-footer nav — all three are now in nom.css.
+     ============================================================ -->
+<style>
+
+/* ── Skip link ─────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ─────────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  line-height: 1;
+}
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ────────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* .site-footer nav reset lives in nom.css — no override needed here */
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* :focus-visible and prefers-reduced-motion live in nom.css */
+
+/* ── Mobile nav ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "You don't need a full digital team — you need the right operating layer",
+  "description": "Most organisations trying to move faster digitally are not short of ideas or skills. They are short of the coordination layer that turns direction into delivery.",
+  "image": "https://www.notonmondays.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "datePublished": "2026-04-18",
+  "dateModified": "2026-04-18",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.notonmondays.com/insights/operating-layer"
+  },
+  "url": "https://www.notonmondays.com/insights/operating-layer"
+}
+</script>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     SITE HEADER
+     ============================================================ -->
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/" aria-current="page">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+<!-- /SITE HEADER -->
+
+
+<main id="main-content" class="article-layout">
+
+  <!-- ============================================================
+       SECTION 1 — HERO
+       ============================================================ -->
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="article-hero-inner">
+
+      <a href="/insights/" class="article-back-link" aria-label="Back to Insights">&#8592; Insights</a>
+
+      <p class="article-hero-eyebrow" aria-hidden="true">Operations · Digital Delivery</p>
+
+      <h1 id="article-heading" class="article-hero-headline">
+        You don't need a full digital team<br><em>you need the right operating layer</em>
+      </h1>
+
+      <p class="article-hero-standfirst">
+        Most organisations are not short of ideas or skills. They are short of the coordination layer that turns direction into delivery.
+      </p>
+
+      <div class="article-meta article-meta--dark">
+        <time datetime="2026-04-18">April 2026</time>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span>7 min read</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Operations</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Digital Delivery</span>
+      </div>
+
+    </div>
+  </section>
+  <!-- /HERO -->
+
+
+  <section class="article-section article-section--light" aria-label="Article body">
+    <div class="article-container">
+
+
+      <!-- ========================================================
+           ON THIS PAGE ANCHOR NAVIGATION
+           ======================================================== -->
+      <nav class="article-toc" aria-label="On this page">
+        <p class="article-toc-label" aria-hidden="true">On this page</p>
+        <ul class="article-toc-list">
+          <li><a href="#what-goes-wrong">What goes wrong</a></li>
+          <li><a href="#missing-layer">The missing operating layer</a></li>
+          <li><a href="#what-it-is">What the operating layer is</a></li>
+          <li><a href="#what-good-looks-like">What good looks like</a></li>
+          <li><a href="#not-headcount">Why hiring more people is not the answer</a></li>
+        </ul>
+      </nav>
+      <!-- /ON THIS PAGE NAV -->
+
+
+      <div class="article-body">
+
+        <!-- TL;DR -->
+        <div class="article-tldr">
+          <p class="article-tldr-label" aria-hidden="true">TL;DR</p>
+          <ul>
+            <li>Most digital work stalls not because of missing skills, but because of missing coordination.</li>
+            <li>The gap between setting direction and delivering it is where projects lose momentum.</li>
+            <li>The operating layer is not a new team. It is a set of practices, rhythms, and clear accountabilities.</li>
+            <li>Getting this right costs less than hiring and tends to outlast any individual hire.</li>
+          </ul>
+        </div>
+
+        <!-- Lede -->
+        <p class="article-lede">Most organisations trying to move faster digitally are not short of ideas.</p>
+        <p class="article-lede">They are short of the infrastructure to act on them.</p>
+
+        <p>Somewhere between the strategy deck and the delivery team, clarity disappears. People are busy. Work is happening. But the decisions that would unblock things are waiting in someone's inbox or for a meeting that keeps getting pushed.</p>
+        <p>That is not a resourcing problem. It is a structural one.</p>
+
+
+        <!-- Section: What goes wrong -->
+        <h2 id="what-goes-wrong">What goes wrong</h2>
+
+        <p>The signs are usually consistent across organisations of different sizes and sectors.</p>
+
+        <ul class="article-list">
+          <li>Someone owns the strategy and someone owns the technology. Nobody clearly owns the delivery.</li>
+          <li>Work gets agreed at the top but loses shape before it reaches the people doing it.</li>
+          <li>Teams are moving at different speeds and there is no mechanism to align them.</li>
+          <li>Projects are signed off but day-to-day decisions still need senior sign-off.</li>
+          <li>Digital initiatives become dependent on one or two individuals who are already stretched.</li>
+          <li>The same problems surface in every retrospective but nothing structurally changes.</li>
+        </ul>
+
+        <p>None of these are failures of effort or intention. They are failures of structure.</p>
+
+
+        <!-- Section: The missing operating layer -->
+        <h2 id="missing-layer">The missing operating layer</h2>
+
+        <p>The space between strategy and delivery has a name. Most organisations have not filled it.</p>
+
+        <p>Senior leaders can usually articulate what needs to change. Delivery teams know what they are building. The breakdown happens in the space between the two.</p>
+
+        <p>That space needs something that can translate direction into work, make decisions within agreed boundaries, hold quality, and maintain momentum when things get complicated.</p>
+
+        <p>When that space is empty, work accumulates at the top because only senior people can make the calls. Or it drifts at the bottom because teams are waiting for guidance that never quite arrives.</p>
+
+        <div class="article-callout">
+          <p class="article-callout-label" aria-hidden="true">Key point</p>
+          <p>The operating layer is not a gap in your org chart. It is a gap in how your organisation coordinates.</p>
+        </div>
+
+      </div>
+      <!-- /article-body (first block) -->
+
+
+      <!-- ========================================================
+           VISUAL CARDS A — What it feels like inside the organisation
+           ======================================================== -->
+      <div class="article-cards" role="group" aria-label="What it feels like inside the organisation">
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">The symptom</p>
+          <h3 class="article-card-heading">Strategy is set but delivery is slow</h3>
+          <p class="article-card-body">Direction is clear at the top. By the time it reaches the team, it has lost its shape. People are solving the right problem in different ways.</p>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">The symptom</p>
+          <h3 class="article-card-heading">Decisions queue at the wrong level</h3>
+          <p class="article-card-body">Small calls that should be made quickly end up waiting for senior time. Not because people cannot make them. Because nobody is sure who should.</p>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">The symptom</p>
+          <h3 class="article-card-heading">The same issues keep coming back</h3>
+          <p class="article-card-body">Teams surface the same problems each sprint or review. The problems get noted. Then they come back next time, unchanged.</p>
+        </div>
+
+      </div>
+      <!-- /VISUAL CARDS A -->
+
+
+      <!-- Continue article body -->
+      <div class="article-body">
+
+        <!-- Section: What the operating layer is -->
+        <h2 id="what-it-is">What the operating layer is</h2>
+
+        <p>It is not a digital team. It is not a transformation programme. It is not a new hire.</p>
+
+        <p>The operating layer is a combination of things that most organisations already have the building blocks for, but have not deliberately assembled.</p>
+
+        <ul class="article-list">
+          <li>Clear accountability for decisions at the right level</li>
+          <li>Rhythms that keep work visible and moving</li>
+          <li>Standards that reduce the cost of coordination</li>
+          <li>A way of working that does not depend on any one person being available</li>
+        </ul>
+
+        <p>In practice it often looks like: a small set of principles for how decisions get made, a regular cadence of reviews that surface problems early, clarity on who owns which outcomes, and an agreed way to escalate when something is genuinely blocked.</p>
+
+        <p>It is lightweight by design. The goal is not to add process. It is to make the existing work move with less friction.</p>
+
+
+        <!-- Section: What good looks like -->
+        <h2 id="what-good-looks-like">What good looks like</h2>
+
+        <h3>Decisions happen at the right level</h3>
+        <p>Senior people are not pulled into operational calls they should not be in. Delivery teams are not waiting for permission to do things they are qualified to decide.</p>
+
+        <h3>Work is visible without being performative</h3>
+        <p>Not dashboards produced for leadership. A rhythm that means issues surface early, while there is still time to do something about them.</p>
+
+        <h3>Coordination does not depend on heroics</h3>
+        <p>The organisation does not rely on one person who knows how all the pieces connect. The operating layer is a system, not a person. When that person is on leave, things still move.</p>
+
+        <h3>Problems are treated as signals, not embarrassments</h3>
+        <p>When something slows down, there is a clear way to surface it. The instinct in the organisation is to fix it, not to manage how it looks.</p>
+
+      </div>
+      <!-- /article-body (second block) -->
+
+
+      <!-- ========================================================
+           VISUAL CARDS B — Before vs After
+           ======================================================== -->
+      <div class="article-cards" role="group" aria-label="Before and after the operating layer">
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Before</p>
+          <h3 class="article-card-heading">Without the operating layer</h3>
+          <p class="article-card-body">Work is moving but nobody is sure what is on track. Decisions sit in inboxes. Delivery depends on a small number of people who know how things connect.</p>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">The shift</p>
+          <h3 class="article-card-heading">What changes</h3>
+          <p class="article-card-body">Clear accountability at each level. Regular rhythms that keep work visible. A lightweight set of standards that reduce the friction of coordination.</p>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">After</p>
+          <h3 class="article-card-heading">With the operating layer in place</h3>
+          <p class="article-card-body">Teams move with more confidence. Senior time is used better. Problems surface earlier. Work lands closer to what was intended.</p>
+        </div>
+
+      </div>
+      <!-- /VISUAL CARDS B -->
+
+
+      <!-- Continue article body -->
+      <div class="article-body">
+
+        <!-- Section: Why hiring more people is not the answer -->
+        <h2 id="not-headcount">Why hiring more people is not the answer</h2>
+
+        <p>The instinct when digital work is stalling is to hire. A digital director. A transformation lead. A programme manager.</p>
+
+        <p>Sometimes that is the right call. But hiring without the operating layer in place usually means the new person spends their first six months navigating the same structural problems the organisation already had.</p>
+
+        <p>They arrive. They are capable. But the environment they land in was not set up to let them succeed. The problems that made the role necessary are still there, just with a new person trying to work around them.</p>
+
+        <p>More people increases coordination cost. It does not reduce it.</p>
+
+        <p>The operating layer comes first. Once it is in place, you can make better decisions about what to hire for, who to bring in, and when.</p>
+
+        <details class="article-details">
+          <summary>
+            <span class="article-details-title">Signs you might be filling the wrong gap</span>
+            <span class="article-details-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="article-details-content">
+            <ul class="article-list">
+              <li>You have hired a digital lead but delivery is still slow</li>
+              <li>The same conversations keep happening in different rooms</li>
+              <li>There is no one person who can say with confidence what is on track</li>
+              <li>New hires quickly learn the workarounds rather than changing how things work</li>
+              <li>You are dependent on people rather than on how the organisation works</li>
+            </ul>
+          </div>
+        </details>
+
+      </div>
+      <!-- /article-body (third block) -->
+
+
+    </div><!-- /article-container -->
+  </section>
+  <!-- /ARTICLE BODY -->
+
+
+  <!-- ============================================================
+       SOFT CTA
+       ============================================================ -->
+  <aside class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+
+      <p class="article-cta-label" aria-hidden="true">Work with us</p>
+
+      <h2 id="cta-heading" class="article-cta-heading">
+        If work is stalling and you are not sure why,
+        <em>it is usually worth looking at the layer between strategy and delivery.</em>
+      </h2>
+
+      <p class="article-cta-body">
+        We work with organisations to understand where coordination is breaking down and what it would take to fix it. No large programme required.
+      </p>
+
+      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Start a conversation</a>
+
+    </div>
+  </aside>
+  <!-- /SOFT CTA -->
+
+
+</main>
+<!-- /ARTICLE LAYOUT -->
+
+
+<!-- ============================================================
+     SITE FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+<!-- /SITE FOOTER -->
+
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
