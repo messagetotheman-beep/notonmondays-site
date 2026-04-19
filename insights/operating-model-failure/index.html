@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Why most operating models fail (and what actually works instead) — Not On Mondays</title>
+<meta name="description" content="Most operating models describe structure, not how work actually runs. Why that gap slows delivery — and what a working operating layer looks like in practice.">
+<link rel="canonical" href="https://www.notonmondays.com/insights/operating-model-failure">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="operating model, operating layer, delivery, coordination, organisational design, how work flows, Not On Mondays">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.notonmondays.com/insights/operating-model-failure">
+<meta property="og:title" content="Why most operating models fail (and what actually works instead)">
+<meta property="og:description" content="Most operating models describe structure, not how work actually runs. Why that gap slows delivery — and what a working operating layer looks like in practice.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/insights/operating-model-failure">
+<meta name="twitter:title" content="Why most operating models fail (and what actually works instead)">
+<meta name="twitter:description" content="Most operating models describe structure, not how work actually runs. Why that gap slows delivery — and what a working operating layer looks like in practice.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/nom.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why most operating models fail (and what actually works instead)",
+  "description": "Most operating models describe structure, not how work actually runs. Why that gap slows delivery — and what a working operating layer looks like in practice.",
+  "author": { "@type": "Organization", "name": "Not On Mondays", "url": "https://www.notonmondays.com" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com",
+    "logo": { "@type": "ImageObject", "url": "https://www.notonmondays.com/assets/nomlogo400.png" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.notonmondays.com/insights/operating-model-failure" },
+  "image": "https://www.notonmondays.com/assets/og-image.jpg"
+}
+</script>
+
+<style>
+/* NAV */
+.nav-logo { display: inline-flex; flex-direction: row; align-items: center; gap: 0.9rem; text-decoration: none; }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; opacity: 0.7; }
+.nav-descriptor span { font-family: 'DM Mono', monospace; font-size: 0.52rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(17,17,36,0.35); display: block; line-height: 1; }
+.nav-back { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; }
+.nav-back:hover { color: var(--blue); }
+
+/* FOCUS */
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* SKIP LINK */
+.skip-link { position: absolute; top: -100%; left: 1rem; background: var(--blue); color: #fff; padding: 0.75rem 1.25rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; z-index: 99999; transition: top 0.2s ease; }
+.skip-link:focus { top: 1rem; }
+
+/* HEADER */
+.page-header {
+  padding-top: calc(72px + 5rem);
+  padding-bottom: 5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  bottom: -200px; right: -200px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,42,212,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+.header-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 2rem; }
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--off-white);
+  margin-bottom: 2rem;
+}
+.header-title em { font-style: italic; color: var(--light-blue); }
+.header-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.3);
+}
+
+/* TL;DR */
+.tldr {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 4rem 0;
+}
+.tldr-box {
+  background: var(--warm-white);
+  border-left: 2px solid var(--blue);
+  padding: 2rem 2.25rem;
+}
+.tldr-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.2rem;
+}
+.tldr-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.tldr-list li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--dark);
+  font-weight: 300;
+}
+.tldr-list li::before {
+  content: '◆';
+  color: var(--blue);
+  font-size: 0.4rem;
+  flex-shrink: 0;
+  margin-top: 0.4rem;
+}
+
+/* ARTICLE CONTENT */
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 4rem 6rem;
+}
+
+.article-lede p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--dark);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+.article-lede p:last-child { margin-bottom: 0; }
+
+.article-section { margin-top: 3.5rem; }
+
+.article-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(26,42,212,0.15);
+}
+
+.article-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 300;
+  color: var(--dark);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+.article-h2 em { font-style: italic; color: var(--blue); }
+
+.article p {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--mid);
+  font-weight: 300;
+  margin-bottom: 1.1rem;
+}
+
+.article a.inline {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.article a.inline:hover, .article a.inline:focus-visible { color: var(--deep-blue); }
+
+.article-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0.4rem 0 1.4rem;
+}
+.article-list li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: var(--mid);
+  font-weight: 300;
+}
+.article-list li::before {
+  content: '◆';
+  color: var(--blue);
+  font-size: 0.4rem;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+/* PULL QUOTE */
+.pull-quote {
+  margin: 4rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(26,42,212,0.15);
+  border-bottom: 1px solid rgba(26,42,212,0.15);
+}
+.pull-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--dark);
+  margin: 0;
+}
+.pull-quote p::before {
+  content: '“';
+  color: var(--blue);
+  font-size: 1.4em;
+  line-height: 0;
+  margin-right: 0.1em;
+  vertical-align: -0.25em;
+}
+.pull-quote p::after {
+  content: '”';
+  color: var(--blue);
+  font-size: 1.4em;
+  line-height: 0;
+  margin-left: 0.05em;
+  vertical-align: -0.25em;
+}
+
+/* CTA BAND */
+.cta-band {
+  background: var(--blue);
+  padding: 6rem 4rem;
+  text-align: center;
+}
+.cta-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.5rem;
+}
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.15;
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+}
+.cta-title em { font-style: italic; color: rgba(255,255,255,0.7); }
+.cta-body {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.75);
+  font-weight: 300;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+}
+.cta-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: var(--off-white);
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+.cta-btn:hover, .cta-btn:focus-visible { background: #fff; }
+
+/* FOOTER */
+footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 2.5rem; list-style: none; }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.6); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.15); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-descriptor, .nav-divider { display: none; }
+  .page-header { padding: calc(72px + 3rem) 1.5rem 3rem; }
+  .tldr { padding: 3rem 1.5rem 0; }
+  .tldr-box { padding: 1.75rem 1.5rem; }
+  .article { padding: 3rem 1.5rem 4rem; }
+  .cta-band { padding: 4.5rem 1.5rem; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+    <div class="nav-logo-initials" aria-hidden="true">
+      <span class="nom-initial fade-1">n</span>
+      <span class="nom-initial fade-2">o</span>
+      <span class="nom-initial landing">m</span>
+    </div>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <div class="nav-descriptor" aria-hidden="true">
+      <span>The</span>
+      <span>Operating</span>
+      <span>Partner</span>
+    </div>
+  </a>
+  <a href="/" class="nav-back">← Back</a>
+  <a href="/#contact" class="nav-cta">Start a conversation</a>
+</nav>
+
+<main id="main-content">
+
+  <header class="page-header">
+    <div class="header-inner">
+      <div class="header-label">Insights · Operating Model</div>
+      <h1 class="header-title">Why most operating models fail <em>(and what actually works instead).</em></h1>
+      <div class="header-meta">Not On Mondays · April 2026 · 5 min read</div>
+    </div>
+  </header>
+
+  <section class="tldr" aria-labelledby="tldr-heading">
+    <div class="tldr-box">
+      <h2 id="tldr-heading" class="tldr-label">TL;DR</h2>
+      <ul class="tldr-list">
+        <li>Most operating models fail because they describe structure, not how work actually runs.</li>
+        <li>Hiring more people or adding tools does not fix unclear coordination.</li>
+        <li>The gap between strategy and delivery is where things break down.</li>
+        <li>Organisations that move well have a clear operating layer, not just a defined structure.</li>
+      </ul>
+    </div>
+  </section>
+
+  <article class="article">
+
+    <div class="article-lede">
+      <p>Most organisations have an operating model.</p>
+      <p>On paper, it usually looks clear. Roles are defined. Teams are structured. Governance is in place.</p>
+      <p>But when you look at how work actually runs day to day, a different picture emerges.</p>
+      <p>Things stall. Decisions take too long. Priorities compete. Teams are busy, but outcomes are inconsistent.</p>
+      <p>The issue is not that there is no model. It is that the model does not reflect how work actually moves.</p>
+    </div>
+
+    <section class="article-section">
+      <div class="article-section-label">01 · The Problem</div>
+      <h2 class="article-h2">What most operating models <em>get wrong.</em></h2>
+      <p>Most operating models focus on:</p>
+      <ul class="article-list">
+        <li>Structure — teams, roles, reporting lines.</li>
+        <li>Process — stages, approvals, governance.</li>
+        <li>Ownership — who is accountable for what.</li>
+      </ul>
+      <p>These are all necessary. But they are not sufficient.</p>
+      <p>They describe how an organisation is arranged, not how it operates under pressure.</p>
+      <p>This becomes particularly visible in areas like digital delivery, where work is interdependent and constantly evolving. As seen in <a class="inline" href="/legal-tech-operations">legal services</a>, organisations often assume structure will translate into delivery.</p>
+      <p>It rarely does.</p>
+    </section>
+
+    <section class="article-section">
+      <div class="article-section-label">02 · The Break Point</div>
+      <h2 class="article-h2">Where things <em>actually break.</em></h2>
+      <p>The failure point is usually the same: the gap between direction and execution.</p>
+      <p>Strategy exists. Teams exist. But the way work flows between them is unclear.</p>
+      <p>This shows up as:</p>
+      <ul class="article-list">
+        <li>Work starting before it is ready.</li>
+        <li>Teams working in isolation.</li>
+        <li>Decisions being revisited repeatedly.</li>
+        <li>Delivery slowing down as complexity increases.</li>
+      </ul>
+      <p>On the surface, this looks like a capacity issue. In reality, it is a coordination issue.</p>
+    </section>
+
+    <section class="article-section">
+      <div class="article-section-label">03 · The Wrong Fix</div>
+      <h2 class="article-h2">Why adding more people <em>does not fix it.</em></h2>
+      <p>When delivery slows, the instinct is often to add more people. More engineers. More project managers. More oversight.</p>
+      <p>But if the way work runs is unclear, adding people increases complexity faster than it increases output. More handoffs. More dependencies. More communication overhead.</p>
+      <p>This is why organisations can grow in size but not in effectiveness.</p>
+      <p>It becomes even more visible when <a class="inline" href="/#offerings">budgets tighten</a>, because inefficiencies can no longer be absorbed.</p>
+    </section>
+
+    <section class="article-section">
+      <div class="article-section-label">04 · What Works</div>
+      <h2 class="article-h2">What actually <em>works instead.</em></h2>
+      <p>What makes the difference is not a better structure. It is a clearer way of running work.</p>
+      <p>At the centre of this is a defined <a class="inline" href="/#how-we-work">operating layer</a>. Not as a concept, but as something tangible:</p>
+      <ul class="article-list">
+        <li>How work is prioritised.</li>
+        <li>How decisions are made.</li>
+        <li>How teams coordinate.</li>
+        <li>How progress is made visible.</li>
+        <li>How issues are surfaced and resolved.</li>
+      </ul>
+      <p>This is what allows teams to move with clarity, even in complex environments.</p>
+      <p>Without it, even strong teams struggle. With it, delivery becomes predictable.</p>
+    </section>
+
+    <section class="article-section">
+      <div class="article-section-label">05 · A Simple Test</div>
+      <h2 class="article-h2">You can tell quickly <em>whether it is working.</em></h2>
+      <p>You can usually tell whether an operating model is working by asking a few questions:</p>
+      <ul class="article-list">
+        <li>Do teams know what matters most right now?</li>
+        <li>Are decisions made at the right level, at the right time?</li>
+        <li>Can work move without constant escalation?</li>
+        <li>Is progress visible without needing multiple meetings?</li>
+      </ul>
+      <p>If the answer to most of these is no, the issue is not the people. It is how the work is being run.</p>
+    </section>
+
+    <blockquote class="pull-quote">
+      <p>Most operating models fail not because they are wrong, but because they stop at structure and never define how work actually moves.</p>
+    </blockquote>
+
+    <section class="article-section">
+      <div class="article-section-label">06 · Practical Takeaway</div>
+      <h2 class="article-h2">Start with how work <em>flows today.</em></h2>
+      <p>If you are trying to improve delivery, do not start by redesigning the organisation chart.</p>
+      <p>Start by understanding how work actually flows today:</p>
+      <ul class="article-list">
+        <li>Where it slows down.</li>
+        <li>Where it gets stuck.</li>
+        <li>Where coordination breaks.</li>
+      </ul>
+      <p>Then make that visible and deliberate. That is the foundation of an operating model that works in practice, not just on paper.</p>
+    </section>
+
+  </article>
+
+  <section class="cta-band" aria-labelledby="cta-heading">
+    <div class="cta-eyebrow">If this sounds familiar</div>
+    <h2 id="cta-heading" class="cta-title">You are not alone.<br><em>Most organisations do not need another framework.</em></h2>
+    <p class="cta-body">They need a clearer way of running the work they already have. If you want to talk through how this applies in your environment, we’re always open to a conversation.</p>
+    <a href="/#contact" class="cta-btn">Start a conversation →</a>
+  </section>
+
+</main>
+
+<footer>
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#offerings">Services</a></li>
+    <li><a href="/#how-we-work">How We Work</a></li>
+    <li><a href="/legal-tech-operations">Legal Tech</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/why-not-on-mondays">About</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 notonmondays.com</span>
+</footer>
+
+</body>
+</html>
