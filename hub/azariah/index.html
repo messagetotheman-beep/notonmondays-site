@@ -238,6 +238,7 @@ body {
 .status-live { background: #E0F4EE; color: #0E6B47; }
 .status-draft { background: #FDF0DA; color: #8A5C0F; }
 .status-soon { background: #F0F0F0; color: #888; }
+.status-closed { background: #F0F0F0; color: #888; }
 
 .card-cat { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(0,48,135,0.35); font-weight: 500; margin-bottom: 5px; }
 .card-title { font-size: 17px; font-weight: 600; color: var(--navy); line-height: 1.3; letter-spacing: -0.2px; margin-bottom: 10px; }
@@ -427,7 +428,7 @@ body {
     <div class="hero-meta">
       <div class="hm-item"><span class="hm-label">Project</span><span class="hm-value">The Azariah</span></div>
       <div class="hm-item"><span class="hm-label">Stage</span><span class="hm-value">Pre-seed · Pilot phase</span></div>
-      <div class="hm-item"><span class="hm-label">Primary focus</span><span class="hm-value">NIHR i4i THRIVE</span></div>
+      <div class="hm-item"><span class="hm-label">Primary focus</span><span class="hm-value">Innovate UK</span></div>
       <div class="hm-item"><span class="hm-label">Pilot target</span><span class="hm-value">Epsom &amp; St Helier NHS Trust</span></div>
     </div>
   </div>
@@ -436,50 +437,43 @@ body {
   <div class="body-wrap">
     <div class="main">
 
-      <!-- DEADLINES -->
+      <!-- FOCUS -->
       <div class="section">
         <div class="section-header">
-          <span class="section-label">Active deadlines</span>
+          <span class="section-label">Current focus</span>
           <div class="section-rule"></div>
         </div>
 
-        <div class="deadline-banner">
+        <div class="deadline-banner" style="border-left-color: rgba(0,48,135,0.3); border-color: rgba(0,48,135,0.12);">
           <div class="dl-left">
-            <div class="dl-pulse"></div>
+            <div style="width:9px; height:9px; border-radius:50%; background: var(--nhs-blue); flex-shrink:0;"></div>
             <div>
-              <div class="dl-name">NIHR i4i THRIVE</div>
-              <div class="dl-sub">Deadline: 17 April 2026 — submission window closing</div>
+              <div class="dl-name">Innovate UK</div>
+              <div class="dl-sub">Primary funding focus · Application in development</div>
             </div>
-          </div>
-          <div class="dl-countdown">
-            <div class="cd-item"><div class="cd-num" id="cd-days">10</div><div class="cd-lbl">days</div></div>
-            <div class="cd-sep">:</div>
-            <div class="cd-item"><div class="cd-num" id="cd-hrs">00</div><div class="cd-lbl">hrs</div></div>
-            <div class="cd-sep">:</div>
-            <div class="cd-item"><div class="cd-num" id="cd-min">00</div><div class="cd-lbl">min</div></div>
           </div>
         </div>
 
         <div class="stat-strip">
           <div class="stat-card">
-            <div class="sc-label">Priority gaps</div>
-            <div class="sc-value">6</div>
-            <div class="sc-sub">of 6 remaining</div>
+            <div class="sc-label">Primary focus</div>
+            <div class="sc-value" style="font-size:15px;">Innovate UK</div>
+            <div class="sc-sub">Active funding lane</div>
           </div>
           <div class="stat-card">
             <div class="sc-label">NHS partner</div>
-            <div class="sc-value amber">Pending</div>
-            <div class="sc-sub">Critical path — solves lead applicant</div>
+            <div class="sc-value amber">Active</div>
+            <div class="sc-sub">Outreach in progress — Jok</div>
           </div>
           <div class="stat-card">
-            <div class="sc-label">i4i FAST</div>
-            <div class="sc-value">29 Apr</div>
-            <div class="sc-sub">Parallel lane open</div>
+            <div class="sc-label">Pilot spec</div>
+            <div class="sc-value">30 Apr</div>
+            <div class="sc-sub">Due date · David / Jok</div>
           </div>
           <div class="stat-card">
-            <div class="sc-label">PDA outline</div>
-            <div class="sc-value">27 May</div>
-            <div class="sc-sub">Parallel lane open</div>
+            <div class="sc-label">ICO registration</div>
+            <div class="sc-value">1 May</div>
+            <div class="sc-sub">Due date · Jok</div>
           </div>
         </div>
       </div>
@@ -549,25 +543,22 @@ body {
             </div>
           </a>
 
-          <a class="asset-card" href="thrive-v4.html" target="_blank">
+          <div class="asset-card" style="cursor: default;">
             <div class="card-top">
-              <div class="card-icon amber">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#C8861A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              <div class="card-icon teal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0E7A56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
                 </svg>
               </div>
-              <span class="card-status status-draft">In progress</span>
+              <span class="card-status status-soon">Planned</span>
             </div>
-            <div class="card-cat">Funding · NIHR</div>
-            <div class="card-title">THRIVE Application v4</div>
-            <div class="card-desc">NIHR i4i THRIVE grant application. Six priority gaps remain. NHS partner confirmation is the critical path item.</div>
+            <div class="card-cat">Funding</div>
+            <div class="card-title">Funding Strategy</div>
+            <div class="card-desc">Active and planned funding lanes. Primary focus: Innovate UK. Other routes under assessment and retained for reference.</div>
             <div class="card-footer">
-              <span class="card-meta">HTML · v4 · Due 17 Apr</span>
-              <div class="card-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"><path d="M2 10L10 2M10 2H4M10 2v6"/></svg></div>
+              <span class="card-meta">Coming soon</span>
             </div>
-          </a>
+          </div>
 
           <a class="asset-card" href="website.html" target="_blank">
             <div class="card-top">
@@ -608,11 +599,31 @@ body {
             </div>
           </a>
 
+          <a class="asset-card" href="thrive-v4.html" target="_blank">
+            <div class="card-top">
+              <div class="card-icon amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#C8861A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <span class="card-status status-closed">Closed</span>
+            </div>
+            <div class="card-cat">Funding · NIHR</div>
+            <div class="card-title">THRIVE Application v4</div>
+            <div class="card-desc">NIHR i4i THRIVE grant application. Not submitted — deadline passed 17 April 2026. Retained for reference and future reuse.</div>
+            <div class="card-footer">
+              <span class="card-meta">v4 · Closed — not submitted</span>
+              <div class="card-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="#005EB8" stroke-width="1.5" stroke-linecap="round"><path d="M2 10L10 2M10 2H4M10 2v6"/></svg></div>
+            </div>
+          </a>
+
           <div class="asset-card placeholder" style="align-items:center; justify-content:center; min-height:200px;">
             <div style="text-align:center;">
               <div style="font-size:28px; color:rgba(0,48,135,0.12); margin-bottom:10px; font-weight:300;">+</div>
               <div style="font-size:11px; color:rgba(0,48,135,0.22); letter-spacing:1.5px; text-transform:uppercase; font-weight:500;">Add asset</div>
-              <div style="font-size:11px; color:rgba(0,48,135,0.18); margin-top:6px;">Pitch deck · FAST application</div>
+              <div style="font-size:11px; color:rgba(0,48,135,0.18); margin-top:6px;">Pitch deck · Innovate UK</div>
             </div>
           </div>
 
@@ -652,78 +663,34 @@ body {
                 <td>
                   <div class="action-priority"><div class="priority-dot critical"></div><div>
                     <div class="action-text">Confirm NHS partner and letter of support</div>
-                    <div class="action-detail">Solves lead applicant eligibility for THRIVE. Single most critical gap.</div>
+                    <div class="action-detail">Required to establish lead applicant eligibility. Epsom &amp; St Helier is the target Trust.</div>
                   </div></div>
                 </td>
                 <td><div class="owner-chip"><div class="owner-init">J</div><div class="owner-name">Jok</div></div></td>
-                <td><div class="action-deadline critical">17 Apr</div></td>
-                <td><div class="action-detail">Epsom &amp; St Helier is the target Trust. Kelly Stanford is the contact. Outreach drafted.</div></td>
+                <td><div class="action-deadline ok">TBA</div></td>
+                <td><div class="action-detail">Outreach in progress. Kelly Stanford is the contact.</div></td>
               </tr>
               <tr>
                 <td>
-                  <div class="action-priority"><div class="priority-dot critical"></div><div>
-                    <div class="action-text">Confirm Azariah legal structure (CIC vs Ltd)</div>
-                    <div class="action-detail">THRIVE requires lead to be CIC, NHS provider, or research institution. Must verify via Companies House.</div>
+                  <div class="action-priority"><div class="priority-dot done"></div><div>
+                    <div class="action-text">Confirm Azariah legal structure</div>
+                    <div class="action-detail">Outcome: confirmed Ltd. NHS Trust or university to be named lead applicant; Azariah as delivery partner.</div>
                   </div></div>
                 </td>
                 <td><div class="owner-chip"><div class="owner-init">J</div><div class="owner-name">Jok</div></div></td>
-                <td><div class="action-deadline critical">Urgent</div></td>
-                <td><div class="action-detail">If Ltd/SME, an NHS Trust or university must be named lead with Azariah as delivery partner.</div></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="action-priority"><div class="priority-dot progress"></div><div>
-                    <div class="action-text">Build out evidence base for THRIVE</div>
-                    <div class="action-detail">Concrete data on NHS compliance inefficiency. Estimated at £billions annually.</div>
-                  </div></div>
-                </td>
-                <td><div class="owner-chip"><div class="owner-init">D</div><div class="owner-name">David</div></div></td>
-                <td><div class="action-deadline">17 Apr</div></td>
-                <td><div class="action-detail">Pull from existing literature. Cross-reference NHS workforce stats and ESR data.</div></td>
+                <td><div class="action-deadline ok">Done</div></td>
+                <td><div class="action-detail">Confirmed Ltd via Companies House.</div></td>
               </tr>
               <tr>
                 <td>
                   <div class="action-priority"><div class="priority-dot progress"></div><div>
                     <div class="action-text">Define pilot specification</div>
-                    <div class="action-detail">Band 5 bank nurses across one to two trusts. 48–72 hour deployment test.</div>
+                    <div class="action-detail">Band 5 bank nurses across one to two trusts. Scope, success criteria, and measurable data points.</div>
                   </div></div>
                 </td>
-                <td><div class="owner-chip"><div class="owner-init">JF</div><div class="owner-name">Jeff</div></div></td>
-                <td><div class="action-deadline">17 Apr</div></td>
-                <td><div class="action-detail">Scope, success criteria, and data points. Must be clear enough for panel review.</div></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="action-priority"><div class="priority-dot progress"></div><div>
-                    <div class="action-text">Complete PPIE plan</div>
-                    <div class="action-detail">Patient and public involvement and engagement. Required section for THRIVE.</div>
-                  </div></div>
-                </td>
-                <td><div class="owner-chip"><div class="owner-init">D</div><div class="owner-name">David</div></div></td>
-                <td><div class="action-deadline">17 Apr</div></td>
-                <td><div class="action-detail">Frame around clinician-first involvement in design. Tie to NICE and GDS standards.</div></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="action-priority"><div class="priority-dot progress"></div><div>
-                    <div class="action-text">Finalise team CVs and role descriptions for application</div>
-                    <div class="action-detail">Named individuals with roles. Jun as CTO, Jeff as co-lead, Rico as PM.</div>
-                  </div></div>
-                </td>
-                <td><div class="owner-chip"><div class="owner-init">JF</div><div class="owner-name">Jeff</div></div></td>
-                <td><div class="action-deadline">17 Apr</div></td>
-                <td><div class="action-detail">Ensure each team member's NHS/healthtech relevance is clear to a review panel.</div></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="action-priority"><div class="priority-dot progress"></div><div>
-                    <div class="action-text">Produce budget outline for THRIVE</div>
-                    <div class="action-detail">Itemised grant budget. Must align with NIHR eligible costs.</div>
-                  </div></div>
-                </td>
-                <td><div class="owner-chip"><div class="owner-init">J</div><div class="owner-name">Jok</div></div></td>
-                <td><div class="action-deadline">17 Apr</div></td>
-                <td><div class="action-detail">David can support with structure and narrative. Jok holds the numbers.</div></td>
+                <td><div class="owner-chip"><div class="owner-init">D/J</div><div class="owner-name">David / Jok</div></div></td>
+                <td data-date="2026-04-30"><div class="action-deadline">30 Apr</div></td>
+                <td><div class="action-detail">Must be clear enough for funder review. Cross-reference with pilot target trust.</div></td>
               </tr>
               <tr>
                 <td>
@@ -732,20 +699,20 @@ body {
                     <div class="action-detail">Transition from 123-reg email. 6 user licences. Email forwarding active in interim.</div>
                   </div></div>
                 </td>
-                <td><div class="owner-chip"><div class="owner-init">D</div><div class="owner-name">David</div></div></td>
-                <td><div class="action-deadline ok">Post-grant</div></td>
-                <td><div class="action-detail">Full migration planned after funding secured. Domain registered, forwarding live.</div></td>
+                <td><div class="owner-chip"><div class="owner-init">R</div><div class="owner-name">Roger</div></div></td>
+                <td data-date="2026-04-24"><div class="action-deadline">24 Apr</div></td>
+                <td><div class="action-detail">Domain registered, forwarding live. Full migration in progress.</div></td>
               </tr>
               <tr>
                 <td>
-                  <div class="action-priority"><div class="priority-dot progress"></div><div>
+                  <div class="action-priority"><div class="priority-dot critical"></div><div>
                     <div class="action-text">Confirm ICO registration as Data Controller</div>
                     <div class="action-detail">Required before handling any NHS patient-linked data.</div>
                   </div></div>
                 </td>
                 <td><div class="owner-chip"><div class="owner-init">J</div><div class="owner-name">Jok</div></div></td>
-                <td><div class="action-deadline ok">TBC</div></td>
-                <td><div class="action-detail">Check current registration status. If not registered, apply before pilot launch.</div></td>
+                <td data-date="2026-05-01"><div class="action-deadline">1 May</div></td>
+                <td><div class="action-detail">Check current registration status. Apply before pilot launch if not yet registered.</div></td>
               </tr>
             </tbody>
           </table>
@@ -783,7 +750,7 @@ function attemptLogin() {
     document.getElementById('userEmail').textContent = email;
     document.getElementById('gate').classList.add('hidden');
     document.getElementById('dashboard').classList.add('visible');
-    startCountdown();
+    markOverdue();
   } else {
     err.classList.add('show');
     document.getElementById('passInput').value = '';
@@ -800,19 +767,16 @@ function logout() {
   document.getElementById('passInput').value = '';
 }
 
-function startCountdown() {
-  const deadline = new Date('2026-04-17T23:59:59');
-  function tick() {
-    const diff = deadline - new Date();
-    if (diff <= 0) { document.getElementById('cd-days').textContent='0'; document.getElementById('cd-hrs').textContent='00'; document.getElementById('cd-min').textContent='00'; return; }
-    const d = Math.floor(diff/86400000);
-    const h = Math.floor((diff%86400000)/3600000);
-    const m = Math.floor((diff%3600000)/60000);
-    document.getElementById('cd-days').textContent = d;
-    document.getElementById('cd-hrs').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
-  }
-  tick(); setInterval(tick, 30000);
+function markOverdue() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  document.querySelectorAll('td[data-date]').forEach(function(td) {
+    const due = new Date(td.dataset.date);
+    const row = td.closest('tr');
+    if (due < today && !row.querySelector('.priority-dot.done')) {
+      const dl = td.querySelector('.action-deadline');
+      if (dl) dl.classList.add('critical');
+    }
+  });
 }
 </script>
 

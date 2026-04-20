@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Azariah — NIHR i4i THRIVE Application (Working Draft)</title>
+<title>Azariah — NIHR i4i THRIVE Application (Archived)</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -484,9 +484,9 @@
   </div>
 
   <div class="sidebar-deadline">
-    <div class="dl-label">Submission deadline</div>
-    <div class="dl-date">17 April 2026</div>
-    <div class="dl-sub">1pm sharp · RMS online form</div>
+    <div class="dl-label">Status</div>
+    <div class="dl-date">Closed</div>
+    <div class="dl-sub">Not submitted · Deadline was 17 Apr 2026</div>
   </div>
   <div style="margin: 0 16px 12px;">
     <a href="https://www.nihr.ac.uk/funding/i4i-thrive-march-2026/2026363" target="_blank" class="btn-rms" style="width:100%; justify-content:center; font-size:10px; padding:7px 12px;">
@@ -497,7 +497,7 @@
 
   <div class="sidebar-progress">
     <div class="progress-label">
-      <span>Completion</span>
+      <span>Draft progress · archived</span>
       <span id="progress-pct">0%</span>
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
@@ -594,9 +594,9 @@
 
   <!-- TOP BAR -->
   <div class="topbar">
-    <div class="topbar-title">NIHR i4i THRIVE — Application Working Draft</div>
+    <div class="topbar-title">NIHR i4i THRIVE — Archived Draft (not submitted)</div>
     <div class="topbar-right">
-      <span class="topbar-badge warn" id="gaps-badge">6 gaps remaining</span>
+      <span class="topbar-badge" id="gaps-badge">Closed · Not submitted</span>
       <div class="topbar-divider"></div>
       <a href="https://www.nihr.ac.uk/funding/i4i-thrive-march-2026/2026363" target="_blank" class="btn-rms">
         <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M9 2h5v5M14 2L8 8M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -610,9 +610,9 @@
   <div class="hero">
     <div class="hero-left">
       <div class="hero-rule"></div>
-      <div class="hero-tag">NIHR i4i THRIVE · Application Draft · March 2026</div>
+      <div class="hero-tag">NIHR i4i THRIVE · Closed — Not submitted · Retained for reference</div>
       <div class="hero-title">Verified Once,<br><em>Trusted Everywhere</em></div>
-      <div class="hero-desc">Use this page to draft your answers directly. Each section has a word count, a status toggle, and a copy button. When you're ready to submit, paste each section into the NIHR RMS online form. Your drafts are saved to your browser automatically.</div>
+      <div class="hero-desc">This was the working draft for the NIHR i4i THRIVE March 2026 call. The application was not submitted by the 17 April 2026 deadline. All section drafts remain below for reference and future reuse. Any content saved to your browser is still accessible here.</div>
       <div class="hero-nom">
         <div class="nom-circle"><div class="nom-circle-text">NOM</div></div>
         <div class="nom-info">
@@ -622,18 +622,17 @@
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-deadline-label">Deadline</div>
+      <div class="hero-deadline-label">Closed</div>
       <div class="hero-deadline-date">17 Apr<br>2026</div>
-      <div class="hero-deadline-sub">1pm · No exceptions</div>
+      <div class="hero-deadline-sub">Deadline passed · Not submitted</div>
     </div>
   </div>
 
-  <!-- COLLABORATION NOTICE -->
-  <div class="collab-notice">
-    <div class="collab-icon">⚠</div>
+  <!-- ARCHIVE NOTICE -->
+  <div class="collab-notice" style="background: rgba(0,48,135,0.04); border-color: rgba(0,48,135,0.15);">
     <div class="collab-text">
-      <div class="collab-title">One editor at a time</div>
-      <div class="collab-body">This file saves to <strong>your browser only</strong> — it does not sync between people. If two people edit simultaneously, their changes will not merge and the last person to save will overwrite the other. <strong>Agree on a single owner for typing</strong> . Everyone else sends edits via Slack. When a section is ready, the owner marks it "Ready for RMS" and pastes it into the <a href="https://www.nihr.ac.uk/funding/i4i-thrive-march-2026/2026363" target="_blank" style="color:var(--nhs);">NIHR RMS form</a>.</div>
+      <div class="collab-title" style="color: var(--navy);">Archived reference</div>
+      <div class="collab-body">This draft was not submitted. The NIHR i4i THRIVE March 2026 deadline closed on 17 April 2026. Section drafts are preserved below for reference and future reuse. Any content you previously saved remains in your browser. No submission will be made for this call.</div>
     </div>
   </div>
 
@@ -1314,18 +1313,6 @@ Mitigation: Start simple. Build incrementally based on what works in practice wi
     const pct = Math.round((done / SECTIONS.length) * 100);
     document.getElementById('progress-pct').textContent = pct + '%';
     document.getElementById('progress-fill').style.width = pct + '%';
-
-    const badge = document.getElementById('gaps-badge');
-    if (submitted === SECTIONS.length) {
-      badge.textContent = 'All sections submitted';
-      badge.className = 'topbar-badge';
-    } else if (gaps === 0) {
-      badge.textContent = submitted > 0 ? submitted + ' of 14 submitted to RMS' : 'All gaps resolved';
-      badge.className = 'topbar-badge';
-    } else {
-      badge.textContent = gaps + ' gap' + (gaps === 1 ? '' : 's') + ' remaining';
-      badge.className = 'topbar-badge warn';
-    }
   }
 
   // ── COPY SECTION ──────────────────────────────────────
