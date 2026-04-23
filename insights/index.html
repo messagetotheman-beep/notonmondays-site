@@ -271,6 +271,128 @@
 .insights-item-link:hover,
 .insights-item-link:focus-visible { gap: 1rem; }
 
+/* ── Insights layout (featured + more) ───────────── */
+/* Single-column by default. When .insights-more has items,
+   the inner wrapper widens and the layout becomes two columns
+   on desktop. Column auto-hides when the list is empty. */
+.insights-list-inner:has(.insights-more li) {
+  max-width: 1100px;
+}
+.insights-more:not(:has(li)) { display: none; }
+
+/* ── More insights column ────────────────────────── */
+.insights-more {
+  padding-top: 4rem;
+}
+.insights-more-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.insights-more-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.insights-more-item {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.insights-more-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.insights-more-link {
+  display: block;
+  text-decoration: none;
+  color: var(--dark);
+  transition: color 0.2s ease;
+}
+.insights-more-link:hover,
+.insights-more-link:focus-visible { color: var(--blue); }
+.insights-more-link-title {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+.insights-more-meta {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Mobile: stack More insights below featured with divider */
+@media (max-width: 899px) {
+  .insights-more {
+    margin-top: 2rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(26,42,212,0.08);
+  }
+}
+
+/* ── Insights panel (reusable banner, below list) ── */
+.insights-panel {
+  background: var(--off-white);
+  border-top: 1px solid rgba(26,42,212,0.08);
+  padding: 4rem 1.5rem 5rem;
+}
+.insights-panel-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.insights-panel-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+.insights-panel-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--dark);
+  margin-bottom: 1.25rem;
+  max-width: 640px;
+}
+.insights-panel-body {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--mid);
+  font-weight: 300;
+  max-width: 560px;
+  margin-bottom: 1.75rem;
+}
+.insights-panel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.insights-panel-link:hover,
+.insights-panel-link:focus-visible { gap: 1rem; }
+
 /* ── Mobile nav ──────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 0 1.5rem; }
@@ -298,6 +420,15 @@
 @media (min-width: 900px) {
   .insights-banner { padding: 5rem 4rem 4.5rem; }
   .insights-list { padding: 0 4rem 7rem; }
+  .insights-panel { padding: 5rem 4rem 6rem; }
+
+  /* Two-column grid only when More insights has items */
+  .insights-layout:has(.insights-more li) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 4rem;
+    align-items: start;
+  }
 }
 
 </style>
@@ -347,7 +478,7 @@
       </h1>
       <p class="insights-standfirst">
         We write when we have something worth saying.
-        Not a blog — a small, growing body of work.
+        Not a blog.
       </p>
     </div>
   </section>
@@ -356,6 +487,16 @@
   <!-- Insights article list -->
   <section class="insights-list" aria-label="Published insights">
     <div class="insights-list-inner">
+      <div class="insights-layout">
+
+        <!-- =============================================
+             FEATURED ARTICLES (left column, up to 4)
+             Copy an .insights-item block below for each
+             new featured article. Newest at the top.
+             When you exceed 4, move the oldest one into
+             .insights-more-list (see right column below).
+             ============================================= -->
+        <div class="insights-featured">
 
       <!-- ================================================
            INSIGHTS ITEM — copy this block for each article.
@@ -447,8 +588,62 @@
 
       <!-- Add future insights items here, following the same .insights-item pattern above -->
 
+        </div>
+        <!-- /FEATURED ARTICLES -->
+
+
+        <!-- =============================================
+             MORE INSIGHTS (right column, overflow)
+             This column stays hidden until the <ul> below
+             contains at least one <li>. When we have more
+             than 4 featured articles, move older ones here
+             in the following format:
+
+             <li class="insights-more-item">
+               <a href="/insights/slug" class="insights-more-link">
+                 <span class="insights-more-link-title">Headline</span>
+                 <span class="insights-more-meta">
+                   <time datetime="2025-12-01">Dec 2025</time> · 5 min
+                 </span>
+               </a>
+             </li>
+             ============================================= -->
+        <aside class="insights-more" aria-label="More insights">
+          <h2 class="insights-more-label">More insights</h2>
+          <ul class="insights-more-list">
+            <!-- Older articles go here. Column auto-hides while empty. -->
+          </ul>
+        </aside>
+        <!-- /MORE INSIGHTS -->
+
+      </div>
     </div>
   </section>
+
+
+  <!-- =============================================
+       INSIGHTS PANEL (reusable banner below list)
+       Update label, headline, body, and optional link
+       as needed. Keeps styling calm and consistent —
+       not for promotional or sales messaging.
+       The .insights-panel-link is optional; remove it
+       if the panel is copy-only.
+       ============================================= -->
+  <section class="insights-panel" aria-labelledby="insights-panel-heading">
+    <div class="insights-panel-inner">
+      <p class="insights-panel-label" aria-hidden="true">Currently thinking about</p>
+      <h2 id="insights-panel-heading" class="insights-panel-headline">
+        How operating models hold up when delivery gets harder.
+      </h2>
+      <p class="insights-panel-body">
+        A short note on what we are looking at right now — the patterns we keep seeing in organisations trying to move from plans on paper to work that actually runs. We will write more as the thinking settles.
+      </p>
+      <a href="/#contact" class="insights-panel-link">
+        Start a conversation <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+  <!-- /INSIGHTS PANEL -->
 
 </main>
 
