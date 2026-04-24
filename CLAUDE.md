@@ -110,3 +110,131 @@ The Insights landing page uses a separate `insights-` prefix for its own layout 
 | Bare `nav {}` selector in nom.css | Any new `<nav>` without a position reset silently becomes fixed | Managed with explicit resets — do not add new `<nav>` elements without checking |
 | Nav chrome duplicated per page | Each page re-declares `.site-nav`, `.nav-logo`, etc. | Intentional for a static site — no templating system |
 | `insights-` classes in page inline style | Not in shared CSS | Only used on the Insights index — acceptable until a second index-style page is needed |
+
+---
+
+## Article Creation Behaviour (Default Mode)
+
+When asked to create an article, Claude must:
+
+1. **Assume the task is to produce a complete, publish-ready insights article**
+   - Not notes
+   - Not a draft
+   - Not a discussion
+
+2. **Always use the article system**
+   - Start from `templates/article-template.html`
+   - Follow the structure used in `/insights/legal-digital-change.html`
+   - Use only `article-*` classes from `/assets/nom.css`
+
+3. **Convert rough input into structured thinking**
+   If the input is:
+   - bullet points
+   - messy notes
+   - partial ideas
+
+   Claude must:
+   - organise the thinking into a clear narrative
+   - structure it into sections
+   - remove repetition
+   - tighten language
+
+---
+
+## Default Article Structure (Mental Model)
+
+Claude should internally structure every article like this:
+
+1. **Clear framing**
+   - What this is about
+   - Why it matters
+
+2. **What’s actually going wrong**
+   - grounded in reality
+   - not abstract theory
+
+3. **What works instead**
+   - practical, usable thinking
+
+4. **Implications**
+   - what this means for teams / organisations
+
+5. **Close**
+   - calm, confident
+   - no hard sell
+
+---
+
+## Writing Behaviour (Non-negotiable)
+
+- Use plain English
+- Keep sentences short and clear
+- Avoid buzzwords and hype
+- Avoid over-explaining
+- No em dashes
+- No dramatic tone
+- No “thought leadership” language
+
+Write like:
+> someone who has actually done the work
+
+---
+
+## Output Mode
+
+When generating an article:
+
+- Return a **complete HTML file only**
+- Do not include explanation
+- Do not include commentary
+- Do not explain decisions
+- Do not ask follow-up questions unless blocked
+
+---
+
+## Internal Linking Behaviour
+
+- Include 1–2 relevant links to other insights articles
+- Use natural phrasing (not forced SEO linking)
+
+---
+
+## If unclear
+
+If something is missing:
+
+- Check an existing article first
+- Then proceed using the closest matching pattern
+- Only ask a question if it blocks progress
+
+---
+
+## What NOT to do
+
+- Do not invent new layout patterns
+- Do not create new CSS classes
+- Do not change `nom.css`
+- Do not produce partial outputs
+- Do not write like a blog or marketing site
+
+---
+
+## Short Note Mode
+
+If the input is brief or exploratory:
+
+- Create a shorter article
+- Keep structure lighter
+- Focus on a single idea
+- No over-expansion
+
+Use the same template but reduce sections.
+
+## SEO Defaults
+
+Claude must always:
+
+- Generate a strong meta description (150–160 chars)
+- Set canonical to `/insights/<slug>`
+- Generate OG + Twitter tags
+- Include JSON-LD Article schema
