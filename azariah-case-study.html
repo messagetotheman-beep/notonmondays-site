@@ -306,6 +306,33 @@ body { cursor: none; }
 }
 .cs-offering-link:hover { opacity: 0.6; }
 
+.cs-prose ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.cs-prose ul li {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--mid);
+  font-weight: 300;
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+
+.cs-prose ul li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--blue);
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+}
+
 /* CTA BAND */
 .cs-cta {
   background: var(--off-white);
@@ -444,7 +471,7 @@ footer {
   <div class="cs-hero-inner">
     <a href="notonmondays.html#case-studies" class="cs-back">← Our Work</a>
     <div class="cs-eyebrow">Case Study № 001</div>
-    <h1 class="cs-headline reveal">When clarity changes <em>everything.</em></h1>
+    <h1 class="cs-headline reveal">Improving operations and delivery for Azariah</h1>
     <div class="cs-meta-strip reveal reveal-delay-1">
       <div class="cs-meta-item">
         <label>Client</label>
@@ -475,7 +502,7 @@ footer {
   <div class="cs-pullquote-inner">
     <div class="cs-quote-mark">"</div>
     <div>
-      <p class="cs-quote-text">The clarity and shift in energy through the whole organisation when clear, consistent guidelines arrived : that was the moment everything changed.</p>
+      <p class="cs-quote-text">[Quote placeholder — to be confirmed with client]</p>
       <p class="cs-quote-attr">Azariah · Founder</p>
     </div>
   </div>
@@ -487,23 +514,51 @@ footer {
 
     <div class="cs-prose">
 
-      <h2 class="reveal">The situation.</h2>
-      <p class="reveal">Azariah are building medtech and compliance infrastructure for NHS England and Trusts : complex, high-stakes work that demands precision at every layer. The product had genuine traction and a clear mission. But the operational infrastructure hadn't kept pace with either the ambition or the team.</p>
-      <p class="reveal">The founder was carrying too much: strategy, hiring decisions, investor relations, and the day-to-day friction of a team that was growing faster than its systems. A gap had opened between vision and delivery. The people building the product and the people directing it weren't speaking the same language.</p>
-      <p class="reveal">This is one of the most common : and most dangerous : inflection points in a startup's life. <strong>Not a product problem. Not a market problem. An operating problem.</strong></p>
+      <p class="reveal">Azariah builds compliance infrastructure and software tools for the NHS and healthcare providers. The work is technical and high stakes, with complex requirements across multiple stakeholders.</p>
+      <p class="reveal">The team had the right product and a clear mission. But their ways of working had not kept pace with their growth. We helped them put the right structures in place so delivery became more consistent and the founder could focus on leading rather than managing.</p>
 
-      <h2 class="reveal reveal-delay-1">What we did.</h2>
-      <p class="reveal">We came in as an embedded operating partner through The Operating Layer : not to consult and leave, but to sit inside the business and build alongside it. The work had three concurrent threads.</p>
-      <p class="reveal"><strong>First: the founder.</strong> We created structured thinking space : a regular cadence that gave the founder somewhere to process, decide, and delegate. The goal wasn't to take things off their plate arbitrarily; it was to help them hold the right things and let go of the rest with confidence.</p>
-      <p class="reveal"><strong>Second: the team.</strong> We worked through hiring design, role clarity, and accountability structures. But the more critical work was cultural. We helped Azariah articulate core values that weren't decorative : values designed to function as guard rails, giving everyone in the organisation the confidence to make decisions that put users first. We also focused on bridging the communication gap between the vision and development teams: establishing shared language, clearer handoffs, and a rhythm that meant product direction and technical delivery were pulling in the same direction.</p>
-      <p class="reveal"><strong>Third: the infrastructure.</strong> Alongside the human layer, we built the operational scaffolding: documented processes, communication norms, and a lightweight PMO function to keep execution tracking without creating bureaucracy.</p>
-      <p class="reveal">The funding round ran concurrently. We supported the process : not as advisors at a distance, but as a working part of the machine that investors were evaluating.</p>
+      <h2 class="reveal">The problem</h2>
+      <p class="reveal">The team faced several operational challenges:</p>
+      <ul class="reveal">
+        <li>Work was fragmented across people and tools, with no shared system</li>
+        <li>Ownership of tasks and decisions was unclear</li>
+        <li>The founder was a bottleneck for too many decisions</li>
+        <li>There was no planning structure to set priorities or track progress</li>
+      </ul>
+      <p class="reveal">The team operated across the UK, the Philippines, and San Diego. Time zone differences increased coordination complexity and slowed delivery.</p>
+      <p class="reveal">Without structure, progress was inconsistent and the team relied on informal communication to stay aligned.</p>
 
-      <h2 class="reveal reveal-delay-1">The shift.</h2>
-      <p class="reveal">The change wasn't gradual. Once the guidelines landed : once the team understood how decisions were made and where they fit : something unlocked. The founder described it as a shift in the organisation's energy. That's not an abstract observation. It showed up in meeting quality, in the speed of execution, in how people spoke about the business.</p>
-      <p class="reveal">Funding closed. The team cohered. And the founder recovered something they'd been slowly losing: the headspace to actually lead.</p>
-      <p class="reveal">The relationship continues. We work with the CEO and COO through The Inner Layer : ongoing coaching for the people at the centre of the organisation, as the business grows into its next chapter.</p>
-      <p class="reveal"><strong>That's the job. Not strategy documents. Actual change, in the actual business.</strong></p>
+      <h2 class="reveal reveal-delay-1">What we did</h2>
+      <p class="reveal">We introduced a set of structures to support the team and improve delivery:</p>
+      <ul class="reveal">
+        <li>A weekly delivery rhythm to keep work moving</li>
+        <li>Jira set up to give the team visibility of what was in progress</li>
+        <li>Sprint planning and review sessions to set priorities and reflect on delivery</li>
+        <li>Clarified ownership so people knew what they were responsible for</li>
+        <li>A central hub for assets and progress updates</li>
+      </ul>
+      <p class="reveal">We restructured how the team worked across time zones so work could progress without waiting for real-time coordination.</p>
+
+      <h2 class="reveal reveal-delay-1">Outputs and assets delivered</h2>
+      <ul class="reveal">
+        <li>Website redesign aligned to user needs</li>
+        <li>Brand foundations for consistency</li>
+        <li>Internal portal for assets and visibility</li>
+        <li>Systems setup including Jira and supporting tools</li>
+        <li>Consolidation of the digital estate</li>
+      </ul>
+      <p class="reveal">These outputs were designed to support how the team works day to day, not delivered in isolation.</p>
+
+      <h2 class="reveal reveal-delay-1">Outcomes</h2>
+      <ul class="reveal">
+        <li>Reduced founder involvement in day-to-day decisions</li>
+        <li>Improved visibility of work across the team</li>
+        <li>More predictable delivery against a defined plan</li>
+        <li>Clearer ownership of tasks and responsibilities</li>
+      </ul>
+      <p class="reveal">Work progressed continuously across time zones rather than pausing between locations.</p>
+
+      <p class="reveal" style="margin-top: 3rem;"><a href="/legal-tech-operations.html" style="color: var(--blue); font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;">Explore our approach to legal tech and operations →</a></p>
 
     </div>
 
@@ -513,23 +568,23 @@ footer {
         <div class="cs-outcomes-label">Outcomes</div>
         <div class="cs-outcome">
           <div class="cs-outcome-dot"></div>
-          <span>Funding successfully raised</span>
+          <span>Reduced founder involvement in day-to-day decisions</span>
         </div>
         <div class="cs-outcome">
           <div class="cs-outcome-dot"></div>
-          <span>Team built and structured with clear roles</span>
+          <span>Improved visibility of work across the team</span>
         </div>
         <div class="cs-outcome">
           <div class="cs-outcome-dot"></div>
-          <span>Founder clarity and headspace restored</span>
+          <span>More predictable delivery against a defined plan</span>
         </div>
         <div class="cs-outcome">
           <div class="cs-outcome-dot"></div>
-          <span>Organisation-wide energy transformation</span>
+          <span>Clearer ownership of tasks and responsibilities</span>
         </div>
         <div class="cs-outcome">
           <div class="cs-outcome-dot"></div>
-          <span>Ongoing coaching for CEO and COO via The Inner Layer</span>
+          <span>Work progressed continuously across time zones</span>
         </div>
       </div>
 
