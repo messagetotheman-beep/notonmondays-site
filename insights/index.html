@@ -347,36 +347,37 @@
 .insights-panel {
   background: var(--off-white);
   border-top: 1px solid rgba(26,42,212,0.08);
-  padding: 4rem 1.5rem 5rem;
+  padding: 3rem 1.5rem 3.5rem;
 }
 .insights-panel-inner {
-  max-width: 860px;
+  max-width: 1060px;
   margin: 0 auto;
 }
+.insights-panel-content { }
 .insights-panel-label {
   font-family: 'DM Mono', monospace;
   font-size: 0.58rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--blue);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 .insights-panel-headline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
   font-weight: 300;
   line-height: 1.15;
   color: var(--dark);
-  margin-bottom: 1.25rem;
-  max-width: 640px;
+  margin-bottom: 1rem;
+  max-width: 520px;
 }
 .insights-panel-body {
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 0.92rem;
+  line-height: 1.75;
   color: var(--mid);
   font-weight: 300;
-  max-width: 560px;
-  margin-bottom: 1.75rem;
+  max-width: 520px;
+  margin-bottom: 1.5rem;
 }
 .insights-panel-link {
   display: inline-flex;
@@ -392,6 +393,36 @@
 }
 .insights-panel-link:hover,
 .insights-panel-link:focus-visible { gap: 1rem; }
+
+/* Visual placeholder on the right side of the split panel.
+   Swap the inner contents for an <img>, <svg>, or custom
+   banner block when ready. Keep the outer .insights-panel-visual
+   wrapper to preserve layout and aspect ratio. */
+.insights-panel-visual {
+  background: var(--warm-white);
+  border: 1px solid rgba(26,42,212,0.1);
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.insights-panel-visual-mark {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Mobile: visual stacks below text, shorter aspect so it
+   does not dominate the page or crowd the footer. */
+@media (max-width: 899px) {
+  .insights-panel-visual {
+    margin-top: 2rem;
+    aspect-ratio: 16 / 9;
+  }
+}
 
 /* ── Mobile nav ──────────────────────────────────── */
 @media (max-width: 900px) {
@@ -420,7 +451,15 @@
 @media (min-width: 900px) {
   .insights-banner { padding: 5rem 4rem 4.5rem; }
   .insights-list { padding: 0 4rem 7rem; }
-  .insights-panel { padding: 5rem 4rem 6rem; }
+  .insights-panel { padding: 3.5rem 4rem 4rem; }
+
+  /* Split panel: text left, visual right */
+  .insights-panel-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
 
   /* Two-column grid only when More insights has items */
   .insights-layout:has(.insights-more li) {
@@ -524,8 +563,8 @@
           When budgets tighten, most organisations slow down or spread thin. The ones that keep delivering change how work runs, not just how much they spend.
         </p>
 
-        <a href="/insights/delivering-on-a-tight-budget" class="insights-item-link" aria-label="Read: How to deliver digital change when budgets are tight — 6 min">
-          Read &mdash; 6 min <span aria-hidden="true">&#8594;</span>
+        <a href="/insights/delivering-on-a-tight-budget" class="insights-item-link" aria-label="Read: How to deliver digital change when budgets are tight. 6 min read.">
+          6 min read
         </a>
 
       </article>
@@ -551,8 +590,8 @@
           Most organisations are not short of ideas or skills. They are short of the coordination layer that turns direction into delivery.
         </p>
 
-        <a href="/insights/operating-layer" class="insights-item-link" aria-label="Read: You don't need a full digital team — you need the right operating layer — 7 min">
-          Read &mdash; 7 min <span aria-hidden="true">&#8594;</span>
+        <a href="/insights/operating-layer" class="insights-item-link" aria-label="Read: You don't need a full digital team, you need the right operating layer. 7 min read.">
+          7 min read
         </a>
 
       </article>
@@ -579,8 +618,8 @@
           Here is what actually works when client behaviour has already moved online.
         </p>
 
-        <a href="/insights/legal-digital-change" class="insights-item-link" aria-label="Read: Why many legal firms struggle to deliver digital change — 6 min">
-          Read — 6 min <span aria-hidden="true">→</span>
+        <a href="/insights/legal-digital-change" class="insights-item-link" aria-label="Read: Why many legal firms struggle to deliver digital change. 6 min read.">
+          6 min read
         </a>
 
       </article>
@@ -622,25 +661,44 @@
 
 
   <!-- =============================================
-       INSIGHTS PANEL (reusable banner below list)
-       Update label, headline, body, and optional link
-       as needed. Keeps styling calm and consistent —
-       not for promotional or sales messaging.
-       The .insights-panel-link is optional; remove it
-       if the panel is copy-only.
+       INSIGHTS PANEL (reusable split banner below list)
+       Left: short editorial copy (label, headline, body,
+             optional link). Update as thinking evolves.
+       Right: flexible visual/banner area. Swap the
+             placeholder for an <img>, <svg>, or custom
+             block when ready. Keep the .insights-panel-visual
+             wrapper so layout and aspect ratio are preserved.
+       Keeps styling calm and consistent. Not for promotional
+       or sales messaging. The link is optional; remove if
+       the panel is copy-only.
        ============================================= -->
   <section class="insights-panel" aria-labelledby="insights-panel-heading">
     <div class="insights-panel-inner">
-      <p class="insights-panel-label" aria-hidden="true">Currently thinking about</p>
-      <h2 id="insights-panel-heading" class="insights-panel-headline">
-        How operating models hold up when delivery gets harder.
-      </h2>
-      <p class="insights-panel-body">
-        A short note on what we are looking at right now — the patterns we keep seeing in organisations trying to move from plans on paper to work that actually runs. We will write more as the thinking settles.
-      </p>
-      <a href="/#contact" class="insights-panel-link">
-        Start a conversation <span aria-hidden="true">→</span>
-      </a>
+
+      <div class="insights-panel-content">
+        <p class="insights-panel-label" aria-hidden="true">Currently thinking about</p>
+        <h2 id="insights-panel-heading" class="insights-panel-headline">
+          How operating models hold up when delivery gets harder.
+        </h2>
+        <p class="insights-panel-body">
+          A short note on what we are looking at right now. The patterns we keep seeing in organisations trying to move from plans on paper to work that actually runs. We will write more as the thinking settles.
+        </p>
+        <a href="/#contact" class="insights-panel-link">
+          Start a conversation
+        </a>
+      </div>
+
+      <!-- Visual / banner area.
+           Replace the contents of this block with, e.g.:
+             <img src="/assets/your-banner.jpg" alt="...">
+             <picture>…</picture>
+             <svg>…</svg>
+             or a custom inline banner composition.
+           Keep the .insights-panel-visual wrapper for layout. -->
+      <div class="insights-panel-visual" aria-hidden="true">
+        <span class="insights-panel-visual-mark">Visual area</span>
+      </div>
+
     </div>
   </section>
   <!-- /INSIGHTS PANEL -->
