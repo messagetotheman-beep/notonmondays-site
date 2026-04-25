@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CRM Optimisation &amp; Salesforce Operations | Not On Mondays</title>
+<meta name="description" content="Most CRM challenges are operational, not technical. Learn how to get more value from Salesforce by improving how work flows across your organisation.">
+<link rel="canonical" href="https://notonmondays.com/insights/crm-optimisation-salesforce-operations">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://notonmondays.com/insights/crm-optimisation-salesforce-operations">
+<meta property="og:title" content="CRM Optimisation &amp; Salesforce Operations | Not On Mondays">
+<meta property="og:description" content="Most CRM challenges are operational, not technical. Learn how to get more value from Salesforce by improving how work flows across your organisation.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+<meta property="article:published_time" content="2026-04-24T00:00:00+00:00">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://notonmondays.com/insights/crm-optimisation-salesforce-operations">
+<meta name="twitter:title" content="CRM Optimisation &amp; Salesforce Operations | Not On Mondays">
+<meta name="twitter:description" content="Most CRM challenges are operational, not technical. Learn how to get more value from Salesforce by improving how work flows across your organisation.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ─────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ─────────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  line-height: 1;
+}
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ────────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── Mobile nav ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CRM optimisation and Salesforce operations",
+  "description": "Most CRM challenges are operational, not technical. Learn how to get more value from Salesforce by improving how work flows across your organisation.",
+  "image": "https://www.notonmondays.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "datePublished": "2026-04-24",
+  "dateModified": "2026-04-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://notonmondays.com/insights/crm-optimisation-salesforce-operations"
+  },
+  "url": "https://notonmondays.com/insights/crm-optimisation-salesforce-operations"
+}
+</script>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/" aria-current="page">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+
+<main id="main-content" class="article-layout">
+
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="article-hero-inner">
+
+      <a href="/insights/" class="article-back-link" aria-label="Back to Insights">&#8592; Insights</a>
+
+      <p class="article-hero-eyebrow" aria-hidden="true">CRM · Operations</p>
+
+      <h1 id="article-heading" class="article-hero-headline">
+        Getting more value<br><em>from your CRM</em>
+      </h1>
+
+      <p class="article-hero-standfirst">
+        Most organisations already have the system. The opportunity is to make it work harder for the business.
+      </p>
+
+      <div class="article-meta article-meta--dark">
+        <time datetime="2026-04-24">April 2026</time>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span>5 min read</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">CRM</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Operations</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="article-section article-section--light" aria-label="Article body">
+    <div class="article-container">
+
+      <nav class="article-toc" aria-label="On this page">
+        <p class="article-toc-label" aria-hidden="true">On this page</p>
+        <ul class="article-toc-list">
+          <li><a href="#what-we-keep-seeing">What we keep seeing</a></li>
+          <li><a href="#the-opportunity-is-operational">The opportunity is operational</a></li>
+          <li><a href="#why-value-gets-stuck">Why value gets stuck</a></li>
+          <li><a href="#where-salesforce-fits">Where Salesforce fits</a></li>
+          <li><a href="#what-it-looks-like-in-practice">What it looks like in practice</a></li>
+        </ul>
+      </nav>
+
+
+      <div class="article-body">
+
+        <div class="article-tldr">
+          <p class="article-tldr-label" aria-hidden="true">TL;DR</p>
+          <ul>
+            <li>Most CRM challenges are operational, not technical.</li>
+            <li>The biggest gains come from improving how work flows, not reconfiguring the system.</li>
+            <li>Salesforce works well when the operating model is clear first.</li>
+            <li>Better alignment reduces manual effort, improves visibility, and speeds decisions.</li>
+          </ul>
+        </div>
+
+        <p class="article-lede">Across growing organisations, the pattern is consistent.</p>
+
+        <p>A CRM exists. Often it is Salesforce. It is configured, it supports the business, and it plays an important role. But it is not delivering its full potential.</p>
+
+        <p>Nothing is fundamentally broken. There is simply more value available than is currently being realised.</p>
+
+
+        <h2 id="what-we-keep-seeing">What we keep seeing</h2>
+
+        <p>The signs are low-level but recognisable:</p>
+
+        <ul class="article-list">
+          <li>Pipeline data exists but is not consistently acted on</li>
+          <li>Teams sometimes work around the system rather than through it</li>
+          <li>Reports require manual effort to trust</li>
+          <li>Automation helps in parts, but not end to end</li>
+          <li>Handovers between teams rely on context that lives outside the CRM</li>
+        </ul>
+
+        <p>Individually, these are manageable. Together, they represent a meaningful drag on time and revenue.</p>
+
+
+        <h2 id="the-opportunity-is-operational">The opportunity is operational</h2>
+
+        <p>Most organisations improve their CRM by enhancing the system: adding fields, building dashboards, refining automation. These can help. But the bigger opportunity is usually in how the organisation operates.</p>
+
+        <p>The question is not what the system can do. It is how work moves through it. How sales hands off to delivery. How teams share context. How data is captured once and reused rather than re-entered at each stage.</p>
+
+        <p>Organisations that focus only on the system often see incremental gains. Those that address the operating model see step changes.</p>
+
+
+        <h2 id="why-value-gets-stuck">Why value gets stuck</h2>
+
+        <p>When a CRM is close to working well but not fully aligned, friction is low-level but persistent:</p>
+
+        <ul class="article-list">
+          <li>Deals take slightly longer than they should</li>
+          <li>Teams spend more time coordinating than the work requires</li>
+          <li>Data is reviewed before it is trusted</li>
+          <li>Opportunities to automate are visible but not acted on</li>
+        </ul>
+
+        <div class="article-callout">
+          <p class="article-callout-label" aria-hidden="true">Key point</p>
+          <p>Most CRM challenges are operational, not technical. The system often works fine. The way work flows around it is where the opportunity sits.</p>
+        </div>
+
+
+        <h2 id="where-salesforce-fits">Where Salesforce fits</h2>
+
+        <p>Salesforce is the platform we work with most often. When the operating model is clear and data flows cleanly, it becomes a real operational asset.</p>
+
+        <p>When it is not, it can create the appearance of progress without the substance. Data sits in the system. Reports exist. But decisions still happen outside it.</p>
+
+        <p>Getting more from Salesforce is usually a question of alignment, not configuration. The platform has the capability. The question is whether the organisation is set up to use it. Our operators hold 20+ Salesforce certifications across a range of implementations and operating environments.</p>
+
+
+        <h2 id="what-it-looks-like-in-practice">What it looks like in practice</h2>
+
+        <p>Our <a href="/azariah-case-study.html">work with Azariah</a> is one example. The focus was not the CRM. It was how the team operated. We made Slack the centre of collaboration, connected it to Jira, and introduced clearer ways of working across a distributed team.</p>
+
+        <p>The result was less friction, more clarity, and better delivery. The system did not change. The way work moved through it did.</p>
+
+        <p>Teams that get this right tend to:</p>
+
+        <ul class="article-list">
+          <li>Spend less time on coordination and admin</li>
+          <li>Trust their reporting enough to act on it</li>
+          <li>Onboard clients more smoothly</li>
+          <li>Make better use of the data they already have</li>
+        </ul>
+
+        <p>The result is not just a better system. It is a better way of working.</p>
+
+      </div>
+      <!-- /article-body -->
+
+    </div><!-- /article-container -->
+  </section>
+
+
+  <aside class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+
+      <p class="article-cta-label" aria-hidden="true">Work with us</p>
+
+      <h2 id="cta-heading" class="article-cta-heading">
+        If your CRM is close but not quite delivering,
+        <em>the opportunity is usually in how the work flows.</em>
+      </h2>
+
+      <p class="article-cta-body">
+        We help organisations align systems, operations and delivery so teams spend more time on work that creates value.
+      </p>
+
+      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Start a conversation</a>
+
+    </div>
+  </aside>
+
+
+</main>
+
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
