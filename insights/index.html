@@ -146,12 +146,27 @@
 .site-footer {
   background: var(--dark);
   border-top: 1px solid rgba(255,255,255,0.04);
-  padding: 2rem 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 2.25rem 1.5rem;
 }
-.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.site-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+.site-footer-nav { justify-self: center; }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-links + .footer-links { margin-top: 0.6rem; }
 .footer-links a {
   font-family: 'DM Mono', monospace;
   font-size: 0.58rem;
@@ -512,14 +527,21 @@
   .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
   .nav-links a { display: block; padding: 1rem 0; }
   .nav-cta { display: none; }
-  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
-  .footer-links { justify-content: center; gap: 1.5rem; }
+  .site-footer-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 1.75rem;
+  }
+  .site-footer-nav { justify-self: stretch; }
+  .footer-links { gap: 0.6rem 1.25rem; }
 }
 
 @media (min-width: 900px) {
   .insights-banner { padding: 5rem 4rem 4.5rem; }
   .insights-list { padding: 0 4rem 7rem; }
   .insights-panel { padding: 3.5rem 4rem 4rem; }
+  .site-footer { padding: 2.25rem 4rem; }
 
   /* Split panel: text left, visual right */
   .insights-panel-inner {
@@ -884,26 +906,28 @@
 
 
 <footer class="site-footer">
-  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
-    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
-  </a>
-  <nav aria-label="Footer navigation">
-    <ul class="footer-links">
-      <li><a href="/why-not-on-mondays.html">About</a></li>
-      <li><a href="/#offerings">Services</a></li>
-      <li><a href="/#how-we-work">How We Work</a></li>
-      <li><a href="/#case-studies">Work</a></li>
-      <li><a href="/insights/">Insights</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-    <ul class="footer-links" style="margin-top:1rem;">
-      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
-      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
-    </ul>
-  </nav>
-  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+  <div class="site-footer-inner">
+    <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+    </a>
+    <nav class="site-footer-nav" aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="/why-not-on-mondays.html">About</a></li>
+        <li><a href="/#offerings">Services</a></li>
+        <li><a href="/#how-we-work">How We Work</a></li>
+        <li><a href="/#case-studies">Work</a></li>
+        <li><a href="/insights/">Insights</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <ul class="footer-links">
+        <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+        <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+      </ul>
+    </nav>
+    <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+  </div>
 </footer>
 
 
