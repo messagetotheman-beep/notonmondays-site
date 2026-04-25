@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Why Legal Firms Struggle to Deliver Digital Change | Not On Mondays</title>
+<meta name="description" content="Most legal firms do not have a technology problem first. They have a service problem. Here is what actually works when client behaviour has already moved online.">
+<link rel="canonical" href="https://www.notonmondays.com/insights/legal-digital-change">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.notonmondays.com/insights/legal-digital-change">
+<meta property="og:title" content="Why Legal Firms Struggle to Deliver Digital Change | Not On Mondays">
+<meta property="og:description" content="Most legal firms do not have a technology problem first. They have a service problem. Here is what actually works.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+<meta property="article:published_time" content="2026-04-17T00:00:00+00:00">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/insights/legal-digital-change">
+<meta name="twitter:title" content="Why Legal Firms Struggle to Deliver Digital Change | Not On Mondays">
+<meta name="twitter:description" content="Most legal firms do not have a technology problem first. They have a service problem.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<!-- Shared base styles + article system -->
+<link rel="stylesheet" href="/assets/nom.css">
+
+<!-- ============================================================
+     Dependencies (required on every article page):
+       1. Google Fonts link (Cormorant Garamond, DM Mono, DM Sans)
+       2. /assets/nom.css  — base styles, article system, focus states,
+                             reduced-motion reset, footer nav reset
+
+     Page-specific overrides only below.
+     Do not re-declare :focus-visible, prefers-reduced-motion,
+     or .site-footer nav — all three are now in nom.css.
+     ============================================================ -->
+<style>
+
+/* ── Skip link ─────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ─────────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  line-height: 1;
+}
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ────────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* .site-footer nav reset lives in nom.css — no override needed here */
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* :focus-visible and prefers-reduced-motion live in nom.css */
+
+/* ── Mobile nav ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why many legal firms struggle to deliver digital change",
+  "description": "Most legal firms do not have a technology problem first. They have a service problem.",
+  "image": "https://www.notonmondays.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "datePublished": "2026-04-17",
+  "dateModified": "2026-04-17",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.notonmondays.com/legal-digital-change"
+  },
+  "url": "https://www.notonmondays.com/legal-digital-change"
+}
+</script>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     SITE HEADER — copy this block to every article page
+     ============================================================ -->
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+<!-- /SITE HEADER -->
+
+
+<main id="main-content" class="article-layout">
+
+  <!-- ============================================================
+       SECTION 1 — HERO
+       Classes: article-hero, article-hero-inner, article-hero-eyebrow,
+                article-hero-headline, article-hero-standfirst,
+                article-meta, article-meta--dark, article-meta-tag,
+                article-meta-sep, article-back-link
+       ============================================================ -->
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="article-hero-inner">
+
+      <!-- Optional: back link to parent section or index -->
+      <a href="/#case-studies" class="article-back-link" aria-label="Back to Work">← Work</a>
+
+      <!-- Eyebrow — topic / section label -->
+      <p class="article-hero-eyebrow" aria-hidden="true">Digital Change · Legal Sector</p>
+
+      <!-- h1 — one per page, always the article title -->
+      <h1 id="article-heading" class="article-hero-headline">
+        Why many legal firms struggle to deliver <em>digital change</em>
+      </h1>
+
+      <!-- Standfirst — one-line subheading or framing statement -->
+      <p class="article-hero-standfirst">
+        And what actually works when client behaviour has already moved online
+      </p>
+
+      <!-- Metadata strip: date · read time · category tags -->
+      <div class="article-meta article-meta--dark">
+        <time datetime="2026-04-17">April 2026</time>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span>6 min read</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Service Design</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Legal Sector</span>
+      </div>
+
+    </div>
+  </section>
+  <!-- /HERO -->
+
+
+  <!-- ============================================================
+       SECTIONS 2–5 — ARTICLE BODY
+       One light-background section wraps the content column.
+       article-container provides the max-width centring.
+       ============================================================ -->
+  <section class="article-section article-section--light" aria-label="Article body">
+    <div class="article-container">
+
+
+      <!-- ========================================================
+           SECTION 2 — ON THIS PAGE ANCHOR NAVIGATION
+           Classes: article-toc, article-toc-label, article-toc-list
+           Link href values must match the id attributes on headings below.
+           ======================================================== -->
+      <nav class="article-toc" aria-label="On this page">
+        <p class="article-toc-label" aria-hidden="true">On this page</p>
+        <ul class="article-toc-list">
+          <li><a href="#shift">The shift firms need to recognise</a></li>
+          <li><a href="#wrong">Where firms get stuck</a></li>
+          <li><a href="#good">What good looks like</a></li>
+          <li><a href="#matters">Why it matters</a></li>
+        </ul>
+      </nav>
+      <!-- /ON THIS PAGE NAV -->
+
+
+      <!-- ========================================================
+           SECTION 3 — MAIN ARTICLE CONTENT
+           article-body constrains line length for readability (68ch).
+           Use article-lede for opening paragraphs.
+           Section headings carry the id used by the TOC above.
+           ======================================================== -->
+      <div class="article-body">
+
+        <!-- Opening — lede paragraphs -->
+        <p class="article-lede">Most legal firms do not have a technology problem first.</p>
+        <p class="article-lede">They have a service problem.</p>
+
+        <p>The way people find and choose legal help has changed. It now starts online, often before any conversation happens.</p>
+        <p>But many firms are still set up for a world of calls, referrals, and walk-ins.</p>
+        <p>That gap is where friction starts.</p>
+
+        <!-- Section heading — id matches TOC anchor -->
+        <h2 id="shift">The shift firms need to recognise</h2>
+        <p>For many clients, your website is now the front door.</p>
+        <p>They are searching, comparing, and deciding who feels clear and credible before they ever speak to anyone.</p>
+        <p>If your service does not meet them there, you lose them early.</p>
+
+      </div>
+      <!-- /article-body (first block) -->
+
+
+      <!-- ========================================================
+           SECTION 4 — STAT CARD STRIP
+           Data-led three-card pattern. Sits outside article-body so
+           it spans the full container width.
+           Classes: article-stat-cards, article-stat-card,
+                    article-stat-card-label, article-stat-card-number,
+                    article-stat-card-subtext, article-stat-card-source,
+                    article-stat-card-rule, article-stat-card-heading,
+                    article-stat-card-body
+           Replace article-img-placeholder with a real <img> when
+           visuals are ready — swap for <img class="..."> inside
+           <div class="article-img">.
+           ======================================================== -->
+      <!-- role="group" is required for aria-label to be announced on a plain div -->
+      <div class="article-stat-cards" role="group" aria-label="Key patterns in legal digital change">
+
+        <!-- Card — use <div> not <article>: cards are fragments of this page, not standalone content -->
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Where the journey begins</p>
+          <p class="article-stat-card-number">44%</p>
+          <p class="article-stat-card-subtext">of consumers now shop around before choosing a lawyer, up from 28% in 2019.</p>
+          <p class="article-stat-card-source">Legal Services Consumer Panel, Tracker Survey 2025</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">How users start now</h3>
+          <p class="article-stat-card-body">Most journeys now begin with a search, not a phone call.</p>
+        </div>
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Where firms fall short</p>
+          <p class="article-stat-card-number">61%</p>
+          <p class="article-stat-card-subtext">found it easy to locate information on services, staff or timelines on solicitor websites — down from 66% the year before.</p>
+          <p class="article-stat-card-source">Legal Services Consumer Panel, Tracker Survey 2024</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">Where friction happens</h3>
+          <p class="article-stat-card-body">Slow replies and unclear next steps reduce trust quickly.</p>
+        </div>
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">The competitive stakes</p>
+          <p class="article-stat-card-number">42%</p>
+          <p class="article-stat-card-subtext">of shoppers compare three or more solicitor websites before deciding who to call.</p>
+          <p class="article-stat-card-source">Legal Services Consumer Panel, Tracker Survey 2024</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">What better looks like</h3>
+          <p class="article-stat-card-body">Clear, simple journeys help people move forward with confidence.</p>
+        </div>
+
+      </div>
+      <!-- /STAT CARD STRIP -->
+
+
+      <!-- Continue article body after the visual strip -->
+      <div class="article-body">
+
+        <!-- Section: Where firms get stuck -->
+        <h2 id="wrong">Where firms get stuck</h2>
+
+        <h3>The website is not doing a job</h3>
+        <p>It explains the firm, but does not help the user. People cannot quickly tell if you can help them or what to do next.</p>
+
+        <h3>The journey breaks after contact</h3>
+        <p>Users get through the door, then hit delays, repeated questions, and unclear next steps.</p>
+
+        <h3>The service is built around the firm</h3>
+        <p>Internally it makes sense. To the user, it feels fragmented.</p>
+
+
+        <!-- Section: What good looks like -->
+        <h2 id="good">What good looks like</h2>
+
+        <h3>Start where the user starts</h3>
+        <p>Design for search to understanding to action.</p>
+
+        <h3>Use plain English</h3>
+        <p>Clarity builds trust faster than complexity ever will.</p>
+
+        <h3>Treat the website as part of delivery</h3>
+        <p>A good site reduces confusion, answers questions, and sets expectations.</p>
+
+        <h3>Improve the whole journey</h3>
+        <p>Look at what happens after someone gets in touch.</p>
+
+
+        <!-- Section: Why this matters -->
+        <h2 id="matters">Why this matters</h2>
+        <p>This is not just about design.</p>
+        <p>It affects how many people convert, how much time teams waste, and how early trust is built.</p>
+        <p>Firms that make this easier to navigate tend to grow more sustainably.</p>
+
+
+        <!-- ======================================================
+             SECTION 5 — DETAILS / SUMMARY EXPANDABLE
+             Classes: article-details, article-details-title,
+                      article-details-icon, article-details-content
+             Uses native <details> — no JavaScript required.
+             Stack multiple .article-details for grouped FAQs.
+             ====================================================== -->
+        <details class="article-details">
+          <summary>
+            <span class="article-details-title">See common friction points in legal firms</span>
+            <span class="article-details-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="article-details-content">
+            <ul class="article-list">
+              <li>Users cannot find the right service page</li>
+              <li>Contact forms are too vague or too long</li>
+              <li>No indication of response time</li>
+              <li>Clients repeat the same information multiple times</li>
+              <li>Updates are inconsistent or unclear</li>
+            </ul>
+          </div>
+        </details>
+        <!-- /DETAILS -->
+
+      </div>
+      <!-- /article-body (second block) -->
+
+
+    </div><!-- /article-container -->
+  </section>
+  <!-- /ARTICLE BODY -->
+
+
+  <!-- ============================================================
+       SECTION 6 — SOFT CTA
+       Classes: article-cta, article-cta-inner, article-cta-label,
+                article-cta-heading, article-cta-body, article-cta-link
+       Use article-cta-link--ghost for the softer outlined variant.
+       ============================================================ -->
+  <aside class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+
+      <p class="article-cta-label" aria-hidden="true">Work with us</p>
+
+      <h2 id="cta-heading" class="article-cta-heading">
+        If your site is getting traffic but not turning into meaningful enquiries,
+        <em>that is usually a signal.</em>
+      </h2>
+
+      <p class="article-cta-body">
+        Not a marketing problem. A service design one. We can help you understand what is creating friction and what to do about it.
+      </p>
+
+      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Start a conversation</a>
+
+    </div>
+  </aside>
+  <!-- /SOFT CTA -->
+
+
+</main>
+<!-- /ARTICLE LAYOUT -->
+
+
+<!-- ============================================================
+     SITE FOOTER — copy this block to every article page
+     ============================================================ -->
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+<!-- /SITE FOOTER -->
+
+
+<!-- ============================================================
+     SCRIPTS — keep minimal
+     Only the mobile nav toggle is needed for this page.
+     No article-specific JS required.
+     ============================================================ -->
+<script>
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

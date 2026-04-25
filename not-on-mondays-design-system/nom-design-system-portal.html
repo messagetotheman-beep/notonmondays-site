@@ -2078,6 +2078,7 @@ body.dark-mode .site-footer-initials .fi-no { color: rgba(200,210,255,0.1); }
           <div class="exp-tab active" onclick="setExpTab('css', this)">CSS Vars</div>
           <div class="exp-tab" onclick="setExpTab('json', this)">JSON</div>
           <div class="exp-tab" onclick="setExpTab('summary', this)">Summary</div>
+          <div class="exp-tab" onclick="setExpTab('bridge', this)">nom.css Bridge</div>
         </div>
 
         <div class="exp-code" id="exp-output"></div>
@@ -2593,6 +2594,55 @@ function refreshExport() {
         inputStyle: S.formStyle
       }
     }, null, 2);
+
+  } else if (S.expTab === 'bridge') {
+    const date = new Date().toISOString().split('T')[0];
+    out.textContent =
+`/* ─────────────────────────────────────────────────
+   NOM Design System — Site Token Bridge v1
+   Paste this :root block into assets/nom.css
+   AFTER the existing primitive vars (--blue etc.).
+   Safe: purely additive — nothing is renamed.
+   Generated: ${date}
+   ───────────────────────────────────────────────── */
+:root {
+
+  /* ── Typography ── */
+  --t-font-heading:  ${p.hf};
+  --t-font-body:     ${p.bf};
+  --t-font-mono:     ${p.mf};
+  --t-heading-size:  ${sc.h1};
+  --t-body-weight:   ${S.weight === 'light' ? 300 : 400};
+
+  /* ── Brand & Colour ── */
+  --t-brand:         ${S.brand};
+  --t-surface:       ${S.surface};
+  --t-color-text:    #111124;
+  --t-color-muted:   #8a8fa8;
+  --t-color-error:   #d93025;
+  --t-color-success: #0F6E56;
+  --t-color-warning: #c97d20;
+
+  /* ── Spacing ── */
+  --t-space-base:    ${d.tkB};
+  --t-space-section: ${d.tkS};
+
+  /* ── Border Radius ── */
+  --t-radius-sm:     ${r.tkSm};
+  --t-radius-card:   ${r.tkCard};
+
+  /* ── Motion ── */
+  --t-duration:      ${S.duration};
+  --t-easing:        ${S.easing};
+
+  /* ── Components ── */
+  --t-btn-style:     ${S.btnStyle};
+  --t-btn-radius:    ${S.btnRadius};
+  --t-card-style:    ${S.cardStyle};
+  --t-icon-stroke:   ${S.iconWeight}px;
+  --t-input-style:   ${S.formStyle};
+
+}`;
 
   } else {
     const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });

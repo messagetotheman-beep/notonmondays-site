@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Growth Assistant — Stone Rowe Brewer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0e0f11;
+  --bg-1:      #141518;
+  --bg-2:      #1a1b1f;
+  --bg-3:      #222428;
+  --bg-4:      #2a2d32;
+  --border:    rgba(255,255,255,0.07);
+  --border-md: rgba(255,255,255,0.12);
+  --border-hi: rgba(255,255,255,0.2);
+  --gold:      #c4955a;
+  --gold-dim:  rgba(196,149,90,0.15);
+  --gold-glow: rgba(196,149,90,0.08);
+  --text-1:    #f0ede8;
+  --text-2:    #9a9890;
+  --text-3:    #5e5c56;
+  --green:     #4ade80;
+  --green-dim: rgba(74,222,128,0.12);
+  --blue:      #60a5fa;
+  --blue-dim:  rgba(96,165,250,0.12);
+  --amber:     #fbbf24;
+  --amber-dim: rgba(251,191,36,0.12);
+  --red:       #f87171;
+  --radius-sm: 8px;
+  --radius:    12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --sans: 'DM Sans', sans-serif;
+  --serif: 'DM Serif Display', serif;
+  --mono: 'DM Mono', monospace;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
+  --shadow-lg: 0 2px 8px rgba(0,0,0,0.5), 0 16px 48px rgba(0,0,0,0.4);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text-1);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* LAYOUT */
+.app { display: flex; height: 100vh; overflow: hidden; }
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--bg-1);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.sidebar-brand {
+  padding: 1.5rem 1.25rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.brand-icon {
+  width: 28px; height: 28px;
+  background: var(--gold);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-icon span {
+  font-family: var(--serif);
+  font-size: 10px;
+  color: #1a1200;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.brand-name {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--text-1);
+  line-height: 1.2;
+}
+
+.brand-sub {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+
+.sidebar-nav {
+  padding: 0.75rem 0;
+  flex: 1;
+}
+
+.nav-section-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 0.5rem 1.25rem 0.25rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0.55rem 1.25rem;
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+  user-select: none;
+}
+
+.nav-item:hover { color: var(--text-1); background: var(--bg-2); }
+.nav-item.active { color: var(--text-1); background: var(--bg-2); border-left-color: var(--gold); }
+
+.nav-icon {
+  width: 15px; height: 15px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+.nav-item.active .nav-icon, .nav-item:hover .nav-icon { opacity: 1; }
+
+.nav-badge {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 9px;
+  background: var(--bg-4);
+  color: var(--text-3);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.sidebar-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-avatar {
+  width: 28px; height: 28px;
+  background: var(--bg-4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.user-info { flex: 1; min-width: 0; }
+.user-name { font-size: 12px; font-weight: 500; color: var(--text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-role { font-size: 10px; color: var(--text-3); }
+
+/* MAIN */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+/* SCREENS */
+.screen { display: none; padding: 2.5rem 2.5rem; animation: fadeIn 0.2s ease; min-height: 100%; }
+.screen.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--text-1);
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.page-sub {
+  font-size: 13px;
+  color: var(--text-2);
+  font-weight: 300;
+}
+
+/* CARDS */
+.card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.card-sm { padding: 1rem 1.25rem; }
+
+/* DASHBOARD */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.action-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold-glow);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.action-card:hover { border-color: var(--border-md); transform: translateY(-1px); box-shadow: var(--shadow); }
+.action-card:hover::before { opacity: 1; }
+
+.action-card-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icon-gold { background: var(--gold-dim); }
+.icon-blue { background: var(--blue-dim); }
+.icon-green { background: var(--green-dim); }
+
+.action-card-icon svg { width: 18px; height: 18px; }
+
+.action-card-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-1);
+  margin-bottom: 4px;
+}
+
+.action-card-desc {
+  font-size: 12px;
+  color: var(--text-2);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.action-card-arrow {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  color: var(--text-3);
+  font-size: 16px;
+  transition: transform 0.2s, color 0.2s;
+}
+.action-card:hover .action-card-arrow { transform: translate(2px, -2px); color: var(--gold); }
+
+/* INSIGHTS STRIP */
+.insights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.insight-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.insight-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.75rem;
+}
+
+.insight-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+  margin-bottom: 0.75rem;
+}
+
+.demand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.demand-query {
+  font-size: 12px;
+  color: var(--text-2);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.demand-bar-wrap {
+  width: 80px;
+  height: 4px;
+  background: var(--bg-4);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.demand-bar {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+.demand-vol {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-3);
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.stat-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-block { flex: 1; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--text-1);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.stat-lbl { font-size: 11px; color: var(--text-2); font-weight: 300; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.pill-gold { background: var(--gold-dim); color: var(--gold); }
+.pill-green { background: var(--green-dim); color: var(--green); }
+.pill-blue { background: var(--blue-dim); color: var(--blue); }
+.pill-amber { background: var(--amber-dim); color: var(--amber); }
+
+/* GENERATE SCREEN */
+.generate-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.step-section { margin-bottom: 1.75rem; }
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.step-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--bg-3);
+  border: 1px solid var(--border-md);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.step-num.done {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-1);
+}
+
+.step-sub {
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 300;
+}
+
+.btn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sel-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-2);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+  line-height: 1.4;
+}
+
+.sel-btn:hover { color: var(--text-1); border-color: var(--border-md); background: var(--bg-3); }
+.sel-btn.selected { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+
+.generate-sidebar { position: sticky; top: 0; }
+
+.summary-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.summary-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.75rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+.summary-item:last-child { border-bottom: none; }
+.summary-key { color: var(--text-2); }
+.summary-val { color: var(--text-1); font-weight: 500; max-width: 140px; text-align: right; }
+.summary-val.empty { color: var(--text-3); font-style: italic; font-weight: 300; }
+
+.btn-generate {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  background: var(--gold);
+  color: #1a1200;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-generate:hover { background: #d4a56a; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(196,149,90,0.3); }
+.btn-generate:active { transform: translateY(0); }
+.btn-generate:disabled { background: var(--bg-3); color: var(--text-3); cursor: not-allowed; transform: none; box-shadow: none; }
+
+.tone-note {
+  font-size: 11px;
+  color: var(--text-3);
+  line-height: 1.6;
+  margin-top: 0.75rem;
+  font-weight: 300;
+}
+
+/* OUTPUT SCREEN */
+.output-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.btn-back:hover { color: var(--text-1); }
+
+.output-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.output-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.output-tab {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--sans);
+}
+
+.output-tab:hover { color: var(--text-1); border-color: var(--border-md); }
+.output-tab.active { color: var(--text-1); border-color: var(--border-md); background: var(--bg-2); }
+
+.email-card-out {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.email-card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.email-seq-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.email-timing-label {
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.email-subject-row {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+}
+
+.email-field-label { font-size: 10px; color: var(--text-3); margin-bottom: 2px; font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; }
+.email-field-val { font-size: 13px; color: var(--text-1); font-weight: 500; }
+
+.email-body-text {
+  padding: 1.25rem;
+  font-size: 13px;
+  color: var(--text-1);
+  line-height: 1.85;
+}
+
+.email-body-text p { margin-bottom: 0.85rem; }
+.email-body-text p:last-child { margin-bottom: 0; }
+
+.email-sig-block {
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg-2);
+  font-size: 11px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+.email-sig-name { font-weight: 500; color: var(--text-1); margin-bottom: 2px; font-size: 12px; }
+
+/* OUTPUT SIDEBAR */
+.output-actions-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.actions-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.75rem;
+}
+
+.action-btn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.action-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.action-btn:hover { color: var(--text-1); border-color: var(--border-md); background: var(--bg-3); }
+
+.action-btn-icon { flex-shrink: 0; opacity: 0.6; width: 13px; height: 13px; }
+
+.copy-all-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-2);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 0.5rem;
+}
+.copy-all-btn:hover { background: var(--bg-3); border-color: var(--border-hi); }
+.copy-all-btn.copied { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+
+/* CRM SCREEN */
+.crm-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.btn-new {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a1200;
+  background: var(--gold);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--sans);
+}
+.btn-new:hover { background: #d4a56a; }
+
+.crm-table-wrap {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+table { width: 100%; border-collapse: collapse; }
+
+thead tr {
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 0.85rem 1rem;
+  font-weight: 300;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+  cursor: default;
+}
+
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg-2); }
+
+td {
+  padding: 0.85rem 1rem;
+  font-size: 13px;
+  color: var(--text-1);
+  vertical-align: middle;
+}
+
+.td-name { font-weight: 500; }
+.td-muted { color: var(--text-2); font-size: 12px; }
+
+.stage-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.stage-new { background: var(--blue-dim); color: var(--blue); }
+.stage-contacted { background: var(--amber-dim); color: var(--amber); }
+.stage-consult { background: var(--green-dim); color: var(--green); }
+.stage-retained { background: var(--gold-dim); color: var(--gold); }
+
+.td-actions {
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+tbody tr:hover .td-actions { opacity: 1; }
+
+.tbl-action-btn {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--sans);
+  white-space: nowrap;
+}
+.tbl-action-btn:hover { color: var(--text-1); border-color: var(--border-md); }
+
+/* DEMAND SCREEN */
+.demand-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.demand-category-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.demand-cat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.demand-cat-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+}
+
+.demand-query-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.demand-query-row:last-of-type { border-bottom: none; }
+
+.demand-query-text {
+  flex: 1;
+  font-size: 12px;
+  color: var(--text-2);
+  line-height: 1.4;
+}
+
+.demand-vol-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.demand-mini-bar-wrap {
+  width: 50px;
+  height: 3px;
+  background: var(--bg-4);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.demand-mini-bar { height: 100%; border-radius: 2px; background: var(--gold); }
+
+.gen-from-demand-btn {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--sans);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.gen-from-demand-btn:hover { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+
+/* LOADING */
+.loading-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(14,15,17,0.85);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.loading-overlay.active { display: flex; }
+
+.loading-spinner {
+  width: 36px; height: 36px;
+  border: 2px solid var(--bg-3);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text {
+  font-size: 13px;
+  color: var(--text-2);
+  font-weight: 300;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--bg-3);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.25rem;
+  font-size: 13px;
+  color: var(--text-1);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  animation: slideIn 0.2s ease;
+  box-shadow: var(--shadow-lg);
+}
+.toast.active { display: flex; }
+@keyframes slideIn { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.toast-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+/* DIVIDER */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.75rem 0;
+}
+
+/* SCROLLBAR */
+.main::-webkit-scrollbar { width: 4px; }
+.main::-webkit-scrollbar-track { background: transparent; }
+.main::-webkit-scrollbar-thumb { background: var(--bg-4); border-radius: 2px; }
+.main::-webkit-scrollbar-thumb:hover { background: var(--bg-3); }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">
+        <div class="brand-icon"><span>SRB</span></div>
+        <div class="brand-name">Stone Rowe Brewer</div>
+      </div>
+      <div class="brand-sub">Growth assistant</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item active" onclick="showScreen('dashboard', this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="1" y="1" width="6" height="6" rx="1.5"/>
+          <rect x="9" y="1" width="6" height="6" rx="1.5"/>
+          <rect x="1" y="9" width="6" height="6" rx="1.5"/>
+          <rect x="9" y="9" width="6" height="6" rx="1.5"/>
+        </svg>
+        Dashboard
+      </div>
+      <div class="nav-item" onclick="showScreen('generate', this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 1v14M1 8h14"/>
+        </svg>
+        Generate outreach
+      </div>
+      <div class="nav-item" onclick="showScreen('demand', this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="1,12 5,7 8,10 11,5 15,8"/>
+        </svg>
+        Demand insights
+        <span class="nav-badge">Live</span>
+      </div>
+
+      <div class="nav-section-label" style="margin-top:0.75rem;">Clients</div>
+      <div class="nav-item" onclick="showScreen('crm', this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="6" cy="5" r="3"/>
+          <path d="M1 14c0-3 2-5 5-5s5 2 5 5"/>
+          <path d="M11 3c1.5 0 3 1 3 3s-1.5 3-3 3"/>
+        </svg>
+        Enquiry tracker
+        <span class="nav-badge">6</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">LB</div>
+        <div class="user-info">
+          <div class="user-name">Lisa Broddle</div>
+          <div class="user-role">Partner · Family Law</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- DASHBOARD -->
+    <div id="screen-dashboard" class="screen active">
+      <div class="topbar">
+        <div>
+          <div class="page-title">Client Growth Assistant</div>
+          <div class="page-sub">Turn demand into conversations — in minutes.</div>
+        </div>
+        <span class="pill pill-green">
+          <svg width="5" height="5" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="currentColor"/></svg>
+          Active
+        </span>
+      </div>
+
+      <div class="dash-grid">
+        <div class="action-card" onclick="showScreen('generate', document.querySelector('[onclick*=generate]'))">
+          <div class="action-card-icon icon-gold">
+            <svg viewBox="0 0 18 18" fill="none" stroke="#c4955a" stroke-width="1.5">
+              <path d="M9 1v16M1 9h16"/>
+            </svg>
+          </div>
+          <div class="action-card-title">Generate outreach</div>
+          <div class="action-card-desc">Build a cold email sequence, LinkedIn message, or guide in under 60 seconds.</div>
+          <span class="action-card-arrow">↗</span>
+        </div>
+
+        <div class="action-card" onclick="showScreen('crm', document.querySelectorAll('.nav-item')[3])">
+          <div class="action-card-icon icon-blue">
+            <svg viewBox="0 0 18 18" fill="none" stroke="#60a5fa" stroke-width="1.5">
+              <rect x="1" y="3" width="16" height="12" rx="2"/>
+              <path d="M1 7h16"/>
+            </svg>
+          </div>
+          <div class="action-card-title">View recent enquiries</div>
+          <div class="action-card-desc">Track who you've contacted, their stage, and when to follow up.</div>
+          <span class="action-card-arrow">↗</span>
+        </div>
+
+        <div class="action-card" onclick="showScreen('demand', document.querySelectorAll('.nav-item')[2])">
+          <div class="action-card-icon icon-green">
+            <svg viewBox="0 0 18 18" fill="none" stroke="#4ade80" stroke-width="1.5">
+              <polyline points="1,14 5,8 9,11 13,5 17,9"/>
+            </svg>
+          </div>
+          <div class="action-card-title">Understand demand</div>
+          <div class="action-card-desc">See what people are searching for locally — and what to write about.</div>
+          <span class="action-card-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight-card">
+          <div class="insight-label">Local search demand — Twickenham / Middlesex</div>
+          <div class="insight-title">What people are searching for right now</div>
+          <div class="demand-row">
+            <div class="demand-query">divorce solicitor twickenham</div>
+            <div class="demand-bar-wrap"><div class="demand-bar" style="width:100%"></div></div>
+            <div class="demand-vol">590</div>
+          </div>
+          <div class="demand-row">
+            <div class="demand-query">family law solicitor middlesex</div>
+            <div class="demand-bar-wrap"><div class="demand-bar" style="width:82%"></div></div>
+            <div class="demand-vol">480</div>
+          </div>
+          <div class="demand-row">
+            <div class="demand-query">how to file for divorce uk</div>
+            <div class="demand-bar-wrap"><div class="demand-bar" style="width:75%"></div></div>
+            <div class="demand-vol">440</div>
+          </div>
+          <div class="demand-row">
+            <div class="demand-query">free divorce consultation near me</div>
+            <div class="demand-bar-wrap"><div class="demand-bar" style="width:55%"></div></div>
+            <div class="demand-vol">320</div>
+          </div>
+          <div class="demand-row">
+            <div class="demand-query">business owner divorce solicitor</div>
+            <div class="demand-bar-wrap"><div class="demand-bar" style="width:32%"></div></div>
+            <div class="demand-vol">190</div>
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-label">Your stats this month</div>
+          <div class="stat-row">
+            <div class="stat-block">
+              <div class="stat-num">6</div>
+              <div class="stat-lbl">Active enquiries</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">3</div>
+              <div class="stat-lbl">Consultations booked</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">1</div>
+              <div class="stat-lbl">Clients retained</div>
+            </div>
+          </div>
+          <div class="section-divider" style="margin:0.85rem 0;"></div>
+          <div style="font-size:12px; color:var(--text-2); font-weight:300; line-height:1.7;">
+            Your free consultation offer has a strong hook — 320 local searches/month for <span style="color:var(--text-1);">"free divorce consultation near me"</span>. Consider a dedicated landing page.
+          </div>
+          <div style="margin-top:0.75rem; display:flex; gap:6px; flex-wrap:wrap;">
+            <span class="pill pill-gold">SRA regulated</span>
+            <span class="pill pill-blue">40+ years</span>
+            <span class="pill pill-amber">1hr free consult</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GENERATE -->
+    <div id="screen-generate" class="screen">
+      <div class="topbar">
+        <div>
+          <div class="page-title">Generate outreach</div>
+          <div class="page-sub">Pick your audience and output — we'll do the rest.</div>
+        </div>
+      </div>
+
+      <div class="generate-layout">
+        <div>
+          <div class="step-section">
+            <div class="step-header">
+              <div class="step-num" id="step1-num">1</div>
+              <div>
+                <div class="step-title">Who do you want to reach?</div>
+                <div class="step-sub">Pick the type of client you're targeting.</div>
+              </div>
+            </div>
+            <div class="btn-grid" id="audience-btns">
+              <button class="sel-btn" onclick="select('audience', 'General divorce enquiries', this)">General divorce enquiries</button>
+              <button class="sel-btn" onclick="select('audience', 'High net worth', this)">High net worth</button>
+              <button class="sel-btn" onclick="select('audience', 'Business owner divorce', this)">Business owner divorce</button>
+              <button class="sel-btn" onclick="select('audience', 'Divorce with children', this)">Divorce with children</button>
+              <button class="sel-btn" onclick="select('audience', 'Early-stage separation', this)">Early-stage separation</button>
+              <button class="sel-btn" onclick="select('audience', 'International clients', this)">International clients</button>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="step-section">
+            <div class="step-header">
+              <div class="step-num" id="step2-num">2</div>
+              <div>
+                <div class="step-title">Where are they in the process?</div>
+                <div class="step-sub">This shapes the tone — urgent vs. exploratory.</div>
+              </div>
+            </div>
+            <div class="btn-grid">
+              <button class="sel-btn" onclick="select('situation', 'Just exploring options', this)">Just exploring options</button>
+              <button class="sel-btn" onclick="select('situation', 'In the process', this)">In the process</button>
+              <button class="sel-btn" onclick="select('situation', 'Need legal help now', this)">Need legal help now</button>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="step-section">
+            <div class="step-header">
+              <div class="step-num" id="step3-num">3</div>
+              <div>
+                <div class="step-title">What do you want to generate?</div>
+                <div class="step-sub">Choose your output format.</div>
+              </div>
+            </div>
+            <div class="btn-grid">
+              <button class="sel-btn" onclick="select('output', 'Cold email sequence (3 emails)', this)">Cold email sequence (3 emails)</button>
+              <button class="sel-btn" onclick="select('output', 'LinkedIn message', this)">LinkedIn message</button>
+              <button class="sel-btn" onclick="select('output', 'One-page plain English guide', this)">One-page plain English guide</button>
+              <button class="sel-btn" onclick="select('output', 'Google ad copy', this)">Google ad copy</button>
+              <button class="sel-btn" onclick="select('output', 'Follow-up email', this)">Follow-up email</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="generate-sidebar">
+          <div class="summary-card">
+            <div class="summary-label">Your selections</div>
+            <div class="summary-item">
+              <span class="summary-key">Audience</span>
+              <span class="summary-val" id="sum-audience"><span class="empty">Not selected</span></span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-key">Situation</span>
+              <span class="summary-val" id="sum-situation"><span class="empty">Not selected</span></span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-key">Output</span>
+              <span class="summary-val" id="sum-output"><span class="empty">Not selected</span></span>
+            </div>
+          </div>
+
+          <button class="btn-generate" id="gen-btn" onclick="doGenerate()" disabled>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="3,1 13,7 3,13"/>
+            </svg>
+            Generate
+          </button>
+          <div class="tone-note">Tone: empathetic, plain English, SRA-compliant. No jargon. Always includes a free consultation CTA.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTPUT -->
+    <div id="screen-output" class="screen">
+      <div class="output-topbar">
+        <button class="btn-back" onclick="showScreen('generate', document.querySelectorAll('.nav-item')[1])">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L3 7l6 5"/></svg>
+          Back to generate
+        </button>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <span class="pill pill-green">Ready to use</span>
+          <button class="copy-all-btn" id="copy-all-btn" onclick="copyAll()" style="width:auto; padding:5px 14px; font-size:12px; margin:0;">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="9" height="9" rx="1.5"/><path d="M1 10V1h9"/></svg>
+            Copy all
+          </button>
+        </div>
+      </div>
+
+      <div class="output-layout">
+        <div>
+          <div class="output-tabs">
+            <button class="output-tab active" onclick="selectTab(this, 'email-1')">Email 1</button>
+            <button class="output-tab" onclick="selectTab(this, 'email-2')">Email 2</button>
+            <button class="output-tab" onclick="selectTab(this, 'email-3')">Email 3</button>
+          </div>
+
+          <!-- EMAIL 1 -->
+          <div id="out-email-1">
+            <div class="email-card-out">
+              <div class="email-card-header">
+                <span class="email-seq-badge pill-blue pill" style="font-family:var(--mono); font-size:9px; letter-spacing:0.15em;">Email 1 of 3</span>
+                <span class="email-timing-label">Send day 1 — Tue or Wed, 8–9am</span>
+              </div>
+              <div class="email-subject-row">
+                <div class="email-field-label">Subject</div>
+                <div class="email-field-val" id="e1-subject">Running a business through a divorce is a lot to manage</div>
+              </div>
+              <div class="email-body-text" id="e1-body">
+                <p>Hi [First name],</p>
+                <p>Going through a divorce is hard enough on its own. Doing it while also running a business — worrying about what happens to the company, the assets, the staff, the income — is genuinely one of the more stressful situations I see people navigate.</p>
+                <p>If you're in the middle of this right now and haven't yet had clear, practical advice on what your position actually is, I'd really like to help.</p>
+                <p>I'm a family law partner at Stone Rowe Brewer in Twickenham. We've been advising individuals and business owners on divorce and separation for over 40 years. I work specifically with clients where a business is part of the picture — because it changes things significantly, and getting the right advice early makes a real difference to the outcome.</p>
+                <p>I'm offering a free one-hour consultation — no obligation, no pressure — where we can talk through your situation plainly and I can give you an honest picture of where you stand.</p>
+                <p>You can book directly at stonerowe.co.uk, or simply reply to this email and I'll come back to you the same day.</p>
+              </div>
+              <div class="email-sig-block">
+                <div class="email-sig-name">[Your name]</div>
+                <div>Partner, Family Law · Stone Rowe Brewer<br>Stone House, 12–13 Church Street, Twickenham TW1 3NJ<br>020 8891 6141 · stonerowe.co.uk · SRA No. 520181</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EMAIL 2 -->
+          <div id="out-email-2" style="display:none;">
+            <div class="email-card-out">
+              <div class="email-card-header">
+                <span class="email-seq-badge pill-amber pill" style="font-family:var(--mono); font-size:9px; letter-spacing:0.15em;">Email 2 of 3</span>
+                <span class="email-timing-label">Send day 5 — if no reply</span>
+              </div>
+              <div class="email-subject-row">
+                <div class="email-field-label">Subject</div>
+                <div class="email-field-val">One question worth thinking about</div>
+              </div>
+              <div class="email-body-text">
+                <p>Hi [First name],</p>
+                <p>Just a brief follow-up to my previous note.</p>
+                <p>One question I often hear from business owners going through this: <em>"How is my business actually valued in a divorce — and does my spouse have a claim on it?"</em></p>
+                <p>The honest answer is: it depends on a number of factors, and the answer matters enormously. The way a business is structured, when it was founded, how profits have been used — all of it affects what happens. In some situations, the business is well protected. In others, it's very much in scope.</p>
+                <p>That's exactly the kind of thing I'd want to talk through in a first conversation — before decisions get made that are harder to unpick later.</p>
+                <p>The free hour I mentioned is still open. No commitment, no bill. Book at stonerowe.co.uk or just reply here.</p>
+              </div>
+              <div class="email-sig-block">
+                <div class="email-sig-name">[Your name]</div>
+                <div>Partner, Family Law · Stone Rowe Brewer · 020 8891 6141</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EMAIL 3 -->
+          <div id="out-email-3" style="display:none;">
+            <div class="email-card-out">
+              <div class="email-card-header">
+                <span class="email-seq-badge pill-gold pill" style="font-family:var(--mono); font-size:9px; letter-spacing:0.15em; background:var(--gold-dim); color:var(--gold);">Email 3 of 3</span>
+                <span class="email-timing-label">Send day 14 — final touch</span>
+              </div>
+              <div class="email-subject-row">
+                <div class="email-field-label">Subject</div>
+                <div class="email-field-val">Leaving the door open</div>
+              </div>
+              <div class="email-body-text">
+                <p>Hi [First name],</p>
+                <p>This will be my last message — I don't want to fill your inbox at what's already a difficult time.</p>
+                <p>I just wanted to say: if you do ever want to talk things through, the offer stands. We work with a lot of business owners going through separation, and the people who come to us early — before things get complicated or contentious — tend to get much better outcomes.</p>
+                <p>You don't need to have everything figured out before we speak. That's exactly what the first conversation is for.</p>
+                <p>stonerowe.co.uk · 020 8891 6141</p>
+                <p>Take care of yourself.</p>
+              </div>
+              <div class="email-sig-block">
+                <div class="email-sig-name">[Your name]</div>
+                <div>Partner, Family Law · Stone Rowe Brewer · SRA No. 520181</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OUTPUT SIDEBAR -->
+        <div>
+          <div class="output-actions-card">
+            <div class="actions-label">Adjust this email</div>
+            <div class="action-btn-list">
+              <button class="action-btn" onclick="adjustToast('Making it shorter and more direct...')">
+                <svg class="action-btn-icon" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6.5h9M6.5 2v9"/><circle cx="6.5" cy="6.5" r="5.5"/></svg>
+                Make shorter
+              </button>
+              <button class="action-btn" onclick="adjustToast('Adjusting to a more formal register...')">
+                <svg class="action-btn-icon" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4h11M1 8h11M4 1v11M9 1v11"/></svg>
+                More formal
+              </button>
+              <button class="action-btn" onclick="adjustToast('Emphasising financial risk and business exposure...')">
+                <svg class="action-btn-icon" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1,10 4,5 7,8 10,3 12,5"/></svg>
+                Focus on financial risk
+              </button>
+              <button class="action-btn" onclick="adjustToast('Adding a stronger consultation CTA...')">
+                <svg class="action-btn-icon" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="11" height="8" rx="1.5"/><path d="M4 3V2a2 2 0 014 0v1"/></svg>
+                Add consultation CTA
+              </button>
+              <button class="action-btn" onclick="adjustToast('Rewriting for LinkedIn message format...')">
+                <svg class="action-btn-icon" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="11" height="11" rx="2"/><path d="M4 6v4M4 4v.5M7 10V6m0 0c0-1 3-1.5 3 0v4"/></svg>
+                LinkedIn version
+              </button>
+            </div>
+          </div>
+
+          <div class="output-actions-card">
+            <div class="actions-label">Context</div>
+            <div style="font-size:12px; color:var(--text-2); line-height:1.7; font-weight:300;">
+              <strong style="color:var(--text-1); font-weight:500;">Audience:</strong> Business owner divorce<br>
+              <strong style="color:var(--text-1); font-weight:500;">Situation:</strong> Need legal help now<br>
+              <strong style="color:var(--text-1); font-weight:500;">Format:</strong> Cold email sequence
+            </div>
+            <div style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--border); font-size:11px; color:var(--text-3); line-height:1.6;">
+              Tone: empathetic, direct, plain English. Free consultation CTA included throughout.
+            </div>
+          </div>
+
+          <button class="btn-generate" style="font-size:13px;" onclick="showScreen('generate', document.querySelectorAll('.nav-item')[1])">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 2L2 7l5 5M2 7h9"/></svg>
+            Generate another
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRM -->
+    <div id="screen-crm" class="screen">
+      <div class="crm-topbar">
+        <div>
+          <div class="page-title">Enquiry tracker</div>
+          <div class="page-sub">6 active enquiries · 3 consultations booked this month</div>
+        </div>
+        <button class="btn-new" onclick="showToast('New enquiry form coming soon')">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 1v10M1 6h10"/></svg>
+          Add enquiry
+        </button>
+      </div>
+
+      <div class="crm-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Situation</th>
+              <th>Stage</th>
+              <th>Last action</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="td-name">James Hartley</div>
+                <div class="td-muted">Business owner · Twickenham</div>
+              </td>
+              <td class="td-muted">Business owner divorce</td>
+              <td><span class="stage-pill stage-consult">Consultation booked</span></td>
+              <td class="td-muted">Email sent 3 days ago</td>
+              <td>
+                <div class="td-actions">
+                  <button class="tbl-action-btn" onclick="showToast('Note added for James Hartley')">Add note</button>
+                  <button class="tbl-action-btn" onclick="showToast('Generating follow-up for James Hartley...')">Generate follow-up</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="td-name">Sarah Pemberton</div>
+                <div class="td-muted">General · Teddington</div>
+              </td>
+              <td class="td-muted">Divorce with children</td>
+              <td><span class="stage-pill stage-contacted">Contacted</span></td>
+              <td class="td-muted">LinkedIn message, 5 days ago</td>
+              <td>
+                <div class="td-actions">
+                  <button class="tbl-action-btn" onclick="showToast('Note added for Sarah Pemberton')">Add note</button>
+                  <button class="tbl-action-btn" onclick="showToast('Generating follow-up for Sarah Pemberton...')">Generate follow-up</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="td-name">Marcus Webb</div>
+                <div class="td-muted">High net worth · Richmond</div>
+              </td>
+              <td class="td-muted">High net worth</td>
+              <td><span class="stage-pill stage-retained">Retained</span></td>
+              <td class="td-muted">Onboarded 12 Apr</td>
+              <td>
+                <div class="td-actions">
+                  <button class="tbl-action-btn" onclick="showToast('Note added for Marcus Webb')">Add note</button>
+                  <button class="tbl-action-btn" onclick="showToast('Viewing file for Marcus Webb...')">View file</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="td-name">Anita Shah</div>
+                <div class="td-muted">General · Twickenham</div>
+              </td>
+              <td class="td-muted">Early-stage separation</td>
+              <td><span class="stage-pill stage-new">New</span></td>
+              <td class="td-muted">Form submitted today</td>
+              <td>
+                <div class="td-actions">
+                  <button class="tbl-action-btn" onclick="showToast('Marking Anita Shah as contacted')">Mark contacted</button>
+                  <button class="tbl-action-btn" onclick="showToast('Generating outreach for Anita Shah...')">Generate outreach</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="td-name">Tom & Rachel Curtis</div>
+                <div class="td-muted">Divorce · Teddington</div>
+              </td>
+              <td class="td-muted">Divorce with children</td>
+              <td><span class="stage-pill stage-consult">Consultation booked</span></td>
+              <td class="td-muted">Booked for 17 Apr</td>
+              <td>
+                <div class="td-actions">
+                  <button class="tbl-action-btn" onclick="showToast('Note added')">Add note</button>
+                  <button class="tbl-action-btn" onclick="showToast('Generating pre-consult guide...')">Pre-consult guide</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="td-name">Derek Patterson</div>
+                <div class="td-muted">Business owner · Kingston</div>
+              </td>
+              <td class="td-muted">Business owner divorce</td>
+              <td><span class="stage-pill stage-contacted">Contacted</span></td>
+              <td class="td-muted">Email 2 sent, day 5</td>
+              <td>
+                <div class="td-actions">
+                  <button class="tbl-action-btn" onclick="showToast('Note added for Derek Patterson')">Add note</button>
+                  <button class="tbl-action-btn" onclick="showToast('Drafting final follow-up for Derek...')">Send email 3</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DEMAND -->
+    <div id="screen-demand" class="screen">
+      <div class="topbar">
+        <div>
+          <div class="page-title">Demand insights</div>
+          <div class="page-sub">What people in Twickenham and Middlesex are searching for.</div>
+        </div>
+        <span class="pill pill-blue">Estimated monthly searches</span>
+      </div>
+
+      <div class="demand-grid">
+        <div class="demand-category-card">
+          <div class="demand-cat-header">
+            <span class="demand-cat-title">Finding a solicitor</span>
+            <span class="pill pill-gold">High volume</span>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">divorce solicitor twickenham</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:100%"></div></div>
+            <div class="demand-vol-badge">590/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('General divorce enquiries')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">family law solicitor middlesex</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:82%"></div></div>
+            <div class="demand-vol-badge">480/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('General divorce enquiries')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">free divorce consultation near me</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:55%"></div></div>
+            <div class="demand-vol-badge">320/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('General divorce enquiries')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">best divorce lawyer richmond</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:40%"></div></div>
+            <div class="demand-vol-badge">240/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('General divorce enquiries')">Generate →</button>
+          </div>
+        </div>
+
+        <div class="demand-category-card">
+          <div class="demand-cat-header">
+            <span class="demand-cat-title">Divorce process questions</span>
+            <span class="pill pill-blue">Guide opportunity</span>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">how to file for divorce uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:100%"></div></div>
+            <div class="demand-vol-badge">440/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('General divorce enquiries')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">how long does divorce take uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:80%"></div></div>
+            <div class="demand-vol-badge">350/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Early-stage separation')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">divorce without solicitor uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:65%"></div></div>
+            <div class="demand-vol-badge">290/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Early-stage separation')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">no fault divorce uk 2024</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:50%"></div></div>
+            <div class="demand-vol-badge">220/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('General divorce enquiries')">Generate →</button>
+          </div>
+        </div>
+
+        <div class="demand-category-card">
+          <div class="demand-cat-header">
+            <span class="demand-cat-title">Assets & finance</span>
+            <span class="pill pill-amber">High intent</span>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">how are assets split in divorce uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:100%"></div></div>
+            <div class="demand-vol-badge">410/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('High net worth')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">business owner divorce settlement uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:72%"></div></div>
+            <div class="demand-vol-badge">290/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Business owner divorce')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">can spouse claim my business divorce</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:55%"></div></div>
+            <div class="demand-vol-badge">220/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Business owner divorce')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">pension divorce settlement uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:42%"></div></div>
+            <div class="demand-vol-badge">170/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('High net worth')">Generate →</button>
+          </div>
+        </div>
+
+        <div class="demand-category-card">
+          <div class="demand-cat-header">
+            <span class="demand-cat-title">Children & family</span>
+            <span class="pill pill-green">Emotional</span>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">child custody arrangements divorce uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:100%"></div></div>
+            <div class="demand-vol-badge">380/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Divorce with children')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">who gets the house in divorce with kids</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:78%"></div></div>
+            <div class="demand-vol-badge">300/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Divorce with children')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">child maintenance divorce uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:60%"></div></div>
+            <div class="demand-vol-badge">240/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Divorce with children')">Generate →</button>
+          </div>
+          <div class="demand-query-row">
+            <div class="demand-query-text">mediation divorce children uk</div>
+            <div class="demand-mini-bar-wrap"><div class="demand-mini-bar" style="width:42%"></div></div>
+            <div class="demand-vol-badge">170/mo</div>
+            <button class="gen-from-demand-btn" onclick="goGenerateFromDemand('Divorce with children')">Generate →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loading">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loading-text">Generating your outreach...</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-dot"></div>
+  <span id="toast-msg">Done</span>
+</div>
+
+<script>
+const state = { audience: null, situation: null, output: null };
+
+function showScreen(id, navEl) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (navEl) navEl.classList.add('active');
+}
+
+function select(key, val, btn) {
+  state[key] = val;
+  btn.closest('.btn-grid').querySelectorAll('.sel-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateSummary();
+  updateStepNums();
+  document.getElementById('gen-btn').disabled = !(state.audience && state.situation && state.output);
+}
+
+function updateSummary() {
+  const keys = ['audience', 'situation', 'output'];
+  keys.forEach(k => {
+    const el = document.getElementById('sum-' + k);
+    el.innerHTML = state[k] ? state[k] : '<span class="empty">Not selected</span>';
+  });
+}
+
+function updateStepNums() {
+  if (state.audience) document.getElementById('step1-num').classList.add('done');
+  if (state.situation) document.getElementById('step2-num').classList.add('done');
+  if (state.output) document.getElementById('step3-num').classList.add('done');
+}
+
+function doGenerate() {
+  const msgs = ['Thinking about your audience...', 'Shaping the tone...', 'Writing your emails...', 'Almost ready...'];
+  let i = 0;
+  const loadEl = document.getElementById('loading-text');
+  document.getElementById('loading').classList.add('active');
+  const interval = setInterval(() => {
+    i++;
+    if (i < msgs.length) loadEl.textContent = msgs[i];
+  }, 600);
+  setTimeout(() => {
+    clearInterval(interval);
+    document.getElementById('loading').classList.remove('active');
+    showScreen('output', null);
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    showToast('Output ready — 3 emails generated');
+  }, 2600);
+}
+
+function selectTab(btn, emailId) {
+  document.querySelectorAll('.output-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['email-1','email-2','email-3'].forEach(id => {
+    document.getElementById('out-' + id).style.display = id === emailId ? 'block' : 'none';
+  });
+}
+
+function copyAll() {
+  const btn = document.getElementById('copy-all-btn');
+  btn.classList.add('copied');
+  btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,7 5,10 11,3"/></svg> Copied';
+  showToast('All 3 emails copied to clipboard');
+  setTimeout(() => {
+    btn.classList.remove('copied');
+    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="9" height="9" rx="1.5"/><path d="M1 10V1h9"/></svg> Copy all';
+  }, 2500);
+}
+
+function adjustToast(msg) {
+  showToast(msg);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('active');
+  setTimeout(() => t.classList.remove('active'), 3000);
+}
+
+function goGenerateFromDemand(audience) {
+  showScreen('generate', document.querySelectorAll('.nav-item')[1]);
+  setTimeout(() => {
+    const btns = document.querySelectorAll('#audience-btns .sel-btn');
+    btns.forEach(b => {
+      if (b.textContent.trim() === audience) {
+        b.click();
+      }
+    });
+    showToast('Audience pre-selected: ' + audience);
+  }, 150);
+}
+</script>
+</body>
+</html>

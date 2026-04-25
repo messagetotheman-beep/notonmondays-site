@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Insights — Not On Mondays</title>
+<meta name="description" content="Useful thinking on delivery, operations, service design, digital change, and client experience from Not On Mondays.">
+<link rel="canonical" href="https://www.notonmondays.com/insights/">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.notonmondays.com/insights/">
+<meta property="og:title" content="Insights — Not On Mondays">
+<meta property="og:description" content="Useful thinking on delivery, operations, service design, digital change, and client experience.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/insights/">
+<meta name="twitter:title" content="Insights — Not On Mondays">
+<meta name="twitter:description" content="Useful thinking on delivery, operations, service design, digital change, and client experience.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<!-- Shared base styles -->
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ───────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.65rem 1.4rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-weight: 300;
+}
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--deep-blue); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ──────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── Insights banner ─────────────────────────────── */
+.insights-banner {
+  background: var(--dark);
+  padding: 3.5rem 1.5rem 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-top: 72px;
+}
+.insights-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.insights-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 2rem;
+}
+.insights-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--off-white);
+  margin-bottom: 1.25rem;
+  max-width: 720px;
+}
+.insights-standfirst {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(242,240,232,0.55);
+  font-weight: 300;
+  max-width: 480px;
+}
+
+/* ── Insights list ───────────────────────────────── */
+.insights-list {
+  background: var(--warm-white);
+  padding: 0 1.5rem 6rem;
+}
+.insights-list-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── Insight item ────────────────────────────────── */
+.insights-item {
+  padding: 4rem 0;
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.insights-item:last-child { border-bottom: none; }
+
+.insights-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.25rem;
+}
+.insights-item-sep {
+  color: rgba(26,42,212,0.2);
+  user-select: none;
+}
+.insights-item-date { color: var(--muted); }
+
+.insights-item-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--dark);
+  margin-bottom: 0.85rem;
+}
+.insights-item-standfirst {
+  font-size: 0.925rem;
+  line-height: 1.8;
+  color: var(--mid);
+  font-weight: 300;
+  max-width: 600px;
+  margin-bottom: 1.75rem;
+}
+.insights-item-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.insights-item-link:hover,
+.insights-item-link:focus-visible { gap: 1rem; }
+
+/* ── Insights layout (featured + more) ───────────── */
+/* Single-column by default. When .insights-more has items,
+   the inner wrapper widens and the layout becomes two columns
+   on desktop. Column auto-hides when the list is empty. */
+.insights-list-inner:has(.insights-more li) {
+  max-width: 1100px;
+}
+.insights-more:not(:has(li)) { display: none; }
+
+/* ── More insights column ────────────────────────── */
+.insights-more {
+  padding-top: 4rem;
+}
+.insights-more-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.insights-more-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.insights-more-item {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.insights-more-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.insights-more-link {
+  display: block;
+  text-decoration: none;
+  color: var(--dark);
+  transition: color 0.2s ease;
+}
+.insights-more-link:hover,
+.insights-more-link:focus-visible { color: var(--blue); }
+.insights-more-link-title {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+.insights-more-meta {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Mobile: stack More insights below featured with divider */
+@media (max-width: 899px) {
+  .insights-more {
+    margin-top: 2rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(26,42,212,0.08);
+  }
+}
+
+/* ── Insights panel (reusable banner, below list) ── */
+.insights-panel {
+  background: var(--off-white);
+  border-top: 1px solid rgba(26,42,212,0.08);
+  padding: 3rem 1.5rem 3.5rem;
+}
+.insights-panel-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.insights-panel-content { }
+.insights-panel-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.25rem;
+}
+.insights-panel-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  max-width: 520px;
+}
+.insights-panel-body {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--mid);
+  font-weight: 300;
+  max-width: 520px;
+  margin-bottom: 1.5rem;
+}
+.insights-panel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.insights-panel-link:hover,
+.insights-panel-link:focus-visible { gap: 1rem; }
+
+/* Visual block on the right side of the split panel.
+   Currently holds an inline SVG (RAG rollup). Replace the
+   .insights-visual-frame contents with another <svg>, <img>,
+   or custom markup if the visual changes. All visual styles
+   are scoped under .insights-panel-visual so nothing leaks. */
+.insights-panel-visual {
+  /* Local palette — scoped; does not touch :root. */
+  --iv-card:     #EAE7DE;
+  --iv-ink:      #1A1A1F;
+  --iv-ink-40:   rgba(26,26,31,0.4);
+  --iv-ink-12:   rgba(26,26,31,0.12);
+  --iv-ink-6:    rgba(26,26,31,0.06);
+  --iv-blue:     #2B2CE0;
+  --iv-blue-20:  rgba(43,44,224,0.22);
+  --iv-sage:     #6E8A5D;
+  --iv-sage-20:  rgba(110,138,93,0.24);
+  --iv-clay:     #B55A3D;
+  --iv-clay-20:  rgba(181,90,61,0.22);
+  --iv-amber:    #C69A33;
+  --iv-amber-20: rgba(198,154,51,0.24);
+
+  min-width: 0;
+}
+
+.insights-panel-visual .insights-visual-frame {
+  background: var(--iv-card);
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border: 1px solid var(--iv-ink-12);
+  overflow: hidden;
+}
+.insights-panel-visual .insights-visual-frame svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* SVG classes — scoped under .insights-panel-visual so the
+   short generic names (.nom-cell, .nom-ok, etc.) cannot leak
+   to other pages even if reused elsewhere later. */
+.insights-panel-visual .nom-kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  fill: rgba(26,26,31,0.6);
+}
+.insights-panel-visual .nom-kicker-blue { fill: var(--iv-blue); }
+.insights-panel-visual .nom-rule {
+  stroke: var(--iv-ink-12);
+  stroke-width: 0.75;
+}
+.insights-panel-visual .nom-streamlabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  fill: var(--iv-ink);
+  text-transform: uppercase;
+}
+.insights-panel-visual .nom-weeknum {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  fill: var(--iv-ink-40);
+}
+.insights-panel-visual .nom-cell {
+  transition: fill 0.5s ease calc(var(--c, 0) * 30ms),
+              transform 0.5s ease calc(var(--c, 0) * 30ms);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.insights-panel-visual .nom-none { fill: var(--iv-ink-6); }
+.insights-panel-visual .nom-ok   { fill: var(--iv-sage-20); }
+.insights-panel-visual .nom-go   { fill: var(--iv-blue-20); }
+.insights-panel-visual .nom-warn { fill: var(--iv-amber-20); }
+.insights-panel-visual .nom-bad  { fill: var(--iv-clay-20); }
+
+.insights-panel-visual .insights-visual-frame:hover .nom-ok   { fill: var(--iv-sage); }
+.insights-panel-visual .insights-visual-frame:hover .nom-go   { fill: var(--iv-blue); }
+.insights-panel-visual .insights-visual-frame:hover .nom-warn { fill: var(--iv-amber); }
+.insights-panel-visual .insights-visual-frame:hover .nom-bad  { fill: var(--iv-clay); transform: scale(1.08); }
+
+.insights-panel-visual .nom-legend .nom-cell { fill-opacity: 1; }
+.insights-panel-visual .nom-legendtext {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  fill: rgba(26,26,31,0.6);
+  text-transform: uppercase;
+}
+
+/* Mobile: visual stacks below text. Keep 3/2 ratio so the
+   RAG grid stays readable at narrow widths. */
+@media (max-width: 899px) {
+  .insights-panel-visual {
+    margin-top: 2rem;
+  }
+}
+
+/* ── Mobile nav ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .nav-cta { display: none; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+@media (min-width: 900px) {
+  .insights-banner { padding: 5rem 4rem 4.5rem; }
+  .insights-list { padding: 0 4rem 7rem; }
+  .insights-panel { padding: 3.5rem 4rem 4rem; }
+
+  /* Split panel: text left, visual right */
+  .insights-panel-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  /* Two-column grid only when More insights has items */
+  .insights-layout:has(.insights-more li) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+</style>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/" aria-current="page">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+
+<main id="main-content">
+
+  <!-- Insights banner -->
+  <section class="insights-banner" aria-labelledby="insights-heading">
+    <div class="insights-banner-inner">
+      <p class="insights-eyebrow" aria-hidden="true">Not On Mondays · Insights</p>
+      <h1 id="insights-heading" class="insights-headline">
+        Useful thinking on delivery,<br>operations, and service design
+      </h1>
+      <p class="insights-standfirst">
+        We write when we have something worth saying.
+        Not a blog.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Insights article list -->
+  <section class="insights-list" aria-label="Published insights">
+    <div class="insights-list-inner">
+      <div class="insights-layout">
+
+        <!-- =============================================
+             FEATURED ARTICLES (left column, up to 4)
+             Copy an .insights-item block below for each
+             new featured article. Newest at the top.
+             When you exceed 4, move the oldest one into
+             .insights-more-list (see right column below).
+             ============================================= -->
+        <div class="insights-featured">
+
+      <!-- ================================================
+           INSIGHTS ITEM — copy this block for each article.
+           Update: href, datetime, date text, topic tags,
+                   id, headline, standfirst, read time.
+           Newest article at the top.
+           ================================================ -->
+      <article class="insights-item" aria-labelledby="insight-budget-heading">
+
+        <div class="insights-item-tags">
+          <span>Delivery</span>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <span>Digital Change</span>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <time class="insights-item-date" datetime="2026-04-18">April 2026</time>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <span class="insights-item-date">6 min read</span>
+        </div>
+
+        <h2 id="insight-budget-heading" class="insights-item-headline">
+          How to deliver digital change when budgets are tight
+        </h2>
+
+        <p class="insights-item-standfirst">
+          When budgets tighten, most organisations slow down or spread thin. The ones that keep delivering change how work runs, not just how much they spend.
+        </p>
+
+        <a href="/insights/delivering-on-a-tight-budget" class="insights-item-link" aria-label="Read: How to deliver digital change when budgets are tight. 6 min read.">
+          6 min read
+        </a>
+
+      </article>
+      <!-- /INSIGHTS ITEM -->
+
+      <article class="insights-item" aria-labelledby="insight-operating-heading">
+
+        <div class="insights-item-tags">
+          <span>Operations</span>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <span>Digital Delivery</span>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <time class="insights-item-date" datetime="2026-04-18">April 2026</time>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <span class="insights-item-date">7 min read</span>
+        </div>
+
+        <h2 id="insight-operating-heading" class="insights-item-headline">
+          You don't need a full digital team &mdash; you need the right operating layer
+        </h2>
+
+        <p class="insights-item-standfirst">
+          Most organisations are not short of ideas or skills. They are short of the coordination layer that turns direction into delivery.
+        </p>
+
+        <a href="/insights/operating-layer" class="insights-item-link" aria-label="Read: You don't need a full digital team, you need the right operating layer. 7 min read.">
+          7 min read
+        </a>
+
+      </article>
+      <!-- /INSIGHTS ITEM -->
+
+      <article class="insights-item" aria-labelledby="insight-legal-heading">
+
+        <div class="insights-item-tags">
+          <span>Service Design</span>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <span>Legal Sector</span>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <time class="insights-item-date" datetime="2026-04-17">April 2026</time>
+          <span class="insights-item-sep" aria-hidden="true">·</span>
+          <span class="insights-item-date">6 min read</span>
+        </div>
+
+        <h2 id="insight-legal-heading" class="insights-item-headline">
+          Why many legal firms struggle to deliver digital change
+        </h2>
+
+        <p class="insights-item-standfirst">
+          Most legal firms do not have a technology problem first. They have a service problem.
+          Here is what actually works when client behaviour has already moved online.
+        </p>
+
+        <a href="/insights/legal-digital-change" class="insights-item-link" aria-label="Read: Why many legal firms struggle to deliver digital change. 6 min read.">
+          6 min read
+        </a>
+
+      </article>
+      <!-- /INSIGHTS ITEM -->
+
+      <!-- Add future insights items here, following the same .insights-item pattern above -->
+
+        </div>
+        <!-- /FEATURED ARTICLES -->
+
+
+        <!-- =============================================
+             MORE INSIGHTS (right column, overflow)
+             This column stays hidden until the <ul> below
+             contains at least one <li>. When we have more
+             than 4 featured articles, move older ones here
+             in the following format:
+
+             <li class="insights-more-item">
+               <a href="/insights/slug" class="insights-more-link">
+                 <span class="insights-more-link-title">Headline</span>
+                 <span class="insights-more-meta">
+                   <time datetime="2025-12-01">Dec 2025</time> · 5 min
+                 </span>
+               </a>
+             </li>
+             ============================================= -->
+        <aside class="insights-more" aria-label="More insights">
+          <h2 class="insights-more-label">More insights</h2>
+          <ul class="insights-more-list">
+            <!-- Older articles go here. Column auto-hides while empty. -->
+          </ul>
+        </aside>
+        <!-- /MORE INSIGHTS -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       INSIGHTS PANEL (reusable split banner below list)
+       Left: short editorial copy (label, headline, body,
+             optional link). Update as thinking evolves.
+       Right: flexible visual/banner area. Swap the
+             placeholder for an <img>, <svg>, or custom
+             block when ready. Keep the .insights-panel-visual
+             wrapper so layout and aspect ratio are preserved.
+       Keeps styling calm and consistent. Not for promotional
+       or sales messaging. The link is optional; remove if
+       the panel is copy-only.
+       ============================================= -->
+  <section class="insights-panel" aria-labelledby="insights-panel-heading">
+    <div class="insights-panel-inner">
+
+      <div class="insights-panel-content">
+        <p class="insights-panel-label" aria-hidden="true">Currently thinking about</p>
+        <h2 id="insights-panel-heading" class="insights-panel-headline">
+          How operating models hold up when delivery gets harder.
+        </h2>
+        <p class="insights-panel-body">
+          A short note on what we are looking at right now. The patterns we keep seeing in organisations trying to move from plans on paper to work that actually runs. We will write more as the thinking settles.
+        </p>
+        <a href="/#contact" class="insights-panel-link">
+          Start a conversation
+        </a>
+      </div>
+
+      <!-- Visual / banner area.
+           Inline SVG — decorative RAG rollup illustrating
+           "how the work is running" for the editorial panel.
+           Source reference: assets/insights-visual.html.
+           All visual CSS is scoped under .insights-panel-visual
+           and will not leak to the rest of the page.
+           Keep aria-hidden="true" on the wrapper while the
+           visual is decorative. -->
+      <div class="insights-panel-visual" aria-hidden="true">
+        <div class="insights-visual-frame">
+          <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+            <text x="24" y="36" class="nom-kicker">HOW THE WORK IS RUNNING · LAST 10 WEEKS</text>
+            <text x="456" y="36" text-anchor="end" class="nom-kicker nom-kicker-blue">6 STREAMS</text>
+            <line x1="24" y1="52" x2="456" y2="52" class="nom-rule"/>
+
+            <!-- week numbers -->
+            <text x="155" y="74" text-anchor="middle" class="nom-weeknum">W9</text>
+            <text x="185" y="74" text-anchor="middle" class="nom-weeknum">W10</text>
+            <text x="215" y="74" text-anchor="middle" class="nom-weeknum">W11</text>
+            <text x="245" y="74" text-anchor="middle" class="nom-weeknum">W12</text>
+            <text x="275" y="74" text-anchor="middle" class="nom-weeknum">W13</text>
+            <text x="305" y="74" text-anchor="middle" class="nom-weeknum">W14</text>
+            <text x="335" y="74" text-anchor="middle" class="nom-weeknum">W15</text>
+            <text x="365" y="74" text-anchor="middle" class="nom-weeknum">W16</text>
+            <text x="395" y="74" text-anchor="middle" class="nom-weeknum">W17</text>
+            <text x="425" y="74" text-anchor="middle" class="nom-weeknum">W18</text>
+
+            <!-- Row 1: Operating model -->
+            <text x="132" y="99" text-anchor="end" class="nom-streamlabel">Operating model</text>
+            <rect x="142" y="86" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:0"/>
+            <rect x="172" y="86" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:1"/>
+            <rect x="202" y="86" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:2"/>
+            <rect x="232" y="86" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:3"/>
+            <rect x="262" y="86" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:4"/>
+            <rect x="292" y="86" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:5"/>
+            <rect x="322" y="86" width="26" height="18" class="nom-cell nom-warn" rx="1.5" style="--c:6"/>
+            <rect x="352" y="86" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:7"/>
+            <rect x="382" y="86" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:8"/>
+            <rect x="412" y="86" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:9"/>
+
+            <!-- Row 2: Client portal -->
+            <text x="132" y="121" text-anchor="end" class="nom-streamlabel">Client portal</text>
+            <rect x="142" y="108" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:0"/>
+            <rect x="172" y="108" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:1"/>
+            <rect x="202" y="108" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:2"/>
+            <rect x="232" y="108" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:3"/>
+            <rect x="262" y="108" width="26" height="18" class="nom-cell nom-warn" rx="1.5" style="--c:4"/>
+            <rect x="292" y="108" width="26" height="18" class="nom-cell nom-warn" rx="1.5" style="--c:5"/>
+            <rect x="322" y="108" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:6"/>
+            <rect x="352" y="108" width="26" height="18" class="nom-cell nom-bad"  rx="1.5" style="--c:7"/>
+            <rect x="382" y="108" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:8"/>
+            <rect x="412" y="108" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:9"/>
+
+            <!-- Row 3: Coffee & clarity -->
+            <text x="132" y="143" text-anchor="end" class="nom-streamlabel">Coffee &amp; clarity</text>
+            <rect x="142" y="130" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:0"/>
+            <rect x="172" y="130" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:1"/>
+            <rect x="202" y="130" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:2"/>
+            <rect x="232" y="130" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:3"/>
+            <rect x="262" y="130" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:4"/>
+            <rect x="292" y="130" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:5"/>
+            <rect x="322" y="130" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:6"/>
+            <rect x="352" y="130" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:7"/>
+            <rect x="382" y="130" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:8"/>
+            <rect x="412" y="130" width="26" height="18" class="nom-cell nom-go"   rx="1.5" style="--c:9"/>
+
+            <!-- Row 4: PMO stand-up -->
+            <text x="132" y="165" text-anchor="end" class="nom-streamlabel">PMO stand-up</text>
+            <rect x="142" y="152" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:0"/>
+            <rect x="172" y="152" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:1"/>
+            <rect x="202" y="152" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:2"/>
+            <rect x="232" y="152" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:3"/>
+            <rect x="262" y="152" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:4"/>
+            <rect x="292" y="152" width="26" height="18" class="nom-cell nom-warn" rx="1.5" style="--c:5"/>
+            <rect x="322" y="152" width="26" height="18" class="nom-cell nom-bad"  rx="1.5" style="--c:6"/>
+            <rect x="352" y="152" width="26" height="18" class="nom-cell nom-bad"  rx="1.5" style="--c:7"/>
+            <rect x="382" y="152" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:8"/>
+            <rect x="412" y="152" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:9"/>
+
+            <!-- Row 5: New website -->
+            <text x="132" y="187" text-anchor="end" class="nom-streamlabel">New website</text>
+            <rect x="142" y="174" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:0"/>
+            <rect x="172" y="174" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:1"/>
+            <rect x="202" y="174" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:2"/>
+            <rect x="232" y="174" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:3"/>
+            <rect x="262" y="174" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:4"/>
+            <rect x="292" y="174" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:5"/>
+            <rect x="322" y="174" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:6"/>
+            <rect x="352" y="174" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:7"/>
+            <rect x="382" y="174" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:8"/>
+            <rect x="412" y="174" width="26" height="18" class="nom-cell nom-warn" rx="1.5" style="--c:9"/>
+
+            <!-- Row 6: SEO review -->
+            <text x="132" y="209" text-anchor="end" class="nom-streamlabel">SEO review</text>
+            <rect x="142" y="196" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:0"/>
+            <rect x="172" y="196" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:1"/>
+            <rect x="202" y="196" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:2"/>
+            <rect x="232" y="196" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:3"/>
+            <rect x="262" y="196" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:4"/>
+            <rect x="292" y="196" width="26" height="18" class="nom-cell nom-none" rx="1.5" style="--c:5"/>
+            <rect x="322" y="196" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:6"/>
+            <rect x="352" y="196" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:7"/>
+            <rect x="382" y="196" width="26" height="18" class="nom-cell nom-bad"  rx="1.5" style="--c:8"/>
+            <rect x="412" y="196" width="26" height="18" class="nom-cell nom-ok"   rx="1.5" style="--c:9"/>
+
+            <!-- Legend -->
+            <g class="nom-legend" transform="translate(24 264)">
+              <rect x="0"   y="0" width="10" height="10" class="nom-cell nom-ok"   rx="1"/>
+              <text x="16"  y="9" class="nom-legendtext">on track</text>
+              <rect x="88"  y="0" width="10" height="10" class="nom-cell nom-go"   rx="1"/>
+              <text x="104" y="9" class="nom-legendtext">in flight</text>
+              <rect x="176" y="0" width="10" height="10" class="nom-cell nom-warn" rx="1"/>
+              <text x="192" y="9" class="nom-legendtext">watching</text>
+              <rect x="264" y="0" width="10" height="10" class="nom-cell nom-bad"  rx="1"/>
+              <text x="280" y="9" class="nom-legendtext">intervene</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- /INSIGHTS PANEL -->
+
+</main>
+
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays.html">About</a></li>
+      <li><a href="/#offerings">Services</a></li>
+      <li><a href="/#how-we-work">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
