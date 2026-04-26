@@ -297,6 +297,19 @@
         <span class="article-meta-tag">Delivery</span>
       </div>
 
+      <!-- Share row -->
+      <div class="article-share" data-share-text="Strategy does not fail in the slide deck. It fails in the operating layer between intent and delivery.">
+        <span class="article-share-label">Share</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-x" href="#" target="_blank" rel="noopener noreferrer">X</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-linkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <button class="article-share-link article-share-copy" id="share-copy" type="button">Copy link</button>
+        <span class="article-share-feedback" aria-live="polite" aria-atomic="true"></span>
+      </div>
+      <!-- /Share row -->
+
     </div>
   </section>
   <!-- /HERO -->
@@ -372,6 +385,29 @@
         </ul>
         <p>On the surface, this looks like a capacity issue. In reality, it is a coordination issue.</p>
 
+      </div>
+      <!-- /article-body (first block) -->
+
+
+      <!-- Newsletter signup -->
+      <div class="article-signup">
+        <p class="article-signup-eyebrow" aria-hidden="true">Notes from Not On Mondays</p>
+        <h2 class="article-signup-heading">Get the useful notes, not the noise</h2>
+        <p class="article-signup-body">Occasional notes on delivery, operations, CRM and the systems that help teams move with less friction.</p>
+        <form class="article-signup-form" id="signup-form" action="#" method="post" novalidate>
+          <div class="article-signup-field">
+            <label for="signup-email" class="article-signup-label-sr">Email address</label>
+            <input type="email" id="signup-email" name="EMAIL" class="article-signup-input" placeholder="Your email address" required autocomplete="email">
+            <button type="submit" class="article-signup-btn">Send me the notes</button>
+          </div>
+          <p class="article-signup-note">No spam. No content calendar. Just useful notes when there is something worth sharing.</p>
+          <div class="article-signup-feedback" aria-live="polite" aria-atomic="true"></div>
+        </form>
+      </div>
+      <!-- /Newsletter signup -->
+
+
+      <div class="article-body">
 
         <!-- Section 03 -->
         <h2 id="wrong-fix">Why adding more people does not fix it</h2>
@@ -492,6 +528,39 @@
 
 
 <script>
+  // Share row
+  (function () {
+    var share = document.querySelector('.article-share');
+    if (!share) return;
+    var pageUrl   = window.location.href;
+    var shareText = share.getAttribute('data-share-text') || document.title;
+    var xLink     = document.getElementById('share-x');
+    var liLink    = document.getElementById('share-linkedin');
+    var copyBtn   = document.getElementById('share-copy');
+    var feedback  = share.querySelector('.article-share-feedback');
+    if (xLink)  xLink.href  = 'https://x.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(pageUrl);
+    if (liLink) liLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+    if (copyBtn && feedback) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(pageUrl).then(function () {
+          feedback.textContent = 'Link copied.';
+          setTimeout(function () { feedback.textContent = ''; }, 3000);
+        }).catch(function () { feedback.textContent = 'Copy failed.'; });
+      });
+    }
+  })();
+
+  // Newsletter signup
+  (function () {
+    var form     = document.getElementById('signup-form');
+    if (!form) return;
+    var feedback = form.querySelector('.article-signup-feedback');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (feedback) feedback.textContent = 'Almost there. The signup form still needs to be connected.';
+    });
+  })();
+
   // Mobile nav toggle
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu   = document.getElementById('nav-menu');
