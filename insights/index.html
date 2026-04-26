@@ -492,6 +492,116 @@
   }
 }
 
+/* ── Newsletter signup ───────────────────────────── */
+.insights-signup {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 3.5rem 1.5rem 4rem;
+}
+.insights-signup-inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.insights-signup-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 1.5rem;
+}
+.insights-signup-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--off-white);
+  margin-bottom: 1rem;
+}
+.insights-signup-body {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(242,240,232,0.5);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.insights-signup-fields {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1rem;
+}
+.insights-signup-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.insights-signup-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-right: none;
+  color: var(--off-white);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  min-width: 0;
+}
+.insights-signup-input::placeholder { color: rgba(242,240,232,0.25); }
+.insights-signup-input:focus {
+  border-color: rgba(191,198,240,0.4);
+  background: rgba(255,255,255,0.09);
+}
+.insights-signup-btn {
+  background: var(--blue);
+  color: var(--off-white);
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+.insights-signup-btn:hover,
+.insights-signup-btn:focus-visible { background: #1420a8; outline: none; }
+.insights-signup-micro {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: rgba(242,240,232,0.25);
+  line-height: 1.6;
+}
+.insights-signup-state {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--light-blue);
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 560px) {
+  .insights-signup-fields { flex-direction: column; }
+  .insights-signup-input { border-right: 1px solid rgba(255,255,255,0.12); border-bottom: none; }
+  .insights-signup-btn { padding: 0.85rem; }
+}
+
+@media (min-width: 900px) {
+  .insights-signup { padding: 4.5rem 4rem 5rem; }
+  .insights-signup-inner { max-width: 560px; margin: 0; }
+}
+
 /* ── Mobile nav ──────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 0 1.5rem; }
@@ -908,6 +1018,33 @@
   </section>
   <!-- /INSIGHTS PANEL -->
 
+
+  <!-- Newsletter signup -->
+  <section class="insights-signup" aria-labelledby="signup-heading">
+    <div class="insights-signup-inner">
+      <p class="insights-signup-eyebrow" aria-hidden="true">Notes from Not On Mondays</p>
+      <h2 id="signup-heading" class="insights-signup-headline">Stay close to the work behind the work</h2>
+      <p class="insights-signup-body">Occasional notes on delivery, operations, CRM and the systems that help teams move with less noise.</p>
+
+      <form class="insights-signup-form" id="signup-form" novalidate>
+        <div class="insights-signup-fields">
+          <label for="signup-email" class="insights-signup-label">Email address</label>
+          <input type="email" id="signup-email" name="email" class="insights-signup-input" placeholder="your@email.com" required autocomplete="email">
+          <button type="submit" class="insights-signup-btn">Send me the notes</button>
+        </div>
+        <p class="insights-signup-micro">No spam. No content calendar. Just useful notes when there is something worth sharing.</p>
+      </form>
+
+      <div id="signup-pending" hidden>
+        <p class="insights-signup-state">Almost there. The signup form still needs to be connected.</p>
+      </div>
+      <div id="signup-success" hidden>
+        <p class="insights-signup-state">You&#8217;re in. We&#8217;ll only send something when it is useful.</p>
+      </div>
+    </div>
+  </section>
+  <!-- /Newsletter signup -->
+
 </main>
 
 
@@ -936,6 +1073,15 @@
 
 
 <script>
+  const signupForm = document.getElementById('signup-form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', e => {
+      e.preventDefault();
+      signupForm.hidden = true;
+      document.getElementById('signup-pending').hidden = false;
+    });
+  }
+
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu   = document.getElementById('nav-menu');
   if (navToggle && navMenu) {
