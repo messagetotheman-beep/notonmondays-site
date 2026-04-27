@@ -278,6 +278,19 @@
         <span class="article-meta-tag">Operations</span>
       </div>
 
+      <!-- Share row -->
+      <div class="article-share" data-share-text="Most CRM challenges are operational, not technical. The opportunity is in how work flows, not reconfiguring the system.">
+        <span class="article-share-label">Share</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-x" href="#" target="_blank" rel="noopener noreferrer">X</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-linkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <button class="article-share-link article-share-copy" id="share-copy" type="button">Copy link</button>
+        <span class="article-share-feedback" aria-live="polite" aria-atomic="true"></span>
+      </div>
+      <!-- /Share row -->
+
     </div>
   </section>
 
@@ -386,6 +399,28 @@
       </div>
       <!-- /article-body -->
 
+
+      <!-- Newsletter signup -->
+      <div class="article-signup">
+        <p class="article-signup-eyebrow" aria-hidden="true">Notes from Not On Mondays</p>
+        <h2 class="article-signup-heading">If this is useful, we write more like it</h2>
+        <p class="article-signup-body">Short notes on CRM, delivery and the systems that help teams get more from what they already have.</p>
+        <form class="article-signup-form" id="signup-form" action="https://ee38c099.sibforms.com/serve/MUIFAB4NlM_rcZZFXH9Oge-8RQS-eM_yrflIn9bjh7SzMDanlKTA8TQZ-5-Sia3AHn5aQc3_OFV56rpPj3IAImeiCIG5xfl9K9u_Nw8bLySXcE-ha5c6oSxw0KbMBHgV8RJbOH9u0Dfmsgw9YhE-ezGh0SdgPaqoWy6i0cuBMe7iua5eEYZS_l1TfNzfFSfQQZFo23CPwTO79vv4jg==" method="post">
+          <div class="article-signup-field">
+            <label for="signup-email" class="article-signup-label-sr">Email address</label>
+            <input type="email" id="signup-email" name="EMAIL" class="article-signup-input" placeholder="Your email address" required autocomplete="email">
+            <button type="submit" class="article-signup-btn">Send me the notes</button>
+          </div>
+          <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="locale" value="en">
+          <input type="hidden" name="html_type" value="simple">
+          <p class="article-signup-note">No spam. No content calendar. Just useful notes when there is something worth sharing.</p>
+          <div class="article-signup-feedback" aria-live="polite" aria-atomic="true"></div>
+        </form>
+      </div>
+      <!-- /Newsletter signup -->
+
+
     </div><!-- /article-container -->
   </section>
 
@@ -438,6 +473,38 @@
 
 
 <script>
+  // Share row
+  (function () {
+    var share = document.querySelector('.article-share');
+    if (!share) return;
+    var pageUrl   = window.location.href;
+    var shareText = share.getAttribute('data-share-text') || document.title;
+    var xLink     = document.getElementById('share-x');
+    var liLink    = document.getElementById('share-linkedin');
+    var copyBtn   = document.getElementById('share-copy');
+    var feedback  = share.querySelector('.article-share-feedback');
+    if (xLink)  xLink.href  = 'https://x.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(pageUrl);
+    if (liLink) liLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+    if (copyBtn && feedback) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(pageUrl).then(function () {
+          feedback.textContent = 'Link copied.';
+          setTimeout(function () { feedback.textContent = ''; }, 3000);
+        }).catch(function () { feedback.textContent = 'Copy failed.'; });
+      });
+    }
+  })();
+
+  // Newsletter signup
+  (function () {
+    var form = document.getElementById('signup-form');
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      var btn = form.querySelector('.article-signup-btn');
+      if (btn) { btn.textContent = 'Sending\u2026'; btn.disabled = true; }
+    });
+  })();
+
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu   = document.getElementById('nav-menu');
   if (navToggle && navMenu) {

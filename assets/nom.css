@@ -1160,4 +1160,6 @@ nav {
   .article-signup-btn { width: 100%; }
 }
 
+.input--hidden { position: absolute; left: -5000px; visibility: hidden; }
+
 /* ── End of article system ─────────────────────────────────── */

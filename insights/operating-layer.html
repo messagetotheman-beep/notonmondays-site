@@ -402,12 +402,15 @@
         <p class="article-signup-eyebrow" aria-hidden="true">Notes from Not On Mondays</p>
         <h2 class="article-signup-heading">Most work breaks in the operating layer. We write about that.</h2>
         <p class="article-signup-body">Short notes on how strategy turns into delivery, and where it usually falls apart.</p>
-        <form class="article-signup-form" id="signup-form" action="#" method="post" novalidate>
+        <form class="article-signup-form" id="signup-form" action="https://ee38c099.sibforms.com/serve/MUIFAB4NlM_rcZZFXH9Oge-8RQS-eM_yrflIn9bjh7SzMDanlKTA8TQZ-5-Sia3AHn5aQc3_OFV56rpPj3IAImeiCIG5xfl9K9u_Nw8bLySXcE-ha5c6oSxw0KbMBHgV8RJbOH9u0Dfmsgw9YhE-ezGh0SdgPaqoWy6i0cuBMe7iua5eEYZS_l1TfNzfFSfQQZFo23CPwTO79vv4jg==" method="post">
           <div class="article-signup-field">
             <label for="signup-email" class="article-signup-label-sr">Email address</label>
             <input type="email" id="signup-email" name="EMAIL" class="article-signup-input" placeholder="Your email address" required autocomplete="email">
             <button type="submit" class="article-signup-btn">Send me the notes</button>
           </div>
+          <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="locale" value="en">
+          <input type="hidden" name="html_type" value="simple">
           <p class="article-signup-note">No spam. No content calendar. Just useful notes when there is something worth sharing.</p>
           <div class="article-signup-feedback" aria-live="polite" aria-atomic="true"></div>
         </form>
@@ -625,12 +628,11 @@
 
   // Newsletter signup
   (function () {
-    var form     = document.getElementById('signup-form');
+    var form = document.getElementById('signup-form');
     if (!form) return;
-    var feedback = form.querySelector('.article-signup-feedback');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (feedback) feedback.textContent = 'Almost there. The signup form still needs to be connected.';
+    form.addEventListener('submit', function () {
+      var btn = form.querySelector('.article-signup-btn');
+      if (btn) { btn.textContent = 'Sending\u2026'; btn.disabled = true; }
     });
   })();
 
