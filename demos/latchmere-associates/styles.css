@@ -1,4 +1,6 @@
-/* Latchmere Associates — wireframe prototype */
+/* Latchmere Associates — homepage */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400&family=DM+Mono:wght@400&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -7,19 +9,19 @@
 }
 
 :root {
-  --navy:       #1a2b4a;
-  --mid-navy:   #2c4270;
-  --teal:       #1a7a6e;
-  --teal-light: #e8f4f2;
-  --warm-white: #f9f8f5;
-  --off-white:  #f0eeea;
-  --border:     #d4d0c8;
+  --navy:       #1e3050;
+  --hero-bg:    #0f1d38;
+  --teal:       #157a6a;
+  --teal-light: #e2f2ee;
+  --warm-white: #f6f3ea;
+  --off-white:  #ede9de;
+  --border:     #ccc8bc;
   --text:       #1a1a1a;
-  --muted:      #5a5a5a;
+  --muted:      #595959;
   --white:      #ffffff;
-  --step-bg:    #eef1f8;
+  --amber:      #c9920a;
 
-  --radius: 8px;
+  --radius: 6px;
   --max:    1080px;
 }
 
@@ -29,30 +31,32 @@ html {
 }
 
 body {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   color: var(--text);
   background: var(--white);
-  line-height: 1.6;
+  line-height: 1.75;
 }
 
 /* ── Typography ─────────────────────────────────────────── */
 
 h1, h2, h3, h4 {
-  font-family: Georgia, serif;
-  font-weight: normal;
-  line-height: 1.25;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.2;
   color: var(--navy);
 }
 
-h1 { font-size: 2.4rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.25rem; }
+h1 { font-size: 3rem; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.15rem; }
 
 p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   font-size: 1rem;
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 a {
@@ -85,8 +89,9 @@ section {
   margin-top: 1.25rem;
   padding: 0.75rem 1rem;
   background: #fffbea;
-  border-left: 4px solid #e6b800;
-  font-family: Arial, Helvetica, sans-serif;
+  border-left: 4px solid var(--amber);
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   font-size: 0.8rem;
   color: #5a4a00;
   line-height: 1.5;
@@ -96,9 +101,10 @@ section {
 .annotation strong {
   display: block;
   margin-bottom: 0.2rem;
-  font-size: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: #8a6d00;
 }
 
@@ -111,7 +117,7 @@ section {
   background: var(--navy);
   color: var(--white);
   padding: 0.5rem 1rem;
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   font-size: 0.9rem;
   z-index: 100;
   border-radius: 0 0 4px 4px;
@@ -125,7 +131,7 @@ section {
 
 .site-header {
   background: var(--white);
-  border-bottom: 2px solid var(--navy);
+  border-bottom: 1px solid var(--border);
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -141,20 +147,20 @@ section {
 }
 
 .site-logo {
-  font-family: Georgia, serif;
-  font-size: 1.35rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.25rem;
   color: var(--navy);
   text-decoration: none;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: 0.01em;
 }
 
 .site-logo span {
   display: block;
-  font-family: Arial, sans-serif;
-  font-size: 0.7rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
   color: var(--muted);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -168,12 +174,14 @@ section {
 }
 
 .site-nav a {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 400;
   font-size: 0.9rem;
   color: var(--navy);
   text-decoration: none;
   padding: 0.25rem 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
 }
 
 .site-nav a:hover,
@@ -190,14 +198,16 @@ section {
   border-radius: var(--radius) !important;
   border-bottom: none !important;
   text-decoration: none;
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 400;
   font-size: 0.9rem;
+  transition: background 0.15s;
 }
 
 .nav-cta:hover,
 .nav-cta:focus-visible {
-  background: var(--teal);
-  opacity: 0.88;
+  background: #0f6358 !important;
+  opacity: 1 !important;
   outline: 3px solid #ffbf47 !important;
   outline-offset: 2px;
 }
@@ -205,25 +215,27 @@ section {
 /* ── Hero ───────────────────────────────────────────────── */
 
 .hero {
-  background: var(--navy);
+  background: linear-gradient(180deg, var(--hero-bg) 94%, rgba(15,29,56,0.96) 100%);
   color: var(--white);
-  padding: 5rem 0 4rem;
+  padding: 6.5rem 0 5.5rem;
 }
 
 .hero h1 {
   color: var(--white);
-  font-size: 2.6rem;
-  max-width: 700px;
-  margin-bottom: 1.25rem;
+  font-size: 3rem;
+  max-width: 720px;
+  margin-bottom: 1.5rem;
 }
 
 .hero .lead {
-  font-family: Arial, sans-serif;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
   font-size: 1.1rem;
   color: #c8d4e8;
   max-width: 560px;
-  margin-bottom: 2rem;
-  line-height: 1.7;
+  margin-bottom: 2.25rem;
+  line-height: 1.75;
 }
 
 .hero-actions {
@@ -236,19 +248,20 @@ section {
   display: inline-block;
   background: var(--teal);
   color: var(--white);
-  padding: 0.85rem 1.75rem;
+  padding: 0.9rem 2rem;
   border-radius: var(--radius);
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 400;
   font-size: 1rem;
-  font-weight: bold;
   text-decoration: none;
   border: 2px solid transparent;
   cursor: pointer;
+  transition: background 0.15s;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: #155f55;
+  background: #0f6358;
   outline: 3px solid #ffbf47;
   outline-offset: 2px;
 }
@@ -257,12 +270,15 @@ section {
   display: inline-block;
   background: transparent;
   color: var(--white);
-  padding: 0.85rem 1.75rem;
+  padding: 0.9rem 2rem;
   border-radius: var(--radius);
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 400;
   font-size: 1rem;
   text-decoration: none;
-  border: 2px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.45);
+  letter-spacing: 0.01em;
+  transition: border-color 0.15s, background 0.15s;
 }
 
 .btn-secondary:hover,
@@ -277,7 +293,7 @@ section {
 
 .service-finder {
   background: var(--warm-white);
-  border-top: 4px solid var(--teal);
+  border-top: 3px solid var(--teal);
 }
 
 .service-finder h2 {
@@ -285,7 +301,8 @@ section {
 }
 
 .service-finder .section-sub {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   color: var(--muted);
   font-size: 0.95rem;
   margin-bottom: 2rem;
@@ -299,27 +316,28 @@ section {
 
 .service-card {
   background: var(--white);
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.5rem 1.25rem;
+  padding: 1.5rem;
   text-decoration: none;
   color: var(--navy);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 
 .service-card:hover,
 .service-card:focus-visible {
   border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(26,122,110,0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
   outline: none;
   text-decoration: none;
 }
 
 .service-card .card-icon {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1;
 }
 
@@ -331,11 +349,18 @@ section {
 .service-card p {
   font-size: 0.85rem;
   color: var(--muted);
+  font-weight: 300;
 }
 
 .service-card--unsure {
-  background: var(--teal-light);
-  border-color: var(--teal);
+  background: var(--warm-white);
+  border-color: var(--border);
+  border-left: 3px solid var(--teal);
+}
+
+.service-card--unsure:hover,
+.service-card--unsure:focus-visible {
+  border-left-color: var(--teal);
 }
 
 /* ── How we help ────────────────────────────────────────── */
@@ -349,7 +374,8 @@ section {
 }
 
 .how-we-help .section-sub {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   color: var(--muted);
   font-size: 0.95rem;
   margin-bottom: 2.5rem;
@@ -358,30 +384,31 @@ section {
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  counter-reset: steps;
+  gap: 2rem;
+  list-style: none;
 }
 
 .step {
-  background: var(--step-bg);
+  background: var(--off-white);
   border-radius: var(--radius);
-  padding: 2rem 1.5rem;
+  padding: 2rem;
   position: relative;
 }
 
 .step-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: var(--navy);
-  color: var(--white);
-  border-radius: 50%;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--teal);
+  opacity: 0.35;
+  margin-bottom: 0.75rem;
+  /* reset old circle styles */
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
 }
 
 .step h3 {
@@ -392,6 +419,7 @@ section {
 .step p {
   font-size: 0.9rem;
   color: var(--muted);
+  font-weight: 300;
 }
 
 /* ── Divorce process ────────────────────────────────────── */
@@ -405,7 +433,8 @@ section {
 }
 
 .process-section .section-sub {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   color: var(--muted);
   font-size: 0.95rem;
   margin-bottom: 2.5rem;
@@ -415,51 +444,53 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0;
-  border-left: 3px solid var(--teal);
+  border-left: 2px solid var(--teal);
   margin-left: 1rem;
 }
 
 .process-step {
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
   position: relative;
 }
 
 .process-step::before {
   content: '';
   position: absolute;
-  left: -0.85rem;
+  left: -0.65rem;
   top: 1.5rem;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.2rem;
+  height: 1.2rem;
   background: var(--teal);
   border-radius: 50%;
-  border: 3px solid var(--white);
+  border: 3px solid var(--off-white);
 }
 
 .process-step-label {
-  font-family: Arial, sans-serif;
-  font-size: 0.72rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: var(--teal);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
+  display: block;
 }
 
 .process-step h3 {
   font-size: 1.1rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
 .process-step p {
   font-size: 0.9rem;
   color: var(--muted);
+  font-weight: 300;
   max-width: 600px;
 }
 
 /* ── Testimonials ───────────────────────────────────────── */
 
 .testimonials {
-  background: var(--navy);
+  background: var(--hero-bg);
   color: var(--white);
 }
 
@@ -469,7 +500,8 @@ section {
 }
 
 .testimonials .section-sub {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   color: #c8d4e8;
   font-size: 0.95rem;
   margin-bottom: 2.5rem;
@@ -482,24 +514,39 @@ section {
 }
 
 .testimonial-card {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius);
   padding: 1.75rem;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  font-family: 'Lora', Georgia, serif;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: rgba(191,198,240,0.28);
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  pointer-events: none;
 }
 
 .testimonial-card blockquote {
-  font-family: Georgia, serif;
-  font-size: 1.05rem;
-  color: #e0e8f5;
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1rem;
   font-style: italic;
+  color: #e0e8f5;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  padding-top: 1.5rem;
 }
 
 .testimonial-card cite {
-  font-family: Arial, sans-serif;
-  font-size: 0.82rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
   color: #8fa8cc;
   font-style: normal;
 }
@@ -510,12 +557,13 @@ section {
   flex-wrap: wrap;
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .trust-badge {
-  font-family: Arial, sans-serif;
-  font-size: 0.82rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
   color: #8fa8cc;
   display: flex;
   align-items: center;
@@ -524,7 +572,7 @@ section {
 
 .trust-badge span {
   color: var(--white);
-  font-weight: bold;
+  font-weight: 400;
 }
 
 /* ── Google review prompt ───────────────────────────────── */
@@ -532,7 +580,7 @@ section {
 .review-prompt {
   background: var(--warm-white);
   border-top: 1px solid var(--border);
-  padding: 2rem 0;
+  padding: 2.5rem 0;
 }
 
 .review-prompt-inner {
@@ -544,13 +592,14 @@ section {
 }
 
 .review-prompt-text h2 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin-bottom: 0.25rem;
   color: var(--navy);
 }
 
 .review-prompt-text p {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   font-size: 0.88rem;
   color: var(--muted);
   max-width: 480px;
@@ -560,12 +609,14 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 400;
   font-size: 0.88rem;
   color: var(--teal);
   text-decoration: underline;
   white-space: nowrap;
   flex-shrink: 0;
+  transition: color 0.15s;
 }
 
 .review-prompt-link:hover,
@@ -577,7 +628,7 @@ section {
 }
 
 .review-stars {
-  color: #e6a800;
+  color: var(--amber);
   font-size: 1rem;
   letter-spacing: 0.05em;
 }
@@ -594,17 +645,19 @@ section {
 
 .final-cta {
   background: var(--teal-light);
-  border-top: 4px solid var(--teal);
+  border-top: 3px solid var(--teal);
   text-align: center;
 }
 
 .final-cta h2 {
   margin-bottom: 0.75rem;
+  font-size: 2rem;
 }
 
 .final-cta p {
   color: var(--muted);
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   font-size: 1rem;
   max-width: 480px;
   margin: 0 auto 2rem;
@@ -612,13 +665,13 @@ section {
 
 .final-cta .btn-primary {
   font-size: 1.05rem;
-  padding: 1rem 2rem;
+  padding: 1.1rem 2.25rem;
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
 
 .site-footer {
-  background: var(--navy);
+  background: var(--hero-bg);
   color: #8fa8cc;
   padding: 2.5rem 0;
 }
@@ -638,7 +691,8 @@ section {
 }
 
 .footer-logo {
-  font-family: Georgia, serif;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 400;
   color: var(--white);
   font-size: 1.1rem;
   text-decoration: none;
@@ -652,10 +706,12 @@ section {
 }
 
 .footer-links a {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   font-size: 0.82rem;
   color: #8fa8cc;
   text-decoration: none;
+  transition: color 0.15s;
 }
 
 .footer-links a:hover {
@@ -663,23 +719,38 @@ section {
 }
 
 .footer-legal {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
   font-size: 0.78rem;
   color: #5a6e88;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,0.07);
   padding-top: 1rem;
 }
 
 /* ── Responsive ─────────────────────────────────────────── */
 
 @media (max-width: 640px) {
-  h1 { font-size: 1.9rem; }
-  h2 { font-size: 1.5rem; }
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.45rem; }
 
-  .hero { padding: 3rem 0 2.5rem; }
-  .hero h1 { font-size: 2rem; }
+  .hero { padding: 3.5rem 0 3rem; }
+  .hero h1 { font-size: 2.1rem; }
 
   .site-nav { gap: 0.75rem; }
 
   .process-steps { margin-left: 0.5rem; }
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card:hover,
+  .service-card:focus-visible {
+    transform: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
 }
