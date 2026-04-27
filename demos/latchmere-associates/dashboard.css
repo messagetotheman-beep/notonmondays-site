@@ -467,3 +467,14 @@ h3 { font-size: 1.1rem; }
 }
 
 .dash-back:hover { color: var(--dark); }
+
+.dash-proto-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.dash-proto-links .dash-back {
+  margin-bottom: 0;
+}
