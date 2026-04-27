@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "latchmere-demo",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "8743", "."],
+      "port": 8743
+    }
+  ]
+}
