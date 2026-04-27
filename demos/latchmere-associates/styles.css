@@ -741,6 +741,347 @@ section {
   .process-steps { margin-left: 0.5rem; }
 }
 
+/* ── Breadcrumb ─────────────────────────────────────────── */
+
+.breadcrumb {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0;
+}
+
+.breadcrumb a {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.15s;
+}
+
+.breadcrumb a::before {
+  content: '←';
+  font-size: 0.9em;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  color: var(--teal);
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Reassurance block ──────────────────────────────────── */
+
+.reassurance-block {
+  background: var(--teal-light);
+  border-top: 3px solid var(--teal);
+  border-bottom: 1px solid #b2dcd5;
+  padding: 2.25rem 0;
+}
+
+.reassurance-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+  list-style: none;
+}
+
+.reassurance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+.reassurance-item::before {
+  content: '✓';
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* ── What to sort out ───────────────────────────────────── */
+
+.sort-section {
+  background: var(--white);
+}
+
+.sort-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.sort-section .section-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.sort-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.sort-card {
+  background: var(--off-white);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--teal);
+  padding: 1.75rem;
+}
+
+.sort-card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.sort-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sort-card p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ── Permission statement ───────────────────────────────── */
+
+.permission-statement {
+  background: var(--warm-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.permission-statement p {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--navy);
+  max-width: 620px;
+  margin: 0 auto 0.6rem;
+  line-height: 1.65;
+}
+
+.permission-statement .permission-sub {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 auto;
+}
+
+/* ── Service process ────────────────────────────────────── */
+
+.service-process {
+  background: var(--off-white);
+}
+
+.service-process h2 {
+  margin-bottom: 0.5rem;
+}
+
+.service-process .section-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Common worries (FAQ) ───────────────────────────────── */
+
+.worries-section {
+  background: var(--white);
+}
+
+.worries-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.worries-section .section-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.worries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.worry-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.worry-item:last-child {
+  border-bottom: none;
+}
+
+.worry-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--navy);
+  list-style: none;
+  background: var(--white);
+  transition: background 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.worry-summary::-webkit-details-marker { display: none; }
+
+.worry-summary:hover {
+  background: var(--warm-white);
+}
+
+.worry-summary:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: -3px;
+}
+
+.worry-summary::after {
+  content: '+';
+  font-family: 'DM Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--teal);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.worry-item[open] > .worry-summary::after {
+  content: '−';
+}
+
+.worry-body {
+  padding: 0 1.5rem 1.5rem;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+/* ── Costs section ──────────────────────────────────────── */
+
+.cost-section {
+  background: var(--warm-white);
+  border-top: 1px solid var(--border);
+}
+
+.cost-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.cost-section .section-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.cost-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.cost-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.cost-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.cost-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.cost-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cost-note {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+
+/* ── CTA microcopy ──────────────────────────────────────── */
+
+.cta-microcopy {
+  display: block;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.final-cta .cta-microcopy {
+  color: #7a9a88;
+}
+
+/* ── Exit route ─────────────────────────────────────────── */
+
+.exit-route {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.exit-route p {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.exit-route a {
+  color: var(--teal);
+  font-weight: 400;
+}
+
 /* ── Reduced motion ──────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
