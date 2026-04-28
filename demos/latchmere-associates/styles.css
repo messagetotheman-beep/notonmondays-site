@@ -887,6 +887,28 @@ section {
 
 .service-process {
   background: var(--off-white);
+  padding: 5rem 0;
+}
+
+.process-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(21,122,106,0.18);
+}
+
+@media (max-width: 640px) {
+  .process-cta .btn-primary { width: 100%; text-align: center; }
+}
+
+.process-cta-note {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .service-process h2 {
@@ -903,6 +925,7 @@ section {
 
 .worries-section {
   background: var(--white);
+  padding: 3rem 0;
 }
 
 .worries-section h2 {
@@ -989,6 +1012,7 @@ section {
 .cost-section {
   background: var(--warm-white);
   border-top: 1px solid var(--border);
+  padding: 3rem 0;
 }
 
 .cost-section h2 {
@@ -1133,6 +1157,7 @@ section {
 .expectation-section {
   background: var(--off-white);
   border-top: 1px solid var(--border);
+  padding: 3rem 0;
 }
 
 .expectation-section h2 {
