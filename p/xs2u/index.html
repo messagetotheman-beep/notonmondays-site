@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>XS2YOU — Website Review and Quick Plan to Go Live</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #111124;
+            --mid: #2a2a4a;
+            --muted: #8a8fa8;
+            --off-white: #f2f0e8;
+            --warm-white: #faf8f2;
+            --blue: #1a2ad4;
+            --border: rgba(17,17,36,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.65;
+            color: var(--dark);
+            background: #e8e5dc;
+            font-weight: 300;
+        }
+
+        .page-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            background: var(--dark);
+            padding: 12px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 0.5px solid rgba(255,255,255,0.06);
+        }
+
+        .nom-mark {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nom-mark span {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            text-transform: lowercase;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .nom-mark .line1 { color: rgba(242,240,232,0.18); }
+        .nom-mark .line2 { color: rgba(242,240,232,0.12); }
+        .nom-mark .line3 { color: var(--blue); }
+
+        .top-meta {
+            font-size: 9px;
+            color: rgba(242,240,232,0.3);
+            letter-spacing: 0.08em;
+        }
+
+        header {
+            padding: 48px 48px 36px;
+            border-bottom: 0.5px solid var(--border);
+            background: linear-gradient(180deg, rgba(242,240,232,0.3) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .header-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--muted);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        main {
+            padding: 48px;
+        }
+
+        section {
+            margin-bottom: 56px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            padding-bottom: 12px;
+            border-bottom: 0.5px solid var(--border);
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.005em;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--mid);
+            font-size: 15px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--mid);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .card {
+            background: var(--off-white);
+            border: 0.5px solid var(--border);
+            padding: 28px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--blue) 0%, transparent 100%);
+            opacity: 0.4;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .outcome {
+            background: white;
+            border-left: 2px solid var(--dark);
+            padding: 14px 18px;
+            margin-top: 20px;
+            font-weight: 400;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .option-box {
+            background: white;
+            border: 1px solid var(--dark);
+            padding: 28px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .option-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, transparent 0%, rgba(26,42,212,0.03) 100%);
+            pointer-events: none;
+        }
+
+        .option-box h3 {
+            margin-top: 0;
+        }
+
+        .close-section {
+            background: var(--off-white);
+            padding: 40px;
+            margin-top: 56px;
+            text-align: center;
+            border-top: 0.5px solid var(--border);
+            position: relative;
+        }
+
+        .close-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .close-section p {
+            font-size: 17px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.5;
+        }
+
+        .cta {
+            font-size: 15px;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .action-link {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            transition: opacity 0.15s ease;
+            border: 0.5px solid var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transition: left 0.3s ease;
+        }
+
+        .action-link:hover::before {
+            left: 100%;
+        }
+
+        .action-link:hover {
+            opacity: 0.9;
+        }
+
+        .action-link.secondary {
+            background: white;
+            color: var(--dark);
+            border: 0.5px solid var(--border);
+        }
+
+        footer {
+            padding: 32px 48px;
+            border-top: 0.5px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(242,240,232,0.2);
+        }
+
+        .footer-nom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nom-link {
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.15s ease;
+        }
+
+        .nom-link:hover {
+            color: var(--dark);
+        }
+
+        .nom-divider {
+            width: 0.5px;
+            height: 12px;
+            background: var(--border);
+        }
+
+        .signature {
+            font-size: 18px;
+            color: var(--dark);
+            font-weight: 300;
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-style: italic;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 32px;
+        }
+
+        .comparison-side {
+            position: relative;
+        }
+
+        .comparison-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .screenshot-container {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            border: 0.5px solid var(--border);
+            box-shadow: 0 2px 8px rgba(17,17,36,0.06);
+            background: rgba(17,17,36,0.02);
+        }
+
+        .annotation {
+            position: absolute;
+            background: white;
+            border: 0.5px solid var(--border);
+            padding: 6px 12px;
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.4;
+            box-shadow: 0 1px 4px rgba(17,17,36,0.08);
+            max-width: 140px;
+        }
+
+        .annotation::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--muted);
+            opacity: 0.3;
+        }
+
+        .annotation.top-left {
+            top: 12px;
+            left: 12px;
+        }
+
+        .annotation.top-left::before {
+            top: -3px;
+            left: -3px;
+        }
+
+        .annotation.bottom-right {
+            bottom: 12px;
+            right: 12px;
+        }
+
+        .annotation.bottom-right::before {
+            bottom: -3px;
+            right: -3px;
+        }
+
+        .annotation.mid-left {
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+        }
+
+        .annotation.mid-left::before {
+            top: 50%;
+            left: -3px;
+            transform: translateY(-50%);
+        }
+
+        .simple-wireframe {
+            background: var(--warm-white);
+            border: 0.5px solid var(--border);
+            padding: 24px;
+        }
+
+        .wire-block {
+            background: rgba(17,17,36,0.04);
+            border: 0.5px solid var(--border);
+            padding: 16px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--muted);
+            position: relative;
+        }
+
+        .wire-block.header {
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wire-block.hero {
+            padding: 32px 16px;
+            background: linear-gradient(135deg, rgba(26,42,212,0.02) 0%, rgba(17,17,36,0.04) 100%);
+        }
+
+        .wire-block.trust-strip {
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 10px;
+            background: white;
+        }
+
+        .wire-block.categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 0;
+            background: transparent;
+            border: none;
+        }
+
+        .wire-category {
+            background: rgba(17,17,36,0.04);
+            border: 0.5px solid var(--border);
+            padding: 24px 12px;
+            font-size: 11px;
+        }
+
+        .wire-block.products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding: 0;
+            background: transparent;
+            border: none;
+        }
+
+        .wire-product-box {
+            background: white;
+            border: 0.5px solid var(--border);
+            aspect-ratio: 3/4;
+            position: relative;
+        }
+
+        .wire-product-box::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: 60%;
+            background: rgba(17,17,36,0.03);
+        }
+
+        .wire-block.footer {
+            padding: 16px;
+            background: rgba(17,17,36,0.06);
+            font-size: 10px;
+        }
+
+        .why-works {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 0.5px solid var(--border);
+        }
+
+        .why-works h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .why-works ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-works li {
+            padding-left: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 14px;
+            color: var(--mid);
+        }
+
+        .why-works li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 400;
+        }
+
+        .page-nav {
+            padding: 0 48px;
+            border-bottom: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .page-nav a {
+            display: inline-block;
+            padding: 13px 0;
+            margin-right: 28px;
+            font-size: 12px;
+            text-decoration: none;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+            border-bottom: 1.5px solid transparent;
+            margin-bottom: -0.5px;
+            transition: color 0.15s ease;
+        }
+
+        .page-nav a:hover {
+            color: var(--dark);
+        }
+
+        .page-nav a.active {
+            color: var(--dark);
+            border-bottom-color: var(--dark);
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 12px 24px;
+            }
+
+            .page-nav {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 40px 24px 32px;
+            }
+
+            main {
+                padding: 32px 24px;
+            }
+
+            footer {
+                padding: 24px;
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .action-links {
+                flex-direction: column;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .wire-block.categories {
+                grid-template-columns: 1fr;
+            }
+
+            .wire-block.products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .annotation {
+                font-size: 10px;
+                padding: 5px 10px;
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="top-bar">
+            <div class="nom-mark">
+                <span class="line1">not</span>
+                <span class="line2">on</span>
+                <span class="line3">mondays</span>
+            </div>
+            <div class="top-meta">Proposal / Apr 2026</div>
+        </div>
+
+        <nav class="page-nav">
+            <a href="index.html" class="active">Proposal</a>
+            <a href="packages.html">Pricing</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+
+        <header>
+            <div class="header-label">Website Review</div>
+            <h1>XS2YOU — Website Review and Quick Plan to Go Live</h1>
+            <p class="subtitle">A few simple changes to help you build trust, take payments, and start selling</p>
+        </header>
+
+        <main>
+            <section style="background: var(--off-white); padding: 24px 28px; margin-bottom: 40px; border-left: 2px solid var(--dark);">
+                <p style="margin: 0; font-size: 15px; color: var(--mid);">Not On Mondays helps small businesses get digital work live without the usual complexity. We focus on what actually needs to happen to launch, not what could happen eventually. This proposal is about getting XS2YOU ready to take real orders.</p>
+            </section>
+
+            <section>
+                <h2>What we're seeing</h2>
+                <p>The site has the right foundations but a few things are holding it back:</p>
+                <ul>
+                    <li>It looks like a template that hasn't been finished yet</li>
+                    <li>Placeholder text and missing information reduce trust</li>
+                    <li>It's not clear how to buy or what the checkout process looks like</li>
+                    <li>People won't enter card details if they're not sure the site is real</li>
+                    <li>The path from browsing to buying feels unclear</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Why this matters</h2>
+                <p>People make snap judgements about websites in just a few seconds. If something feels unfinished or unclear, they leave.</p>
+                <p>We know from years of data that around 70% of people abandon their shopping carts. The main reasons are simple: they don't trust the site, they can't find what they need, or the buying process feels too complicated.</p>
+                <p>People scan pages rather than read them. They look for quick signals that tell them "this is a real shop" and "I can buy safely here". If those signals are missing, they won't take the risk.</p>
+                <p>The good news is that these problems are fixable. You don't need to rebuild everything. You just need to address the trust gaps and make the journey clearer.</p>
+            </section>
+
+            <section>
+                <h2>How we should get XS2YOU live</h2>
+                <p>We should not build anything custom right now. The priority is to get you live quickly and safely.</p>
+                <p>The best approach is to use Shopify as your ecommerce platform. Shopify handles products, checkout, payments, and security. It's fast to set up, lower risk, and easier for you to manage once it's live.</p>
+                <p>This means:</p>
+                <ul>
+                    <li>You can focus on running your business, not managing technical infrastructure</li>
+                    <li>Checkout and payments work properly from day one</li>
+                    <li>PCI compliance and security are handled for you</li>
+                    <li>You can add products, update stock, and manage orders yourself</li>
+                    <li>We can get you live in days, not months</li>
+                </ul>
+                <p>The priority is simple: make the site feel real and trustworthy, load real products properly, make checkout secure, and launch quickly.</p>
+            </section>
+
+            <section>
+                <h2>The 4 things to fix</h2>
+
+                <div class="card">
+                    <h3>Fix 1: Make the site feel real and trustworthy</h3>
+                    <p>Right now, the site has placeholder content and missing details. This makes people unsure if you're a real business.</p>
+                    <p><strong>What to do:</strong></p>
+                    <ul>
+                        <li>Replace any "lorem ipsum" or template copy with your actual words</li>
+                        <li>Add real contact details (email, phone if you have one, business address)</li>
+                        <li>Create clear delivery and returns information</li>
+                        <li>Add a simple "About" section that tells your story</li>
+                        <li>Include trust signals like secure payment badges</li>
+                    </ul>
+                    <div class="outcome">Outcome: Customers feel safe buying from you</div>
+                </div>
+
+                <div class="card">
+                    <h3>Fix 2: Make it obvious what you sell</h3>
+                    <p>Visitors should understand what you offer within seconds of landing on the homepage.</p>
+                    <p><strong>What to do:</strong></p>
+                    <ul>
+                        <li>Clear categories in your navigation: Women, Men, Accessories</li>
+                        <li>Remove vague labels or marketing speak</li>
+                        <li>Simplify your homepage message so it says exactly what you do</li>
+                        <li>Show your best products or categories immediately</li>
+                    </ul>
+                    <div class="outcome">Outcome: Customers understand the site in seconds</div>
+                </div>
+
+                <div class="card">
+                    <h3>Fix 3: Set up products properly in Shopify</h3>
+                    <p>Products need to be structured clearly so customers can find what they need and make decisions quickly.</p>
+                    <p><strong>What to do:</strong></p>
+                    <ul>
+                        <li>Set up collections in Shopify (Women, Men, Accessories)</li>
+                        <li>Add products with clear images, descriptions, and pricing</li>
+                        <li>Include size information and stock status</li>
+                        <li>Set delivery timeframes and shipping rules</li>
+                        <li>Make sure product pages answer customer questions</li>
+                    </ul>
+                    <div class="outcome">Outcome: Customers can browse and choose products easily</div>
+                </div>
+
+                <div class="card">
+                    <h3>Fix 4: Get payments and checkout working in Shopify</h3>
+                    <p>This is the most important part. Shopify handles checkout, payments, and security so customers can buy with confidence.</p>
+                    <p><strong>What to do:</strong></p>
+                    <ul>
+                        <li>Set up Shopify Payments (or Stripe)</li>
+                        <li>Enable guest checkout so people don't have to create an account</li>
+                        <li>Configure shipping rates and delivery options</li>
+                        <li>Test the entire checkout flow with a real card</li>
+                        <li>Make sure confirmation emails work properly</li>
+                    </ul>
+                    <div class="outcome">Outcome: You can start taking real orders safely</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>What you have today vs what we recommend</h2>
+
+                <div class="comparison-grid">
+                    <div class="comparison-side">
+                        <div class="comparison-label">Current Site</div>
+                        
+                        <div class="screenshot-container">
+                            <img src="homepage-screenshot.png" alt="XS2YOU current homepage" class="screenshot-placeholder">
+                            <div class="annotation top-left">Template placeholder content</div>
+                            <div class="annotation bottom-right">No real products visible</div>
+                        </div>
+
+                        <div class="screenshot-container">
+                            <img src="category-screenshot.png" alt="XS2YOU current category page" class="screenshot-placeholder">
+                            <div class="annotation mid-left">Trust signals missing</div>
+                            <div class="annotation bottom-right">Unclear next step</div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-side">
+                        <div class="comparison-label">Recommended Structure</div>
+                        
+                        <div class="simple-wireframe">
+                            <div class="wire-block header">
+                                <span>XS2YOU</span>
+                                <span style="font-size: 10px;">Women | Men | Accessories | Basket</span>
+                            </div>
+
+                            <div class="wire-block hero">
+                                Clear Headline<br>
+                                <span style="font-size: 10px; opacity: 0.7;">What you sell in one sentence</span>
+                            </div>
+
+                            <div class="wire-block trust-strip">
+                                <span>Free Delivery</span>
+                                <span>Easy Returns</span>
+                                <span>Secure Checkout</span>
+                            </div>
+
+                            <div class="wire-block categories">
+                                <div class="wire-category">Women</div>
+                                <div class="wire-category">Men</div>
+                                <div class="wire-category">Accessories</div>
+                            </div>
+
+                            <div class="wire-block products">
+                                <div class="wire-product-box"></div>
+                                <div class="wire-product-box"></div>
+                                <div class="wire-product-box"></div>
+                                <div class="wire-product-box"></div>
+                            </div>
+
+                            <div class="wire-block footer">
+                                Contact | Delivery | Returns | About
+                            </div>
+                        </div>
+
+                        <div class="why-works">
+                            <h3>Why this works</h3>
+                            <ul>
+                                <li>People understand what you sell in seconds</li>
+                                <li>Products are visible straight away</li>
+                                <li>The journey is simple and predictable</li>
+                                <li>Trust is built before asking for payment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>What this looks like in practice</h2>
+                
+                <div class="option-box">
+                    <h3>Phase 1: Clean up content and structure</h3>
+                    <ul>
+                        <li>Replace placeholder copy with real content</li>
+                        <li>Add contact details, delivery info, and returns policy</li>
+                        <li>Simplify navigation and messaging</li>
+                        <li>Create trust signals (About page, security badges)</li>
+                    </ul>
+                </div>
+
+                <div class="option-box">
+                    <h3>Phase 2: Set up Shopify properly</h3>
+                    <ul>
+                        <li>Configure Shopify account and settings</li>
+                        <li>Create product collections (Women, Men, Accessories)</li>
+                        <li>Add products with images, descriptions, and pricing</li>
+                        <li>Set up Shopify Payments and shipping rules</li>
+                        <li>Configure checkout and test the flow</li>
+                    </ul>
+                </div>
+
+                <div class="option-box">
+                    <h3>Phase 3: Launch and test</h3>
+                    <ul>
+                        <li>Test checkout end to end with real payment</li>
+                        <li>Check mobile experience</li>
+                        <li>Verify confirmation emails work</li>
+                        <li>Go live</li>
+                    </ul>
+                </div>
+
+                <div class="option-box">
+                    <h3>Phase 4 (optional): Growth</h3>
+                    <ul>
+                        <li>Content creation and social proof</li>
+                        <li>Paid ads if needed</li>
+                        <li>Email marketing</li>
+                        <li>Conversion optimization</li>
+                    </ul>
+                    <p style="margin-top: 12px; font-size: 14px; color: var(--muted);">This phase happens after launch, once the store is working and you have orders coming in.</p>
+                </div>
+            </section>
+
+            <div class="close-section">
+                <p>This doesn't need to be perfect.<br>It just needs to feel real, clear, and ready to buy from.</p>
+                <p class="cta">Happy to help you get this live quickly.</p>
+                <div class="action-links">
+                    <a href="packages.html" class="action-link">View go-live options and pricing</a>
+                    <a href="wireframe.html" class="action-link secondary">See the simple wireframe</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-nom">
+                <a href="https://notonmondays.com" class="nom-link">notonmondays.com</a>
+                <div class="nom-divider"></div>
+                <span class="nom-link" style="cursor: default;">Calm, practical support</span>
+            </div>
+            <p class="signature">David</p>
+        </footer>
+    </div>
+    <script>
+        // Check if user has access
+        if (sessionStorage.getItem('xs2you_access') !== 'granted') {
+            window.location.href = 'gate.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>XS2YOU — Progress Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #111124;
+            --mid: #2a2a4a;
+            --muted: #8a8fa8;
+            --off-white: #f2f0e8;
+            --warm-white: #faf8f2;
+            --blue: #1a2ad4;
+            --green: #1a7a4a;
+            --border: rgba(17,17,36,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.65;
+            color: var(--dark);
+            background: #e8e5dc;
+            font-weight: 300;
+        }
+
+        .page-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            background: var(--dark);
+            padding: 12px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 0.5px solid rgba(255,255,255,0.06);
+        }
+
+        .nom-mark {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nom-mark span {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            text-transform: lowercase;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .nom-mark .line1 { color: rgba(242,240,232,0.18); }
+        .nom-mark .line2 { color: rgba(242,240,232,0.12); }
+        .nom-mark .line3 { color: var(--blue); }
+
+        .top-meta {
+            font-size: 9px;
+            color: rgba(242,240,232,0.3);
+            letter-spacing: 0.08em;
+        }
+
+        .page-nav {
+            padding: 0 48px;
+            border-bottom: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .page-nav a {
+            display: inline-block;
+            padding: 13px 0;
+            margin-right: 28px;
+            font-size: 12px;
+            text-decoration: none;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+            border-bottom: 1.5px solid transparent;
+            margin-bottom: -0.5px;
+            transition: color 0.15s ease;
+        }
+
+        .page-nav a:hover {
+            color: var(--dark);
+        }
+
+        .page-nav a.active {
+            color: var(--dark);
+            border-bottom-color: var(--dark);
+        }
+
+        header {
+            padding: 20px 48px 36px;
+            border-bottom: 0.5px solid var(--border);
+            background: linear-gradient(180deg, rgba(242,240,232,0.3) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .header-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--muted);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        main {
+            padding: 48px;
+        }
+
+        section {
+            margin-bottom: 56px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            padding-bottom: 12px;
+            border-bottom: 0.5px solid var(--border);
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.005em;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--mid);
+            font-size: 15px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--mid);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Status summary */
+        .status-banner {
+            background: var(--off-white);
+            border-left: 2px solid var(--dark);
+            padding: 24px 28px;
+            margin-bottom: 48px;
+        }
+
+        .status-banner p {
+            margin: 0;
+            font-size: 15px;
+            color: var(--mid);
+        }
+
+        .status-banner strong {
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        /* Current focus */
+        .focus-box {
+            background: var(--dark);
+            color: white;
+            padding: 28px 32px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .focus-box::before {
+            content: 'Current Focus';
+            display: block;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(242,240,232,0.35);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .focus-box p {
+            color: rgba(242,240,232,0.85);
+            font-size: 16px;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Progress tracker */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 0;
+        }
+
+        .progress-item {
+            background: var(--off-white);
+            border: 0.5px solid var(--border);
+            padding: 24px;
+            position: relative;
+        }
+
+        .progress-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+        }
+
+        .progress-item.status-done::before { background: var(--green); }
+        .progress-item.status-active::before { background: var(--blue); }
+        .progress-item.status-waiting::before { background: var(--border); }
+
+        .progress-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .progress-label.status-done { color: var(--green); }
+        .progress-label.status-active { color: var(--blue); }
+        .progress-label.status-waiting { color: var(--muted); }
+
+        .progress-item h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .progress-item p {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Wireframe */
+        .wireframe-wrapper {
+            background: var(--warm-white);
+            border: 0.5px solid var(--border);
+            padding: 24px;
+            margin-bottom: 0;
+        }
+
+        .wire-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .wire-block {
+            background: rgba(17,17,36,0.04);
+            border: 0.5px solid var(--border);
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .wire-block.wf-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+        }
+
+        .wire-block.wf-hero {
+            padding: 32px 16px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(26,42,212,0.02) 0%, rgba(17,17,36,0.04) 100%);
+        }
+
+        .wire-block.wf-trust {
+            display: flex;
+            justify-content: space-around;
+            font-size: 10px;
+            background: white;
+            padding: 10px 16px;
+        }
+
+        .wire-block.wf-products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .wire-product {
+            background: white;
+            border: 0.5px solid var(--border);
+            aspect-ratio: 3/4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wire-product-img {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: 58%;
+            background: rgba(17,17,36,0.04);
+        }
+
+        .wire-product-text {
+            position: absolute;
+            bottom: 10px;
+            left: 8px;
+            right: 8px;
+        }
+
+        .wire-product-name {
+            display: block;
+            height: 8px;
+            background: rgba(17,17,36,0.08);
+            margin-bottom: 5px;
+            border-radius: 1px;
+        }
+
+        .wire-product-price {
+            display: block;
+            height: 8px;
+            width: 40%;
+            background: rgba(17,17,36,0.05);
+            border-radius: 1px;
+        }
+
+        .wire-block.wf-footer {
+            font-size: 10px;
+            text-align: center;
+            background: rgba(17,17,36,0.06);
+        }
+
+        /* Product data table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th {
+            text-align: left;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+            color: var(--muted);
+            padding: 10px 14px;
+            border-bottom: 0.5px solid var(--border);
+            background: var(--off-white);
+        }
+
+        .data-table td {
+            padding: 12px 14px;
+            color: var(--mid);
+            border-bottom: 0.5px solid var(--border);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table td:first-child {
+            font-weight: 400;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .required-tag {
+            display: inline-block;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 2px 7px;
+            border: 0.5px solid var(--border);
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .required-tag.must {
+            border-color: var(--dark);
+            color: var(--dark);
+        }
+
+        /* Next steps */
+        .steps-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .steps-list li {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 18px 0;
+            border-bottom: 0.5px solid var(--border);
+            font-size: 15px;
+            color: var(--mid);
+        }
+
+        .steps-list li:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--dark);
+            color: white;
+            font-size: 13px;
+            font-weight: 300;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-detail {
+            flex: 1;
+        }
+
+        .step-detail strong {
+            display: block;
+            color: var(--dark);
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .step-detail span {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        /* Principle message */
+        .principle {
+            background: var(--off-white);
+            padding: 40px;
+            text-align: center;
+            border-top: 0.5px solid var(--border);
+            position: relative;
+        }
+
+        .principle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .principle p {
+            font-size: 17px;
+            color: var(--dark);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .principle .sub {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 32px 48px;
+            border-top: 0.5px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(242,240,232,0.2);
+        }
+
+        .footer-nom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nom-link {
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.15s ease;
+        }
+
+        .nom-link:hover {
+            color: var(--dark);
+        }
+
+        .nom-divider {
+            width: 0.5px;
+            height: 12px;
+            background: var(--border);
+        }
+
+        .signature {
+            font-size: 18px;
+            color: var(--dark);
+            font-weight: 300;
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 12px 24px;
+            }
+
+            .back-link {
+                padding-left: 24px;
+            }
+
+            header, main {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            footer {
+                padding: 24px;
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .progress-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wire-block.wf-products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .principle {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="top-bar">
+            <div class="nom-mark">
+                <span class="line1">not</span>
+                <span class="line2">on</span>
+                <span class="line3">mondays</span>
+            </div>
+            <div class="top-meta">XS2YOU / Progress / Apr 2026</div>
+        </div>
+
+        <nav class="page-nav">
+            <a href="index.html">Proposal</a>
+            <a href="packages.html">Pricing</a>
+            <a href="dashboard.html" class="active">Dashboard</a>
+        </nav>
+
+        <header>
+            <div class="header-label">Progress Dashboard</div>
+            <h1>XS2YOU — Getting to Live</h1>
+            <p class="subtitle">A simple view of where things are, what we're focused on, and what happens next.</p>
+        </header>
+
+        <main>
+
+            <!-- Status Summary -->
+            <div class="status-banner">
+                <p><strong>Status: In progress.</strong> We have a clear plan. The proposal has been agreed and we know exactly what needs to happen. We are now working through the four areas that will get XS2YOU live and trusted.</p>
+            </div>
+
+            <!-- Current Focus -->
+            <div class="focus-box">
+                <p>Setting up Shopify correctly and making sure products are structured so customers can find what they need and buy with confidence.</p>
+            </div>
+
+            <!-- Progress Tracker -->
+            <section>
+                <h2>Progress overview</h2>
+                <div class="progress-grid">
+
+                    <div class="progress-item status-active">
+                        <div class="progress-label status-active">In progress</div>
+                        <h3>Trust</h3>
+                        <p>Replacing placeholder content with real copy. Adding contact details, delivery info, and returns policy.</p>
+                    </div>
+
+                    <div class="progress-item status-active">
+                        <div class="progress-label status-active">In progress</div>
+                        <h3>Clarity</h3>
+                        <p>Simplifying navigation and homepage message. Making it obvious what XS2YOU sells in the first few seconds.</p>
+                    </div>
+
+                    <div class="progress-item status-waiting">
+                        <div class="progress-label status-waiting">Up next</div>
+                        <h3>Products</h3>
+                        <p>Loading products into Shopify with proper images, descriptions, and sizing. Needs product data from you.</p>
+                    </div>
+
+                    <div class="progress-item status-waiting">
+                        <div class="progress-label status-waiting">Up next</div>
+                        <h3>Payments</h3>
+                        <p>Configuring Shopify Payments and testing checkout end to end. This is the final step before launch.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Product Page Wireframe -->
+            <section>
+                <h2>What a product page will look like</h2>
+                <p>This is the layout we're building towards. Simple, clear, no clutter.</p>
+
+                <div class="wireframe-wrapper">
+                    <div class="wire-label">Product page structure</div>
+
+                    <div class="wire-block wf-nav">
+                        <span>XS2YOU</span>
+                        <span style="font-size: 10px;">Women &nbsp;|&nbsp; Men &nbsp;|&nbsp; Accessories &nbsp;|&nbsp; Basket</span>
+                    </div>
+
+                    <div class="wire-block" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: transparent; border: none; padding: 0;">
+                        <div style="background: rgba(17,17,36,0.04); border: 0.5px solid var(--border); aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--muted);">Product photo</div>
+                        <div style="padding: 16px 0;">
+                            <div style="height: 10px; background: rgba(17,17,36,0.1); margin-bottom: 8px; border-radius: 1px; width: 70%;"></div>
+                            <div style="height: 8px; background: rgba(17,17,36,0.05); margin-bottom: 16px; border-radius: 1px; width: 30%;"></div>
+                            <div style="height: 6px; background: rgba(17,17,36,0.05); margin-bottom: 5px; border-radius: 1px;"></div>
+                            <div style="height: 6px; background: rgba(17,17,36,0.05); margin-bottom: 5px; border-radius: 1px; width: 80%;"></div>
+                            <div style="height: 6px; background: rgba(17,17,36,0.05); margin-bottom: 20px; border-radius: 1px; width: 60%;"></div>
+                            <div style="display: flex; gap: 6px; margin-bottom: 16px;">
+                                <div style="width: 28px; height: 28px; border: 0.5px solid var(--border); font-size: 9px; display: flex; align-items: center; justify-content: center; color: var(--muted);">XS</div>
+                                <div style="width: 28px; height: 28px; border: 0.5px solid var(--dark); font-size: 9px; display: flex; align-items: center; justify-content: center; color: var(--dark);">S</div>
+                                <div style="width: 28px; height: 28px; border: 0.5px solid var(--border); font-size: 9px; display: flex; align-items: center; justify-content: center; color: var(--muted);">M</div>
+                                <div style="width: 28px; height: 28px; border: 0.5px solid var(--border); font-size: 9px; display: flex; align-items: center; justify-content: center; color: var(--muted);">L</div>
+                            </div>
+                            <div style="background: var(--dark); color: white; text-align: center; padding: 10px; font-size: 12px;">Add to basket</div>
+                        </div>
+                    </div>
+
+                    <div class="wire-block" style="font-size: 10px; text-align: center; color: var(--muted); padding: 10px;">
+                        Free delivery on orders over £50 &nbsp;·&nbsp; Easy returns &nbsp;·&nbsp; Secure checkout
+                    </div>
+
+                    <div class="wire-block wf-footer">
+                        Contact &nbsp;|&nbsp; Delivery &nbsp;|&nbsp; Returns &nbsp;|&nbsp; About
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Data Requirements -->
+            <section>
+                <h2>What we need from you for products</h2>
+                <p>For each product you want to sell, we need the following information. The more complete this is, the faster we can go live.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>What it is</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Product name</td>
+                            <td>The name of the item as it appears on the site</td>
+                            <td><span class="required-tag must">Must have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Category</td>
+                            <td>Women, Men, or Accessories</td>
+                            <td><span class="required-tag must">Must have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>Selling price in GBP</td>
+                            <td><span class="required-tag must">Must have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sizes available</td>
+                            <td>e.g. XS, S, M, L, XL or numerical sizing</td>
+                            <td><span class="required-tag must">Must have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Photos</td>
+                            <td>At least one clear image per product, plain background preferred</td>
+                            <td><span class="required-tag must">Must have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Short description</td>
+                            <td>2–4 sentences about the item. Material, fit, key details.</td>
+                            <td><span class="required-tag must">Must have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Stock quantity</td>
+                            <td>How many of each size you have available</td>
+                            <td><span class="required-tag must">Must have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Colours</td>
+                            <td>If the product comes in multiple colours</td>
+                            <td><span class="required-tag">Good to have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Size guide</td>
+                            <td>Measurements or a guide to help customers choose the right size</td>
+                            <td><span class="required-tag">Good to have</span></td>
+                        </tr>
+                        <tr>
+                            <td>Compare-at price</td>
+                            <td>Original price if the item is on sale</td>
+                            <td><span class="required-tag">Optional</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Next Steps -->
+            <section>
+                <h2>Next steps</h2>
+                <ul class="steps-list">
+                    <li>
+                        <span class="step-num">1</span>
+                        <div class="step-detail">
+                            <strong>Send product information</strong>
+                            <span>Use the table above as a guide. Photos and product names are the priority.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">2</span>
+                        <div class="step-detail">
+                            <strong>Review trust content</strong>
+                            <span>We'll share the delivery, returns, and about copy for you to check before it goes live.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">3</span>
+                        <div class="step-detail">
+                            <strong>Confirm Shopify Payments</strong>
+                            <span>You'll need to verify your business details in Shopify. Takes around 10 minutes.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">4</span>
+                        <div class="step-detail">
+                            <strong>Test and launch</strong>
+                            <span>We'll run through the full checkout together to make sure everything works before going live.</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Principle -->
+            <div class="principle">
+                <p>The goal isn't a perfect site.<br>It's a real one that people trust and can buy from.</p>
+                <p class="sub">Everything else follows from that.</p>
+            </div>
+
+        </main>
+
+        <footer>
+            <div class="footer-nom">
+                <a href="https://notonmondays.com" class="nom-link">notonmondays.com</a>
+                <div class="nom-divider"></div>
+                <span class="nom-link" style="cursor: default;">Calm, practical support</span>
+            </div>
+            <p class="signature">David</p>
+        </footer>
+    </div>
+    <script>
+        // Check if user has access
+        if (sessionStorage.getItem('xs2you_access') !== 'granted') {
+            window.location.href = 'gate.html';
+        }
+    </script>
+</body>
+</html>

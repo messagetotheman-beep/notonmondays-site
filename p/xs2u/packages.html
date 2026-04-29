@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>XS2YOU Go-Live Sprint Options</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #111124;
+            --mid: #2a2a4a;
+            --muted: #8a8fa8;
+            --off-white: #f2f0e8;
+            --warm-white: #faf8f2;
+            --blue: #1a2ad4;
+            --border: rgba(17,17,36,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.65;
+            color: var(--dark);
+            background: #e8e5dc;
+            font-weight: 300;
+        }
+
+        .page-wrapper {
+            max-width: 1040px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            background: var(--dark);
+            padding: 12px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 0.5px solid rgba(255,255,255,0.06);
+        }
+
+        .nom-mark {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nom-mark span {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            text-transform: lowercase;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .nom-mark .line1 { color: rgba(242,240,232,0.18); }
+        .nom-mark .line2 { color: rgba(242,240,232,0.12); }
+        .nom-mark .line3 { color: var(--blue); }
+
+        .top-meta {
+            font-size: 9px;
+            color: rgba(242,240,232,0.3);
+            letter-spacing: 0.08em;
+        }
+
+        .page-nav {
+            padding: 0 48px;
+            border-bottom: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .page-nav a {
+            display: inline-block;
+            padding: 13px 0;
+            margin-right: 28px;
+            font-size: 12px;
+            text-decoration: none;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+            border-bottom: 1.5px solid transparent;
+            margin-bottom: -0.5px;
+            transition: color 0.15s ease;
+        }
+
+        .page-nav a:hover {
+            color: var(--dark);
+        }
+
+        .page-nav a.active {
+            color: var(--dark);
+            border-bottom-color: var(--dark);
+        }
+
+        header {
+            padding: 20px 48px 36px;
+            border-bottom: 0.5px solid var(--border);
+            background: linear-gradient(180deg, rgba(242,240,232,0.3) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .header-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--muted);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        main {
+            padding: 48px;
+        }
+
+        .intro {
+            background: var(--off-white);
+            border-left: 2px solid var(--dark);
+            padding: 20px 24px;
+            margin-bottom: 56px;
+            color: var(--mid);
+            font-size: 15px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 28px;
+            letter-spacing: -0.01em;
+            padding-bottom: 12px;
+            border-bottom: 0.5px solid var(--border);
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 8px;
+            letter-spacing: -0.005em;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--mid);
+            font-size: 15px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 56px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 0.5px solid var(--border);
+            padding: 32px 28px;
+            position: relative;
+            transition: border-color 0.15s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(17,17,36,0.25);
+        }
+
+        .pricing-card.recommended {
+            border-color: var(--dark);
+            border-width: 1px;
+            background: var(--off-white);
+        }
+
+        .pricing-card.recommended::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, transparent 0%, rgba(26,42,212,0.05) 100%);
+            pointer-events: none;
+        }
+
+        .badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 4px 14px;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .package-name {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .best-for {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 0.5px solid var(--border);
+        }
+
+        .includes {
+            margin-bottom: 24px;
+        }
+
+        .includes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .includes li {
+            padding-left: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 14px;
+            color: var(--mid);
+            line-height: 1.5;
+        }
+
+        .includes li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .outcome-box {
+            background: white;
+            border: 0.5px solid var(--border);
+            padding: 16px 18px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: var(--mid);
+        }
+
+        .recommended .outcome-box {
+            background: white;
+            border-color: rgba(17,17,36,0.15);
+        }
+
+        .outcome-label {
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            transition: opacity 0.15s ease;
+            border: 0.5px solid var(--dark);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: var(--dark);
+            border: 0.5px solid var(--dark);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(17,17,36,0.03);
+        }
+
+        .recommendation-section {
+            background: var(--off-white);
+            padding: 40px;
+            margin-bottom: 56px;
+            position: relative;
+        }
+
+        .recommendation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--blue) 0%, transparent 100%);
+            opacity: 0.4;
+        }
+
+        .recommendation-section h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .steps-section {
+            margin-bottom: 56px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .step {
+            background: var(--off-white);
+            border: 0.5px solid var(--border);
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--dark);
+            color: white;
+            line-height: 32px;
+            font-weight: 300;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: var(--mid);
+        }
+
+        .final-cta {
+            background: var(--dark);
+            color: white;
+            padding: 48px 40px;
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .final-cta h2 {
+            color: white;
+            margin: 0 0 28px 0;
+            border: none;
+            padding: 0;
+        }
+
+        .final-cta .cta-button {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            color: var(--dark);
+            border-color: white;
+        }
+
+        .final-cta .cta-button:hover {
+            background: rgba(255,255,255,0.9);
+        }
+
+        footer {
+            padding: 32px 48px;
+            border-top: 0.5px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(242,240,232,0.2);
+        }
+
+        .footer-nom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nom-link {
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.15s ease;
+        }
+
+        .nom-link:hover {
+            color: var(--dark);
+        }
+
+        .nom-divider {
+            width: 0.5px;
+            height: 12px;
+            background: var(--border);
+        }
+
+        .signature {
+            font-size: 18px;
+            color: var(--dark);
+            font-weight: 300;
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-style: italic;
+        }
+
+        @media (max-width: 900px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .top-bar {
+                padding: 12px 24px;
+            }
+
+            .back-link {
+                padding-left: 24px;
+            }
+
+            header, main, footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .price {
+                font-size: 28px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta {
+                padding: 40px 24px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="top-bar">
+            <div class="nom-mark">
+                <span class="line1">not</span>
+                <span class="line2">on</span>
+                <span class="line3">mondays</span>
+            </div>
+            <div class="top-meta">Pricing / Apr 2026</div>
+        </div>
+
+        <nav class="page-nav">
+            <a href="index.html">Proposal</a>
+            <a href="packages.html" class="active">Pricing</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+
+        <header>
+            <div class="header-label">Go-Live Options</div>
+            <h1>XS2YOU Go-Live Sprint Options</h1>
+            <p class="subtitle">Three simple ways to get the site live, trusted, and ready to take payments.</p>
+        </header>
+
+        <main>
+            <p style="font-size: 17px; color: var(--dark); font-weight: 400; margin-bottom: 32px; text-align: center;">The goal is simple: get XS2YOU live, trusted, and taking real orders.</p>
+
+            <div class="intro">
+                <p>We'll use Shopify to handle products, checkout, and payments. The site does not need a custom build. The priority is to make it feel real, make the buying journey clear, and make sure customers can pay with confidence.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="package-name">Shopify Go-Live Essentials</h3>
+                    <div class="price">£750</div>
+                    <div class="best-for">Best for: Getting the basics in place quickly.</div>
+                    
+                    <div class="includes">
+                        <ul>
+                            <li>Basic Shopify setup and configuration</li>
+                            <li>Trust copy cleanup</li>
+                            <li>Homepage structure tidy</li>
+                            <li>Delivery, returns and contact sections</li>
+                            <li>Product structure guidance</li>
+                            <li>Payment setup support (Shopify Payments)</li>
+                            <li>Basic mobile check</li>
+                            <li>Handover notes</li>
+                        </ul>
+                    </div>
+
+                    <div class="outcome-box">
+                        <div class="outcome-label">Outcome</div>
+                        <div>The site feels more real, Shopify is set up, and you're closer to taking orders.</div>
+                    </div>
+
+                    <a href="#" class="cta-button secondary">Choose Essentials</a>
+                </div>
+
+                <div class="pricing-card recommended">
+                    <div class="badge">Recommended</div>
+                    <h3 class="package-name">Shopify Go-Live + Trust Upgrade</h3>
+                    <div class="price">£1,250</div>
+                    <div class="best-for">Best for: Getting live with a stronger first impression.</div>
+                    
+                    <div class="includes">
+                        <ul>
+                            <li>Everything in Shopify Go-Live Essentials</li>
+                            <li>Full Shopify configuration and collections setup</li>
+                            <li>Product page layout improvements</li>
+                            <li>Simple homepage wireframe</li>
+                            <li>Navigation and category cleanup</li>
+                            <li>Checkout flow review and testing</li>
+                            <li>Trust content (About, delivery, returns)</li>
+                            <li>Basic launch checklist</li>
+                        </ul>
+                    </div>
+
+                    <div class="outcome-box">
+                        <div class="outcome-label">Outcome</div>
+                        <div>Shopify is properly configured, customers can understand the site quickly, trust it, and buy with confidence.</div>
+                    </div>
+
+                    <a href="#" class="cta-button">Choose Recommended</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="package-name">Clean Shopify Store Launch</h3>
+                    <div class="price">£1,950</div>
+                    <div class="best-for">Best for: A more complete first version before launch.</div>
+                    
+                    <div class="includes">
+                        <ul>
+                            <li>Everything in Shopify Go-Live + Trust Upgrade</li>
+                            <li>Full UX audit summary</li>
+                            <li>Complete Shopify theme configuration</li>
+                            <li>Homepage redesign guidance</li>
+                            <li>Product collection strategy</li>
+                            <li>Trust, delivery and returns content</li>
+                            <li>Mobile experience review</li>
+                            <li>Launch checklist and testing</li>
+                            <li>1 post-launch review call</li>
+                        </ul>
+                    </div>
+
+                    <div class="outcome-box">
+                        <div class="outcome-label">Outcome</div>
+                        <div>A cleaner, more confident Shopify store launch with less guesswork and stronger foundations.</div>
+                    </div>
+
+                    <a href="#" class="cta-button secondary">Choose Clean Store Launch</a>
+                </div>
+            </div>
+
+            <div class="recommendation-section">
+                <h2>What I would recommend</h2>
+                <p>I would recommend the Shopify Go-Live + Trust Upgrade.</p>
+                <p>It gives XS2YOU a properly configured Shopify store with enough structure to feel credible, but keeps the work focused. The aim is not to make the site perfect. The aim is to get it live, trusted, and ready to take payments using Shopify's proven ecommerce platform.</p>
+            </div>
+
+            <div class="steps-section">
+                <h2>What happens next</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Confirm the option</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Set up Shopify and products</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Clean up content and trust signals</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-text">Test and launch</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final-cta">
+                <h2>Ready to get XS2YOU live?</h2>
+                <a href="#" class="cta-button">Start with the recommended option</a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-nom">
+                <a href="https://notonmondays.com" class="nom-link">notonmondays.com</a>
+                <div class="nom-divider"></div>
+                <span class="nom-link" style="cursor: default;">Calm, practical support</span>
+            </div>
+            <p class="signature">David</p>
+        </footer>
+    </div>
+    <script>
+        // Check if user has access
+        if (sessionStorage.getItem('xs2you_access') !== 'granted') {
+            window.location.href = 'gate.html';
+        }
+    </script>
+</body>
+</html>

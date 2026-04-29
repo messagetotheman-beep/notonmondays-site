@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>XS2YOU — Simple Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #111124;
+            --mid: #2a2a4a;
+            --muted: #8a8fa8;
+            --off-white: #f2f0e8;
+            --warm-white: #faf8f2;
+            --blue: #1a2ad4;
+            --border: rgba(17,17,36,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.65;
+            color: var(--dark);
+            background: #e8e5dc;
+            font-weight: 300;
+        }
+
+        .page-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            background: var(--dark);
+            padding: 12px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 0.5px solid rgba(255,255,255,0.06);
+        }
+
+        .nom-mark {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nom-mark span {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            text-transform: lowercase;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .nom-mark .line1 { color: rgba(242,240,232,0.18); }
+        .nom-mark .line2 { color: rgba(242,240,232,0.12); }
+        .nom-mark .line3 { color: var(--blue); }
+
+        .top-meta {
+            font-size: 9px;
+            color: rgba(242,240,232,0.3);
+            letter-spacing: 0.08em;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 24px 48px 0;
+            font-size: 13px;
+            transition: color 0.15s ease;
+        }
+
+        .back-link:hover {
+            color: var(--dark);
+        }
+
+        header {
+            padding: 20px 48px 36px;
+            border-bottom: 0.5px solid var(--border);
+            background: linear-gradient(180deg, rgba(242,240,232,0.3) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .header-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--muted);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        main {
+            padding: 48px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--mid);
+            font-size: 15px;
+        }
+
+        .wireframe {
+            background: var(--warm-white);
+            border: 0.5px solid var(--border);
+            padding: 40px;
+            margin: 36px 0;
+        }
+
+        .wire-section {
+            border: 1px dashed rgba(17,17,36,0.2);
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            background: white;
+        }
+
+        .wire-label {
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--muted);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wire-label::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--blue);
+            opacity: 0.3;
+        }
+
+        .wire-note {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 16px;
+            line-height: 1.6;
+            padding-top: 16px;
+            border-top: 0.5px solid var(--border);
+        }
+
+        .wire-header {
+            background: rgba(17,17,36,0.04);
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .wire-nav {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .wire-hero {
+            background: linear-gradient(135deg, rgba(26,42,212,0.03) 0%, rgba(17,17,36,0.06) 100%);
+            padding: 48px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .wire-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .wire-box {
+            background: rgba(17,17,36,0.04);
+            border: 0.5px solid var(--border);
+            padding: 40px 16px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+            position: relative;
+        }
+
+        .wire-box::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: var(--blue);
+            opacity: 0.2;
+        }
+
+        .wire-products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .wire-product {
+            background: white;
+            border: 0.5px solid var(--border);
+            padding: 14px;
+            aspect-ratio: 3/4;
+            position: relative;
+        }
+
+        .wire-product::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            height: 60%;
+            background: linear-gradient(135deg, rgba(17,17,36,0.02) 0%, rgba(17,17,36,0.04) 100%);
+        }
+
+        .wire-footer {
+            background: rgba(17,17,36,0.06);
+            padding: 28px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        footer {
+            padding: 32px 48px;
+            border-top: 0.5px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(242,240,232,0.2);
+        }
+
+        .footer-nom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nom-link {
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.15s ease;
+        }
+
+        .nom-link:hover {
+            color: var(--dark);
+        }
+
+        .nom-divider {
+            width: 0.5px;
+            height: 12px;
+            background: var(--border);
+        }
+
+        .signature {
+            font-size: 18px;
+            color: var(--dark);
+            font-weight: 300;
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 12px 24px;
+            }
+
+            .back-link {
+                padding-left: 24px;
+            }
+
+            header, main, footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .wireframe {
+                padding: 24px;
+            }
+
+            .wire-section {
+                padding: 20px;
+            }
+
+            .wire-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wire-products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .wire-footer {
+                grid-template-columns: 1fr;
+            }
+
+            .wire-nav {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="top-bar">
+            <div class="nom-mark">
+                <span class="line1">not</span>
+                <span class="line2">on</span>
+                <span class="line3">mondays</span>
+            </div>
+            <div class="top-meta">Wireframe / Apr 2026</div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to proposal</a>
+
+        <header>
+            <div class="header-label">Recommended Structure</div>
+            <h1>Simple Wireframe</h1>
+            <p class="subtitle">Here's what a clear, conversion-focused layout looks like</p>
+        </header>
+
+        <main>
+            <p>This wireframe shows the essential structure for XS2YOU. Each section has a specific job: help people understand what you offer, trust you, and buy from you.</p>
+
+            <div class="wireframe">
+                <div class="wire-section">
+                    <div class="wire-label">Header</div>
+                    <div class="wire-header">
+                        <div style="font-weight: 400; color: var(--dark);">XS2YOU</div>
+                        <div class="wire-nav">
+                            <span>Women</span>
+                            <span>Men</span>
+                            <span>Accessories</span>
+                            <span>Basket</span>
+                        </div>
+                    </div>
+                    <div class="wire-note">Simple navigation. People know where to click. Logo goes to homepage. Clear basket link so they can check out easily.</div>
+                </div>
+
+                <div class="wire-section">
+                    <div class="wire-label">Hero / Message</div>
+                    <div class="wire-hero">
+                        <div style="font-weight: 400; margin-bottom: 10px; color: var(--dark); font-size: 18px;">Extra Small Fashion for Extra Tall Style</div>
+                        <div style="font-size: 14px; color: var(--muted);">XS sizes that actually fit</div>
+                    </div>
+                    <div class="wire-note">Clear message in 5 seconds. Visitors immediately understand what you offer and who it's for. No vague marketing speak.</div>
+                </div>
+
+                <div class="wire-section">
+                    <div class="wire-label">Category Blocks</div>
+                    <div class="wire-grid">
+                        <div class="wire-box">Women</div>
+                        <div class="wire-box">Men</div>
+                        <div class="wire-box">Accessories</div>
+                    </div>
+                    <div class="wire-note">Three clear paths. People choose their category and start browsing. These could have images but keep the labels simple and obvious.</div>
+                </div>
+
+                <div class="wire-section">
+                    <div class="wire-label">Featured Products</div>
+                    <div class="wire-products">
+                        <div class="wire-product"></div>
+                        <div class="wire-product"></div>
+                        <div class="wire-product"></div>
+                        <div class="wire-product"></div>
+                    </div>
+                    <div class="wire-note">Show your best sellers or new arrivals. Each product has a clear image, name, price. Keep it clean so people can scan quickly.</div>
+                </div>
+
+                <div class="wire-section">
+                    <div class="wire-label">Footer / Trust Info</div>
+                    <div class="wire-footer">
+                        <div>
+                            <div style="font-weight: 400; margin-bottom: 6px; color: var(--dark);">Customer Service</div>
+                            <div>Contact Us</div>
+                            <div>Delivery Info</div>
+                            <div>Returns</div>
+                        </div>
+                        <div>
+                            <div style="font-weight: 400; margin-bottom: 6px; color: var(--dark);">About</div>
+                            <div>Our Story</div>
+                            <div>Size Guide</div>
+                        </div>
+                        <div>
+                            <div style="font-weight: 400; margin-bottom: 6px; color: var(--dark);">Connect</div>
+                            <div>Email: hello@xs2you.com</div>
+                            <div>Instagram</div>
+                        </div>
+                    </div>
+                    <div class="wire-note">Essential info at the bottom. Real contact details build trust. People know how to reach you and what to expect when they buy.</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 40px; color: var(--muted); font-size: 14px;">This structure works because it answers the three key questions: What is this? Can I trust it? How do I buy?</p>
+        </main>
+
+        <footer>
+            <div class="footer-nom">
+                <a href="https://notonmondays.com" class="nom-link">notonmondays.com</a>
+                <div class="nom-divider"></div>
+                <span class="nom-link" style="cursor: default;">Calm, practical support</span>
+            </div>
+            <p class="signature">David</p>
+        </footer>
+    </div>
+    <script>
+        // Check if user has access
+        if (sessionStorage.getItem('xs2you_access') !== 'granted') {
+            window.location.href = 'gate.html';
+        }
+    </script>
+</body>
+</html>

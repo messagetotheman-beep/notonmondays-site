@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Access Required</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #111124;
+            --mid: #2a2a4a;
+            --muted: #8a8fa8;
+            --off-white: #f2f0e8;
+            --blue: #1a2ad4;
+            --border: rgba(17,17,36,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.65;
+            color: var(--dark);
+            background: #e8e5dc;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .gate-container {
+            max-width: 420px;
+            width: 100%;
+            background: white;
+            padding: 48px 40px;
+            border: 0.5px solid var(--border);
+        }
+
+        .nom-mark {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-bottom: 32px;
+        }
+
+        .nom-mark span {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            text-transform: lowercase;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .nom-mark .line1 { color: rgba(17,17,36,0.18); }
+        .nom-mark .line2 { color: rgba(17,17,36,0.12); }
+        .nom-mark .line3 { color: var(--blue); }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 0.5px solid var(--border);
+            background: white;
+            font-size: 16px;
+            font-family: inherit;
+            color: var(--dark);
+            margin-bottom: 20px;
+            transition: border-color 0.15s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--dark);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--dark);
+            color: white;
+            border: 0.5px solid var(--dark);
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: opacity 0.15s ease;
+            font-family: inherit;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .error {
+            font-size: 13px;
+            color: #d32f2f;
+            margin-top: -12px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .footer-note {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 0.5px solid var(--border);
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .footer-note a {
+            color: var(--muted);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.15s ease;
+        }
+
+        .footer-note a:hover {
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="gate-container">
+        <div class="nom-mark">
+            <span class="line1">not</span>
+            <span class="line2">on</span>
+            <span class="line3">mondays</span>
+        </div>
+
+        <h1>XS2YOU Proposal</h1>
+        <p>This proposal is private. Please enter your access code to continue.</p>
+
+        <form id="accessForm">
+            <label for="code">Access Code</label>
+            <input 
+                type="text" 
+                id="code" 
+                name="code" 
+                placeholder="Enter code"
+                autocomplete="off"
+                required
+            >
+            <div class="error" id="error">Incorrect code. Please try again.</div>
+            <button type="submit">Access Proposal</button>
+        </form>
+
+        <div class="footer-note">
+            If you don't have an access code, contact <a href="mailto:hello@notonmondays.com">hello@notonmondays.com</a>
+        </div>
+    </div>
+
+    <script>
+        // Set your access code here
+        const ACCESS_CODE = 'XS2024';
+
+        document.getElementById('accessForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const code = document.getElementById('code').value.trim();
+            const error = document.getElementById('error');
+            
+            if (code === ACCESS_CODE) {
+                // Store access in session
+                sessionStorage.setItem('xs2you_access', 'granted');
+                // Redirect to main proposal
+                window.location.href = 'index.html';
+            } else {
+                error.classList.add('show');
+                document.getElementById('code').value = '';
+                document.getElementById('code').focus();
+            }
+        });
+
+        // If already accessed, redirect
+        if (sessionStorage.getItem('xs2you_access') === 'granted') {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
