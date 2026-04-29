@@ -349,6 +349,143 @@
             background: rgba(17,17,36,0.03);
         }
 
+        .cta-button:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        .button-note {
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
+            margin: 10px 0 0;
+        }
+
+        .final-cta-note {
+            font-size: 13px;
+            color: rgba(242,240,232,0.45);
+            margin: 14px auto 0;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Confirmation panel */
+        .confirm-panel {
+            background: var(--off-white);
+            border: 0.5px solid var(--dark);
+            padding: 36px 40px;
+            margin-bottom: 56px;
+            scroll-margin-top: 24px;
+        }
+
+        .confirm-panel[hidden] {
+            display: none;
+        }
+
+        .confirm-eyebrow {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .confirm-selected {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .confirm-instruction {
+            font-size: 15px;
+            color: var(--mid);
+            margin-bottom: 16px;
+        }
+
+        .confirm-instruction a {
+            color: var(--dark);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .confirm-message {
+            background: white;
+            border: 0.5px solid var(--border);
+            padding: 20px 24px;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--mid);
+            line-height: 1.7;
+            white-space: pre-wrap;
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .confirm-copy-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--dark);
+            color: white;
+            border: 0.5px solid var(--dark);
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            font-family: inherit;
+            transition: opacity 0.15s ease;
+        }
+
+        .confirm-copy-btn:hover {
+            opacity: 0.85;
+        }
+
+        .confirm-copy-btn:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        .confirm-copy-btn.copied {
+            background: #1a7a4a;
+            border-color: #1a7a4a;
+        }
+
+        .confirm-email-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: var(--dark);
+            border: 0.5px solid var(--dark);
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .confirm-email-link:hover {
+            background: rgba(17,17,36,0.03);
+        }
+
+        .confirm-email-link:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        .confirm-fallback {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0;
+        }
+
         .recommendation-section {
             background: var(--off-white);
             padding: 40px;
@@ -380,7 +517,7 @@
 
         .steps {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 28px;
         }
@@ -582,7 +719,8 @@
                         <div>The site feels more real, Shopify is set up, and you're closer to taking orders.</div>
                     </div>
 
-                    <a href="#" class="cta-button secondary">Choose Essentials</a>
+                    <button type="button" class="cta-button secondary" data-package="essentials">Go ahead with Essentials</button>
+                    <p class="button-note">You'll see how to confirm on this page.</p>
                 </div>
 
                 <div class="pricing-card recommended">
@@ -609,7 +747,8 @@
                         <div>Shopify is properly configured, customers can understand the site quickly, trust it, and buy with confidence.</div>
                     </div>
 
-                    <a href="#" class="cta-button">Choose Recommended</a>
+                    <button type="button" class="cta-button" data-package="recommended">Go ahead with Recommended</button>
+                    <p class="button-note">You'll see how to confirm on this page.</p>
                 </div>
 
                 <div class="pricing-card">
@@ -636,8 +775,21 @@
                         <div>A cleaner, more confident Shopify store launch with less guesswork and stronger foundations.</div>
                     </div>
 
-                    <a href="#" class="cta-button secondary">Choose Clean Store Launch</a>
+                    <button type="button" class="cta-button secondary" data-package="clean">Go ahead with Clean Store Launch</button>
+                    <p class="button-note">You'll see how to confirm on this page.</p>
                 </div>
+            </div>
+
+            <div class="confirm-panel" id="confirmPanel" hidden>
+                <p class="confirm-eyebrow">Your selection</p>
+                <p class="confirm-selected" id="confirmSelected"></p>
+                <p class="confirm-instruction">To confirm, email <a href="mailto:hello@notonmondays.com">hello@notonmondays.com</a> with the message below.</p>
+                <pre class="confirm-message" id="confirmMessage"></pre>
+                <div class="confirm-actions">
+                    <button type="button" class="confirm-copy-btn" id="confirmCopy">Copy message</button>
+                    <a class="confirm-email-link" id="confirmEmailLink" href="#">Email hello@notonmondays.com</a>
+                </div>
+                <p class="confirm-fallback">If your email app does not open, copy the message and send it from Gmail or your usual email.</p>
             </div>
 
             <div class="recommendation-section">
@@ -651,26 +803,23 @@
                 <div class="steps">
                     <div class="step">
                         <div class="step-number">1</div>
-                        <div class="step-text">Confirm the option</div>
+                        <div class="step-text">You confirm the option</div>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <div class="step-text">Set up Shopify and products</div>
+                        <div class="step-text">We agree the product information needed</div>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
-                        <div class="step-text">Clean up content and trust signals</div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-text">Test and launch</div>
+                        <div class="step-text">We get the store ready to launch</div>
                     </div>
                 </div>
             </div>
 
             <div class="final-cta">
                 <h2>Ready to get XS2YOU live?</h2>
-                <a href="#" class="cta-button">Start with the recommended option</a>
+                <button type="button" class="cta-button" data-package="recommended">Go ahead with the recommended option</button>
+                <p class="final-cta-note">You'll see how to confirm on this page.</p>
             </div>
         </main>
 
@@ -684,10 +833,69 @@
         </footer>
     </div>
     <script>
-        // Check if user has access
         if (sessionStorage.getItem('xs2you_access') !== 'granted') {
             window.location.href = 'gate.html';
         }
+
+        (function () {
+            var packages = {
+                essentials: {
+                    name: 'Shopify Go-Live Essentials',
+                    subject: 'XS2YOU%20Go-Live%20Essentials',
+                    body: 'Hi,\n\nI\'d like to go ahead with Shopify Go-Live Essentials for XS2YOU.\n\nThanks'
+                },
+                recommended: {
+                    name: 'Shopify Go-Live + Trust Upgrade',
+                    subject: 'XS2YOU%20Go-Live%20%2B%20Trust%20Upgrade',
+                    body: 'Hi,\n\nI\'d like to go ahead with Shopify Go-Live + Trust Upgrade for XS2YOU.\n\nThanks'
+                },
+                clean: {
+                    name: 'Clean Shopify Store Launch',
+                    subject: 'XS2YOU%20Clean%20Shopify%20Store%20Launch',
+                    body: 'Hi,\n\nI\'d like to go ahead with Clean Shopify Store Launch for XS2YOU.\n\nThanks'
+                }
+            };
+
+            var panel      = document.getElementById('confirmPanel');
+            var selectedEl = document.getElementById('confirmSelected');
+            var messageEl  = document.getElementById('confirmMessage');
+            var emailLink  = document.getElementById('confirmEmailLink');
+            var copyBtn    = document.getElementById('confirmCopy');
+
+            function showPanel(key) {
+                var pkg = packages[key];
+                selectedEl.textContent = 'You\'ve selected: ' + pkg.name;
+                messageEl.textContent  = pkg.body;
+                emailLink.href = 'mailto:hello@notonmondays.com?subject=' + pkg.subject + '&body=' + encodeURIComponent(pkg.body);
+                copyBtn.textContent = 'Copy message';
+                copyBtn.classList.remove('copied');
+                panel.hidden = false;
+                panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                copyBtn.focus();
+            }
+
+            document.querySelectorAll('[data-package]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    showPanel(btn.dataset.package);
+                });
+            });
+
+            copyBtn.addEventListener('click', function () {
+                navigator.clipboard.writeText(messageEl.textContent).then(function () {
+                    copyBtn.textContent = 'Copied';
+                    copyBtn.classList.add('copied');
+                    setTimeout(function () {
+                        copyBtn.textContent = 'Copy message';
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                }).catch(function () {
+                    var range = document.createRange();
+                    range.selectNode(messageEl);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                });
+            });
+        })();
     </script>
 </body>
 </html>
