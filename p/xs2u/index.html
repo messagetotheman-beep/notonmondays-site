@@ -555,6 +555,19 @@
             border-bottom-color: var(--dark);
         }
 
+        .back-link {
+            display: inline-block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 20px 48px 0;
+            font-size: 13px;
+            transition: color 0.15s ease;
+        }
+
+        .back-link:hover {
+            color: var(--dark);
+        }
+
         @media (max-width: 768px) {
             .top-bar {
                 padding: 12px 24px;
@@ -624,10 +637,13 @@
         </div>
 
         <nav class="page-nav">
+            <a href="dashboard.html">Dashboard</a>
             <a href="index.html" class="active">Proposal</a>
             <a href="packages.html">Pricing</a>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="wireframe.html">Wireframe</a>
         </nav>
+
+        <a href="dashboard.html" class="back-link">← Back to dashboard</a>
 
         <header>
             <div class="header-label">Website Review</div>

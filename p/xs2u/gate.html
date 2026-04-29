@@ -197,8 +197,8 @@
             if (code === ACCESS_CODE) {
                 // Store access in session
                 sessionStorage.setItem('xs2you_access', 'granted');
-                // Redirect to main proposal
-                window.location.href = 'index.html';
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
             } else {
                 error.classList.add('show');
                 document.getElementById('code').value = '';
@@ -208,7 +208,7 @@
 
         // If already accessed, redirect
         if (sessionStorage.getItem('xs2you_access') === 'granted') {
-            window.location.href = 'index.html';
+            window.location.href = 'dashboard.html';
         }
     </script>
 </body>

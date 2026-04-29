@@ -71,11 +71,41 @@
             letter-spacing: 0.08em;
         }
 
+        .page-nav {
+            padding: 0 48px;
+            border-bottom: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .page-nav a {
+            display: inline-block;
+            padding: 13px 0;
+            margin-right: 28px;
+            font-size: 12px;
+            text-decoration: none;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+            border-bottom: 1.5px solid transparent;
+            margin-bottom: -0.5px;
+            transition: color 0.15s ease;
+        }
+
+        .page-nav a:hover {
+            color: var(--dark);
+        }
+
+        .page-nav a.active {
+            color: var(--dark);
+            border-bottom-color: var(--dark);
+        }
+
         .back-link {
             display: inline-block;
             color: var(--muted);
             text-decoration: none;
-            padding: 24px 48px 0;
+            padding: 20px 48px 0;
             font-size: 13px;
             transition: color 0.15s ease;
         }
@@ -359,7 +389,14 @@
             <div class="top-meta">Wireframe / Apr 2026</div>
         </div>
 
-        <a href="index.html" class="back-link">← Back to proposal</a>
+        <nav class="page-nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html">Proposal</a>
+            <a href="packages.html">Pricing</a>
+            <a href="wireframe.html" class="active">Wireframe</a>
+        </nav>
+
+        <a href="dashboard.html" class="back-link">← Back to dashboard</a>
 
         <header>
             <div class="header-label">Recommended Structure</div>

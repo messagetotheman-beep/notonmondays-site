@@ -101,6 +101,19 @@
             border-bottom-color: var(--dark);
         }
 
+        .back-link {
+            display: inline-block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 20px 48px 0;
+            font-size: 13px;
+            transition: color 0.15s ease;
+        }
+
+        .back-link:hover {
+            color: var(--dark);
+        }
+
         header {
             padding: 20px 48px 36px;
             border-bottom: 0.5px solid var(--border);
@@ -524,10 +537,13 @@
         </div>
 
         <nav class="page-nav">
+            <a href="dashboard.html">Dashboard</a>
             <a href="index.html">Proposal</a>
             <a href="packages.html" class="active">Pricing</a>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="wireframe.html">Wireframe</a>
         </nav>
+
+        <a href="dashboard.html" class="back-link">← Back to dashboard</a>
 
         <header>
             <div class="header-label">Go-Live Options</div>

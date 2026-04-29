@@ -481,6 +481,49 @@
             color: var(--muted);
         }
 
+        /* Where to go next */
+        .next-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .next-link {
+            display: block;
+            background: var(--off-white);
+            border: 0.5px solid var(--border);
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.15s ease;
+        }
+
+        .next-link:hover {
+            border-color: var(--dark);
+        }
+
+        .next-link-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .next-link-heading {
+            font-size: 16px;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .next-link-body {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
         /* Principle message */
         .principle {
             background: var(--off-white);
@@ -581,6 +624,10 @@
                 font-size: 24px;
             }
 
+            .next-links {
+                grid-template-columns: 1fr;
+            }
+
             .progress-grid {
                 grid-template-columns: 1fr;
             }
@@ -613,9 +660,10 @@
         </div>
 
         <nav class="page-nav">
+            <a href="dashboard.html" class="active">Dashboard</a>
             <a href="index.html">Proposal</a>
             <a href="packages.html">Pricing</a>
-            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="wireframe.html">Wireframe</a>
         </nav>
 
         <header>
@@ -635,6 +683,28 @@
             <div class="focus-box">
                 <p>Setting up Shopify correctly and making sure products are structured so customers can find what they need and buy with confidence.</p>
             </div>
+
+            <!-- Where to go next -->
+            <section>
+                <h2>Where to go next</h2>
+                <div class="next-links">
+                    <a href="index.html" class="next-link">
+                        <div class="next-link-label">Proposal</div>
+                        <div class="next-link-heading">View the proposal</div>
+                        <div class="next-link-body">The full review of the XS2YOU site and the plan for getting it live.</div>
+                    </a>
+                    <a href="packages.html" class="next-link">
+                        <div class="next-link-label">Pricing</div>
+                        <div class="next-link-heading">View pricing options</div>
+                        <div class="next-link-body">Three go-live sprint options with clear outcomes and costs.</div>
+                    </a>
+                    <a href="wireframe.html" class="next-link">
+                        <div class="next-link-label">Wireframe</div>
+                        <div class="next-link-heading">View the wireframe</div>
+                        <div class="next-link-body">A simple layout showing what the XS2YOU homepage should look like.</div>
+                    </a>
+                </div>
+            </section>
 
             <!-- Progress Tracker -->
             <section>
