@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Workspace — Not On Mondays</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Secure client workspace for Not On Mondays.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+/* ─── PAGE ─── */
+body {
+  background: #111124;
+  color: #f2f0e8;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── BACKGROUND LAYERS ─── */
+.bg-light {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 900px 700px at 70% 50%, rgba(26,42,212,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 400px at 100% 0%, rgba(26,42,212,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 0% 100%, rgba(26,42,212,0.04) 0%, transparent 60%);
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(242,240,232,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,240,232,0.022) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* ─── ACCENT BAR ─── */
+.accent-bar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #1a2ad4;
+  z-index: 10;
+}
+
+/* ─── RULE LINES ─── */
+.rule-top,
+.rule-bottom {
+  position: fixed;
+  left: 0; right: 0;
+  height: 1px;
+  z-index: 10;
+  pointer-events: none;
+}
+.rule-top {
+  top: 48px;
+  background: linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.25) 30%, transparent 80%);
+}
+.rule-bottom {
+  bottom: 48px;
+  background: linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.25) 30%, transparent 80%);
+}
+
+/* ─── ORBITAL SYSTEM ─── */
+.orbit-wrap {
+  position: fixed;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(360px, 48vw, 680px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orbit-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes spin-cw  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+@keyframes spin-ccw { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
+@keyframes pulse-a  { 0%,100% { opacity: 0.65; } 50% { opacity: 1;    } }
+@keyframes pulse-b  { 0%,100% { opacity: 0.3;  } 50% { opacity: 0.75; } }
+@keyframes pulse-c  { 0%,100% { opacity: 0.5;  } 50% { opacity: 0.9;  } }
+@keyframes breathe  { 0%,100% { opacity: 0.14; } 50% { opacity: 0.28; } }
+
+.ring-outer { animation: spin-cw  42s linear infinite; transform-origin: 380px 380px; }
+.ring-mid   { animation: spin-ccw 28s linear infinite; transform-origin: 380px 380px; }
+.ring-inner { animation: spin-cw  17s linear infinite; transform-origin: 380px 380px; }
+
+.dot-a { animation: pulse-a 4s   ease-in-out infinite; }
+.dot-b { animation: pulse-b 2.8s ease-in-out infinite; }
+.dot-c { animation: pulse-c 2s   ease-in-out infinite; }
+.nom-centre { animation: breathe 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-outer, .ring-mid, .ring-inner,
+  .dot-a, .dot-b, .dot-c, .nom-centre {
+    animation: none;
+  }
+}
+
+/* ─── MAIN LAYOUT ─── */
+.page {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 80px 64px 80px 72px;
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 480px;
+  width: 100%;
+}
+
+/* ─── NOM MARK ─── */
+.nom-mark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  margin-bottom: 40px;
+}
+
+.nom-mark span {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  display: block;
+}
+
+.nom-mark .nm-n { color: rgba(242,240,232,0.18); }
+.nom-mark .nm-o { color: rgba(242,240,232,0.18); }
+.nom-mark .nm-m { color: #1a2ad4; }
+
+/* ─── EYEBROW ─── */
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #1a2ad4;
+  margin-bottom: 20px;
+}
+
+/* ─── HEADLINE ─── */
+.headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(36px, 4.5vw, 52px);
+  line-height: 1.1;
+  color: #f2f0e8;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+/* ─── SUPPORTING COPY ─── */
+.supporting {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(242,240,232,0.52);
+  letter-spacing: 0.03em;
+  margin-bottom: 48px;
+  max-width: 380px;
+}
+
+/* ─── CTA ─── */
+.cta-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background: #1a2ad4;
+  color: #f2f0e8;
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid #1a2ad4;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  position: relative;
+}
+
+.cta-btn::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s;
+}
+
+.cta-btn:hover {
+  background: transparent;
+  color: #f2f0e8;
+  border-color: rgba(26,42,212,0.6);
+}
+
+.cta-btn:hover::after {
+  width: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-btn,
+  .cta-btn::after { transition: none; }
+}
+
+/* ─── REASSURANCE ─── */
+.reassurance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(242,240,232,0.28);
+}
+
+.reassurance::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(26,42,212,0.5);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── MICROCOPY ─── */
+.microcopy {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(242,240,232,0.07);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 15px;
+  color: rgba(242,240,232,0.22);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* ─── FOOTER ─── */
+.page-footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 72px 16px;
+  pointer-events: none;
+}
+
+.footer-url {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26,42,212,0.6);
+}
+
+.footer-corner {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.15);
+  text-align: right;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .orbit-wrap {
+    width: clamp(260px, 60vw, 400px);
+    right: -80px;
+    opacity: 0.4;
+  }
+  .page {
+    padding: 80px 40px 80px 52px;
+  }
+  .page-footer {
+    padding: 0 52px 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-wrap {
+    display: none;
+  }
+  .page {
+    padding: 72px 28px 80px 36px;
+    align-items: flex-start;
+    padding-top: 96px;
+  }
+  .headline {
+    font-size: 38px;
+  }
+  .nom-mark span {
+    font-size: 26px;
+  }
+  .page-footer {
+    padding: 0 36px 14px;
+  }
+  .footer-corner {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-light" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="accent-bar" aria-hidden="true"></div>
+<div class="rule-top" aria-hidden="true"></div>
+<div class="rule-bottom" aria-hidden="true"></div>
+
+<!-- Orbital system — decorative -->
+<div class="orbit-wrap" aria-hidden="true">
+  <svg viewBox="0 0 760 760" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Outer ring: slow CW -->
+    <g class="ring-outer">
+      <circle cx="380" cy="380" r="340" fill="none" stroke="rgba(26,42,212,0.06)" stroke-width="1"/>
+      <circle cx="380" cy="380" r="340" fill="none" stroke="rgba(26,42,212,0.1)" stroke-width="1"
+        stroke-dasharray="55 285" stroke-dashoffset="0"/>
+      <g class="dot-a">
+        <circle cx="720" cy="380" r="5" fill="#1a2ad4" opacity="0.7"/>
+        <circle cx="720" cy="380" r="10" fill="none" stroke="#1a2ad4" stroke-width="1" opacity="0.18"/>
+      </g>
+      <g class="dot-b">
+        <circle cx="40" cy="380" r="3" fill="rgba(242,240,232,0.35)"/>
+      </g>
+    </g>
+
+    <!-- Mid ring: CCW -->
+    <g class="ring-mid">
+      <circle cx="380" cy="380" r="230" fill="none" stroke="rgba(26,42,212,0.09)" stroke-width="1"/>
+      <circle cx="380" cy="380" r="230" fill="none" stroke="rgba(26,42,212,0.16)" stroke-width="1"
+        stroke-dasharray="38 182" stroke-dashoffset="0"/>
+      <g class="dot-c">
+        <circle cx="610" cy="380" r="4" fill="#1a2ad4" opacity="0.8"/>
+        <circle cx="610" cy="380" r="8" fill="none" stroke="#1a2ad4" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g class="dot-a">
+        <circle cx="150" cy="380" r="2.5" fill="rgba(242,240,232,0.3)"/>
+      </g>
+    </g>
+
+    <!-- Inner ring: CW, most visible -->
+    <g class="ring-inner">
+      <circle cx="380" cy="380" r="130" fill="none" stroke="rgba(26,42,212,0.12)" stroke-width="1"/>
+      <circle cx="380" cy="380" r="130" fill="none" stroke="rgba(26,42,212,0.25)" stroke-width="1.5"
+        stroke-dasharray="28 92" stroke-dashoffset="0"/>
+      <g class="dot-b">
+        <circle cx="510" cy="380" r="3.5" fill="#1a2ad4" opacity="0.9"/>
+        <circle cx="510" cy="380" r="7" fill="none" stroke="#1a2ad4" stroke-width="1" opacity="0.28"/>
+      </g>
+    </g>
+
+    <!-- Centre NOM mark, breathing -->
+    <g class="nom-centre">
+      <circle cx="380" cy="380" r="36" fill="none" stroke="rgba(26,42,212,0.3)" stroke-width="1"/>
+      <circle cx="380" cy="380" r="28" fill="rgba(26,42,212,0.07)"/>
+      <text x="380" y="368" text-anchor="middle"
+        font-family="DM Mono, monospace" font-size="11" font-weight="300"
+        fill="rgba(242,240,232,0.45)" letter-spacing="0.1em">n</text>
+      <text x="380" y="381" text-anchor="middle"
+        font-family="DM Mono, monospace" font-size="11" font-weight="300"
+        fill="rgba(242,240,232,0.45)" letter-spacing="0.1em">o</text>
+      <text x="380" y="394" text-anchor="middle"
+        font-family="DM Mono, monospace" font-size="11" font-weight="400"
+        fill="#1a2ad4" letter-spacing="0.1em">m</text>
+    </g>
+
+  </svg>
+</div>
+
+<main class="page">
+  <div class="content">
+
+    <div class="nom-mark" aria-label="Not On Mondays">
+      <span class="nm-n">n</span>
+      <span class="nm-o">o</span>
+      <span class="nm-m">m</span>
+    </div>
+
+    <p class="eyebrow" aria-hidden="true">Client Workspace</p>
+
+    <h1 class="headline">Access your<br>workspace</h1>
+
+    <p class="supporting">Secure access to your project space,<br>updates, assets and decisions.</p>
+
+    <div class="cta-wrap">
+      <a href="https://hub.notonmondays.com" class="cta-btn" rel="noopener">
+        Continue securely
+      </a>
+      <p class="reassurance">Protected by Cloudflare Access.</p>
+    </div>
+
+    <p class="microcopy">A calm space for the work, decisions and assets that matter.</p>
+
+  </div>
+</main>
+
+<footer class="page-footer" aria-hidden="true">
+  <span class="footer-url">notonmondays.com</span>
+  <span class="footer-corner">London &mdash; Worldwide</span>
+</footer>
+
+</body>
+</html>
