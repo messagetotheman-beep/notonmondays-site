@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /p/
+Disallow: /hub/
+Disallow: /kwc/
+Disallow: /demos/
+
+Sitemap: https://notonmondays.com/sitemap.xml
