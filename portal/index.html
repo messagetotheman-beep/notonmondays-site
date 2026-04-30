@@ -259,6 +259,36 @@ body {
   flex-shrink: 0;
 }
 
+/* ─── BACK LINK ─── */
+.back-link {
+  display: none; /* shown by JS when a context is detected */
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: rgba(242,240,232,0.65);
+}
+
+.back-link::before {
+  content: '←';
+  font-size: 11px;
+  color: #1a2ad4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-link { transition: none; }
+}
+
 /* ─── MICROCOPY ─── */
 .microcopy {
   margin-top: 56px;
@@ -415,6 +445,8 @@ body {
 <main class="page">
   <div class="content">
 
+    <a href="/" class="back-link" id="js-back-link" aria-label="Back"></a>
+
     <div class="nom-mark" aria-label="Not On Mondays">
       <span class="nm-n">n</span>
       <span class="nm-o">o</span>
@@ -425,7 +457,7 @@ body {
 
     <h1 class="headline">Access your<br>workspace</h1>
 
-    <p class="supporting">Secure access to your project space,<br>updates, assets and decisions.</p>
+    <p class="supporting" id="js-supporting">Secure access to your project space,<br>updates, assets and decisions.</p>
 
     <div class="cta-wrap">
       <a href="https://hub.notonmondays.com" class="cta-btn" rel="noopener">
@@ -443,6 +475,61 @@ body {
   <span class="footer-url">notonmondays.com</span>
   <span class="footer-corner">London &mdash; Worldwide</span>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ── Context map ──────────────────────────────────────────────
+  // Add new client contexts here.
+  // Each key matches the ?from= URL parameter value.
+  // label : display name used in back link text and copy
+  // href  : destination for the back link
+  // copy  : optional supporting copy override (HTML allowed for <br>)
+  // ─────────────────────────────────────────────────────────────
+  var contexts = {
+    azariah: {
+      label: 'Azariah',
+      href:  '/hub/azariah/',
+      copy:  'Secure access to the Azariah workspace,<br>updates, assets and decisions.'
+    },
+    latchmere: {
+      label: 'Latchmere',
+      href:  '/demos/latchmere-associates/',
+      copy:  'Secure access to the Latchmere demo,<br>updates, assets and decisions.'
+    },
+    demo: {
+      label: 'Demo',
+      href:  '/demos',
+      copy:  'Secure access to your demo workspace,<br>updates, assets and decisions.'
+    }
+    // Add new entries above this line, e.g.:
+    // kwc: {
+    //   label: 'KWC',
+    //   href:  '/hub/kwc/',
+    //   copy:  'Secure access to the KWC workspace,<br>updates, assets and decisions.'
+    // }
+  };
+
+  var param   = new URLSearchParams(window.location.search).get('from');
+  var context = param && contexts[param.toLowerCase()];
+
+  if (!context) return; // no match — page stays in default state
+
+  var backLink   = document.getElementById('js-back-link');
+  var supporting = document.getElementById('js-supporting');
+
+  if (backLink) {
+    backLink.href        = context.href;
+    backLink.textContent = 'Back to ' + context.label;
+    backLink.style.display = 'inline-flex';
+  }
+
+  if (supporting && context.copy) {
+    supporting.innerHTML = context.copy;
+  }
+
+});
+</script>
 
 </body>
 </html>
