@@ -116,6 +116,27 @@ body {
   }
 }
 
+/* ─── CONTENT GROUNDING SURFACE ─── */
+/* Ambient off-white radial wash behind the content block only.
+   Not a card — no borders, no hard edges. Light passing through. */
+.content-glow {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 55vw;
+  max-width: 680px;
+  height: 80vh;
+  pointer-events: none;
+  z-index: 1; /* above grid, below orbit and text */
+  background: radial-gradient(
+    ellipse 70% 65% at 28% 50%,
+    rgba(242,240,232,0.045) 0%,
+    rgba(242,240,232,0.018) 40%,
+    transparent 75%
+  );
+}
+
 /* ─── MAIN LAYOUT ─── */
 .page {
   position: relative;
@@ -181,7 +202,7 @@ body {
   font-weight: 300;
   font-size: 13px;
   line-height: 1.75;
-  color: rgba(242,240,232,0.52);
+  color: rgba(242,240,232,0.62);
   letter-spacing: 0.03em;
   margin-bottom: 48px;
   max-width: 380px;
@@ -261,7 +282,7 @@ body {
 
 /* ─── BACK LINK ─── */
 .back-link {
-  display: none; /* shown by JS when a context is detected */
+  display: inline-flex; /* visible by default; JS overrides href + text for known contexts */
   align-items: center;
   gap: 8px;
   margin-bottom: 32px;
@@ -380,6 +401,7 @@ body {
 <div class="accent-bar" aria-hidden="true"></div>
 <div class="rule-top" aria-hidden="true"></div>
 <div class="rule-bottom" aria-hidden="true"></div>
+<div class="content-glow" aria-hidden="true"></div>
 
 <!-- Orbital system — decorative -->
 <div class="orbit-wrap" aria-hidden="true">
@@ -445,7 +467,7 @@ body {
 <main class="page">
   <div class="content">
 
-    <a href="/" class="back-link" id="js-back-link" aria-label="Back"></a>
+    <a href="/" class="back-link" id="js-back-link">Back to Not On Mondays</a>
 
     <div class="nom-mark" aria-label="Not On Mondays">
       <span class="nm-n">n</span>
@@ -513,15 +535,16 @@ document.addEventListener('DOMContentLoaded', function () {
   var param   = new URLSearchParams(window.location.search).get('from');
   var context = param && contexts[param.toLowerCase()];
 
-  if (!context) return; // no match — page stays in default state
+  // No match — back link stays as default "Back to Not On Mondays" → /
+  if (!context) return;
 
+  // Known context — override href, text, and optionally supporting copy
   var backLink   = document.getElementById('js-back-link');
   var supporting = document.getElementById('js-supporting');
 
   if (backLink) {
     backLink.href        = context.href;
     backLink.textContent = 'Back to ' + context.label;
-    backLink.style.display = 'inline-flex';
   }
 
   if (supporting && context.copy) {
