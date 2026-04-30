@@ -300,11 +300,6 @@ body {
   color: rgba(242,240,232,0.65);
 }
 
-.back-link::before {
-  content: '←';
-  font-size: 11px;
-  color: #1a2ad4;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .back-link { transition: none; }
@@ -467,7 +462,7 @@ body {
 <main class="page">
   <div class="content">
 
-    <a href="/" class="back-link" id="js-back-link">Back to Not On Mondays</a>
+    <a href="/" class="back-link" id="js-back-link">← Back to Not On Mondays</a>
 
     <div class="nom-mark" aria-label="Not On Mondays">
       <span class="nm-n">n</span>
@@ -544,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (backLink) {
     backLink.href        = context.href;
-    backLink.textContent = 'Back to ' + context.label;
+    backLink.textContent = '← Back to ' + context.label;
   }
 
   if (supporting && context.copy) {
