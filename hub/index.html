@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workspace — Not On Mondays</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Secure client workspace. Project updates, assets, decisions and next steps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ─── PAGE ─── */
+body {
+  background: #111124;
+  color: #f2f0e8;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── BACKGROUND LAYERS ─── */
+.bg-light {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 900px 700px at 80% 20%, rgba(26,42,212,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 0% 80%, rgba(26,42,212,0.04) 0%, transparent 60%);
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(242,240,232,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,240,232,0.022) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* ─── ACCENT BAR ─── */
+.accent-bar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #1a2ad4;
+  z-index: 10;
+}
+
+/* ─── RULE LINES ─── */
+.rule-top {
+  position: fixed;
+  left: 0; right: 0;
+  top: 48px;
+  height: 1px;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.25) 30%, transparent 80%);
+}
+
+/* ─── WRAPPER ─── */
+.page {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 80px 48px 100px 72px;
+}
+
+/* ─── HEADER ─── */
+.hub-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 56px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(242,240,232,0.07);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.nom-wordmark {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.55);
+}
+
+.nom-wordmark strong {
+  color: #1a2ad4;
+  font-weight: 400;
+}
+
+.workspace-label {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.28);
+}
+
+/* ─── INTRO ─── */
+.hub-intro {
+  margin-bottom: 64px;
+}
+
+.hub-intro h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.1;
+  color: #f2f0e8;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.hub-intro p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(242,240,232,0.6);
+  max-width: 440px;
+}
+
+/* ─── SECTIONS ─── */
+.hub-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.hub-section {
+  padding: 32px 0;
+  border-top: 1px solid rgba(242,240,232,0.07);
+}
+
+.hub-section:nth-child(odd) {
+  padding-right: 48px;
+}
+
+.hub-section:nth-child(even) {
+  padding-left: 48px;
+  border-left: 1px solid rgba(242,240,232,0.07);
+}
+
+/* Full-width sections — compound selector needed to beat nth-child specificity */
+.hub-section.hub-section--full {
+  grid-column: 1 / -1;
+  padding-right: 0;
+  padding-left: 0;
+  border-left: none;
+}
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #1a2ad4;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  color: rgba(242,240,232,0.9);
+  margin-bottom: 20px;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+/* ─── STATUS ITEM ─── */
+.status-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.status-item:last-child {
+  margin-bottom: 0;
+}
+
+.status-label {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.3);
+}
+
+.status-value {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: rgba(242,240,232,0.75);
+  line-height: 1.4;
+}
+
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1a2ad4;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* ─── LINKS LIST ─── */
+.hub-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hub-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(242,240,232,0.6);
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(242,240,232,0.05);
+  transition: color 0.18s;
+  width: 100%;
+}
+
+.hub-links a:last-child {
+  border-bottom: none;
+}
+
+.hub-links a::after {
+  content: '→';
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s, transform 0.18s;
+}
+
+.hub-links a:hover {
+  color: rgba(242,240,232,0.9);
+}
+
+.hub-links a:hover::after {
+  opacity: 0.5;
+  transform: translateX(0);
+}
+
+.link-sub {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: rgba(242,240,232,0.22);
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-links a,
+  .hub-links a::after {
+    transition: none;
+  }
+}
+
+/* ─── UPDATE LOG ─── */
+.update-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.update-entry {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(242,240,232,0.05);
+  align-items: baseline;
+}
+
+.update-entry:last-child {
+  border-bottom: none;
+}
+
+.update-date {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(242,240,232,0.28);
+  white-space: nowrap;
+}
+
+.update-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(242,240,232,0.65);
+  line-height: 1.5;
+}
+
+/* ─── CONTACT GUIDANCE ─── */
+.contact-block {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(242,240,232,0.55);
+}
+
+.contact-block a {
+  color: rgba(242,240,232,0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(242,240,232,0.2);
+  transition: color 0.18s, border-color 0.18s;
+}
+
+.contact-block a:hover {
+  color: #f2f0e8;
+  border-color: rgba(242,240,232,0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-block a { transition: none; }
+}
+
+/* ─── FOOTER ─── */
+.hub-footer {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(242,240,232,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-mark {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26,42,212,0.5);
+}
+
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(242,240,232,0.15);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .page {
+    padding: 72px 40px 80px 52px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 72px 24px 80px 32px;
+  }
+
+  .hub-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-section:nth-child(odd) {
+    padding-right: 0;
+  }
+
+  .hub-section:nth-child(even) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .hub-section--full {
+    grid-column: 1;
+  }
+
+  .hub-intro h1 {
+    font-size: 34px;
+  }
+
+  .update-entry {
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+  }
+
+  .hub-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-light" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="accent-bar" aria-hidden="true"></div>
+<div class="rule-top" aria-hidden="true"></div>
+
+<main class="page">
+
+  <header class="hub-header">
+    <span class="nom-wordmark">Not On Mondays &nbsp;<strong>Workspace</strong></span>
+    <span class="workspace-label">Protected</span>
+  </header>
+
+  <section class="hub-intro">
+    <h1>Your project space</h1>
+    <p>Your secure space for project updates, assets, decisions and next steps.</p>
+  </section>
+
+  <div class="hub-sections">
+
+    <!-- Current work -->
+    <div class="hub-section">
+      <p class="section-eyebrow" aria-hidden="true">Current work</p>
+      <h2 class="section-heading">Where things stand</h2>
+
+      <div class="status-item">
+        <span class="status-label">Status</span>
+        <span class="status-value status-dot">Workspace ready</span>
+      </div>
+
+      <div class="status-item">
+        <span class="status-label">Next step</span>
+        <span class="status-value">Add project assets</span>
+      </div>
+    </div>
+
+    <!-- Key links -->
+    <div class="hub-section">
+      <p class="section-eyebrow" aria-hidden="true">Key links</p>
+      <h2 class="section-heading">Quick navigation</h2>
+
+      <ul class="hub-links" role="list">
+        <li>
+          <a href="/portal">
+            Client portal
+            <span class="link-sub">notonmondays.com/portal</span>
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            Main site
+            <span class="link-sub">notonmondays.com</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Recent updates — full width -->
+    <div class="hub-section hub-section--full">
+      <p class="section-eyebrow" aria-hidden="true">Recent updates</p>
+      <h2 class="section-heading">What has happened</h2>
+
+      <div class="update-log" role="list">
+        <div class="update-entry" role="listitem">
+          <span class="update-date">Apr 2025</span>
+          <span class="update-text">Portal created. Public entry page live at /portal.</span>
+        </div>
+        <div class="update-entry" role="listitem">
+          <span class="update-date">Apr 2025</span>
+          <span class="update-text">Protected route configured. Workspace secured via Cloudflare Access.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Need something — full width -->
+    <div class="hub-section hub-section--full">
+      <p class="section-eyebrow" aria-hidden="true">Need something?</p>
+      <h2 class="section-heading">Get in touch</h2>
+
+      <p class="contact-block">
+        Reach out directly at
+        <a href="mailto:hello@notonmondays.com">hello@notonmondays.com</a>
+        for anything urgent, or use the main site contact form for less time-sensitive requests.
+      </p>
+    </div>
+
+  </div>
+
+  <footer class="hub-footer">
+    <span class="footer-mark">notonmondays.com</span>
+    <span class="footer-copy">A calm space for the work that matters.</span>
+  </footer>
+
+</main>
+
+</body>
+</html>
