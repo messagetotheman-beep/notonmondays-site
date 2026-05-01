@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Workspace — Not On Mondays</title>
+<title>Azariah Workspace — Not On Mondays</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Secure client workspace. Project updates, assets, decisions and next steps.">
+<meta name="description" content="Azariah client workspace. Product direction, delivery rhythm, decisions, assets and next steps.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300&display=swap" rel="stylesheet">
@@ -79,7 +79,7 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(242,240,232,0.06);
   flex-wrap: wrap;
@@ -109,6 +109,30 @@ body {
   color: rgba(242,240,232,0.25);
 }
 
+/* ─── BACK LINK ─── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 36px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.38);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.back-link:hover {
+  color: rgba(242,240,232,0.62);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-link { transition: none; }
+}
+
 /* ─── INTRO ─── */
 .hub-intro {
   margin-bottom: 52px;
@@ -131,7 +155,7 @@ body {
   font-size: 15px;
   line-height: 1.7;
   color: rgba(242,240,232,0.68);
-  max-width: 460px;
+  max-width: 480px;
 }
 
 /* ─── ACTIVITY SECTION ─── */
@@ -245,50 +269,44 @@ body {
   line-height: 1.2;
 }
 
-/* ─── STATUS ITEM ─── */
-.status-item {
+/* ─── WORK LIST (current work items, next actions) ─── */
+.work-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 20px;
 }
 
-.status-item:last-child {
-  margin-bottom: 0;
-}
-
-.status-label {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(242,240,232,0.38);
-}
-
-.status-value {
+.work-item {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
-  font-size: 14px;
-  color: rgba(242,240,232,0.82);
-  line-height: 1.4;
+  font-size: 13px;
+  color: rgba(242,240,232,0.75);
+  line-height: 1.5;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(242,240,232,0.05);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
-.status-dot {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.status-dot::before {
+.work-item::before {
   content: '';
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: #1a2ad4;
-  opacity: 0.9;
+  background: rgba(26,42,212,0.7);
   flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.work-item:first-child {
+  padding-top: 0;
+}
+
+.work-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 /* ─── LINKS LIST ─── */
@@ -504,9 +522,11 @@ body {
     <span class="workspace-label">Protected</span>
   </header>
 
+  <a href="/hub/" class="back-link">← Back to hub</a>
+
   <section class="hub-intro">
-    <h1>Your project space</h1>
-    <p>Your secure space for project updates, assets, decisions and next steps.</p>
+    <h1>Azariah workspace</h1>
+    <p>A shared place for product direction, delivery rhythm, decisions, assets and next steps.</p>
   </section>
 
   <section class="hub-activity" aria-label="Project activity">
@@ -516,19 +536,19 @@ body {
     </div>
     <div class="activity-cards">
       <div class="activity-card">
-        <p class="activity-value">3</p>
+        <p class="activity-value">6</p>
         <p class="activity-label">Deliverables completed</p>
       </div>
       <div class="activity-card">
-        <p class="activity-value">2</p>
+        <p class="activity-value">4</p>
         <p class="activity-label">Stakeholder sessions</p>
       </div>
       <div class="activity-card">
-        <p class="activity-value activity-value--text">Discovery</p>
+        <p class="activity-value activity-value--text">Product framing</p>
         <p class="activity-label">Current phase</p>
       </div>
       <div class="activity-card">
-        <p class="activity-value activity-value--text">Service definition kickoff</p>
+        <p class="activity-value activity-value--text">Pilot pathway</p>
         <p class="activity-label">Next milestone</p>
       </div>
     </div>
@@ -539,35 +559,50 @@ body {
     <!-- Current work -->
     <div class="hub-section">
       <p class="section-eyebrow" aria-hidden="true">Current work</p>
-      <h2 class="section-heading">Where things stand</h2>
+      <h2 class="section-heading">In progress</h2>
 
-      <div class="status-item">
-        <span class="status-label">Status</span>
-        <span class="status-value status-dot">Workspace ready</span>
-      </div>
-
-      <div class="status-item">
-        <span class="status-label">Next step</span>
-        <span class="status-value">Add project assets</span>
-      </div>
+      <ul class="work-list" role="list">
+        <li class="work-item">Product framing and problem statement</li>
+        <li class="work-item">NHS pilot narrative</li>
+        <li class="work-item">Delivery rhythm and ways of working</li>
+        <li class="work-item">Compliance and trust considerations</li>
+      </ul>
     </div>
 
     <!-- Key links -->
     <div class="hub-section">
       <p class="section-eyebrow" aria-hidden="true">Key links</p>
-      <h2 class="section-heading">Quick navigation</h2>
+      <h2 class="section-heading">Assets and tools</h2>
 
       <ul class="hub-links" role="list">
         <li>
-          <a href="/portal">
-            Client portal
-            <span class="link-sub">notonmondays.com/portal</span>
+          <a href="/hub/azariah/">
+            Azariah hub
+            <span class="link-sub">Internal dashboard</span>
           </a>
         </li>
         <li>
-          <a href="/">
-            Main site
-            <span class="link-sub">notonmondays.com</span>
+          <a href="/hub/azariah/product-framing">
+            Product framing notes
+            <span class="link-sub">Problem statement</span>
+          </a>
+        </li>
+        <li>
+          <a href="/hub/azariah/pilot-pathway">
+            Pilot pathway
+            <span class="link-sub">NHS route</span>
+          </a>
+        </li>
+        <li>
+          <a href="/hub/azariah/jira">
+            Jira board
+            <span class="link-sub">Delivery tracking</span>
+          </a>
+        </li>
+        <li>
+          <a href="/hub/azariah/slack">
+            Slack workspace
+            <span class="link-sub">Team communication</span>
           </a>
         </li>
       </ul>
@@ -580,14 +615,35 @@ body {
 
       <div class="update-log" role="list">
         <div class="update-entry" role="listitem">
-          <span class="update-date">Apr 2025</span>
-          <span class="update-text">Portal created. Public entry page live at /portal.</span>
+          <span class="update-date">Apr 2026</span>
+          <span class="update-text">Portal and workspace structure created. Secure access configured via Cloudflare.</span>
         </div>
         <div class="update-entry" role="listitem">
-          <span class="update-date">Apr 2025</span>
-          <span class="update-text">Protected route configured. Workspace secured via Cloudflare Access.</span>
+          <span class="update-date">Apr 2026</span>
+          <span class="update-text">Product vision and values clarified. HALO and SAVE positioned within NHS compliance context.</span>
+        </div>
+        <div class="update-entry" role="listitem">
+          <span class="update-date">Apr 2026</span>
+          <span class="update-text">NHS workforce compliance problem framed. Core theme: verified once, trusted everywhere.</span>
+        </div>
+        <div class="update-entry" role="listitem">
+          <span class="update-date">Apr 2026</span>
+          <span class="update-text">Delivery rhythm agreed. Jira and Slack aligned to weekly operational cadence.</span>
         </div>
       </div>
+    </div>
+
+    <!-- Next actions — full width -->
+    <div class="hub-section hub-section--full">
+      <p class="section-eyebrow" aria-hidden="true">Next actions</p>
+      <h2 class="section-heading">What happens next</h2>
+
+      <ul class="work-list" role="list">
+        <li class="work-item">Confirm first pilot use case</li>
+        <li class="work-item">Agree named NHS stakeholder path</li>
+        <li class="work-item">Prepare lightweight demo narrative</li>
+        <li class="work-item">Keep Jira and Slack aligned to weekly rhythm</li>
+      </ul>
     </div>
 
     <!-- Need something — full width -->
@@ -610,19 +666,6 @@ body {
   </footer>
 
 </main>
-
-<script>
-(function () {
-  var clientRoutes = {
-    // Add new client hub routes here
-    azariah: '/hub/azariah/workspace.html'
-  };
-  var client = new URLSearchParams(window.location.search).get('client');
-  if (client && clientRoutes[client.toLowerCase()]) {
-    window.location.href = clientRoutes[client.toLowerCase()];
-  }
-}());
-</script>
 
 </body>
 </html>
