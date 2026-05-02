@@ -617,10 +617,26 @@ body {
     // Add new client hub routes here
     azariah: '/hub/azariah/workspace.html'
   };
+
   var client = new URLSearchParams(window.location.search).get('client');
-  if (client && clientRoutes[client.toLowerCase()]) {
-    window.location.href = clientRoutes[client.toLowerCase()];
-  }
+  var route = client && clientRoutes[client.toLowerCase()];
+
+  if (!route) return;
+
+  // Show a brief loading message before redirect
+  var msg = document.createElement('p');
+  msg.textContent = 'Loading ' + client.charAt(0).toUpperCase() + client.slice(1).toLowerCase() + ' workspace...';
+  msg.style.cssText = [
+    'position:fixed', 'inset:0', 'margin:0',
+    'display:flex', 'align-items:center', 'justify-content:center',
+    'font-family:"DM Mono",monospace', 'font-weight:300',
+    'font-size:12px', 'letter-spacing:0.18em', 'text-transform:uppercase',
+    'color:rgba(242,240,232,0.45)', 'background:#111124', 'z-index:100'
+  ].join(';');
+  document.body.appendChild(msg);
+
+  var delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 200;
+  setTimeout(function () { window.location.href = route; }, delay);
 }());
 </script>
 
