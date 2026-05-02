@@ -3,27 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Workspace — Not On Mondays</title>
+<title>Client Hub — Not On Mondays</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Secure client workspace. Project updates, assets, decisions and next steps.">
+<meta name="description" content="Not On Mondays client hub. Your workspace will open after sign-in.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ─── PAGE ─── */
 body {
   background: #111124;
   color: #f2f0e8;
   font-family: 'DM Mono', monospace;
   font-weight: 300;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
-/* ─── BACKGROUND LAYERS ─── */
+.accent-bar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #1a2ad4;
+  z-index: 10;
+}
+
 .bg-light {
   position: fixed;
   inset: 0;
@@ -45,570 +49,100 @@ body {
   background-size: 72px 72px;
 }
 
-/* ─── ACCENT BAR ─── */
-.accent-bar {
-  position: fixed;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: #1a2ad4;
-  z-index: 10;
-}
-
-/* ─── RULE LINE ─── */
-.rule-top {
-  position: fixed;
-  left: 0; right: 0;
-  top: 48px;
-  height: 1px;
-  z-index: 10;
-  pointer-events: none;
-  background: linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.25) 30%, transparent 80%);
-}
-
-/* ─── WRAPPER ─── */
-.page {
+main {
   position: relative;
   z-index: 2;
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 88px 48px 120px 72px;
-}
-
-/* ─── HEADER ─── */
-.hub-header {
+  min-height: 100vh;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 64px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(242,240,232,0.06);
-  flex-wrap: wrap;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
 }
 
-.nom-wordmark {
+.card {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.wordmark {
   font-family: 'DM Mono', monospace;
   font-weight: 300;
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(242,240,232,0.5);
-}
-
-.nom-wordmark strong {
-  color: #1a2ad4;
-  font-weight: 400;
-}
-
-.workspace-label {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(242,240,232,0.25);
+  color: rgba(242,240,232,0.35);
+  margin-bottom: 48px;
 }
 
-/* ─── INTRO ─── */
-.hub-intro {
-  margin-bottom: 52px;
-}
+.wordmark strong { color: #1a2ad4; font-weight: 400; }
 
-.hub-intro h1 {
+h1 {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(34px, 4vw, 52px);
-  line-height: 1.05;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
   color: #f2f0e8;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
+  margin-bottom: 20px;
 }
 
-.hub-intro p {
+.rule {
+  width: 40px;
+  height: 1px;
+  background: rgba(26,42,212,0.5);
+  margin: 28px auto;
+}
+
+.message {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   font-size: 15px;
   line-height: 1.7;
-  color: rgba(242,240,232,0.68);
-  max-width: 460px;
+  color: rgba(242,240,232,0.52);
+  margin-bottom: 40px;
 }
 
-/* ─── ACTIVITY SECTION ─── */
-.hub-activity {
-  margin-bottom: 48px;
-}
-
-.activity-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-
-.activity-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-weight: 400;
-  font-size: 9px;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: #1a2ad4;
-}
-
-.activity-period {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(242,240,232,0.22);
-}
-
-.activity-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.activity-card {
-  background: rgba(242,240,232,0.03);
-  border: 1px solid rgba(242,240,232,0.07);
-  padding: 20px 22px 22px;
-}
-
-.activity-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 40px;
-  line-height: 1;
-  color: #f2f0e8;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-
-.activity-value--text {
-  font-family: 'DM Sans', sans-serif;
-  font-style: normal;
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.35;
-  color: rgba(242,240,232,0.85);
-  padding-top: 4px;
-}
-
-.activity-label {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(242,240,232,0.3);
-  line-height: 1.4;
-}
-
-/* ─── SECTION CARDS ─── */
-.hub-sections {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.hub-section {
-  background: rgba(242,240,232,0.03);
-  border: 1px solid rgba(242,240,232,0.07);
-  padding: 28px 32px 32px;
-}
-
-.hub-section.hub-section--full {
-  grid-column: 1 / -1;
-}
-
-.section-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-weight: 400;
-  font-size: 9px;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: #1a2ad4;
-  margin-bottom: 16px;
-}
-
-.section-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 22px;
-  color: rgba(242,240,232,0.9);
-  margin-bottom: 24px;
-  letter-spacing: 0;
-  line-height: 1.2;
-}
-
-/* ─── STATUS ITEM ─── */
-.status-item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 20px;
-}
-
-.status-item:last-child {
-  margin-bottom: 0;
-}
-
-.status-label {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(242,240,232,0.38);
-}
-
-.status-value {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  color: rgba(242,240,232,0.82);
-  line-height: 1.4;
-}
-
-.status-dot {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.status-dot::before {
-  content: '';
+.manual-link {
   display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #1a2ad4;
-  opacity: 0.9;
-  flex-shrink: 0;
-}
-
-/* ─── LINKS LIST ─── */
-.hub-links {
-  list-style: none;
-}
-
-.hub-links a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-family: 'DM Mono', monospace;
   font-weight: 300;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: rgba(242,240,232,0.68);
-  text-decoration: none;
-  padding: 11px 0;
-  border-bottom: 1px solid rgba(242,240,232,0.05);
-  transition: color 0.18s;
-}
-
-.hub-links li:first-child a {
-  padding-top: 0;
-}
-
-.hub-links li:last-child a {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.hub-links a::after {
-  content: '→';
-  margin-left: auto;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.18s, transform 0.18s;
-}
-
-.hub-links a:hover {
-  color: rgba(242,240,232,0.92);
-}
-
-.hub-links a:hover::after {
-  opacity: 0.45;
-  transform: translateX(0);
-}
-
-.link-sub {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  color: rgba(242,240,232,0.22);
+  font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hub-links a,
-  .hub-links a::after {
-    transition: none;
-  }
-}
-
-/* ─── UPDATE LOG ─── */
-.update-log {
-  display: flex;
-  flex-direction: column;
-}
-
-.update-entry {
-  display: grid;
-  grid-template-columns: 88px 1fr;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(242,240,232,0.05);
-  align-items: baseline;
-}
-
-.update-entry:first-child {
-  padding-top: 0;
-}
-
-.update-entry:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.update-date {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: rgba(242,240,232,0.32);
-  white-space: nowrap;
-}
-
-.update-text {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  font-size: 13px;
-  color: rgba(242,240,232,0.72);
-  line-height: 1.5;
-}
-
-/* ─── CONTACT GUIDANCE ─── */
-.contact-block {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.75;
-  color: rgba(242,240,232,0.62);
-}
-
-.contact-block a {
-  color: rgba(242,240,232,0.82);
+  color: rgba(242,240,232,0.35);
   text-decoration: none;
-  border-bottom: 1px solid rgba(242,240,232,0.22);
+  border-bottom: 1px solid rgba(242,240,232,0.12);
+  padding-bottom: 2px;
   transition: color 0.18s, border-color 0.18s;
 }
 
-.contact-block a:hover {
-  color: #f2f0e8;
-  border-color: rgba(242,240,232,0.5);
+.manual-link:hover {
+  color: rgba(242,240,232,0.65);
+  border-color: rgba(242,240,232,0.3);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-block a { transition: none; }
-}
-
-/* ─── FOOTER ─── */
-.hub-footer {
-  margin-top: 80px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(242,240,232,0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.footer-mark {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(26,42,212,0.45);
-}
-
-.footer-copy {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 13px;
-  color: rgba(242,240,232,0.14);
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-  .page {
-    padding: 72px 40px 88px 52px;
-  }
-
-  .activity-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .page {
-    padding: 72px 24px 80px 32px;
-  }
-
-  .hub-intro h1 {
-    font-size: 34px;
-  }
-
-  .hub-sections {
-    grid-template-columns: 1fr;
-  }
-
-  .hub-section.hub-section--full {
-    grid-column: 1;
-  }
-
-  .activity-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .update-entry {
-    grid-template-columns: 72px 1fr;
-    gap: 14px;
-  }
-
-  .hub-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  .manual-link { transition: none; }
 }
 </style>
 </head>
 <body>
 
+<!-- Cloudflare Access controls route-level authorization. This page is only a static fallback. -->
+
+<div class="accent-bar" aria-hidden="true"></div>
 <div class="bg-light" aria-hidden="true"></div>
 <div class="bg-grid" aria-hidden="true"></div>
-<div class="accent-bar" aria-hidden="true"></div>
-<div class="rule-top" aria-hidden="true"></div>
 
-<main class="page">
-
-  <header class="hub-header">
-    <span class="nom-wordmark">Not On Mondays &nbsp;<strong>Workspace</strong></span>
-    <span class="workspace-label">Protected</span>
-  </header>
-
-  <section class="hub-intro">
-    <h1>Your project space</h1>
-    <p>Your secure space for project updates, assets, decisions and next steps.</p>
-  </section>
-
-  <section class="hub-activity" aria-label="Project activity">
-    <div class="activity-header">
-      <p class="activity-eyebrow" aria-hidden="true">Project activity</p>
-      <span class="activity-period" aria-hidden="true">Last 30 days</span>
-    </div>
-    <div class="activity-cards">
-      <div class="activity-card">
-        <p class="activity-value">3</p>
-        <p class="activity-label">Deliverables completed</p>
-      </div>
-      <div class="activity-card">
-        <p class="activity-value">2</p>
-        <p class="activity-label">Stakeholder sessions</p>
-      </div>
-      <div class="activity-card">
-        <p class="activity-value activity-value--text">Discovery</p>
-        <p class="activity-label">Current phase</p>
-      </div>
-      <div class="activity-card">
-        <p class="activity-value activity-value--text">Service definition kickoff</p>
-        <p class="activity-label">Next milestone</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="hub-sections">
-
-    <!-- Current work -->
-    <div class="hub-section">
-      <p class="section-eyebrow" aria-hidden="true">Current work</p>
-      <h2 class="section-heading">Where things stand</h2>
-
-      <div class="status-item">
-        <span class="status-label">Status</span>
-        <span class="status-value status-dot">Workspace ready</span>
-      </div>
-
-      <div class="status-item">
-        <span class="status-label">Next step</span>
-        <span class="status-value">Add project assets</span>
-      </div>
-    </div>
-
-    <!-- Key links -->
-    <div class="hub-section">
-      <p class="section-eyebrow" aria-hidden="true">Key links</p>
-      <h2 class="section-heading">Quick navigation</h2>
-
-      <ul class="hub-links" role="list">
-        <li>
-          <a href="/portal">
-            Client portal
-            <span class="link-sub">notonmondays.com/portal</span>
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            Main site
-            <span class="link-sub">notonmondays.com</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Recent updates — full width -->
-    <div class="hub-section hub-section--full">
-      <p class="section-eyebrow" aria-hidden="true">Recent updates</p>
-      <h2 class="section-heading">What has happened</h2>
-
-      <div class="update-log" role="list">
-        <div class="update-entry" role="listitem">
-          <span class="update-date">Apr 2025</span>
-          <span class="update-text">Portal created. Public entry page live at /portal.</span>
-        </div>
-        <div class="update-entry" role="listitem">
-          <span class="update-date">Apr 2025</span>
-          <span class="update-text">Protected route configured. Workspace secured via Cloudflare Access.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Need something — full width -->
-    <div class="hub-section hub-section--full">
-      <p class="section-eyebrow" aria-hidden="true">Need something?</p>
-      <h2 class="section-heading">Get in touch</h2>
-
-      <p class="contact-block">
-        Reach out directly at
-        <a href="mailto:hello@notonmondays.com">hello@notonmondays.com</a>
-        for anything urgent, or use the main site contact form for less time-sensitive requests.
-      </p>
-    </div>
-
+<main>
+  <div class="card">
+    <p class="wordmark"><strong>NOM</strong> &middot; Hub</p>
+    <h1>Client Hub</h1>
+    <div class="rule" aria-hidden="true"></div>
+    <p class="message">Your workspace will open after sign-in.</p>
+    <a class="manual-link" href="/hub/azariah/">Azariah workspace</a>
   </div>
-
-  <footer class="hub-footer">
-    <span class="footer-mark">notonmondays.com</span>
-    <span class="footer-copy">A calm space for the work that matters.</span>
-  </footer>
-
 </main>
 
 </body>
