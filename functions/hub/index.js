@@ -40,10 +40,8 @@ export async function onRequest({ request }) {
       },
     ],
 
-    // TODO: Replace "REPLACE_WITH_NOM_ADMIN_EMAIL" with the actual NOM
-    // owner / admin email address. This gives NOM staff access to the
-    // workspace picker showing all active client workspaces.
-    "REPLACE_WITH_NOM_ADMIN_EMAIL": [
+    // NOM admin — sees the workspace picker with all active client workspaces.
+    "david@notonmondays.com": [
       {
         name: "NOM Internal",
         description: "Internal operating dashboard",
