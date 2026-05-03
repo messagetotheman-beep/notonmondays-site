@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Latchmere &amp; Associates</title>
+  <link rel="stylesheet" href="../../dashboard.css">
+  <style>
+    .swatch-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .swatch {
+      width: 100px; text-align: center;
+      font-family: Arial, sans-serif; font-size: 0.72rem; color: #5a5a5a;
+    }
+    .swatch-block {
+      width: 100px; height: 60px; border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.1); margin-bottom: 0.4rem;
+    }
+    .type-sample { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid #f0eeea; }
+    .type-meta { font-family: Arial, sans-serif; font-size: 0.75rem; color: #5a5a5a; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+<!-- Cloudflare Access controls route-level authorization. This page is protected by path policy, not client-side auth. -->
+  <div class="dash-topbar" role="banner">
+    <div class="container">
+      <a href="../../dashboard.html" class="dash-topbar-brand">
+        Latchmere &amp; Associates
+        <span>Design system — Not On Mondays</span>
+      </a>
+    </div>
+  </div>
+  <header class="dash-header">
+    <div class="container">
+      <div class="dash-header-title">
+        <h1>Design system</h1>
+        <p>Colour, typography, and spacing — draft for Phase 1</p>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="dash-body">
+      <div class="container">
+        <a href="../../dashboard.html" class="dash-back">← Back to dashboard</a>
+
+        <div class="dash-panel">
+          <h2>Colour palette</h2>
+          <div class="swatch-row">
+            <div class="swatch">
+              <div class="swatch-block" style="background:#1a2b4a;"></div>
+              Navy<br>#1a2b4a<br>Headings, header
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#1a7a6e;"></div>
+              Teal<br>#1a7a6e<br>CTAs, accents
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#e8f4f2;"></div>
+              Teal light<br>#e8f4f2<br>Section bg, highlights
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#f9f8f5;"></div>
+              Warm white<br>#f9f8f5<br>Alternate sections
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#f0eeea;"></div>
+              Off white<br>#f0eeea<br>Process section bg
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#5a5a5a;"></div>
+              Muted<br>#5a5a5a<br>Secondary text
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#d4d0c8;"></div>
+              Border<br>#d4d0c8<br>Card borders, rules
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-panel">
+          <h2>Typography</h2>
+
+          <div class="type-sample">
+            <div style="font-family:Georgia,serif; font-size:2.4rem; font-weight:normal; color:#1a2b4a; line-height:1.25;">Heading one — Georgia serif</div>
+            <p class="type-meta">Georgia, serif · 2.4rem · weight normal · h1 · hero only</p>
+          </div>
+
+          <div class="type-sample">
+            <div style="font-family:Georgia,serif; font-size:1.8rem; font-weight:normal; color:#1a2b4a; line-height:1.25;">Heading two — section title</div>
+            <p class="type-meta">Georgia, serif · 1.8rem · weight normal · h2</p>
+          </div>
+
+          <div class="type-sample">
+            <div style="font-family:Georgia,serif; font-size:1.25rem; font-weight:normal; color:#1a2b4a; line-height:1.25;">Heading three — sub-section</div>
+            <p class="type-meta">Georgia, serif · 1.25rem · weight normal · h3</p>
+          </div>
+
+          <div class="type-sample">
+            <div style="font-family:Arial,sans-serif; font-size:1rem; color:#1a1a1a; line-height:1.7;">Body copy — Arial. Plain English, short sentences. Not dense. Written for people under pressure who may be reading on a phone.</div>
+            <p class="type-meta">Arial, sans-serif · 1rem (18px base) · line-height 1.7</p>
+          </div>
+
+          <div class="type-sample">
+            <div style="font-family:Arial,sans-serif; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.07em; color:#5a5a5a;">Label / metadata — uppercase mono</div>
+            <p class="type-meta">Arial, sans-serif · 0.78rem · uppercase · letter-spacing 0.07em · labels, phase tags, stage markers</p>
+          </div>
+        </div>
+
+        <div class="dash-panel">
+          <h2>Spacing scale</h2>
+          <p style="font-size:0.88rem; color:#5a5a5a; margin-bottom:1rem;">Base unit: 1rem = 18px. Sections use 4rem vertical padding. Cards use 1.5rem. Container max-width: 1080px.</p>
+          <table style="width:100%; font-size:0.85rem; border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid #f0eeea; text-align:left;">
+                <th style="padding:0.4rem 0.75rem 0.4rem 0; color:#5a5a5a; font-weight:normal;">Token</th>
+                <th style="padding:0.4rem 0; color:#5a5a5a; font-weight:normal;">Value</th>
+                <th style="padding:0.4rem 0; color:#5a5a5a; font-weight:normal;">Used for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #f0eeea;"><td style="padding:0.4rem 0.75rem 0.4rem 0;">xs</td><td>0.5rem</td><td>Tight gaps, badge padding</td></tr>
+              <tr style="border-bottom:1px solid #f0eeea;"><td style="padding:0.4rem 0.75rem 0.4rem 0;">sm</td><td>1rem</td><td>Card gaps, small margins</td></tr>
+              <tr style="border-bottom:1px solid #f0eeea;"><td style="padding:0.4rem 0.75rem 0.4rem 0;">md</td><td>1.5rem</td><td>Card padding, section sub-headings</td></tr>
+              <tr style="border-bottom:1px solid #f0eeea;"><td style="padding:0.4rem 0.75rem 0.4rem 0;">lg</td><td>2.5rem</td><td>Between major elements within sections</td></tr>
+              <tr><td style="padding:0.4rem 0.75rem 0.4rem 0;">xl</td><td>4rem</td><td>Section vertical padding</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>

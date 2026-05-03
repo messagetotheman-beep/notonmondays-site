@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Notes — Latchmere &amp; Associates</title>
+  <link rel="stylesheet" href="../../dashboard.css">
+  <style>
+    .a11y-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+    .a11y-table th { text-align:left; padding:0.5rem 0.75rem 0.5rem 0; color:#5a5a5a; font-weight:normal; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; border-bottom:2px solid #f0eeea; }
+    .a11y-table td { padding:0.6rem 0.75rem 0.6rem 0; border-bottom:1px solid #f0eeea; vertical-align:top; line-height:1.5; }
+    .pass  { color:#1a7a6e; font-weight:bold; font-size:0.78rem; }
+    .note  { color:#8a6d00; font-weight:bold; font-size:0.78rem; }
+    .open  { color:#a03000; font-weight:bold; font-size:0.78rem; }
+  </style>
+</head>
+<body>
+<!-- Cloudflare Access controls route-level authorization. This page is protected by path policy, not client-side auth. -->
+  <div class="dash-topbar" role="banner">
+    <div class="container">
+      <a href="../../dashboard.html" class="dash-topbar-brand">
+        Latchmere &amp; Associates
+        <span>Accessibility notes — Not On Mondays</span>
+      </a>
+    </div>
+  </div>
+  <header class="dash-header">
+    <div class="container">
+      <div class="dash-header-title">
+        <h1>Accessibility notes</h1>
+        <p>Audit findings, decisions, and WCAG 2.2 AA references — Phase 1</p>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="dash-body">
+      <div class="container">
+        <a href="../../dashboard.html" class="dash-back">← Back to dashboard</a>
+
+        <div class="dash-panel">
+          <h2>Phase 1 — homepage wireframe</h2>
+          <table class="a11y-table">
+            <thead>
+              <tr>
+                <th style="width:30%">Item</th>
+                <th style="width:12%">Status</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Skip link to <code>#main</code></td><td><span class="pass">Pass</span></td><td>Present and functional. Becomes visible on focus.</td></tr>
+              <tr><td>Single h1 per page</td><td><span class="pass">Pass</span></td><td>h1 in hero only. h2 for sections, h3 for sub-sections.</td></tr>
+              <tr><td>Heading hierarchy</td><td><span class="pass">Pass</span></td><td>No skipped levels. h1 → h2 → h3 throughout.</td></tr>
+              <tr><td>Landmark regions</td><td><span class="pass">Pass</span></td><td><code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code> all present.</td></tr>
+              <tr><td>aria-labelledby on sections</td><td><span class="pass">Pass</span></td><td>All major sections labelled by their heading id.</td></tr>
+              <tr><td>Nav aria-label</td><td><span class="pass">Pass</span></td><td>Main nav and footer nav both carry aria-label.</td></tr>
+              <tr><td>Decorative emoji aria-hidden</td><td><span class="pass">Pass</span></td><td>All card icons and decorative elements marked aria-hidden="true".</td></tr>
+              <tr><td>Focus-visible styles</td><td><span class="pass">Pass</span></td><td>3px #ffbf47 outline on all interactive elements. Meets WCAG 2.4.11.</td></tr>
+              <tr><td>lang attribute on html</td><td><span class="pass">Pass</span></td><td>lang="en" set.</td></tr>
+              <tr><td>Semantic list for service cards</td><td><span class="pass">Pass</span></td><td>role="list" and role="listitem" used. Cards are links.</td></tr>
+              <tr><td>Steps as ordered list</td><td><span class="pass">Pass</span></td><td>How we help and divorce process both use <code>&lt;ol&gt;</code>.</td></tr>
+              <tr><td>Testimonials use blockquote/cite</td><td><span class="pass">Pass</span></td><td>Semantic quote markup used throughout.</td></tr>
+              <tr><td>Colour contrast — body text</td><td><span class="pass">Pass</span></td><td>#1a1a1a on white. Ratio ~18:1. Exceeds AA.</td></tr>
+              <tr><td>Colour contrast — muted text</td><td><span class="pass">Pass</span></td><td>#5a5a5a on white. Ratio ~7:1. Meets AA.</td></tr>
+              <tr><td>Colour contrast — white on navy</td><td><span class="pass">Pass</span></td><td>Ratio ~15:1. Exceeds AA.</td></tr>
+              <tr><td>Colour contrast — white on teal</td><td><span class="pass">Pass</span></td><td>#ffffff on #1a7a6e. Ratio ~5.2:1. Meets AA for normal text.</td></tr>
+              <tr><td>Annotation elements in DOM flow</td><td><span class="note">Note</span></td><td>Annotation spans are read by screen readers between sections. Acceptable for a prototype; should be removed or marked role="note" before production.</td></tr>
+              <tr><td>Mobile tap target size</td><td><span class="pass">Pass</span></td><td>All buttons and card links exceed 44×44px on mobile. Meets WCAG 2.5.5.</td></tr>
+              <tr><td>prefers-reduced-motion</td><td><span class="note">Note</span></td><td>No animations in Phase 1. Will need a reduced-motion rule if transitions are added in later phases.</td></tr>
+              <tr><td>Form elements</td><td><span class="note">Note</span></td><td>No forms in Phase 1. Contact and enquiry forms will need full label, error, and live region testing in Phase 2.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dash-panel">
+          <h2>Open items for Phase 2</h2>
+          <ul style="font-size:0.88rem; line-height:1.8; color:#1a1a1a; padding-left:1.25rem;">
+            <li>Remove or properly mark prototype annotations before production</li>
+            <li>Test with a screen reader (VoiceOver / NVDA) once forms are added</li>
+            <li>Audit all images and media added in later phases (alt text, captions)</li>
+            <li>Add prefers-reduced-motion rule if any CSS transitions are introduced</li>
+            <li>Test keyboard navigation end-to-end on all page templates</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
