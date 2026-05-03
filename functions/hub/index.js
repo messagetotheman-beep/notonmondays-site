@@ -73,7 +73,7 @@ export async function onRequest({ request }) {
       {
         name: "Azariah",
         description: "Healthcare workforce compliance workspace",
-        url: "/hub/azariah/",
+        url: "/hub/azariah/workspace.html",
       },
     ],
 
@@ -87,7 +87,7 @@ export async function onRequest({ request }) {
       {
         name: "Azariah",
         description: "Healthcare workforce compliance workspace",
-        url: "/hub/azariah/",
+        url: "/hub/azariah/workspace.html",
       },
       {
         name: "Latchmere",

@@ -95,6 +95,23 @@ Cloudflare Access headers cannot be injected locally. To test:
 
 Local Wrangler (`wrangler pages dev`) can run the function but cannot inject the `cf-access-authenticated-user-email` header without a tunnel or manual header override in your test client.
 
+## Workspace status
+
+| Path | Status | Notes |
+|---|---|---|
+| `/hub/azariah/workspace.html` | Live | Full Azariah team workspace — no auth logic |
+| `/hub/azariah/index.html` | Redirect | Meta-redirects to `workspace.html` — no auth logic |
+| `/hub/nom/workspace.html` | Placeholder | NOM Internal workspace being prepared |
+| `/hub/latchmere/workspace.html` | Live | Latchmere workspace with links to demo and assets |
+| `/hub/latchmere/demo/` | Live | Latchmere site prototype (homepage) |
+| `/hub/latchmere/demo/dashboard.html` | Live | Latchmere client dashboard |
+| `/hub/latchmere/demo/assets/*` | Live | Wireframes, design system, accessibility, content |
+| `/hub/nom/workspace.html` | Placeholder | NOM Internal workspace being prepared |
+
+Cloudflare Access still needs a path-level policy for each workspace path (`/hub/azariah/*`, `/hub/nom/*`, `/hub/latchmere/*`) to prevent direct URL access by users not assigned to that client.
+
+Original demo files remain at `/demos/latchmere-associates/` and are unprotected. The hub copies under `/hub/latchmere/` are the authoritative protected versions.
+
 ## Static fallback
 
 `/hub/index.html` is a static fallback page. It displays "Your workspace will open after sign-in." and includes a manual link to the Azariah workspace. It contains no security logic. Cloudflare Access controls all route-level authorization.
