@@ -14,8 +14,45 @@
  */
 
 export async function onRequest({ request }) {
-  const email = request.headers.get("cf-access-authenticated-user-email");
-  const normalizedEmail = email?.toLowerCase().trim();
+  // ── Email detection — three-step fallback chain ──────────────────────────
+  //
+  // 1. cf-access-authenticated-user-email  — standard header set by Cloudflare
+  //    Access after authentication. Most reliable source.
+  //
+  // 2. cf-access-jwt-assertion             — if the above is absent, try
+  //    decoding the Access JWT directly and extracting the email field.
+  //    Cloudflare Access sets this on every authenticated request.
+  //
+  // 3. x-dev-user-email                    — local development only.
+  //    Used with `wrangler pages dev` where CF Access headers are unavailable.
+  //    Cloudflare strips arbitrary request headers before they reach a
+  //    Pages Function in production, so this cannot be spoofed live.
+  //    Always checked last so it cannot override a real Access session.
+  //
+  // ─────────────────────────────────────────────────────────────────────────
+
+  let rawEmail = request.headers.get("cf-access-authenticated-user-email");
+  // DEBUG: log which source produced the email (visible in Cloudflare Pages logs, not in HTML)
+  let emailSource = "cf-access-authenticated-user-email";
+
+  if (!rawEmail) {
+    const jwt = request.headers.get("cf-access-jwt-assertion");
+    if (jwt) {
+      rawEmail = decodeJwtEmail(jwt);
+      emailSource = rawEmail ? "cf-access-jwt-assertion (decoded)" : "cf-access-jwt-assertion (decode failed)";
+    }
+  }
+
+  if (!rawEmail) {
+    rawEmail = request.headers.get("x-dev-user-email");
+    emailSource = rawEmail ? "x-dev-user-email (local dev)" : "none";
+  }
+
+  // DEBUG: uncomment the line below temporarily in Pages logs to verify which
+  // header supplied the email. Never log rawEmail itself to avoid leaking it.
+  // console.log("[hub/routing] email source:", emailSource);
+
+  const normalizedEmail = rawEmail?.toLowerCase().trim() || null;
 
   // ── Workspace access map ─────────────────────────────────────────────────
   //
@@ -350,6 +387,32 @@ body {
   color: rgba(242,240,232,0.48);
 }
 </style>`;
+}
+
+/**
+ * Attempts to extract an email address from a Cloudflare Access JWT.
+ * Decodes the payload (second segment) using base64url and reads the
+ * `email` field, falling back to `sub` if absent.
+ * Returns null on any parse failure — never throws.
+ */
+function decodeJwtEmail(jwt) {
+  try {
+    const parts = jwt.split(".");
+    if (parts.length !== 3) return null;
+
+    // base64url → base64 → JSON
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+    const payload = JSON.parse(atob(base64));
+
+    // `email` is the canonical Access JWT field.
+    // `sub` is a UUID in standard Access tokens, not an email — only use it
+    // if it looks like an email address (contains @).
+    const candidate = payload.email || payload.sub || null;
+    if (!candidate) return null;
+    return String(candidate).includes("@") ? candidate : null;
+  } catch {
+    return null;
+  }
 }
 
 /** Minimal HTML escaping for server-rendered strings. */

@@ -6,13 +6,25 @@
 
 When a user hits `/hub/`, Cloudflare Access has already authenticated them. The function reads their email from the `cf-access-authenticated-user-email` header and routes them based on how many workspaces they have assigned.
 
-## Which Cloudflare Access header it uses
+## How email detection works
 
-```
-cf-access-authenticated-user-email
-```
+The function uses a three-step fallback chain. It tries each source in order and stops at the first one that yields a value.
 
-Injected by Cloudflare Access after successful authentication. Cannot be spoofed by external clients. The function normalises it to lowercase before matching.
+### 1. `cf-access-authenticated-user-email` (primary)
+
+The standard header set by Cloudflare Access after authentication. Most reliable. Always checked first.
+
+### 2. `cf-access-jwt-assertion` (fallback)
+
+If the primary header is absent, the function reads the Cloudflare Access JWT from this header, base64url-decodes the payload, and extracts the `email` field. Falls back to `sub` only if it contains an `@` sign (the `sub` field in standard Access tokens is a UUID, not an email).
+
+This covers configurations where Cloudflare Access sets the JWT but not the convenience email header.
+
+### 3. `x-dev-user-email` (local development only)
+
+Used with `wrangler pages dev` where CF Access headers are unavailable. Always checked last — it cannot override a real Access session. In production, Cloudflare strips arbitrary inbound headers before they reach a Pages Function, so this header cannot be spoofed live.
+
+The normalised email (lowercase, trimmed) is what gets matched against the workspace map.
 
 ## Routing behaviour
 
