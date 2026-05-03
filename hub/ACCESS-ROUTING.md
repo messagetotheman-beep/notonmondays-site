@@ -102,9 +102,15 @@ Local Wrangler (`wrangler pages dev`) can run the function but cannot inject the
 | `/hub/azariah/workspace.html` | Live | Full Azariah team workspace — no auth logic |
 | `/hub/azariah/index.html` | Redirect | Meta-redirects to `workspace.html` — no auth logic |
 | `/hub/nom/workspace.html` | Placeholder | NOM Internal workspace being prepared |
-| `/hub/latchmere/workspace.html` | Placeholder | Latchmere workspace being prepared |
+| `/hub/latchmere/workspace.html` | Live | Latchmere workspace with links to demo and assets |
+| `/hub/latchmere/demo/` | Live | Latchmere site prototype (homepage) |
+| `/hub/latchmere/demo/dashboard.html` | Live | Latchmere client dashboard |
+| `/hub/latchmere/demo/assets/*` | Live | Wireframes, design system, accessibility, content |
+| `/hub/nom/workspace.html` | Placeholder | NOM Internal workspace being prepared |
 
 Cloudflare Access still needs a path-level policy for each workspace path (`/hub/azariah/*`, `/hub/nom/*`, `/hub/latchmere/*`) to prevent direct URL access by users not assigned to that client.
+
+Original demo files remain at `/demos/latchmere-associates/` and are unprotected. The hub copies under `/hub/latchmere/` are the authoritative protected versions.
 
 ## Static fallback
 

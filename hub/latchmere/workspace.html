@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Latchmere Associates — Hub</title>
+<title>Latchmere Associates — Hub Workspace</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
   background: #111124;
   color: #f2f0e8;
   font-family: 'DM Mono', monospace;
   font-weight: 300;
   min-height: 100vh;
+  overflow-x: hidden;
 }
+
 .accent-bar {
   position: fixed;
   left: 0; top: 0; bottom: 0;
@@ -24,6 +27,7 @@ body {
   background: #1a2ad4;
   z-index: 10;
 }
+
 .bg-light {
   position: fixed;
   inset: 0;
@@ -33,6 +37,7 @@ body {
     radial-gradient(ellipse 900px 700px at 80% 20%, rgba(26,42,212,0.05) 0%, transparent 70%),
     radial-gradient(ellipse 600px 500px at 0% 80%, rgba(26,42,212,0.04) 0%, transparent 60%);
 }
+
 .bg-grid {
   position: fixed;
   inset: 0;
@@ -43,30 +48,57 @@ body {
     linear-gradient(90deg, rgba(242,240,232,0.018) 1px, transparent 1px);
   background-size: 72px 72px;
 }
-main {
+
+.page {
   position: relative;
   z-index: 2;
-  min-height: 100vh;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 88px 48px 120px 72px;
+}
+
+/* ── HEADER ── */
+.hub-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 24px;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(242,240,232,0.06);
+  flex-wrap: wrap;
+  gap: 16px;
 }
-.card {
-  max-width: 520px;
-  width: 100%;
-}
-.wordmark {
+
+.nom-wordmark {
   font-family: 'DM Mono', monospace;
   font-weight: 300;
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(242,240,232,0.35);
-  margin-bottom: 48px;
+  color: rgba(242,240,232,0.5);
 }
-.wordmark strong { color: #1a2ad4; font-weight: 400; }
-.eyebrow {
+
+.nom-wordmark strong { color: #1a2ad4; font-weight: 400; }
+
+.hub-back {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.28);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.hub-back:hover { color: rgba(242,240,232,0.6); }
+
+/* ── INTRO ── */
+.hub-intro {
+  margin-bottom: 56px;
+}
+
+.hub-eyebrow {
   font-family: 'DM Mono', monospace;
   font-weight: 400;
   font-size: 9px;
@@ -75,69 +107,278 @@ main {
   color: #1a2ad4;
   margin-bottom: 16px;
 }
-h1 {
+
+.hub-intro h1 {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(28px, 4vw, 44px);
-  line-height: 1.1;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.05;
   color: #f2f0e8;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
 }
-.rule {
-  width: 40px;
-  height: 1px;
-  background: rgba(26,42,212,0.5);
-  margin: 28px 0;
-}
-p {
+
+.hub-intro p {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   font-size: 15px;
   line-height: 1.7;
-  color: rgba(242,240,232,0.52);
+  color: rgba(242,240,232,0.55);
+  max-width: 480px;
+}
+
+/* ── SECTION ── */
+.ws-section {
+  margin-bottom: 48px;
+}
+
+.ws-section-label {
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #1a2ad4;
   margin-bottom: 16px;
 }
-.hub-link {
-  display: inline-block;
+
+/* ── MAIN DEMO LINK ── */
+.demo-primary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 32px;
+  background: rgba(26,42,212,0.06);
+  border: 1px solid rgba(26,42,212,0.2);
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.demo-primary:hover {
+  background: rgba(26,42,212,0.1);
+  border-color: rgba(26,42,212,0.4);
+}
+
+.demo-primary-text .name {
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: rgba(242,240,232,0.9);
+  margin-bottom: 4px;
+}
+
+.demo-primary-text .desc {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(242,240,232,0.42);
+}
+
+.demo-arrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 18px;
+  color: #1a2ad4;
+  transition: transform 0.18s;
+}
+
+.demo-primary:hover .demo-arrow { transform: translateX(4px); }
+
+/* ── LINK LIST ── */
+.ws-links {
+  list-style: none;
+}
+
+.ws-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(242,240,232,0.05);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.ws-links li:first-child a { padding-top: 0; }
+.ws-links li:last-child a { border-bottom: none; padding-bottom: 0; }
+
+.ws-links li a .link-name {
   font-family: 'DM Mono', monospace;
   font-weight: 300;
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(242,240,232,0.62);
+}
+
+.ws-links li a .link-tag {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(242,240,232,0.35);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(242,240,232,0.12);
-  padding-bottom: 2px;
-  margin-top: 8px;
-  transition: color 0.18s, border-color 0.18s;
+  color: rgba(242,240,232,0.22);
 }
-.hub-link:hover {
-  color: rgba(242,240,232,0.65);
-  border-color: rgba(242,240,232,0.3);
+
+.ws-links li a:hover .link-name { color: rgba(242,240,232,0.9); }
+.ws-links li a:hover .link-tag { color: rgba(242,240,232,0.45); }
+
+/* ── DIVIDER ── */
+.ws-rule {
+  height: 1px;
+  background: rgba(242,240,232,0.05);
+  margin: 12px 0 48px;
 }
+
+/* ── FOOTER ── */
+.hub-footer {
+  padding-top: 24px;
+  border-top: 1px solid rgba(242,240,232,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-mark {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26,42,212,0.45);
+}
+
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(242,240,232,0.14);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .page { padding: 72px 40px 88px 52px; }
+}
+
+@media (max-width: 640px) {
+  .page { padding: 64px 24px 80px 32px; }
+  .hub-intro h1 { font-size: 34px; }
+  .hub-footer { flex-direction: column; align-items: flex-start; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hub-link { transition: none; }
+  .hub-back, .demo-primary, .demo-arrow, .ws-links li a, .ws-links li a .link-name, .ws-links li a .link-tag { transition: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- Cloudflare Access controls route-level authorization. This page is only a workspace placeholder. -->
+<!-- Cloudflare Access controls route-level authorization. This page is protected by path policy, not client-side auth. -->
 
 <div class="accent-bar" aria-hidden="true"></div>
 <div class="bg-light" aria-hidden="true"></div>
 <div class="bg-grid" aria-hidden="true"></div>
 
-<main>
-  <div class="card">
-    <p class="wordmark"><strong>NOM</strong> &middot; Hub</p>
-    <p class="eyebrow" aria-hidden="true">Client workspace</p>
-    <h1>Latchmere Associates is being prepared.</h1>
-    <div class="rule" aria-hidden="true"></div>
-    <p>This workspace is currently being set up. Check back soon.</p>
-    <a class="hub-link" href="/hub/">Back to hub</a>
+<main class="page">
+
+  <header class="hub-header">
+    <span class="nom-wordmark">Not On Mondays &nbsp;<strong>Hub</strong></span>
+    <a class="hub-back" href="/hub/">← All workspaces</a>
+  </header>
+
+  <div class="hub-intro">
+    <p class="hub-eyebrow" aria-hidden="true">Client workspace</p>
+    <h1>Latchmere Associates</h1>
+    <p>Legal services demo — site prototype, dashboard, and design assets in one place.</p>
   </div>
+
+  <section class="ws-section" aria-label="Demo site">
+    <p class="ws-section-label" aria-hidden="true">Demo site</p>
+    <a class="demo-primary" href="demo/">
+      <div class="demo-primary-text">
+        <div class="name">Latchmere &amp; Associates — Homepage</div>
+        <div class="desc">Public-facing website prototype. Family law, property, wills and probate.</div>
+      </div>
+      <span class="demo-arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="ws-section" aria-label="Service pages">
+    <p class="ws-section-label" aria-hidden="true">Service pages</p>
+    <ul class="ws-links" role="list">
+      <li>
+        <a href="demo/divorce-separation.html">
+          <span class="link-name">Divorce &amp; Separation</span>
+          <span class="link-tag">Service page</span>
+        </a>
+      </li>
+      <li>
+        <a href="demo/buying-selling.html">
+          <span class="link-name">Buying &amp; Selling Property</span>
+          <span class="link-tag">Service page</span>
+        </a>
+      </li>
+      <li>
+        <a href="demo/contact.html">
+          <span class="link-name">Contact</span>
+          <span class="link-tag">Contact page</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <div class="ws-rule" aria-hidden="true"></div>
+
+  <section class="ws-section" aria-label="Client dashboard">
+    <p class="ws-section-label" aria-hidden="true">Client dashboard</p>
+    <a class="demo-primary" href="demo/dashboard.html">
+      <div class="demo-primary-text">
+        <div class="name">Project dashboard</div>
+        <div class="desc">Progress tracking, deliverables, and design asset links.</div>
+      </div>
+      <span class="demo-arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="ws-section" aria-label="Design assets">
+    <p class="ws-section-label" aria-hidden="true">Design assets</p>
+    <ul class="ws-links" role="list">
+      <li>
+        <a href="demo/assets/wireframes/index.html">
+          <span class="link-name">Wireframes</span>
+          <span class="link-tag">Asset</span>
+        </a>
+      </li>
+      <li>
+        <a href="demo/assets/design-system/index.html">
+          <span class="link-name">Design system</span>
+          <span class="link-tag">Asset</span>
+        </a>
+      </li>
+      <li>
+        <a href="demo/assets/accessibility/index.html">
+          <span class="link-name">Accessibility review</span>
+          <span class="link-tag">Asset</span>
+        </a>
+      </li>
+      <li>
+        <a href="demo/assets/content/index.html">
+          <span class="link-name">Content review</span>
+          <span class="link-tag">Asset</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="hub-footer">
+    <span class="footer-mark">notonmondays.com</span>
+    <span class="footer-copy">Latchmere Associates · Restricted access.</span>
+  </footer>
+
 </main>
 
 </body>
