@@ -383,9 +383,15 @@ h3 { font-size: 1.1rem; }
 }
 
 .asset-icon {
-  font-size: 1.3rem;
   line-height: 1;
   margin-bottom: 0.15rem;
+  display: block;
+}
+
+.asset-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .asset-name {
