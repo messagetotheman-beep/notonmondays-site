@@ -405,6 +405,12 @@ h3 { font-size: 1.1rem; }
   box-shadow: 0 0 0 3px rgba(212,130,26,0.18);
 }
 
+.milestone--active-secondary .milestone-dot {
+  background: #D4821A;
+  border-color: #D4821A;
+  opacity: 0.55;
+}
+
 .milestone--future .milestone-dot {
   background: var(--white);
   border-color: var(--phase-future);
@@ -420,8 +426,9 @@ h3 { font-size: 1.1rem; }
   margin-bottom: 0.3rem;
 }
 
-.milestone--done .milestone-label    { color: var(--blue); }
-.milestone--future .milestone-label  { color: var(--phase-future); font-weight: 300; }
+.milestone--done .milestone-label             { color: var(--blue); }
+.milestone--active-secondary .milestone-label { color: #D4821A; opacity: 0.65; font-weight: 300; }
+.milestone--future .milestone-label           { color: var(--phase-future); font-weight: 300; }
 
 .milestone-tag {
   display: inline-block;
@@ -434,9 +441,10 @@ h3 { font-size: 1.1rem; }
   font-weight: 400;
 }
 
-.milestone-tag--done   { background: rgba(26,42,212,0.08);    color: var(--blue); }
-.milestone-tag--active { background: rgba(212,130,26,0.1);    color: #D4821A; }
-.milestone-tag--future { background: var(--off-white);         color: var(--phase-future); }
+.milestone-tag--done             { background: rgba(26,42,212,0.08);  color: var(--blue); }
+.milestone-tag--active           { background: rgba(212,130,26,0.1);  color: #D4821A; }
+.milestone-tag--active-secondary { background: rgba(212,130,26,0.06); color: rgba(212,130,26,0.6); }
+.milestone-tag--future           { background: var(--off-white);       color: var(--phase-future); }
 
 /* ── Activity log ────────────────────────────────────────── */
 
