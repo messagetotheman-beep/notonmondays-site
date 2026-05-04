@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Estate Snapshot · Stone Rowe Brewer · Not On Mondays</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue:       #1a2ad4;
+  --deep-blue:  #0d1880;
+  --light-blue: #bfc6f0;
+  --off-white:  #f2f0e8;
+  --warm-white: #faf8f2;
+  --muted:      #8a8fa8;
+  --dark:       #111124;
+  --mid:        #2a2a4a;
+  --mono: 'DM Mono', monospace;
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--off-white);
+  color: var(--dark);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: var(--dark);
+  padding: 0.6rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--blue);
+}
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.nom-logo-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.nom-i {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.45em;
+  line-height: 1.1;
+  display: block;
+}
+.nom-i.d1 { color: rgba(242,240,232,0.2); }
+.nom-i.d2 { color: rgba(242,240,232,0.1); }
+.nom-i.ac { color: var(--blue); }
+.top-bar-label {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.3);
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(242,240,232,0.1);
+}
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.top-bar-meta {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  color: rgba(242,240,232,0.25);
+  text-align: right;
+}
+
+/* ── PRINT BUTTON ── */
+.print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--blue);
+  color: var(--off-white);
+  border: none;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.print-btn:hover { background: var(--deep-blue); }
+
+/* ── COVER ── */
+.cover {
+  background: var(--dark);
+  padding: 3.5rem 3rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,42,212,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.cover-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.cover h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.cover h1 em {
+  font-style: italic;
+  color: var(--light-blue);
+}
+.cover-sub {
+  font-size: 0.88rem;
+  color: rgba(242,240,232,0.45);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 2rem;
+}
+.cover-meta-row {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.cover-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cover-meta-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.22);
+}
+.cover-meta-value {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: rgba(242,240,232,0.55);
+  font-weight: 300;
+}
+
+/* ── CONTENT ── */
+.content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.section-ey {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 0.65rem;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+h2 em { font-style: italic; color: var(--blue); }
+
+.intro-text {
+  font-size: 0.88rem;
+  color: var(--mid);
+  line-height: 1.8;
+  max-width: 64ch;
+  margin-bottom: 2rem;
+}
+
+/* ── SCORE GRID ── */
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(17,17,36,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.score-card {
+  background: var(--dark);
+  padding: 1.25rem 1rem;
+  position: relative;
+}
+.score-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 1rem; right: 1rem;
+  height: 3px;
+  border-radius: 2px;
+}
+.score-card.amber::after { background: #D4821A; }
+.score-card.red::after   { background: #B91C1C; }
+.score-card.green::after { background: #15803D; }
+.score-label {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.3);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.score-value {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--off-white);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.score-value.amber { color: #FBBF24; }
+.score-value.red   { color: #F87171; }
+.score-desc {
+  font-size: 0.68rem;
+  color: rgba(242,240,232,0.35);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ── FINDINGS ── */
+.findings-label {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+.findings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.finding {
+  background: var(--warm-white);
+  border: 1px solid rgba(26,42,212,0.08);
+  border-radius: 4px;
+  padding: 0.9rem 1.1rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem;
+  align-items: start;
+}
+.finding-sev {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.finding-sev.urgent  { background: #E05555; }
+.finding-sev.improve { background: #D4A017; }
+.finding-sev.note    { background: var(--blue); }
+.finding-text {
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.finding-text strong { color: var(--dark); font-weight: 500; }
+.finding-tag {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.55rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+.finding-tag.seo      { background: rgba(26,42,212,0.07); color: var(--blue); border: 1px solid rgba(26,42,212,0.15); }
+.finding-tag.a11y     { background: rgba(191,198,240,0.15); color: var(--mid); border: 1px solid rgba(26,42,212,0.12); }
+.finding-tag.brand    { background: rgba(26,42,212,0.06); color: var(--mid); border: 1px solid rgba(26,42,212,0.12); }
+.finding-tag.security { background: rgba(224,85,85,0.08); color: #B02020; border: 1px solid rgba(224,85,85,0.15); }
+
+/* ── LEGEND ── */
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.legend-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend-dot.urgent  { background: #E05555; }
+.legend-dot.improve { background: #D4A017; }
+.legend-dot.note    { background: var(--blue); }
+
+/* ── FOOTNOTE ── */
+.footnote {
+  font-size: 0.7rem;
+  color: rgba(17,17,36,0.3);
+  line-height: 1.7;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(26,42,212,0.08);
+  margin-top: 1.25rem;
+}
+
+/* ── WHAT'S NEXT BAND ── */
+.next-band {
+  background: var(--dark);
+  padding: 2.5rem 3rem;
+  margin-top: 0;
+}
+.next-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.next-band h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.next-band h3 em { font-style: italic; color: var(--light-blue); }
+.next-band p {
+  font-size: 0.82rem;
+  color: rgba(242,240,232,0.45);
+  line-height: 1.75;
+  max-width: none;
+}
+.next-band .ey-light {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  display: block;
+  margin-bottom: 0.65rem;
+}
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.contact-lbl {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.22);
+}
+.contact-val {
+  font-size: 0.85rem;
+  color: rgba(242,240,232,0.65);
+  font-weight: 300;
+}
+.contact-val a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(242,240,232,0.2);
+  padding-bottom: 1px;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.footer-l, .footer-r {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: rgba(242,240,232,0.18);
+}
+
+/* ── PRINT STYLES ── */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .top-bar { display: none; }
+
+  .cover { padding: 2.5rem 2.5rem 2rem; page-break-after: avoid; }
+  .content { padding: 2rem 2.5rem; }
+
+  .score-grid { page-break-inside: avoid; }
+  .finding { page-break-inside: avoid; }
+
+  .next-band { page-break-before: always; padding: 2rem 2.5rem; }
+  .doc-footer { padding: 1rem 2.5rem; }
+
+  .print-btn { display: none; }
+}
+
+/* ── RESPONSIVE — tablet ── */
+@media (max-width: 640px) {
+  .top-bar { padding: 0.6rem 1.25rem; }
+  .top-bar-label { display: none; }
+  .cover { padding: 2.5rem 1.25rem 2rem; }
+  .content { padding: 2rem 1.25rem; }
+  .score-grid { grid-template-columns: 1fr 1fr; }
+  .finding { grid-template-columns: auto 1fr; gap: 0.75rem; }
+  .finding-tag { grid-column: 2; justify-self: start; margin-top: 0.35rem; }
+  .next-band { padding: 2.5rem 1.25rem; }
+  .next-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .doc-footer { padding: 1.25rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .print-btn { min-height: 44px; padding: 0.5rem 1rem; }
+}
+
+/* ── RESPONSIVE — phone ── */
+@media (max-width: 420px) {
+  .cover h1 { font-size: 1.8rem; }
+  .cover-meta-row { flex-direction: column; gap: 0.85rem; }
+  .score-grid { grid-template-columns: 1fr; }
+  .content { padding: 1.75rem 1.25rem; }
+  .next-band { padding: 2rem 1.25rem; }
+  .legend { flex-direction: column; gap: 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <div class="nom-logo-inline">
+      <span class="nom-i d1">n</span>
+      <span class="nom-i d2">o</span>
+      <span class="nom-i ac">m</span>
+    </div>
+    <span class="top-bar-label">Digital Estate Snapshot</span>
+  </div>
+  <div class="top-bar-right">
+    <div class="top-bar-meta">
+      Stone Rowe Brewer LLP<br>Complimentary · April 2026
+    </div>
+    <button class="print-btn" onclick="window.print()" aria-label="Save this snapshot as a PDF">
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+        <path d="M6 1v7M3.5 5.5L6 8l2.5-2.5M2 10h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Save as PDF
+    </button>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <span class="cover-eyebrow">Not On Mondays · Complimentary · No obligation</span>
+    <h1>Digital Estate<br><em>Snapshot · SRB</em></h1>
+    <p class="cover-sub">A high-level read of where srb.co.uk stands across five dimensions that shape how well your digital presence serves your clients and your firm. This isn't an exhaustive technical audit. It's a strategic view of the landscape.</p>
+    <div class="cover-meta-row">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Prepared for</span>
+        <span class="cover-meta-value">Stone Rowe Brewer LLP</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Prepared by</span>
+        <span class="cover-meta-value">David Akai, Not On Mondays</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Date</span>
+        <span class="cover-meta-value">April 2026</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Reference</span>
+        <span class="cover-meta-value">NOM-2026-SRB-001</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <span class="section-ey">Scorecard</span>
+  <h2>Where you stand, <em>right now.</em></h2>
+  <p class="intro-text">Five dimensions that together determine how well your digital presence serves your clients and your business. Rated on a school-grade scale for clarity.</p>
+
+  <div class="score-grid">
+    <div class="score-card amber">
+      <span class="score-label">SEO Visibility</span>
+      <div class="score-value amber">C+</div>
+      <div class="score-desc">Present but underperforming. Key pages lack the signals that drive local search ranking.</div>
+    </div>
+    <div class="score-card red">
+      <span class="score-label">Accessibility</span>
+      <div class="score-value red">D</div>
+      <div class="score-desc">Below WCAG 2.1 AA in several areas. Given your client base, this warrants urgent attention.</div>
+    </div>
+    <div class="score-card amber">
+      <span class="score-label">Brand Consistency</span>
+      <div class="score-value amber">C</div>
+      <div class="score-desc">The firm's reputation isn't fully reflected in its visual identity and tone online.</div>
+    </div>
+    <div class="score-card red">
+      <span class="score-label">Mobile Experience</span>
+      <div class="score-value red">D+</div>
+      <div class="score-desc">Most of your clients now find you on a phone. The experience needs significant improvement.</div>
+    </div>
+    <div class="score-card amber">
+      <span class="score-label">Digital Trust</span>
+      <div class="score-value amber">C+</div>
+      <div class="score-desc">SRA credentials, reviews, and social proof are present but not working hard enough.</div>
+    </div>
+  </div>
+
+  <span class="section-ey" style="margin-top:2rem;display:block;">Findings</span>
+  <h2 style="margin-bottom:0.5rem;">What we <em>found.</em></h2>
+  <p class="intro-text" style="margin-bottom:1.25rem;">Produced through a combination of manual review, publicly available SEO tooling, and accessibility evaluation against WCAG 2.1 criteria. Findings are ordered by urgency.</p>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot urgent"></div>Address immediately</div>
+    <div class="legend-item"><div class="legend-dot improve"></div>Meaningful improvement available</div>
+    <div class="legend-item"><div class="legend-dot note"></div>Worth noting</div>
+  </div>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-sev urgent"></div>
+      <div class="finding-text"><strong>A publicly accessible internal document is indexed by Google.</strong> Your IT User Guide is reachable via a direct URL and appears in search results. This is a security and data governance issue that should be addressed immediately, regardless of any broader work.</div>
+      <span class="finding-tag security">Security</span>
+    </div>
+    <div class="finding">
+      <div class="finding-sev urgent"></div>
+      <div class="finding-text"><strong>Your founding date is misrepresented on the live site.</strong> "Over 35 years" appears in at least one location. SRB was established in 1976: that's closer to 50 years. It's a trust signal worth correcting, and a story worth telling properly.</div>
+      <span class="finding-tag brand">Brand</span>
+    </div>
+    <div class="finding">
+      <div class="finding-sev improve"></div>
+      <div class="finding-text"><strong>No meta descriptions on key service pages.</strong> Search engines are writing their own snippets, often pulling unhelpful text. Well-written meta descriptions are one of the lowest-effort, highest-return SEO improvements available.</div>
+      <span class="finding-tag seo">SEO</span>
+    </div>
+    <div class="finding">
+      <div class="finding-sev improve"></div>
+      <div class="finding-text"><strong>Structured data (schema markup) is absent.</strong> Your offices, solicitors, services, and reviews aren't marked up in a way Google can read and feature. This directly affects your eligibility for rich results: the expanded listings that dominate local search.</div>
+      <span class="finding-tag seo">SEO</span>
+    </div>
+    <div class="finding">
+      <div class="finding-sev improve"></div>
+      <div class="finding-text"><strong>Google Reviews aren't being actively cultivated.</strong> Satisfied clients aren't being invited to leave reviews in a consistent, structured way. For a firm of SRB's standing, this is an underused asset. Reviews are one of the most powerful local search signals available.</div>
+      <span class="finding-tag seo">SEO</span>
+    </div>
+    <div class="finding">
+      <div class="finding-sev improve"></div>
+      <div class="finding-text"><strong>The site isn't optimised for mobile-first browsing.</strong> Google has indexed your site in mobile-first mode since 2021. Text size, tap targets, and page layout on smaller screens all fall short of current best practice and of the standards your clients deserve.</div>
+      <span class="finding-tag a11y">Accessibility</span>
+    </div>
+    <div class="finding">
+      <div class="finding-sev note"></div>
+      <div class="finding-text"><strong>Page titles and H1 tags don't reflect how clients actually search.</strong> SRB is a strong brand, but someone searching for help with a divorce in Twickenham isn't searching for you by name. They're searching for the problem. There's a meaningful opportunity to capture that intent.</div>
+      <span class="finding-tag seo">SEO</span>
+    </div>
+  </div>
+
+  <div class="footnote">
+    This snapshot was produced by Not On Mondays using a combination of manual review, publicly available SEO tooling, and accessibility evaluation against WCAG 2.1 criteria. Scores are indicative, not algorithmic. They represent a strategic view of relative performance, not a technical audit score. A full audit is available as part of a discovery engagement.
+  </div>
+
+</main>
+
+<!-- WHAT'S NEXT -->
+<div class="next-band">
+  <div class="next-inner">
+    <div>
+      <span class="ey-light">The next step</span>
+      <h3>A conversation,<br><em>not a commitment.</em></h3>
+      <p>If any of this resonates, we'd welcome 45 minutes to talk it through. No agenda, no slide deck. Just a conversation about whether there's something useful here for SRB.</p>
+      <p style="margin-top:0.75rem;">The full strategic document, including our initial thinking on scope, how we work, and indicative investment, is available via the link shared with you.</p>
+    </div>
+    <div>
+      <span class="ey-light">Get in touch</span>
+      <div class="contact-block">
+        <div class="contact-row">
+          <span class="contact-lbl">Name</span>
+          <span class="contact-val">David Akai</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-lbl">Company</span>
+          <span class="contact-val">Not On Mondays</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-lbl">Email</span>
+          <span class="contact-val"><a href="mailto:hello@notonmondays.com">hello@notonmondays.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-lbl">Website</span>
+          <span class="contact-val"><a href="https://notonmondays.com" target="_blank">notonmondays.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span class="footer-l">Not On Mondays · notonmondays.com · Strategic Operating Partner</span>
+  <span class="footer-r">Prepared for Stone Rowe Brewer LLP · Complimentary · Confidential · April 2026</span>
+</div>
+
+</body>
+</html>
