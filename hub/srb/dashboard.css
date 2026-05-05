@@ -70,6 +70,72 @@ h3 { font-size: 1.1rem; }
   padding: 0 2rem;
 }
 
+/* ── Top bar logo — matches notonmondays.com nav ─────────── */
+
+.dash-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.dash-logo-initials {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.dash-logo-initials span {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  display: block;
+}
+
+.dash-logo-n { color: rgba(242,240,232,0.2); }
+.dash-logo-o { color: rgba(242,240,232,0.12); }
+.dash-logo-m { color: var(--blue); }
+
+.dash-logo-divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+.dash-logo-descriptor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  line-height: 1;
+}
+
+.dash-logo-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.35);
+  display: block;
+}
+
+/* ── Hub back link ───────────────────────────────────────── */
+
+.dash-hub-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 0.15rem;
+}
+
+.dash-hub-link:hover { color: rgba(242,240,232,0.5); }
+
 /* ── Top bar — NOM identity ──────────────────────────────── */
 
 .dash-topbar {
@@ -594,4 +660,7 @@ h3 { font-size: 1.1rem; }
   .milestone-tag   { font-size: 0.5rem; }
 
   .asset-grid { grid-template-columns: 1fr 1fr; }
+
+  .dash-logo-divider,
+  .dash-logo-descriptor { display: none; }
 }
