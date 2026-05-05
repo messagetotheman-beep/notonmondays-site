@@ -780,13 +780,22 @@ h3 { font-size: 1.1rem; }
 
 .insight-item:last-child { border-bottom: none; }
 
-.insight-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--muted);
-  border-radius: 50%;
+.insight-icon {
+  width: 30px;
+  height: 30px;
+  background: #e8f0f8;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+.insight-icon svg {
+  width: 15px;
+  height: 15px;
+  display: block;
 }
 
 /* ── Asset context line ──────────────────────────────────── */
