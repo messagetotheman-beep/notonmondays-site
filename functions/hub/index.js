@@ -84,7 +84,8 @@ export async function onRequest({ request }) {
         description: "Internal operating dashboard",
         url: "/hub/nom/workspace.html",
       },
-      {
+
+ {
         name: "Azariah",
         description: "Healthcare workforce compliance workspace",
         url: "/hub/azariah/workspace.html",
@@ -94,6 +95,12 @@ export async function onRequest({ request }) {
         description: "Legal services demo workspace",
         url: "/hub/latchmere/workspace.html",
       },
+{
+  name: "Stone Rowe Brewer",
+  description: "Digital estate and website workspace",
+  url: "/hub/srb/dashboard.html",
+},
+
     ],
   };
 
@@ -424,3 +431,4 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
+
