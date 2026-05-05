@@ -70,7 +70,7 @@ h3 { font-size: 1.1rem; }
   padding: 0 2rem;
 }
 
-/* ── Top bar logo — matches notonmondays.com nav ─────────── */
+/* ── NOM logo — shared class structure, matches proposal nav ─ */
 
 .dash-logo {
   display: flex;
@@ -79,24 +79,26 @@ h3 { font-size: 1.1rem; }
   text-decoration: none;
 }
 
-.dash-logo-initials {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.05;
-}
-
-.dash-logo-initials span {
+/* nom-i: base initial style — same class used in proposal.html */
+.nom-i {
   font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
   font-weight: 300;
-  font-size: 0.65rem;
   letter-spacing: 0.5em;
-  text-transform: lowercase;
+  line-height: 1.1;
   display: block;
 }
 
-.dash-logo-n { color: rgba(242,240,232,0.2); }
-.dash-logo-o { color: rgba(242,240,232,0.12); }
-.dash-logo-m { color: var(--blue); }
+/* Dark-background variant (dashboard topbar) */
+.nav-logo-dark {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.nav-logo-dark .nom-i.d1 { color: rgba(242,240,232,0.2); }
+.nav-logo-dark .nom-i.d2 { color: rgba(242,240,232,0.12); }
+.nav-logo-dark .nom-i.ac { color: var(--blue); }
 
 .dash-logo-divider {
   width: 1px;
@@ -108,13 +110,13 @@ h3 { font-size: 1.1rem; }
 .dash-logo-descriptor {
   display: flex;
   flex-direction: column;
-  gap: 0.18rem;
+  gap: 0.15rem;
   line-height: 1;
 }
 
 .dash-logo-descriptor span {
   font-family: 'DM Mono', monospace;
-  font-size: 0.5rem;
+  font-size: 0.48rem;
   font-weight: 300;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -122,19 +124,34 @@ h3 { font-size: 1.1rem; }
   display: block;
 }
 
-/* ── Hub back link ───────────────────────────────────────── */
+/* ── Back to workspace nav component ─────────────────────── */
 
-.dash-hub-link {
+.dash-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0;
   font-family: 'DM Mono', monospace;
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(242,240,232,0.38);
   text-decoration: none;
+  transition: color 0.15s;
   margin-bottom: 0.15rem;
 }
 
-.dash-hub-link:hover { color: rgba(242,240,232,0.5); }
+.dash-back-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.dash-back-link:hover { color: rgba(242,240,232,0.7); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-back-link { transition: none; }
+}
 
 /* ── Top bar — NOM identity ──────────────────────────────── */
 
@@ -150,31 +167,6 @@ h3 { font-size: 1.1rem; }
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem;
-}
-
-.dash-topbar-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  text-decoration: none;
-}
-
-.dash-topbar-brand .nom-wordmark {
-  font-family: 'DM Mono', monospace;
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.dash-topbar-brand .nom-role {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 .dash-topbar-right {
@@ -663,4 +655,6 @@ h3 { font-size: 1.1rem; }
 
   .dash-logo-divider,
   .dash-logo-descriptor { display: none; }
+
+  .dash-back-link span { display: none; }
 }
