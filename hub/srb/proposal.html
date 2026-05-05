@@ -118,8 +118,7 @@ body {
 /* ─────────────────────────────────────────
    PROPOSAL WRAPPER
 ───────────────────────────────────────── */
-#proposal { display: none; }
-#proposal.on { display: block; }
+#proposal { display: block; }
 
 /* ─────────────────────────────────────────
    STICKY NAV
@@ -353,6 +352,7 @@ hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5re
 }
 .observation:hover { border-color: rgba(26,42,212,0.25); }
 .obs-icon { font-size: 1.1rem; margin-bottom: 0.85rem; display: block; }
+.obs-icon svg { width: 20px; height: 20px; display: block; stroke: var(--blue); }
 .obs-title { font-size: 0.88rem; font-weight: 500; color: var(--dark); margin-bottom: 0.45rem; line-height: 1.3; }
 .obs-body { font-size: 0.82rem; color: var(--mid); line-height: 1.7; font-weight: 300; max-width: none; }
 
@@ -821,32 +821,6 @@ hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5re
 <a href="#proposal" class="skip-link" style="position:absolute;top:-100%;left:1rem;background:var(--blue);color:var(--off-white);padding:0.5rem 1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;z-index:9999;border-radius:0 0 4px 4px;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to content</a>
 
 <!-- ══════════════════════════════════════
-     GATE
-══════════════════════════════════════ -->
-<div id="gate">
-  <div class="gate-inner">
-    <div class="nom-logo">
-      <span class="nom-i d1">n</span>
-      <span class="nom-i d2">o</span>
-      <span class="nom-i ac">m</span>
-    </div>
-    <p class="gate-eyebrow">Client Portal</p>
-    <h1 class="gate-heading">Your document<br>is waiting.</h1>
-    <p class="gate-sub">Enter the access code shared with you to view this document.</p>
-    <div class="f">
-      <label for="pw">Access code</label>
-      <input type="password" id="pw" placeholder="· · · · · · · ·" autocomplete="off" spellcheck="false" aria-label="Access code" aria-describedby="gate-err">
-    </div>
-    <button class="gate-btn" onclick="checkPw()">View Document</button>
-    <p class="gate-err" id="gate-err">Incorrect code. Please try again.</p>
-    <div class="gate-footer">
-      This document is confidential and intended solely for the named recipient.<br>
-      Not On Mondays · notonmondays.com
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
      PROPOSAL
 ══════════════════════════════════════ -->
 <div id="proposal">
@@ -1019,32 +993,32 @@ hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5re
 
         <div class="observation-grid">
           <div class="observation">
-            <span class="obs-icon">🔍</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg></span>
             <div class="obs-title">Discovery happens online, decisions are made offline</div>
             <div class="obs-body">The majority of clients searching for a solicitor in your area will encounter SRB digitally before they ever speak to anyone. That first impression shapes whether they pick up the phone at all.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">♿</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="4" r="1.5"/><path d="M10 7v4"/><path d="M7 9.5h6"/><path d="M8.5 11l-1.5 5"/><path d="M11.5 11l1.5 5"/></svg></span>
             <div class="obs-title">Your clients have specific accessibility needs</div>
             <div class="obs-body">Wills, probate, lasting powers of attorney, clinical negligence. Your practice areas disproportionately serve elderly and vulnerable individuals. A site that fails accessibility standards is a barrier between those clients and the help they need.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">📱</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="8" height="16" rx="1.5"/><line x1="9.5" y1="16" x2="10.5" y2="16"/></svg></span>
             <div class="obs-title">Mobile is where most people will find you first</div>
             <div class="obs-body">Across legal services in the UK, mobile now accounts for over 60% of web traffic. A site that isn't optimised for mobile is losing potential clients before the page has even finished loading.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">⭐</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="10,2 12.4,7.7 18.5,8.2 14,12.4 15.5,18.4 10,15 4.5,18.4 6,12.4 1.5,8.2 7.6,7.7"/></svg></span>
             <div class="obs-title">Google Reviews are the new word of mouth</div>
             <div class="obs-body">SRB's reputation is built on decades of client relationships. That trust exists, but it isn't yet visible online in the way it could be. A structured, sensitive approach to gathering reviews could transform your local search presence within months.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">🏛️</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="18" x2="18" y2="18"/><line x1="2" y1="8" x2="18" y2="8"/><polyline points="2,8 10,2 18,8"/><line x1="5" y1="8" x2="5" y2="18"/><line x1="10" y1="8" x2="10" y2="18"/><line x1="15" y1="8" x2="15" y2="18"/></svg></span>
             <div class="obs-title">Nearly fifty years deserves to be told properly</div>
             <div class="obs-body">The heritage, the depth of expertise, the local roots. These are real differentiators. But they only work if they're communicated in language that clients actually understand and trust. "Over 35 years" doesn't do justice to what SRB has built.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">🧩</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="7" height="7" rx="1"/><rect x="11" y="2" width="7" height="7" rx="1"/><rect x="2" y="11" width="7" height="7" rx="1"/><rect x="11" y="11" width="7" height="7" rx="1"/></svg></span>
             <div class="obs-title">Silos are the enemy of a coherent client experience</div>
             <div class="obs-body">When SEO, brand, accessibility, content, and social are managed separately and reactively, the result is inconsistency. Clients sense it even when they can't name it. A joined-up strategy produces a compounding effect that reactive maintenance never can.</div>
           </div>
@@ -1166,22 +1140,22 @@ hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5re
 
         <div class="observation-grid" style="margin-top:2.5rem;">
           <div class="observation">
-            <span class="obs-icon">🏗️</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2.5l3 3-10 10H4.5v-3l10-10z"/><line x1="12" y1="5" x2="15" y2="8"/></svg></span>
             <div class="obs-title">We're ready to build</div>
             <div class="obs-body">We've done the thinking. We've looked hard at your digital estate, sketched what a better version could look like, and we're ready to design and build it. Not hand off to another agency. Do it ourselves, in collaboration with you.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">🤝</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 2 16.5V18"/><circle cx="7.5" cy="8" r="3"/><path d="M16 18v-1.5a3.5 3.5 0 0 0-2.5-3.37"/><path d="M13 4.63a3.5 3.5 0 0 1 0 6.74"/></svg></span>
             <div class="obs-title">Partnership, not prescription</div>
             <div class="obs-body">We don't arrive with a fixed plan. We start with a conversation, understand what SRB wants to be known for, and work alongside you to get there. The strategy follows the firm, not the other way around.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">📣</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 10s3.5-7 8.5-7 8.5 7 8.5 7-3.5 7-8.5 7-8.5-7-8.5-7z"/><circle cx="10" cy="10" r="2.5"/></svg></span>
             <div class="obs-title">Your reputation, made visible</div>
             <div class="obs-body">The firm's standing in the community is real. Reviews, referrals, decades of satisfied clients. Our job is to make that reputation as visible online as it is locally — and to keep it compounding.</div>
           </div>
           <div class="observation">
-            <span class="obs-icon">⚙️</span>
+            <span class="obs-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="3"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.41 1.41M14.37 14.37l1.41 1.41M4.22 15.78l1.41-1.41M14.37 5.63l1.41-1.41"/></svg></span>
             <div class="obs-title">Digital foundations that do more</div>
             <div class="obs-body">A site that works. SEO that targets the right searches. Accessibility built in. Systems connected. When the foundations are right, everything else — automation, client retention, referral programmes — becomes straightforward rather than aspirational.</div>
           </div>
@@ -1356,28 +1330,6 @@ const C = {
 document.getElementById('d-client').textContent = C.clientName;
 document.getElementById('d-ref').textContent    = C.ref + ' · Confidential';
 
-document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') checkPw(); });
-
-async function checkPw() {
-  const val = document.getElementById('pw').value.trim();
-  const field = document.getElementById('pw');
-  let match = C.useHash ? (await sha256(val)) === C.passwordHash.toLowerCase() : val === C.password;
-  if (match) {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('proposal').classList.add('on');
-    window.scrollTo(0, 0);
-  } else {
-    field.classList.add('err');
-    document.getElementById('gate-err').classList.add('on');
-    setTimeout(() => field.classList.remove('err'), 400);
-    field.value = ''; field.focus();
-  }
-}
-
-async function sha256(msg) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-}
 
 function openAccept() {
   document.getElementById('sig-ts').textContent = 'Timestamp: ' + fmtTs(new Date());
