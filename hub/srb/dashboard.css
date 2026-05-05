@@ -486,6 +486,101 @@ h3 { font-size: 1.1rem; }
   line-height: 1.5;
 }
 
+/* ── Current focus list ──────────────────────────────────── */
+
+.focus-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.focus-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--dark);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.focus-item:last-child { border-bottom: none; }
+
+.focus-item::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+
+/* ── How this works ──────────────────────────────────────── */
+
+.how-it-works-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.how-it-works-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.how-it-works-item:last-child { border-bottom: none; }
+
+.how-it-works-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.how-it-works-body {
+  font-size: 0.85rem;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── Contact block ───────────────────────────────────────── */
+
+.contact-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--dark);
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+
+.contact-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+}
+
+.contact-email a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.contact-email a:hover { text-decoration: underline; }
+
 /* ── Responsive ──────────────────────────────────────────── */
 
 @media (max-width: 640px) {

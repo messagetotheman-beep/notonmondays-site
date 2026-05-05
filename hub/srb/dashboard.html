@@ -28,9 +28,9 @@
   <header class="dash-header">
     <div class="container">
       <div class="dash-header-title">
-        <p class="dash-header-eyebrow">Client project &middot; Digital estate</p>
-        <h1>Stone Rowe Brewer</h1>
-        <p>Scoping and strategic alignment in progress</p>
+        <p class="dash-header-eyebrow">Client workspace &middot; Digital estate</p>
+        <h1>SRB Digital Workspace</h1>
+        <p>Your digital estate, actively managed.</p>
       </div>
       <span class="status-badge" role="status" aria-label="Current phase: Scoping in progress">
         <span class="status-dot" aria-hidden="true"></span>
@@ -43,45 +43,92 @@
     <div class="dash-body">
       <div class="container">
 
+        <!-- Horizontal milestone timeline — full width -->
+        <div class="dash-panel" aria-labelledby="timeline-heading">
+          <h2 id="timeline-heading">Project milestones</h2>
+          <div class="milestone-timeline" role="list" aria-label="Project milestone progress">
+
+            <div class="milestone milestone--done" role="listitem">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Brief</span>
+              <span class="milestone-tag milestone-tag--done">Done</span>
+            </div>
+
+            <div class="milestone milestone--active" role="listitem">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Scoping</span>
+              <span class="milestone-tag milestone-tag--active">In progress</span>
+            </div>
+
+            <div class="milestone milestone--future" role="listitem">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Build</span>
+              <span class="milestone-tag milestone-tag--future">Upcoming</span>
+            </div>
+
+            <div class="milestone milestone--future" role="listitem">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Live</span>
+              <span class="milestone-tag milestone-tag--future">Upcoming</span>
+            </div>
+
+            <div class="milestone milestone--future" role="listitem">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Ongoing</span>
+              <span class="milestone-tag milestone-tag--future">Upcoming</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Main 2-column grid -->
         <div class="dash-grid">
 
           <!-- LEFT COLUMN -->
           <div class="dash-main">
 
-            <!-- Project overview -->
-            <div class="dash-panel" aria-labelledby="overview-heading">
-              <h2 id="overview-heading">Project overview</h2>
-              <dl class="overview-rows">
-                <div class="overview-row">
-                  <dt>Client</dt>
-                  <dd>Stone Rowe Brewer LLP, Solicitors</dd>
-                </div>
-                <div class="overview-row">
-                  <dt>Brief</dt>
-                  <dd>Strategic review of SRB's digital estate — website, SEO, content, and operational infrastructure — with a view to making their digital presence as strong as the firm itself.</dd>
-                </div>
-                <div class="overview-row">
-                  <dt>Approach</dt>
-                  <dd>Embedded operating partner model. Diagnosis first, then prioritised action. No generic playbooks.</dd>
-                </div>
-                <div class="overview-row">
-                  <dt>Ref</dt>
-                  <dd>NOM-2026-SRB-001</dd>
-                </div>
-                <div class="overview-row">
-                  <dt>Started</dt>
-                  <dd>April 2026</dd>
-                </div>
-                <div class="overview-row">
-                  <dt>Status</dt>
-                  <dd>Scoping conversation underway</dd>
-                </div>
-              </dl>
+            <!-- Current focus -->
+            <div class="dash-panel" aria-labelledby="focus-heading">
+              <h2 id="focus-heading">Current focus</h2>
+              <ul class="focus-list">
+                <li class="focus-item">Site audit — reviewing current content, navigation structure, and technical foundations</li>
+                <li class="focus-item">Wireframe concepts for key pages</li>
+                <li class="focus-item">SEO baseline — search visibility, local rankings, and keyword positioning</li>
+                <li class="focus-item">Discovery conversation to confirm scope and priorities</li>
+              </ul>
             </div>
 
-            <!-- Project assets -->
+            <!-- How this works -->
+            <div class="dash-panel" aria-labelledby="how-heading">
+              <h2 id="how-heading">How this works</h2>
+              <ul class="how-it-works-list" role="list">
+                <li class="how-it-works-item">
+                  <span class="how-it-works-label">Continuous improvement</span>
+                  <span class="how-it-works-body">We don't hand over a project and leave. Work is ongoing, shaped by what matters most each week — not a fixed scope agreed once and forgotten.</span>
+                </li>
+                <li class="how-it-works-item">
+                  <span class="how-it-works-label">No backlog</span>
+                  <span class="how-it-works-body">Priorities are agreed together. Nothing sits in a queue for six months waiting for a sprint cycle. If it matters now, we work on it now.</span>
+                </li>
+                <li class="how-it-works-item">
+                  <span class="how-it-works-label">Single point of accountability</span>
+                  <span class="how-it-works-body">David owns the relationship and the work. No account managers, no handoffs, no one to translate between you and the person actually doing things.</span>
+                </li>
+                <li class="how-it-works-item">
+                  <span class="how-it-works-label">Infrastructure-ready</span>
+                  <span class="how-it-works-body">Built to extend beyond the website when the time is right — CRM, client intake, document handling, and internal systems that reflect how the firm actually works.</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="dash-sidebar">
+
+            <!-- Asset cards -->
             <div class="dash-panel" aria-labelledby="assets-heading">
-              <h2 id="assets-heading">Project assets</h2>
+              <h2 id="assets-heading">Documents</h2>
               <div class="asset-grid">
 
                 <a href="proposal.html" class="asset-card">
@@ -94,7 +141,7 @@
                     </svg>
                   </span>
                   <span class="asset-name">Proposal</span>
-                  <span class="asset-desc">Strategic perspective, services, approach, and next steps</span>
+                  <span class="asset-desc">Strategic perspective, approach, and next steps</span>
                   <span class="asset-count">NOM-2026-SRB-001</span>
                 </a>
 
@@ -106,85 +153,19 @@
                     </svg>
                   </span>
                   <span class="asset-name">Digital Snapshot</span>
-                  <span class="asset-desc">Scored audit of the current digital estate across five dimensions</span>
+                  <span class="asset-desc">Scored audit across five dimensions of the digital estate</span>
                   <span class="asset-count">Included with proposal</span>
                 </a>
 
-                <span class="asset-card asset-card--stub" aria-hidden="true">
-                  <span class="asset-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="2" width="7" height="7" rx="1"/>
-                      <rect x="11" y="2" width="7" height="7" rx="1"/>
-                      <rect x="2" y="11" width="7" height="7" rx="1"/>
-                      <rect x="11" y="11" width="7" height="7" rx="1"/>
-                    </svg>
-                  </span>
-                  <span class="asset-name">Blueprint</span>
-                  <span class="asset-desc">Prioritised roadmap following discovery and diagnostic</span>
-                  <span class="asset-count asset-count--stub">After scoping</span>
-                </span>
-
               </div>
             </div>
 
-          </div>
-
-          <!-- RIGHT COLUMN -->
-          <div class="dash-sidebar">
-
-            <!-- Project milestone timeline -->
-            <div class="dash-panel" aria-labelledby="timeline-heading">
-              <h2 id="timeline-heading">Project milestones</h2>
-              <div class="milestone-timeline" role="list" aria-label="Project milestone progress">
-
-                <div class="milestone milestone--done" role="listitem">
-                  <span class="milestone-dot" aria-hidden="true"></span>
-                  <span class="milestone-label">Brief</span>
-                  <span class="milestone-tag milestone-tag--done">Done</span>
-                </div>
-
-                <div class="milestone milestone--active" role="listitem">
-                  <span class="milestone-dot" aria-hidden="true"></span>
-                  <span class="milestone-label">Scoping</span>
-                  <span class="milestone-tag milestone-tag--active">In progress</span>
-                </div>
-
-                <div class="milestone milestone--active-secondary" role="listitem">
-                  <span class="milestone-dot" aria-hidden="true"></span>
-                  <span class="milestone-label">Full site audit</span>
-                  <span class="milestone-tag milestone-tag--active-secondary">In progress</span>
-                </div>
-
-                <div class="milestone milestone--active-secondary" role="listitem">
-                  <span class="milestone-dot" aria-hidden="true"></span>
-                  <span class="milestone-label">Wireframes</span>
-                  <span class="milestone-tag milestone-tag--active-secondary">In progress</span>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- Activity log -->
-            <div class="dash-panel" aria-labelledby="activity-heading">
-              <h2 id="activity-heading">Activity</h2>
-              <ul class="activity-list">
-                <li class="activity-item">
-                  <span class="activity-date">5 May</span>
-                  <span class="activity-text">Client workspace created — documents behind hub</span>
-                </li>
-                <li class="activity-item">
-                  <span class="activity-date">8 Apr</span>
-                  <span class="activity-text">Snapshot shared — five-dimension digital audit</span>
-                </li>
-                <li class="activity-item">
-                  <span class="activity-date">8 Apr</span>
-                  <span class="activity-text">Proposal issued — NOM-2026-SRB-001</span>
-                </li>
-                <li class="activity-item">
-                  <span class="activity-date">3 Apr</span>
-                  <span class="activity-text">Digital estate review complete</span>
-                </li>
-              </ul>
+            <!-- Contact -->
+            <div class="dash-panel" aria-labelledby="contact-heading">
+              <h2 id="contact-heading">Your contact</h2>
+              <p class="contact-name">David Akai</p>
+              <p class="contact-role">Not On Mondays</p>
+              <p class="contact-email"><a href="mailto:david@notonmondays.com">david@notonmondays.com</a></p>
             </div>
 
           </div>
