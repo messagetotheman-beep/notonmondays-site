@@ -660,4 +660,7 @@ h3 { font-size: 1.1rem; }
   .milestone-tag   { font-size: 0.5rem; }
 
   .asset-grid { grid-template-columns: 1fr 1fr; }
+
+  .dash-logo-divider,
+  .dash-logo-descriptor { display: none; }
 }
