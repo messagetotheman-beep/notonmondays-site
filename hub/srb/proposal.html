@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not On Mondays — Stone Rowe Brewer</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* NOM core palette */
+  --blue:       #1a2ad4;
+  --deep-blue:  #0d1880;
+  --light-blue: #bfc6f0;
+  --off-white:  #f2f0e8;
+  --warm-white: #faf8f2;
+  --muted:      #8a8fa8;
+  --dark:       #111124;
+  --mid:        #1e1e3a;
+  --border:     rgba(26,42,212,0.1);
+
+  --mono: 'DM Mono', monospace;
+  --serif: 'Cormorant Garamond', serif;
+  --display: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--off-white);
+  font-family: var(--sans);
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); } 40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); } 80% { transform: translateX(4px); }
+}
+
+/* ─────────────────────────────────────────
+   GATE
+───────────────────────────────────────── */
+#gate {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem; position: relative; overflow: hidden;
+}
+#gate::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(26,42,212,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.gate-inner {
+  width: 100%; max-width: 420px; position: relative; z-index: 1;
+  animation: fadeUp 0.5s ease forwards;
+}
+.nom-logo { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 3rem; }
+.nom-i {
+  font-family: var(--mono); font-size: 0.6rem; font-weight: 300;
+  letter-spacing: 0.5em; line-height: 1.1; display: block;
+}
+.nom-i.d1 { color: rgba(242,240,232,0.2); }
+.nom-i.d2 { color: rgba(242,240,232,0.1); }
+.nom-i.ac { color: var(--blue); }
+
+.gate-eyebrow {
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 0.75rem;
+}
+.gate-heading {
+  font-family: var(--serif); font-size: 2rem;
+  font-weight: 300; line-height: 1.2; margin-bottom: 0.5rem;
+}
+.gate-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.6; }
+.f { margin-bottom: 1rem; }
+.f label {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.5rem;
+}
+.f input {
+  width: 100%; background: rgba(242,240,232,0.05);
+  border: 1px solid rgba(242,240,232,0.12); color: var(--off-white);
+  font-family: var(--mono); font-size: 0.85rem; font-weight: 300;
+  letter-spacing: 0.08em; padding: 0.85rem 1rem; outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.f input:focus { border-color: var(--blue); background: rgba(26,42,212,0.08); }
+.f input.err { border-color: rgba(220,80,80,0.6); background: rgba(220,80,80,0.05); animation: shake 0.35s ease; }
+.gate-btn {
+  width: 100%; background: var(--blue); color: var(--off-white); border: none;
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.9rem 1rem; cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 0.5rem;
+}
+.gate-btn:hover { background: var(--deep-blue); }
+.gate-btn:active { transform: scale(0.99); }
+.gate-err {
+  font-family: var(--mono); font-size: 0.65rem;
+  color: rgba(220,100,100,0.9); letter-spacing: 0.05em;
+  margin-top: 0.75rem; min-height: 1em; opacity: 0; transition: opacity 0.2s;
+}
+.gate-err.on { opacity: 1; }
+.gate-footer {
+  margin-top: 3rem; padding-top: 1.5rem;
+  border-top: 1px solid rgba(242,240,232,0.06);
+  font-size: 0.7rem; color: rgba(242,240,232,0.25); line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   PROPOSAL WRAPPER
+───────────────────────────────────────── */
+#proposal { display: none; }
+#proposal.on { display: block; }
+
+/* ─────────────────────────────────────────
+   STICKY NAV
+───────────────────────────────────────── */
+.prop-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(242,240,232,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.1);
+  padding: 0 3rem; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo-light { display: flex; flex-direction: column; gap: 0.12rem; }
+.nav-logo-light .nom-i { font-size: 0.55rem; letter-spacing: 0.45em; }
+.nav-logo-light .nom-i.d1 { color: rgba(17,17,36,0.2); }
+.nav-logo-light .nom-i.d2 { color: rgba(17,17,36,0.12); }
+.nav-logo-light .nom-i.ac { color: var(--blue); }
+
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-meta { text-align: right; }
+.nav-meta .cn { font-family: var(--mono); font-size: 0.65rem; font-weight: 400; color: var(--dark); }
+.nav-meta .ref { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); }
+.btn-pdf {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  background: transparent; border: 1px solid rgba(26,42,212,0.2);
+  color: var(--blue); font-family: var(--mono);
+  font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.45rem 0.85rem; cursor: pointer; transition: background 0.2s, border-color 0.2s;
+}
+.btn-pdf:hover { background: rgba(26,42,212,0.06); border-color: var(--blue); }
+
+/* ─────────────────────────────────────────
+   DOCUMENT BODY (light / NOM palette)
+───────────────────────────────────────── */
+.doc {
+  background: var(--off-white);
+  color: var(--dark);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.doc p { color: var(--mid); line-height: 1.85; max-width: 68ch; }
+.doc p.wide { max-width: 80ch; }
+.doc strong { color: var(--dark); font-weight: 500; }
+
+/* Eyebrow label */
+.ey {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--blue);
+  display: block; margin-bottom: 0.75rem;
+}
+.ey.muted { color: var(--muted); }
+.ey.light { color: var(--light-blue); }
+
+/* Section headings */
+.doc h2 {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 300; color: var(--dark); line-height: 1.15; margin-bottom: 0.85rem;
+}
+.doc h2 em { font-style: italic; color: var(--blue); }
+
+/* ─────────────────────────────────────────
+   COVER — light, NOM-branded
+───────────────────────────────────────── */
+.cover {
+  background: var(--off-white);
+  padding: 0 0 4rem;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(26,42,212,0.1);
+}
+.cover-stripe {
+  background: var(--dark);
+  height: 6px;
+  width: 100%;
+  position: relative;
+}
+.cover-stripe::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 120px; height: 6px;
+  background: var(--blue);
+}
+.cover-inner {
+  max-width: 860px; margin: 0 auto;
+  padding: 3.5rem 3rem 0;
+}
+.cover-to {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;
+}
+.cover-to::before {
+  content: ''; display: block; width: 24px; height: 1px;
+  background: var(--blue); opacity: 0.5;
+}
+.cover h1 {
+  font-family: var(--serif); font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 300; color: var(--dark);
+  line-height: 1.1; margin-bottom: 1.5rem;
+}
+.cover h1 em { font-style: italic; color: var(--blue); }
+.cover-sub {
+  font-size: 0.95rem; color: var(--mid);
+  line-height: 1.8; max-width: 480px; font-weight: 300; margin-bottom: 2.5rem;
+}
+.cover-meta {
+  display: flex; gap: 2.5rem; flex-wrap: wrap;
+  padding-top: 1.75rem; border-top: 1px solid rgba(26,42,212,0.1);
+}
+.cover-meta-item { display: flex; flex-direction: column; gap: 3px; }
+.cover-meta-label {
+  font-family: var(--mono); font-size: 0.52rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+.cover-meta-value { font-size: 0.82rem; color: var(--dark); font-weight: 400; }
+.cover-mark { flex-shrink: 0; opacity: 0.6; }
+
+/* ─────────────────────────────────────────
+   CONTENT WRAPPER
+───────────────────────────────────────── */
+.wrap { max-width: 860px; margin: 0 auto; padding: 4.5rem 3rem; }
+.wrap + .wrap { padding-top: 0; }
+section { margin-bottom: 4rem; }
+section:last-child { margin-bottom: 0; }
+
+hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5rem 0; }
+
+/* ─────────────────────────────────────────
+   SCORE / SNAPSHOT — cobalt band
+───────────────────────────────────────── */
+.snapshot-band {
+  background: var(--warm-white);
+  padding: 4rem 3rem;
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(26,42,212,0.08);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.snapshot-inner { max-width: 860px; margin: 0 auto; }
+.snapshot-header {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: start; gap: 3rem; margin-bottom: 3rem;
+}
+.snapshot-header h2 { color: var(--dark); }
+.snapshot-header h2 em { color: var(--blue); }
+.snapshot-intro {
+  color: var(--mid); font-size: 0.88rem;
+  line-height: 1.8; max-width: 52ch; margin-top: 0.5rem;
+}
+.gift-badge {
+  flex-shrink: 0;
+  background: rgba(26,42,212,0.08); border: 1px solid rgba(26,42,212,0.2);
+  border-radius: 100px; padding: 0.5rem 1.2rem;
+  font-family: var(--mono); font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blue); white-space: nowrap; align-self: flex-start;
+}
+
+.score-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1px; background: rgba(255,255,255,0.05);
+  border-radius: 4px; overflow: hidden; margin-bottom: 2.5rem;
+}
+.score-card {
+  background: rgba(17,17,36,0.6);
+  padding: 1.5rem 1.25rem; position: relative;
+}
+.score-card::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 1.25rem; right: 1.25rem; height: 3px; border-radius: 2px;
+}
+.score-card.amber::after { background: #D4821A; }
+.score-card.red::after   { background: #B91C1C; }
+.score-card.green::after { background: #15803D; }
+.score-label {
+  font-family: var(--mono); font-size: 0.5rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(242,240,232,0.55); margin-bottom: 0.75rem; display: block;
+}
+.score-value {
+  font-family: var(--display); font-size: 2.2rem;
+  color: var(--off-white); line-height: 1; margin-bottom: 0.4rem;
+}
+.score-value.amber { color: #FBBF24; }
+.score-value.red   { color: #F87171; }
+.score-desc { font-size: 0.72rem; color: rgba(242,240,232,0.62); line-height: 1.55; font-weight: 300; }
+
+.findings { display: flex; flex-direction: column; gap: 0.65rem; }
+.finding {
+  background: #fff;
+  border: 1px solid rgba(26,42,212,0.1);
+  border-radius: 4px; padding: 1rem 1.25rem;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 1rem; align-items: start;
+}
+.finding-sev { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+.finding-sev.urgent  { background: #F87171; }
+.finding-sev.improve { background: #FBBF24; }
+.finding-sev.note    { background: var(--light-blue); }
+.finding-text { font-size: 0.85rem; color: var(--mid); line-height: 1.65; font-weight: 300; }
+.finding-text strong { color: var(--dark); font-weight: 500; }
+.finding-tag {
+  font-family: var(--mono); font-size: 0.5rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.2rem 0.6rem; border-radius: 3px; white-space: nowrap; align-self: flex-start;
+}
+.finding-tag.seo      { background: rgba(26,42,212,0.06); color: var(--blue); border: 1px solid rgba(26,42,212,0.15); }
+.finding-tag.a11y     { background: rgba(26,42,212,0.05); color: var(--mid); border: 1px solid rgba(26,42,212,0.12); }
+.finding-tag.brand    { background: rgba(26,42,212,0.06); color: var(--blue); border: 1px solid rgba(26,42,212,0.15); }
+.finding-tag.security { background: rgba(180,20,20,0.06); color: #9B1C1C; border: 1px solid rgba(180,20,20,0.15); }
+
+.snapshot-footnote {
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid rgba(26,42,212,0.08);
+  font-size: 0.75rem; color: var(--muted); line-height: 1.7; font-weight: 300;
+}
+
+/* ─────────────────────────────────────────
+   OBSERVATION GRID
+───────────────────────────────────────── */
+.observation-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-top: 2rem;
+}
+.observation {
+  background: var(--warm-white);
+  border: 1px solid rgba(26,42,212,0.1);
+  border-radius: 4px; padding: 1.75rem;
+  transition: border-color 0.2s;
+}
+.observation:hover { border-color: rgba(26,42,212,0.25); }
+.obs-icon { font-size: 1.1rem; margin-bottom: 0.85rem; display: block; }
+.obs-title { font-size: 0.88rem; font-weight: 500; color: var(--dark); margin-bottom: 0.45rem; line-height: 1.3; }
+.obs-body { font-size: 0.82rem; color: var(--mid); line-height: 1.7; font-weight: 300; max-width: none; }
+
+/* ─────────────────────────────────────────
+   WIREFRAME GLIMPSE
+───────────────────────────────────────── */
+.glimpse-band {
+  background: var(--warm-white);
+  border-top: 1px solid rgba(26,42,212,0.08);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+  padding: 4rem 3rem; overflow: hidden;
+}
+.glimpse-inner {
+  max-width: 860px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.glimpse-copy p { margin-bottom: 1rem; font-size: 0.88rem; color: var(--mid); max-width: none; }
+.glimpse-copy h2 { color: var(--dark); }
+.glimpse-copy h2 em { color: var(--blue); }
+.glimpse-caveat {
+  font-family: var(--mono); font-size: 0.58rem;
+  letter-spacing: 0.15em; color: var(--muted);
+  text-transform: uppercase; margin-top: 1.5rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.glimpse-caveat::before {
+  content: ''; display: block; width: 16px; height: 1px; background: var(--blue); opacity: 0.5;
+}
+
+/* Browser mockup */
+.browser-mockup {
+  background: #fff;
+  border: 1px solid rgba(26,42,212,0.12);
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(17,17,36,0.1), 0 4px 16px rgba(17,17,36,0.06);
+  overflow: hidden;
+  transform: rotate(1.5deg);
+}
+.browser-bar {
+  background: #f0eeea; padding: 8px 12px;
+  display: flex; align-items: center; gap: 6px;
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.browser-dot { width: 8px; height: 8px; border-radius: 50%; }
+.browser-dot:nth-child(1) { background: #FC615D; }
+.browser-dot:nth-child(2) { background: #FDBC40; }
+.browser-dot:nth-child(3) { background: #34C749; }
+.browser-url {
+  margin-left: 8px; background: #fff;
+  border: 1px solid rgba(26,42,212,0.1); border-radius: 4px;
+  padding: 2px 8px; font-family: var(--mono); font-size: 0.55rem;
+  color: var(--muted); letter-spacing: 0.05em; flex: 1;
+}
+.mock-site { font-size: 0; }
+.mock-nav {
+  background: rgba(250,248,244,0.98); padding: 6px 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(26,42,212,0.06);
+}
+.mock-nav-logo { display: flex; align-items: center; gap: 6px; }
+.mock-logo-mark { width: 20px; height: 20px; background: #0D1B4B; border-radius: 3px; }
+.mock-wordmark { font-family: 'DM Serif Display', serif; font-size: 7px; color: #0D1B4B; }
+.mock-nav-links { display: flex; gap: 8px; }
+.mock-nav-link { font-size: 5px; color: #8A8A82; font-family: var(--sans); }
+.mock-cta-btn { background: #0D1B4B; color: white; font-size: 5px; padding: 2px 6px; border-radius: 2px; font-family: var(--mono); }
+.mock-hero { background: #F0EDE6; padding: 16px 12px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mock-trust-dot-row { display: flex; align-items: center; gap: 3px; margin-bottom: 5px; }
+.mock-trust-dot { width: 4px; height: 4px; background: #2a6e4a; border-radius: 50%; }
+.mock-trust-text { font-size: 4px; color: #2a6e4a; font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; }
+.mock-h1 { font-family: 'DM Serif Display', serif; font-size: 11px; color: #0D1B4B; line-height: 1.2; margin-bottom: 4px; }
+.mock-h1-em { font-style: italic; color: #2a5c8a; font-size: 10px; }
+.mock-hero-sub { font-size: 5px; color: #5a5a6e; line-height: 1.6; font-family: var(--sans); margin-bottom: 6px; }
+.mock-btns { display: flex; gap: 4px; }
+.mock-btn-p { background: #0D1B4B; color: white; font-size: 4px; padding: 3px 6px; border-radius: 2px; }
+.mock-btn-g { border: 1px solid #0D1B4B; color: #0D1B4B; font-size: 4px; padding: 3px 6px; border-radius: 2px; }
+.mock-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.mock-stat { background: white; border: 1px solid rgba(13,27,75,0.1); border-radius: 4px; padding: 4px 5px; }
+.mock-stat-num { font-family: 'DM Serif Display', serif; font-size: 9px; color: #0D1B4B; line-height: 1; }
+.mock-stat-lbl { font-size: 4px; color: #5a5a6e; line-height: 1.3; font-family: var(--sans); }
+.mock-services-strip { background: white; padding: 8px 12px; display: flex; gap: 4px; border-bottom: 1px solid rgba(13,27,75,0.06); }
+.mock-service-pill { background: #e8f0f8; border-radius: 3px; padding: 2px 5px; font-size: 4px; color: #0D1B4B; }
+.mock-trust-band { background: #0D1B4B; padding: 6px 12px; display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; }
+.mock-trust-item { text-align: center; }
+.mock-trust-num { font-family: 'DM Serif Display', serif; font-size: 9px; color: white; line-height: 1; }
+.mock-trust-lbl { font-size: 3.5px; color: rgba(255,255,255,0.4); }
+
+/* ─────────────────────────────────────────
+   QUESTIONS
+───────────────────────────────────────── */
+.questions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.question-card {
+  background: var(--warm-white);
+  border: 1px solid rgba(26,42,212,0.1);
+  border-left: 3px solid var(--blue);
+  border-radius: 4px; padding: 1.5rem 1.75rem;
+  transition: border-color 0.2s;
+}
+.question-card:hover { border-color: var(--blue); }
+.q-number { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--blue); margin-bottom: 0.5rem; display: block; }
+.q-text { font-family: var(--serif); font-size: 1rem; color: var(--dark); line-height: 1.4; font-weight: 300; margin-bottom: 0.6rem; }
+.q-context { font-size: 0.78rem; color: var(--mid); line-height: 1.65; font-weight: 300; max-width: none; }
+
+/* ─────────────────────────────────────────
+   SERVICES LIST
+───────────────────────────────────────── */
+.services-list {
+  display: flex; flex-direction: column; gap: 1px;
+  background: rgba(26,42,212,0.08);
+  border-radius: 4px; overflow: hidden;
+  border: 1px solid rgba(26,42,212,0.1);
+}
+.service-item {
+  background: var(--off-white);
+  padding: 1.5rem 2rem;
+  display: grid; grid-template-columns: 2.5rem 1fr auto;
+  gap: 1.25rem; align-items: start;
+  transition: background 0.15s;
+}
+.service-item:hover { background: var(--warm-white); }
+.service-num { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; color: var(--blue); padding-top: 2px; }
+.service-name { font-size: 0.92rem; font-weight: 500; color: var(--dark); margin-bottom: 0.3rem; }
+.service-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.65; font-weight: 300; max-width: 52ch; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; padding-top: 2px; }
+.s-tag {
+  font-family: var(--mono); font-size: 0.48rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.15rem 0.5rem; border-radius: 3px; white-space: nowrap;
+}
+.s-tag.strategy  { background: rgba(26,42,212,0.07); color: var(--blue); }
+.s-tag.digital   { background: rgba(26,42,212,0.05); color: var(--mid); border: 1px solid rgba(26,42,212,0.12); }
+.s-tag.content   { background: rgba(42,110,74,0.07); color: #1a5c38; }
+.s-tag.technical { background: rgba(139,26,26,0.06); color: #7B2020; }
+
+/* ─────────────────────────────────────────
+   PROCESS STEPS
+───────────────────────────────────────── */
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem; margin-top: 2rem;
+}
+.process-step { position: relative; padding-top: 1rem; }
+.process-step::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: rgba(26,42,212,0.12);
+}
+.process-step.active::before { background: var(--blue); }
+.step-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 0.75rem; display: block; }
+.step-title { font-size: 0.88rem; font-weight: 500; color: var(--dark); margin-bottom: 0.4rem; line-height: 1.3; }
+.step-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.65; font-weight: 300; max-width: none; }
+
+/* ─────────────────────────────────────────
+   NOM CONTEXT BAND — dark, branded
+───────────────────────────────────────── */
+.nom-context-band {
+  background: var(--dark);
+  padding: 4.5rem 3rem;
+  position: relative; overflow: hidden;
+}
+.nom-context-band::before {
+  content: 'NOM';
+  position: absolute; right: -20px; bottom: -40px;
+  font-family: var(--serif); font-size: 18rem;
+  color: rgba(255,255,255,0.025); line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.nom-context-inner {
+  max-width: 860px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: start;
+}
+.nom-context-band h2 { color: var(--off-white); margin-bottom: 1rem; }
+.nom-context-band h2 em { color: var(--light-blue); }
+.nom-context-band p { color: rgba(242,240,232,0.72); margin-bottom: 1rem; font-size: 0.88rem; max-width: none; }
+
+.nom-pillars {
+  display: flex; flex-direction: column; gap: 1px;
+  background: rgba(255,255,255,0.04); border-radius: 4px; overflow: hidden;
+}
+.nom-pillar {
+  background: rgba(255,255,255,0.025); padding: 1.25rem 1.5rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nom-pillar:last-child { border-bottom: none; }
+.pillar-mark { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+.pillar-title { font-size: 0.88rem; font-weight: 400; color: rgba(242,240,232,0.75); margin-bottom: 0.25rem; }
+.pillar-desc { font-size: 0.78rem; color: rgba(242,240,232,0.58); line-height: 1.6; font-weight: 300; max-width: none; }
+
+/* SOM note */
+.som-note {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px; padding: 1.5rem 1.75rem;
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 1.25rem; align-items: start; margin-top: 2rem;
+}
+.som-icon {
+  width: 32px; height: 32px; background: rgba(26,42,212,0.2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.som-icon svg { width: 14px; height: 14px; stroke: var(--light-blue); fill: none; stroke-width: 2; }
+.som-title { font-size: 0.85rem; font-weight: 500; color: rgba(242,240,232,0.7); margin-bottom: 0.4rem; }
+.som-body { font-size: 0.8rem; color: rgba(242,240,232,0.62); line-height: 1.7; font-weight: 300; max-width: none; }
+
+/* ─────────────────────────────────────────
+   PORTAL CTA BAND
+───────────────────────────────────────── */
+.portal-cta {
+  background: var(--off-white);
+  border-top: 1px solid rgba(26,42,212,0.1);
+  padding: 5rem 3rem; text-align: center;
+}
+.portal-cta h2 { color: var(--dark); margin-bottom: 0.75rem; }
+.portal-cta h2 em { font-style: italic; color: var(--blue); }
+.portal-cta-sub {
+  font-size: 0.9rem; color: var(--mid); line-height: 1.75;
+  max-width: 520px; margin: 0 auto 2.5rem;
+}
+.cta-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.btn-accept {
+  background: var(--blue); color: var(--off-white); border: none;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 0.9rem 2.25rem; cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-accept:hover { background: var(--deep-blue); }
+.btn-accept:active { transform: scale(0.99); }
+.btn-decline {
+  background: transparent; border: 1px solid rgba(17,17,36,0.18); color: var(--muted);
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 0.9rem 2.25rem; cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-decline:hover { border-color: rgba(17,17,36,0.4); color: var(--dark); }
+.portal-disclaimer {
+  font-size: 0.72rem; color: rgba(17,17,36,0.3); line-height: 1.7;
+  max-width: 52ch; margin: 2.5rem auto 0; font-weight: 300;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.doc-footer {
+  background: var(--dark);
+  padding: 2rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 1rem;
+}
+.footer-l { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(242,240,232,0.2); }
+.footer-r { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; color: rgba(242,240,232,0.12); }
+
+/* ─────────────────────────────────────────
+   MODALS
+───────────────────────────────────────── */
+.overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(17,17,36,0.78); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 2rem;
+}
+.overlay.on { display: flex; }
+.modal {
+  background: var(--off-white); color: var(--dark);
+  width: 100%; max-width: 520px; padding: 3rem; position: relative;
+  animation: fadeUp 0.3s ease forwards;
+}
+.modal-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--dark); }
+.modal-ey { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.modal-ey.a { color: var(--blue); }
+.modal-ey.d { color: var(--muted); }
+.modal h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; line-height: 1.2; color: var(--dark); margin-bottom: 0.75rem; }
+.modal p { font-size: 0.82rem; color: #3a3a5a; line-height: 1.7; margin-bottom: 1.5rem; max-width: none; }
+.sig-wrap { margin-bottom: 1.25rem; }
+.sig-wrap label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.5rem; }
+.sig-wrap input {
+  width: 100%; background: rgba(26,42,212,0.03);
+  border: none; border-bottom: 1px solid rgba(17,17,36,0.2);
+  color: var(--dark); font-family: var(--serif);
+  font-size: 1.5rem; font-weight: 300; font-style: italic;
+  padding: 0.6rem 0; outline: none; transition: border-color 0.2s;
+}
+.sig-wrap input:focus { border-color: var(--blue); }
+.sig-wrap input.err { border-color: rgba(220,80,80,0.6); animation: shake 0.35s ease; }
+.sig-wrap input::placeholder { color: rgba(17,17,36,0.18); }
+.field-err { font-family: var(--mono); font-size: 0.6rem; color: rgba(180,60,60,0.9); margin-top: 0.4rem; display: none; }
+.field-err.on { display: block; }
+.ts-line { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); margin-top: 0.6rem; letter-spacing: 0.05em; }
+.reason-wrap { margin-bottom: 1.25rem; }
+.reason-wrap label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.5rem; }
+.reason-wrap textarea {
+  width: 100%; background: rgba(17,17,36,0.03);
+  border: 1px solid rgba(17,17,36,0.12); color: var(--dark);
+  font-family: var(--sans); font-size: 0.85rem; font-weight: 300;
+  line-height: 1.6; padding: 0.75rem 1rem; outline: none; resize: none; height: 90px;
+  transition: border-color 0.2s;
+}
+.reason-wrap textarea:focus { border-color: var(--muted); }
+.modal-actions { display: flex; gap: 0.75rem; margin-top: 1.75rem; flex-wrap: wrap; }
+.modal-confirm {
+  flex: 1; min-width: 140px; background: var(--blue); color: var(--off-white); border: none;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 0.85rem 1rem; cursor: pointer; transition: background 0.2s;
+}
+.modal-confirm:hover { background: var(--deep-blue); }
+.modal-confirm.danger { background: #6e1a1a; }
+.modal-confirm.danger:hover { background: #4f1212; }
+.modal-cancel {
+  background: transparent; border: 1px solid rgba(17,17,36,0.15); color: var(--muted);
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 0.85rem 1.25rem; cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.modal-cancel:hover { border-color: rgba(17,17,36,0.3); color: var(--dark); }
+
+/* ─────────────────────────────────────────
+   STATUS SCREEN
+───────────────────────────────────────── */
+#status { display: none; position: fixed; inset: 0; z-index: 600; align-items: center; justify-content: center; padding: 2rem; background: var(--dark); }
+#status.on { display: flex; }
+.status-inner { max-width: 520px; width: 100%; animation: fadeUp 0.5s ease forwards; }
+.status-logo { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 3rem; }
+.status-mark { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
+.status-mark.a { background: rgba(26,42,212,0.15); border: 1px solid rgba(26,42,212,0.3); }
+.status-mark.d { background: rgba(120,120,140,0.12); border: 1px solid rgba(120,120,140,0.25); }
+.status-ey { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.status-ey.a { color: var(--blue); }
+.status-ey.d { color: var(--muted); }
+.status-h { font-family: var(--serif); font-size: 2.4rem; font-weight: 300; line-height: 1.15; color: var(--off-white); margin-bottom: 1rem; }
+.status-b { font-size: 0.85rem; color: rgba(242,240,232,0.72); line-height: 1.8; margin-bottom: 2rem; }
+.status-sig { display: flex; flex-direction: column; gap: 0.25rem; padding: 1.25rem; background: rgba(26,42,212,0.08); border: 1px solid rgba(26,42,212,0.18); margin-bottom: 2rem; }
+.status-sig .sl { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.status-sig .sn { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; font-style: italic; color: var(--off-white); }
+.status-sig .st { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); }
+.status-div { width: 40px; height: 1px; background: rgba(242,240,232,0.1); margin-bottom: 2rem; }
+.status-foot { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(242,240,232,0.2); }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE — tablet (≤ 760px)
+───────────────────────────────────────── */
+@media (max-width: 760px) {
+  /* Nav */
+  .prop-nav { padding: 0 1.25rem; height: 54px; }
+  .nav-meta .ref { display: none; }
+
+  /* Cover */
+  .cover { padding: 3rem 1.25rem 2.5rem; }
+  .cover-inner { display: block; }
+  .cover-mark { display: none; }
+  .cover-meta { gap: 1.25rem; }
+
+  /* Content wrapper */
+  .wrap { padding: 2.5rem 1.25rem; }
+
+  /* Snapshot */
+  .snapshot-band { padding: 2.5rem 1.25rem; }
+  .snapshot-inner { padding: 0; }
+  .snapshot-header { grid-template-columns: 1fr; gap: 1.25rem; }
+  .score-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Findings */
+  .finding { grid-template-columns: auto 1fr; gap: 0.75rem; }
+  .finding-tag { grid-column: 2; justify-self: start; margin-top: 0.35rem; }
+
+  /* Glimpse */
+  .glimpse-band { padding: 2.5rem 1.25rem; }
+  .glimpse-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .browser-mockup { transform: none; max-width: 360px; }
+
+  /* Observations */
+  .observation-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+
+  /* Questions */
+  .questions-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+
+  /* Services */
+  .service-item { grid-template-columns: 2rem 1fr; gap: 0.85rem; }
+  .service-tags { grid-column: 2; justify-content: flex-start; margin-top: 0.5rem; }
+
+  /* Process steps */
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* NOM context */
+  .nom-context-band { padding: 2.5rem 1.25rem; }
+  .nom-context-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .som-note { grid-template-columns: auto 1fr; }
+
+  /* Pricing — inline grid */
+  .pricing-grid { grid-template-columns: 1fr !important; }
+
+  /* CTA */
+  .portal-cta { padding: 3rem 1.25rem; }
+  .cta-btns { flex-direction: column; }
+  .btn-accept, .btn-decline { width: 100%; text-align: center; padding: 1rem; }
+
+  /* Footer */
+  .doc-footer { padding: 1.25rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+
+  /* Modals */
+  .modal { padding: 2rem 1.25rem; }
+  .modal-actions { flex-direction: column; }
+  .modal-confirm, .modal-cancel { width: 100%; text-align: center; }
+
+  /* Touch targets — ensure 44px minimum */
+  .gate-btn, .btn-pdf, .btn-accept, .btn-decline,
+  .modal-confirm, .modal-cancel { min-height: 44px; }
+  .f input, .sig-wrap input, .reason-wrap textarea { min-height: 44px; }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE — phone (≤ 480px)
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Gate */
+  #gate { padding: 1.5rem; }
+  .gate-heading { font-size: 1.75rem; }
+
+  /* Nav — hide text label, keep snapshot button as icon-only */
+  .btn-pdf span { display: none; }
+  .btn-pdf { padding: 0.45rem 0.6rem; }
+  .nav-meta { display: none; }
+
+  /* Cover */
+  .cover { padding: 2.5rem 1.25rem 2rem; }
+  .cover h1 { font-size: 2rem; }
+  .cover-meta { flex-direction: column; gap: 1rem; }
+
+  /* Scores: single column on small phones */
+  .score-grid { grid-template-columns: 1fr; gap: 1px; }
+
+  /* Services: simpler layout */
+  .service-item { grid-template-columns: 1fr; padding: 1.25rem; }
+  .service-num { display: none; }
+  .service-tags { margin-top: 0.5rem; }
+
+  /* Process: single column */
+  .process-steps { grid-template-columns: 1fr; }
+
+  /* Snapshot header items stacked */
+  .snapshot-header > div:last-child { flex-direction: column; align-items: flex-start; }
+
+  /* Wrap padding tighter */
+  .wrap { padding: 2rem 1.25rem; }
+  .glimpse-band, .nom-context-band { padding: 2rem 1.25rem; }
+  .portal-cta { padding: 2.5rem 1.25rem; }
+
+  /* Modal */
+  .modal { padding: 1.75rem 1.25rem; }
+  .modal h3 { font-size: 1.5rem; }
+
+  /* Status */
+  .status-h { font-size: 1.8rem; }
+}
+
+@media print {
+  #gate, .prop-nav, .overlay, #status { display: none !important; }
+  #proposal { display: block !important; }
+}
+</style>
+</head>
+<body>
+<a href="#proposal" class="skip-link" style="position:absolute;top:-100%;left:1rem;background:var(--blue);color:var(--off-white);padding:0.5rem 1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;z-index:9999;border-radius:0 0 4px 4px;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to content</a>
+
+<!-- ══════════════════════════════════════
+     GATE
+══════════════════════════════════════ -->
+<div id="gate">
+  <div class="gate-inner">
+    <div class="nom-logo">
+      <span class="nom-i d1">n</span>
+      <span class="nom-i d2">o</span>
+      <span class="nom-i ac">m</span>
+    </div>
+    <p class="gate-eyebrow">Client Portal</p>
+    <h1 class="gate-heading">Your document<br>is waiting.</h1>
+    <p class="gate-sub">Enter the access code shared with you to view this document.</p>
+    <div class="f">
+      <label for="pw">Access code</label>
+      <input type="password" id="pw" placeholder="· · · · · · · ·" autocomplete="off" spellcheck="false" aria-label="Access code" aria-describedby="gate-err">
+    </div>
+    <button class="gate-btn" onclick="checkPw()">View Document</button>
+    <p class="gate-err" id="gate-err">Incorrect code. Please try again.</p>
+    <div class="gate-footer">
+      This document is confidential and intended solely for the named recipient.<br>
+      Not On Mondays · notonmondays.com
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PROPOSAL
+══════════════════════════════════════ -->
+<div id="proposal">
+
+  <!-- STICKY NAV -->
+  <nav class="prop-nav">
+    <a href="https://notonmondays.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.85rem;text-decoration:none;">
+      <div class="nav-logo-light">
+        <span class="nom-i d1">n</span>
+        <span class="nom-i d2">o</span>
+        <span class="nom-i ac">m</span>
+      </div>
+      <div style="width:1px;height:26px;background:rgba(26,42,212,0.15);flex-shrink:0;"></div>
+      <div style="display:flex;flex-direction:column;gap:0.15rem;line-height:1;">
+        <span style="font-family:var(--mono);font-size:0.48rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.5);display:block;">The</span>
+        <span style="font-family:var(--mono);font-size:0.48rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.5);display:block;">Operating</span>
+        <span style="font-family:var(--mono);font-size:0.48rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.5);display:block;">Partner</span>
+      </div>
+    </a>
+    <div class="nav-right">
+      <button class="btn-pdf" onclick="window.open('srb-snapshot.html','_blank')">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M6 1v7M3.5 5.5L6 8l2.5-2.5M2 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Download Snapshot
+      </button>
+      <div class="nav-meta">
+        <div class="cn" id="d-client"></div>
+        <div class="ref" id="d-ref"></div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="doc">
+
+    <!-- COVER -->
+    <div class="cover">
+      <div class="cover-stripe"></div>
+      <div class="cover-inner">
+        <div>
+          <div class="cover-to">For the attention of Karen Grimm &amp; Jenine Imms</div>
+          <h1>A strategic<br>perspective on your<br><em>digital estate.</em></h1>
+          <p class="cover-sub">Some initial thinking, and a few honest observations, from a strategic partner who's spent time with your digital estate. Just a conversation worth having.</p>
+          <div class="cover-meta">
+            <div class="cover-meta-item">
+              <span class="cover-meta-label">From</span>
+              <span class="cover-meta-value">Not On Mondays</span>
+            </div>
+            <div class="cover-meta-item">
+              <span class="cover-meta-label">Date</span>
+              <span class="cover-meta-value">April 2026</span>
+            </div>
+            <div class="cover-meta-item">
+              <span class="cover-meta-label">Prepared by</span>
+              <span class="cover-meta-value">David Akai, Partner</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SNAPSHOT -->
+    <div class="snapshot-band">
+      <div class="snapshot-inner">
+        <div class="snapshot-header">
+          <div>
+            <span class="ey">Complimentary</span>
+            <h2 style="color:var(--dark);">Digital Estate<br><em style="color:var(--blue);">Snapshot · SRB</em></h2>
+            <p class="snapshot-intro">A high-level read of where srb.co.uk stands across five dimensions that shape how well your digital presence serves your clients and your firm. This isn't an exhaustive technical audit. It's a strategic view of the landscape.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.75rem;">
+            <div class="gift-badge">Complimentary snapshot</div>
+            <button onclick="window.open('srb-snapshot.html','_blank')" style="background:transparent;border:1px solid rgba(26,42,212,0.2);color:var(--blue);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.8rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(26,42,212,0.5)'" onmouseout="this.style.borderColor='rgba(26,42,212,0.2)'">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3.5 5.5L6 8l2.5-2.5M2 10h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Save snapshot as PDF
+            </button>
+          </div>
+        </div>
+
+        <div class="score-grid">
+          <div class="score-card amber">
+            <span class="score-label">SEO Visibility</span>
+            <div class="score-value amber">C+</div>
+            <div class="score-desc">Present but underperforming. Key pages lack the signals that drive local search ranking.</div>
+          </div>
+          <div class="score-card red">
+            <span class="score-label">Accessibility</span>
+            <div class="score-value red">D</div>
+            <div class="score-desc">Below WCAG 2.1 AA in several areas. Given your client base, this warrants urgent attention.</div>
+          </div>
+          <div class="score-card amber">
+            <span class="score-label">Brand Consistency</span>
+            <div class="score-value amber">C</div>
+            <div class="score-desc">The firm's reputation isn't yet fully reflected in its visual identity and tone online.</div>
+          </div>
+          <div class="score-card red">
+            <span class="score-label">Mobile Experience</span>
+            <div class="score-value red">D+</div>
+            <div class="score-desc">Most of your clients now find you on a phone. The experience needs significant improvement.</div>
+          </div>
+          <div class="score-card amber">
+            <span class="score-label">Digital Trust</span>
+            <div class="score-value amber">C+</div>
+            <div class="score-desc">SRA credentials, reviews, and social proof are present but not working hard enough.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:0.25rem;">
+          <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,240,232,0.3);margin-bottom:0.85rem;display:flex;align-items:center;gap:1rem;">
+            <span>7 findings across Security, Brand, SEO and Accessibility</span>
+            <span style="flex:1;height:1px;background:rgba(255,255,255,0.06);display:block;"></span>
+          </div>
+
+          <!-- Two visible findings -->
+          <div class="finding" style="margin-bottom:0.5rem;">
+            <div class="finding-sev urgent"></div>
+            <div class="finding-text"><strong>A publicly accessible internal document is indexed by Google.</strong> Your IT User Guide appears in search results via a direct URL. This is a security and data governance issue that should be addressed immediately.</div>
+            <span class="finding-tag security">Security</span>
+          </div>
+          <div class="finding" style="margin-bottom:0.5rem;">
+            <div class="finding-sev urgent"></div>
+            <div class="finding-text"><strong>Your founding date is misrepresented on the live site.</strong> SRB was established in 1976: that's closer to 50 years. It's a trust signal worth correcting, and a story worth telling properly.</div>
+            <span class="finding-tag brand">Brand</span>
+          </div>
+
+          <!-- Blurred preview of remaining findings -->
+          <div style="position:relative;margin-top:0.5rem;">
+            <div style="filter:blur(3.5px);pointer-events:none;user-select:none;opacity:0.35;">
+              <div class="finding" style="margin-bottom:0.5rem;">
+                <div class="finding-sev improve"></div>
+                <div class="finding-text"><strong>No meta descriptions on key service pages.</strong> Search engines are writing their own snippets, often pulling unhelpful text. Well-written meta descriptions are one of the lowest-effort improvements available.</div>
+                <span class="finding-tag seo">SEO</span>
+              </div>
+              <div class="finding" style="margin-bottom:0.5rem;">
+                <div class="finding-sev improve"></div>
+                <div class="finding-text"><strong>Structured data (schema markup) is absent.</strong> Your offices, solicitors, services, and reviews aren't marked up in a way Google can read and feature.</div>
+                <span class="finding-tag seo">SEO</span>
+              </div>
+              <div class="finding">
+                <div class="finding-sev improve"></div>
+                <div class="finding-text"><strong>Google Reviews aren't being actively cultivated.</strong> Satisfied clients aren't being invited to leave reviews in a structured way. This is an underused asset for a firm of SRB's standing.</div>
+                <span class="finding-tag seo">SEO</span>
+              </div>
+            </div>
+            <!-- Overlay prompt -->
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+              <p style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,240,232,0.55);text-align:center;max-width:none;">5 more findings in the full snapshot</p>
+              <button onclick="window.open('srb-snapshot.html','_blank')" style="background:var(--blue);color:var(--off-white);border:none;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.7rem 1.6rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s;" onmouseover="this.style.background='#0d1880'" onmouseout="this.style.background='#1a2ad4'">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3.5 5.5L6 8l2.5-2.5M2 10h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Download full snapshot
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="snapshot-footnote" style="margin-top:1.5rem;">
+          Scores are indicative, not algorithmic. They represent a strategic view of relative performance, not a technical audit score. Download the full snapshot for the complete findings and methodology.
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTEXT -->
+    <div class="wrap">
+      <section>
+        <span class="ey">Context</span>
+        <h2>The bigger picture <em>we noticed.</em></h2>
+        <p class="wide">The individual findings above matter. But the more important observation is structural: the digital estate of most professional services firms tends to be managed reactively and in silos. Website here. Social there. SEO when something goes wrong. Reviews when someone complains.</p>
+        <p class="wide" style="margin-top:1rem;">The firms that win locally over the next five years will be the ones who treat their digital presence as a joined-up system, one that reflects their values, serves their clients, and compounds over time. That's the conversation we think is worth having.</p>
+
+        <div class="observation-grid">
+          <div class="observation">
+            <span class="obs-icon">🔍</span>
+            <div class="obs-title">Discovery happens online, decisions are made offline</div>
+            <div class="obs-body">The majority of clients searching for a solicitor in your area will encounter SRB digitally before they ever speak to anyone. That first impression shapes whether they pick up the phone at all.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">♿</span>
+            <div class="obs-title">Your clients have specific accessibility needs</div>
+            <div class="obs-body">Wills, probate, lasting powers of attorney, clinical negligence. Your practice areas disproportionately serve elderly and vulnerable individuals. A site that fails accessibility standards is a barrier between those clients and the help they need.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">📱</span>
+            <div class="obs-title">Mobile is where most people will find you first</div>
+            <div class="obs-body">Across legal services in the UK, mobile now accounts for over 60% of web traffic. A site that isn't optimised for mobile is losing potential clients before the page has even finished loading.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">⭐</span>
+            <div class="obs-title">Google Reviews are the new word of mouth</div>
+            <div class="obs-body">SRB's reputation is built on decades of client relationships. That trust exists, but it isn't yet visible online in the way it could be. A structured, sensitive approach to gathering reviews could transform your local search presence within months.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">🏛️</span>
+            <div class="obs-title">Nearly fifty years deserves to be told properly</div>
+            <div class="obs-body">The heritage, the depth of expertise, the local roots. These are real differentiators. But they only work if they're communicated in language that clients actually understand and trust. "Over 35 years" doesn't do justice to what SRB has built.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">🧩</span>
+            <div class="obs-title">Silos are the enemy of a coherent client experience</div>
+            <div class="obs-body">When SEO, brand, accessibility, content, and social are managed separately and reactively, the result is inconsistency. Clients sense it even when they can't name it. A joined-up strategy produces a compounding effect that reactive maintenance never can.</div>
+          </div>
+        </div>
+
+        <p class="wide" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(26,42,212,0.08);">One thing worth saying early: we don't just assess and advise. Where the work calls for it — and for SRB, the website clearly does — we design and build. You wouldn't be bringing in another agency further down the line. That's us too.</p>
+      </section>
+    </div>
+
+    <!-- WIREFRAME GLIMPSE -->
+    <div class="glimpse-band">
+      <div class="glimpse-inner">
+        <div class="glimpse-copy">
+          <span class="ey">Initial thinking</span>
+          <h2>We did a little <em>whiteboarding.</em></h2>
+          <p>As part of our initial thinking, we sketched out what a more considered digital presence for SRB might look like. Not as a finished design: a way of pressure-testing some assumptions about structure, hierarchy, and how clients navigate to the right person.</p>
+          <p>This is early, exploratory work. Nothing here is prescriptive. What it shows is how we think: starting with the client's question, not the firm's org chart.</p>
+          <span class="glimpse-caveat">Concept only · Not a finished design recommendation</span>
+        </div>
+
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+            <div class="browser-url">srb.co.uk</div>
+          </div>
+          <div class="mock-site">
+            <div class="mock-nav">
+              <div class="mock-nav-logo">
+                <div class="mock-logo-mark"></div>
+                <span class="mock-wordmark">Stone Rowe Brewer</span>
+              </div>
+              <div class="mock-nav-links">
+                <span class="mock-nav-link">Services</span>
+                <span class="mock-nav-link">Our People</span>
+                <span class="mock-nav-link">Guides</span>
+              </div>
+              <span class="mock-cta-btn">020 8891 6141</span>
+            </div>
+            <div class="mock-hero">
+              <div>
+                <div class="mock-trust-dot-row"><div class="mock-trust-dot"></div><span class="mock-trust-text">SRA Regulated · 50 Years</span></div>
+                <div class="mock-h1">Legal advice<br>that <span class="mock-h1-em">actually<br>makes sense.</span></div>
+                <div class="mock-hero-sub">Clear, honest guidance for individuals and businesses across South West London.</div>
+                <div class="mock-btns"><span class="mock-btn-p">Find the right service</span><span class="mock-btn-g">Meet our team</span></div>
+              </div>
+              <div class="mock-stats">
+                <div class="mock-stat"><div class="mock-stat-num">50+</div><div class="mock-stat-lbl">Years serving South West London</div></div>
+                <div class="mock-stat"><div class="mock-stat-num">2</div><div class="mock-stat-lbl">Offices in Twickenham and Teddington</div></div>
+                <div class="mock-stat"><div class="mock-stat-num">20+</div><div class="mock-stat-lbl">Specialist solicitors</div></div>
+                <div class="mock-stat"><div class="mock-stat-num">★ 4.9</div><div class="mock-stat-lbl">Client satisfaction</div></div>
+              </div>
+            </div>
+            <div class="mock-services-strip">
+              <span class="mock-service-pill">Residential Property</span>
+              <span class="mock-service-pill">Family Law</span>
+              <span class="mock-service-pill">Wills &amp; Estates</span>
+              <span class="mock-service-pill">Business Law</span>
+              <span class="mock-service-pill">Power of Attorney</span>
+            </div>
+            <div class="mock-trust-band">
+              <div class="mock-trust-item"><div class="mock-trust-num">50+</div><div class="mock-trust-lbl">Years local</div></div>
+              <div class="mock-trust-item"><div class="mock-trust-num">20+</div><div class="mock-trust-lbl">Solicitors</div></div>
+              <div class="mock-trust-item"><div class="mock-trust-num">2</div><div class="mock-trust-lbl">Offices</div></div>
+              <div class="mock-trust-item"><div class="mock-trust-num">SRA</div><div class="mock-trust-lbl">Regulated</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUESTIONS + SERVICES -->
+    <div class="wrap">
+      <section>
+        <span class="ey">For the conversation</span>
+        <h2>Questions worth <em>sitting with.</em></h2>
+        <p class="wide" style="margin-bottom:2rem;">We're not here to tell you what to do. But we've found that the most useful thing a strategic partner can offer, early on, is the right questions. These are ours.</p>
+
+        <div class="questions-grid">
+          <div class="question-card">
+            <span class="q-number">01</span>
+            <div class="q-text">When a potential client Googles "solicitor Twickenham" at 9pm on a Sunday, what do they find, and what do they do next?</div>
+            <div class="q-context">The answer to this question shapes your entire acquisition funnel. Most firms have never tested it from the outside.</div>
+          </div>
+          <div class="question-card">
+            <span class="q-number">02</span>
+            <div class="q-text">How does a client who doesn't know which solicitor they need find the right person on your website?</div>
+            <div class="q-context">Most legal websites are organised around the firm's structure, not the client's question. The two are rarely the same.</div>
+          </div>
+          <div class="question-card">
+            <span class="q-number">03</span>
+            <div class="q-text">When a client completes a matter with SRB, what happens to that relationship digitally?</div>
+            <div class="q-context">Referrals and reviews are the most powerful growth levers available to a firm of your standing. Is there a structured approach to cultivating them?</div>
+          </div>
+          <div class="question-card">
+            <span class="q-number">04</span>
+            <div class="q-text">If an elderly client with partial sight visited your website today, what would their experience be?</div>
+            <div class="q-context">WCAG 2.1 AA compliance is a legal accessibility standard, not a technical nicety. For the clients you serve, it's a matter of inclusion.</div>
+          </div>
+          <div class="question-card">
+            <span class="q-number">05</span>
+            <div class="q-text">What does your digital presence say about SRB to someone who's never heard of you?</div>
+            <div class="q-context">The brand built over five decades in the community is real. The question is whether your online presence reflects it, or undersells it.</div>
+          </div>
+          <div class="question-card">
+            <span class="q-number">06</span>
+            <div class="q-text">Who owns your digital strategy, and do they have the time and resource to drive it proactively?</div>
+            <div class="q-context">In most professional services firms, digital sits across several people's desks. The result is reactive maintenance rather than a coherent plan.</div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section>
+        <span class="ey">What we're ready to do</span>
+        <h2>Build on what <em>SRB has already earned.</em></h2>
+        <p class="wide">Nearly fifty years of serving clients in South West London is not a starting point. It's an asset. The trust, the depth of expertise, the community standing — that equity exists. What's missing is a digital presence that reflects it, works for the clients who need it most, and compounds rather than decays.</p>
+        <p class="wide" style="margin-top:1rem;">We're not here to rebuild SRB from scratch. We're here to work with what's already exceptional and make sure the world outside Twickenham and Teddington can find it, trust it, and act on it.</p>
+
+        <div class="observation-grid" style="margin-top:2.5rem;">
+          <div class="observation">
+            <span class="obs-icon">🏗️</span>
+            <div class="obs-title">We're ready to build</div>
+            <div class="obs-body">We've done the thinking. We've looked hard at your digital estate, sketched what a better version could look like, and we're ready to design and build it. Not hand off to another agency. Do it ourselves, in collaboration with you.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">🤝</span>
+            <div class="obs-title">Partnership, not prescription</div>
+            <div class="obs-body">We don't arrive with a fixed plan. We start with a conversation, understand what SRB wants to be known for, and work alongside you to get there. The strategy follows the firm, not the other way around.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">📣</span>
+            <div class="obs-title">Your reputation, made visible</div>
+            <div class="obs-body">The firm's standing in the community is real. Reviews, referrals, decades of satisfied clients. Our job is to make that reputation as visible online as it is locally — and to keep it compounding.</div>
+          </div>
+          <div class="observation">
+            <span class="obs-icon">⚙️</span>
+            <div class="obs-title">Digital foundations that do more</div>
+            <div class="obs-body">A site that works. SEO that targets the right searches. Accessibility built in. Systems connected. When the foundations are right, everything else — automation, client retention, referral programmes — becomes straightforward rather than aspirational.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:2.5rem;padding:2rem 2.25rem;background:var(--warm-white);border:1px solid rgba(26,42,212,0.1);border-left:3px solid var(--blue);border-radius:4px;">
+          <p style="font-family:var(--serif);font-size:1.25rem;font-weight:300;line-height:1.5;color:var(--dark);font-style:italic;max-width:none;margin:0;">SRB doesn't need to become something different. It needs a digital presence that's as good as the firm already is.</p>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- NOM CONTEXT -->
+    <div class="nom-context-band">
+      <div class="nom-context-inner">
+        <div>
+          <span class="ey light">About Not On Mondays</span>
+          <h2>Embedded. Not <em>advising from a distance.</em></h2>
+          <p>Not On Mondays is an operating partner for ambitious businesses. The kind of support that sits alongside the people running the firm, not at arm's length from them.</p>
+          <p>We work with organisations that are excellent at what they do, and want their digital presence, brand, and operational infrastructure to reflect that excellence. We're not an agency. We don't hand over a deck and disappear: which is exactly why this document exists. What you're reading is a snapshot of how we think, not a pitch for what you should buy.</p>
+          <p>We've worked across professional services, financial services, and client-facing businesses where trust is the product. We understand the difference between what looks good and what actually works for the clients you serve.</p>
+          <p>Most firms in your position are also sitting on underused infrastructure. A CRM that holds years of client relationships but isn't connected to anything. Manual processes for intake, document handling, and follow-up that consume hours every week. Getting the digital estate, brand, and content right first is what makes automation genuinely valuable rather than just technically possible.</p>
+
+          <div class="som-note">
+            <div class="som-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <div class="som-title">A note on SOM Legal</div>
+              <div class="som-body">We understand SOM Legal currently manages your website and some aspects of your marketing. We work closely with certified SEO partners ourselves: people who take search performance to a level most agencies don't get near. We're well placed to complement what SOM does rather than duplicate it. If the relationship with SOM is working well, we'd be happy to work alongside them. If that ever changes, we can point you somewhere excellent. Either way, there's no conflict from our side.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="nom-pillars">
+            <div class="nom-pillar">
+              <div class="pillar-mark"></div>
+              <div>
+                <div class="pillar-title">We think holistically</div>
+                <div class="pillar-desc">SEO, brand, accessibility, content, and client experience aren't separate workstreams. They're one system. We treat them that way.</div>
+              </div>
+            </div>
+            <div class="nom-pillar">
+              <div class="pillar-mark"></div>
+              <div>
+                <div class="pillar-title">We put clients at the centre</div>
+                <div class="pillar-desc">Every design decision, every piece of content, every structural choice starts with one question: what does the client need in this moment?</div>
+              </div>
+            </div>
+            <div class="nom-pillar">
+              <div class="pillar-mark"></div>
+              <div>
+                <div class="pillar-title">We're honest about what we find</div>
+                <div class="pillar-desc">The snapshot above isn't softened. If something needs attention, we say so clearly. We'd rather have an honest conversation than a comfortable one.</div>
+              </div>
+            </div>
+            <div class="nom-pillar">
+              <div class="pillar-mark"></div>
+              <div>
+                <div class="pillar-title">We stay alongside you</div>
+                <div class="pillar-desc">Strategy without execution is a document. We deliver, we measure, and we adapt. The relationship doesn't end when the first report lands.</div>
+              </div>
+            </div>
+            <div class="nom-pillar">
+              <div class="pillar-mark"></div>
+              <div>
+                <div class="pillar-title">We understand professional services</div>
+                <div class="pillar-desc">Trust is your product. Every recommendation we make starts from that premise: because a law firm's digital presence must earn the same confidence as its advice.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="portal-cta">
+      <span class="ey" style="justify-content:center;display:block;">The next step</span>
+      <h2>A conversation,<br><em>not a commitment.</em></h2>
+      <p class="portal-cta-sub">If any of this resonates, or has raised questions you'd like to talk through, we'd welcome 45 minutes. No agenda, no slide deck. Just a conversation about whether there's something useful here for SRB.</p>
+      <div class="cta-btns">
+        <button class="btn-accept" onclick="openAccept()" aria-haspopup="dialog">Yes, let's talk</button>
+        <button class="btn-decline" onclick="openDecline()" aria-haspopup="dialog">Not for us right now</button>
+      </div>
+      <p class="portal-disclaimer">This document was prepared in good faith, without any commercial obligation. The Digital Estate Snapshot is yours to keep and act on however you see fit. No engagement with Not On Mondays is required or expected.</p>
+    </div>
+
+    <div class="doc-footer">
+      <span class="footer-l">Not On Mondays · notonmondays.com · Strategic Operating Partner</span>
+      <span class="footer-r">Prepared for Stone Rowe Brewer LLP · Confidential · April 2026</span>
+    </div>
+
+  </div><!-- /doc -->
+</div><!-- /proposal -->
+
+<!-- ACCEPT MODAL -->
+<div class="overlay" id="ov-accept" role="dialog" aria-modal="true" aria-labelledby="modal-accept-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeOv('ov-accept')">✕ close</button>
+    <p class="modal-ey a">Starting a conversation</p>
+    <h3 id="modal-accept-title">Let's make it happen.</h3>
+    <p>Type your full name below to confirm you'd like to talk. We'll be in touch within one working day to arrange a time.</p>
+    <div class="sig-wrap">
+      <label for="sig">Your full name</label>
+      <input type="text" id="sig" placeholder="Sign here" autocomplete="name" spellcheck="false" aria-label="Your full name" aria-describedby="sig-err" aria-required="true">
+      <p class="field-err" id="sig-err">Please enter your name to confirm.</p>
+    </div>
+    <p class="ts-line" id="sig-ts"></p>
+    <div class="modal-actions">
+      <button class="modal-confirm" onclick="confirmAccept()">Confirm</button>
+      <button class="modal-cancel" onclick="closeOv('ov-accept')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- DECLINE MODAL -->
+<div class="overlay" id="ov-decline" role="dialog" aria-modal="true" aria-labelledby="modal-decline-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeOv('ov-decline')">✕ close</button>
+    <p class="modal-ey d">Noted</p>
+    <h3 id="modal-decline-title">No problem at all.</h3>
+    <p>If you'd like to share why it's not the right fit right now, we'd appreciate it, though it's entirely optional.</p>
+    <div class="reason-wrap">
+      <label for="reason">Reason (optional)</label>
+      <textarea id="reason" placeholder="e.g. timing, budget, already in progress…"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-confirm danger" onclick="confirmDecline()">Confirm</button>
+      <button class="modal-cancel" onclick="closeOv('ov-decline')">Go back</button>
+    </div>
+  </div>
+</div>
+
+<!-- STATUS SCREEN -->
+<div id="status" role="alert" aria-live="assertive">
+  <div class="status-inner">
+    <div class="status-logo">
+      <span class="nom-i d1">n</span>
+      <span class="nom-i d2">o</span>
+      <span class="nom-i ac">m</span>
+    </div>
+    <div class="status-mark" id="st-mark"></div>
+    <p class="status-ey" id="st-ey"></p>
+    <h2 class="status-h" id="st-h"></h2>
+    <p class="status-b" id="st-b"></p>
+    <div class="status-sig" id="st-sig" style="display:none;">
+      <span class="sl">Confirmed by</span>
+      <span class="sn" id="st-sn"></span>
+      <span class="st" id="st-ts"></span>
+    </div>
+    <div class="status-div"></div>
+    <p class="status-foot" id="st-foot"></p>
+  </div>
+</div>
+
+<script>
+const C = {
+  password:    "srb2026",
+  useHash:     false,
+  passwordHash: "",
+  clientName:  "Stone Rowe Brewer LLP",
+  ref:         "NOM-2026-SRB-001",
+  notifyEmail: "hello@notonmondays.com",
+};
+
+document.getElementById('d-client').textContent = C.clientName;
+document.getElementById('d-ref').textContent    = C.ref + ' · Confidential';
+
+document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') checkPw(); });
+
+async function checkPw() {
+  const val = document.getElementById('pw').value.trim();
+  const field = document.getElementById('pw');
+  let match = C.useHash ? (await sha256(val)) === C.passwordHash.toLowerCase() : val === C.password;
+  if (match) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('proposal').classList.add('on');
+    window.scrollTo(0, 0);
+  } else {
+    field.classList.add('err');
+    document.getElementById('gate-err').classList.add('on');
+    setTimeout(() => field.classList.remove('err'), 400);
+    field.value = ''; field.focus();
+  }
+}
+
+async function sha256(msg) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function openAccept() {
+  document.getElementById('sig-ts').textContent = 'Timestamp: ' + fmtTs(new Date());
+  document.getElementById('ov-accept').classList.add('on');
+  setTimeout(() => document.getElementById('sig').focus(), 120);
+}
+function openDecline() {
+  document.getElementById('ov-decline').classList.add('on');
+  setTimeout(() => document.getElementById('reason').focus(), 120);
+}
+function closeOv(id) { document.getElementById(id).classList.remove('on'); }
+
+document.querySelectorAll('.overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('on'); });
+});
+
+function confirmAccept() {
+  const sigEl = document.getElementById('sig');
+  const sigErr = document.getElementById('sig-err');
+  const name = sigEl.value.trim();
+  if (!name) {
+    sigEl.classList.add('err'); sigErr.classList.add('on');
+    setTimeout(() => sigEl.classList.remove('err'), 400); return;
+  }
+  sigErr.classList.remove('on');
+  const ts = new Date();
+  closeOv('ov-accept');
+  showStatus({
+    type: 'a', eyebrow: 'Confirmed', heading: 'Great. Let\'s talk.',
+    body: 'Thanks, ' + name + '. We\'ve received your response and will be in touch within one working day to arrange a time to speak.',
+    sigName: name, sigTs: fmtTs(ts),
+    footer: 'Not On Mondays · ' + C.ref + ' · ' + C.clientName,
+  });
+  const sub  = enc('Conversation Requested: ' + C.ref + ' — ' + C.clientName);
+  const body = enc('Response: conversation requested.\n\nRef: ' + C.ref + '\nClient: ' + C.clientName + '\nConfirmed by: ' + name + '\nTimestamp: ' + fmtTs(ts));
+  window.location.href = 'mailto:' + C.notifyEmail + '?subject=' + sub + '&body=' + body;
+}
+
+function confirmDecline() {
+  const reason = document.getElementById('reason').value.trim();
+  const ts = new Date();
+  closeOv('ov-decline');
+  showStatus({
+    type: 'd', eyebrow: 'Noted', heading: 'No problem at all.',
+    body: 'Thanks for taking the time to read through this. If anything changes, we\'re easy to reach. The reference is ' + C.ref + ' if you ever need it.',
+    footer: 'Not On Mondays · ' + C.ref + ' · ' + C.clientName,
+  });
+  const sub  = enc('Not Right Now: ' + C.ref + ' — ' + C.clientName);
+  const body = enc('Response: not right now.\n\nRef: ' + C.ref + '\nClient: ' + C.clientName + '\nTimestamp: ' + fmtTs(ts) + '\n' + (reason ? 'Reason: ' + reason : 'No reason given.'));
+  window.location.href = 'mailto:' + C.notifyEmail + '?subject=' + sub + '&body=' + body;
+}
+
+function showStatus({ type, eyebrow, heading, body, sigName, sigTs, footer }) {
+  const scr = document.getElementById('status');
+  scr.className = 'on';
+  const ey = document.getElementById('st-ey');
+  ey.textContent = eyebrow; ey.className = 'status-ey ' + type;
+  document.getElementById('st-h').textContent = heading;
+  document.getElementById('st-b').textContent = body;
+  document.getElementById('st-foot').textContent = footer;
+  const mark = document.getElementById('st-mark');
+  mark.className = 'status-mark ' + type;
+  mark.innerHTML = type === 'a'
+    ? `<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l5 5 9-9" stroke="#1a2ad4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+    : `<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M7 7l8 8M15 7l-8 8" stroke="#8a8fa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const sigBlock = document.getElementById('st-sig');
+  if (sigName) {
+    sigBlock.style.display = 'flex';
+    document.getElementById('st-sn').textContent = sigName;
+    document.getElementById('st-ts').textContent = sigTs;
+  } else { sigBlock.style.display = 'none'; }
+  window.scrollTo(0, 0);
+}
+
+function fmtTs(d) {
+  return d.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' }) +
+    ' at ' + d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', timeZoneName:'short' });
+}
+function enc(s) { return encodeURIComponent(s); }
+</script>
+</body>
+</html>
