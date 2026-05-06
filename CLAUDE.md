@@ -219,16 +219,20 @@ If something is missing:
 
 ---
 
-## Short Note Mode
+## Short Article Mode
 
-If the input is brief or exploratory:
+If the request is for a short article, note, or thinking piece:
 
-- Create a shorter article
-- Keep structure lighter
-- Focus on a single idea
-- No over-expansion
+- keep the article concise (200–500 words)
+- focus on one idea only
+- reduce structural complexity
+- optional TL;DR
+- no TOC unless genuinely useful
+- maintain the same NOM tone and design language
+- use existing article structure and classes where possible
+- local visual experiments are acceptable if scoped inline to the page only
 
-Use the same template but reduce sections.
+Short articles should feel editorial and intentional, not like blog filler.
 
 ## SEO Defaults
 
