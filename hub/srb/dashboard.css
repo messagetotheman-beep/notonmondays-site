@@ -886,3 +886,241 @@ h3 { font-size: 1.1rem; }
   .dash-logo-divider,
   .dash-logo-descriptor { display: none; }
 }
+
+/* ── Header meta (status + last updated) ─────────────────── */
+
+.dash-header-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.dash-last-updated {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Interactive milestone buttons ───────────────────────── */
+
+.milestone-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.milestone-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.milestone-btn:hover .milestone-label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.milestone--selected .milestone-dot {
+  box-shadow: 0 0 0 4px rgba(26,42,212,0.15);
+}
+
+.milestone--done.milestone--selected .milestone-dot {
+  box-shadow: 0 0 0 4px rgba(26,42,212,0.18);
+}
+
+/* ── Milestone detail panel ──────────────────────────────── */
+
+.milestone-detail {
+  display: none;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.milestone-detail--open {
+  display: block;
+}
+
+.milestone-detail-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+}
+
+.milestone-detail-body {
+  font-size: 0.88rem;
+  color: var(--dark);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+/* ── Flash animation for milestone highlight ─────────────── */
+
+@keyframes srb-flash {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,130,26,0); }
+  50%       { box-shadow: 0 0 0 5px rgba(212,130,26,0.35); }
+}
+
+.milestone--flash .milestone-dot {
+  animation: srb-flash 0.7s ease 3;
+}
+
+/* ── Insight panel ───────────────────────────────────────── */
+
+.insight-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--dark);
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.insight-item:last-child { border-bottom: none; }
+
+.insight-icon {
+  width: 30px;
+  height: 30px;
+  background: #e8f0f8;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.insight-icon svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+/* ── Asset context line ──────────────────────────────────── */
+
+.asset-context {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
+  padding-top: 0.4rem;
+  margin-top: 0.1rem;
+}
+
+/* ── Request panel ───────────────────────────────────────── */
+
+.dash-panel--request {
+  margin-top: 0;
+}
+
+.request-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.request-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.request-input {
+  width: 100%;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--dark);
+  background: var(--off-white);
+  resize: none;
+  line-height: 1.55;
+}
+
+.request-input::placeholder {
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.request-input:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 0;
+  border-color: transparent;
+}
+
+.request-btn {
+  align-self: flex-start;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.5rem 1.1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.request-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.request-btn:hover {
+  background: var(--deep-blue);
+}
+
+.request-response {
+  display: none;
+  margin-top: 0.25rem;
+  padding: 1rem 1.1rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  color: var(--dark);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.request-response--visible {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .dash-header-meta { align-items: flex-start; }
+  .dash-last-updated { margin-top: 0.15rem; }
+}

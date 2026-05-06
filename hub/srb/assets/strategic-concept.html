@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stone Rowe Brewer LLP - Strategic Website Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #1a3a5c;
+  --navy-dark: #0f2540;
+  --warm: #f0ede6;
+  --green: #2a6e4a;
+  --amber: #d4821a;
+  --off-white: #faf8f4;
+  --text: #1a1a2e;
+  --muted: #5a5a6e;
+  --border: rgba(26,58,92,0.12);
+  --purple-bg: #EEEDFE;
+  --purple-border: #AFA9EC;
+  --purple-text: #26215C;
+  --purple-mid: #534AB7;
+  --purple-label: #3C3489;
+}
+html { scroll-behavior: smooth; }
+body { background: #e8e5de; font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--text); }
+
+.page-wrap { max-width: 860px; margin: 3rem auto; }
+
+.page-header { text-align: center; margin-bottom: 2.5rem; }
+.page-header-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 0.5rem; }
+.page-header h1 { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+.page-header p { font-size: 0.88rem; color: var(--muted); font-weight: 300; }
+
+.wf { background: #faf8f4; border-radius: 10px; overflow: hidden; box-shadow: 0 16px 50px rgba(26,58,92,0.12); }
+
+/* BANNER */
+.banner { background: var(--navy-dark); padding: 0.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.banner-l { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.banner-badge { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--purple-label); background: var(--purple-bg); padding: 0.2rem 0.55rem; border-radius: 3px; }
+
+/* CALLOUT */
+.callout { display: flex; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--purple-bg); border-bottom: 1px solid var(--purple-border); align-items: flex-start; }
+.callout.right { flex-direction: row-reverse; }
+.callout.right .callout-body { text-align: right; }
+.callout-icon { width: 32px; height: 32px; background: var(--purple-mid); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.callout-icon svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2; }
+.callout-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 0.4rem; font-weight: 400; }
+.callout-text { font-size: 0.82rem; line-height: 1.7; color: var(--purple-text); }
+.callout-text strong { font-weight: 500; }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border); background: #faf8f4; }
+.nav-logo { display: flex; align-items: center; gap: 8px; }
+.nav-mark { width: 30px; height: 30px; background: var(--navy); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+.nav-mark span { font-family: 'Lora', serif; font-size: 10px; font-weight: 600; color: #fff; }
+.nav-wordmark { font-family: 'Lora', serif; font-size: 13px; font-weight: 600; color: var(--navy); }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links li { font-size: 11px; color: var(--muted); }
+.nav-links li.act { color: var(--navy); font-weight: 500; border-bottom: 1.5px solid var(--navy); padding-bottom: 1px; }
+.nav-cta { font-size: 11px; font-weight: 500; color: #fff; background: var(--navy); border: none; padding: 0.45rem 1rem; border-radius: 4px; cursor: pointer; }
+
+/* HERO */
+.hero { background: var(--warm); padding: 3rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; border-bottom: 1px solid var(--border); }
+.hero-trust { display: flex; align-items: center; gap: 6px; margin-bottom: 1rem; }
+.trust-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+.trust-text { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); }
+.hero h1 { font-family: 'Lora', serif; font-size: 2rem; font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 0.75rem; }
+.hero h1 em { font-style: italic; font-weight: 400; color: #2a5c8a; }
+.hero-sub { font-size: 0.85rem; line-height: 1.75; color: var(--muted); margin-bottom: 1.25rem; max-width: 340px; font-weight: 300; }
+.hero-actions { display: flex; gap: 0.75rem; }
+.btn-p { font-size: 0.82rem; font-weight: 500; color: #fff; background: var(--navy); border: none; padding: 0.55rem 1.1rem; border-radius: 5px; cursor: pointer; }
+.btn-g { font-size: 0.82rem; color: var(--navy); border: 1px solid var(--navy); background: transparent; padding: 0.55rem 1.1rem; border-radius: 5px; cursor: pointer; }
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.stat { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; }
+.stat-n { font-family: 'Lora', serif; font-size: 1.6rem; font-weight: 600; color: var(--navy); line-height: 1; margin-bottom: 0.2rem; }
+.stat-l { font-size: 0.75rem; color: var(--muted); line-height: 1.4; font-weight: 300; }
+.sra-badge { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.9rem; }
+.sra-ic { width: 20px; height: 20px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sra-ic svg { width: 10px; height: 10px; }
+.sra-t { font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+.sra-t strong { color: var(--text); font-weight: 500; display: block; font-size: 0.78rem; }
+
+/* SECTIONS */
+.sec { padding: 2rem 1.5rem; border-bottom: 1px solid var(--border); }
+.sec.warm { background: var(--warm); }
+.sec.light { background: #f5f3ee; }
+.sec-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; }
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.sec-title { font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); line-height: 1.2; }
+.sec-title em { font-style: italic; font-weight: 400; }
+.view-all { font-size: 0.78rem; color: var(--navy); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--navy); padding-bottom: 1px; white-space: nowrap; }
+
+/* SERVICES GRID */
+.svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+.svc-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+.svc-icon { width: 30px; height: 30px; background: #e8f0f8; border-radius: 7px; margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: center; }
+.svc-icon svg { width: 14px; height: 14px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
+.svc-name { font-size: 0.82rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; line-height: 1.3; }
+.svc-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.55; font-weight: 300; }
+
+/* TRUST BAND */
+.trust-band { background: var(--navy); padding: 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.tb-item { text-align: center; }
+.tb-num { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 600; color: #fff; line-height: 1; margin-bottom: 0.3rem; }
+.tb-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+/* TEAM */
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+.team-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; }
+.avatar { width: 44px; height: 44px; background: #e8f0f8; border-radius: 50%; margin: 0 auto 0.6rem; display: flex; align-items: center; justify-content: center; }
+.avatar span { font-family: 'Lora', serif; font-size: 13px; font-weight: 600; color: var(--navy); }
+.team-name { font-size: 0.82rem; font-weight: 500; color: var(--text); margin-bottom: 0.15rem; }
+.team-role { font-size: 0.72rem; color: var(--muted); }
+.team-pill { display: inline-block; margin-top: 0.4rem; font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: #e8f0f8; padding: 0.15rem 0.5rem; border-radius: 3px; }
+
+/* TESTIMONIALS */
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+.test-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+.stars { display: flex; gap: 2px; margin-bottom: 0.6rem; }
+.star { width: 11px; height: 11px; background: var(--amber); clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+.test-text { font-family: 'Lora', serif; font-size: 0.82rem; font-style: italic; color: var(--text); line-height: 1.65; margin-bottom: 0.6rem; }
+.test-author { font-size: 0.75rem; font-weight: 500; color: var(--text); }
+.test-meta { font-size: 0.7rem; color: var(--muted); }
+
+/* GUIDES */
+.guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+.guide-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem; }
+.guide-tag { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: #e8f0f8; padding: 0.15rem 0.5rem; border-radius: 3px; display: inline-block; margin-bottom: 0.6rem; }
+.guide-title { font-family: 'Lora', serif; font-size: 0.88rem; font-weight: 600; color: var(--navy); line-height: 1.35; margin-bottom: 0.4rem; }
+.guide-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+/* CTA BAND */
+.cta-band { background: var(--navy); padding: 2.5rem 1.5rem; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
+.cta-title { font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; }
+.cta-sub { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 440px; }
+.cta-actions { display: flex; flex-direction: column; gap: 0.6rem; flex-shrink: 0; }
+.cta-btn { font-size: 0.82rem; font-weight: 500; color: var(--navy); background: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 5px; cursor: pointer; white-space: nowrap; text-align: center; }
+.cta-btn-g { font-size: 0.82rem; color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.35); padding: 0.6rem 1.2rem; border-radius: 5px; cursor: pointer; white-space: nowrap; text-align: center; }
+
+/* OFFICES */
+.offices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.office-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+.office-name { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+.office-addr { font-size: 0.78rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.6rem; font-weight: 300; }
+.office-phone { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--navy); display: block; margin-bottom: 0.4rem; }
+.office-hours { font-size: 0.72rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+/* FOOTER */
+footer { background: var(--navy-dark); padding: 2.5rem 1.5rem 0; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.footer-logo { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 1rem; max-width: 200px; font-weight: 300; }
+.footer-offices { font-size: 0.72rem; color: rgba(255,255,255,0.35); line-height: 1.8; }
+.footer-offices strong { color: rgba(255,255,255,0.65); font-weight: 500; display: block; font-size: 0.72rem; margin-top: 0.6rem; }
+.footer-offices strong:first-child { margin-top: 0; }
+.footer-col-title { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links li { font-size: 0.75rem; color: rgba(255,255,255,0.45); font-weight: 300; }
+.nom-credit { padding: 1.1rem 1.5rem; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 0.6rem; }
+.nom-t { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.22); }
+.nom-l { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.45); border-bottom: 1px solid rgba(255,255,255,0.18); padding-bottom: 1px; text-decoration: none; }
+.nom-sep { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: rgba(255,255,255,0.1); }
+.footer-bottom { padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
+.footer-reg { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: rgba(255,255,255,0.18); }
+.footer-reg strong { color: rgba(255,255,255,0.35); font-weight: 400; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="page-header">
+  <p class="page-header-tag">Stone Rowe Brewer LLP · Strategic Website Concept</p>
+  <h1>What a stronger web presence looks like</h1>
+  <p>Each section below shows the design thinking and the business rationale behind it</p>
+</div>
+
+<div class="wf">
+
+<div class="banner">
+  <span class="banner-l">srb.co.uk - strategic concept · not on mondays · march 2026</span>
+  <span class="banner-badge">Concept only</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-mark"><span>SRB</span></div>
+    <span class="nav-wordmark">Stone Rowe Brewer LLP</span>
+  </div>
+  <ul class="nav-links">
+    <li class="act">Services</li><li>Our People</li><li>Reviews</li><li>Guides</li><li>Contact</li>
+  </ul>
+  <button class="nav-cta">Call 020 8891 6141</button>
+</nav>
+
+<div class="callout">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">Making it easy to call</div>
+    <div class="callout-text">The phone number sits permanently in the top-right corner of every page. For many of SRB's clients — particularly older clients or those in the middle of something stressful — calling is the most natural first step. The current website makes people hunt for that number. <strong>Every visit that ends in a phone call is a new instruction. The navigation should never be what stands in the way of that.</strong></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-trust"><div class="trust-dot"></div><span class="trust-text">SRA Regulated · Twickenham &amp; Teddington · Over 40 Years</span></div>
+    <h1>Legal advice<br>that <em>actually<br>makes sense.</em></h1>
+    <p class="hero-sub">Clear, honest legal guidance for individuals and businesses across South West London and Surrey. No jargon. No surprises. Just the right advice at the right time.</p>
+    <div class="hero-actions"><button class="btn-p">Find the right service</button><button class="btn-g">Meet our team</button></div>
+  </div>
+  <div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Years serving South West London</div></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">Offices: Twickenham &amp; Teddington</div></div>
+      <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Specialist solicitors</div></div>
+      <div class="stat"><div class="stat-n">4.9</div><div class="stat-l">Client satisfaction rating</div></div>
+    </div>
+    <div class="sra-badge">
+      <div class="sra-ic"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="sra-t"><strong>SRA Authorised &amp; Regulated</strong>SRA Number 520181 · Your protection guaranteed</div>
+    </div>
+  </div>
+</section>
+
+<div class="callout right">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">The headline: speaking to how clients actually feel</div>
+    <div class="callout-text">Most people arrive at a solicitor's website feeling anxious. They don't know what they need, they're worried about cost, and they're afraid of saying the wrong thing. <strong>"Legal advice that actually makes sense"</strong> addresses that directly — positioning SRB as the firm that won't make a client feel like an outsider in their own legal matter. That is a genuine differentiator in this market, and it reflects exactly what your 40-year reputation is built on. It also earns its place in Google search: the plain English phrasing matches how real people in Twickenham and Teddington actually search for a solicitor.</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec">
+  <div class="sec-hdr">
+    <div><div class="eyebrow">Our Services</div><div class="sec-title">What can we <em>help you with?</em></div></div>
+    <a href="#" class="view-all">View all services</a>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="svc-name">Residential Property</div><div class="svc-desc">Buying, selling, or remortgaging your home</div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="svc-name">Family Law</div><div class="svc-desc">Divorce, children, finances and mediation</div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="svc-name">Wills &amp; Estates</div><div class="svc-desc">Planning for your future and family</div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="svc-name">Business Law</div><div class="svc-desc">Commercial advice for growing businesses</div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="svc-name">Power of Attorney</div><div class="svc-desc">Protecting you and those closest to you</div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="svc-name">Clinical Negligence</div><div class="svc-desc">Support if harmed through medical treatment</div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="svc-name">Commercial Property</div><div class="svc-desc">Leases, purchases and business premises</div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div><div class="svc-name">Dispute Resolution</div><div class="svc-desc">Civil and commercial disputes, in court or mediation</div></div>
+  </div>
+</section>
+
+<div class="callout">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">Written for people, not lawyers</div>
+    <div class="callout-text">Nobody types "residential conveyancing" into Google. They type "help buying a house solicitor Twickenham." The service names here match the language clients actually use. <strong>Each card links to its own dedicated page, which Google indexes individually — meaning SRB can appear in search results for eight distinct practice areas, not just once for the firm name.</strong> A client who arrives looking for family law sees a clear path straight to that service, rather than reading through everything the firm offers to find what they need. Clarity at this point is the difference between an enquiry and a bounce.</div>
+  </div>
+</div>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <div class="tb-item"><div class="tb-num">40+</div><div class="tb-lbl">Years in South West London</div></div>
+  <div class="tb-item"><div class="tb-num">20+</div><div class="tb-lbl">Specialist solicitors</div></div>
+  <div class="tb-item"><div class="tb-num">2</div><div class="tb-lbl">Local offices</div></div>
+  <div class="tb-item"><div class="tb-num">SRA</div><div class="tb-lbl">Authorised &amp; regulated</div></div>
+</div>
+
+<!-- TEAM -->
+<section class="sec light">
+  <div class="sec-hdr">
+    <div><div class="eyebrow">Our People</div><div class="sec-title">You'll always know <em>who's handling your case.</em></div></div>
+    <a href="#" class="view-all">Meet the full team</a>
+  </div>
+  <div class="team-grid">
+    <div class="team-card"><div class="avatar"><span>KG</span></div><div class="team-name">Karen Grimm</div><div class="team-role">Partner</div><span class="team-pill">Private Client</span></div>
+    <div class="team-card"><div class="avatar"><span>LB</span></div><div class="team-name">Lisa Broddle</div><div class="team-role">Partner</div><span class="team-pill">Family Law</span></div>
+    <div class="team-card"><div class="avatar"><span>AS</span></div><div class="team-name">Anna Spall</div><div class="team-role">Partner</div><span class="team-pill">Private Client</span></div>
+    <div class="team-card"><div class="avatar"><span>DS</span></div><div class="team-name">Deepak Shergill</div><div class="team-role">Partner</div><span class="team-pill">Company &amp; Commercial</span></div>
+    <div class="team-card"><div class="avatar"><span>JH</span></div><div class="team-name">Jason Hooker</div><div class="team-role">Partner</div><span class="team-pill">Commercial Property</span></div>
+    <div class="team-card"><div class="avatar"><span>EC</span></div><div class="team-name">Elizabeth Cobb</div><div class="team-role">Partner</div><span class="team-pill">Property &amp; Commercial</span></div>
+    <div class="team-card"><div class="avatar"><span>SJ</span></div><div class="team-name">Sue Jackson</div><div class="team-role">Solicitor</div><span class="team-pill">Clinical Negligence</span></div>
+    <div class="team-card"><div class="avatar"><span>PS</span></div><div class="team-name">Paige Symns</div><div class="team-role">Solicitor</div><span class="team-pill">Dispute Resolution</span></div>
+  </div>
+</section>
+
+<div class="callout right">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">Your people: the firm's most underused asset online</div>
+    <div class="callout-text">SRB's reputation rests on personal relationships. Yet most law firm websites hide their team. This design puts your solicitors on the homepage — named, with their specialism visible. <strong>Each person links through to their own profile page, which Google indexes as a named professional in your local area.</strong> When someone searches "family law solicitor Teddington," Lisa Broddle's profile page can appear directly in results. This is one of the most effective and underused local search strategies available to a firm of SRB's size — and it costs nothing beyond good content.</div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="sec warm">
+  <div class="sec-hdr">
+    <div><div class="eyebrow">What Our Clients Say</div><div class="sec-title">Trusted by families and businesses <em>for over 40 years.</em></div></div>
+    <a href="#" class="view-all">Read all reviews</a>
+  </div>
+  <div class="test-grid">
+    <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-text">"Everything was explained clearly at every stage. I never felt lost or confused."</p><div class="test-author">Sarah T.</div><div class="test-meta">Residential Property · Twickenham</div></div>
+    <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-text">"Professional, prompt and genuinely caring. I've recommended them to everyone."</p><div class="test-author">James M.</div><div class="test-meta">Family Law · Teddington</div></div>
+    <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-text">"Dealt with our Wills and LPAs with real sensitivity. Couldn't have been easier."</p><div class="test-author">Margaret &amp; Derek P.</div><div class="test-meta">Private Client · Twickenham</div></div>
+  </div>
+</section>
+
+<div class="callout">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">Reviews: your reputation made visible and searchable</div>
+    <div class="callout-text">SRB has decades of satisfied clients. The current website does very little to surface that. <strong>Properly structured review content signals to Google that SRB is a trusted local business — directly influencing where you appear in search results.</strong> Notice that each testimonial here names both the service and the location. That is intentional: "Family Law, Teddington" is exactly what someone nearby might search. Reviews are not just reassurance for the visitor — they are search content. Every review that names a service and a location is doing quiet SEO work on your behalf.</div>
+  </div>
+</div>
+
+<!-- GUIDES -->
+<section class="sec">
+  <div class="sec-hdr">
+    <div><div class="eyebrow">Plain English Guides</div><div class="sec-title">Understanding your <em>legal situation.</em></div></div>
+    <a href="#" class="view-all">Browse all guides</a>
+  </div>
+  <div class="guides-grid">
+    <div class="guide-card"><span class="guide-tag">Residential Property</span><div class="guide-title">What actually happens during a house purchase?</div><div class="guide-desc">A straightforward walkthrough of the conveyancing process, from offer accepted to keys in hand.</div></div>
+    <div class="guide-card"><span class="guide-tag">Family Law</span><div class="guide-title">Divorce in plain English: what you need to know</div><div class="guide-desc">The key steps, timelines, and decisions involved, explained without the legal jargon.</div></div>
+    <div class="guide-card"><span class="guide-tag">Private Client</span><div class="guide-title">Why you need a Lasting Power of Attorney</div><div class="guide-desc">What an LPA is, why it matters more than most people realise, and how to set one up.</div></div>
+  </div>
+</section>
+
+<div class="callout right">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 0 3-3h7z"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">Guides: the most cost-effective way to win new clients online</div>
+    <div class="callout-text">When someone faces a legal situation for the first time, they search for answers before they search for a firm. A guide titled "What actually happens during a house purchase?" appears in Google when someone types exactly that question — and brings them to SRB before they have spoken to anyone else. <strong>Your solicitors already know this material. The opportunity is simply to put it online in language the public can find and understand.</strong> The firm that answers the question first earns the trust that converts to an instruction. This is a long-term asset: a well-written guide works for years without additional cost.</div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div>
+    <div class="cta-title">Not sure where to start?</div>
+    <div class="cta-sub">Tell us what's going on and we'll point you in the right direction. No commitment, no jargon. Just a straight answer from someone who knows.</div>
+  </div>
+  <div class="cta-actions">
+    <button class="cta-btn">Call us now</button>
+    <button class="cta-btn-g">Find our offices</button>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">Catching people before they leave</div>
+    <div class="callout-text">A significant proportion of website visitors leave without taking any action — not because they are not interested, but because they are not sure what to do next. This panel is designed to catch that moment. <strong>"Not sure where to start?" validates the feeling rather than ignoring it</strong>, and offers two low-commitment next steps: call, or find us. The language deliberately avoids anything formal — no "submit an enquiry," no "book a consultation." For a firm whose reputation rests on personal service, the language here should feel indistinguishable from how your solicitors actually speak to clients on the phone.</div>
+  </div>
+</div>
+
+<!-- OFFICES -->
+<section class="sec light">
+  <div class="eyebrow">Find Us</div>
+  <div class="sec-title" style="margin-bottom:1.25rem">Two offices. <em>One team.</em></div>
+  <div class="offices-grid">
+    <div class="office-card"><div class="office-name">Twickenham</div><div class="office-addr">Stone House, 12-13 Church Street<br>Twickenham TW1 3NJ</div><span class="office-phone">020 8891 6141</span><div class="office-hours">Monday to Thursday: 9:30am to 5:30pm<br>Friday: 9:30am to 5:00pm</div></div>
+    <div class="office-card"><div class="office-name">Teddington</div><div class="office-addr">72 High Street<br>Teddington TW11 8JD</div><span class="office-phone">020 8977 8621</span><div class="office-hours">Monday to Thursday: 9:30am to 5:30pm<br>Friday: 9:30am to 5:00pm</div></div>
+  </div>
+</section>
+
+<div class="callout right">
+  <div class="callout-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+  <div class="callout-body">
+    <div class="callout-label">Local presence: the detail that Google rewards</div>
+    <div class="callout-text">Having both office addresses consistently displayed — with the correct firm name, full address, and phone number on every page — is one of the most important factors in local search ranking. <strong>Google uses this to decide which firms appear in the map results when someone nearby searches for a solicitor.</strong> Any inconsistency across your website, your Google Business Profile, and third-party directories reduces confidence and suppresses your ranking. This is a straightforward fix with a meaningful impact on how often SRB appears when local clients are actively looking for legal help.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Stone Rowe Brewer LLP</div>
+      <div class="footer-tagline">Legal advice for individuals and businesses across South West London and Surrey.</div>
+      <div class="footer-offices">
+        <strong>Twickenham</strong>Stone House, 12-13 Church Street, TW1 3NJ · 020 8891 6141
+        <strong>Teddington</strong>72 High Street, TW11 8JD · 020 8977 8621
+      </div>
+    </div>
+    <div><div class="footer-col-title">Services</div><ul class="footer-links"><li>Residential Property</li><li>Family Law</li><li>Wills &amp; Estates</li><li>Business Law</li><li>Clinical Negligence</li><li>Dispute Resolution</li><li>Commercial Property</li><li>Power of Attorney</li></ul></div>
+    <div><div class="footer-col-title">The firm</div><ul class="footer-links"><li>About SRB</li><li>Our People</li><li>Plain English Guides</li><li>News &amp; Updates</li><li>Recruitment</li><li>Fee Information</li><li>Client Feedback</li></ul></div>
+    <div><div class="footer-col-title">Legal</div><ul class="footer-links"><li>Privacy Notice</li><li>Terms of Business</li><li>Data Retention Policy</li><li>Complaints Procedure</li><li>Diversity Statement</li><li>Cookie Policy</li><li>Client Interest Policy</li></ul></div>
+  </div>
+  <div class="nom-credit">
+    <span class="nom-t">Website strategy &amp; design concept by</span>
+    <a href="https://notonmondays.com" class="nom-l">not on mondays</a>
+    <span class="nom-sep">·</span>
+    <span class="nom-t">The Operating Partner for ambitious businesses</span>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">2026 Stone Rowe Brewer LLP · All rights reserved</span>
+    <span class="footer-reg"><strong>SRA Authorised &amp; Regulated</strong> · SRA Number 520181</span>
+  </div>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
