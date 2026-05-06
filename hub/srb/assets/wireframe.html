@@ -1,0 +1,3329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stone Rowe Brewer LLP - Wireframe Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #1a3a5c;
+  --navy-dark: #0f2540;
+  --navy-light: #2a5c8a;
+  --warm-bg: #f0ede6;
+  --warm-bg-2: #e8e4dc;
+  --green: #2a6e4a;
+  --green-light: #e1f5ee;
+  --amber: #d4821a;
+  --amber-light: #faeeda;
+  --off-white: #faf8f4;
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a6e;
+  --text-muted: #8a8a9a;
+  --border: rgba(26,58,92,0.12);
+  --border-strong: rgba(26,58,92,0.22);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--off-white);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* WIREFRAME BANNER */
+.wf-banner {
+  background: var(--navy);
+  padding: 0.6rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wf-banner-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.wf-banner-right {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.wf-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+.wf-tag-seo { color: #7c4a03; background: #faeeda; }
+.wf-tag-a11y { color: #085041; background: #e1f5ee; }
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,248,244,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: var(--navy);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-logo-mark span {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.nav-wordmark {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.nav-wordmark small {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 300;
+  font-style: normal;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.nav-links a:hover { color: var(--navy); }
+.nav-links a.active {
+  color: var(--navy);
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--navy);
+  padding-bottom: 2px;
+}
+
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  color: #fff;
+  background: var(--navy);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--navy-dark); }
+
+/* HERO */
+.hero {
+  background: var(--warm-bg);
+  padding: 5rem 2.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,58,92,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.trust-dot {
+  width: 7px; height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.trust-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 400;
+}
+
+.hero h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--navy-light);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 420px;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--navy);
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--navy-dark); }
+
+.btn-ghost {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid var(--navy);
+  padding: 0.8rem 1.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-ghost:hover { background: var(--navy); color: #fff; }
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.stat-num {
+  font-family: 'Lora', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+.sra-badge {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sra-icon {
+  width: 28px; height: 28px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sra-icon svg { width: 14px; height: 14px; }
+
+.sra-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; }
+.sra-text strong { color: var(--text-primary); font-weight: 500; display: block; font-size: 0.8rem; }
+
+/* SERVICES */
+section {
+  padding: 5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--navy-light);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.section-title em { font-style: italic; font-weight: 400; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
+}
+
+.section-intro {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 380px;
+  font-weight: 300;
+  align-self: flex-end;
+}
+
+.view-all {
+  font-size: 0.82rem;
+  color: var(--navy);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+.view-all:hover { opacity: 0.7; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.service-card {
+  background: #fff;
+  padding: 1.5rem;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.service-card:hover { background: var(--warm-bg); }
+
+.service-icon {
+  width: 36px; height: 36px;
+  background: #e8f0f8;
+  border-radius: 8px;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon svg { width: 16px; height: 16px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
+
+.service-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.service-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.service-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--navy);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* TRUST BAND */
+.trust-band {
+  background: var(--navy);
+  padding: 3rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.trust-item { text-align: center; }
+
+.trust-num {
+  font-family: 'Lora', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.trust-lbl {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* TEAM */
+#team { background: var(--warm-bg); }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.team-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.team-avatar {
+  width: 56px; height: 56px;
+  background: #e8f0f8;
+  border-radius: 50%;
+  margin: 0 auto 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border);
+}
+
+.team-avatar span {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.team-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.team-role {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+.team-pill {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: #e8f0f8;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
+/* TESTIMONIALS */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.75rem;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.9rem;
+}
+
+.star {
+  width: 13px; height: 13px;
+  background: var(--amber);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.testimonial-text {
+  font-family: 'Lora', serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.testimonial-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* GUIDES */
+#guides { background: var(--off-white); }
+
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.guide-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.guide-card:hover { border-color: var(--border-strong); }
+
+.guide-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: #e8f0f8;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 0.9rem;
+}
+
+.guide-title {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.guide-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.guide-read {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 1px;
+}
+
+/* CTA BAND */
+.cta-band {
+  background: var(--navy);
+  padding: 4rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cta-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.cta-title em { font-style: italic; font-weight: 400; color: rgba(255,255,255,0.65); }
+
+.cta-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 480px;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  min-width: 180px;
+}
+
+.cta-btn-primary {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--navy);
+  background: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+.cta-btn-primary:hover { background: var(--warm-bg); }
+
+.cta-btn-ghost {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.2s;
+}
+.cta-btn-ghost:hover { border-color: rgba(255,255,255,0.6); }
+
+/* OFFICES */
+#offices { background: var(--warm-bg); }
+
+.offices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.office-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.office-name {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.office-address {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.office-phone {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--navy);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 1px;
+  margin-bottom: 0.6rem;
+}
+
+.office-hours {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* FOOTER */
+footer {
+  background: var(--navy-dark);
+  padding: 4rem 2.5rem 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand { }
+
+.footer-logo {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo-mark {
+  width: 30px; height: 30px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo-mark span {
+  font-family: 'Lora', serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer-tagline {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  max-width: 220px;
+}
+
+.footer-offices {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+}
+
+.footer-offices strong {
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  display: block;
+  font-size: 0.78rem;
+  margin-top: 0.75rem;
+}
+
+.footer-offices strong:first-child { margin-top: 0; }
+
+.footer-col-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1.25rem;
+  font-weight: 300;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+/* NOM CREDIT */
+.nom-credit {
+  padding: 1.5rem 2.5rem;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nom-credit-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.25);
+  font-weight: 300;
+}
+
+.nom-credit-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 1px;
+  font-weight: 400;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nom-credit-link:hover {
+  color: rgba(255,255,255,0.8);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.nom-sep {
+  color: rgba(255,255,255,0.12);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom {
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+  font-weight: 300;
+}
+
+.footer-reg {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.2);
+  font-weight: 300;
+}
+
+.footer-reg strong {
+  color: rgba(255,255,255,0.4);
+  font-weight: 400;
+}
+
+/* ANNOTATION STRIPS */
+.annotation {
+  padding: 0.6rem 2.5rem;
+  background: rgba(26,58,92,0.04);
+  border-bottom: 1px dashed rgba(26,58,92,0.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.annotation-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 0.25rem;
+}
+
+.tag-seo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7c4a03;
+  background: #faeeda;
+  border: 1px solid rgba(212,130,26,0.3);
+  border-radius: 3px;
+  padding: 0.15rem 0.5rem;
+}
+
+.tag-a11y {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #085041;
+  background: #e1f5ee;
+  border: 1px solid rgba(42,110,74,0.3);
+  border-radius: 3px;
+  padding: 0.15rem 0.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 3rem 1.25rem; }
+  section { padding: 3.5rem 1.25rem; }
+  .trust-band { padding: 2rem 1.25rem; grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .guides-grid { grid-template-columns: 1fr; }
+  .cta-band { grid-template-columns: 1fr; padding: 3rem 1.25rem; }
+  .offices-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem 0; }
+  footer { padding: 2.5rem 1.25rem 0; }
+  .footer-bottom { padding: 1rem 1.25rem; }
+  .nom-credit { padding: 1rem 1.25rem; }
+  .annotation { padding: 0.5rem 1.25rem; }
+}
+
+
+
+
+
+/* NOM WATERMARK */
+.nom-wm-1,
+.nom-wm-2 {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+.nom-wm-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  opacity: 0.08;
+}
+.nom-wm-2 {
+  bottom: 6%;
+  right: 5%;
+  width: 160px;
+  opacity: 0.06;
+}
+.nom-wm-1 img,
+.nom-wm-2 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NOM WATERMARK -->
+<div class="nom-wm-1" aria-hidden="true">
+  <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAKmAsADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAQFAgMBBggHCf/EAEoQAQABAwICAw4DBgMGBAcAAAABAgMEBREGEhMhMQciNDVBUVJhcXOCobGyFDKBCBUjQpHRM2LBFiRTY3KiJUNEkhhFVWSDwuH/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAQMCBAUGB//EADsRAQABAgEEEAUEAwEBAQAAAAABAgMRBAUhUQcSFBYxMzRBQkRScYGRscETcoLC0gYiMmGh0fDhI/H/2gAMAwEAAhEDEQA/APOuB4dj+9p+qd0Nz0fmg4Hh2P72n6rh6v8AS+Ycnzv8X49Uxtdrhhhz464nU1Mqv1WcNrzovQ3PR+Z0Nz0fmlD1m8PN3br86fxam77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5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" alt="">
+</div>
+<div class="nom-wm-2" aria-hidden="true">
+  <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAKmAsADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAQFAgMBBggHCf/EAEoQAQABAwICAw4DBgMGBAcAAAABAgMEBREGEhMhMQciNDVBUVJhcXOCobGyFDKBCBUjQpHRM2LBFiRTY3KiJUNEkhhFVWSDwuH/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAQMCBAUGB//EADsRAQABAgEEEAUEAwEBAQAAAAABAgMRBAUhUQcSFBYxMzRBQkRScYGRscETcoLC0gYiMmGh0fDhI/H/2gAMAwEAAhEDEQA/APOuB4dj+9p+qd0Nz0fmg4Hh2P72n6rh6v8AS+Ycnzv8X49Uxtdrhhhz464nU1Mqv1WcNrzovQ3PR+Z0Nz0fmlD1m8PN3br86fxam77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5u7dfnT+Ju+5qhF6G56PzOhuej80oN4ebu3X50/ibvuaoRehuej8zobno/NKDeHm7t1+dP4m77mqEXobno/M6G56PzSg3h5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" alt="">
+</div>
+
+
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+    <div class="nom-wm-tile">
+      <div class="nom-wm-stack">
+        <span class="nom-wm-letter">n</span>
+        <span class="nom-wm-letter">o</span>
+        <span class="nom-wm-letter accent">m</span>
+      </div>
+      <div class="nom-wm-label">not on mondays</div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+<div class="nom-wm-tile">
+  <div class="nom-wm-content">
+    <div class="nom-wm-bracket">
+      <svg width="28" height="64" viewBox="0 0 28 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L6,0 L6,4 L4,4 L4,60 L6,60 L6,64 L0,64 Z" fill="#0f2540"/>
+        <path d="M28,0 L22,0 L22,4 L24,4 L24,60 L22,60 L22,64 L28,64 Z" fill="#0f2540"/>
+        <line x1="4" y1="20" x2="24" y2="20" stroke="#0f2540" stroke-width="1"/>
+        <line x1="4" y1="42" x2="24" y2="42" stroke="#0f2540" stroke-width="1"/>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="14" text-anchor="middle" dominant-baseline="central">N</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="31" text-anchor="middle" dominant-baseline="central">O</text>
+        <text font-family="Georgia,serif" font-size="12" fill="#0f2540" x="14" y="51" text-anchor="middle" dominant-baseline="central">M</text>
+      </svg>
+    </div>
+    <div class="nom-wm-text">not on mondays</div>
+    <div class="nom-wm-sub">concept only</div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+<!-- WIREFRAME BANNER -->
+<div class="wf-banner">
+  <span class="wf-banner-left">srb.co.uk - website concept · wireframe · not on mondays</span>
+  <div class="wf-banner-right">
+    <span class="wf-tag wf-tag-seo">SEO annotations</span>
+    <span class="wf-tag wf-tag-a11y">Accessibility notes</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark"><span>SRB</span></div>
+    <div class="nav-wordmark">
+      Stone Rowe Brewer LLP
+      <small>Solicitors</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services" class="active">Services</a></li>
+    <li><a href="#team">Our People</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#guides">Guides</a></li>
+    <li><a href="#offices">Contact</a></li>
+  </ul>
+  <a href="tel:02088916141" class="nav-cta">Call 020 8891 6141</a>
+</nav>
+<div class="annotation">
+  <span class="annotation-label">Nav ·</span>
+  <span class="tag-seo">phone number crawlable</span>
+  <span class="tag-seo">H1 logo alt text</span>
+  <span class="tag-a11y">skip to content link</span>
+  <span class="tag-a11y">keyboard navigation</span>
+  <span class="tag-a11y">WCAG AA contrast</span>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <div class="hero-trust">
+      <div class="trust-dot"></div>
+      <span class="trust-text">SRA Regulated · Twickenham &amp; Teddington · Over 40 Years</span>
+    </div>
+    <h1>Legal advice<br>that <em>actually<br>makes sense.</em></h1>
+    <p class="hero-sub">Clear, honest legal guidance for individuals and businesses across South West London and Surrey. No jargon. No surprises. Just the right advice at the right time.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Find the right service</a>
+      <a href="#team" class="btn-ghost">Meet our team</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Years serving South West London</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Offices: Twickenham &amp; Teddington</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Specialist solicitors</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">★ 4.9</div>
+        <div class="stat-label">Client satisfaction rating</div>
+      </div>
+    </div>
+    <div class="sra-badge">
+      <div class="sra-icon">
+        <svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="sra-text">
+        <strong>SRA Authorised &amp; Regulated</strong>
+        SRA Number 520181 · Your protection is guaranteed
+      </div>
+    </div>
+  </div>
+</section>
+<div class="annotation">
+  <span class="annotation-label">Hero ·</span>
+  <span class="tag-seo">H1: plain English + location signal</span>
+  <span class="tag-seo">LocalBusiness schema</span>
+  <span class="tag-seo">SRA number indexed</span>
+  <span class="tag-a11y">large readable type</span>
+  <span class="tag-a11y">clear CTA hierarchy</span>
+  <span class="tag-a11y">high contrast trust badge</span>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Our Services</div>
+      <div class="section-title">What can we <em>help you with?</em></div>
+    </div>
+    <p class="section-intro">Every situation is different. Find the right service and the right person. Or just call us and we'll guide you from there.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="service-name">Residential Property</div>
+      <div class="service-desc">Buying, selling, or remortgaging your home, made as straightforward as possible.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="service-name">Family Law</div>
+      <div class="service-desc">Divorce, children, finances and mediation, handled with care and without jargon.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="service-name">Wills &amp; Estates</div>
+      <div class="service-desc">Planning for your future and protecting the people you love.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <div class="service-name">Business Law</div>
+      <div class="service-desc">Practical commercial advice for businesses at every stage of growth.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="service-name">Power of Attorney</div>
+      <div class="service-desc">Putting the right protections in place for you and those closest to you.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="service-name">Clinical Negligence</div>
+      <div class="service-desc">Expert support if you've been harmed through medical treatment.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="service-name">Commercial Property</div>
+      <div class="service-desc">Leases, purchases and fit-out arrangements for your business premises.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </div>
+      <div class="service-name">Dispute Resolution</div>
+      <div class="service-desc">Resolving civil and commercial disputes, in court or through mediation.</div>
+      <a href="#" class="service-link">Find out more →</a>
+    </div>
+  </div>
+</section>
+<div class="annotation">
+  <span class="annotation-label">Services ·</span>
+  <span class="tag-seo">service schema markup per card</span>
+  <span class="tag-seo">plain English service names</span>
+  <span class="tag-seo">each card = dedicated indexed page</span>
+  <span class="tag-a11y">icon always paired with text label</span>
+  <span class="tag-a11y">hover state clearly signalled</span>
+</div>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <div class="trust-item">
+    <div class="trust-num">40+</div>
+    <div class="trust-lbl">Years in South West London</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">20+</div>
+    <div class="trust-lbl">Specialist solicitors</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">2</div>
+    <div class="trust-lbl">Local offices</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">SRA</div>
+    <div class="trust-lbl">Authorised &amp; regulated · No. 520181</div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Our People</div>
+      <div class="section-title">You'll always know <em>who's handling your case.</em></div>
+    </div>
+    <p class="section-intro">Every client at SRB is assigned a named solicitor. Not a team. Not a department. A person.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar"><span>KG</span></div>
+      <div class="team-name">Karen Grimm</div>
+      <div class="team-role">Partner</div>
+      <span class="team-pill">Private Client</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><span>LB</span></div>
+      <div class="team-name">Lisa Broddle</div>
+      <div class="team-role">Partner</div>
+      <span class="team-pill">Family Law &amp; Mediation</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><span>AS</span></div>
+      <div class="team-name">Anna Spall</div>
+      <div class="team-role">Partner</div>
+      <span class="team-pill">Private Client</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><span>DS</span></div>
+      <div class="team-name">Deepak Shergill</div>
+      <div class="team-role">Partner</div>
+      <span class="team-pill">Company &amp; Commercial</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><span>JH</span></div>
+      <div class="team-name">Jason Hooker</div>
+      <div class="team-role">Partner</div>
+      <span class="team-pill">Commercial Property</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><span>EC</span></div>
+      <div class="team-name">Elizabeth Cobb</div>
+      <div class="team-role">Partner</div>
+      <span class="team-pill">Property &amp; Commercial</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><span>SJ</span></div>
+      <div class="team-name">Sue Jackson</div>
+      <div class="team-role">Solicitor</div>
+      <span class="team-pill">Clinical Negligence</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><span>PS</span></div>
+      <div class="team-name">Paige Symns</div>
+      <div class="team-role">Solicitor</div>
+      <span class="team-pill">Dispute Resolution</span>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top: 2rem;">
+    <a href="#" class="btn-ghost">Meet the full team →</a>
+  </div>
+</section>
+<div class="annotation">
+  <span class="annotation-label">Team ·</span>
+  <span class="tag-seo">Person schema per solicitor</span>
+  <span class="tag-seo">individual profile pages indexed</span>
+  <span class="tag-seo">name + role + practice area</span>
+  <span class="tag-a11y">named human contact builds trust</span>
+  <span class="tag-a11y">photo alt text on live site</span>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background: var(--warm-bg);">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">What Our Clients Say</div>
+      <div class="section-title">Trusted by families and businesses <em>for over 40 years.</em></div>
+    </div>
+    <a href="#" class="view-all">Read all reviews →</a>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="testimonial-text">"Everything was explained clearly at every stage. I never felt lost or confused about what was happening with my case."</p>
+      <div class="testimonial-author">Sarah T.</div>
+      <div class="testimonial-meta">Residential Property · Twickenham</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="testimonial-text">"Professional, prompt and genuinely caring. They treated my situation with real sensitivity. I've recommended SRB to everyone I know."</p>
+      <div class="testimonial-author">James M.</div>
+      <div class="testimonial-meta">Family Law · Teddington</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="testimonial-text">"Dealt with our Wills and Lasting Powers of Attorney with real sensitivity and care. Couldn't have been a more straightforward process."</p>
+      <div class="testimonial-author">Margaret &amp; Derek P.</div>
+      <div class="testimonial-meta">Private Client · Twickenham</div>
+    </div>
+  </div>
+</section>
+<div class="annotation">
+  <span class="annotation-label">Reviews ·</span>
+  <span class="tag-seo">Review schema markup</span>
+  <span class="tag-seo">location signal in each review</span>
+  <span class="tag-seo">service type tagged per review</span>
+  <span class="tag-a11y">star rating always paired with text</span>
+</div>
+
+<!-- GUIDES -->
+<section id="guides">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Plain English Guides</div>
+      <div class="section-title">Understanding your <em>legal situation.</em></div>
+    </div>
+    <a href="#" class="view-all">Browse all guides →</a>
+  </div>
+  <div class="guides-grid">
+    <div class="guide-card">
+      <span class="guide-tag">Residential Property</span>
+      <div class="guide-title">What actually happens during a house purchase?</div>
+      <div class="guide-desc">A straightforward walkthrough of the conveyancing process, from offer accepted to keys in hand.</div>
+      <a href="#" class="guide-read">Read the guide →</a>
+    </div>
+    <div class="guide-card">
+      <span class="guide-tag">Family Law</span>
+      <div class="guide-title">Divorce in plain English: what you need to know</div>
+      <div class="guide-desc">The key steps, timelines, and decisions involved, explained without the legal jargon.</div>
+      <a href="#" class="guide-read">Read the guide →</a>
+    </div>
+    <div class="guide-card">
+      <span class="guide-tag">Private Client</span>
+      <div class="guide-title">Why you need a Lasting Power of Attorney</div>
+      <div class="guide-desc">What an LPA is, why it matters more than most people realise, and how to set one up.</div>
+      <a href="#" class="guide-read">Read the guide →</a>
+    </div>
+  </div>
+</section>
+<div class="annotation">
+  <span class="annotation-label">Guides ·</span>
+  <span class="tag-seo">How-to + FAQ schema</span>
+  <span class="tag-seo">long-tail keyword capture</span>
+  <span class="tag-seo">internal linking to service pages</span>
+  <span class="tag-a11y">plain English titles match search intent</span>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div>
+    <div class="cta-title">Not sure <em>where to start?</em></div>
+    <div class="cta-sub">Tell us what's going on and we'll point you in the right direction. No commitment, no jargon. Just a straight answer from someone who knows.</div>
+  </div>
+  <div class="cta-actions">
+    <a href="tel:02088916141" class="cta-btn-primary">Call us now</a>
+    <a href="#offices" class="cta-btn-ghost">Find our offices</a>
+  </div>
+</div>
+
+<!-- OFFICES -->
+<section id="offices">
+  <div class="section-eyebrow">Find Us</div>
+  <div class="section-title" style="margin-bottom: 2rem;">Two offices. <em>One team.</em></div>
+  <div class="offices-grid">
+    <div class="office-card">
+      <div class="office-name">Twickenham</div>
+      <div class="office-address">Stone House<br>12–13 Church Street<br>Twickenham TW1 3NJ</div>
+      <a href="tel:02088916141" class="office-phone">020 8891 6141</a>
+      <div class="office-hours">Monday–Thursday: 9:30am – 5:30pm<br>Friday: 9:30am – 5:00pm</div>
+    </div>
+    <div class="office-card">
+      <div class="office-name">Teddington</div>
+      <div class="office-address">72 High Street<br>Teddington<br>Middlesex TW11 8JD</div>
+      <a href="tel:02089778621" class="office-phone">020 8977 8621</a>
+      <div class="office-hours">Monday–Thursday: 9:30am – 5:30pm<br>Friday: 9:30am – 5:00pm</div>
+    </div>
+  </div>
+</section>
+<div class="annotation">
+  <span class="annotation-label">Offices ·</span>
+  <span class="tag-seo">NAP schema (name, address, phone)</span>
+  <span class="tag-seo">both offices as separate LocalBusiness</span>
+  <span class="tag-seo">opening hours schema</span>
+  <span class="tag-a11y">clickable phone links on mobile</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-mark"><span>SRB</span></div>
+        Stone Rowe Brewer LLP
+      </div>
+      <div class="footer-tagline">Legal advice for individuals and businesses across South West London and Surrey. First class service since 1985.</div>
+      <div class="footer-offices">
+        <strong>Twickenham</strong>
+        Stone House, 12–13 Church Street<br>
+        TW1 3NJ · 020 8891 6141
+        <strong>Teddington</strong>
+        72 High Street<br>
+        TW11 8JD · 020 8977 8621
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Residential Property</a></li>
+        <li><a href="#">Family Law</a></li>
+        <li><a href="#">Wills &amp; Estates</a></li>
+        <li><a href="#">Business Law</a></li>
+        <li><a href="#">Clinical Negligence</a></li>
+        <li><a href="#">Dispute Resolution</a></li>
+        <li><a href="#">Commercial Property</a></li>
+        <li><a href="#">Power of Attorney</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Firm</div>
+      <ul class="footer-links">
+        <li><a href="#">About SRB</a></li>
+        <li><a href="#">Our People</a></li>
+        <li><a href="#">Plain English Guides</a></li>
+        <li><a href="#">News &amp; Updates</a></li>
+        <li><a href="#">Recruitment</a></li>
+        <li><a href="#">Fee Information</a></li>
+        <li><a href="#">Client Feedback</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal &amp; Compliance</div>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Notice</a></li>
+        <li><a href="#">Terms of Business</a></li>
+        <li><a href="#">Data Retention Policy</a></li>
+        <li><a href="#">Complaints Procedure</a></li>
+        <li><a href="#">Diversity Statement</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Client Interest Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NOM CREDIT -->
+  <div class="nom-credit">
+    <span class="nom-credit-text">Website strategy &amp; design concept by</span>
+    <a href="https://notonmondays.com" class="nom-credit-link">not on mondays</a>
+    <span class="nom-sep">·</span>
+    <span class="nom-credit-text">The Operating Partner for ambitious businesses</span>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Stone Rowe Brewer LLP · All rights reserved</span>
+    <span class="footer-reg"><strong>SRA Authorised &amp; Regulated</strong> · SRA Number 520181</span>
+  </div>
+</footer>
+
+<div class="annotation" style="border-bottom: none;">
+  <span class="annotation-label">Footer ·</span>
+  <span class="tag-seo">NAP consistency across both offices</span>
+  <span class="tag-seo">SRA number in footer</span>
+  <span class="tag-seo">full service sitemap for crawlers</span>
+  <span class="tag-a11y">full keyboard navigation</span>
+  <span class="tag-a11y">sufficient colour contrast on dark bg</span>
+</div>
+
+</body>
+</html>
