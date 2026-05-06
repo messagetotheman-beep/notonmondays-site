@@ -77,6 +77,31 @@ export async function onRequest({ request }) {
       },
     ],
 
+    // SRB users — single workspace, auto-redirected to SRB dashboard.
+    "messagetotheman@gmail.com": [
+      {
+        name: "Stone Rowe Brewer",
+        description: "Digital estate and website workspace",
+        url: "/hub/srb/dashboard.html",
+      },
+    ],
+
+    "griffiths9@gmail.com": [
+      {
+        name: "Stone Rowe Brewer",
+        description: "Digital estate and website workspace",
+        url: "/hub/srb/dashboard.html",
+      },
+    ],
+
+    "j.imms@srb.co.uk": [
+      {
+        name: "Stone Rowe Brewer",
+        description: "Digital estate and website workspace",
+        url: "/hub/srb/dashboard.html",
+      },
+    ],
+
     // NOM admin — sees the workspace picker with all active client workspaces.
     "david@notonmondays.com": [
       {
