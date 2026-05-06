@@ -10,7 +10,6 @@
 <body>
 <!-- Cloudflare Access controls route-level authorization. This page is protected by path policy, not client-side auth. -->
 
-  <!-- NOM top bar -->
   <div class="dash-topbar" role="banner">
     <div class="container">
       <a href="/" class="dash-logo" aria-label="Not On Mondays">
@@ -26,15 +25,15 @@
           <span>Partner</span>
         </span>
       </a>
+
       <div class="dash-topbar-right">
-        <a href="/hub/" class="dash-hub-link" aria-label="Back to hub">← Hub</a>
+        <a href="/hub/" class="dash-hub-link" aria-label="Back to workspace">← Hub</a>
         <span class="dash-topbar-client">Stone Rowe Brewer</span>
         <span class="dash-topbar-meta">Internal &middot; Not for distribution</span>
       </div>
     </div>
   </div>
 
-  <!-- Page header -->
   <header class="dash-header">
     <div class="container">
       <div class="dash-header-title">
@@ -56,9 +55,9 @@
     <div class="dash-body">
       <div class="container">
 
-        <!-- Horizontal milestone timeline — full width -->
         <div class="dash-panel" aria-labelledby="timeline-heading">
           <h2 id="timeline-heading">Project milestones</h2>
+
           <div class="milestone-timeline" role="list" aria-label="Project milestone progress">
 
             <div class="milestone milestone--done" role="listitem" id="ms-brief">
@@ -95,19 +94,16 @@
 
           </div>
 
-          <div id="milestone-detail" class="milestone-detail" role="region" aria-live="polite" aria-label="Milestone detail">
+          <div id="milestone-detail" class="milestone-detail" hidden role="region" aria-live="polite" aria-label="Milestone detail">
             <p class="milestone-detail-name" id="milestone-detail-name"></p>
             <p class="milestone-detail-body" id="milestone-detail-body"></p>
           </div>
         </div>
 
-        <!-- Main 2-column grid -->
         <div class="dash-grid">
 
-          <!-- LEFT COLUMN -->
           <div class="dash-main">
 
-            <!-- Current focus -->
             <div class="dash-panel" aria-labelledby="focus-heading">
               <h2 id="focus-heading">Current focus</h2>
               <ul class="focus-list">
@@ -118,7 +114,6 @@
               </ul>
             </div>
 
-            <!-- What we're seeing so far -->
             <div class="dash-panel" aria-labelledby="insight-heading">
               <h2 id="insight-heading">What we're seeing so far</h2>
               <ul class="insight-list">
@@ -133,6 +128,7 @@
                   </span>
                   <span>The site can do more to guide visitors by situation, not just by service label.</span>
                 </li>
+
                 <li class="insight-item">
                   <span class="insight-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -147,6 +143,7 @@
                   </span>
                   <span>Content and SEO need to work together, not sit as separate workstreams.</span>
                 </li>
+
                 <li class="insight-item">
                   <span class="insight-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -159,7 +156,6 @@
               </ul>
             </div>
 
-            <!-- How this works -->
             <div class="dash-panel" aria-labelledby="how-heading">
               <h2 id="how-heading">How this works</h2>
               <ul class="how-it-works-list" role="list">
@@ -182,14 +178,31 @@
               </ul>
             </div>
 
+            <div class="dash-panel" aria-labelledby="input-heading">
+              <div class="srb-coming-soon-header">
+                <h2 id="input-heading">Coming soon: Request routing</h2>
+                <span class="srb-coming-soon-badge" aria-label="Coming soon">Coming soon</span>
+              </div>
+
+              <p class="srb-coming-soon-desc">Soon, this will let SRB add a note, question, or area of concern directly from the dashboard. We'll route it into the right workstream so nothing sits in a backlog.</p>
+
+              <label for="srb-input-field" class="srb-input-label">Example request</label>
+              <textarea id="srb-input-field" class="srb-input-field" rows="3" placeholder="Example: Can you look at SEO priority pages?" readonly aria-readonly="true"></textarea>
+
+              <button id="srb-input-btn" class="srb-input-btn" type="button">Preview how this works</button>
+
+              <div id="srb-input-response" class="srb-input-response" hidden aria-live="polite" role="status">
+                Preview only. In a live version, this request would be routed into scoping, site audit, or wireframes, then reflected in the dashboard activity log.
+              </div>
+            </div>
+
           </div>
 
-          <!-- RIGHT COLUMN -->
           <div class="dash-sidebar">
 
-            <!-- Asset cards -->
             <div class="dash-panel" aria-labelledby="assets-heading">
               <h2 id="assets-heading">Documents</h2>
+
               <div class="asset-grid">
 
                 <a href="proposal.html" class="asset-card" target="_blank" rel="noopener">
@@ -238,7 +251,6 @@
               </div>
             </div>
 
-            <!-- Contact -->
             <div class="dash-panel" aria-labelledby="contact-heading">
               <h2 id="contact-heading">Your contact</h2>
               <p class="contact-name">David Akai</p>
@@ -249,23 +261,6 @@
           </div>
         </div>
 
-        <!-- Request panel — full width -->
-        <div class="dash-panel dash-panel--request" aria-labelledby="request-heading">
-          <h2 id="request-heading">Need us to look at something specific?</h2>
-          <div class="request-field">
-            <label for="request-input" class="request-label">Add a note, question, or area of concern</label>
-            <textarea
-              id="request-input"
-              class="request-input"
-              placeholder="Add a note, question, or area of concern"
-              rows="3"
-              aria-describedby="request-response"
-            ></textarea>
-            <button class="request-btn" id="request-btn" type="button">Show where this fits</button>
-          </div>
-          <div id="request-response" class="request-response" aria-live="polite" aria-atomic="true" role="status"></div>
-        </div>
-
       </div>
     </div>
   </main>
@@ -273,10 +268,22 @@
   <script>
     (function () {
       var milestoneData = {
-        brief:      { name: 'Brief',          body: 'Direction captured. We know the immediate goal is to turn the website into a clearer, more useful client experience.' },
-        scoping:    { name: 'Scoping',        body: 'We are shaping the first phase of work: what to fix, what to simplify, and what should be prioritised first.' },
-        audit:      { name: 'Full site audit', body: 'We are reviewing structure, content, user journeys, SEO foundations, and where the current site creates friction.' },
-        wireframes: { name: 'Wireframes',     body: 'We are turning the findings into clearer page structures before any visual polish or build work begins.' }
+        brief: {
+          name: 'Brief',
+          body: 'Direction captured. We know the immediate goal is to turn the website into a clearer, more useful client experience.'
+        },
+        scoping: {
+          name: 'Scoping',
+          body: 'We are shaping the first phase of work: what to fix, what to simplify, and what should be prioritised first.'
+        },
+        audit: {
+          name: 'Full site audit',
+          body: 'We are reviewing structure, content, user journeys, SEO foundations, and where the current site creates friction.'
+        },
+        wireframes: {
+          name: 'Wireframes',
+          body: 'We are turning the findings into clearer page structures before any visual polish or build work begins.'
+        }
       };
 
       var detail     = document.getElementById('milestone-detail');
@@ -289,57 +296,48 @@
           var key      = this.dataset.milestone;
           var expanded = this.getAttribute('aria-expanded') === 'true';
 
-          // collapse all
           buttons.forEach(function (b) {
             b.setAttribute('aria-expanded', 'false');
             b.closest('.milestone').classList.remove('milestone--selected');
           });
 
           if (expanded) {
+            detail.hidden = true;
             detail.classList.remove('milestone-detail--open');
           } else {
             this.setAttribute('aria-expanded', 'true');
             this.closest('.milestone').classList.add('milestone--selected');
             detailName.textContent = milestoneData[key].name;
             detailBody.textContent = milestoneData[key].body;
+            detail.hidden = false;
             detail.classList.add('milestone-detail--open');
           }
         });
       });
 
-      // Request interaction
-      var requestBtn      = document.getElementById('request-btn');
-      var requestInput    = document.getElementById('request-input');
-      var requestResponse = document.getElementById('request-response');
-      var flashIds        = ['ms-scoping', 'ms-audit', 'ms-wireframes'];
+      var inputBtn      = document.getElementById('srb-input-btn');
+      var inputResponse = document.getElementById('srb-input-response');
+      var flashIds      = ['ms-scoping', 'ms-audit', 'ms-wireframes'];
 
-      requestBtn.addEventListener('click', function () {
-        if (!requestInput.value.trim()) return;
+      if (inputBtn) {
+        inputBtn.addEventListener('click', function () {
+          inputResponse.hidden = false;
 
-        requestResponse.textContent = 'Noted. This would most likely sit within scoping, site audit, or wireframes depending on the detail. We would pick it up inside the current phase rather than letting it sit in a backlog.';
-        requestResponse.classList.add('request-response--visible');
+          flashIds.forEach(function (id) {
+            var el = document.getElementById(id);
+            if (!el) return;
 
-        // brief flash on the three relevant milestones
-        flashIds.forEach(function (id) {
-          var el = document.getElementById(id);
-          if (!el) return;
-          el.classList.remove('milestone--flash');
-          // force reflow so animation re-triggers
-          void el.offsetWidth;
-          el.classList.add('milestone--flash');
-          el.addEventListener('animationend', function handler() {
             el.classList.remove('milestone--flash');
-            el.removeEventListener('animationend', handler);
+            void el.offsetWidth;
+            el.classList.add('milestone--flash');
+
+            el.addEventListener('animationend', function handler() {
+              el.classList.remove('milestone--flash');
+              el.removeEventListener('animationend', handler);
+            });
           });
         });
-      });
-
-      requestInput.addEventListener('input', function () {
-        if (requestResponse.classList.contains('request-response--visible')) {
-          requestResponse.classList.remove('request-response--visible');
-          requestResponse.textContent = '';
-        }
-      });
+      }
     }());
   </script>
 
