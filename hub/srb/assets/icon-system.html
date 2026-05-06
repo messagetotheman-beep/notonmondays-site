@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SRB Icon System — Not On Mondays</title>
+<style>
+:root {
+  --color-background-primary:   #ffffff;
+  --color-background-secondary: #f2f0e8;
+  --color-text-primary:         #111124;
+  --color-text-secondary:       #8a8fa8;
+  --color-border-tertiary:      rgba(26,42,212,0.12);
+  --border-radius-lg:           8px;
+  --border-radius-md:           6px;
+}
+html { background: #f2f0e8; }
+body { font-family: 'DM Sans', sans-serif; padding: 2rem; }
+@media (max-width: 640px) { body { padding: 1rem; } }
+</style>
+</head>
+<body>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif}
+.wrap{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.header{padding:1.25rem 1.5rem;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.header-eye{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:.3rem}
+.header-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:#1a3a5c}
+.header-sub{font-size:11px;color:var(--color-text-secondary);margin-top:.25rem;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-border-tertiary)}
+.icon-cell{background:var(--color-background-primary);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.icon-cell:hover{background:var(--color-background-secondary)}
+.icon-wrap{width:48px;height:48px;background:#e8f0f8;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.icon-wrap svg{width:24px;height:24px;stroke:#1a3a5c;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.icon-name{font-size:11px;font-weight:500;color:var(--color-text-primary);text-align:center;line-height:1.3}
+.icon-use{font-size:10px;color:var(--color-text-secondary);text-align:center;line-height:1.4;font-weight:300}
+
+.variants{padding:1.5rem;border-top:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.variants-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:1rem}
+.variants-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.v-item{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.v-wrap-navy{width:44px;height:44px;background:#1a3a5c;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.v-wrap-navy svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.v-wrap-warm{width:44px;height:44px;background:#f0ede6;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.v-wrap-warm svg{width:22px;height:22px;stroke:#1a3a5c;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.v-wrap-gold{width:44px;height:44px;background:transparent;border:1.5px solid #1a3a5c;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.v-wrap-gold svg{width:22px;height:22px;stroke:#1a3a5c;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.v-label{font-size:10px;color:var(--color-text-secondary);text-align:center;font-weight:300}
+
+.context{padding:1.5rem;border-top:0.5px solid var(--color-border-tertiary)}
+.context-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:1rem}
+.context-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.ctx-card{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.9rem}
+.ctx-icon{width:32px;height:32px;background:#e8f0f8;border-radius:7px;margin-bottom:.6rem;display:flex;align-items:center;justify-content:center}
+.ctx-icon svg{width:16px;height:16px;stroke:#1a3a5c;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ctx-name{font-size:11px;font-weight:500;color:var(--color-text-primary);margin-bottom:.2rem}
+.ctx-desc{font-size:10px;color:var(--color-text-secondary);line-height:1.5;font-weight:300}
+
+.spec{padding:1.25rem 1.5rem;border-top:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);display:flex;gap:2rem;flex-wrap:wrap}
+.spec-item{font-size:11px;color:var(--color-text-secondary)}
+.spec-item strong{color:var(--color-text-primary);font-weight:500;display:block;font-size:11px;margin-bottom:.1rem}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .context-cards { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+
+<div class="wrap">
+
+<div class="header">
+  <div class="header-eye">SRB Icon System · Bespoke Set</div>
+  <div class="header-title">Drawn for Stone Rowe Brewer LLP</div>
+  <div class="header-sub">1.5px round-cap stroke · 24x24 viewbox · inherits colour · not on mondays</div>
+</div>
+
+<div class="grid">
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9.5z"/>
+        <path d="M9 21V12h6v9"/>
+        <path d="M12 3v2"/>
+      </svg>
+    </div>
+    <div class="icon-name">Residential Property</div>
+    <div class="icon-use">Buying, selling, remortgage</div>
+  </div>
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="9" cy="7" r="3.5"/>
+        <circle cx="16" cy="7" r="2.5"/>
+        <path d="M2 20c0-3.314 3.134-6 7-6s7 2.686 7 6"/>
+        <path d="M16 14c2.21 0 4 1.79 4 4"/>
+      </svg>
+    </div>
+    <div class="icon-name">Family Law</div>
+    <div class="icon-use">Divorce, children, mediation</div>
+  </div>
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="2" width="16" height="20" rx="2"/>
+        <path d="M4 8h16"/>
+        <path d="M8 2v6"/>
+        <path d="M16 2v6"/>
+        <path d="M8 13h5"/>
+        <path d="M8 17h3"/>
+        <path d="M17 14l-2 2 1 1 3-3"/>
+      </svg>
+    </div>
+    <div class="icon-name">Wills &amp; Estates</div>
+    <div class="icon-use">Planning, probate, trusts</div>
+  </div>
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="2" y="7" width="20" height="14" rx="2"/>
+        <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="10" y1="14" x2="14" y2="14"/>
+      </svg>
+    </div>
+    <div class="icon-name">Business Law</div>
+    <div class="icon-use">Commercial advice</div>
+  </div>
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3l8 4v5c0 4.4-3.4 8.5-8 9.8C7.4 20.5 4 16.4 4 12V7l8-4z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    </div>
+    <div class="icon-name">Power of Attorney</div>
+    <div class="icon-use">LPA, protection, planning</div>
+  </div>
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 8v5l3 3"/>
+        <path d="M5.5 5.5l13 13" opacity=".15"/>
+      </svg>
+    </div>
+    <div class="icon-name">Clinical Negligence</div>
+    <div class="icon-use">Medical harm, claims</div>
+  </div>
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="6" width="18" height="14" rx="2"/>
+        <path d="M3 10h18"/>
+        <path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/>
+        <path d="M9 15h2"/>
+        <path d="M13 15h2"/>
+      </svg>
+    </div>
+    <div class="icon-name">Commercial Property</div>
+    <div class="icon-use">Leases, premises, purchases</div>
+  </div>
+
+  <div class="icon-cell">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+        <circle cx="21" cy="6" r="0" fill="#1a3a5c" stroke="none"/>
+        <path d="M18 9.5c1.5-1 3-1 3 .5s-1.5 1.5-1.5 2.5M19.5 15v.5"/>
+      </svg>
+    </div>
+    <div class="icon-name">Dispute Resolution</div>
+    <div class="icon-use">Civil, commercial, mediation</div>
+  </div>
+
+</div>
+
+<div class="variants">
+  <div class="variants-label">Colour contexts</div>
+  <div class="variants-row">
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-right:.5rem;font-weight:300">Same SVG, three surfaces:</div>
+
+    <div class="v-item">
+      <div class="v-wrap-navy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9.5z"/><path d="M9 21V12h6v9"/></svg>
+      </div>
+      <div class="v-label">Navy fill</div>
+    </div>
+
+    <div class="v-item">
+      <div class="v-wrap-warm">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3.5"/><circle cx="16" cy="7" r="2.5"/><path d="M2 20c0-3.314 3.134-6 7-6s7 2.686 7 6"/><path d="M16 14c2.21 0 4 1.79 4 4"/></svg>
+      </div>
+      <div class="v-label">Warm bg</div>
+    </div>
+
+    <div class="v-item">
+      <div class="v-wrap-gold">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 4.4-3.4 8.5-8 9.8C7.4 20.5 4 16.4 4 12V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="v-label">Outline</div>
+    </div>
+
+    <div style="width:1px;height:44px;background:var(--color-border-tertiary);margin:0 .5rem"></div>
+
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-right:.5rem;font-weight:300">At service card scale:</div>
+
+    <div class="v-item">
+      <div style="width:32px;height:32px;background:#e8f0f8;border-radius:7px;display:flex;align-items:center;justify-content:center">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="#1a3a5c" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 8h16"/><path d="M8 2v6"/><path d="M16 2v6"/><path d="M8 13h5"/><path d="M8 17h3"/><path d="M17 14l-2 2 1 1 3-3"/></svg>
+      </div>
+      <div class="v-label">16px</div>
+    </div>
+
+    <div class="v-item">
+      <div style="width:40px;height:40px;background:#e8f0f8;border-radius:8px;display:flex;align-items:center;justify-content:center">
+        <svg width="20" height="20" viewBox="0 0 24 24" stroke="#1a3a5c" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 8h16"/><path d="M8 2v6"/><path d="M16 2v6"/><path d="M8 13h5"/><path d="M8 17h3"/><path d="M17 14l-2 2 1 1 3-3"/></svg>
+      </div>
+      <div class="v-label">20px</div>
+    </div>
+
+    <div class="v-item">
+      <div style="width:48px;height:48px;background:#e8f0f8;border-radius:10px;display:flex;align-items:center;justify-content:center">
+        <svg width="24" height="24" viewBox="0 0 24 24" stroke="#1a3a5c" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 8h16"/><path d="M8 2v6"/><path d="M16 2v6"/><path d="M8 13h5"/><path d="M8 17h3"/><path d="M17 14l-2 2 1 1 3-3"/></svg>
+      </div>
+      <div class="v-label">24px</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="context">
+  <div class="context-label">In context: service cards</div>
+  <div class="context-cards">
+    <div class="ctx-card">
+      <div class="ctx-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9.5z"/><path d="M9 21V12h6v9"/></svg>
+      </div>
+      <div class="ctx-name">Residential Property</div>
+      <div class="ctx-desc">Buying, selling, or remortgaging your home</div>
+    </div>
+    <div class="ctx-card">
+      <div class="ctx-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3.5"/><circle cx="16" cy="7" r="2.5"/><path d="M2 20c0-3.314 3.134-6 7-6s7 2.686 7 6"/><path d="M16 14c2.21 0 4 1.79 4 4"/></svg>
+      </div>
+      <div class="ctx-name">Family Law</div>
+      <div class="ctx-desc">Divorce, children, finances and mediation</div>
+    </div>
+    <div class="ctx-card">
+      <div class="ctx-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 8h16"/><path d="M8 2v6"/><path d="M16 2v6"/><path d="M8 13h5"/><path d="M8 17h3"/><path d="M17 14l-2 2 1 1 3-3"/></svg>
+      </div>
+      <div class="ctx-name">Wills &amp; Estates</div>
+      <div class="ctx-desc">Planning for your future and family</div>
+    </div>
+    <div class="ctx-card">
+      <div class="ctx-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 4.4-3.4 8.5-8 9.8C7.4 20.5 4 16.4 4 12V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="ctx-name">Power of Attorney</div>
+      <div class="ctx-desc">Protecting you and those closest to you</div>
+    </div>
+  </div>
+</div>
+
+<div class="spec">
+  <div class="spec-item"><strong>Stroke weight</strong>1.5px throughout</div>
+  <div class="spec-item"><strong>Line caps</strong>round</div>
+  <div class="spec-item"><strong>Line joins</strong>round</div>
+  <div class="spec-item"><strong>Viewbox</strong>24 × 24</div>
+  <div class="spec-item"><strong>Fill</strong>none (stroke only)</div>
+  <div class="spec-item"><strong>Colour</strong>inherits from parent</div>
+  <div class="spec-item"><strong>Sizes</strong>16 / 20 / 24px</div>
+  <div class="spec-item"><strong>Format</strong>inline SVG</div>
+</div>
+
+</div>
+
+</body>
+</html>
