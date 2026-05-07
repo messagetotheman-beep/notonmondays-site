@@ -695,113 +695,6 @@ hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5re
 .status-foot { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(242,240,232,0.2); }
 
 /* ─────────────────────────────────────────
-   INVESTMENT COMPARISON
-───────────────────────────────────────── */
-.comparison-band {
-  background: var(--off-white);
-  padding: 4rem 3rem;
-  border-top: 1px solid rgba(26,42,212,0.1);
-}
-.comparison-inner {
-  max-width: 860px;
-  margin: 0 auto;
-}
-.comp-wrap {
-  margin-top: 2rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.comp-table {
-  width: 100%;
-  min-width: 580px;
-  border-collapse: collapse;
-  border: 1px solid rgba(26,42,212,0.1);
-  font-size: 0.82rem;
-}
-.comp-table thead tr {
-  background: var(--warm-white);
-  border-bottom: 1px solid rgba(26,42,212,0.12);
-}
-.comp-th {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--dark);
-  padding: 1rem 1.25rem;
-  text-align: left;
-  border-right: 1px solid rgba(26,42,212,0.07);
-}
-.comp-th:last-child { border-right: none; }
-.comp-th--label { color: transparent; width: 120px; }
-.comp-th--featured {
-  background: rgba(26,42,212,0.04);
-  border-top: 2px solid var(--blue);
-  color: var(--blue);
-}
-.comp-table tbody tr {
-  border-bottom: 1px solid rgba(26,42,212,0.07);
-}
-.comp-table tbody tr:last-child { border-bottom: none; }
-.comp-row-label {
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 1rem 1.25rem;
-  background: var(--warm-white);
-  border-right: 1px solid rgba(26,42,212,0.07);
-  vertical-align: top;
-  white-space: nowrap;
-}
-.comp-td {
-  padding: 1rem 1.25rem;
-  color: var(--mid);
-  font-weight: 300;
-  line-height: 1.65;
-  vertical-align: top;
-  border-right: 1px solid rgba(26,42,212,0.06);
-}
-.comp-td:last-child { border-right: none; }
-.comp-td--featured { background: rgba(26,42,212,0.025); }
-.comp-investment {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: var(--dark);
-  display: block;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
-}
-.comp-investment-note {
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  display: block;
-}
-.comp-notes {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-.comp-note {
-  font-size: 0.8rem;
-  color: var(--mid);
-  font-weight: 300;
-  line-height: 1.7;
-  padding: 0.85rem 1.1rem;
-  background: var(--warm-white);
-  border: 1px solid rgba(26,42,212,0.08);
-  border-left: 2px solid rgba(26,42,212,0.22);
-  max-width: none;
-}
-
-/* ─────────────────────────────────────────
    RESPONSIVE — tablet (≤ 760px)
 ───────────────────────────────────────── */
 @media (max-width: 760px) {
@@ -853,9 +746,6 @@ hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5re
 
   /* Pricing — inline grid */
   .pricing-grid { grid-template-columns: 1fr !important; }
-
-  /* Comparison */
-  .comparison-band { padding: 2.5rem 1.25rem; }
 
   /* CTA */
   .portal-cta { padding: 3rem 1.25rem; }
@@ -1344,68 +1234,6 @@ hr.rule { border: none; border-top: 1px solid rgba(26,42,212,0.1); margin: 3.5re
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- INVESTMENT COMPARISON -->
-    <div class="comparison-band">
-      <div class="comparison-inner">
-        <span class="ey">How we work together</span>
-        <h2>Levels of <em>involvement.</em></h2>
-        <p class="wide">Three ways of working with us, depending on where SRB is and what it needs at any given point. Not fixed tiers. A reference point for the conversation.</p>
-
-        <div class="comp-wrap" role="region" aria-label="Levels of involvement comparison">
-          <table class="comp-table">
-            <thead>
-              <tr>
-                <th scope="col" class="comp-th comp-th--label"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Category</span></th>
-                <th scope="col" class="comp-th">Essential</th>
-                <th scope="col" class="comp-th comp-th--featured">Operating Layer</th>
-                <th scope="col" class="comp-th">Wider Support</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" class="comp-row-label">Focus</th>
-                <td class="comp-td">Website rebuild and digital foundations</td>
-                <td class="comp-td comp-td--featured">Ongoing improvement and visibility</td>
-                <td class="comp-td">Wider operational support</td>
-              </tr>
-              <tr>
-                <th scope="row" class="comp-row-label">Includes</th>
-                <td class="comp-td">Bespoke website rebuild, accessibility improvements, technical clean-up, SEO foundations</td>
-                <td class="comp-td comp-td--featured">Continuous updates, visibility improvements, content iteration, search optimisation. No backlog build-up.</td>
-                <td class="comp-td">Broader operational support across the digital estate, including workflows, tooling, CRM, and internal user experience</td>
-              </tr>
-              <tr>
-                <th scope="row" class="comp-row-label">Best for</th>
-                <td class="comp-td">Stabilising and modernising the current experience</td>
-                <td class="comp-td comp-td--featured">Firms wanting continuous improvement without managing it themselves</td>
-                <td class="comp-td">Firms whose digital estate connects to wider operations</td>
-              </tr>
-              <tr>
-                <th scope="row" class="comp-row-label">Investment</th>
-                <td class="comp-td">
-                  <span class="comp-investment">£11,500</span>
-                  <span class="comp-investment-note">Fixed project</span>
-                </td>
-                <td class="comp-td comp-td--featured">
-                  <span class="comp-investment">£1,850</span>
-                  <span class="comp-investment-note">Per month</span>
-                </td>
-                <td class="comp-td">
-                  <span class="comp-investment">Scoped collaboratively</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="comp-notes">
-          <p class="comp-note">Search and visibility is not treated as a separate add-on. It becomes part of how the site is continuously improved over time.</p>
-          <p class="comp-note">If SRB moves into an ongoing operating layer retainer, £2,000 of the initial project investment is credited back.</p>
-        </div>
-
       </div>
     </div>
 

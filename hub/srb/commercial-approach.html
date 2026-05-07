@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial Approach — Stone Rowe Brewer</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .ca-intro {
+      font-size: 1.05rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    .ca-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 1.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .ca-back:hover { color: var(--blue); }
+
+    .ca-layout {
+      max-width: 760px;
+    }
+
+    /* Part header inside a panel */
+    .ca-part-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .ca-part-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .ca-part-body {
+      font-size: 0.88rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    /* What's included list */
+    .ca-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.25rem;
+    }
+
+    .ca-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .ca-includes li:last-child { border-bottom: none; }
+
+    .ca-includes li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--blue);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.55rem;
+    }
+
+    /* Pricing block */
+    .ca-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      padding-top: 1rem;
+      margin-top: 0.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .ca-price-figure {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    .ca-price-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Wider support — lighter panel */
+    .ca-wider {
+      background: var(--off-white);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ca-wider-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .ca-wider-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .ca-wider-body {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.65;
+      margin-bottom: 0.75rem;
+    }
+
+    .ca-wider-scope {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    /* Notes */
+    .ca-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ca-note {
+      font-size: 0.82rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+      padding: 0.85rem 1.1rem;
+      background: var(--off-white);
+      border: 1px solid var(--border-mid);
+      border-left: 2px solid rgba(26,42,212,0.25);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    @media (max-width: 640px) {
+      .ca-part-heading { font-size: 1.3rem; }
+      .ca-price-figure { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dash-topbar" role="banner">
+    <div class="container">
+      <a href="/" class="dash-logo" aria-label="Not On Mondays">
+        <span class="dash-logo-initials" aria-hidden="true">
+          <span class="dash-logo-n">n</span>
+          <span class="dash-logo-o">o</span>
+          <span class="dash-logo-m">m</span>
+        </span>
+        <span class="dash-logo-divider" aria-hidden="true"></span>
+        <span class="dash-logo-descriptor" aria-hidden="true">
+          <span>The</span>
+          <span>Operating</span>
+          <span>Partner</span>
+        </span>
+      </a>
+
+      <div class="dash-topbar-right">
+        <a href="/hub/" class="dash-hub-link" aria-label="Back to workspace">← Hub</a>
+        <span class="dash-topbar-client">Stone Rowe Brewer</span>
+        <span class="dash-topbar-meta">Internal &middot; Not for distribution</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="dash-header">
+    <div class="container">
+      <div class="dash-header-title">
+        <p class="dash-header-eyebrow">Client workspace &middot; Commercial approach</p>
+        <h1>Commercial Approach</h1>
+        <p>How the foundation work and ongoing operating layer could be structured.</p>
+      </div>
+      <div class="dash-header-meta">
+        <span class="dash-last-updated">Last updated: 7 May 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="dash-body">
+      <div class="container">
+
+        <a href="dashboard.html" class="ca-back" aria-label="Back to SRB dashboard">← Dashboard</a>
+
+        <div class="ca-layout">
+
+          <div class="dash-panel">
+            <h2>Overview</h2>
+            <p class="ca-intro">This sets out how the engagement could be structured commercially. The starting point is the foundation work. After that, the ongoing operating layer is how we keep the site improving rather than standing still. Wider support beyond the digital estate is available if and when it makes sense.</p>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="ca-foundation-heading">
+            <span class="ca-part-label">Part one</span>
+            <h2 id="ca-foundation-heading" class="ca-part-heading">The Foundation</h2>
+            <p class="ca-part-body">A fixed-scope project to rebuild the website, address the accessibility issues identified in the audit, clean up the technical foundations, and establish the SEO baseline. This is the work that needs to happen before anything else compounds effectively.</p>
+
+            <ul class="ca-includes" aria-label="What the Foundation includes">
+              <li>Bespoke website rebuild, designed around how SRB's clients actually navigate</li>
+              <li>Accessibility improvements across the site to WCAG 2.1 AA standard</li>
+              <li>Technical clean-up, including security, page speed, and indexing</li>
+              <li>SEO foundations: page structure, meta data, schema markup, and local signals</li>
+            </ul>
+
+            <div class="ca-price">
+              <span class="ca-price-figure" aria-label="Investment: eleven thousand five hundred pounds">£11,500</span>
+              <span class="ca-price-label">Fixed project</span>
+            </div>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="ca-layer-heading">
+            <span class="ca-part-label">Part two</span>
+            <h2 id="ca-layer-heading" class="ca-part-heading">The Operating Layer</h2>
+            <p class="ca-part-body">Ongoing engagement to keep the site improving after the foundation is in place. This covers content updates, visibility improvements, search optimisation, and anything that needs attention each month. No backlog, no scope negotiations: priorities are agreed together and worked on continuously.</p>
+
+            <ul class="ca-includes" aria-label="What the Operating Layer includes">
+              <li>Continuous content updates and page improvements</li>
+              <li>Search and visibility work built into the monthly rhythm</li>
+              <li>No fixed scope: priorities are set together, updated regularly</li>
+              <li>Single point of accountability: David owns the work</li>
+            </ul>
+
+            <div class="ca-price">
+              <span class="ca-price-figure" aria-label="Investment: one thousand eight hundred and fifty pounds per month">£1,850</span>
+              <span class="ca-price-label">Per month</span>
+            </div>
+          </div>
+
+          <div class="ca-wider" aria-labelledby="ca-wider-heading">
+            <span class="ca-wider-label">Optional future scope</span>
+            <h3 id="ca-wider-heading" class="ca-wider-heading">Wider Support</h3>
+            <p class="ca-wider-body">Once the digital estate is working well, it becomes possible to extend into the wider operations of the firm: CRM, client intake workflows, document handling, and internal tooling. This is not part of the initial engagement. It is available if and when it makes sense for SRB.</p>
+            <span class="ca-wider-scope">Scoped collaboratively</span>
+          </div>
+
+          <div class="ca-notes" role="list" aria-label="Important notes">
+            <p class="ca-note" role="listitem">If SRB moves into an ongoing operating layer retainer, £2,000 of the initial project investment is credited back.</p>
+            <p class="ca-note" role="listitem">Search and visibility is not treated as a separate add-on. It becomes part of how the site is continuously improved over time.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
