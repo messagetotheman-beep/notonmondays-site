@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SRB Topic Navigator Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:      #1a3a5c;
+  --navy-dark: #0f2540;
+  --dark:      #111124;
+  --warm:      #f0ede6;
+  --off-white: #faf8f4;
+  --green:     #2a6e4a;
+  --amber:     #c1780f;
+  --muted:     #5a5a6e;
+  --border:    rgba(26,58,92,0.12);
+  --page-bg:   #e2dfd8;
+}
+
+html { background: var(--page-bg); scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: var(--dark);
+  background: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Page wrapper ─────────────────────────────────────── */
+.page-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+/* ─── Page header ──────────────────────────────────────── */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.page-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.page-title {
+  font-family: 'Lora', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.page-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─── Website frame ────────────────────────────────────── */
+.frame {
+  background: var(--off-white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(15,37,64,0.18), 0 4px 16px rgba(15,37,64,0.08);
+}
+
+/* ─── Concept banner ───────────────────────────────────── */
+.frame-banner {
+  background: var(--navy-dark);
+  padding: 0.45rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.frame-banner-l {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+}
+.frame-banner-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c5bff8;
+  background: rgba(180,172,255,0.12);
+  border: 1px solid rgba(180,172,255,0.22);
+  padding: 0.18rem 0.5rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ─── SRB navigation ───────────────────────────────────── */
+.srb-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--off-white);
+  flex-wrap: wrap;
+}
+.srb-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.srb-nav-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--navy);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.srb-nav-mark span {
+  font-family: 'Lora', serif;
+  font-size: 9px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+.srb-nav-wordmark {
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.srb-nav-links {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.srb-nav-link {
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  pointer-events: none;
+}
+.srb-nav-link--active {
+  color: var(--navy);
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--navy);
+  padding-bottom: 1px;
+}
+.srb-nav-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--navy);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+/* ─── Hero ─────────────────────────────────────────────── */
+.srb-hero {
+  background: var(--warm);
+  padding: 2.75rem 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  opacity: 0.72;
+}
+.srb-hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 1rem;
+}
+.srb-hero-trust-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+.srb-hero-trust span:last-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.srb-hero-h1 {
+  font-family: 'Lora', serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.9rem;
+  max-width: 400px;
+}
+.srb-hero-h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: #2a5c8a;
+}
+.srb-hero-sub {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+.srb-hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.srb-hero-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.55rem 1.1rem;
+  border-radius: 5px;
+  cursor: default;
+  opacity: 0.4;
+}
+.srb-hero-btn--primary {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+}
+.srb-hero-btn--ghost {
+  background: transparent;
+  color: var(--navy);
+  border: 1px solid var(--navy);
+}
+
+/* ─── Navigator section ────────────────────────────────── */
+.nav-section {
+  background: var(--dark);
+  padding: 2rem 1.5rem 1.75rem;
+}
+.nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.nav-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+/* Search row */
+.nav-search-row {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.15s;
+}
+.nav-search-row:focus-within {
+  border-color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.06);
+}
+.nav-search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.nav-search-icon {
+  width: 16px;
+  height: 16px;
+  color: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+.nav-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.88);
+  padding: 0.85rem 0;
+  min-width: 0;
+  -webkit-appearance: none;
+}
+.nav-search-input::placeholder {
+  color: rgba(255,255,255,0.32);
+}
+.nav-search-input::-webkit-search-cancel-button { display: none; }
+.nav-search-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--dark);
+  background: #f2f0e8;
+  border: none;
+  padding: 0 1.4rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+.nav-search-btn:hover {
+  background: #fff;
+}
+.nav-search-btn:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.5);
+  outline-offset: -2px;
+}
+
+/* Chips */
+.nav-chips-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 0.75rem;
+}
+.nav-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.nav-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.78);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 0.38rem 0.8rem 0.38rem 0.6rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.13s, border-color 0.13s, color 0.13s;
+  line-height: 1;
+}
+.nav-chip:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.28);
+  color: #fff;
+}
+.nav-chip:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.4);
+  outline-offset: 2px;
+}
+.nav-chip--active {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+.nav-chip svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.nav-chip:hover svg,
+.nav-chip--active svg { opacity: 1; }
+
+/* Result panel */
+.nav-result {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.5rem;
+}
+.nav-result-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1rem;
+}
+.nav-result-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+.nav-result-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 1rem 1rem 1.1rem;
+}
+.nav-result-card-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.nav-result-card-eyebrow svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.5;
+}
+.nav-result-card-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.4;
+  margin-bottom: 0.35rem;
+}
+.nav-result-card-body {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+}
+.nav-result-card--solicitor .solicitor-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+}
+.nav-result-card--solicitor .solicitor-avatar span {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.05em;
+}
+.nav-result-cta {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.nav-result-cta-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 1px;
+  cursor: default;
+  pointer-events: none;
+  transition: color 0.13s, border-color 0.13s;
+}
+.nav-result-cta-link:hover {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.5);
+}
+.nav-result-reset {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.13s;
+}
+.nav-result-reset:hover { color: rgba(255,255,255,0.55); }
+
+/* Fallback result */
+.nav-result-fallback {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+.nav-result-fallback-body {
+  font-size: 0.84rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav-result-fallback-tel {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.nav-result-fallback-reset {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  transition: color 0.13s;
+}
+.nav-result-fallback-reset:hover { color: rgba(255,255,255,0.55); }
+
+/* Annotation toggle */
+.anno-toggle-wrap {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+.anno-toggle-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.13s, border-color 0.13s;
+}
+.anno-toggle-btn:hover {
+  color: rgba(255,255,255,0.55);
+  border-color: rgba(255,255,255,0.22);
+}
+.anno-toggle-btn:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.3);
+  outline-offset: 2px;
+}
+
+/* Annotations */
+.annotations {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+.anno-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 2px solid var(--amber);
+  border-radius: 4px;
+  padding: 0.8rem 0.9rem;
+}
+.anno-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+.anno-body {
+  font-size: 0.73rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+}
+
+/* Microcopy strip */
+.microcopy-strip {
+  background: var(--warm);
+  border-top: 1px solid var(--border);
+  padding: 0.9rem 1.5rem;
+}
+.microcopy-strip p {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+/* ─── Mobile ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .page-wrap { padding: 1.5rem 0.75rem 3rem; }
+  .page-title { font-size: 1.3rem; }
+
+  .srb-nav { padding: 0.65rem 1rem; gap: 0.6rem; }
+  .srb-nav-wordmark { display: none; }
+  .srb-nav-links { display: none; }
+
+  .srb-hero { padding: 2rem 1rem 1.75rem; }
+  .srb-hero-h1 { font-size: 1.55rem; }
+
+  .nav-section { padding: 1.5rem 1rem 1.5rem; }
+  .nav-label { font-size: 0.9rem; }
+
+  .nav-search-btn { padding: 0 1rem; font-size: 0.8rem; }
+
+  .nav-result-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .annotations {
+    grid-template-columns: 1fr;
+  }
+
+  .microcopy-strip { padding: 0.8rem 1rem; }
+
+  .frame-banner-l { font-size: 0.48rem; letter-spacing: 0.14em; }
+}
+
+@media (max-width: 480px) {
+  .nav-search-input { font-size: 0.82rem; }
+  .srb-hero-actions { gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <header class="page-header">
+    <span class="page-tag">Concept asset &middot; Not for distribution &middot; Not On Mondays</span>
+    <h1 class="page-title">SRB Topic Navigator</h1>
+    <p class="page-sub">An interactive component showing how a solicitors' website can guide visitors by situation, not just by service label.</p>
+  </header>
+
+  <div class="frame" role="region" aria-label="SRB website concept">
+
+    <!-- Concept banner -->
+    <div class="frame-banner">
+      <span class="frame-banner-l">srb.co.uk &mdash; topic navigator &middot; component concept &middot; not on mondays</span>
+      <span class="frame-banner-badge">Concept</span>
+    </div>
+
+    <!-- SRB navigation (simulated) -->
+    <nav class="srb-nav" aria-label="SRB navigation (simulated — not interactive)">
+      <div class="srb-nav-logo">
+        <div class="srb-nav-mark" aria-hidden="true"><span>SRB</span></div>
+        <span class="srb-nav-wordmark">Stone Rowe Brewer LLP</span>
+      </div>
+      <ul class="srb-nav-links" role="list">
+        <li><span class="srb-nav-link srb-nav-link--active" aria-hidden="true">Services</span></li>
+        <li><span class="srb-nav-link" aria-hidden="true">Our People</span></li>
+        <li><span class="srb-nav-link" aria-hidden="true">Reviews</span></li>
+        <li><span class="srb-nav-link" aria-hidden="true">Guides</span></li>
+        <li><span class="srb-nav-link" aria-hidden="true">Contact</span></li>
+      </ul>
+      <button class="srb-nav-cta" type="button" tabindex="-1" aria-hidden="true">Call 020 8891 6141</button>
+    </nav>
+
+    <!-- Hero (muted — navigator is the focus) -->
+    <section class="srb-hero" aria-label="Hero section (muted for concept)" aria-hidden="true">
+      <div class="srb-hero-trust">
+        <span class="srb-hero-trust-dot"></span>
+        <span>SRA Regulated &middot; Twickenham &amp; Teddington &middot; Over 40 years</span>
+      </div>
+      <h2 class="srb-hero-h1">Legal advice that <em>actually<br>makes sense.</em></h2>
+      <p class="srb-hero-sub">Clear, honest legal guidance for individuals and businesses across South West London and Surrey. No jargon. No surprises. Just the right advice at the right time.</p>
+      <div class="srb-hero-actions">
+        <button class="srb-hero-btn srb-hero-btn--primary" type="button" tabindex="-1">Find the right service</button>
+        <button class="srb-hero-btn srb-hero-btn--ghost" type="button" tabindex="-1">Meet our team</button>
+      </div>
+    </section>
+
+    <!-- ═══ TOPIC NAVIGATOR COMPONENT ═══ -->
+    <section class="nav-section" aria-label="Topic navigator">
+      <div class="nav-inner">
+
+        <h2 class="nav-label">What do you need help with?</h2>
+
+        <div class="nav-search-row" role="search">
+          <div class="nav-search-input-wrap">
+            <svg class="nav-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input
+              id="nav-search"
+              type="search"
+              class="nav-search-input"
+              placeholder="e.g. buying a house, making a will, divorce…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Describe your situation"
+            >
+          </div>
+          <button id="nav-search-btn" class="nav-search-btn" type="button">Find help</button>
+        </div>
+
+        <p class="nav-chips-label" id="chips-label">Popular topics</p>
+        <div class="nav-chips" role="group" aria-labelledby="chips-label">
+
+          <!-- Buying a house -->
+          <button class="nav-chip" type="button" data-topic="buying a house">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5z"/>
+              <path d="M9 22V14h6v8"/>
+            </svg>
+            Buying a house
+          </button>
+
+          <!-- Making a will -->
+          <button class="nav-chip" type="button" data-topic="making a will">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <path d="M9 7h6M9 11h6M9 15h4"/>
+              <path d="M15.5 15.5l1.5 1.5 2.5-2.5"/>
+            </svg>
+            Making a will
+          </button>
+
+          <!-- Going through a divorce -->
+          <button class="nav-chip" type="button" data-topic="going through a divorce">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="7.5" cy="6" r="2.5"/>
+              <path d="M2 20c0-2.8 2.46-5 5.5-5"/>
+              <circle cx="16.5" cy="6" r="2.5"/>
+              <path d="M22 20c0-2.8-2.46-5-5.5-5"/>
+              <path d="M11 13.5l2-3 2 3"/>
+            </svg>
+            Going through a divorce
+          </button>
+
+          <!-- Power of attorney -->
+          <button class="nav-chip" type="button" data-topic="power of attorney">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+              <path d="M4 20c0-3.3 3.58-6 8-6"/>
+              <path d="M17 14l1.5 1.5L22 12"/>
+              <path d="M17 19l1.5 1.5L22 17"/>
+            </svg>
+            Power of attorney
+          </button>
+
+          <!-- Selling my home -->
+          <button class="nav-chip" type="button" data-topic="selling my home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5z"/>
+              <path d="M9 22V14h6v8"/>
+              <path d="M17 7l3-3m0 0l-2 0m2 0v2"/>
+            </svg>
+            Selling my home
+          </button>
+
+          <!-- Medical negligence -->
+          <button class="nav-chip" type="button" data-topic="medical negligence">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 8v8M8 12h8"/>
+            </svg>
+            Medical negligence
+          </button>
+
+          <!-- Arrangements for children -->
+          <button class="nav-chip" type="button" data-topic="arrangements for children">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="5" cy="6" r="2"/>
+              <path d="M2 19c0-2.2 1.343-4 3-4h1"/>
+              <circle cx="19" cy="6" r="2"/>
+              <path d="M22 19c0-2.2-1.343-4-3-4h-1"/>
+              <circle cx="12" cy="8" r="2.5"/>
+              <path d="M8 21c0-2.5 1.79-4.5 4-4.5s4 2 4 4.5"/>
+            </svg>
+            Arrangements for children
+          </button>
+
+          <!-- Leasing business premises -->
+          <button class="nav-chip" type="button" data-topic="leasing business premises">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="7" width="18" height="14" rx="1"/>
+              <path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/>
+              <path d="M7 12h4M7 16h4"/>
+              <rect x="14" y="12" width="3" height="4"/>
+            </svg>
+            Leasing business premises
+          </button>
+
+          <!-- Resolving a dispute -->
+          <button class="nav-chip" type="button" data-topic="resolving a dispute">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v18"/>
+              <path d="M4 7l8-4 8 4"/>
+              <path d="M6 8l-3 5h6l-3-5z"/>
+              <path d="M18 8l-3 5h6l-3-5z"/>
+              <path d="M4 18h16"/>
+            </svg>
+            Resolving a dispute
+          </button>
+
+          <!-- Dealing with probate -->
+          <button class="nav-chip" type="button" data-topic="dealing with probate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 2v6h6"/>
+              <circle cx="10" cy="15" r="2.5"/>
+              <path d="M14 18.5l1.5 1.5"/>
+            </svg>
+            Dealing with probate
+          </button>
+
+        </div>
+
+        <!-- Result panel (populated by JS) -->
+        <div id="nav-result" class="nav-result" hidden aria-live="polite" role="region" aria-label="Suggested next steps"></div>
+
+        <!-- Annotation toggle -->
+        <div class="anno-toggle-wrap">
+          <button id="anno-toggle" class="anno-toggle-btn" type="button" aria-expanded="false" aria-controls="annotations">
+            Show design notes
+          </button>
+        </div>
+
+        <!-- Annotation cards -->
+        <div id="annotations" class="annotations" hidden role="region" aria-label="Design notes">
+          <div class="anno-card">
+            <span class="anno-label">A &mdash; Conversational framing</span>
+            <p class="anno-body">The label asks "What do you need help with?" rather than "Search". This makes the interaction feel like the start of a conversation, not a database query.</p>
+          </div>
+          <div class="anno-card">
+            <span class="anno-label">B &mdash; Plain English topics</span>
+            <p class="anno-body">The chips use client language: "Going through a divorce", not "Family Law". That helps anxious visitors recognise themselves quickly.</p>
+          </div>
+          <div class="anno-card">
+            <span class="anno-label">C &mdash; No dead ends</span>
+            <p class="anno-body">Unrecognised searches route to the phone number instead of a blank result. For SRB, a phone call is often the best conversion.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Microcopy -->
+    <div class="microcopy-strip" role="note">
+      <p>This sits between the hero and services grid: visible early, optional to use, and helpful for people who are not sure where to start.</p>
+    </div>
+
+  </div><!-- /frame -->
+
+</div><!-- /page-wrap -->
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Route data ────────────────────────────────────────── */
+  var routes = [
+    {
+      keywords: ['buying a house', 'buy a house', 'buy house', 'purchasing a house', 'first time buyer', 'conveyancing', 'residential property', 'selling my home', 'sell my home', 'selling my house', 'sell my house', 'selling a house'],
+      service:     'Residential Property',
+      serviceDesc: 'Buying and selling homes — with a clear process, no surprises, and someone on your side throughout.',
+      guide:       'What actually happens during a house purchase?',
+      solicitor:   { name: 'Elizabeth Cobb', initials: 'EC', role: 'Residential Property' },
+      cta:         'View residential property support'
+    },
+    {
+      keywords: ['divorce', 'going through a divorce', 'separation', 'separating', 'matrimonial', 'arrangements for children', 'child arrangements', 'custody', 'contact order', 'family'],
+      service:     'Family Law',
+      serviceDesc: 'Sensitive, practical advice at a difficult time. Focused on what matters — not making things harder than they need to be.',
+      guide:       'Divorce in plain English: what you need to know',
+      solicitor:   { name: 'Lisa Broddle', initials: 'LB', role: 'Family Law' },
+      cta:         'View family law support'
+    },
+    {
+      keywords: ['power of attorney', 'lpa', 'lasting power of attorney', 'my mum needs', 'my dad needs', 'my mum', 'my dad', 'elderly parent', 'capacity', 'deputyship', 'lasting power'],
+      service:     'Power of Attorney',
+      serviceDesc: 'Planning ahead so the right person can act for you when you need them to. Simpler than most people expect.',
+      guide:       'Why you need a Lasting Power of Attorney',
+      solicitor:   { name: 'Karen Grimm', initials: 'KG', role: 'Power of Attorney' },
+      cta:         'View power of attorney support'
+    },
+    {
+      keywords: ['medical negligence', 'clinical negligence', 'negligence', 'treatment gone wrong', 'bad treatment', 'hospital error', 'surgery went wrong', 'misdiagnosis', 'malpractice'],
+      service:     'Clinical Negligence',
+      serviceDesc: 'Specialist advice when medical treatment has caused harm. Honest about what a claim involves from the start.',
+      guide:       'What to do if treatment has gone wrong',
+      solicitor:   { name: 'Sue Jackson', initials: 'SJ', role: 'Clinical Negligence' },
+      cta:         'View clinical negligence support'
+    },
+    {
+      keywords: ['leasing business premises', 'commercial lease', 'business property', 'commercial property', 'office lease', 'rent office', 'retail unit', 'business premises', 'industrial unit'],
+      service:     'Commercial Property',
+      serviceDesc: 'Sound advice before you sign anything commercial — leases, licences, and everything in between.',
+      guide:       'What to check before signing a commercial lease',
+      solicitor:   { name: 'Jason Hooker', initials: 'JH', role: 'Commercial Property' },
+      cta:         'View commercial property support'
+    },
+    {
+      keywords: ['resolving a dispute', 'dispute', 'legal dispute', 'litigation', 'claim', 'making a claim', 'disagreement', 'neighbour dispute', 'contract dispute', 'owed money'],
+      service:     'Dispute Resolution',
+      serviceDesc: 'Practical help to resolve disputes before they escalate — and clear advice if court does become necessary.',
+      guide:       'How to resolve a legal dispute without making things worse',
+      solicitor:   { name: 'Paige Symns', initials: 'PS', role: 'Dispute Resolution' },
+      cta:         'View dispute resolution support'
+    },
+    {
+      keywords: ['probate', 'dealing with probate', 'making a will', 'make a will', 'will', 'wills', 'estate', 'inheritance', 'someone died', 'bereavement', 'grant of probate', 'someone has died'],
+      service:     'Wills & Estates',
+      serviceDesc: 'Clear guidance on wills, probate, and what happens next — whether you are planning ahead or dealing with a loss.',
+      guide:       'What happens after someone dies?',
+      solicitor:   { name: 'Anna Spall', initials: 'AS', role: 'Wills & Estates' },
+      cta:         'View wills and probate support'
+    }
+  ];
+
+  /* ── Service icons (inline SVG paths) ─────────────────── */
+  var serviceIcons = {
+    'Residential Property': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5z"/><path d="M9 22V14h6v8"/></svg>',
+    'Family Law':           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="6" r="2.5"/><path d="M2 20c0-2.8 2.46-5 5.5-5"/><circle cx="16.5" cy="6" r="2.5"/><path d="M22 20c0-2.8-2.46-5-5.5-5"/><path d="M11 13.5l2-3 2 3"/></svg>',
+    'Power of Attorney':    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M4 20c0-3.3 3.58-6 8-6"/><path d="M17 14l1.5 1.5L22 12"/></svg>',
+    'Clinical Negligence':  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>',
+    'Commercial Property':  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="14" rx="1"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M7 12h4M7 16h4"/><rect x="14" y="12" width="3" height="4"/></svg>',
+    'Dispute Resolution':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M4 7l8-4 8 4"/><path d="M6 8l-3 5h6l-3-5z"/><path d="M18 8l-3 5h6l-3-5z"/><path d="M4 18h16"/></svg>',
+    'Wills & Estates':      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>'
+  };
+
+  /* ── Elements ──────────────────────────────────────────── */
+  var input      = document.getElementById('nav-search');
+  var searchBtn  = document.getElementById('nav-search-btn');
+  var resultEl   = document.getElementById('nav-result');
+  var chips      = document.querySelectorAll('.nav-chip');
+  var annoToggle = document.getElementById('anno-toggle');
+  var annos      = document.getElementById('annotations');
+
+  /* ── Match query to route ──────────────────────────────── */
+  function matchRoute(query) {
+    var q = query.toLowerCase().trim();
+    if (!q) return null;
+    for (var i = 0; i < routes.length; i++) {
+      var r = routes[i];
+      for (var j = 0; j < r.keywords.length; j++) {
+        if (q.indexOf(r.keywords[j]) !== -1 || r.keywords[j].indexOf(q) !== -1) {
+          return r;
+        }
+      }
+    }
+    return null;
+  }
+
+  /* ── Render matched result ─────────────────────────────── */
+  function renderMatch(r) {
+    var icon = serviceIcons[r.service] || '';
+    resultEl.innerHTML =
+      '<p class="nav-result-label">Suggested next steps</p>' +
+      '<div class="nav-result-cards">' +
+
+        '<div class="nav-result-card">' +
+          '<div class="nav-result-card-eyebrow">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>' +
+            'Relevant service' +
+          '</div>' +
+          '<div class="nav-result-card-service-icon" style="width:32px;height:32px;background:rgba(26,58,92,0.6);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:.6rem;color:rgba(255,255,255,0.75);">' +
+            icon +
+          '</div>' +
+          '<div class="nav-result-card-heading">' + r.service + '</div>' +
+          '<div class="nav-result-card-body">' + r.serviceDesc + '</div>' +
+        '</div>' +
+
+        '<div class="nav-result-card">' +
+          '<div class="nav-result-card-eyebrow">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>' +
+            'Plain English guide' +
+          '</div>' +
+          '<div class="nav-result-card-heading">' + r.guide + '</div>' +
+          '<div class="nav-result-card-body">A short guide written for people dealing with this for the first time.</div>' +
+        '</div>' +
+
+        '<div class="nav-result-card nav-result-card--solicitor">' +
+          '<div class="nav-result-card-eyebrow">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.3 3.58-6 8-6s8 2.7 8 6"/></svg>' +
+            'Your solicitor' +
+          '</div>' +
+          '<div class="solicitor-avatar" aria-hidden="true"><span>' + r.solicitor.initials + '</span></div>' +
+          '<div class="nav-result-card-heading">' + r.solicitor.name + '</div>' +
+          '<div class="nav-result-card-body">' + r.solicitor.role + ' &middot; Stone Rowe Brewer LLP</div>' +
+        '</div>' +
+
+      '</div>' +
+      '<div class="nav-result-cta">' +
+        '<span class="nav-result-cta-link" aria-hidden="true">' + r.cta + ' &rarr;</span>' +
+        '<button class="nav-result-reset" type="button" id="nav-reset">Start again</button>' +
+      '</div>';
+
+    resultEl.hidden = false;
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    var resetBtn = document.getElementById('nav-reset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', resetResult);
+    }
+  }
+
+  /* ── Render fallback ───────────────────────────────────── */
+  function renderFallback(query) {
+    resultEl.innerHTML =
+      '<div class="nav-result-fallback">' +
+        '<p class="nav-result-fallback-body">' +
+          'We\'re not sure which service this belongs to yet. The safest next step is to call SRB and let the team guide you.' +
+        '</p>' +
+        '<span class="nav-result-fallback-tel" aria-label="Phone number: 020 8891 6141">020 8891 6141</span>' +
+        '<button class="nav-result-fallback-reset" type="button" id="nav-reset">Try a different topic</button>' +
+      '</div>';
+
+    resultEl.hidden = false;
+
+    var resetBtn = document.getElementById('nav-reset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', resetResult);
+    }
+  }
+
+  /* ── Reset ─────────────────────────────────────────────── */
+  function resetResult() {
+    resultEl.hidden = true;
+    resultEl.innerHTML = '';
+    input.value = '';
+    chips.forEach(function (c) { c.classList.remove('nav-chip--active'); });
+    input.focus();
+  }
+
+  /* ── Run search ────────────────────────────────────────── */
+  function runSearch(query) {
+    var route = matchRoute(query);
+    if (route) {
+      renderMatch(route);
+    } else {
+      renderFallback(query);
+    }
+  }
+
+  /* ── Search button ─────────────────────────────────────── */
+  searchBtn.addEventListener('click', function () {
+    var q = input.value.trim();
+    if (!q) return;
+    runSearch(q);
+  });
+
+  /* ── Enter key in input ────────────────────────────────── */
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      var q = input.value.trim();
+      if (!q) return;
+      runSearch(q);
+    }
+  });
+
+  /* ── Chips ─────────────────────────────────────────────── */
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var topic = this.dataset.topic;
+      input.value = topic;
+
+      chips.forEach(function (c) { c.classList.remove('nav-chip--active'); });
+      this.classList.add('nav-chip--active');
+
+      runSearch(topic);
+    });
+  });
+
+  /* ── Annotation toggle ─────────────────────────────────── */
+  annoToggle.addEventListener('click', function () {
+    var isOpen = annos.hidden === false;
+    if (isOpen) {
+      annos.hidden = true;
+      annoToggle.setAttribute('aria-expanded', 'false');
+      annoToggle.textContent = 'Show design notes';
+    } else {
+      annos.hidden = false;
+      annoToggle.setAttribute('aria-expanded', 'true');
+      annoToggle.textContent = 'Hide design notes';
+    }
+  });
+
+}());
+</script>
+
+</body>
+</html>
