@@ -1142,13 +1142,13 @@ h3 { font-size: 1.1rem; }
 
 .doc-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   width: 100%;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.85rem 0;
+  padding: 1rem 0;
   text-align: left;
   color: inherit;
   font: inherit;
@@ -1181,45 +1181,47 @@ h3 { font-size: 1.1rem; }
 }
 
 .doc-info {
-  flex: 1;
+  flex: 1 1 0%;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
 }
 
 .doc-title {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.88rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--dark);
   line-height: 1.3;
 }
 
 .doc-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--muted);
   font-weight: 300;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.45;
+  opacity: 0.8;
 }
 
 .doc-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem;
-  flex-shrink: 0;
+  gap: 0.5rem;
+  flex-shrink: 1;
+  align-self: flex-start;
+  padding-top: 0.1rem;
 }
 
 .doc-ref {
   display: none;
   font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.06em;
+  font-size: 0.55rem;
+  letter-spacing: 0.04em;
   color: var(--muted);
+  opacity: 0.7;
   white-space: nowrap;
 }
 
@@ -1233,6 +1235,7 @@ h3 { font-size: 1.1rem; }
   flex-shrink: 0;
   color: var(--muted);
   transition: transform 0.2s ease;
+  align-self: center;
 }
 
 .doc-row[aria-expanded="true"] .doc-chevron {
@@ -1240,7 +1243,7 @@ h3 { font-size: 1.1rem; }
 }
 
 .doc-body {
-  padding: 0 0 1rem calc(28px + 0.75rem);
+  padding: 0 0 1.1rem calc(28px + 0.75rem);
 }
 
 .doc-body[hidden] { display: none; }
@@ -1279,8 +1282,8 @@ h3 { font-size: 1.1rem; }
 }
 
 @media (max-width: 375px) {
-  .doc-row { gap: 0.6rem; padding: 0.8rem 0; }
+  .doc-row { gap: 0.6rem; padding: 0.85rem 0; }
   .doc-body { padding-left: calc(28px + 0.6rem); }
   .doc-title { font-size: 0.82rem; }
-  .doc-desc  { font-size: 0.7rem; }
+  .doc-desc  { font-size: 0.68rem; }
 }
