@@ -573,6 +573,8 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 0.6rem;
 }
+/* display:grid on .annotations overrides UA [hidden]{display:none} — explicit override required */
+.annotations[hidden] { display: none; }
 .anno-card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);

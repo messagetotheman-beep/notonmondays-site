@@ -8,381 +8,393 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+
 <!-- Cloudflare Access controls route-level authorization. This page is protected by path policy, not client-side auth. -->
 
-  <div class="dash-topbar" role="banner">
-    <div class="container">
-      <a href="/" class="dash-logo" aria-label="Not On Mondays">
-        <span class="dash-logo-initials" aria-hidden="true">
-          <span class="dash-logo-n">n</span>
-          <span class="dash-logo-o">o</span>
-          <span class="dash-logo-m">m</span>
-        </span>
-        <span class="dash-logo-divider" aria-hidden="true"></span>
-        <span class="dash-logo-descriptor" aria-hidden="true">
-          <span>The</span>
-          <span>Operating</span>
-          <span>Partner</span>
-        </span>
-      </a>
+<div class="dash-topbar" role="banner">
+  <div class="container">
 
-      <div class="dash-topbar-right">
-        <a href="/hub/" class="dash-hub-link" aria-label="Back to workspace">← Hub</a>
-        <span class="dash-topbar-client">Stone Rowe Brewer</span>
-        <span class="dash-topbar-meta">Internal &middot; Not for distribution</span>
+    <a href="/" class="dash-logo" aria-label="Not On Mondays">
+      <span class="dash-logo-initials" aria-hidden="true">
+        <span class="dash-logo-n">n</span>
+        <span class="dash-logo-o">o</span>
+        <span class="dash-logo-m">m</span>
+      </span>
+
+      <span class="dash-logo-divider" aria-hidden="true"></span>
+
+      <span class="dash-logo-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+
+    <div class="dash-topbar-right">
+      <a href="/hub/" class="dash-hub-link" aria-label="Back to workspace">← Hub</a>
+      <span class="dash-topbar-client">Stone Rowe Brewer</span>
+      <span class="dash-topbar-meta">Internal &middot; Not for distribution</span>
+    </div>
+
+  </div>
+</div>
+
+<header class="dash-header">
+  <div class="container">
+
+    <div class="dash-header-title">
+      <p class="dash-header-eyebrow">Client workspace &middot; Digital estate</p>
+      <h1>SRB Digital Workspace</h1>
+      <p>Your digital estate, actively managed.</p>
+    </div>
+
+    <div class="dash-header-meta">
+      <span class="status-badge" role="status" aria-label="Current phase: Scoping in progress">
+        <span class="status-dot" aria-hidden="true"></span>
+        Scoping in progress
+      </span>
+
+      <span class="dash-last-updated">Last updated: 7 May 2026</span>
+    </div>
+
+  </div>
+</header>
+
+<main id="main">
+  <div class="dash-body">
+    <div class="container">
+
+      <div class="dash-panel" aria-labelledby="timeline-heading">
+        <h2 id="timeline-heading">Project milestones</h2>
+
+        <div class="milestone-timeline" role="list" aria-label="Project milestone progress">
+
+          <div class="milestone milestone--done" role="listitem" id="ms-brief">
+            <button class="milestone-btn" data-milestone="brief" aria-expanded="false" aria-controls="milestone-detail">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Brief</span>
+              <span class="milestone-tag milestone-tag--done">Done</span>
+            </button>
+          </div>
+
+          <div class="milestone milestone--active" role="listitem" id="ms-scoping">
+            <button class="milestone-btn" data-milestone="scoping" aria-expanded="false" aria-controls="milestone-detail">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Scoping</span>
+              <span class="milestone-tag milestone-tag--active">In progress</span>
+            </button>
+          </div>
+
+          <div class="milestone milestone--active-secondary" role="listitem" id="ms-audit">
+            <button class="milestone-btn" data-milestone="audit" aria-expanded="false" aria-controls="milestone-detail">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Full site audit</span>
+              <span class="milestone-tag milestone-tag--active-secondary">In progress</span>
+            </button>
+          </div>
+
+          <div class="milestone milestone--active-secondary" role="listitem" id="ms-wireframes">
+            <button class="milestone-btn" data-milestone="wireframes" aria-expanded="false" aria-controls="milestone-detail">
+              <span class="milestone-dot" aria-hidden="true"></span>
+              <span class="milestone-label">Wireframes</span>
+              <span class="milestone-tag milestone-tag--active-secondary">In progress</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div id="milestone-detail" class="milestone-detail" hidden role="region" aria-live="polite" aria-label="Milestone detail">
+          <p class="milestone-detail-name" id="milestone-detail-name"></p>
+          <p class="milestone-detail-body" id="milestone-detail-body"></p>
+        </div>
       </div>
+
+      <div class="dash-grid">
+
+        <div class="dash-main">
+
+          <div class="dash-panel" aria-labelledby="focus-heading">
+            <h2 id="focus-heading">Current focus</h2>
+
+            <ul class="focus-list">
+              <li class="focus-item">Site audit — reviewing current content, navigation structure, and technical foundations</li>
+              <li class="focus-item">Wireframe concepts for key pages</li>
+              <li class="focus-item">SEO baseline — search visibility, local rankings, and keyword positioning</li>
+              <li class="focus-item">Discovery conversation to confirm scope and priorities</li>
+            </ul>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="insight-heading">
+            <h2 id="insight-heading">What we're seeing so far</h2>
+
+            <ul class="insight-list">
+
+              <li class="insight-item">
+                <span class="insight-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="7" r="3.5"/>
+                    <circle cx="16" cy="7" r="2.5"/>
+                    <path d="M2 20c0-3.314 3.134-6 7-6s7 2.686 7 6"/>
+                    <path d="M16 14c2.21 0 4 1.79 4 4"/>
+                  </svg>
+                </span>
+                <span>The site can do more to guide visitors by situation, not just by service label.</span>
+              </li>
+
+              <li class="insight-item">
+                <span class="insight-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="2" width="16" height="20" rx="2"/>
+                    <path d="M4 8h16"/>
+                    <path d="M8 2v6"/>
+                    <path d="M16 2v6"/>
+                    <path d="M8 13h5"/>
+                    <path d="M8 17h3"/>
+                    <path d="M17 14l-2 2 1 1 3-3"/>
+                  </svg>
+                </span>
+                <span>Content and SEO need to work together, not sit as separate workstreams.</span>
+              </li>
+
+              <li class="insight-item">
+                <span class="insight-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3l8 4v5c0 4.4-3.4 8.5-8 9.8C7.4 20.5 4 16.4 4 12V7l8-4z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                </span>
+                <span>The first win is likely clarity: helping people understand where to go and what happens next.</span>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="how-heading">
+            <h2 id="how-heading">How this works</h2>
+
+            <ul class="how-it-works-list" role="list">
+
+              <li class="how-it-works-item">
+                <span class="how-it-works-label">Continuous improvement</span>
+                <span class="how-it-works-body">We don't hand over a project and leave. Work is ongoing, shaped by what matters most each week — not a fixed scope agreed once and forgotten.</span>
+              </li>
+
+              <li class="how-it-works-item">
+                <span class="how-it-works-label">No backlog</span>
+                <span class="how-it-works-body">Priorities are agreed together. Nothing sits in a queue for six months waiting for a sprint cycle. If it matters now, we work on it now.</span>
+              </li>
+
+              <li class="how-it-works-item">
+                <span class="how-it-works-label">Single point of accountability</span>
+                <span class="how-it-works-body">David owns the relationship and the work. No account managers, no handoffs, no one to translate between you and the person actually doing things.</span>
+              </li>
+
+              <li class="how-it-works-item">
+                <span class="how-it-works-label">Infrastructure-ready</span>
+                <span class="how-it-works-body">Built to extend beyond the website when the time is right — CRM, client intake, document handling, and internal systems that reflect how the firm actually works.</span>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="input-heading">
+
+            <div class="srb-coming-soon-header">
+              <h2 id="input-heading">Coming soon: Request routing</h2>
+              <span class="srb-coming-soon-badge" aria-label="Coming soon">Coming soon</span>
+            </div>
+
+            <p class="srb-coming-soon-desc">
+              Soon, this will let SRB add a note, question, or area of concern directly from the dashboard.
+              We'll route it into the right workstream so nothing sits in a backlog.
+            </p>
+
+            <label for="srb-input-field" class="srb-input-label">Example request</label>
+
+            <textarea
+              id="srb-input-field"
+              class="srb-input-field"
+              rows="3"
+              placeholder="Example: Can you look at SEO priority pages?"
+              readonly
+              aria-readonly="true"
+            ></textarea>
+
+            <button id="srb-input-btn" class="srb-input-btn" type="button">
+              Preview how this works
+            </button>
+
+            <div id="srb-input-response" class="srb-input-response" hidden aria-live="polite" role="status">
+              Preview only. In a live version, this request would be routed into scoping, site audit, or wireframes, then reflected in the dashboard activity log.
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="dash-sidebar">
+
+          <div class="dash-panel" aria-labelledby="assets-heading">
+
+            <h2 id="assets-heading">Documents</h2>
+
+            <div class="doc-accordion" role="list" aria-label="Project documents">
+
+              <div class="doc-item" role="listitem">
+                <button class="doc-row" type="button" aria-expanded="false" aria-controls="doc-strategic">
+                  <span class="doc-info">
+                    <span class="doc-title">Strategic overview</span>
+                    <span class="doc-desc">Strategic perspective, approach, and next steps</span>
+                  </span>
+                </button>
+
+                <div id="doc-strategic" class="doc-body" hidden>
+                  <p class="doc-body-text">Sets the direction for the work and frames the opportunity.</p>
+                  <a href="proposal.html" class="doc-open-link" target="_blank" rel="noopener">Open asset →</a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="dash-panel" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Your contact</h2>
+
+            <p class="contact-name">David Akai</p>
+            <p class="contact-role">Delivery Partner</p>
+            <p class="contact-email">
+              <a href="mailto:david@notonmondays.com">david@notonmondays.com</a>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
   </div>
+</main>
 
-  <header class="dash-header">
-    <div class="container">
-      <div class="dash-header-title">
-        <p class="dash-header-eyebrow">Client workspace &middot; Digital estate</p>
-        <h1>SRB Digital Workspace</h1>
-        <p>Your digital estate, actively managed.</p>
-      </div>
-      <div class="dash-header-meta">
-        <span class="status-badge" role="status" aria-label="Current phase: Scoping in progress">
-          <span class="status-dot" aria-hidden="true"></span>
-          Scoping in progress
-        </span>
-        <span class="dash-last-updated">Last updated: 7 May 2026</span>
-      </div>
-    </div>
-  </header>
+<script>
+(function () {
 
-  <main id="main">
-    <div class="dash-body">
-      <div class="container">
+  var milestoneData = {
+    brief: {
+      name: 'Brief',
+      body: 'Direction captured. We know the immediate goal is to turn the website into a clearer, more useful client experience.'
+    },
+    scoping: {
+      name: 'Scoping',
+      body: 'We are shaping the first phase of work: what to fix, what to simplify, and what should be prioritised first.'
+    },
+    audit: {
+      name: 'Full site audit',
+      body: 'We are reviewing structure, content, user journeys, SEO foundations, and where the current site creates friction.'
+    },
+    wireframes: {
+      name: 'Wireframes',
+      body: 'We are turning the findings into clearer page structures before any visual polish or build work begins.'
+    }
+  };
 
-        <div class="dash-panel" aria-labelledby="timeline-heading">
-          <h2 id="timeline-heading">Project milestones</h2>
+  var detail = document.getElementById('milestone-detail');
+  var detailName = document.getElementById('milestone-detail-name');
+  var detailBody = document.getElementById('milestone-detail-body');
+  var buttons = document.querySelectorAll('.milestone-btn');
 
-          <div class="milestone-timeline" role="list" aria-label="Project milestone progress">
+  buttons.forEach(function (btn) {
 
-            <div class="milestone milestone--done" role="listitem" id="ms-brief">
-              <button class="milestone-btn" data-milestone="brief" aria-expanded="false" aria-controls="milestone-detail">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <span class="milestone-label">Brief</span>
-                <span class="milestone-tag milestone-tag--done">Done</span>
-              </button>
-            </div>
+    btn.addEventListener('click', function () {
 
-            <div class="milestone milestone--active" role="listitem" id="ms-scoping">
-              <button class="milestone-btn" data-milestone="scoping" aria-expanded="false" aria-controls="milestone-detail">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <span class="milestone-label">Scoping</span>
-                <span class="milestone-tag milestone-tag--active">In progress</span>
-              </button>
-            </div>
+      var key = this.dataset.milestone;
+      var expanded = this.getAttribute('aria-expanded') === 'true';
 
-            <div class="milestone milestone--active-secondary" role="listitem" id="ms-audit">
-              <button class="milestone-btn" data-milestone="audit" aria-expanded="false" aria-controls="milestone-detail">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <span class="milestone-label">Full site audit</span>
-                <span class="milestone-tag milestone-tag--active-secondary">In progress</span>
-              </button>
-            </div>
-
-            <div class="milestone milestone--active-secondary" role="listitem" id="ms-wireframes">
-              <button class="milestone-btn" data-milestone="wireframes" aria-expanded="false" aria-controls="milestone-detail">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <span class="milestone-label">Wireframes</span>
-                <span class="milestone-tag milestone-tag--active-secondary">In progress</span>
-              </button>
-            </div>
-
-          </div>
-
-          <div id="milestone-detail" class="milestone-detail" hidden role="region" aria-live="polite" aria-label="Milestone detail">
-            <p class="milestone-detail-name" id="milestone-detail-name"></p>
-            <p class="milestone-detail-body" id="milestone-detail-body"></p>
-          </div>
-        </div>
-
-        <div class="dash-grid">
-
-          <div class="dash-main">
-
-            <div class="dash-panel" aria-labelledby="focus-heading">
-              <h2 id="focus-heading">Current focus</h2>
-              <ul class="focus-list">
-                <li class="focus-item">Site audit — reviewing current content, navigation structure, and technical foundations</li>
-                <li class="focus-item">Wireframe concepts for key pages</li>
-                <li class="focus-item">SEO baseline — search visibility, local rankings, and keyword positioning</li>
-                <li class="focus-item">Discovery conversation to confirm scope and priorities</li>
-              </ul>
-            </div>
-
-            <div class="dash-panel" aria-labelledby="insight-heading">
-              <h2 id="insight-heading">What we're seeing so far</h2>
-              <ul class="insight-list">
-                <li class="insight-item">
-                  <span class="insight-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="9" cy="7" r="3.5"/>
-                      <circle cx="16" cy="7" r="2.5"/>
-                      <path d="M2 20c0-3.314 3.134-6 7-6s7 2.686 7 6"/>
-                      <path d="M16 14c2.21 0 4 1.79 4 4"/>
-                    </svg>
-                  </span>
-                  <span>The site can do more to guide visitors by situation, not just by service label.</span>
-                </li>
-
-                <li class="insight-item">
-                  <span class="insight-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="4" y="2" width="16" height="20" rx="2"/>
-                      <path d="M4 8h16"/>
-                      <path d="M8 2v6"/>
-                      <path d="M16 2v6"/>
-                      <path d="M8 13h5"/>
-                      <path d="M8 17h3"/>
-                      <path d="M17 14l-2 2 1 1 3-3"/>
-                    </svg>
-                  </span>
-                  <span>Content and SEO need to work together, not sit as separate workstreams.</span>
-                </li>
-
-                <li class="insight-item">
-                  <span class="insight-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 3l8 4v5c0 4.4-3.4 8.5-8 9.8C7.4 20.5 4 16.4 4 12V7l8-4z"/>
-                      <path d="M9 12l2 2 4-4"/>
-                    </svg>
-                  </span>
-                  <span>The first win is likely clarity: helping people understand where to go and what happens next.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="dash-panel" aria-labelledby="how-heading">
-              <h2 id="how-heading">How this works</h2>
-              <ul class="how-it-works-list" role="list">
-                <li class="how-it-works-item">
-                  <span class="how-it-works-label">Continuous improvement</span>
-                  <span class="how-it-works-body">We don't hand over a project and leave. Work is ongoing, shaped by what matters most each week — not a fixed scope agreed once and forgotten.</span>
-                </li>
-                <li class="how-it-works-item">
-                  <span class="how-it-works-label">No backlog</span>
-                  <span class="how-it-works-body">Priorities are agreed together. Nothing sits in a queue for six months waiting for a sprint cycle. If it matters now, we work on it now.</span>
-                </li>
-                <li class="how-it-works-item">
-                  <span class="how-it-works-label">Single point of accountability</span>
-                  <span class="how-it-works-body">David owns the relationship and the work. No account managers, no handoffs, no one to translate between you and the person actually doing things.</span>
-                </li>
-                <li class="how-it-works-item">
-                  <span class="how-it-works-label">Infrastructure-ready</span>
-                  <span class="how-it-works-body">Built to extend beyond the website when the time is right — CRM, client intake, document handling, and internal systems that reflect how the firm actually works.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="dash-panel" aria-labelledby="input-heading">
-              <div class="srb-coming-soon-header">
-                <h2 id="input-heading">Coming soon: Request routing</h2>
-                <span class="srb-coming-soon-badge" aria-label="Coming soon">Coming soon</span>
-              </div>
-
-              <p class="srb-coming-soon-desc">Soon, this will let SRB add a note, question, or area of concern directly from the dashboard. We'll route it into the right workstream so nothing sits in a backlog.</p>
-
-              <label for="srb-input-field" class="srb-input-label">Example request</label>
-              <textarea id="srb-input-field" class="srb-input-field" rows="3" placeholder="Example: Can you look at SEO priority pages?" readonly aria-readonly="true"></textarea>
-
-              <button id="srb-input-btn" class="srb-input-btn" type="button">Preview how this works</button>
-
-              <div id="srb-input-response" class="srb-input-response" hidden aria-live="polite" role="status">
-                Preview only. In a live version, this request would be routed into scoping, site audit, or wireframes, then reflected in the dashboard activity log.
-              </div>
-            </div>
-
-          </div>
-
-          <div class="dash-sidebar">
-
-            <div class="dash-panel" aria-labelledby="assets-heading">
-              <h2 id="assets-heading">Documents</h2>
-
-              <div class="asset-grid">
-
-                <a href="proposal.html" class="asset-card" target="_blank" rel="noopener">
-                  <span class="asset-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M13 2H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6l-3-4z"/>
-                      <polyline points="13,2 13,6 17,6"/>
-                      <line x1="7" y1="10" x2="13" y2="10"/>
-                      <line x1="7" y1="13" x2="11" y2="13"/>
-                    </svg>
-                  </span>
-                  <span class="asset-name">Strategic overview</span>
-                  <span class="asset-desc">Strategic perspective, approach, and next steps</span>
-                  <span class="asset-context">Sets the direction for the work and frames the opportunity.</span>
-                  <span class="asset-count">NOM-2026-SRB-001</span>
-                </a>
-
-                <a href="snapshot.html" class="asset-card" target="_blank" rel="noopener">
-                  <span class="asset-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M17 15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h2l1.5-2h5L14 6h2a1 1 0 0 1 1 1z"/>
-                      <circle cx="10" cy="10.5" r="2.5"/>
-                    </svg>
-                  </span>
-                  <span class="asset-name">Digital Snapshot</span>
-                  <span class="asset-desc">Scored audit across five dimensions of the digital estate</span>
-                  <span class="asset-context">Captures early signals before the full audit goes deeper.</span>
-                  <span class="asset-count">Included with proposal</span>
-                </a>
-
-                <a href="commercial-approach.html" class="asset-card" target="_blank" rel="noopener">
-                  <span class="asset-icon" aria-hidden="true">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="4" width="16" height="12" rx="1"/>
-                      <line x1="2" y1="8" x2="18" y2="8"/>
-                      <line x1="7" y1="8" x2="7" y2="16"/>
-                    </svg>
-                  </span>
-                  <span class="asset-name">Commercial approach</span>
-                  <span class="asset-desc">How the foundation work and ongoing operating layer could be structured</span>
-                  <span class="asset-context">Includes pricing, credit note, and scope of wider support.</span>
-                  <span class="asset-count">Foundation &middot; Operating Layer</span>
-                </a>
-
-                <a href="search-visibility.html" class="asset-card" target="_blank" rel="noopener">
-                  <span class="asset-icon" aria-hidden="true">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="8.5" cy="8.5" r="5"/>
-                      <line x1="12.5" y1="12.5" x2="17" y2="17"/>
-                      <path d="M6.5 8.5h4"/>
-                      <path d="M8.5 6.5v4"/>
-                    </svg>
-                  </span>
-                  <span class="asset-name">How SRB Gets Found</span>
-                  <span class="asset-desc">Search and visibility approach in plain English</span>
-                  <span class="asset-context">Part of the ongoing operating layer, not a separate add-on.</span>
-                  <span class="asset-count">Search &middot; Visibility</span>
-                </a>
-
-                <a href="/hub/srb/assets/icon-system.html" class="asset-card" target="_blank" rel="noopener noreferrer">
-                  <span class="asset-icon" aria-hidden="true">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="2" width="7" height="7" rx="1"/>
-                      <rect x="11" y="2" width="7" height="7" rx="1"/>
-                      <rect x="2" y="11" width="7" height="7" rx="1"/>
-                      <rect x="11" y="11" width="7" height="7" rx="1"/>
-                    </svg>
-                  </span>
-                  <span class="asset-name">SRB icon system</span>
-                  <span class="asset-desc">Bespoke icon set drawn for Stone Rowe Brewer</span>
-                  <span class="asset-context">Eight practice-area icons across three colour contexts.</span>
-                  <span class="asset-count asset-count--stub">Design reference</span>
-                </a>
-
-                <a href="/hub/srb/assets/topic-navigator.html" class="asset-card" target="_blank" rel="noopener noreferrer">
-                  <span class="asset-icon" aria-hidden="true">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="8.5" cy="8.5" r="5"/>
-                      <path d="M17 17l-3.5-3.5"/>
-                      <path d="M6 8.5h5M8.5 6v5"/>
-                    </svg>
-                  </span>
-                  <span class="asset-name">Topic navigator</span>
-                  <span class="asset-desc">Interactive "Find help" bar concept for the SRB homepage</span>
-                  <span class="asset-context">Shows how a website can guide visitors by situation, not service label.</span>
-                  <span class="asset-count asset-count--stub">Design concept</span>
-                </a>
-
-              </div>
-            </div>
-
-            <div class="dash-panel" aria-labelledby="contact-heading">
-              <h2 id="contact-heading">Your contact</h2>
-              <p class="contact-name">David Akai</p>
-              <p class="contact-role">Delivery Partner</p>
-              <p class="contact-email"><a href="mailto:david@notonmondays.com">david@notonmondays.com</a></p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </main>
-
-  <script>
-    (function () {
-      var milestoneData = {
-        brief: {
-          name: 'Brief',
-          body: 'Direction captured. We know the immediate goal is to turn the website into a clearer, more useful client experience.'
-        },
-        scoping: {
-          name: 'Scoping',
-          body: 'We are shaping the first phase of work: what to fix, what to simplify, and what should be prioritised first.'
-        },
-        audit: {
-          name: 'Full site audit',
-          body: 'We are reviewing structure, content, user journeys, SEO foundations, and where the current site creates friction.'
-        },
-        wireframes: {
-          name: 'Wireframes',
-          body: 'We are turning the findings into clearer page structures before any visual polish or build work begins.'
-        }
-      };
-
-      var detail     = document.getElementById('milestone-detail');
-      var detailName = document.getElementById('milestone-detail-name');
-      var detailBody = document.getElementById('milestone-detail-body');
-      var buttons    = document.querySelectorAll('.milestone-btn');
-
-      buttons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var key      = this.dataset.milestone;
-          var expanded = this.getAttribute('aria-expanded') === 'true';
-
-          buttons.forEach(function (b) {
-            b.setAttribute('aria-expanded', 'false');
-            b.closest('.milestone').classList.remove('milestone--selected');
-          });
-
-          if (expanded) {
-            detail.hidden = true;
-            detail.classList.remove('milestone-detail--open');
-          } else {
-            this.setAttribute('aria-expanded', 'true');
-            this.closest('.milestone').classList.add('milestone--selected');
-            detailName.textContent = milestoneData[key].name;
-            detailBody.textContent = milestoneData[key].body;
-            detail.hidden = false;
-            detail.classList.add('milestone-detail--open');
-          }
-        });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-expanded', 'false');
+        b.closest('.milestone').classList.remove('milestone--selected');
       });
 
-      var inputBtn      = document.getElementById('srb-input-btn');
-      var inputResponse = document.getElementById('srb-input-response');
-      var flashIds      = ['ms-scoping', 'ms-audit', 'ms-wireframes'];
+      if (expanded) {
+        detail.hidden = true;
+        detail.classList.remove('milestone-detail--open');
+      } else {
+        this.setAttribute('aria-expanded', 'true');
+        this.closest('.milestone').classList.add('milestone--selected');
 
-      if (inputBtn) {
-        inputBtn.addEventListener('click', function () {
-          inputResponse.hidden = false;
+        detailName.textContent = milestoneData[key].name;
+        detailBody.textContent = milestoneData[key].body;
 
-          flashIds.forEach(function (id) {
-            var el = document.getElementById(id);
-            if (!el) return;
-
-            el.classList.remove('milestone--flash');
-            void el.offsetWidth;
-            el.classList.add('milestone--flash');
-
-            el.addEventListener('animationend', function handler() {
-              el.classList.remove('milestone--flash');
-              el.removeEventListener('animationend', handler);
-            });
-          });
-        });
+        detail.hidden = false;
+        detail.classList.add('milestone-detail--open');
       }
-    }());
-  </script>
+
+    });
+
+  });
+
+  var docRows = document.querySelectorAll('.doc-row');
+
+  docRows.forEach(function (btn) {
+
+    btn.addEventListener('click', function () {
+
+      var targetId = this.getAttribute('aria-controls');
+      var body = document.getElementById(targetId);
+      var isOpen = this.getAttribute('aria-expanded') === 'true';
+
+      docRows.forEach(function (b) {
+        b.setAttribute('aria-expanded', 'false');
+
+        var bd = document.getElementById(b.getAttribute('aria-controls'));
+
+        if (bd) {
+          bd.hidden = true;
+        }
+      });
+
+      if (!isOpen && body) {
+        this.setAttribute('aria-expanded', 'true');
+        body.hidden = false;
+      }
+
+    });
+
+  });
+
+  var inputBtn = document.getElementById('srb-input-btn');
+  var inputResponse = document.getElementById('srb-input-response');
+  var flashIds = ['ms-scoping', 'ms-audit', 'ms-wireframes'];
+
+  if (inputBtn) {
+
+    inputBtn.addEventListener('click', function () {
+
+      inputResponse.hidden = false;
+
+      flashIds.forEach(function (id) {
+
+        var el = document.getElementById(id);
+
+        if (!el) return;
+
+        el.classList.remove('milestone--flash');
+        void el.offsetWidth;
+        el.classList.add('milestone--flash');
+
+        el.addEventListener('animationend', function handler() {
+          el.classList.remove('milestone--flash');
+          el.removeEventListener('animationend', handler);
+        });
+
+      });
+
+    });
+
+  }
+
+}());
+</script>
 
 </body>
 </html>
