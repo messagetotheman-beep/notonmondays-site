@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOM Internal — Operating System</title>
+  <link rel="stylesheet" href="/hub/nom/dashboard.css">
+</head>
+<body>
+
+<!-- Cloudflare Access controls route-level authorization. -->
+
+<!-- ── Fixed background layers ── -->
+<div class="nom-bg-layers" aria-hidden="true">
+  <div class="nom-bg-grid"></div>
+  <div class="nom-bg-glow-a"></div>
+  <div class="nom-bg-glow-b"></div>
+</div>
+<div class="nom-cursor-glow" aria-hidden="true" id="cursor-glow"></div>
+
+<!-- ── Topbar ── -->
+<header class="nom-topbar" role="banner">
+  <div class="nom-container nom-topbar-inner">
+
+    <a href="/" class="nom-topbar-logo" aria-label="Not On Mondays — home">
+      <span class="nom-logo-initials" aria-hidden="true">
+        <span class="nom-logo-n">n</span>
+        <span class="nom-logo-o">o</span>
+        <span class="nom-logo-m">m</span>
+      </span>
+      <span class="nom-logo-divider" aria-hidden="true"></span>
+      <span class="nom-logo-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+
+    <nav aria-label="Dashboard sections">
+      <ul class="nom-topbar-nav">
+        <li><a href="#priorities">Priorities</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#content">Content</a></li>
+        <li><a href="#relationships">Relationships</a></li>
+        <li><a href="#system">System</a></li>
+      </ul>
+    </nav>
+
+    <div class="nom-topbar-right" aria-label="Workspace identity">
+      <span class="nom-label-primary">NOM Internal</span>
+      <span class="nom-label-sub">Internal &middot; Not for distribution</span>
+    </div>
+
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="nom-hero" aria-labelledby="hero-heading">
+  <div class="nom-container">
+    <div class="nom-hero-inner">
+
+      <div class="nom-hero-content">
+        <p class="nom-hero-eyebrow" aria-hidden="true">Internal Operating System</p>
+        <h1 class="nom-hero-title" id="hero-heading">NOM Internal</h1>
+        <p class="nom-hero-standfirst">Operating visibility across delivery, growth, and relationships. The nervous system of a modern firm.</p>
+
+        <div class="nom-hero-status" role="status" aria-live="polite" aria-label="System status">
+          <span class="nom-status-indicator" aria-hidden="true">
+            <span class="nom-status-dot"></span>
+            <span class="nom-status-ring"></span>
+          </span>
+          <span class="nom-status-text">Operational</span>
+          <span class="nom-status-sep" aria-hidden="true">&middot;</span>
+          <span class="nom-status-clock" id="nom-clock" aria-label="Current time"></span>
+        </div>
+
+        <p class="nom-hero-focus" aria-label="Current focus">Current focus: finalise SRB proposal &middot; publish SEO/GEO cluster &middot; build case-study section</p>
+
+        <div class="nom-hero-chips" aria-label="Active priorities">
+          <span class="nom-chip">SRB Proposal</span>
+          <span class="nom-chip">SEO/GEO Cluster</span>
+          <span class="nom-chip">Case Studies</span>
+          <span class="nom-chip">NOM System</span>
+          <span class="nom-chip">LinkedIn Series</span>
+        </div>
+
+        <div class="nom-hero-stats" aria-label="Operating summary">
+          <div class="nom-hero-stat">
+            <span class="nom-hero-stat-value">4</span>
+            <span class="nom-hero-stat-label">Active clients</span>
+          </div>
+          <div class="nom-hero-stat">
+            <span class="nom-hero-stat-value">8</span>
+            <span class="nom-hero-stat-label">Articles in pipeline</span>
+          </div>
+          <div class="nom-hero-stat">
+            <span class="nom-hero-stat-value">6</span>
+            <span class="nom-hero-stat-label">Open priorities</span>
+          </div>
+          <div class="nom-hero-stat">
+            <span class="nom-hero-stat-value">3</span>
+            <span class="nom-hero-stat-label">Relationships active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Network constellation -->
+      <div class="nom-hero-visual" aria-hidden="true">
+        <svg class="nom-network-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Ambient glow at centre -->
+          <circle cx="210" cy="210" r="90" fill="rgba(26,42,212,0.04)"/>
+          <circle cx="210" cy="210" r="140" fill="rgba(26,42,212,0.02)"/>
+
+          <!-- Connection lines -->
+          <g stroke="#bfc6f0" stroke-width="0.75" opacity="0.18">
+            <line x1="210" y1="210" x2="210" y2="58"/>
+            <line x1="210" y1="210" x2="348" y2="132"/>
+            <line x1="210" y1="210" x2="318" y2="300"/>
+            <line x1="210" y1="210" x2="102" y2="300"/>
+            <line x1="210" y1="210" x2="72" y2="132"/>
+            <!-- Cross connections -->
+            <line x1="210" y1="58" x2="348" y2="132" opacity="0.5"/>
+            <line x1="348" y1="132" x2="318" y2="300" opacity="0.5"/>
+            <line x1="102" y1="300" x2="72" y2="132" opacity="0.5"/>
+          </g>
+
+          <!-- Flowing dots along paths -->
+          <circle r="2" fill="#1a2ad4" opacity="0.7">
+            <animateMotion path="M210,210 L210,58" dur="2.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="2" fill="#1a2ad4" opacity="0.7">
+            <animateMotion path="M210,210 L348,132" dur="3.1s" begin="0.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.5" fill="#bfc6f0" opacity="0.5">
+            <animateMotion path="M210,210 L318,300" dur="2.8s" begin="1.1s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.5" fill="#bfc6f0" opacity="0.5">
+            <animateMotion path="M210,210 L102,300" dur="3.4s" begin="0.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.5" fill="#bfc6f0" opacity="0.4">
+            <animateMotion path="M210,210 L72,132" dur="2.2s" begin="1.8s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Outer node: Delivery (top) -->
+          <circle cx="210" cy="58" r="5" stroke="#1a2ad4" stroke-width="1.2" opacity="0.65"/>
+          <circle cx="210" cy="58" r="9" stroke="rgba(26,42,212,0.15)" stroke-width="1"/>
+          <text x="210" y="42" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.32)" letter-spacing="1.8">DELIVERY</text>
+
+          <!-- Outer node: Growth (right-top) -->
+          <circle cx="348" cy="132" r="5" stroke="#1a2ad4" stroke-width="1.2" opacity="0.65"/>
+          <circle cx="348" cy="132" r="9" stroke="rgba(26,42,212,0.15)" stroke-width="1"/>
+          <text x="362" y="136" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.32)" letter-spacing="1.8">GROWTH</text>
+
+          <!-- Outer node: Content (right-bottom) -->
+          <circle cx="318" cy="300" r="5" stroke="#bfc6f0" stroke-width="1.2" opacity="0.5"/>
+          <circle cx="318" cy="300" r="9" stroke="rgba(191,198,240,0.12)" stroke-width="1"/>
+          <text x="332" y="304" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.28)" letter-spacing="1.8">CONTENT</text>
+
+          <!-- Outer node: Relationships (left-bottom) -->
+          <circle cx="102" cy="300" r="5" stroke="#bfc6f0" stroke-width="1.2" opacity="0.5"/>
+          <circle cx="102" cy="300" r="9" stroke="rgba(191,198,240,0.12)" stroke-width="1"/>
+          <text x="88" cy="300" x="90" y="320" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="rgba(242,240,232,0.28)" letter-spacing="1.4">RELATIONS</text>
+
+          <!-- Outer node: System (left-top) -->
+          <circle cx="72" cy="132" r="5" stroke="#bfc6f0" stroke-width="1.2" opacity="0.5"/>
+          <circle cx="72" cy="132" r="9" stroke="rgba(191,198,240,0.12)" stroke-width="1"/>
+          <text x="58" y="118" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.28)" letter-spacing="1.8">SYSTEM</text>
+
+          <!-- Centre NOM hub -->
+          <circle cx="210" cy="210" r="24" fill="rgba(26,42,212,0.1)" stroke="rgba(26,42,212,0.3)" stroke-width="1"/>
+          <circle cx="210" cy="210" r="34" fill="none" stroke="rgba(26,42,212,0.08)" stroke-width="1" stroke-dasharray="3 6">
+            <animateTransform attributeName="transform" type="rotate" from="0 210 210" to="360 210 210" dur="45s" repeatCount="indefinite"/>
+          </circle>
+          <text x="210" y="207" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(242,240,232,0.5)" letter-spacing="3">NOM</text>
+          <text x="210" y="219" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="rgba(242,240,232,0.22)" letter-spacing="2.5">INT</text>
+
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+  <!-- ── Section 1: Operating Priorities ── -->
+  <section class="nom-section nom-section--light" id="priorities" aria-labelledby="priorities-heading">
+    <div class="nom-container">
+
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">This week &middot; This month</p>
+          <h2 class="nom-section-title" id="priorities-heading">Operating Priorities</h2>
+        </div>
+        <span class="nom-section-count">6 open</span>
+      </div>
+
+      <div class="nom-priorities-grid">
+
+        <article class="nom-priority-card nom-reveal nom-reveal-d1" aria-label="Priority: Publish SEO/GEO article cluster">
+          <div class="nom-priority-card-top">
+            <span class="nom-priority-badge">P1</span>
+            <span class="nom-priority-status nom-priority-status--active" role="status">
+              <span class="nom-priority-status-dot" aria-hidden="true"></span>
+              Active
+            </span>
+          </div>
+          <h3 class="nom-priority-card-title">Publish SEO/GEO article cluster</h3>
+          <p class="nom-priority-card-context">Core visibility play for 2025. First cluster targeting law firms and professional services. Anchors NOM thought leadership in the market.</p>
+          <div class="nom-progress-track" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="65% complete">
+            <div class="nom-progress-fill" style="--fill: 65%; --delay: 0.3s;"></div>
+          </div>
+          <p class="nom-progress-label">65%</p>
+          <div class="nom-priority-card-footer">
+            <p class="nom-priority-next"><span class="nom-priority-next-arrow" aria-hidden="true">→</span>Finalise GEO article and schedule publish sequence</p>
+            <p class="nom-priority-due">Due: May 2026</p>
+          </div>
+        </article>
+
+        <article class="nom-priority-card nom-reveal nom-reveal-d2" aria-label="Priority: Finalise SRB operating proposal">
+          <div class="nom-priority-card-top">
+            <span class="nom-priority-badge">P1</span>
+            <span class="nom-priority-status nom-priority-status--progress" role="status">
+              <span class="nom-priority-status-dot" aria-hidden="true"></span>
+              In review
+            </span>
+          </div>
+          <h3 class="nom-priority-card-title">Finalise SRB operating proposal</h3>
+          <p class="nom-priority-card-context">Proposal to SRB leadership covering digital estate, scoping methodology, and the NOM operating model. High commercial value.</p>
+          <div class="nom-progress-track" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="85% complete">
+            <div class="nom-progress-fill" style="--fill: 85%; --delay: 0.4s;"></div>
+          </div>
+          <p class="nom-progress-label">85%</p>
+          <div class="nom-priority-card-footer">
+            <p class="nom-priority-next"><span class="nom-priority-next-arrow" aria-hidden="true">→</span>Send final version to Jenine before end of week</p>
+            <p class="nom-priority-due">Due: This week</p>
+          </div>
+        </article>
+
+        <article class="nom-priority-card nom-reveal nom-reveal-d3" aria-label="Priority: Build work and case-study section">
+          <div class="nom-priority-card-top">
+            <span class="nom-priority-badge">P1</span>
+            <span class="nom-priority-status nom-priority-status--active" role="status">
+              <span class="nom-priority-status-dot" aria-hidden="true"></span>
+              In progress
+            </span>
+          </div>
+          <h3 class="nom-priority-card-title">Build work / case-study section</h3>
+          <p class="nom-priority-card-context">NOM public work section to evidence capability and build trust with new prospects. Essential for converting visibility into pipeline.</p>
+          <div class="nom-progress-track" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="30% complete">
+            <div class="nom-progress-fill" style="--fill: 30%; --delay: 0.5s;"></div>
+          </div>
+          <p class="nom-progress-label">30%</p>
+          <div class="nom-priority-card-footer">
+            <p class="nom-priority-next"><span class="nom-priority-next-arrow" aria-hidden="true">→</span>Define case study format and select 3 initial examples</p>
+            <p class="nom-priority-due">Due: June 2026</p>
+          </div>
+        </article>
+
+        <article class="nom-priority-card nom-reveal nom-reveal-d4" aria-label="Priority: Refine NOM internal system">
+          <div class="nom-priority-card-top">
+            <span class="nom-priority-badge">P2</span>
+            <span class="nom-priority-status nom-priority-status--active" role="status">
+              <span class="nom-priority-status-dot" aria-hidden="true"></span>
+              Active
+            </span>
+          </div>
+          <h3 class="nom-priority-card-title">Refine NOM internal system</h3>
+          <p class="nom-priority-card-context">Improve the operating workspace, document playbooks, and improve internal visibility across delivery and pipeline.</p>
+          <div class="nom-progress-track" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="50% complete">
+            <div class="nom-progress-fill" style="--fill: 50%; --delay: 0.6s;"></div>
+          </div>
+          <p class="nom-progress-label">50%</p>
+          <div class="nom-priority-card-footer">
+            <p class="nom-priority-next"><span class="nom-priority-next-arrow" aria-hidden="true">→</span>Complete internal dashboard and playbook documentation</p>
+            <p class="nom-priority-due">Due: Ongoing</p>
+          </div>
+        </article>
+
+        <article class="nom-priority-card nom-reveal nom-reveal-d5" aria-label="Priority: Eagles content review">
+          <div class="nom-priority-card-top">
+            <span class="nom-priority-badge">P2</span>
+            <span class="nom-priority-status nom-priority-status--active" role="status">
+              <span class="nom-priority-status-dot" aria-hidden="true"></span>
+              Active
+            </span>
+          </div>
+          <h3 class="nom-priority-card-title">Eagles content review</h3>
+          <p class="nom-priority-card-context">Review content strategy and calendar with Louisa. Identify gaps, quick wins, and Q3 planning opportunities before mid-May.</p>
+          <div class="nom-progress-track" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="45% complete">
+            <div class="nom-progress-fill" style="--fill: 45%; --delay: 0.7s;"></div>
+          </div>
+          <p class="nom-progress-label">45%</p>
+          <div class="nom-priority-card-footer">
+            <p class="nom-priority-next"><span class="nom-priority-next-arrow" aria-hidden="true">→</span>Schedule content review session this week</p>
+            <p class="nom-priority-due">Due: May 2026</p>
+          </div>
+        </article>
+
+        <article class="nom-priority-card nom-reveal nom-reveal-d6" aria-label="Priority: LinkedIn thought leadership series">
+          <div class="nom-priority-card-top">
+            <span class="nom-priority-badge">P2</span>
+            <span class="nom-priority-status nom-priority-status--drafting" role="status">
+              <span class="nom-priority-status-dot" aria-hidden="true"></span>
+              Drafting
+            </span>
+          </div>
+          <h3 class="nom-priority-card-title">LinkedIn thought series</h3>
+          <p class="nom-priority-card-context">Targeted thought fragment series to build NOM visibility in professional services. Drawn from article cluster content.</p>
+          <div class="nom-progress-track" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="20% complete">
+            <div class="nom-progress-fill" style="--fill: 20%; --delay: 0.8s;"></div>
+          </div>
+          <p class="nom-progress-label">20%</p>
+          <div class="nom-priority-card-footer">
+            <p class="nom-priority-next"><span class="nom-priority-next-arrow" aria-hidden="true">→</span>Write first 3 fragments from published article clusters</p>
+            <p class="nom-priority-due">Due: May &ndash; June 2026</p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Section 2: Active Clients ── -->
+  <section class="nom-section nom-section--white" id="clients" aria-labelledby="clients-heading">
+    <div class="nom-container">
+
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Delivery &middot; Relationships</p>
+          <h2 class="nom-section-title" id="clients-heading">Active Clients</h2>
+        </div>
+        <span class="nom-section-count">4 clients</span>
+      </div>
+
+      <div class="nom-clients-grid">
+
+        <article class="nom-client-card nom-reveal nom-reveal-d1" aria-label="Client: Azariah">
+          <div class="nom-client-accent" aria-hidden="true"></div>
+          <div class="nom-client-body">
+            <div class="nom-client-top">
+              <div>
+                <p class="nom-client-sector">NHS &middot; Public Sector</p>
+                <h3 class="nom-client-name">Azariah</h3>
+              </div>
+              <span class="nom-client-status nom-client-status--active" role="status">Active</span>
+            </div>
+            <p class="nom-client-focus">Digital workspace and content operations for an NHS consulting practice. Supporting thought leadership, service communication, and digital estate management.</p>
+            <p class="nom-client-milestone">Workspace refinement and content delivery pipeline</p>
+            <a href="/hub/azariah/workspace.html" class="nom-client-link">
+              Open workspace <span class="nom-client-link-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="nom-client-card nom-reveal nom-reveal-d2" aria-label="Client: Stone Rowe Brewer">
+          <div class="nom-client-accent" aria-hidden="true"></div>
+          <div class="nom-client-body">
+            <div class="nom-client-top">
+              <div>
+                <p class="nom-client-sector">Legal &middot; Professional Services</p>
+                <h3 class="nom-client-name">Stone Rowe Brewer</h3>
+              </div>
+              <span class="nom-client-status nom-client-status--scoping" role="status">Scoping</span>
+            </div>
+            <p class="nom-client-focus">Full digital estate audit, site strategy, content architecture, and NOM operating model proposal. Scoping work actively underway.</p>
+            <p class="nom-client-milestone">Finalise and send operating proposal to Jenine</p>
+            <a href="/hub/srb/dashboard.html" class="nom-client-link">
+              Open workspace <span class="nom-client-link-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="nom-client-card nom-reveal nom-reveal-d3" aria-label="Client: Eagles">
+          <div class="nom-client-accent" aria-hidden="true"></div>
+          <div class="nom-client-body">
+            <div class="nom-client-top">
+              <div>
+                <p class="nom-client-sector">Professional Services</p>
+                <h3 class="nom-client-name">Eagles</h3>
+              </div>
+              <span class="nom-client-status nom-client-status--active" role="status">Active</span>
+            </div>
+            <p class="nom-client-focus">Content strategy, editorial calendar management, and digital visibility. Ongoing collaboration with Louisa on Q2 and Q3 content priorities.</p>
+            <p class="nom-client-milestone">Content review session and Q3 planning</p>
+            <a href="/hub/nom/workspace.html" class="nom-client-link">
+              Open workspace <span class="nom-client-link-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="nom-client-card nom-reveal nom-reveal-d4" aria-label="Client: Latchmere Associates">
+          <div class="nom-client-accent" aria-hidden="true"></div>
+          <div class="nom-client-body">
+            <div class="nom-client-top">
+              <div>
+                <p class="nom-client-sector">Financial Advisory</p>
+                <h3 class="nom-client-name">Latchmere Associates</h3>
+              </div>
+              <span class="nom-client-status nom-client-status--demo" role="status">Demo</span>
+            </div>
+            <p class="nom-client-focus">Digital estate operating model demonstration. Showcase workspace illustrating the NOM operating partner approach for financial advisory practices.</p>
+            <p class="nom-client-milestone">Demo review and prospect conversion</p>
+            <a href="/demos/latchmere-associates/dashboard.html" class="nom-client-link">
+              Open workspace <span class="nom-client-link-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Section 3: Content & Visibility Engine ── -->
+  <section class="nom-section nom-section--dark" id="content" aria-labelledby="content-heading">
+    <div class="nom-container">
+
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Articles &middot; Clusters &middot; Pipeline</p>
+          <h2 class="nom-section-title" id="content-heading">Content &amp; Visibility Engine</h2>
+        </div>
+        <span class="nom-section-count">8 items</span>
+      </div>
+
+      <div class="nom-content-lanes nom-reveal" role="list" aria-label="Content pipeline by status">
+
+        <!-- Lane: Live -->
+        <div class="nom-content-lane nom-content-lane--live" role="listitem">
+          <div class="nom-content-lane-head">
+            <span class="nom-content-lane-dot" aria-hidden="true"></span>
+            <span class="nom-content-lane-label">Live</span>
+            <span class="nom-content-lane-n">2</span>
+          </div>
+          <div class="nom-content-items">
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Visibility</p>
+              <p class="nom-content-item-title">SEO vs GEO — what law firms need to understand now</p>
+              <p class="nom-content-item-meta">Published Mar 2026 &middot; insights/</p>
+            </article>
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Quality &middot; Standards</p>
+              <p class="nom-content-item-title">What good looks like in professional services digital</p>
+              <p class="nom-content-item-meta">Published Apr 2026 &middot; insights/</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Lane: Draft -->
+        <div class="nom-content-lane nom-content-lane--draft" role="listitem">
+          <div class="nom-content-lane-head">
+            <span class="nom-content-lane-dot" aria-hidden="true"></span>
+            <span class="nom-content-lane-label">In Draft</span>
+            <span class="nom-content-lane-n">3</span>
+          </div>
+          <div class="nom-content-items">
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Operations</p>
+              <p class="nom-content-item-title">The tight budget problem — building digital capability without agency overhead</p>
+              <p class="nom-content-item-meta">Draft &middot; 60% complete</p>
+            </article>
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Client experience</p>
+              <p class="nom-content-item-title">Legal intake friction — why the first touchpoint loses most clients</p>
+              <p class="nom-content-item-meta">Draft &middot; 40% complete</p>
+            </article>
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Operations</p>
+              <p class="nom-content-item-title">The operating layer — what sits between strategy and execution</p>
+              <p class="nom-content-item-meta">Draft &middot; 25% complete</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Lane: Pipeline -->
+        <div class="nom-content-lane nom-content-lane--ideas" role="listitem">
+          <div class="nom-content-lane-head">
+            <span class="nom-content-lane-dot" aria-hidden="true"></span>
+            <span class="nom-content-lane-label">In Pipeline</span>
+            <span class="nom-content-lane-n">3</span>
+          </div>
+          <div class="nom-content-items">
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Technology</p>
+              <p class="nom-content-item-title">AI for law firms — what actually changes and what doesn't</p>
+              <p class="nom-content-item-meta">Idea &middot; Cluster: Technology</p>
+            </article>
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Growth</p>
+              <p class="nom-content-item-title">The slow pitch — why professional services still gets business development wrong</p>
+              <p class="nom-content-item-meta">Idea &middot; Cluster: Growth</p>
+            </article>
+            <article class="nom-content-item">
+              <p class="nom-content-item-cluster">Visibility</p>
+              <p class="nom-content-item-title">Measuring what matters — digital metrics for firms who hate dashboards</p>
+              <p class="nom-content-item-meta">Idea &middot; Cluster: Visibility</p>
+            </article>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Section 4: Relationships & Pipeline ── -->
+  <section class="nom-section nom-section--warm" id="relationships" aria-labelledby="relationships-heading">
+    <div class="nom-container">
+
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">People &middot; Conversations &middot; Momentum</p>
+          <h2 class="nom-section-title" id="relationships-heading">Relationships &amp; Pipeline</h2>
+        </div>
+        <span class="nom-section-count">3 active</span>
+      </div>
+
+      <div class="nom-relationships-grid">
+
+        <article class="nom-rel-card nom-reveal nom-reveal-d1" aria-label="Relationship: Jenine, Stone Rowe Brewer">
+          <div class="nom-rel-warmth nom-rel-warmth--warm" aria-hidden="true"></div>
+          <h3 class="nom-rel-name">Jenine</h3>
+          <p class="nom-rel-org">Stone Rowe Brewer</p>
+          <p class="nom-rel-context">Key contact and internal champion at SRB. Engaged and responsive throughout the scoping process. Strong alignment on the opportunity and the NOM approach.</p>
+          <p class="nom-rel-touchpoint">Last contact: 3 days ago</p>
+          <div class="nom-rel-next">
+            <span class="nom-rel-next-label">Suggested next move</span>
+            <span class="nom-rel-next-text">Send final proposal version and follow up on decision timeline</span>
+          </div>
+        </article>
+
+        <article class="nom-rel-card nom-reveal nom-reveal-d2" aria-label="Relationship: Louisa, Eagles">
+          <div class="nom-rel-warmth nom-rel-warmth--active" aria-hidden="true"></div>
+          <h3 class="nom-rel-name">Louisa</h3>
+          <p class="nom-rel-org">Eagles</p>
+          <p class="nom-rel-context">Ongoing content collaboration. Louisa is a strong internal champion and the day-to-day relationship is well established. Regular cadence in place.</p>
+          <p class="nom-rel-touchpoint">Last contact: 1 week ago</p>
+          <div class="nom-rel-next">
+            <span class="nom-rel-next-label">Suggested next move</span>
+            <span class="nom-rel-next-text">Schedule May content review and open Q3 planning conversation</span>
+          </div>
+        </article>
+
+        <article class="nom-rel-card nom-reveal nom-reveal-d3" aria-label="Relationship: Jok, Azariah">
+          <div class="nom-rel-warmth nom-rel-warmth--active" aria-hidden="true"></div>
+          <h3 class="nom-rel-name">Jok</h3>
+          <p class="nom-rel-org">Azariah</p>
+          <p class="nom-rel-context">Founder relationship. Deeply engaged with the workspace and the NOM operating model approach. High trust, high strategic alignment.</p>
+          <p class="nom-rel-touchpoint">Last contact: 4 days ago</p>
+          <div class="nom-rel-next">
+            <span class="nom-rel-next-label">Suggested next move</span>
+            <span class="nom-rel-next-text">Workspace update session — review content delivery and next phase planning</span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Section 5: Proof & Assets ── -->
+  <section class="nom-section nom-section--light" id="assets" aria-labelledby="assets-heading">
+    <div class="nom-container">
+
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Proposals &middot; Dashboards &middot; Articles</p>
+          <h2 class="nom-section-title" id="assets-heading">Proof &amp; Assets</h2>
+        </div>
+        <span class="nom-section-count">6 assets</span>
+      </div>
+
+      <div class="nom-assets-grid">
+
+        <article class="nom-asset-card nom-reveal nom-reveal-d1" aria-label="Asset: Latchmere Dashboard">
+          <div class="nom-asset-card-top">
+            <span class="nom-asset-type">Dashboard</span>
+            <span class="nom-asset-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/></svg>
+            </span>
+          </div>
+          <h3 class="nom-asset-title">Latchmere Associates Dashboard</h3>
+          <div class="nom-asset-bottom">
+            <span class="nom-asset-date">Apr 2026</span>
+            <a href="/demos/latchmere-associates/dashboard.html" class="nom-asset-cta">View →</a>
+          </div>
+        </article>
+
+        <article class="nom-asset-card nom-reveal nom-reveal-d2" aria-label="Asset: SRB Digital Proposal">
+          <div class="nom-asset-card-top">
+            <span class="nom-asset-type">Proposal</span>
+            <span class="nom-asset-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="1" width="11" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="4" y1="5" x2="10" y2="5" stroke="currentColor" stroke-width="1"/><line x1="4" y1="7.5" x2="10" y2="7.5" stroke="currentColor" stroke-width="1"/><line x1="4" y1="10" x2="7" y2="10" stroke="currentColor" stroke-width="1"/></svg>
+            </span>
+          </div>
+          <h3 class="nom-asset-title">SRB Digital Operating Proposal</h3>
+          <div class="nom-asset-bottom">
+            <span class="nom-asset-date">May 2026 &middot; In progress</span>
+            <span class="nom-asset-cta">View →</span>
+          </div>
+        </article>
+
+        <article class="nom-asset-card nom-reveal nom-reveal-d3" aria-label="Asset: Legal Digital Change article">
+          <div class="nom-asset-card-top">
+            <span class="nom-asset-type">Article</span>
+            <span class="nom-asset-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="6" x2="13" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="9" x2="9" y2="9" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="1.2"/></svg>
+            </span>
+          </div>
+          <h3 class="nom-asset-title">Legal &amp; Digital Change</h3>
+          <div class="nom-asset-bottom">
+            <span class="nom-asset-date">Mar 2026 &middot; Live</span>
+            <a href="/insights/legal-digital-change.html" class="nom-asset-cta">View →</a>
+          </div>
+        </article>
+
+        <article class="nom-asset-card nom-reveal nom-reveal-d4" aria-label="Asset: NOM Internal System">
+          <div class="nom-asset-card-top">
+            <span class="nom-asset-type">Dashboard</span>
+            <span class="nom-asset-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="1.5" x2="7" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="7" x2="10" y2="4" stroke="currentColor" stroke-width="1"/></svg>
+            </span>
+          </div>
+          <h3 class="nom-asset-title">NOM Internal Operating System</h3>
+          <div class="nom-asset-bottom">
+            <span class="nom-asset-date">May 2026 &middot; In progress</span>
+            <a href="/hub/nom/index.html" class="nom-asset-cta">View →</a>
+          </div>
+        </article>
+
+        <article class="nom-asset-card nom-reveal nom-reveal-d5" aria-label="Asset: SEO/GEO Article">
+          <div class="nom-asset-card-top">
+            <span class="nom-asset-type">Article</span>
+            <span class="nom-asset-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L8.8 5.2L13 5.6L10 8.3L10.9 12.5L7 10.2L3.1 12.5L4 8.3L1 5.6L5.2 5.2L7 1Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <h3 class="nom-asset-title">SEO vs GEO — Law Firms</h3>
+          <div class="nom-asset-bottom">
+            <span class="nom-asset-date">Mar 2026 &middot; Live</span>
+            <a href="/insights/legal-digital-change.html" class="nom-asset-cta">View →</a>
+          </div>
+        </article>
+
+        <article class="nom-asset-card nom-reveal nom-reveal-d6" aria-label="Asset: Digital Estate Audit Method">
+          <div class="nom-asset-card-top">
+            <span class="nom-asset-type">Process</span>
+            <span class="nom-asset-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3h3v3H1zM5.5 4.5h7.5M1 8.5h3v3H1zM5.5 10h7.5" stroke="currentColor" stroke-width="1.1"/></svg>
+            </span>
+          </div>
+          <h3 class="nom-asset-title">Digital Estate Audit Method</h3>
+          <div class="nom-asset-bottom">
+            <span class="nom-asset-date">Apr 2026</span>
+            <span class="nom-asset-cta">Internal</span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Section 6: NOM System / Playbooks ── -->
+  <section class="nom-section nom-section--dark" id="system" aria-labelledby="system-heading">
+    <div class="nom-container">
+
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Framework &middot; Playbooks &middot; Method</p>
+          <h2 class="nom-section-title" id="system-heading">NOM Operating Framework</h2>
+        </div>
+        <span class="nom-section-count">6 elements</span>
+      </div>
+
+      <div class="nom-system-grid">
+
+        <article class="nom-system-card nom-reveal nom-reveal-d1" aria-label="Framework element: Article Structure">
+          <p class="nom-system-card-num">01</p>
+          <h3 class="nom-system-card-title">Article Structure</h3>
+          <p class="nom-system-card-body">How NOM produces editorial-quality content at pace. The NOM editorial method: clear framing, grounded problem, practical response, considered close.</p>
+        </article>
+
+        <article class="nom-system-card nom-reveal nom-reveal-d2" aria-label="Framework element: Proposal Framework">
+          <p class="nom-system-card-num">02</p>
+          <h3 class="nom-system-card-title">Proposal Framework</h3>
+          <p class="nom-system-card-body">How NOM scopes, structures, and prices client engagements. From brief to operating model: the four layers of every NOM proposal.</p>
+        </article>
+
+        <article class="nom-system-card nom-reveal nom-reveal-d3" aria-label="Framework element: Dashboard Principles">
+          <p class="nom-system-card-num">03</p>
+          <h3 class="nom-system-card-title">Dashboard Principles</h3>
+          <p class="nom-system-card-body">What makes a NOM client dashboard excellent. Calm, editorial, operational. Built for trust — not for complexity. Never a SaaS panel.</p>
+        </article>
+
+        <article class="nom-system-card nom-reveal nom-reveal-d4" aria-label="Framework element: Client Onboarding">
+          <p class="nom-system-card-num">04</p>
+          <h3 class="nom-system-card-title">Client Onboarding</h3>
+          <p class="nom-system-card-body">How NOM takes a new client from first brief to a fully operational engagement. The five steps from conversation to delivery.</p>
+        </article>
+
+        <article class="nom-system-card nom-reveal nom-reveal-d5" aria-label="Framework element: Delivery Phases">
+          <p class="nom-system-card-num">05</p>
+          <h3 class="nom-system-card-title">Delivery Phases</h3>
+          <p class="nom-system-card-body">The four phases of a NOM engagement: Audit, Architecture, Build, and Operate. Each phase has defined outputs, dependencies, and review points.</p>
+        </article>
+
+        <article class="nom-system-card nom-reveal nom-reveal-d6" aria-label="Framework element: Operational Review">
+          <p class="nom-system-card-num">06</p>
+          <h3 class="nom-system-card-title">Operational Review</h3>
+          <p class="nom-system-card-body">How NOM reviews and improves its own operating model. A monthly check-in across delivery, pipeline, content, and system health.</p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer class="nom-footer" role="contentinfo">
+  <div class="nom-container">
+
+    <a href="/" class="nom-footer-brand" aria-label="Not On Mondays — home">
+      <span class="nom-logo-initials" aria-hidden="true">
+        <span class="nom-logo-n">n</span>
+        <span class="nom-logo-o">o</span>
+        <span class="nom-logo-m">m</span>
+      </span>
+      <span class="nom-logo-divider" aria-hidden="true"></span>
+      <span class="nom-logo-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+
+    <div class="nom-footer-right">
+      <span>NOM Internal &middot; Not for distribution</span>
+      <span>notonmondays.com</span>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  /* ── Live clock ── */
+  const clockEl = document.getElementById('nom-clock');
+  function updateClock() {
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    clockEl.textContent =
+      pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.nom-reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  /* ── Progress bar fills ── */
+  document.querySelectorAll('.nom-progress-fill').forEach(el => {
+    const fill = el.dataset.fill || el.style.getPropertyValue('--fill');
+    if (fill) el.style.setProperty('--fill', fill);
+  });
+
+  /* ── Cursor glow (desktop only) ── */
+  const glowEl = document.getElementById('cursor-glow');
+  let ticking = false;
+  document.addEventListener('mousemove', e => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        glowEl.style.background =
+          'radial-gradient(500px circle at ' + e.clientX + 'px ' + e.clientY + 'px, rgba(26,42,212,0.045), transparent 70%)';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+</script>
+
+</body>
+</html>
