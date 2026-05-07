@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How SRB Gets Found — Stone Rowe Brewer</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .sv-intro {
+      font-size: 1.05rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    .sv-pillar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.5rem;
+    }
+
+    .sv-pillar {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sv-pillar:last-child { border-bottom: none; }
+
+    .sv-pillar-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      padding-top: 0.15rem;
+    }
+
+    .sv-pillar-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .sv-pillar-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    .sv-pillar-body {
+      font-size: 0.88rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .sv-note {
+      font-size: 0.85rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.65;
+      background: var(--off-white);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .sv-principle-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sv-principle {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sv-principle:last-child { border-bottom: none; }
+
+    .sv-principle-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    .sv-principle-body {
+      font-size: 0.85rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .sv-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 1.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .sv-back:hover { color: var(--blue); }
+
+    .sv-header-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .sv-header-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .sv-header-standfirst {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .sv-layout {
+      max-width: 760px;
+    }
+
+    @media (max-width: 640px) {
+      .sv-header-title { font-size: 1.55rem; }
+      .sv-pillar { grid-template-columns: 24px 1fr; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dash-topbar" role="banner">
+    <div class="container">
+      <a href="/" class="dash-logo" aria-label="Not On Mondays">
+        <span class="dash-logo-initials" aria-hidden="true">
+          <span class="dash-logo-n">n</span>
+          <span class="dash-logo-o">o</span>
+          <span class="dash-logo-m">m</span>
+        </span>
+        <span class="dash-logo-divider" aria-hidden="true"></span>
+        <span class="dash-logo-descriptor" aria-hidden="true">
+          <span>The</span>
+          <span>Operating</span>
+          <span>Partner</span>
+        </span>
+      </a>
+
+      <div class="dash-topbar-right">
+        <a href="/hub/" class="dash-hub-link" aria-label="Back to workspace">← Hub</a>
+        <span class="dash-topbar-client">Stone Rowe Brewer</span>
+        <span class="dash-topbar-meta">Internal &middot; Not for distribution</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="dash-header">
+    <div class="container">
+      <div class="dash-header-title">
+        <p class="dash-header-eyebrow">Client workspace &middot; Search and visibility</p>
+        <h1>How SRB Gets Found</h1>
+        <p>Helping the right people find SRB at the moment they need legal support.</p>
+      </div>
+      <div class="dash-header-meta">
+        <span class="dash-last-updated">Last updated: 6 May 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="dash-body">
+      <div class="container">
+
+        <a href="dashboard.html" class="sv-back" aria-label="Back to SRB dashboard">← Dashboard</a>
+
+        <div class="sv-layout">
+
+          <div class="dash-panel" aria-labelledby="sv-overview-heading">
+            <h2 id="sv-overview-heading">Overview</h2>
+            <p class="sv-intro">Search and visibility is not an add-on. It is part of how the site keeps working. The goal is not to optimise for rankings in the abstract. It is to make sure that people already looking for legal help can find SRB, understand what they offer, and know what to do next.</p>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="sv-approach-heading">
+            <h2 id="sv-approach-heading">How we approach this</h2>
+
+            <ul class="sv-pillar-list" role="list">
+
+              <li class="sv-pillar">
+                <span class="sv-pillar-number" aria-hidden="true">01</span>
+                <div class="sv-pillar-content">
+                  <span class="sv-pillar-label">Understanding demand</span>
+                  <span class="sv-pillar-body">We identify what people are already searching for: the questions they ask, the situations they are in, and the services they are trying to understand. This shapes what the site needs to say and where it needs to say it.</span>
+                </div>
+              </li>
+
+              <li class="sv-pillar">
+                <span class="sv-pillar-number" aria-hidden="true">02</span>
+                <div class="sv-pillar-content">
+                  <span class="sv-pillar-label">Creating useful content</span>
+                  <span class="sv-pillar-body">We improve key service pages and create clear, practical guidance that answers real client questions. Content that is useful to a potential client is also content that search engines and AI tools understand and rank.</span>
+                </div>
+              </li>
+
+              <li class="sv-pillar">
+                <span class="sv-pillar-number" aria-hidden="true">03</span>
+                <div class="sv-pillar-content">
+                  <span class="sv-pillar-label">Structuring visibility</span>
+                  <span class="sv-pillar-body">We make the site easier for Google and other tools to read and index correctly. This includes technical structure, page organisation, and how services and lawyers are described. It covers both traditional search and AI-assisted search, without requiring separate work for each.</span>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="sv-principles-heading">
+            <h2 id="sv-principles-heading">How visibility actually improves</h2>
+
+            <ul class="sv-principle-list" role="list">
+
+              <li class="sv-principle">
+                <span class="sv-principle-label">It takes time</span>
+                <span class="sv-principle-body">Visibility improves gradually as content is published, indexed, and trusted. There is no shortcut to this. What matters is that the work is continuous and that each piece of content is genuinely useful.</span>
+              </li>
+
+              <li class="sv-principle">
+                <span class="sv-principle-label">Content should answer real questions</span>
+                <span class="sv-principle-body">Pages written to answer the questions actual clients have outperform pages written to target keywords. The distinction matters in practice: one requires understanding what a client is going through, the other does not.</span>
+              </li>
+
+              <li class="sv-principle">
+                <span class="sv-principle-label">Easier to find and easier to use</span>
+                <span class="sv-principle-body">Search performance and site quality are connected. A site that is easier to navigate, clearer in its language, and faster to load tends to rank better and convert better. Improving one improves the other.</span>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="dash-panel" aria-labelledby="sv-context-heading">
+            <h2 id="sv-context-heading">Why this is not a separate workstream</h2>
+            <p class="sv-note">Search and visibility is built into how we improve the site, not added on top. When we improve a service page, we improve its clarity, its structure, and its findability at the same time. The same work that helps a potential client understand what SRB offers also helps a search engine understand it. There is no separate SEO project running alongside the main work.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
