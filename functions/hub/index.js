@@ -103,14 +103,13 @@ export async function onRequest({ request }) {
     ],
 
     // Mullinland — single workspace, auto-redirected to opportunity page.
-    // TODO: replace with Chris's confirmed email address (lowercase) before deploying.
-    // "chris@mullinland.co.uk": [
-    //   {
-    //     name: "Mullinland",
-    //     description: "Strategic opportunity and digital positioning workspace",
-    //     url: "/hub/mullinland/opportunity/",
-    //   },
-    // ],
+    "c.clark@mullinland.co.uk": [
+      {
+        name: "Mullinland",
+        description: "Strategic opportunity and digital positioning workspace",
+        url: "/hub/mullinland/opportunity/",
+      },
+    ],
 
     // NOM admin — sees the workspace picker with all active client workspaces.
     "david@notonmondays.com": [
