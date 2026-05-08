@@ -119,15 +119,6 @@
       "url": "/hub/srb/dashboard.html"
     },
     {
-      "id": "eagles",
-      "sector": "Professional Services",
-      "name": "Eagles",
-      "status": "active",
-      "focus": "Content strategy, editorial calendar management, and digital visibility. Ongoing collaboration with Louisa on Q2 and Q3 content priorities.",
-      "milestone": "Content review session and Q3 planning",
-      "url": "/hub/nom/workspace.html"
-    },
-    {
       "id": "latchmere",
       "sector": "Financial Advisory",
       "name": "Latchmere Associates",
@@ -135,6 +126,29 @@
       "focus": "Digital estate operating model demonstration. Showcase workspace illustrating the NOM operating partner approach for financial advisory practices.",
       "milestone": "Demo review and prospect conversion",
       "url": "/demos/latchmere-associates/"
+    }
+  ],
+
+  "leads": [
+    {
+      "id": "eagles-law",
+      "name": "Eagles Law",
+      "sector": "Professional Services · Law",
+      "status": "Opportunity",
+      "note": "Exploratory conversation around digital experience and client acquisition.",
+      "context": "Initial conversations established alignment on the problem. Eagles Law has a credible practice but limited digital visibility. Opportunity exists to define a clear digital positioning strategy and improve enquiry conversion.",
+      "next": "Schedule scoping call to explore a Discovery and Conversion Review engagement",
+      "url": null
+    },
+    {
+      "id": "mullinland",
+      "name": "Mullinland",
+      "sector": "Strategic Land Advisory",
+      "status": "Opportunity",
+      "note": "Strategic land advisory practice. Opportunity note delivered covering positioning, enquiry flow, and digital visibility.",
+      "context": "Opportunity note delivered. Mullinland has strong credibility but positioning is not clearly expressed online. Discovery and Conversion Review proposed as the first step.",
+      "next": "Follow up on opportunity note. Confirm interest in Discovery and Conversion Review.",
+      "url": "/hub/mullinland/opportunity/"
     }
   ],
 

@@ -1439,7 +1439,199 @@ a.nom-asset-card:focus-visible {
   padding: 1.5rem 0;
 }
 
-/* ── 18. Responsive: mobile fine-tuning ── */
+/* ── 18. Leads Accordion ── */
+
+.nom-leads-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.nom-lead-row {
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.nom-lead-row:last-child {
+  border-bottom: none;
+}
+
+.nom-lead-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  background: var(--dark-surface);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--off-white);
+  transition: background 0.15s ease;
+}
+
+.nom-lead-trigger:hover {
+  background: var(--dark-elevated);
+}
+
+.nom-lead-trigger:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+
+.nom-lead-trigger[aria-expanded="true"] {
+  background: var(--dark-elevated);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.nom-lead-trigger[aria-expanded="true"] .nom-lead-chevron {
+  transform: rotate(180deg);
+}
+
+.nom-lead-trigger-main {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  min-width: 0;
+}
+
+.nom-lead-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--off-white);
+  white-space: nowrap;
+}
+
+.nom-lead-status {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.2em 0.55em;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.nom-lead-status--opportunity {
+  color: var(--light-blue);
+  background: rgba(191,198,240,0.1);
+  border: 1px solid rgba(191,198,240,0.18);
+}
+
+.nom-lead-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.77rem;
+  font-weight: 300;
+  color: rgba(242,240,232,0.38);
+  line-height: 1.5;
+  flex: 1;
+  min-width: 200px;
+}
+
+.nom-lead-chevron {
+  flex-shrink: 0;
+  color: rgba(242,240,232,0.25);
+  transition: transform 0.2s ease, color 0.15s ease;
+}
+
+.nom-lead-trigger:hover .nom-lead-chevron {
+  color: rgba(242,240,232,0.5);
+}
+
+.nom-lead-body {
+  padding: 1.2rem 1.1rem 1.4rem;
+  background: rgba(17,17,36,0.6);
+  border-top: 1px solid var(--border-dark);
+}
+
+.nom-lead-sector {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.65rem;
+}
+
+.nom-lead-context {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(242,240,232,0.52);
+  line-height: 1.65;
+  max-width: 640px;
+  margin-bottom: 1.1rem;
+}
+
+.nom-lead-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nom-lead-next {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.nom-lead-next-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nom-lead-next-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: rgba(242,240,232,0.45);
+  line-height: 1.5;
+  max-width: 460px;
+}
+
+.nom-lead-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(191,198,240,0.25);
+  padding-bottom: 1px;
+  white-space: nowrap;
+  align-self: flex-end;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nom-lead-link:hover {
+  color: var(--off-white);
+  border-color: rgba(242,240,232,0.35);
+}
+
+.nom-lead-link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-bottom-color: transparent;
+}
+
+@media (max-width: 640px) {
+  .nom-lead-trigger-main { gap: 0.5rem 0.75rem; }
+  .nom-lead-note { min-width: 0; width: 100%; }
+  .nom-lead-footer { flex-direction: column; }
+  .nom-lead-link { align-self: flex-start; }
+}
+
+/* ── 19. Responsive: mobile fine-tuning ── */
 
 @media (max-width: 640px) {
   :root { --gutter: 1.25rem; --section-gap: 3.5rem; }
