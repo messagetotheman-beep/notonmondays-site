@@ -134,11 +134,6 @@ export async function onRequest({ request }) {
         description: "Digital estate and website workspace",
         url: "/hub/srb/dashboard.html",
       },
-      {
-        name: "Mullinland",
-        description: "Strategic opportunity and digital positioning workspace",
-        url: "/hub/mullinland/opportunity/",
-      },
     ],
   };
 
