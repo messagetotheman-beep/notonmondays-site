@@ -107,7 +107,7 @@ export async function onRequest({ request }) {
       {
         name: "NOM Internal",
         description: "Internal operating dashboard",
-        url: "/hub/nom/workspace.html",
+        url: "/hub/nom/index.html",
       },
 
  {

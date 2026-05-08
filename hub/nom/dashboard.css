@@ -1329,7 +1329,117 @@ a { text-decoration: none; }
   color: rgba(242,240,232,0.18);
 }
 
-/* ── 17. Responsive: mobile fine-tuning ── */
+/* ── 17. Next 5 panel ── */
+
+.nom-section--next5 {
+  padding-bottom: calc(var(--section-gap) - 1rem);
+}
+
+.nom-next5-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .nom-next5-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .nom-next5-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 380px) {
+  .nom-next5-grid { grid-template-columns: 1fr; }
+}
+
+.nom-next5-card {
+  background: var(--dark-surface);
+  padding: 1.85rem 1.5rem 1.75rem;
+  transition: background 0.2s ease;
+  cursor: default;
+}
+
+.nom-next5-card:hover {
+  background: var(--dark-elevated);
+}
+
+.nom-next5-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: rgba(26,42,212,0.28);
+  display: block;
+  margin-bottom: 0.85rem;
+}
+
+.nom-next5-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--off-white);
+  line-height: 1.3;
+  margin-bottom: 0.65rem;
+}
+
+.nom-next5-context {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.77rem;
+  font-weight: 300;
+  color: rgba(242,240,232,0.35);
+  line-height: 1.65;
+}
+
+/* ── 17b. Linked content items ── */
+
+a.nom-content-item--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.nom-content-item--link:hover {
+  border-color: rgba(26,42,212,0.5);
+  background: var(--dark-elevated);
+}
+
+a.nom-content-item--link:hover .nom-content-item-title {
+  color: var(--light-blue);
+}
+
+a.nom-content-item--link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Linked asset cards */
+a.nom-asset-card {
+  display: flex;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.nom-asset-card:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* ── 17c. Load error state ── */
+
+.nom-load-error {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 1.5rem 0;
+}
+
+/* ── 18. Responsive: mobile fine-tuning ── */
 
 @media (max-width: 640px) {
   :root { --gutter: 1.25rem; --section-gap: 3.5rem; }

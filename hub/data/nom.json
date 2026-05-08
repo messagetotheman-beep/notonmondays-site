@@ -1,0 +1,329 @@
+{
+  "_comment": "NOM Internal dashboard data. Edit this file to update dashboard content — no HTML changes needed. Deploy after editing. See /hub/nom/index.html JS block for field documentation.",
+
+  "meta": {
+    "updated": "2026-05-08",
+    "status": "operational",
+    "focus": "Finalise SRB proposal · publish SEO/GEO cluster · build case-study section",
+    "chips": ["SRB Proposal", "SEO/GEO Cluster", "Case Studies", "NOM System", "LinkedIn Series"]
+  },
+
+  "next5": [
+    {
+      "id": "work-case-studies",
+      "title": "Build a proper Work / Case Studies section",
+      "context": "NOM has the work. It needs to be visible. A case study section turns delivery into proof and proof into pipeline."
+    },
+    {
+      "id": "digital-operating-review",
+      "title": "Productise the Digital & Operating Review",
+      "context": "A repeatable, chargeable review product. Entry point for new clients, renewal mechanism for existing ones."
+    },
+    {
+      "id": "insights-seo-engine",
+      "title": "Turn Insights into a compounding SEO engine",
+      "context": "Clustered articles, internal linking, and consistent publishing cadence. Visibility that builds without ad spend."
+    },
+    {
+      "id": "document-nom-system",
+      "title": "Document the NOM operating system",
+      "context": "Proposals, delivery phases, onboarding, and review method. Written once, used on every engagement."
+    },
+    {
+      "id": "linkedin-consistency",
+      "title": "Publish operational thinking consistently on LinkedIn",
+      "context": "Short, specific, useful. One thought fragment per week drawn from active client work and published articles."
+    }
+  ],
+
+  "priorities": [
+    {
+      "id": "seo-geo-cluster",
+      "level": "P1",
+      "status": "active",
+      "title": "Publish SEO/GEO article cluster",
+      "context": "Core visibility play for 2025. First cluster targeting law firms and professional services. Anchors NOM thought leadership in the market.",
+      "progress": 65,
+      "next": "Finalise GEO article and schedule publish sequence",
+      "due": "May 2026"
+    },
+    {
+      "id": "srb-proposal",
+      "level": "P1",
+      "status": "progress",
+      "title": "Finalise SRB operating proposal",
+      "context": "Proposal to SRB leadership covering digital estate, scoping methodology, and the NOM operating model. High commercial value.",
+      "progress": 85,
+      "next": "Send final version to Jenine before end of week",
+      "due": "This week"
+    },
+    {
+      "id": "case-study-section",
+      "level": "P1",
+      "status": "active",
+      "title": "Build work / case-study section",
+      "context": "NOM public work section to evidence capability and build trust with new prospects. Essential for converting visibility into pipeline.",
+      "progress": 30,
+      "next": "Define case study format and select 3 initial examples",
+      "due": "June 2026"
+    },
+    {
+      "id": "nom-internal-system",
+      "level": "P2",
+      "status": "active",
+      "title": "Refine NOM internal system",
+      "context": "Improve the operating workspace, document playbooks, and improve internal visibility across delivery and pipeline.",
+      "progress": 55,
+      "next": "Complete internal dashboard and playbook documentation",
+      "due": "Ongoing"
+    },
+    {
+      "id": "eagles-content-review",
+      "level": "P2",
+      "status": "active",
+      "title": "Eagles content review",
+      "context": "Review content strategy and calendar with Louisa. Identify gaps, quick wins, and Q3 planning opportunities before mid-May.",
+      "progress": 45,
+      "next": "Schedule content review session this week",
+      "due": "May 2026"
+    },
+    {
+      "id": "linkedin-series",
+      "level": "P2",
+      "status": "drafting",
+      "title": "LinkedIn thought series",
+      "context": "Targeted thought fragment series to build NOM visibility in professional services. Drawn from published article cluster content.",
+      "progress": 20,
+      "next": "Write first 3 fragments from published article clusters",
+      "due": "May – June 2026"
+    }
+  ],
+
+  "clients": [
+    {
+      "id": "azariah",
+      "sector": "NHS · Public Sector",
+      "name": "Azariah",
+      "status": "active",
+      "focus": "Digital workspace and content operations for an NHS consulting practice. Supporting thought leadership, service communication, and digital estate management.",
+      "milestone": "Workspace refinement and content delivery pipeline",
+      "url": "/hub/azariah/workspace.html"
+    },
+    {
+      "id": "srb",
+      "sector": "Legal · Professional Services",
+      "name": "Stone Rowe Brewer",
+      "status": "scoping",
+      "focus": "Full digital estate audit, site strategy, content architecture, and NOM operating model proposal. Scoping work actively underway.",
+      "milestone": "Finalise and send operating proposal to Jenine",
+      "url": "/hub/srb/dashboard.html"
+    },
+    {
+      "id": "eagles",
+      "sector": "Professional Services",
+      "name": "Eagles",
+      "status": "active",
+      "focus": "Content strategy, editorial calendar management, and digital visibility. Ongoing collaboration with Louisa on Q2 and Q3 content priorities.",
+      "milestone": "Content review session and Q3 planning",
+      "url": "/hub/nom/workspace.html"
+    },
+    {
+      "id": "latchmere",
+      "sector": "Financial Advisory",
+      "name": "Latchmere Associates",
+      "status": "demo",
+      "focus": "Digital estate operating model demonstration. Showcase workspace illustrating the NOM operating partner approach for financial advisory practices.",
+      "milestone": "Demo review and prospect conversion",
+      "url": "/demos/latchmere-associates/"
+    }
+  ],
+
+  "content": [
+    {
+      "status": "live",
+      "cluster": "Legal · Digital",
+      "title": "Legal & Digital Change",
+      "meta": "Published · insights/",
+      "url": "/insights/legal-digital-change.html"
+    },
+    {
+      "status": "live",
+      "cluster": "Quality · Standards",
+      "title": "What Good Looks Like",
+      "meta": "Published · insights/",
+      "url": "/insights/what-good-looks-like/"
+    },
+    {
+      "status": "live",
+      "cluster": "Operations",
+      "title": "Delivering on a Tight Budget",
+      "meta": "Published · insights/",
+      "url": "/insights/delivering-on-a-tight-budget.html"
+    },
+    {
+      "status": "live",
+      "cluster": "Operations",
+      "title": "The Operating Layer",
+      "meta": "Published · insights/",
+      "url": "/insights/operating-layer.html"
+    },
+    {
+      "status": "live",
+      "cluster": "Operations",
+      "title": "Operating Model Failure",
+      "meta": "Published · insights/",
+      "url": "/insights/operating-model-failure/"
+    },
+    {
+      "status": "live",
+      "cluster": "Technology",
+      "title": "CRM Optimisation & Salesforce",
+      "meta": "Published · insights/",
+      "url": "/insights/crm-optimisation-salesforce-operations.html"
+    },
+    {
+      "status": "draft",
+      "cluster": "Visibility",
+      "title": "SEO vs GEO — what law firms need to understand now",
+      "meta": "Draft · 65% complete"
+    },
+    {
+      "status": "draft",
+      "cluster": "Client experience",
+      "title": "Legal intake friction — why the first touchpoint loses most clients",
+      "meta": "Draft · 40% complete"
+    },
+    {
+      "status": "draft",
+      "cluster": "Operations",
+      "title": "The operating layer — what sits between strategy and execution",
+      "meta": "Draft · 25% complete"
+    },
+    {
+      "status": "pipeline",
+      "cluster": "Technology",
+      "title": "AI for law firms — what actually changes and what doesn't",
+      "meta": "Idea · Cluster: Technology"
+    },
+    {
+      "status": "pipeline",
+      "cluster": "Growth",
+      "title": "The slow pitch — why professional services still gets business development wrong",
+      "meta": "Idea · Cluster: Growth"
+    },
+    {
+      "status": "pipeline",
+      "cluster": "Visibility",
+      "title": "Measuring what matters — digital metrics for firms who hate dashboards",
+      "meta": "Idea · Cluster: Visibility"
+    }
+  ],
+
+  "relationships": [
+    {
+      "id": "jenine-srb",
+      "name": "Jenine",
+      "org": "Stone Rowe Brewer",
+      "warmth": "warm",
+      "context": "Key contact and internal champion at SRB. Engaged and responsive throughout the scoping process. Strong alignment on the opportunity and the NOM approach.",
+      "lastContact": "3 days ago",
+      "next": "Send final proposal version and follow up on decision timeline"
+    },
+    {
+      "id": "louisa-eagles",
+      "name": "Louisa",
+      "org": "Eagles",
+      "warmth": "active",
+      "context": "Ongoing content collaboration. Louisa is a strong internal champion and the day-to-day relationship is well established. Regular cadence in place.",
+      "lastContact": "1 week ago",
+      "next": "Schedule May content review and open Q3 planning conversation"
+    },
+    {
+      "id": "jok-azariah",
+      "name": "Jok",
+      "org": "Azariah",
+      "warmth": "active",
+      "context": "Founder relationship. Deeply engaged with the workspace and the NOM operating model approach. High trust, high strategic alignment.",
+      "lastContact": "4 days ago",
+      "next": "Workspace update session — review content delivery and next phase planning"
+    }
+  ],
+
+  "assets": [
+    {
+      "type": "Dashboard",
+      "title": "Latchmere Associates Dashboard",
+      "date": "Apr 2026",
+      "url": "/demos/latchmere-associates/dashboard.html",
+      "icon": "grid"
+    },
+    {
+      "type": "Proposal",
+      "title": "SRB Digital Operating Proposal",
+      "date": "May 2026 · In progress",
+      "url": "/hub/srb/dashboard.html",
+      "icon": "document"
+    },
+    {
+      "type": "Article",
+      "title": "Legal & Digital Change",
+      "date": "Mar 2026 · Live",
+      "url": "/insights/legal-digital-change.html",
+      "icon": "text"
+    },
+    {
+      "type": "Dashboard",
+      "title": "NOM Internal Operating System",
+      "date": "May 2026 · In progress",
+      "url": "/hub/nom/index.html",
+      "icon": "clock"
+    },
+    {
+      "type": "Article",
+      "title": "SEO vs GEO — Law Firms",
+      "date": "Draft · 65%",
+      "url": null,
+      "icon": "star"
+    },
+    {
+      "type": "Process",
+      "title": "Digital Estate Audit Method",
+      "date": "Apr 2026",
+      "url": null,
+      "icon": "list"
+    }
+  ],
+
+  "playbooks": [
+    {
+      "num": "01",
+      "title": "Article Structure",
+      "body": "How NOM produces editorial-quality content at pace. The NOM editorial method: clear framing, grounded problem, practical response, considered close."
+    },
+    {
+      "num": "02",
+      "title": "Proposal Framework",
+      "body": "How NOM scopes, structures, and prices client engagements. From brief to operating model: the four layers of every NOM proposal."
+    },
+    {
+      "num": "03",
+      "title": "Dashboard Principles",
+      "body": "What makes a NOM client dashboard excellent. Calm, editorial, operational. Built for trust — not for complexity. Never a SaaS panel."
+    },
+    {
+      "num": "04",
+      "title": "Client Onboarding",
+      "body": "How NOM takes a new client from first brief to a fully operational engagement. The five steps from conversation to delivery."
+    },
+    {
+      "num": "05",
+      "title": "Delivery Phases",
+      "body": "The four phases of a NOM engagement: Audit, Architecture, Build, and Operate. Each phase has defined outputs, dependencies, and review points."
+    },
+    {
+      "num": "06",
+      "title": "Operational Review",
+      "body": "How NOM reviews and improves its own operating model. A monthly check-in across delivery, pipeline, content, and system health."
+    }
+  ]
+}
