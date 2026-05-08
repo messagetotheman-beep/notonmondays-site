@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mullinland · Strategic Opportunity | Not On Mondays</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ─────────────────────────────────────────────── */
+.skip-link {
+  position: absolute; top: -100%; left: 1rem;
+  background: var(--blue); color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+
+/* ── Site header — dark variant for proposal pages ─────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(17,17,36,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.site-nav {
+  padding: 0 4rem; height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem;
+}
+.nav-logo {
+  display: inline-flex; align-items: center; gap: 0.9rem;
+  text-decoration: none; line-height: 1; flex-shrink: 0;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 300;
+  letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(255,255,255,0.18); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace; font-size: 0.52rem; font-weight: 300;
+  letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.35);
+}
+.nav-context {
+  font-family: 'DM Mono', monospace; font-size: 0.55rem; font-weight: 300;
+  letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.25);
+  flex: 1; text-align: center;
+}
+.nav-cta {
+  font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--off-white); background: var(--blue);
+  padding: 0.65rem 1.4rem; text-decoration: none;
+  transition: background 0.3s ease; font-weight: 300; flex-shrink: 0;
+}
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--deep-blue); }
+
+
+/* ── Proposal hero ─────────────────────────────────────────── */
+.prop-hero {
+  background: var(--dark);
+  padding: 5.5rem 1.5rem 4.5rem;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  min-height: 65vh;
+  display: flex; align-items: center;
+}
+.prop-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(26,42,212,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,42,212,0.045) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+.prop-hero::after {
+  content: '';
+  position: absolute; top: -180px; right: -180px;
+  width: 720px; height: 720px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,42,212,0.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+.prop-hero-inner {
+  max-width: 1100px; margin: 0 auto;
+  position: relative; z-index: 1; width: 100%;
+}
+.prop-hero-tag {
+  display: inline-flex; align-items: center; gap: 0.85rem;
+  margin-bottom: 2.75rem;
+}
+.prop-hero-tag-line { width: 28px; height: 1px; background: var(--blue); }
+.prop-hero-tag-text {
+  font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--light-blue);
+}
+.prop-hero-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 300; line-height: 1.06; letter-spacing: -0.01em;
+  color: var(--off-white); max-width: 900px; margin-bottom: 1.75rem;
+}
+.prop-hero-headline em { font-style: italic; color: var(--light-blue); }
+.prop-hero-standfirst {
+  font-size: 1.05rem; line-height: 1.9;
+  color: rgba(242,240,232,0.6); font-weight: 300;
+  max-width: 600px; margin-bottom: 2.75rem;
+}
+.prop-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.prop-cta-ghost-dark {
+  display: inline-block;
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(242,240,232,0.65);
+  background: transparent;
+  border: 1px solid rgba(242,240,232,0.18);
+  padding: 0.9rem 1.75rem; text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.prop-cta-ghost-dark:hover, .prop-cta-ghost-dark:focus-visible {
+  color: var(--off-white);
+  border-color: rgba(242,240,232,0.35);
+}
+.prop-hero-meta {
+  margin-top: 4rem; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; gap: 2.75rem; flex-wrap: wrap; align-items: flex-start;
+}
+.prop-hero-meta-item { display: flex; flex-direction: column; gap: 0.35rem; }
+.prop-hero-meta-label {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.22);
+}
+.prop-hero-meta-value {
+  font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.45);
+}
+
+
+/* ── Section heading pattern ───────────────────────────────── */
+.prop-eyebrow {
+  font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
+}
+.prop-eyebrow--light { color: rgba(191,198,240,0.55); }
+
+.prop-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  font-weight: 300; line-height: 1.08;
+  color: var(--dark); max-width: 760px; margin-bottom: 0.85rem;
+}
+.prop-heading--light { color: var(--off-white); }
+.prop-heading em { font-style: italic; color: var(--blue); }
+.prop-heading--light em { color: var(--light-blue); }
+
+.prop-standfirst {
+  font-size: 0.95rem; line-height: 1.9; color: var(--mid);
+  font-weight: 300; max-width: 580px;
+}
+.prop-standfirst--light { color: rgba(242,240,232,0.45); }
+.prop-standfirst--center { max-width: 620px; margin: 0 auto; text-align: center; }
+
+
+/* ── Observation cards ─────────────────────────────────────── */
+.prop-obs-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: rgba(26,42,212,0.1);
+  border: 1px solid rgba(26,42,212,0.1);
+  margin-top: 3rem;
+}
+.prop-obs-card {
+  background: var(--warm-white);
+  padding: 2.25rem 2rem;
+  position: relative; overflow: hidden;
+  transition: background 0.2s ease;
+}
+.prop-obs-card:hover { background: var(--off-white); }
+.prop-obs-accent {
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: var(--blue);
+  opacity: 0; transition: opacity 0.2s ease;
+}
+.prop-obs-card:hover .prop-obs-accent { opacity: 1; }
+.prop-obs-num {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(26,42,212,0.28);
+  margin-bottom: 1.35rem;
+}
+.prop-obs-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 300; line-height: 1.2;
+  color: var(--dark); margin-bottom: 0.75rem;
+}
+.prop-obs-body {
+  font-size: 0.875rem; line-height: 1.85; color: var(--mid); font-weight: 300;
+}
+
+
+/* ── Pattern list (what may be happening) ──────────────────── */
+.prop-pattern-intro {
+  text-align: center; margin-bottom: 3rem;
+}
+.prop-pattern-intro .prop-heading { margin: 0 auto 0.85rem; text-align: left; max-width: 680px; text-align: center; }
+.prop-pattern-list {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: rgba(26,42,212,0.1);
+  border: 1px solid rgba(26,42,212,0.1);
+  max-width: 860px; margin: 0 auto;
+}
+.prop-pattern-item {
+  background: var(--off-white);
+  padding: 1.5rem 1.75rem;
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  transition: background 0.15s ease;
+}
+.prop-pattern-item:hover { background: var(--warm-white); }
+.prop-pattern-marker {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--blue);
+  flex-shrink: 0; padding-top: 0.2em; width: 1.5rem;
+}
+.prop-pattern-text {
+  font-size: 0.9rem; line-height: 1.8; color: var(--mid); font-weight: 300;
+}
+
+
+/* ── Opportunity areas ─────────────────────────────────────── */
+.prop-opp-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 2rem; margin-top: 3rem;
+}
+.prop-opp-item {
+  padding: 2rem 2rem 2.25rem;
+  background: var(--off-white);
+  border: 1px solid rgba(26,42,212,0.1);
+  border-top: 2px solid rgba(26,42,212,0.12);
+  transition: border-top-color 0.2s ease;
+}
+.prop-opp-item:hover { border-top-color: var(--blue); }
+.prop-opp-label {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 0.9rem;
+}
+.prop-opp-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 300; line-height: 1.2; color: var(--dark);
+  margin-bottom: 0.8rem;
+}
+.prop-opp-body {
+  font-size: 0.875rem; line-height: 1.85; color: var(--mid); font-weight: 300;
+  margin-bottom: 1rem;
+}
+.prop-opp-benefit {
+  font-size: 0.82rem; line-height: 1.7; font-weight: 300;
+  font-style: italic; color: rgba(26,42,212,0.75);
+}
+
+
+/* ── Operational leverage section ──────────────────────────── */
+.prop-leverage-section {
+  background: var(--dark); position: relative; overflow: hidden;
+}
+.prop-leverage-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(26,42,212,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,42,212,0.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+.prop-leverage-inner { position: relative; z-index: 1; }
+.prop-leverage-quote {
+  margin: 2.75rem 0 3.25rem;
+  padding: 2rem 2.5rem;
+  border-left: 2px solid var(--blue);
+  background: rgba(26,42,212,0.07);
+}
+.prop-leverage-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 300; font-style: italic;
+  line-height: 1.55; color: var(--off-white);
+}
+.prop-leverage-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-top: 2.5rem;
+}
+.prop-leverage-item {
+  background: rgba(255,255,255,0.02);
+  padding: 1.6rem 1.75rem;
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  transition: background 0.2s ease;
+}
+.prop-leverage-item:hover { background: rgba(26,42,212,0.08); }
+.prop-leverage-marker {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--blue);
+  flex-shrink: 0; padding-top: 0.15em;
+}
+.prop-leverage-text {
+  font-size: 0.9rem; line-height: 1.8; color: rgba(242,240,232,0.58); font-weight: 300;
+}
+.prop-leverage-text strong {
+  font-weight: 400; color: rgba(242,240,232,0.82);
+}
+
+
+/* ── Wireframe section ─────────────────────────────────────── */
+.prop-wireframe-section { background: var(--mid); position: relative; }
+.prop-wf-frame {
+  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(17,17,36,0.55);
+  padding: 2rem; position: relative; margin-top: 3rem;
+}
+.prop-wf-frame-label {
+  position: absolute; top: -1px; left: 2rem;
+  font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.22);
+  background: var(--mid); padding: 0 0.5rem;
+  transform: translateY(-50%);
+}
+.wf-topbar {
+  height: 36px; background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; padding: 0 1rem; gap: 0.5rem;
+}
+.wf-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.08); }
+.wf-spacer { flex: 1; }
+.wf-nav-pill { width: 52px; height: 20px; background: rgba(26,42,212,0.25); border: 1px solid rgba(26,42,212,0.3); }
+.wf-section {
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.015);
+  padding: 1.5rem; margin-bottom: 1.25rem; position: relative;
+}
+.wf-section--accent { border-color: rgba(26,42,212,0.28); background: rgba(26,42,212,0.05); }
+.wf-section-label {
+  font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(26,42,212,0.55);
+  margin-bottom: 0.85rem;
+}
+.wf-block {
+  height: 8px; background: rgba(255,255,255,0.07); margin-bottom: 0.45rem;
+}
+.wf-block.lg { height: 22px; background: rgba(255,255,255,0.1); }
+.wf-block.md { height: 14px; background: rgba(255,255,255,0.08); }
+.wf-block.sm { height: 6px; background: rgba(255,255,255,0.05); }
+.wf-block.w-80 { width: 80%; }
+.wf-block.w-65 { width: 65%; }
+.wf-block.w-50 { width: 50%; }
+.wf-block.w-40 { width: 40%; }
+.wf-block.w-30 { width: 30%; }
+.wf-btn {
+  display: inline-block; height: 28px; width: 120px;
+  background: rgba(26,42,212,0.3); border: 1px solid rgba(26,42,212,0.4);
+  margin-top: 0.85rem;
+}
+.wf-btn.ghost {
+  background: transparent; border-color: rgba(255,255,255,0.15); width: 100px;
+}
+.wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1.25rem; }
+.wf-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+.wf-card {
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02); padding: 1rem;
+}
+.wf-annotation {
+  font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(26,42,212,0.6);
+  border-left: 1px solid rgba(26,42,212,0.25);
+  padding-left: 0.6rem; margin-top: 0.85rem; line-height: 1.6;
+}
+
+
+/* ── Journey section ───────────────────────────────────────── */
+.prop-journey-section { background: var(--dark); }
+.prop-journey-steps {
+  display: grid; grid-template-columns: 1fr;
+  margin-top: 3.5rem;
+}
+.prop-journey-step {
+  display: flex; gap: 1.75rem; padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.prop-journey-step:last-child { border-bottom: none; }
+.prop-step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300; color: rgba(26,42,212,0.18);
+  flex-shrink: 0; line-height: 1; min-width: 2.75rem; padding-top: 0.05em;
+}
+.prop-step-body { flex: 1; }
+.prop-step-label {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 0.45rem;
+}
+.prop-step-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 300; line-height: 1.2;
+  color: var(--off-white); margin-bottom: 0.55rem;
+}
+.prop-step-text {
+  font-size: 0.875rem; line-height: 1.8;
+  color: rgba(242,240,232,0.42); font-weight: 300;
+}
+.prop-step-digital {
+  font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(26,42,212,0.55);
+  margin-top: 0.65rem;
+}
+
+
+/* ── Recommendations ───────────────────────────────────────── */
+.prop-rec-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: rgba(26,42,212,0.1);
+  border: 1px solid rgba(26,42,212,0.1);
+  margin-top: 3rem;
+}
+.prop-rec-item {
+  background: var(--warm-white);
+  padding: 1.4rem 1.75rem;
+  display: flex; gap: 1.35rem; align-items: flex-start;
+  transition: background 0.15s ease;
+}
+.prop-rec-item:hover { background: var(--off-white); }
+.prop-rec-num {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--blue);
+  flex-shrink: 0; padding-top: 0.2em; min-width: 1.5rem;
+}
+.prop-rec-text {
+  font-size: 0.9rem; line-height: 1.8; color: var(--mid); font-weight: 300;
+}
+.prop-rec-text strong { font-weight: 400; color: var(--dark); }
+
+
+/* ── First phase panel ─────────────────────────────────────── */
+.prop-phase-section {
+  background: var(--warm-white);
+  padding: 4rem 1.5rem;
+}
+.prop-phase-inner { max-width: 1100px; margin: 0 auto; }
+.prop-phase-panel {
+  border: 1px solid rgba(26,42,212,0.2);
+  background: var(--off-white);
+  padding: 3.25rem 3rem;
+  position: relative;
+}
+.prop-phase-panel::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: var(--blue);
+}
+.prop-phase-label {
+  font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 1.35rem;
+}
+.prop-phase-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+  font-weight: 300; line-height: 1.12; color: var(--dark);
+  margin-bottom: 1rem; max-width: 600px;
+}
+.prop-phase-body {
+  font-size: 0.9rem; line-height: 1.9; color: var(--mid);
+  font-weight: 300; margin-bottom: 2.5rem; max-width: 580px;
+}
+.prop-phase-items {
+  display: grid; grid-template-columns: 1fr;
+  gap: 0.75rem; margin-bottom: 2.75rem;
+}
+.prop-phase-item {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+}
+.prop-phase-marker {
+  font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--blue);
+  flex-shrink: 0; padding-top: 0.15em;
+}
+.prop-phase-item-text {
+  font-size: 0.875rem; line-height: 1.8; color: var(--mid); font-weight: 300;
+}
+.prop-phase-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.prop-phase-note {
+  font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.1em;
+  color: var(--muted); line-height: 1.7;
+}
+
+
+/* ── Footer ────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2.25rem 4rem;
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.footer-tagline {
+  font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.22); font-weight: 300;
+  line-height: 1.7; max-width: 380px;
+}
+.footer-contact {
+  font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-contact:hover, .footer-contact:focus-visible { color: rgba(255,255,255,0.65); }
+.footer-copy {
+  font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.14);
+}
+
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (min-width: 640px) {
+  .prop-obs-grid { grid-template-columns: 1fr 1fr; }
+  .prop-opp-grid { grid-template-columns: 1fr 1fr; }
+  .prop-leverage-grid { grid-template-columns: 1fr 1fr; }
+  .prop-rec-grid { grid-template-columns: 1fr 1fr; }
+  .prop-phase-items { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 900px) {
+  .prop-hero { padding: 8rem 4rem 6rem; min-height: 75vh; }
+  .prop-journey-steps { grid-template-columns: repeat(2, 1fr); }
+  .prop-journey-step {
+    border-right: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .prop-journey-step:nth-child(even) { border-right: none; }
+  .prop-journey-step:nth-last-child(-n+2) { border-bottom: none; }
+  .prop-phase-items { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-descriptor { display: none; }
+  .nav-context { display: none; }
+  .prop-phase-panel { padding: 2.25rem 1.5rem; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-tagline { max-width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .prop-hero-ctas { flex-direction: column; }
+  .prop-hero-meta { gap: 1.75rem; }
+  .wf-grid-2, .wf-grid-3 { grid-template-columns: 1fr; }
+  .prop-phase-ctas { flex-direction: column; }
+  .prop-wf-frame { padding: 1.5rem 1.25rem; }
+  .prop-leverage-quote { padding: 1.5rem 1.5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>Not On</span>
+        <span>Mondays</span>
+      </span>
+    </a>
+    <span class="nav-context" aria-hidden="true">Strategic Opportunity · Mullinland</span>
+    <a href="mailto:hello@notonmondays.com" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+
+<main id="main-content" class="article-layout">
+
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section class="prop-hero" aria-labelledby="prop-heading">
+    <div class="prop-hero-inner">
+
+      <div class="prop-hero-tag" aria-hidden="true">
+        <span class="prop-hero-tag-line"></span>
+        <span class="prop-hero-tag-text">Strategic Opportunity · Prepared for Mullinland</span>
+      </div>
+
+      <h1 id="prop-heading" class="prop-hero-headline">
+        Strategic land advice deserves<br>a <em>clearer digital experience.</em>
+      </h1>
+
+      <p class="prop-hero-standfirst">
+        The opportunity is not to become louder. It is to become clearer, more trusted, and easier for landowners to engage with, so that the expertise Mullinland already has does more of the work on its own.
+      </p>
+
+      <div class="prop-hero-ctas">
+        <a href="#opportunity-areas" class="article-cta-link">View opportunity areas</a>
+        <a href="#what-good-looks-like" class="prop-cta-ghost-dark">Example homepage direction</a>
+      </div>
+
+      <div class="prop-hero-meta" aria-label="Proposal details">
+        <div class="prop-hero-meta-item">
+          <span class="prop-hero-meta-label">Prepared by</span>
+          <span class="prop-hero-meta-value">Not On Mondays</span>
+        </div>
+        <div class="prop-hero-meta-item">
+          <span class="prop-hero-meta-label">For</span>
+          <span class="prop-hero-meta-value">Mullinland</span>
+        </div>
+        <div class="prop-hero-meta-item">
+          <span class="prop-hero-meta-label">Date</span>
+          <span class="prop-hero-meta-value">May 2026</span>
+        </div>
+        <div class="prop-hero-meta-item">
+          <span class="prop-hero-meta-label">Focus</span>
+          <span class="prop-hero-meta-value">Operational leverage · Digital clarity</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       2. INITIAL OBSERVATIONS
+       ============================================================ -->
+  <section class="article-section article-section--warm" aria-labelledby="obs-heading">
+    <div class="article-container">
+
+      <p class="prop-eyebrow" aria-hidden="true">Initial observations</p>
+      <h2 id="obs-heading" class="prop-heading">What we noticed about Mullinland</h2>
+      <p class="prop-standfirst">Prepared from initial research into the Mullinland business, its positioning, and its market context. These are observations, not criticisms.</p>
+
+      <div class="prop-obs-grid" role="group" aria-label="Initial observations about Mullinland">
+
+        <div class="prop-obs-card">
+          <div class="prop-obs-accent" aria-hidden="true"></div>
+          <p class="prop-obs-num" aria-hidden="true">01</p>
+          <h3 class="prop-obs-heading">Strong existing credibility</h3>
+          <p class="prop-obs-body">Trust in this sector is earned slowly. The foundations at Mullinland are clearly there. The question is whether that credibility is visible and transferable before a direct conversation needs to happen.</p>
+        </div>
+
+        <div class="prop-obs-card">
+          <div class="prop-obs-accent" aria-hidden="true"></div>
+          <p class="prop-obs-num" aria-hidden="true">02</p>
+          <h3 class="prop-obs-heading">Positioning that could be sharper</h3>
+          <p class="prop-obs-body">Strategic land advisory sits at a specific intersection: landowner representation, planning strategy, development opportunity. The work deserves a digital presence that communicates this with the same precision.</p>
+        </div>
+
+        <div class="prop-obs-card">
+          <div class="prop-obs-accent" aria-hidden="true"></div>
+          <p class="prop-obs-num" aria-hidden="true">03</p>
+          <h3 class="prop-obs-heading">A trust gap before first contact</h3>
+          <p class="prop-obs-body">Landowners do their own research before anyone picks up the phone. For a firm of this calibre, the digital experience does not yet fully support that decision. The gap is worth closing.</p>
+        </div>
+
+        <div class="prop-obs-card">
+          <div class="prop-obs-accent" aria-hidden="true"></div>
+          <p class="prop-obs-num" aria-hidden="true">04</p>
+          <h3 class="prop-obs-heading">Operational leverage opportunity</h3>
+          <p class="prop-obs-body">When a founder is the primary source of expertise, capacity is always the constraint. The opportunity is to use digital experience to qualify, educate, and build confidence in prospective clients, before Chris needs to be directly involved.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       3. WHAT MAY BE HAPPENING
+       ============================================================ -->
+  <section class="article-section article-section--light" aria-labelledby="pattern-heading">
+    <div class="article-container">
+
+      <div class="prop-pattern-intro">
+        <p class="prop-eyebrow" aria-hidden="true">A familiar pattern</p>
+        <h2 id="pattern-heading" class="prop-heading" style="text-align:center;max-width:700px;margin-left:auto;margin-right:auto;">
+          What often happens in founder-led specialist advisory businesses
+        </h2>
+        <p class="prop-standfirst prop-standfirst--center" style="margin-bottom:0;">
+          This is a well-recognised pattern in high-quality professional services. It is not a failure. It is the natural shape of a business built by someone who is genuinely good at the work.
+        </p>
+      </div>
+
+      <div class="prop-pattern-list" role="list" aria-label="Common operational patterns in founder-led advisory businesses">
+
+        <div class="prop-pattern-item" role="listitem">
+          <span class="prop-pattern-marker" aria-hidden="true">01</span>
+          <p class="prop-pattern-text">The founder's expertise becomes the business. Enquiries, qualification, education, and trust-building all flow through one person. This works, until capacity becomes the constraint.</p>
+        </div>
+
+        <div class="prop-pattern-item" role="listitem">
+          <span class="prop-pattern-marker" aria-hidden="true">02</span>
+          <p class="prop-pattern-text">The same explanations get repeated. What strategic land advice involves, what the process looks like, what landowners can expect. Again and again, in early-stage enquiries.</p>
+        </div>
+
+        <div class="prop-pattern-item" role="listitem">
+          <span class="prop-pattern-marker" aria-hidden="true">03</span>
+          <p class="prop-pattern-text">Qualification depends on direct conversation. Time goes to enquiries that are not yet ready or not well matched. That time is hard to recover.</p>
+        </div>
+
+        <div class="prop-pattern-item" role="listitem">
+          <span class="prop-pattern-marker" aria-hidden="true">04</span>
+          <p class="prop-pattern-text">Marketing feels like more work. Structured content sits outside the delivery rhythm and rarely gets prioritised. Rational, but it compounds.</p>
+        </div>
+
+        <div class="prop-pattern-item" role="listitem">
+          <span class="prop-pattern-marker" aria-hidden="true">05</span>
+          <p class="prop-pattern-text">Growth depends on the founder's availability. Referrals work well, but scaling beyond them requires infrastructure: positioning, clarity, and systems that work independently of any individual's calendar.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       4. OPPORTUNITY AREAS
+       ============================================================ -->
+  <section class="article-section article-section--warm" id="opportunity-areas" aria-labelledby="opp-heading">
+    <div class="article-container">
+
+      <p class="prop-eyebrow" aria-hidden="true">Opportunity areas</p>
+      <h2 id="opp-heading" class="prop-heading">Where the clearest opportunities sit</h2>
+      <p class="prop-standfirst">Six areas where a clearer digital experience could meaningfully improve how Mullinland attracts, qualifies, and works with the right clients.</p>
+
+      <div class="prop-opp-grid" role="group" aria-label="Opportunity areas for Mullinland">
+
+        <div class="prop-opp-item">
+          <p class="prop-opp-label" aria-hidden="true">01 · Positioning</p>
+          <h3 class="prop-opp-heading">Sharper positioning in a specialist market</h3>
+          <p class="prop-opp-body">These disciplines are often grouped together in how firms present themselves. A clearer statement of what Mullinland specifically does, and for whom, would help the right landowners self-identify and reach out with confidence.</p>
+          <p class="prop-opp-benefit">Commercial opportunity: fewer misaligned enquiries. Better-matched clients from the outset.</p>
+        </div>
+
+        <div class="prop-opp-item">
+          <p class="prop-opp-label" aria-hidden="true">02 · Conversion</p>
+          <h3 class="prop-opp-heading">Clearer pathways from interest to conversation</h3>
+          <p class="prop-opp-body">A landowner who finds Mullinland online is already considering their options. Clearer signposting, a straightforward first question, and a low-friction way to start a conversation would all improve conversion.</p>
+          <p class="prop-opp-benefit">Commercial opportunity: more enquiries from people who are already half-decided.</p>
+        </div>
+
+        <div class="prop-opp-item">
+          <p class="prop-opp-label" aria-hidden="true">03 · Trust architecture</p>
+          <h3 class="prop-opp-heading">Building trust before the first call</h3>
+          <p class="prop-opp-body">Trust is built through evidence: outcomes, process transparency, and the sense that a firm genuinely understands a landowner's situation. Much of this work currently depends on direct interaction. A well-structured digital presence can do some of it independently.</p>
+          <p class="prop-opp-benefit">Commercial opportunity: warmer, better-prepared enquiries. Less time spent building basic confidence.</p>
+        </div>
+
+        <div class="prop-opp-item">
+          <p class="prop-opp-label" aria-hidden="true">04 · Authority content</p>
+          <h3 class="prop-opp-heading">Educational content as a quiet trust signal</h3>
+          <p class="prop-opp-body">Landowners often have significant knowledge gaps. Well-written content covering planning timescales, development potential, and what a strategic land agreement involves demonstrates expertise while reducing the burden of early-stage education in every direct conversation.</p>
+          <p class="prop-opp-benefit">Commercial opportunity: credibility and authority that do not require Chris to be in the room.</p>
+        </div>
+
+        <div class="prop-opp-item">
+          <p class="prop-opp-label" aria-hidden="true">05 · Landowner entry point</p>
+          <h3 class="prop-opp-heading">A clear starting point for curious landowners</h3>
+          <p class="prop-opp-body">Many landowners do not know if their land has development potential or what to expect. A simple, reassuring entry point framed for a landowner not a planning professional, such as "Does your land have development potential?", removes friction at the earliest stage.</p>
+          <p class="prop-opp-benefit">Commercial opportunity: reach landowners who are curious but uncertain, before they go elsewhere.</p>
+        </div>
+
+        <div class="prop-opp-item">
+          <p class="prop-opp-label" aria-hidden="true">06 · Enquiry quality</p>
+          <h3 class="prop-opp-heading">Better-informed enquiries from the start</h3>
+          <p class="prop-opp-body">The quality of an initial enquiry is determined by how well someone understood what they were approaching. A clearer digital experience sets expectations and means every conversation starts from a more informed baseline.</p>
+          <p class="prop-opp-benefit">Commercial opportunity: time saved on qualification. Conversations that go further, faster.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       5. OPERATIONAL LEVERAGE
+       ============================================================ -->
+  <section class="article-section prop-leverage-section" aria-labelledby="leverage-heading">
+    <div class="article-container prop-leverage-inner">
+
+      <p class="prop-eyebrow prop-eyebrow--light" aria-hidden="true">Operational leverage</p>
+      <h2 id="leverage-heading" class="prop-heading prop-heading--light">
+        Reducing the work that depends<br>on <em>Chris directly</em>
+      </h2>
+      <p class="prop-standfirst prop-standfirst--light">
+        The goal is not more leads. It is better conversations with better-informed people, with less of the repetitive groundwork that currently happens before any real advisory work begins.
+      </p>
+
+      <blockquote class="prop-leverage-quote">
+        <p>"There may be opportunities to reduce the amount of explanation, qualification, and trust-building that currently depends on Chris directly."</p>
+      </blockquote>
+
+      <div class="prop-leverage-grid" role="group" aria-label="Operational leverage opportunities">
+
+        <div class="prop-leverage-item">
+          <span class="prop-leverage-marker" aria-hidden="true">01</span>
+          <p class="prop-leverage-text"><strong>Clearer qualification pathways.</strong> A well-structured set of entry questions, covering land ownership, situation, and goals, helps prospective clients self-assess before making contact. This filters enquiries without any active effort from Chris.</p>
+        </div>
+
+        <div class="prop-leverage-item">
+          <span class="prop-leverage-marker" aria-hidden="true">02</span>
+          <p class="prop-leverage-text"><strong>Educational guidance that works independently.</strong> Content that explains planning timescales, what strategic land involves, and what landowners can realistically expect. Available at any time, not dependent on a conversation to deliver it.</p>
+        </div>
+
+        <div class="prop-leverage-item">
+          <span class="prop-leverage-marker" aria-hidden="true">03</span>
+          <p class="prop-leverage-text"><strong>Expectation setting before first contact.</strong> A clear description of the process, typical timescales, and how Mullinland works means the first conversation starts at a more productive point. Both sides get more from it.</p>
+        </div>
+
+        <div class="prop-leverage-item">
+          <span class="prop-leverage-marker" aria-hidden="true">04</span>
+          <p class="prop-leverage-text"><strong>Smarter enquiry capture.</strong> A structured enquiry format, with the right questions in the right order, saves time on both sides. Signals professionalism. Means responses can be more targeted from the outset.</p>
+        </div>
+
+        <div class="prop-leverage-item">
+          <span class="prop-leverage-marker" aria-hidden="true">05</span>
+          <p class="prop-leverage-text"><strong>Strategic FAQs.</strong> A small set of carefully written questions and answers addressing the most common early-stage concerns. Reduces the same conversation happening repeatedly. Demonstrates expertise without any ongoing effort to deliver it.</p>
+        </div>
+
+        <div class="prop-leverage-item">
+          <span class="prop-leverage-marker" aria-hidden="true">06</span>
+          <p class="prop-leverage-text"><strong>Visual process explanation.</strong> A clear, honest illustration of the process, from initial enquiry to appointment to advisory relationship, builds confidence in the firm without requiring a direct conversation to do so.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       6. WHAT GOOD COULD LOOK LIKE — strategic wireframe
+       ============================================================ -->
+  <section class="article-section prop-wireframe-section" id="what-good-looks-like" aria-labelledby="wireframe-heading">
+    <div class="article-container">
+
+      <p class="prop-eyebrow prop-eyebrow--light" aria-hidden="true">Strategic direction</p>
+      <h2 id="wireframe-heading" class="prop-heading prop-heading--light">What a clearer digital presence could look like</h2>
+      <p class="prop-standfirst prop-standfirst--light">A low-fidelity strategic illustration, not a design, but a proposal for how the homepage might work to support trust, qualification, and landowner confidence.</p>
+
+      <div class="prop-wf-frame" role="img" aria-label="Strategic wireframe illustration showing a possible homepage structure for Mullinland">
+        <span class="prop-wf-frame-label" aria-hidden="true">Homepage · Strategic direction · Illustrative only</span>
+
+        <div class="wf-topbar" aria-hidden="true">
+          <div class="wf-dot"></div>
+          <div class="wf-dot"></div>
+          <div class="wf-dot"></div>
+          <div class="wf-spacer"></div>
+          <div class="wf-nav-pill"></div>
+        </div>
+
+        <!-- Hero / primary position statement -->
+        <div class="wf-section" aria-hidden="true">
+          <p class="wf-section-label">Hero · Primary position statement + landowner reassurance</p>
+          <div class="wf-block lg w-80"></div>
+          <div class="wf-block lg w-65" style="margin-top:0.3rem;"></div>
+          <div style="height:0.85rem;"></div>
+          <div class="wf-block sm w-65"></div>
+          <div class="wf-block sm w-50"></div>
+          <div class="wf-block sm w-40"></div>
+          <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+            <div class="wf-btn"></div>
+            <div class="wf-btn ghost"></div>
+          </div>
+          <p class="wf-annotation">Clear primary message: what Mullinland does, for whom, and why it matters. Not a list of services. A specific, confident position.</p>
+        </div>
+
+        <!-- Landowner entry question -->
+        <div class="wf-section wf-section--accent" aria-hidden="true">
+          <p class="wf-section-label">Landowner entry point · "Does your land have development potential?"</p>
+          <div class="wf-block md w-65"></div>
+          <div style="height:0.5rem;"></div>
+          <div class="wf-block sm w-80"></div>
+          <div class="wf-block sm w-65"></div>
+          <div class="wf-block sm w-50"></div>
+          <p class="wf-annotation">Framed for a landowner, not a planning professional. Low friction. Draws in people who are curious but uncertain, before they go elsewhere.</p>
+        </div>
+
+        <!-- Process strip -->
+        <div aria-hidden="true">
+          <p class="wf-section-label" style="margin-bottom:0.75rem;">Process clarity · How Mullinland works with landowners</p>
+          <div class="wf-grid-3">
+            <div class="wf-card">
+              <div class="wf-block sm w-80"></div>
+              <div class="wf-block sm w-60" style="margin-top:0.4rem;"></div>
+              <div class="wf-block sm w-40" style="margin-top:0.25rem;"></div>
+            </div>
+            <div class="wf-card">
+              <div class="wf-block sm w-80"></div>
+              <div class="wf-block sm w-60" style="margin-top:0.4rem;"></div>
+              <div class="wf-block sm w-40" style="margin-top:0.25rem;"></div>
+            </div>
+            <div class="wf-card">
+              <div class="wf-block sm w-80"></div>
+              <div class="wf-block sm w-60" style="margin-top:0.4rem;"></div>
+              <div class="wf-block sm w-40" style="margin-top:0.25rem;"></div>
+            </div>
+          </div>
+          <p class="wf-annotation">Three or four honest process steps. Sets expectations. Reduces uncertainty before a conversation starts. Signals a structured, professional approach.</p>
+        </div>
+
+        <!-- Outcomes section -->
+        <div aria-hidden="true" style="margin-top:1.25rem;">
+          <p class="wf-section-label" style="margin-bottom:0.75rem;">Outcomes · Project outcomes and advisory track record</p>
+          <div class="wf-grid-2">
+            <div class="wf-card">
+              <div class="wf-block md w-80"></div>
+              <div class="wf-block sm w-65" style="margin-top:0.5rem;"></div>
+              <div class="wf-block sm w-50" style="margin-top:0.25rem;"></div>
+            </div>
+            <div class="wf-card">
+              <div class="wf-block md w-80"></div>
+              <div class="wf-block sm w-65" style="margin-top:0.5rem;"></div>
+              <div class="wf-block sm w-50" style="margin-top:0.25rem;"></div>
+            </div>
+          </div>
+          <p class="wf-annotation">Outcomes and context: specific enough to be credible, general enough to protect client confidentiality. Builds trust without a conversation.</p>
+        </div>
+
+        <!-- Educational guidance -->
+        <div aria-hidden="true" style="margin-top:1.25rem;">
+          <p class="wf-section-label" style="margin-bottom:0.75rem;">Educational guidance · Strategic land explained for landowners</p>
+          <div class="wf-grid-3">
+            <div class="wf-card">
+              <div class="wf-block sm w-80"></div>
+              <div class="wf-block sm w-65" style="margin-top:0.4rem;"></div>
+              <div class="wf-block sm w-50" style="margin-top:0.25rem;"></div>
+            </div>
+            <div class="wf-card">
+              <div class="wf-block sm w-80"></div>
+              <div class="wf-block sm w-65" style="margin-top:0.4rem;"></div>
+              <div class="wf-block sm w-50" style="margin-top:0.25rem;"></div>
+            </div>
+            <div class="wf-card">
+              <div class="wf-block sm w-80"></div>
+              <div class="wf-block sm w-65" style="margin-top:0.4rem;"></div>
+              <div class="wf-block sm w-50" style="margin-top:0.25rem;"></div>
+            </div>
+          </div>
+          <p class="wf-annotation">Clear explanations of planning, strategic land agreements, timescales, written for landowners. Builds authority. Reduces early-stage qualification burden significantly.</p>
+        </div>
+
+        <!-- Enquiry -->
+        <div class="wf-section wf-section--accent" style="margin-top:1.25rem;" aria-hidden="true">
+          <p class="wf-section-label">Enquiry · Structured, low-friction first step</p>
+          <div class="wf-block md w-50"></div>
+          <div style="height:0.65rem;"></div>
+          <div class="wf-block sm w-80"></div>
+          <div class="wf-block sm w-65"></div>
+          <div class="wf-btn" style="margin-top:0.85rem;"></div>
+          <p class="wf-annotation">Not a generic contact form. A structured first-step enquiry that qualifies the landowner and sets expectations on both sides, saving time before any conversation.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       7. MODERN CLIENT JOURNEY
+       ============================================================ -->
+  <section class="article-section prop-journey-section" aria-labelledby="journey-heading">
+    <div class="article-container">
+
+      <p class="prop-eyebrow prop-eyebrow--light" aria-hidden="true">Client journey</p>
+      <h2 id="journey-heading" class="prop-heading prop-heading--light">How digital experience supports the advisory relationship</h2>
+      <p class="prop-standfirst prop-standfirst--light">Each step in the journey from initial uncertainty to a long-term advisory relationship is an opportunity for digital experience to reduce friction and reduce the demand on direct founder time.</p>
+
+      <div class="prop-journey-steps" role="list" aria-label="Stages of the landowner client journey">
+
+        <div class="prop-journey-step" role="listitem">
+          <div class="prop-step-num" aria-hidden="true">01</div>
+          <div class="prop-step-body">
+            <p class="prop-step-label" aria-hidden="true">Landowner uncertainty</p>
+            <h3 class="prop-step-heading">Awareness and early research</h3>
+            <p class="prop-step-text">A landowner becomes aware their land may have development potential and begins researching who can help them understand their options.</p>
+            <p class="prop-step-digital">Digital role: clear positioning · findability · first impression</p>
+          </div>
+        </div>
+
+        <div class="prop-journey-step" role="listitem">
+          <div class="prop-step-num" aria-hidden="true">02</div>
+          <div class="prop-step-body">
+            <p class="prop-step-label" aria-hidden="true">Clear explanation</p>
+            <h3 class="prop-step-heading">Understanding what is involved</h3>
+            <p class="prop-step-text">The landowner needs to understand what strategic land advice means and what to realistically expect, before they are ready to have a direct conversation.</p>
+            <p class="prop-step-digital">Digital role: educational content · process clarity · FAQs</p>
+          </div>
+        </div>
+
+        <div class="prop-journey-step" role="listitem">
+          <div class="prop-step-num" aria-hidden="true">03</div>
+          <div class="prop-step-body">
+            <p class="prop-step-label" aria-hidden="true">Strategic guidance</p>
+            <h3 class="prop-step-heading">Assessing their own situation</h3>
+            <p class="prop-step-text">The landowner assesses whether their land has development potential and whether Mullinland is the right adviser. At this stage they are effectively qualifying themselves.</p>
+            <p class="prop-step-digital">Digital role: landowner entry point · qualification framework</p>
+          </div>
+        </div>
+
+        <div class="prop-journey-step" role="listitem">
+          <div class="prop-step-num" aria-hidden="true">04</div>
+          <div class="prop-step-body">
+            <p class="prop-step-label" aria-hidden="true">Trust building</p>
+            <h3 class="prop-step-heading">Developing confidence in Mullinland</h3>
+            <p class="prop-step-text">Before making contact, the landowner looks for evidence of expertise, track record, and approach. A well-structured digital presence provides this without a direct conversation.</p>
+            <p class="prop-step-digital">Digital role: outcomes · expertise signals · process transparency</p>
+          </div>
+        </div>
+
+        <div class="prop-journey-step" role="listitem">
+          <div class="prop-step-num" aria-hidden="true">05</div>
+          <div class="prop-step-body">
+            <p class="prop-step-label" aria-hidden="true">First conversation</p>
+            <h3 class="prop-step-heading">A more productive initial consultation</h3>
+            <p class="prop-step-text">The landowner makes contact. Because expectations have already been set, the conversation is immediately more productive. Less time on explanation. More time on the advisory work that only Chris can do.</p>
+            <p class="prop-step-digital">Digital role: structured enquiry capture · expectation setting</p>
+          </div>
+        </div>
+
+        <div class="prop-journey-step" role="listitem">
+          <div class="prop-step-num" aria-hidden="true">06</div>
+          <div class="prop-step-body">
+            <p class="prop-step-label" aria-hidden="true">Long-term relationship</p>
+            <h3 class="prop-step-heading">Advisory appointment and ongoing work</h3>
+            <p class="prop-step-text">The landowner appoints Mullinland. Because the earlier stages were well-supported, the relationship starts from a stronger foundation: better aligned, better informed, with clearer mutual expectations.</p>
+            <p class="prop-step-digital">Digital role: ongoing credibility · referral infrastructure</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       8. LIGHTWEIGHT RECOMMENDATIONS
+       ============================================================ -->
+  <section class="article-section article-section--light" aria-labelledby="rec-heading">
+    <div class="article-container">
+
+      <p class="prop-eyebrow" aria-hidden="true">Recommendations</p>
+      <h2 id="rec-heading" class="prop-heading">Practical areas worth addressing</h2>
+      <p class="prop-standfirst">Calm, prioritised suggestions. None of them require large-scale change. Each one addresses a specific and addressable opportunity.</p>
+
+      <div class="prop-rec-grid" role="list" aria-label="Recommendations for Mullinland">
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">01</span>
+          <p class="prop-rec-text"><strong>Positioning refinement.</strong> A clearer, more specific statement of what Mullinland does, for whom, and what makes it the right choice, written for a landowner, not a planning professional.</p>
+        </div>
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">02</span>
+          <p class="prop-rec-text"><strong>Homepage restructure.</strong> Rebuild the homepage around the landowner's decision journey: from initial uncertainty, through explanation, to a clear and low-friction first step.</p>
+        </div>
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">03</span>
+          <p class="prop-rec-text"><strong>Trust architecture.</strong> Outcomes, process, and approach communicated with enough specificity to be credible, without depending on a direct conversation to do this work.</p>
+        </div>
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">04</span>
+          <p class="prop-rec-text"><strong>Landowner entry point.</strong> A clear, reassuring starting question that opens a structured pathway for landowners who are curious about their land's potential but not yet ready to make contact.</p>
+        </div>
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">05</span>
+          <p class="prop-rec-text"><strong>Educational authority.</strong> A small set of clear, expert explanations of what strategic land involves, written for landowners, not professionals. Reduces early-stage qualification burden significantly.</p>
+        </div>
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">06</span>
+          <p class="prop-rec-text"><strong>Mobile experience.</strong> A clean, legible, fast-loading mobile experience is not optional. Landowners research on mobile. The current experience does not serve this as well as it could.</p>
+        </div>
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">07</span>
+          <p class="prop-rec-text"><strong>Enquiry qualification.</strong> A structured initial enquiry format that collects the right information (land type, location, situation, goals) so every first conversation starts from a more useful and productive baseline.</p>
+        </div>
+
+        <div class="prop-rec-item" role="listitem">
+          <span class="prop-rec-num" aria-hidden="true">08</span>
+          <p class="prop-rec-text"><strong>Operational leverage.</strong> Strategic FAQs, process visualisation, and expectation-setting content that reduce the amount of repetitive groundwork in early-stage client conversations.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       9. SUGGESTED FIRST PHASE
+       ============================================================ -->
+  <section class="prop-phase-section" aria-labelledby="phase-heading">
+    <div class="prop-phase-inner">
+
+      <div class="prop-phase-panel">
+
+        <p class="prop-phase-label" aria-hidden="true">Suggested first step</p>
+        <h2 id="phase-heading" class="prop-phase-heading">Discovery and Conversion Review</h2>
+        <p class="prop-phase-body">
+          A focused first engagement to understand where the clearest opportunities sit and what a stronger digital presence could look like. No commitment to a larger project. Just a clear and useful starting point.
+        </p>
+
+        <div class="prop-phase-items" role="group" aria-label="What the Discovery and Conversion Review includes">
+
+          <div class="prop-phase-item">
+            <span class="prop-phase-marker" aria-hidden="true">01</span>
+            <p class="prop-phase-item-text">Positioning review: what Mullinland says about itself, how it compares to how it is perceived, and where it could be sharper.</p>
+          </div>
+
+          <div class="prop-phase-item">
+            <span class="prop-phase-marker" aria-hidden="true">02</span>
+            <p class="prop-phase-item-text">Trust and conversion review: where the landowner journey currently breaks down and what would meaningfully improve it.</p>
+          </div>
+
+          <div class="prop-phase-item">
+            <span class="prop-phase-marker" aria-hidden="true">03</span>
+            <p class="prop-phase-item-text">Mobile experience review: an honest assessment of the current mobile experience and what needs to change.</p>
+          </div>
+
+          <div class="prop-phase-item">
+            <span class="prop-phase-marker" aria-hidden="true">04</span>
+            <p class="prop-phase-item-text">Opportunity wireframes: a strategic illustration of what a stronger homepage and landowner journey could look like.</p>
+          </div>
+
+          <div class="prop-phase-item">
+            <span class="prop-phase-marker" aria-hidden="true">05</span>
+            <p class="prop-phase-item-text">Enquiry journey review: how the current contact process works and where the most significant improvements are available.</p>
+          </div>
+
+          <div class="prop-phase-item">
+            <span class="prop-phase-marker" aria-hidden="true">06</span>
+            <p class="prop-phase-item-text">Operational leverage opportunities: a clear map of where digital experience could reduce the direct burden on founder time.</p>
+          </div>
+
+          <div class="prop-phase-item">
+            <span class="prop-phase-marker" aria-hidden="true">07</span>
+            <p class="prop-phase-item-text">Prioritised recommendations: a clear, honest list of what to address first and why, with no padding or unnecessary complexity.</p>
+          </div>
+
+        </div>
+
+        <div class="prop-phase-ctas">
+          <a href="mailto:hello@notonmondays.com?subject=Mullinland%20%E2%80%94%20Discovery%20Review" class="article-cta-link">Start a conversation</a>
+          <a href="/" class="article-cta-link article-cta-link--ghost">About Not On Mondays</a>
+        </div>
+
+        <p class="prop-phase-note">This is a sensible low-risk first step. There is no obligation to proceed further. The output will be useful regardless of what happens next.</p>
+
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <p class="footer-tagline">Operational clarity, delivery and digital experience where trust matters.</p>
+  <a href="mailto:hello@notonmondays.com" class="footer-contact">hello@notonmondays.com</a>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+
+</body>
+</html>
