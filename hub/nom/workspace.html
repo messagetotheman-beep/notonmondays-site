@@ -116,38 +116,6 @@ p {
   color: rgba(242,240,232,0.65);
   border-color: rgba(242,240,232,0.3);
 }
-.client-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 28px;
-  border-top: 1px solid rgba(242,240,232,0.06);
-}
-.client-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(242,240,232,0.06);
-  text-decoration: none;
-  transition: background 0.15s;
-}
-.client-link:hover .client-link-name { color: rgba(242,240,232,0.85); }
-.client-link:focus-visible { outline: 2px solid #1a2ad4; outline-offset: 4px; }
-.client-link-name {
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(242,240,232,0.45);
-  transition: color 0.15s;
-}
-.client-link-arrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: rgba(26,42,212,0.5);
-}
 @media (prefers-reduced-motion: reduce) {
   .hub-link { transition: none; }
 }
@@ -168,15 +136,7 @@ p {
     <h1>NOM Internal is being prepared.</h1>
     <div class="rule" aria-hidden="true"></div>
     <p>This workspace is currently being set up. Check back soon.</p>
-
-    <nav class="client-links" aria-label="Active client workspaces">
-      <a class="client-link" href="/hub/mullinland/opportunity/">
-        <span class="client-link-name">Mullinland</span>
-        <span class="client-link-arrow" aria-hidden="true">→</span>
-      </a>
-    </nav>
-
-    <a class="hub-link" href="/hub/" style="margin-top: 28px;">Back to hub</a>
+    <a class="hub-link" href="/hub/">Back to hub</a>
   </div>
 </main>
 
