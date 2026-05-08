@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOM Internal — Operating System</title>
+  <link rel="stylesheet" href="/hub/nom/dashboard.css">
+</head>
+<body>
+
+<!-- Cloudflare Access controls route-level authorization. -->
+
+<!-- ── Fixed background layers ── -->
+<div class="nom-bg-layers" aria-hidden="true">
+  <div class="nom-bg-grid"></div>
+  <div class="nom-bg-glow-a"></div>
+  <div class="nom-bg-glow-b"></div>
+</div>
+<div class="nom-cursor-glow" aria-hidden="true" id="cursor-glow"></div>
+
+<!-- ── Topbar ── -->
+<header class="nom-topbar" role="banner">
+  <div class="nom-container nom-topbar-inner">
+
+    <a href="/" class="nom-topbar-logo" aria-label="Not On Mondays — home">
+      <span class="nom-logo-initials" aria-hidden="true">
+        <span class="nom-logo-n">n</span>
+        <span class="nom-logo-o">o</span>
+        <span class="nom-logo-m">m</span>
+      </span>
+      <span class="nom-logo-divider" aria-hidden="true"></span>
+      <span class="nom-logo-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+
+    <nav aria-label="Dashboard sections">
+      <ul class="nom-topbar-nav">
+        <li><a href="#next5">Next 5</a></li>
+        <li><a href="#priorities">Priorities</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#content">Content</a></li>
+        <li><a href="#relationships">Relationships</a></li>
+        <li><a href="#system">System</a></li>
+      </ul>
+    </nav>
+
+    <div class="nom-topbar-right" aria-label="Workspace identity">
+      <span class="nom-label-primary">NOM Internal</span>
+      <span class="nom-label-sub">Internal &middot; Not for distribution</span>
+    </div>
+
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="nom-hero" aria-labelledby="hero-heading">
+  <div class="nom-container">
+    <div class="nom-hero-inner">
+
+      <div class="nom-hero-content">
+        <p class="nom-hero-eyebrow" aria-hidden="true">Internal Operating System</p>
+        <h1 class="nom-hero-title" id="hero-heading">NOM Internal</h1>
+        <p class="nom-hero-standfirst">Operating visibility across delivery, growth, and relationships. The nervous system of a modern firm.</p>
+
+        <div class="nom-hero-status" role="status" aria-live="polite" aria-label="System status">
+          <span class="nom-status-indicator" aria-hidden="true">
+            <span class="nom-status-dot"></span>
+            <span class="nom-status-ring"></span>
+          </span>
+          <span class="nom-status-text">Operational</span>
+          <span class="nom-status-sep" aria-hidden="true">&middot;</span>
+          <span class="nom-status-clock" id="nom-clock" aria-label="Current time"></span>
+        </div>
+
+        <p class="nom-hero-focus" id="hero-focus" aria-label="Current focus"></p>
+
+        <div class="nom-hero-chips" id="hero-chips" aria-label="Active priorities"></div>
+
+        <div class="nom-hero-stats" id="hero-stats" aria-label="Operating summary"></div>
+      </div>
+
+      <!-- Network constellation -->
+      <div class="nom-hero-visual" aria-hidden="true">
+        <svg class="nom-network-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="210" cy="210" r="90" fill="rgba(26,42,212,0.04)"/>
+          <circle cx="210" cy="210" r="140" fill="rgba(26,42,212,0.02)"/>
+          <g stroke="#bfc6f0" stroke-width="0.75" opacity="0.18">
+            <line x1="210" y1="210" x2="210" y2="58"/>
+            <line x1="210" y1="210" x2="348" y2="132"/>
+            <line x1="210" y1="210" x2="318" y2="300"/>
+            <line x1="210" y1="210" x2="102" y2="300"/>
+            <line x1="210" y1="210" x2="72" y2="132"/>
+            <line x1="210" y1="58" x2="348" y2="132" opacity="0.5"/>
+            <line x1="348" y1="132" x2="318" y2="300" opacity="0.5"/>
+            <line x1="102" y1="300" x2="72" y2="132" opacity="0.5"/>
+          </g>
+          <circle r="2" fill="#1a2ad4" opacity="0.7">
+            <animateMotion path="M210,210 L210,58" dur="2.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="2" fill="#1a2ad4" opacity="0.7">
+            <animateMotion path="M210,210 L348,132" dur="3.1s" begin="0.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.5" fill="#bfc6f0" opacity="0.5">
+            <animateMotion path="M210,210 L318,300" dur="2.8s" begin="1.1s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.5" fill="#bfc6f0" opacity="0.5">
+            <animateMotion path="M210,210 L102,300" dur="3.4s" begin="0.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.5" fill="#bfc6f0" opacity="0.4">
+            <animateMotion path="M210,210 L72,132" dur="2.2s" begin="1.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="210" cy="58" r="5" stroke="#1a2ad4" stroke-width="1.2" opacity="0.65"/>
+          <circle cx="210" cy="58" r="9" stroke="rgba(26,42,212,0.15)" stroke-width="1"/>
+          <text x="210" y="42" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.32)" letter-spacing="1.8">DELIVERY</text>
+          <circle cx="348" cy="132" r="5" stroke="#1a2ad4" stroke-width="1.2" opacity="0.65"/>
+          <circle cx="348" cy="132" r="9" stroke="rgba(26,42,212,0.15)" stroke-width="1"/>
+          <text x="362" y="136" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.32)" letter-spacing="1.8">GROWTH</text>
+          <circle cx="318" cy="300" r="5" stroke="#bfc6f0" stroke-width="1.2" opacity="0.5"/>
+          <circle cx="318" cy="300" r="9" stroke="rgba(191,198,240,0.12)" stroke-width="1"/>
+          <text x="332" y="304" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.28)" letter-spacing="1.8">CONTENT</text>
+          <circle cx="102" cy="300" r="5" stroke="#bfc6f0" stroke-width="1.2" opacity="0.5"/>
+          <circle cx="102" cy="300" r="9" stroke="rgba(191,198,240,0.12)" stroke-width="1"/>
+          <text x="90" y="320" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="rgba(242,240,232,0.28)" letter-spacing="1.4">RELATIONS</text>
+          <circle cx="72" cy="132" r="5" stroke="#bfc6f0" stroke-width="1.2" opacity="0.5"/>
+          <circle cx="72" cy="132" r="9" stroke="rgba(191,198,240,0.12)" stroke-width="1"/>
+          <text x="58" y="118" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(242,240,232,0.28)" letter-spacing="1.8">SYSTEM</text>
+          <circle cx="210" cy="210" r="24" fill="rgba(26,42,212,0.1)" stroke="rgba(26,42,212,0.3)" stroke-width="1"/>
+          <circle cx="210" cy="210" r="34" fill="none" stroke="rgba(26,42,212,0.08)" stroke-width="1" stroke-dasharray="3 6">
+            <animateTransform attributeName="transform" type="rotate" from="0 210 210" to="360 210 210" dur="45s" repeatCount="indefinite"/>
+          </circle>
+          <text x="210" y="207" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(242,240,232,0.5)" letter-spacing="3">NOM</text>
+          <text x="210" y="219" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="rgba(242,240,232,0.22)" letter-spacing="2.5">INT</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+  <!-- ── Next 5 ── populated by JS ── -->
+  <section class="nom-section nom-section--dark nom-section--next5" id="next5" aria-labelledby="next5-heading">
+    <div class="nom-container">
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Strategic bets · Where NOM is heading</p>
+          <h2 class="nom-section-title" id="next5-heading">Next 5</h2>
+        </div>
+      </div>
+      <div class="nom-next5-grid" id="next5-grid" role="list" aria-label="Next 5 strategic priorities"></div>
+    </div>
+  </section>
+
+  <!-- ── Operating Priorities ── populated by JS ── -->
+  <section class="nom-section nom-section--light" id="priorities" aria-labelledby="priorities-heading">
+    <div class="nom-container">
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">This week &middot; This month</p>
+          <h2 class="nom-section-title" id="priorities-heading">Operating Priorities</h2>
+        </div>
+        <span class="nom-section-count" id="priorities-count"></span>
+      </div>
+      <div class="nom-priorities-grid" id="priorities-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Active Clients ── populated by JS ── -->
+  <section class="nom-section nom-section--white" id="clients" aria-labelledby="clients-heading">
+    <div class="nom-container">
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Delivery &middot; Relationships</p>
+          <h2 class="nom-section-title" id="clients-heading">Active Clients</h2>
+        </div>
+        <span class="nom-section-count" id="clients-count"></span>
+      </div>
+      <div class="nom-clients-grid" id="clients-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Content Engine ── populated by JS ── -->
+  <section class="nom-section nom-section--dark" id="content" aria-labelledby="content-heading">
+    <div class="nom-container">
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Articles &middot; Clusters &middot; Pipeline</p>
+          <h2 class="nom-section-title" id="content-heading">Content &amp; Visibility Engine</h2>
+        </div>
+        <span class="nom-section-count" id="content-count"></span>
+      </div>
+      <div class="nom-content-lanes nom-reveal" role="list" aria-label="Content pipeline by status">
+        <div class="nom-content-lane nom-content-lane--live" role="listitem">
+          <div class="nom-content-lane-head">
+            <span class="nom-content-lane-dot" aria-hidden="true"></span>
+            <span class="nom-content-lane-label">Live</span>
+            <span class="nom-content-lane-n" id="content-live-count"></span>
+          </div>
+          <div class="nom-content-items" id="content-live-items"></div>
+        </div>
+        <div class="nom-content-lane nom-content-lane--draft" role="listitem">
+          <div class="nom-content-lane-head">
+            <span class="nom-content-lane-dot" aria-hidden="true"></span>
+            <span class="nom-content-lane-label">In Draft</span>
+            <span class="nom-content-lane-n" id="content-draft-count"></span>
+          </div>
+          <div class="nom-content-items" id="content-draft-items"></div>
+        </div>
+        <div class="nom-content-lane nom-content-lane--ideas" role="listitem">
+          <div class="nom-content-lane-head">
+            <span class="nom-content-lane-dot" aria-hidden="true"></span>
+            <span class="nom-content-lane-label">In Pipeline</span>
+            <span class="nom-content-lane-n" id="content-pipeline-count"></span>
+          </div>
+          <div class="nom-content-items" id="content-pipeline-items"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Relationships ── populated by JS ── -->
+  <section class="nom-section nom-section--warm" id="relationships" aria-labelledby="relationships-heading">
+    <div class="nom-container">
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">People &middot; Conversations &middot; Momentum</p>
+          <h2 class="nom-section-title" id="relationships-heading">Relationships &amp; Pipeline</h2>
+        </div>
+        <span class="nom-section-count" id="relationships-count"></span>
+      </div>
+      <div class="nom-relationships-grid" id="relationships-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Proof & Assets ── populated by JS ── -->
+  <section class="nom-section nom-section--light" id="assets" aria-labelledby="assets-heading">
+    <div class="nom-container">
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Proposals &middot; Dashboards &middot; Articles</p>
+          <h2 class="nom-section-title" id="assets-heading">Proof &amp; Assets</h2>
+        </div>
+        <span class="nom-section-count" id="assets-count"></span>
+      </div>
+      <div class="nom-assets-grid" id="assets-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── NOM System ── populated by JS ── -->
+  <section class="nom-section nom-section--dark" id="system" aria-labelledby="system-heading">
+    <div class="nom-container">
+      <div class="nom-section-header nom-reveal">
+        <div class="nom-section-meta">
+          <p class="nom-section-eyebrow">Framework &middot; Playbooks &middot; Method</p>
+          <h2 class="nom-section-title" id="system-heading">NOM Operating Framework</h2>
+        </div>
+        <span class="nom-section-count" id="system-count"></span>
+      </div>
+      <div class="nom-system-grid" id="system-grid"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer class="nom-footer" role="contentinfo">
+  <div class="nom-container">
+    <a href="/" class="nom-footer-brand" aria-label="Not On Mondays — home">
+      <span class="nom-logo-initials" aria-hidden="true">
+        <span class="nom-logo-n">n</span>
+        <span class="nom-logo-o">o</span>
+        <span class="nom-logo-m">m</span>
+      </span>
+      <span class="nom-logo-divider" aria-hidden="true"></span>
+      <span class="nom-logo-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <div class="nom-footer-right">
+      <span>NOM Internal &middot; Not for distribution</span>
+      <span>notonmondays.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/*
+ * ── How to update this dashboard ──────────────────────────────────────
+ *
+ * All content is driven by /hub/data/nom.json — no HTML editing needed
+ * for routine updates.
+ *
+ * JSON sections:
+ *   meta        — focus statement, hero chips
+ *   next5       — the 5 strategic bets (title + context)
+ *   priorities  — operating priority cards
+ *                 fields: level, status, title, context, progress, next, due
+ *                 status values: "active" | "progress" | "drafting"
+ *   clients     — active client cards
+ *                 fields: sector, name, status, focus, milestone, url
+ *                 status values: "active" | "scoping" | "demo"
+ *   content     — articles by pipeline stage
+ *                 fields: status ("live"|"draft"|"pipeline"), cluster, title, meta, url
+ *   relationships — people cards
+ *                 fields: name, org, warmth ("active"|"warm"|"cool"), context, lastContact, next
+ *   assets      — proof documents and links
+ *                 fields: type, title, date, url (null = no link), icon
+ *                 icon values: "grid"|"document"|"text"|"clock"|"star"|"list"
+ *   playbooks   — NOM operating framework cards
+ *                 fields: num, title, body
+ *
+ * To update: edit /hub/data/nom.json, save, and deploy. Done.
+ * ─────────────────────────────────────────────────────────────────────
+ */
+
+/* ── Live clock ── */
+const clockEl = document.getElementById('nom-clock');
+function updateClock() {
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  clockEl.textContent = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+/* ── Scroll reveal ── */
+const revealObserver = (() => {
+  if (!('IntersectionObserver' in window)) return null;
+  return new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+})();
+
+function observeReveals(root) {
+  root.querySelectorAll('.nom-reveal').forEach(el => {
+    if (revealObserver) revealObserver.observe(el);
+    else el.classList.add('is-visible');
+  });
+}
+
+/* Already-existing static reveal elements (section headers) */
+observeReveals(document);
+
+/* ── Cursor glow ── */
+const glowEl = document.getElementById('cursor-glow');
+let glowTicking = false;
+document.addEventListener('mousemove', e => {
+  if (!glowTicking) {
+    requestAnimationFrame(() => {
+      glowEl.style.background =
+        'radial-gradient(500px circle at ' + e.clientX + 'px ' + e.clientY + 'px, rgba(26,42,212,0.045), transparent 70%)';
+      glowTicking = false;
+    });
+    glowTicking = true;
+  }
+});
+
+/* ── SVG icon lookup ── */
+const ICONS = {
+  grid:     '<rect x="1" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/>',
+  document: '<rect x="1.5" y="1" width="11" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="4" y1="5" x2="10" y2="5" stroke="currentColor" stroke-width="1"/><line x1="4" y1="7.5" x2="10" y2="7.5" stroke="currentColor" stroke-width="1"/><line x1="4" y1="10" x2="7" y2="10" stroke="currentColor" stroke-width="1"/>',
+  text:     '<line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="6" x2="13" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="9" x2="9" y2="9" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="1.2"/>',
+  clock:    '<circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="1.5" x2="7" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="7" x2="10" y2="4" stroke="currentColor" stroke-width="1"/>',
+  star:     '<path d="M7 1L8.8 5.2L13 5.6L10 8.3L10.9 12.5L7 10.2L3.1 12.5L4 8.3L1 5.6L5.2 5.2L7 1Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>',
+  list:     '<path d="M1 3h3v3H1zM5.5 4.5h7.5M1 8.5h3v3H1zM5.5 10h7.5" stroke="currentColor" stroke-width="1.1"/>'
+};
+
+function svgIcon(key) {
+  return '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    (ICONS[key] || ICONS.document) +
+    '</svg>';
+}
+
+/* ── Escape helper (no innerHTML with user-controlled data) ── */
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/* ── Render: hero ── */
+function renderHero(data) {
+  const focus = document.getElementById('hero-focus');
+  if (focus) focus.textContent = data.meta.focus;
+
+  const chips = document.getElementById('hero-chips');
+  if (chips && data.meta.chips) {
+    chips.innerHTML = data.meta.chips
+      .map(c => '<span class="nom-chip">' + esc(c) + '</span>')
+      .join('');
+  }
+
+  const live = data.clients.filter(c => c.status !== 'demo').length;
+  const articles = data.content.length;
+  const open = data.priorities.length;
+  const rels = data.relationships.length;
+
+  const stats = document.getElementById('hero-stats');
+  if (stats) {
+    stats.innerHTML = [
+      [live, 'Active clients'],
+      [articles, 'Articles in pipeline'],
+      [open, 'Open priorities'],
+      [rels, 'Relationships active']
+    ].map(([val, label]) =>
+      '<div class="nom-hero-stat">' +
+        '<span class="nom-hero-stat-value">' + val + '</span>' +
+        '<span class="nom-hero-stat-label">' + esc(label) + '</span>' +
+      '</div>'
+    ).join('');
+  }
+}
+
+/* ── Render: Next 5 ── */
+function renderNext5(items) {
+  const grid = document.getElementById('next5-grid');
+  if (!grid) return;
+  const delays = ['d1','d2','d3','d4','d5'];
+  grid.innerHTML = items.map((item, i) =>
+    '<article class="nom-next5-card nom-reveal nom-reveal-' + delays[i] + '" role="listitem">' +
+      '<span class="nom-next5-num" aria-hidden="true">0' + (i + 1) + '</span>' +
+      '<h3 class="nom-next5-title">' + esc(item.title) + '</h3>' +
+      '<p class="nom-next5-context">' + esc(item.context) + '</p>' +
+    '</article>'
+  ).join('');
+  observeReveals(grid);
+}
+
+/* ── Render: priorities ── */
+function renderPriorities(priorities) {
+  const grid = document.getElementById('priorities-grid');
+  const count = document.getElementById('priorities-count');
+  if (!grid) return;
+  if (count) count.textContent = priorities.length + ' open';
+
+  const statusClass = { active: 'active', progress: 'progress', drafting: 'drafting' };
+  const statusLabel = { active: 'Active', progress: 'In review', drafting: 'Drafting' };
+  const delays = ['d1','d2','d3','d4','d5','d6'];
+
+  grid.innerHTML = priorities.map((p, i) => {
+    const sc = statusClass[p.status] || 'active';
+    const sl = statusLabel[p.status] || p.status;
+    const delay = (0.3 + i * 0.1).toFixed(1);
+    return (
+      '<article class="nom-priority-card nom-reveal nom-reveal-' + delays[i % 6] + '" ' +
+        'aria-label="Priority: ' + esc(p.title) + '">' +
+        '<div class="nom-priority-card-top">' +
+          '<span class="nom-priority-badge">' + esc(p.level) + '</span>' +
+          '<span class="nom-priority-status nom-priority-status--' + sc + '" role="status">' +
+            '<span class="nom-priority-status-dot" aria-hidden="true"></span>' +
+            esc(sl) +
+          '</span>' +
+        '</div>' +
+        '<h3 class="nom-priority-card-title">' + esc(p.title) + '</h3>' +
+        '<p class="nom-priority-card-context">' + esc(p.context) + '</p>' +
+        '<div class="nom-progress-track" role="progressbar" aria-valuenow="' + p.progress + '" ' +
+          'aria-valuemin="0" aria-valuemax="100" aria-label="' + p.progress + '% complete">' +
+          '<div class="nom-progress-fill" data-fill="' + p.progress + '" data-delay="' + delay + '"></div>' +
+        '</div>' +
+        '<p class="nom-progress-label">' + p.progress + '%</p>' +
+        '<div class="nom-priority-card-footer">' +
+          '<p class="nom-priority-next">' +
+            '<span class="nom-priority-next-arrow" aria-hidden="true">→</span>' +
+            esc(p.next) +
+          '</p>' +
+          '<p class="nom-priority-due">Due: ' + esc(p.due) + '</p>' +
+        '</div>' +
+      '</article>'
+    );
+  }).join('');
+
+  grid.querySelectorAll('.nom-progress-fill').forEach(el => {
+    el.style.setProperty('--fill', el.dataset.fill + '%');
+    el.style.setProperty('--delay', el.dataset.delay + 's');
+  });
+  observeReveals(grid);
+}
+
+/* ── Render: clients ── */
+function renderClients(clients) {
+  const grid = document.getElementById('clients-grid');
+  const count = document.getElementById('clients-count');
+  if (!grid) return;
+  if (count) count.textContent = clients.length + ' clients';
+
+  const delays = ['d1','d2','d3','d4'];
+
+  grid.innerHTML = clients.map((c, i) =>
+    '<article class="nom-client-card nom-reveal nom-reveal-' + delays[i % 4] + '" ' +
+      'aria-label="Client: ' + esc(c.name) + '">' +
+      '<div class="nom-client-accent" aria-hidden="true"></div>' +
+      '<div class="nom-client-body">' +
+        '<div class="nom-client-top">' +
+          '<div>' +
+            '<p class="nom-client-sector">' + esc(c.sector) + '</p>' +
+            '<h3 class="nom-client-name">' + esc(c.name) + '</h3>' +
+          '</div>' +
+          '<span class="nom-client-status nom-client-status--' + esc(c.status) + '" role="status">' +
+            esc(c.status.charAt(0).toUpperCase() + c.status.slice(1)) +
+          '</span>' +
+        '</div>' +
+        '<p class="nom-client-focus">' + esc(c.focus) + '</p>' +
+        '<p class="nom-client-milestone">' + esc(c.milestone) + '</p>' +
+        '<a href="' + esc(c.url) + '" class="nom-client-link">' +
+          'Open workspace <span class="nom-client-link-arrow" aria-hidden="true">→</span>' +
+        '</a>' +
+      '</div>' +
+    '</article>'
+  ).join('');
+  observeReveals(grid);
+}
+
+/* ── Render: content item ── */
+function contentItemHtml(item) {
+  const inner =
+    '<p class="nom-content-item-cluster">' + esc(item.cluster) + '</p>' +
+    '<p class="nom-content-item-title">' + esc(item.title) + '</p>' +
+    '<p class="nom-content-item-meta">' + esc(item.meta) + '</p>';
+  if (item.url) {
+    return '<a href="' + esc(item.url) + '" class="nom-content-item nom-content-item--link">' + inner + '</a>';
+  }
+  return '<article class="nom-content-item">' + inner + '</article>';
+}
+
+function renderContent(items) {
+  const total = document.getElementById('content-count');
+  if (total) total.textContent = items.length + ' items';
+
+  const live = items.filter(i => i.status === 'live');
+  const draft = items.filter(i => i.status === 'draft');
+  const pipeline = items.filter(i => i.status === 'pipeline');
+
+  const liveCount = document.getElementById('content-live-count');
+  const draftCount = document.getElementById('content-draft-count');
+  const pipelineCount = document.getElementById('content-pipeline-count');
+  if (liveCount) liveCount.textContent = live.length;
+  if (draftCount) draftCount.textContent = draft.length;
+  if (pipelineCount) pipelineCount.textContent = pipeline.length;
+
+  const liveEl = document.getElementById('content-live-items');
+  const draftEl = document.getElementById('content-draft-items');
+  const pipelineEl = document.getElementById('content-pipeline-items');
+  if (liveEl) liveEl.innerHTML = live.map(contentItemHtml).join('');
+  if (draftEl) draftEl.innerHTML = draft.map(contentItemHtml).join('');
+  if (pipelineEl) pipelineEl.innerHTML = pipeline.map(contentItemHtml).join('');
+}
+
+/* ── Render: relationships ── */
+function renderRelationships(rels) {
+  const grid = document.getElementById('relationships-grid');
+  const count = document.getElementById('relationships-count');
+  if (!grid) return;
+  if (count) count.textContent = rels.length + ' active';
+
+  const delays = ['d1','d2','d3'];
+
+  grid.innerHTML = rels.map((r, i) =>
+    '<article class="nom-rel-card nom-reveal nom-reveal-' + delays[i % 3] + '" ' +
+      'aria-label="Relationship: ' + esc(r.name) + ', ' + esc(r.org) + '">' +
+      '<div class="nom-rel-warmth nom-rel-warmth--' + esc(r.warmth) + '" aria-hidden="true"></div>' +
+      '<h3 class="nom-rel-name">' + esc(r.name) + '</h3>' +
+      '<p class="nom-rel-org">' + esc(r.org) + '</p>' +
+      '<p class="nom-rel-context">' + esc(r.context) + '</p>' +
+      '<p class="nom-rel-touchpoint">Last contact: ' + esc(r.lastContact) + '</p>' +
+      '<div class="nom-rel-next">' +
+        '<span class="nom-rel-next-label">Suggested next move</span>' +
+        '<span class="nom-rel-next-text">' + esc(r.next) + '</span>' +
+      '</div>' +
+    '</article>'
+  ).join('');
+  observeReveals(grid);
+}
+
+/* ── Render: assets ── */
+function renderAssets(assets) {
+  const grid = document.getElementById('assets-grid');
+  const count = document.getElementById('assets-count');
+  if (!grid) return;
+  if (count) count.textContent = assets.length + ' assets';
+
+  const delays = ['d1','d2','d3','d4','d5','d6'];
+
+  grid.innerHTML = assets.map((a, i) => {
+    const inner =
+      '<div class="nom-asset-card-top">' +
+        '<span class="nom-asset-type">' + esc(a.type) + '</span>' +
+        '<span class="nom-asset-icon" aria-hidden="true">' + svgIcon(a.icon) + '</span>' +
+      '</div>' +
+      '<h3 class="nom-asset-title">' + esc(a.title) + '</h3>' +
+      '<div class="nom-asset-bottom">' +
+        '<span class="nom-asset-date">' + esc(a.date) + '</span>' +
+        (a.url ? '<span class="nom-asset-cta">View →</span>' : '') +
+      '</div>';
+
+    if (a.url) {
+      return '<a href="' + esc(a.url) + '" class="nom-asset-card nom-reveal nom-reveal-' + delays[i % 6] + '" ' +
+        'aria-label="' + esc(a.type) + ': ' + esc(a.title) + '">' + inner + '</a>';
+    }
+    return '<article class="nom-asset-card nom-reveal nom-reveal-' + delays[i % 6] + '" ' +
+      'aria-label="' + esc(a.type) + ': ' + esc(a.title) + '">' + inner + '</article>';
+  }).join('');
+  observeReveals(grid);
+}
+
+/* ── Render: playbooks ── */
+function renderPlaybooks(items) {
+  const grid = document.getElementById('system-grid');
+  const count = document.getElementById('system-count');
+  if (!grid) return;
+  if (count) count.textContent = items.length + ' elements';
+
+  const delays = ['d1','d2','d3','d4','d5','d6'];
+
+  grid.innerHTML = items.map((p, i) =>
+    '<article class="nom-system-card nom-reveal nom-reveal-' + delays[i % 6] + '" ' +
+      'aria-label="Framework element: ' + esc(p.title) + '">' +
+      '<p class="nom-system-card-num">' + esc(p.num) + '</p>' +
+      '<h3 class="nom-system-card-title">' + esc(p.title) + '</h3>' +
+      '<p class="nom-system-card-body">' + esc(p.body) + '</p>' +
+    '</article>'
+  ).join('');
+  observeReveals(grid);
+}
+
+/* ── Error state ── */
+function showLoadError(msg) {
+  ['next5-grid','priorities-grid','clients-grid','relationships-grid','assets-grid','system-grid'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.children.length) {
+      el.innerHTML = '<p class="nom-load-error">' + esc(msg) + '</p>';
+    }
+  });
+  ['content-live-items','content-draft-items','content-pipeline-items'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.children.length) {
+      el.innerHTML = '<p class="nom-load-error">' + esc(msg) + '</p>';
+    }
+  });
+}
+
+/* ── Load and render ── */
+fetch('/hub/data/nom.json')
+  .then(r => {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  })
+  .then(data => {
+    renderHero(data);
+    renderNext5(data.next5);
+    renderPriorities(data.priorities);
+    renderClients(data.clients);
+    renderContent(data.content);
+    renderRelationships(data.relationships);
+    renderAssets(data.assets);
+    renderPlaybooks(data.playbooks);
+  })
+  .catch(() => {
+    showLoadError('Dashboard data unavailable. Check /hub/data/nom.json.');
+  });
+</script>
+
+</body>
+</html>
