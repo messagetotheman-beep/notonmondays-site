@@ -504,11 +504,37 @@
   })();
 
   (function () {
-    var form = document.getElementById('signup-form');
+    var form     = document.getElementById('signup-form');
     if (!form) return;
-    form.addEventListener('submit', function () {
-      var btn = form.querySelector('.article-signup-btn');
-      if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+    var btn      = form.querySelector('.article-signup-btn');
+    var email    = document.getElementById('signup-email');
+    var feedback = form.querySelector('.article-signup-feedback');
+    var label    = btn ? btn.textContent : 'Send me the notes';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!btn || !email) return;
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      if (feedback) feedback.textContent = '';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        mode: 'no-cors'
+      })
+      .then(function () {
+        email.value = '';
+        btn.textContent = label;
+        btn.disabled = false;
+        if (feedback) feedback.textContent = 'You’re in. We’ll send notes when there’s something worth sharing.';
+      })
+      .catch(function () {
+        btn.textContent = label;
+        btn.disabled = false;
+        if (feedback) feedback.textContent = 'Something went wrong. Please try again.';
+      });
     });
   })();
 
