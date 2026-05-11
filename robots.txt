@@ -1,7 +1,8 @@
 User-agent: *
-Disallow: /p/
 Disallow: /hub/
-Disallow: /kwc/
+Disallow: /portal/
+Disallow: /p/
 Disallow: /demos/
+Disallow: /templates/
 
 Sitemap: https://notonmondays.com/sitemap.xml
