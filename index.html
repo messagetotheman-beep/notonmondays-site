@@ -1050,23 +1050,55 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 /* =====================================================
    FOOTER SOCIAL LINKS
    ===================================================== */
-.footer-social {
+.footer-social-block {
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: flex-end;
+}
+.footer-social-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  font-weight: 300;
+}
+.footer-social-links {
+  display: flex;
+  gap: 1.25rem;
   list-style: none;
   padding: 0;
-  margin-top: 0.75rem;
+  margin: 0;
 }
-.footer-social a {
+.footer-social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: 'DM Mono', monospace;
   font-size: 0.52rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.38);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
-.footer-social a:hover, .footer-social a:focus-visible { color: rgba(255,255,255,0.65); }
+.footer-social-links a:hover,
+.footer-social-links a:focus-visible { color: rgba(255,255,255,0.72); }
+.footer-social-links svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+  transition: opacity 0.25s ease;
+}
+.footer-social-links a:hover svg,
+.footer-social-links a:focus-visible svg { opacity: 1; }
 
 @media (max-width: 900px) {
   #when-we-help { padding: 5rem 1.5rem; }
@@ -1074,7 +1106,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   .when-item:nth-child(odd) { padding-right: 0; border-right: none; }
   .when-item:nth-child(even) { padding-left: 0; }
   .cap-cards-grid { grid-template-columns: 1fr 1fr; }
-  .footer-social { justify-content: center; }
+  .footer-social-block { align-items: center; }
 }
 @media (max-width: 600px) {
   .cap-cards-grid { grid-template-columns: 1fr; }
@@ -1813,11 +1845,30 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <li><a href="net-zero.html">Net Zero &amp; Environmental Policy</a></li>
       <li><a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
     </ul>
-    <ul class="footer-social">
-      <li><a href="https://www.linkedin.com/company/not-on-mondays" target="_blank" rel="noopener noreferrer" aria-label="Not On Mondays on LinkedIn (opens in new tab)">LinkedIn</a></li>
-      <li><a href="https://x.com/notonmondays_" target="_blank" rel="noopener noreferrer" aria-label="Not On Mondays on X (opens in new tab)">X</a></li>
-    </ul>
   </nav>
+  <div class="footer-social-block">
+    <p class="footer-social-label">Follow the thinking</p>
+    <ul class="footer-social-links">
+      <li>
+        <a href="https://www.linkedin.com/company/not-on-mondays" target="_blank" rel="noopener noreferrer" aria-label="Not On Mondays on LinkedIn (opens in new tab)">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://x.com/notonmondays_" target="_blank" rel="noopener noreferrer" aria-label="Not On Mondays on X (opens in new tab)">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4l16 16M20 4L4 20"/>
+          </svg>
+          X
+        </a>
+      </li>
+    </ul>
+  </div>
   <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
 </footer>
 
