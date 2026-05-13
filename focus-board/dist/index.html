@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>inFlow</title>
+    <meta name="description" content="A calm focus board for remote workers. One focus, three priorities, a timer, and ambient sound. By Not On Mondays." />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <!-- theme-color: light default; JS overrides for dark -->
+    <meta name="theme-color" content="#f2f0e8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14141f" media="(prefers-color-scheme: dark)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-DKWTY9PC.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DFg_KPgT.css">
+  </head>
+  <body>
+    <!-- Runs before React to prevent flash of wrong theme -->
+    <script>
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem('fb_theme'); } catch (_) {}
+        var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', stored || system);
+      })();
+    </script>
+    <div id="root"></div>
+  </body>
+</html>
