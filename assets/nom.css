@@ -46,27 +46,27 @@ nav {
   position: static;
 }
 
-/* Shared logo frame — subtle blue border around the nom initials block.
+/* Shared logo frame — blue border around the nom initials block.
    Pages define their own display:flex/gap for .nav-logo-initials;
    this rule adds only the frame, which those rules do not override. */
 .nav-logo-initials {
-  border: 1px solid rgba(26,42,212,0.2);
-  padding: 0.3rem 0.45rem;
+  border: 1px solid rgba(26,42,212,0.38);
+  padding: 0.35rem 0.5rem;
 }
 .nav-logo:hover .nav-logo-initials,
 .nav-logo:focus-visible .nav-logo-initials {
-  border-color: rgba(26,42,212,0.4);
+  border-color: rgba(26,42,212,0.65);
 }
 
 /* Shared logo letter size — (0,2,0) wins over page .nom-initial (0,1,0). */
 .nav-logo .nom-initial {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 /* Shared fade-letter colour — (0,3,0) overrides page .nom-initial.fade-* (0,2,0). */
 .nav-logo .nom-initial.fade-1,
 .nav-logo .nom-initial.fade-2 {
-  color: rgba(17,17,36,0.4);
+  color: rgba(17,17,36,0.48);
 }
 
 .nav-cta {
