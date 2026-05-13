@@ -12,54 +12,29 @@
 body { cursor: none; }
 
 /* CURSOR */
-.cursor {
-  width: 8px; height: 8px;
-  background: var(--blue);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-}
-.cursor-ring {
-  width: 32px; height: 32px;
-  border: 1px solid rgba(26,42,212,0.4);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: all 0.15s ease;
-}
+.cursor { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease; }
+.cursor-ring { width: 32px; height: 32px; border: 1px solid rgba(26,42,212,0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.15s ease; }
 
-.nav-logo {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: lowercase;
-  color: var(--blue);
-  text-decoration: none;
-  font-weight: 300;
-}
-
-.nav-links {
-  display: flex;
-  gap: 3rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-weight: 300;
-}
-.nav-links a:hover { color: var(--blue); }
+/* ── Site header & nav ───────────────────────────── */
+.skip-link { position: absolute; top: -100%; left: 1rem; background: var(--blue); color: #fff; padding: 0.75rem 1.25rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; z-index: 99999; transition: top 0.2s ease; }
+.skip-link:focus { top: 1rem; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(242,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,42,212,0.08); }
+.site-nav { padding: 0 4rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: inline-flex; align-items: center; gap: 0.9rem; text-decoration: none; line-height: 1; }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span { font-family: 'DM Mono', monospace; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(17,17,36,0.6); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; font-weight: 300; }
+.nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--dark); font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.nav-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
 /* HERO */
 .cs-hero {
@@ -384,47 +359,11 @@ body { cursor: none; }
 .cs-cta-btn:hover { background: var(--deep-blue); }
 
 /* FOOTER */
-footer {
-  background: var(--dark);
-  border-top: 1px solid rgba(255,255,255,0.04);
-  padding: 2rem 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-logo {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: lowercase;
-  color: rgba(255,255,255,0.25);
-  font-weight: 300;
-}
-
-.footer-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.footer-links a {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.footer-links a:hover { color: rgba(255,255,255,0.6); }
-
-.footer-copy {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.15);
-}
+.site-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
 
 /* REVEAL */
 .reveal {
@@ -438,8 +377,14 @@ footer {
 
 /* MOBILE */
 @media (max-width: 900px) {
-  nav { padding: 0 1.5rem; }
-  .nav-links { display: none; }
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; align-items: center; gap: 0.5rem; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(242,240,232,0.98); backdrop-filter: blur(12px); padding: 1.5rem 1.5rem 2rem; gap: 0; border-bottom: 1px solid rgba(26,42,212,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .nav-cta { display: none; }
   .cs-hero, .cs-pullquote, .cs-body, .cs-cta { padding-left: 1.5rem; padding-right: 1.5rem; }
   .cs-body-inner { grid-template-columns: 1fr; gap: 4rem; }
   .cs-sidebar { position: static; }
@@ -447,6 +392,8 @@ footer {
   .cs-meta-strip { gap: 2rem; }
   body { cursor: auto; }
   .cursor, .cursor-ring { display: none; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
 }
 </style>
 </head>
@@ -455,23 +402,45 @@ footer {
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
-<nav>
-  <a href="notonmondays.html" class="nav-logo">not on mondays</a>
-  <ul class="nav-links">
-    <li><a href="notonmondays.html#about">About</a></li>
-    <li><a href="notonmondays.html#offerings">Offerings</a></li>
-    <li><a href="notonmondays.html#ai">AI</a></li>
-    <li><a href="notonmondays.html#case-studies">Work</a></li>
-    <li><a href="notonmondays.html#coaching">Coaching</a></li>
-  </ul>
-  <a href="notonmondays.html#contact" class="nav-cta">Start a conversation</a>
-</nav>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span>Menu</span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
+  </nav>
+</header>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="cs-hero">
   <div class="cs-hero-inner">
-    <a href="notonmondays.html#case-studies" class="cs-back">← Our Work</a>
+    <a href="/work/" class="cs-back">← Our Work</a>
     <div class="cs-eyebrow">Case Study № 001</div>
     <h1 class="cs-headline reveal">Improving operations and delivery for Azariah</h1>
     <div class="cs-meta-strip reveal reveal-delay-1">
@@ -594,14 +563,14 @@ footer {
         <div class="cs-offering-label">Offering used</div>
         <div class="cs-offering-name">The Operating Layer</div>
         <p class="cs-offering-desc">Retained monthly operating partnership. PMO function, managed VA support, and an embedded operator who works inside the business : not around it.</p>
-        <a href="notonmondays.html#offerings" class="cs-offering-link">Learn more →</a>
+        <a href="/services/" class="cs-offering-link">Learn more →</a>
       </div>
 
       <div class="cs-offering-box reveal reveal-delay-2" style="margin-top: 1.5rem;">
         <div class="cs-offering-label">Also in place</div>
         <div class="cs-offering-name">The Inner Layer</div>
         <p class="cs-offering-desc">Ongoing coaching for the CEO and COO. Working on the people at the centre of the organisation : not just the business around them.</p>
-        <a href="notonmondays.html#coaching" class="cs-offering-link">Learn more →</a>
+        <a href="/#coaching" class="cs-offering-link">Learn more →</a>
       </div>
     </aside>
 
@@ -615,22 +584,29 @@ footer {
       <div class="cs-cta-eyebrow">Work with us</div>
       <div class="cs-cta-title">Sound familiar? <em>Let's talk.</em></div>
     </div>
-    <a href="notonmondays.html#contact" class="cs-cta-btn">Start a conversation</a>
+    <a href="/#contact" class="cs-cta-btn">Start a conversation</a>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <span class="footer-logo">not on mondays</span>
-  <ul class="footer-links">
-    <li><a href="notonmondays.html#about">About</a></li>
-    <li><a href="notonmondays.html#offerings">Offerings</a></li>
-    <li><a href="notonmondays.html#ai">AI</a></li>
-    <li><a href="notonmondays.html#case-studies">Work</a></li>
-    <li><a href="notonmondays.html#coaching">Coaching</a></li>
-    <li><a href="notonmondays.html#contact">Contact</a></li>
-  </ul>
-  <span class="footer-copy">© 2026 notonmondays.com</span>
+</main>
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
 </footer>
 
 <script>
@@ -666,6 +642,24 @@ footer {
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      const label = navToggle.querySelector('span');
+      if (label) label.textContent = open ? 'Close' : 'Menu';
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+    });
+  }
 </script>
 </body>
 </html>

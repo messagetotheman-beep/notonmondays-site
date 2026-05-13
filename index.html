@@ -185,7 +185,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   line-height: 1;
 }
 .nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
-.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
+.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
 .nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.25); }
 .nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
 .nav-logo .nom-initial.landing { color: var(--blue); }
@@ -1217,10 +1217,11 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
     </button>
 
     <ul class="nav-links" id="nav-menu" role="list">
-      <li><a href="why-not-on-mondays.html">About</a></li>
+      <li><a href="#home" aria-current="page">Home</a></li>
+      <li><a href="/why-not-on-mondays">About</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/how-we-work/">How We Work</a></li>
-      <li><a href="#case-studies">Work</a></li>
+      <li><a href="/work/">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1822,17 +1823,17 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 <!-- SITE FOOTER — semantic landmark -->
 <footer class="site-footer">
   <a href="#home" aria-label="Not On Mondays — return to top" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
-    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
   </a>
   <nav aria-label="Footer navigation">
     <ul class="footer-links">
       <li><a href="/why-not-on-mondays">About</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/how-we-work/">How We Work</a></li>
-      <li><a href="#case-studies">Work</a></li>
-      <li><a href="legal-tech-operations.html">Legal Tech</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/legal-tech-operations">Legal Tech</a></li>
       <li><a href="/insights/">Insights</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1886,7 +1887,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
     if (el) {
       const e = 'hello' + '@' + 'notonmondays' + '.com';
       el.href = 'mailto:' + e;
-      el.textContent = e + ' →';
+      el.textContent = e;
     }
   })();
 

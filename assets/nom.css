@@ -39,11 +39,18 @@ nav {
   border-bottom: 1px solid rgba(26,42,212,0.08);
 }
 
+/* Reset the bare nav{} position:fixed for pages using the standard
+   <header class="site-header"><nav class="site-nav"> pattern.
+   The header handles fixed positioning; the nav must be static inside it. */
+.site-nav {
+  position: static;
+}
+
 /* Shared logo letter size — applies across all pages using nom.css.
    Higher specificity (.nav-logo .nom-initial = 0,2,0) wins over
    page-level .nom-initial rules (0,1,0) defined in inline <style> blocks. */
 .nav-logo .nom-initial {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .nav-cta {
