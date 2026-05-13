@@ -1,6 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="96" ry="96" fill="#1c1c28"/>
-  <!-- Half-filled circle: right half filled (◑ motif) -->
-  <circle cx="256" cy="256" r="148" fill="none" stroke="#7080f0" stroke-width="20"/>
-  <path d="M256 108 A148 148 0 0 1 256 404 Z" fill="#7080f0"/>
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="#0e0e1a"/>
+  <!--
+    Orbital arc: partial orbit trail.
+    Object (dot) rests at roughly 4 o'clock on the orbit.
+    The arc sweeps counterclockwise from the dot, traces through 3, 12, 9,
+    and ends at 7 o'clock — about 270° of visible trail.
+    The gap (lower third) is the undrawn portion of the orbit,
+    suggesting the path the object has yet to return through.
+    Centre: 256,256  Radius: 142
+    4 o'clock (120° from top): x=256+142*sin(120°)=256+123=379, y=256-142*cos(120°)=256+71=327
+    7 o'clock (210° from top): x=256+142*sin(210°)=256-71=185, y=256-142*cos(210°)=256+123=379
+    Arc from 7 o'clock to 4 o'clock, clockwise, 270° (large-arc=1, sweep=1)
+  -->
+  <!-- Faint ghost of the full orbit — containment without weight -->
+  <circle cx="256" cy="256" r="142" fill="none" stroke="#7080f0" stroke-width="10" opacity="0.12"/>
+  <!-- Orbital arc trail — the path behind the object -->
+  <path d="M185,379 A142,142 0 1,1 379,327"
+        fill="none"
+        stroke="#7080f0"
+        stroke-width="20"
+        stroke-linecap="round"
+        opacity="0.72"/>
+  <!-- Object: solid dot at 4 o'clock, mid-orbit -->
+  <circle cx="379" cy="327" r="28" fill="#7080f0" opacity="0.92"/>
 </svg>
