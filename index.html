@@ -184,15 +184,17 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   text-decoration: none;
   line-height: 1;
 }
-.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
-.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
-.nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.25); }
-.nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; border: 1px solid rgba(26,42,212,0.2); padding: 0.3rem 0.45rem; }
+.nav-logo:hover .nav-logo-initials,
+.nav-logo:focus-visible .nav-logo-initials { border-color: rgba(26,42,212,0.4); }
+.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 0.9rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
+.nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.4); }
+.nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.4); }
 .nav-logo .nom-initial.landing { color: var(--blue); }
 .nav-logo:hover .fade-1,
-.nav-logo:focus-visible .fade-1 { color: rgba(17,17,36,0.4); }
+.nav-logo:focus-visible .fade-1 { color: rgba(17,17,36,0.55); }
 .nav-logo:hover .fade-2,
-.nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.55); }
 .nav-logo:hover .landing,
 .nav-logo:focus-visible .landing { color: var(--deep-blue); }
 .nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
@@ -1823,9 +1825,9 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 <!-- SITE FOOTER — semantic landmark -->
 <footer class="site-footer">
   <a href="#home" aria-label="Not On Mondays — return to top" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
-    <span style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
   </a>
   <nav aria-label="Footer navigation">
     <ul class="footer-links">
