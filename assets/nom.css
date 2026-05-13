@@ -39,6 +39,13 @@ nav {
   border-bottom: 1px solid rgba(26,42,212,0.08);
 }
 
+/* Shared logo letter size — applies across all pages using nom.css.
+   Higher specificity (.nav-logo .nom-initial = 0,2,0) wins over
+   page-level .nom-initial rules (0,1,0) defined in inline <style> blocks. */
+.nav-logo .nom-initial {
+  font-size: 0.75rem;
+}
+
 .nav-cta {
   font-family: 'DM Mono', monospace;
   font-size: 0.6rem;

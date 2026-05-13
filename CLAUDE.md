@@ -18,6 +18,9 @@ There are no commands to run. Editing files is the development workflow.
 assets/nom.css                        — shared stylesheet for all public pages
 templates/article-template.html      — article starter with all components and [REPLACE] markers
 index.html                            — homepage (has its own inline CSS, not article system)
+how-we-work/index.html               — standalone How We Work page (nav destination)
+why-not-on-mondays.html              — About page (standard nav pattern)
+privacy-policy.html                  — legal page (standard nav pattern)
 insights/index.html                   — Insights landing page
 insights/legal-digital-change.html   — canonical article (reference implementation)
 legal-digital-change.html            — root copy, canonical points to /insights/ version
@@ -242,3 +245,112 @@ Claude must always:
 - Set canonical to `/insights/<slug>`
 - Generate OG + Twitter tags
 - Include JSON-LD Article schema
+
+---
+
+## Shared Navigation Standard
+
+The homepage (`index.html`) is the **visual and structural source of truth** for the navigation. All public pages must use the same nav pattern.
+
+### Standard nav structure (all public pages)
+
+```html
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">...</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
+  </nav>
+</header>
+```
+
+### Nav rules
+
+- **Always** include a skip link: `<a href="#main-content" class="skip-link">Skip to main content</a>`
+- **Always** include mobile toggle JS (see any service page for the pattern)
+- Logo letters use `font-size: 0.75rem` — do not reduce below this
+- `nom.css` provides `.nav-logo .nom-initial { font-size: 0.75rem }` (specificity 0,2,0); page-level `.nom-initial` alone (0,1,0) will be overridden
+- Descriptor text uses `font-size: 0.55rem`; hide with `display:none` at ≤900px
+- Use `aria-current="page"` on the active nav link
+- "How We Work" links to `/how-we-work/` — never to `#how-we-work` or `/#how-we-work`
+- "About" links to `/why-not-on-mondays` (no `.html` suffix)
+
+---
+
+## Shared Footer Standard
+
+```html
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="...logo stacked letters...">...</a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" ...>Privacy Policy</a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+```
+
+Footer logo letters: `font-size: 0.75rem` inline — match nav logo size.
+
+---
+
+## Typography Accessibility Baselines
+
+- Body copy: `font-size: 1rem`, `line-height: 1.85` minimum
+- Navigation links: `font-size: 0.6rem` (DM Mono, uppercase) — do not go lower
+- Logo initials: `font-size: 0.75rem` — do not go lower
+- Metadata/mono labels: `font-size: 0.58rem` minimum; prefer 0.62rem where space allows
+- Footer links: `font-size: 0.58rem` minimum
+- All interactive elements must have visible `:focus-visible` states
+- On dark backgrounds, use `outline-color: var(--light-blue)` for focus rings
+- Touch targets: minimum 44×44px effective touch area (use padding to achieve this)
+
+---
+
+## WCAG Expectations
+
+- Every public page must have a skip link visible on focus
+- One `<h1>` per page (in hero only)
+- Heading hierarchy: h1 → h2 → h3, no skipping
+- All form inputs must have associated `<label>` elements
+- Decorative elements must carry `aria-hidden="true"`
+- `aria-label` on all interactive elements that lack visible text
+- Colour contrast: body text on off-white passes WCAG AA (dark #111124 on #f2f0e8 = 16:1)
+- Muted text: `--muted` (#8a8fa8) on white falls below AA for small text — use sparingly and only for secondary/decorative content; never for primary reading text
+- `role="status"` / `aria-live="polite"` on async feedback messages
+- `aria-live="assertive"` only for error alerts
+- `prefers-reduced-motion`: handled globally in nom.css — do not re-declare per page
+
+---
+
+## Accessible Copy Rules
+
+- No em dashes in visible copy (use plain alternatives)
+- No `→` arrows in form submit buttons or email links — decorative arrows in marketing CTAs are acceptable
+- Decorative separators (·) must have `aria-hidden="true"`
