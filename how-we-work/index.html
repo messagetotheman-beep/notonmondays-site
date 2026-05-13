@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>How We Help | Not On Mondays — Operating Partner</title>
-<meta name="description" content="Not On Mondays works with founders and leadership teams across four areas: operating layer, website clarity, search and visibility, and delivery and operations.">
-<link rel="canonical" href="https://www.notonmondays.com/services/">
+<title>How We Work | Not On Mondays — Operating Partner</title>
+<meta name="description" content="How Not On Mondays works: embedded, close to delivery, outcomes over process. Senior operators who stay close to the work and share responsibility for getting things done.">
+<link rel="canonical" href="https://www.notonmondays.com/how-we-work/">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.notonmondays.com/services/">
-<meta property="og:title" content="How We Help | Not On Mondays">
-<meta property="og:description" content="Four capability areas: operating layer, website clarity, search and visibility, and delivery and operations.">
+<meta property="og:url" content="https://www.notonmondays.com/how-we-work/">
+<meta property="og:title" content="How We Work | Not On Mondays">
+<meta property="og:description" content="Embedded, close to delivery, outcomes over process. Senior operators who stay in the work until things are working.">
 <meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,9 +20,9 @@
 <meta property="og:locale" content="en_GB">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://www.notonmondays.com/services/">
-<meta name="twitter:title" content="How We Help | Not On Mondays">
-<meta name="twitter:description" content="Four capability areas: operating layer, website clarity, search and visibility, and delivery and operations.">
+<meta name="twitter:url" content="https://www.notonmondays.com/how-we-work/">
+<meta name="twitter:title" content="How We Work | Not On Mondays">
+<meta name="twitter:description" content="Embedded, close to delivery, outcomes over process. Senior operators who stay in the work until things are working.">
 <meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
 
 <link rel="icon" type="image/png" href="/assets/nomlogo400.png">
@@ -33,26 +33,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/nom.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "How We Help | Not On Mondays",
-  "url": "https://www.notonmondays.com/services/",
-  "description": "Not On Mondays works with founders and leadership teams across four capability areas: operating layer, website clarity, search and visibility, and delivery and operations.",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Not On Mondays",
-    "url": "https://www.notonmondays.com"
-  },
-  "provider": {
-    "@type": "ProfessionalService",
-    "name": "Not On Mondays",
-    "url": "https://www.notonmondays.com"
-  }
-}
-</script>
 
 <style>
 
@@ -99,7 +79,7 @@
 .nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
 .nom-initial {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: 0.5em;
   text-transform: lowercase;
@@ -115,7 +95,7 @@
 .nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
 .nav-descriptor span {
   font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
+  font-size: 0.55rem;
   font-weight: 300;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -160,6 +140,7 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
+.nav-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
 /* ── Footer ──────────────────────────────────────── */
 .site-footer {
@@ -188,10 +169,10 @@
   color: rgba(255,255,255,0.2);
 }
 
-/* ── Mobile nav ──────────────────────────────────── */
+/* ── Responsive ──────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 0 1.5rem; }
-  .nav-toggle { display: flex; }
+  .nav-toggle { display: flex; align-items: center; gap: 0.5rem; }
   .nav-logo-divider, .nav-descriptor { display: none; }
   .nav-links {
     display: none;
@@ -212,73 +193,7 @@
   .footer-links { justify-content: center; gap: 1.5rem; }
 }
 
-/* ── Services capability grid ─────────────────────── */
-.services-capabilities {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  background: rgba(26,42,212,0.1);
-  border: 1px solid rgba(26,42,212,0.1);
-  margin: 3rem 0 0;
-}
-
-.services-capability {
-  background: var(--off-white);
-  padding: 2.25rem 2rem;
-  transition: background 0.15s ease;
-  text-decoration: none;
-  display: block;
-}
-.services-capability:hover {
-  background: var(--warm-white);
-}
-
-.services-capability-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.services-capability-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
-  font-weight: 300;
-  color: var(--dark);
-  line-height: 1.15;
-  margin-bottom: 0.85rem;
-}
-
-.services-capability-body {
-  font-size: 0.875rem;
-  line-height: 1.8;
-  color: var(--mid);
-  font-weight: 300;
-  margin-bottom: 1.35rem;
-}
-
-.services-capability-link {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--blue);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-@media (min-width: 640px) {
-  .services-capabilities {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 </style>
-
 </head>
 <body>
 
@@ -302,78 +217,114 @@
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
     <ul class="nav-links" id="nav-menu" role="list">
       <li><a href="/why-not-on-mondays">About</a></li>
-      <li><a href="/services/" aria-current="page">Services</a></li>
-      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/" aria-current="page">How We Work</a></li>
       <li><a href="/#case-studies">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
       <li><a href="/#contact">Contact</a></li>
     </ul>
-    <a href="/#contact" class="nav-cta">Get in touch</a>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
   </nav>
 </header>
 
 
 <main id="main-content" class="article-layout">
 
-  <section class="article-hero" aria-labelledby="services-heading">
+  <section class="article-hero" aria-labelledby="how-heading">
     <div class="article-hero-inner">
-      <p class="article-hero-eyebrow" aria-hidden="true">Not On Mondays · The Operating Partner</p>
-      <h1 id="services-heading" class="article-hero-headline">How we help</h1>
-      <p class="article-hero-standfirst">We embed alongside founders and leadership teams as operating partners. This is what that looks like in practice.</p>
+      <a href="/" class="article-back-link" aria-label="Back to homepage">← Home</a>
+      <p class="article-hero-eyebrow" aria-hidden="true">How We Work</p>
+      <h1 id="how-heading" class="article-hero-headline">We stay close to the work.<br><em>We focus on what gets done.</em></h1>
+      <p class="article-hero-standfirst">We are not an advisory practice that hands over a report and steps back. We work alongside your team, stay involved as the work progresses, and share responsibility for getting things done.</p>
     </div>
   </section>
 
 
-  <section class="article-section article-section--light" aria-label="Introduction">
+  <section class="article-section article-section--light" aria-label="Our approach">
     <div class="article-container">
       <div class="article-body">
-        <p class="article-lede">Not On Mondays works with organisations that need structured senior support: not a consultant who produces a report and leaves, but someone who takes responsibility for outcomes and builds capability that stays.</p>
-        <p>The work tends to fall into four areas. They are not rigid packages, and most engagements draw on more than one. But they are clear enough to describe the kinds of problems we are built to solve.</p>
-      </div>
 
-      <div class="services-capabilities" role="list">
+        <p class="article-lede">Most of the firms, agencies, and consultants that organisations hire share the same default: they produce outputs and move on. A document, a strategy, a set of recommendations. Something to show for the engagement, even if nothing has actually changed.</p>
 
-        <a href="/services/operating-layer/" class="services-capability" role="listitem">
-          <span class="services-capability-num" aria-hidden="true">01</span>
-          <h2 class="services-capability-heading">Operating Layer</h2>
-          <p class="services-capability-body">For organisations that need structure, rhythm and senior support across delivery, operations and digital decision-making. When the gap between strategy and execution is too wide, this is where we close it.</p>
-          <span class="services-capability-link" aria-label="Learn more about Operating Layer">Learn more →</span>
-        </a>
+        <p>We work differently. We embed directly. We stay involved through delivery. We do not consider our job done until the work is working.</p>
 
-        <a href="/services/website-clarity/" class="services-capability" role="listitem">
-          <span class="services-capability-num" aria-hidden="true">02</span>
-          <h2 class="services-capability-heading">Website Clarity</h2>
-          <p class="services-capability-body">For businesses whose website no longer reflects the quality of the work, the offer, or the client experience. We fix the clarity problem first, then build from there.</p>
-          <span class="services-capability-link" aria-label="Learn more about Website Clarity">Learn more →</span>
-        </a>
-
-        <a href="/services/search-visibility/" class="services-capability" role="listitem">
-          <span class="services-capability-num" aria-hidden="true">03</span>
-          <h2 class="services-capability-heading">Search &amp; Visibility</h2>
-          <p class="services-capability-body">For organisations that need to be found by the people already looking for help. Across Google, AI-assisted search and useful content that earns trust before anyone picks up the phone.</p>
-          <span class="services-capability-link" aria-label="Learn more about Search and Visibility">Learn more →</span>
-        </a>
-
-        <a href="/services/delivery-operations/" class="services-capability" role="listitem">
-          <span class="services-capability-num" aria-hidden="true">04</span>
-          <h2 class="services-capability-heading">Delivery &amp; Operations</h2>
-          <p class="services-capability-body">For teams that are busy, stretched or context-switching, and need clearer ways of moving work forward. We bring structure, pace and senior judgment to delivery.</p>
-          <span class="services-capability-link" aria-label="Learn more about Delivery and Operations">Learn more →</span>
-        </a>
+        <p>This is not a positioning statement. It is a structural commitment. Every engagement we take on is set up so that we remain close to what is actually happening, not just what is being reported.</p>
 
       </div>
     </div>
   </section>
 
 
-  <aside class="article-cta" aria-labelledby="cta-heading">
-    <div class="article-cta-inner">
-      <p class="article-cta-label" aria-hidden="true">Work with us</p>
-      <h2 id="cta-heading" class="article-cta-heading">Not sure which area fits your situation? <em>Start with a conversation.</em></h2>
-      <p class="article-cta-body">Most engagements begin with a short call. Tell us what is happening in the organisation, and we will tell you honestly whether we can help and how.</p>
-      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Get in touch</a>
+  <section class="article-section article-section--warm" aria-labelledby="principles-heading">
+    <div class="article-container">
+
+      <h2 id="principles-heading" class="article-section-heading">The four things we always do</h2>
+
+      <div style="margin-top: 2.5rem;">
+
+        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid rgba(26,42,212,0.1); align-items: start;">
+          <span style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; color:var(--blue); padding-top:0.3rem;" aria-hidden="true">01</span>
+          <div>
+            <h3 class="article-subsection-heading" style="margin-top:0;">We embed with your team</h3>
+            <p>We join your team directly. We attend the meetings that matter, understand how decisions are made, and work within your existing structure, not around it. The work we do looks like your work, not like something that arrived from the outside.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid rgba(26,42,212,0.1); align-items: start;">
+          <span style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; color:var(--blue); padding-top:0.3rem;" aria-hidden="true">02</span>
+          <div>
+            <h3 class="article-subsection-heading" style="margin-top:0;">We bring in specialists when the work needs them</h3>
+            <p>We have a network of delivery managers, designers, researchers, and legal tech specialists. We bring them in when the work needs them. We do not add people to an engagement unless there is a clear reason to.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid rgba(26,42,212,0.1); align-items: start;">
+          <span style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; color:var(--blue); padding-top:0.3rem;" aria-hidden="true">03</span>
+          <div>
+            <h3 class="article-subsection-heading" style="margin-top:0;">We stay close to delivery</h3>
+            <p>We do not hand over a plan and step back. We stay involved as the work is delivered, removing blockers, tracking progress, and adjusting when things change. The plan is a tool. The outcome is what matters.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid rgba(26,42,212,0.1); border-bottom: 1px solid rgba(26,42,212,0.1); align-items: start;">
+          <span style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; color:var(--blue); padding-top:0.3rem;" aria-hidden="true">04</span>
+          <div>
+            <h3 class="article-subsection-heading" style="margin-top:0;">We prioritise outcomes over process</h3>
+            <p>We use process where it helps and drop it where it does not. We do not run meetings, produce documents, or follow frameworks unless they contribute to getting the work done. Delivery discipline, not delivery theatre.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </aside>
+  </section>
+
+
+  <section class="article-section article-section--light" aria-labelledby="why-heading">
+    <div class="article-container">
+      <div class="article-body">
+
+        <h2 id="why-heading">Why it works</h2>
+
+        <p>The difference between advice and real change is proximity. Anyone can observe from a distance and tell you what they see. Very few people are willing to get inside the machine, understand how it actually works, and help you build it into something better.</p>
+
+        <p>When we embed, we understand the politics. We know the history. We understand why certain things are hard to move and how to work with those constraints rather than around them. Because of that, what we build actually lands, rather than gathering dust in a shared drive.</p>
+
+        <p>We do not pretend that everything is knowable up front. We expect the engagement to evolve. We plan for that. What stays constant is our commitment to staying in the work and sharing responsibility for outcomes.</p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+      <p class="article-cta-label" aria-hidden="true">Start a conversation</p>
+      <h2 id="cta-heading" class="article-cta-heading">Ready to talk about <em>what you are working on?</em></h2>
+      <p class="article-cta-body">We work with a small number of organisations at a time. If you think there might be a fit, get in touch and we will give you an honest view on whether and how we can help.</p>
+      <a href="/#contact" class="article-cta-link">Get in touch</a>
+      <a href="/services/" class="article-cta-link article-cta-link--ghost" style="margin-left: 1rem;">See how we help</a>
+    </div>
+  </section>
 
 </main>
 
@@ -395,7 +346,7 @@
     </ul>
     <ul class="footer-links" style="margin-top:1rem;">
       <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
-      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy (opens in new tab)">Privacy Policy</a></li>
     </ul>
   </nav>
   <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
