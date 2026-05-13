@@ -13,5 +13,17 @@
       "runtimeArgs": ["serve", "-l", "8750", "."],
       "port": 8750
     }
+  ,{
+      "name": "focus-board",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "focus-board"],
+      "port": 5173
+    }
+  ,{
+      "name": "focus-board-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--prefix", "focus-board"],
+      "port": 4173
+    }
   ]
 }
