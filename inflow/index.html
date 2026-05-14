@@ -122,6 +122,8 @@ body {
 }
 
 .nav-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px;
   font-family: 'DM Mono', monospace;
   font-size: 0.57rem; letter-spacing: 0.18em;
   text-transform: uppercase; font-weight: 300;
@@ -180,19 +182,6 @@ body {
   padding: 5.5rem 0 4.5rem;
   min-height: 94vh;
   display: flex; align-items: center;
-}
-
-/*
-  Single compositional arc: frames the right side of the hero.
-  One clear sweep rather than invisible multi-ring system.
-  Acts as structural depth, not background decoration.
-*/
-.hero-arc {
-  position: absolute;
-  right: -4%; top: 8%; bottom: 5%;
-  width: 58vw; max-width: 640px;
-  pointer-events: none; z-index: 0;
-  overflow: visible;
 }
 
 /* Central glow behind mockup area */
@@ -267,7 +256,8 @@ body {
 
 /* ── Buttons ────────────────────────────────────────── */
 .btn {
-  display: inline-block;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px;
   font-family: 'DM Mono', monospace;
   font-size: 0.57rem; letter-spacing: 0.18em;
   text-transform: uppercase; font-weight: 300;
@@ -757,9 +747,19 @@ body {
 
 /* ── Privacy / close ────────────────────────────────── */
 .close-section {
-  border-top: 1px solid var(--border);
   padding: 7rem 0 6.5rem;
   position: relative; overflow: hidden;
+}
+.close-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12%; right: 12%; height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(112,128,240,0.055) 25%,
+    rgba(112,128,240,0.055) 75%,
+    transparent);
+  pointer-events: none;
 }
 
 .close-orbital {
@@ -876,13 +876,7 @@ body {
 
     <!--
       Single compositional arc — sweeps the right edge of the hero.
-      Structural depth, not decoration. Opacity 8% = visible on dark displays.
-    -->
-    <!--
-      One compositional arc. It sweeps from the upper-right corner
-      down past the mockup and into the lower-right.
-      Single, grounded, structural. Acts as a frame, not wallpaper.
-      10% opacity: visible and intentional.
+      Structural depth, not decoration. 10% opacity: visible and intentional.
     -->
     <svg fill="none" aria-hidden="true" focusable="false"
          viewBox="0 0 520 900"
@@ -1199,7 +1193,7 @@ body {
             </svg>
             Mac
           </h3>
-          <ol class="os-steps">
+          <ol class="os-steps" role="list">
             <li>Open inFlow in Chrome or Edge.</li>
             <li>Look for the install icon in the address bar.</li>
             <li>Click Install.</li>
@@ -1215,7 +1209,7 @@ body {
             </svg>
             Windows
           </h3>
-          <ol class="os-steps">
+          <ol class="os-steps" role="list">
             <li>Open inFlow in Chrome or Edge.</li>
             <li>Look for the install icon in the address bar.</li>
             <li>Click Install.</li>
