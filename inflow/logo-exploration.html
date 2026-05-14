@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>inFlow — Logo Concept Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #0e0e1a;
+  color: #f2f0e8;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.page { max-width: 1240px; margin: 0 auto; padding: 4rem 2.5rem 7rem; }
+
+/* ── Header ──────────────────────────────────── */
+.page-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7080f0;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: #f2f0e8;
+  margin-bottom: 0.4rem;
+}
+.page-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: rgba(242,240,232,0.28);
+  margin-bottom: 1.75rem;
+}
+
+/* ── Inspiration note ────────────────────────── */
+.inspo-note {
+  border-left: 1px solid rgba(112,128,240,0.3);
+  padding: 0.65rem 1rem;
+  margin-bottom: 3.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  color: rgba(242,240,232,0.36);
+}
+.inspo-note strong {
+  color: rgba(191,198,240,0.7);
+  font-weight: 400;
+}
+
+/* ── Concept grid ────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  margin-bottom: 5rem;
+}
+
+.card {
+  background: #111124;
+  padding: 1.75rem;
+}
+
+.card.card--new {
+  background: #111128;
+}
+
+.card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7080f0;
+  margin-bottom: 0.45rem;
+}
+.card-num .new-tag {
+  display: inline-block;
+  background: rgba(112,128,240,0.15);
+  border: 1px solid rgba(112,128,240,0.25);
+  padding: 0.1em 0.5em;
+  border-radius: 2px;
+  margin-left: 0.5rem;
+  font-size: 0.42rem;
+  letter-spacing: 0.1em;
+  color: rgba(191,198,240,0.55);
+}
+
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: #f2f0e8;
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+.card-desc {
+  font-size: 0.74rem;
+  line-height: 1.7;
+  color: rgba(242,240,232,0.42);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Swatches ────────────────────────────────── */
+.swatches {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.sw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sw-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.38rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.22);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.sw-app {
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sw-fav {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dk { background: #14141f; border: 1px solid rgba(255,255,255,0.06); }
+.lt { background: #f2f0e8; }
+
+/* ── Section divider ─────────────────────────── */
+.section-divider {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(112,128,240,0.5);
+  padding: 1.25rem 1.75rem;
+  background: #0e0e1a;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  grid-column: 1 / -1;
+}
+
+/* ── Recommendations ─────────────────────────── */
+.recs-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(112,128,240,0.5);
+  margin-bottom: 1.5rem;
+}
+
+.recs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+.rec {
+  background: #111124;
+  padding: 2.25rem;
+}
+
+.rec-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7080f0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rec-tag-rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(112,128,240,0.2);
+}
+
+.rec-icons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 1.75rem;
+}
+
+.rec-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #f2f0e8;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.rec-body {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: rgba(242,240,232,0.52);
+  margin-bottom: 1.25rem;
+}
+
+.rec-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rec-points li {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.04em;
+  color: rgba(242,240,232,0.36);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.55;
+}
+
+.rec-points li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #7080f0;
+}
+
+@media (max-width: 620px) {
+  .page { padding: 2.5rem 1.25rem 5rem; }
+  .recs { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<p class="page-eyebrow">inFlow by Not On Mondays</p>
+<h1>Logo Exploration</h1>
+<p class="page-sub">12 directions &middot; eclipse &middot; lemniscate &middot; orbit &middot; orb &middot; spiral &middot; flow</p>
+
+<div class="inspo-note">
+  Round 2 &mdash; updated with new directions. Reference themes: <strong>fluid ribbon / continuous loop</strong> (infinity symbol),
+  <strong>ambient orb / soft glow</strong> (blue blob), <strong>orbital depth</strong> (Saturn ring).
+  New concepts are marked below.
+</div>
+
+<div class="grid">
+
+
+<!-- ════════════════════════════════════════════
+     C01 — Eclipse
+     ════════════════════════════════════════════ -->
+<div class="card">
+  <p class="card-num">C01</p>
+  <p class="card-name">Eclipse</p>
+  <p class="card-desc">A solid disk with a circle subtracted from its upper-right corner. The frozen moment of an eclipse. Quiet focus, partial concealment, containment.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <defs><mask id="c01da"><rect width="64" height="64" fill="white"/><circle cx="44" cy="22" r="19" fill="black"/></mask></defs>
+          <circle cx="32" cy="32" r="22" fill="#bfc6f0" mask="url(#c01da)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <defs><mask id="c01la"><rect width="64" height="64" fill="white"/><circle cx="44" cy="22" r="19" fill="black"/></mask></defs>
+          <circle cx="32" cy="32" r="22" fill="#1a2ad4" mask="url(#c01la)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <defs><mask id="c01df"><rect width="64" height="64" fill="white"/><circle cx="44" cy="22" r="19" fill="black"/></mask></defs>
+          <circle cx="32" cy="32" r="22" fill="#bfc6f0" mask="url(#c01df)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <defs><mask id="c01lf"><rect width="64" height="64" fill="white"/><circle cx="44" cy="22" r="19" fill="black"/></mask></defs>
+          <circle cx="32" cy="32" r="22" fill="#1a2ad4" mask="url(#c01lf)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C02 — Lemniscate  (NEW)
+     ════════════════════════════════════════════ -->
+<div class="card card--new">
+  <p class="card-num">C02 <span class="new-tag">new</span></p>
+  <p class="card-name">Lemniscate</p>
+  <p class="card-desc">A single continuous stroke forming a horizontal figure-eight. No beginning, no end. Sustained momentum — the shape of flow without friction.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,32 C32,24 40,18 48,23 C56,28 56,36 48,41 C40,46 32,40 32,32 C32,24 24,18 16,23 C8,28 8,36 16,41 C24,46 32,40 32,32"
+                fill="none" stroke="#bfc6f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,32 C32,24 40,18 48,23 C56,28 56,36 48,41 C40,46 32,40 32,32 C32,24 24,18 16,23 C8,28 8,36 16,41 C24,46 32,40 32,32"
+                fill="none" stroke="#1a2ad4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,32 C32,24 40,18 48,23 C56,28 56,36 48,41 C40,46 32,40 32,32 C32,24 24,18 16,23 C8,28 8,36 16,41 C24,46 32,40 32,32"
+                fill="none" stroke="#bfc6f0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,32 C32,24 40,18 48,23 C56,28 56,36 48,41 C40,46 32,40 32,32 C32,24 24,18 16,23 C8,28 8,36 16,41 C24,46 32,40 32,32"
+                fill="none" stroke="#1a2ad4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C03 — Saturn  (NEW)
+     ════════════════════════════════════════════ -->
+<div class="card card--new">
+  <p class="card-num">C03 <span class="new-tag">new</span></p>
+  <p class="card-name">Saturn</p>
+  <p class="card-desc">A small circle with a tilted elliptical ring. The body in orbit relationship, abstracted to its simplest geometry. Anchored yet in motion.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <!-- Back arc of ring (faint, behind planet) -->
+          <path d="M8,32 A24,8 0 0,1 56,32" fill="none" stroke="#bfc6f0" stroke-width="2" opacity="0.3" transform="rotate(-22,32,32)"/>
+          <!-- Planet — fill covers back arc -->
+          <circle cx="32" cy="32" r="12" fill="#14141f"/>
+          <!-- Front arc of ring (full opacity, in front) -->
+          <path d="M8,32 A24,8 0 0,0 56,32" fill="none" stroke="#bfc6f0" stroke-width="2" transform="rotate(-22,32,32)"/>
+          <!-- Planet outline -->
+          <circle cx="32" cy="32" r="12" fill="none" stroke="#bfc6f0" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M8,32 A24,8 0 0,1 56,32" fill="none" stroke="#1a2ad4" stroke-width="2" opacity="0.25" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="#f2f0e8"/>
+          <path d="M8,32 A24,8 0 0,0 56,32" fill="none" stroke="#1a2ad4" stroke-width="2" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="none" stroke="#1a2ad4" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M8,32 A24,8 0 0,1 56,32" fill="none" stroke="#bfc6f0" stroke-width="4" opacity="0.3" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="#14141f"/>
+          <path d="M8,32 A24,8 0 0,0 56,32" fill="none" stroke="#bfc6f0" stroke-width="4" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="none" stroke="#bfc6f0" stroke-width="4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M8,32 A24,8 0 0,1 56,32" fill="none" stroke="#1a2ad4" stroke-width="4" opacity="0.25" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="#f2f0e8"/>
+          <path d="M8,32 A24,8 0 0,0 56,32" fill="none" stroke="#1a2ad4" stroke-width="4" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="none" stroke="#1a2ad4" stroke-width="4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C04 — Soft Orb  (NEW)
+     ════════════════════════════════════════════ -->
+<div class="card card--new">
+  <p class="card-num">C04 <span class="new-tag">new</span></p>
+  <p class="card-name">Soft Orb</p>
+  <p class="card-desc">A circle with a radial gradient and soft blur — ambient, slightly volumetric. Presence without geometry. Closer to light than form.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c04dag" cx="42%" cy="38%" r="58%">
+              <stop offset="0%" stop-color="#dce2f8"/>
+              <stop offset="42%" stop-color="#bfc6f0"/>
+              <stop offset="100%" stop-color="#5060d0" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c04daf"><feGaussianBlur stdDeviation="2"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="24" fill="url(#c04dag)" filter="url(#c04daf)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c04lag" cx="42%" cy="38%" r="58%">
+              <stop offset="0%" stop-color="#4050d8"/>
+              <stop offset="42%" stop-color="#1a2ad4"/>
+              <stop offset="100%" stop-color="#1a2ad4" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c04laf"><feGaussianBlur stdDeviation="2"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="24" fill="url(#c04lag)" filter="url(#c04laf)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c04dfg" cx="42%" cy="38%" r="58%">
+              <stop offset="0%" stop-color="#dce2f8"/>
+              <stop offset="100%" stop-color="#5060d0" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c04dff"><feGaussianBlur stdDeviation="1.5"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="28" fill="url(#c04dfg)" filter="url(#c04dff)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c04lfg" cx="42%" cy="38%" r="58%">
+              <stop offset="0%" stop-color="#4050d8"/>
+              <stop offset="100%" stop-color="#1a2ad4" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c04lff"><feGaussianBlur stdDeviation="1.5"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="28" fill="url(#c04lfg)" filter="url(#c04lff)"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C05 — Orbital Trail  (NEW)
+     ════════════════════════════════════════════ -->
+<div class="card card--new">
+  <p class="card-num">C05 <span class="new-tag">new</span></p>
+  <p class="card-name">Orbital Trail</p>
+  <p class="card-desc">A faint orbit ring with a bright arc showing the recent path, and a solid dot at the leading edge. One object in motion, mid-orbit. Suggests progress without urgency.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <!-- Full orbit ring (faint) -->
+          <circle cx="32" cy="32" r="20" stroke="#bfc6f0" stroke-width="1.5" opacity="0.2"/>
+          <!-- Trail arc: 11 o'clock to 3 o'clock, clockwise (~120°) -->
+          <!-- 11 o'clock on r=20: x=32-10=22, y=32-17.3≈15 -->
+          <!-- 3 o'clock on r=20: x=52, y=32 -->
+          <path d="M22,15 A20,20 0 0,1 52,32" stroke="#bfc6f0" stroke-width="3" stroke-linecap="round"/>
+          <!-- Object dot at 3 o'clock -->
+          <circle cx="52" cy="32" r="5.5" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="20" stroke="#1a2ad4" stroke-width="1.5" opacity="0.2"/>
+          <path d="M22,15 A20,20 0 0,1 52,32" stroke="#1a2ad4" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="52" cy="32" r="5.5" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="20" stroke="#bfc6f0" stroke-width="3" opacity="0.2"/>
+          <path d="M22,15 A20,20 0 0,1 52,32" stroke="#bfc6f0" stroke-width="6.5" stroke-linecap="round"/>
+          <circle cx="52" cy="32" r="9" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="20" stroke="#1a2ad4" stroke-width="3" opacity="0.2"/>
+          <path d="M22,15 A20,20 0 0,1 52,32" stroke="#1a2ad4" stroke-width="6.5" stroke-linecap="round"/>
+          <circle cx="52" cy="32" r="9" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C06 — Spiral Flow  (NEW)
+     ════════════════════════════════════════════ -->
+<div class="card card--new">
+  <p class="card-num">C06 <span class="new-tag">new</span></p>
+  <p class="card-name">Spiral Flow</p>
+  <p class="card-desc">A single stroke making one full clockwise rotation and spiralling inward to a resting point. The path of settling — moving from wide to still.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 C50,10 54,26 54,32 C54,46 44,54 32,54 C18,54 10,44 10,32 C10,20 20,12 30,14 C36,15 42,22 32,26"
+                stroke="#bfc6f0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="26" r="3.5" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 C50,10 54,26 54,32 C54,46 44,54 32,54 C18,54 10,44 10,32 C10,20 20,12 30,14 C36,15 42,22 32,26"
+                stroke="#1a2ad4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="26" r="3.5" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 C50,10 54,26 54,32 C54,46 44,54 32,54 C18,54 10,44 10,32 C10,20 20,12 30,14 C36,15 42,22 32,26"
+                stroke="#bfc6f0" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="26" r="7" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 C50,10 54,26 54,32 C54,46 44,54 32,54 C18,54 10,44 10,32 C10,20 20,12 30,14 C36,15 42,22 32,26"
+                stroke="#1a2ad4" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="26" r="7" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- section break -->
+<div class="section-divider">Earlier directions — still in consideration</div>
+
+
+<!-- ════════════════════════════════════════════
+     C07 — Threshold Arc
+     ════════════════════════════════════════════ -->
+<div class="card">
+  <p class="card-num">C07</p>
+  <p class="card-name">Threshold Arc</p>
+  <p class="card-desc">A single bold arch, open at the bottom. A doorway or a pause before something begins. The simplest possible gesture suggesting passage and readiness.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M12,46 A20,20 0 0,0 52,46" stroke="#bfc6f0" stroke-width="5.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M12,46 A20,20 0 0,0 52,46" stroke="#1a2ad4" stroke-width="5.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M12,46 A20,20 0 0,0 52,46" stroke="#bfc6f0" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M12,46 A20,20 0 0,0 52,46" stroke="#1a2ad4" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C08 — Orbit Point
+     ════════════════════════════════════════════ -->
+<div class="card">
+  <p class="card-num">C08</p>
+  <p class="card-name">Orbit Point</p>
+  <p class="card-desc">A thin ring with a single solid dot at ten o'clock. One object settled in orbit — contained, in motion, architectural. The minimal language of a solar system.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="20" stroke="#bfc6f0" stroke-width="2"/>
+          <circle cx="15" cy="22" r="5" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="20" stroke="#1a2ad4" stroke-width="2"/>
+          <circle cx="15" cy="22" r="5" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="20" stroke="#bfc6f0" stroke-width="5"/>
+          <circle cx="15" cy="22" r="8" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="20" stroke="#1a2ad4" stroke-width="5"/>
+          <circle cx="15" cy="22" r="8" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C09 — Open Ring
+     ════════════════════════════════════════════ -->
+<div class="card">
+  <p class="card-num">C09</p>
+  <p class="card-name">Open Ring</p>
+  <p class="card-desc">A circle with a small gap at upper-left — 320 degrees of arc. Almost complete, but deliberately not. The tension of near-closure. Slightly more alive than a full circle.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 1,1 18,15" stroke="#bfc6f0" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 1,1 18,15" stroke="#1a2ad4" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 1,1 18,15" stroke="#bfc6f0" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 1,1 18,15" stroke="#1a2ad4" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C10 — Weight Ring
+     ════════════════════════════════════════════ -->
+<div class="card">
+  <p class="card-num">C10</p>
+  <p class="card-name">Weight Ring</p>
+  <p class="card-desc">Same circle, split in half. Left half thin, right half thick. An asymmetric weight that suggests direction and momentum without using an arrow.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 0,0 32,54" stroke="#bfc6f0" stroke-width="1.5"/>
+          <path d="M32,10 A22,22 0 0,1 32,54" stroke="#bfc6f0" stroke-width="6"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 0,0 32,54" stroke="#1a2ad4" stroke-width="1.5"/>
+          <path d="M32,10 A22,22 0 0,1 32,54" stroke="#1a2ad4" stroke-width="6"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 0,0 32,54" stroke="#bfc6f0" stroke-width="3"/>
+          <path d="M32,10 A22,22 0 0,1 32,54" stroke="#bfc6f0" stroke-width="11"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <path d="M32,10 A22,22 0 0,0 32,54" stroke="#1a2ad4" stroke-width="3"/>
+          <path d="M32,10 A22,22 0 0,1 32,54" stroke="#1a2ad4" stroke-width="11"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C11 — Concentric Focus
+     ════════════════════════════════════════════ -->
+<div class="card">
+  <p class="card-num">C11</p>
+  <p class="card-name">Concentric Focus</p>
+  <p class="card-desc">Three rings of increasing weight and opacity converging on a solid dot. Focus rings. The visual logic of zooming in, or of a target that earns attention.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="28" stroke="#bfc6f0" stroke-width="0.8" opacity="0.2"/>
+          <circle cx="32" cy="32" r="19" stroke="#bfc6f0" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="32" cy="32" r="10" stroke="#bfc6f0" stroke-width="2.5" opacity="0.85"/>
+          <circle cx="32" cy="32" r="3.5" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="28" stroke="#1a2ad4" stroke-width="0.8" opacity="0.2"/>
+          <circle cx="32" cy="32" r="19" stroke="#1a2ad4" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="32" cy="32" r="10" stroke="#1a2ad4" stroke-width="2.5" opacity="0.85"/>
+          <circle cx="32" cy="32" r="3.5" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="26" stroke="#bfc6f0" stroke-width="2" opacity="0.2"/>
+          <circle cx="32" cy="32" r="17" stroke="#bfc6f0" stroke-width="3" opacity="0.5"/>
+          <circle cx="32" cy="32" r="8" stroke="#bfc6f0" stroke-width="5" opacity="0.85"/>
+          <circle cx="32" cy="32" r="4" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="26" stroke="#1a2ad4" stroke-width="2" opacity="0.2"/>
+          <circle cx="32" cy="32" r="17" stroke="#1a2ad4" stroke-width="3" opacity="0.5"/>
+          <circle cx="32" cy="32" r="8" stroke="#1a2ad4" stroke-width="5" opacity="0.85"/>
+          <circle cx="32" cy="32" r="4" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     C12 — Focal Glow  (NEW)
+     ════════════════════════════════════════════ -->
+<div class="card card--new">
+  <p class="card-num">C12 <span class="new-tag">new</span></p>
+  <p class="card-name">Focal Glow</p>
+  <p class="card-desc">A radial gradient halo with a solid core. Not a shape but a source. Atmospheric and ambient at app size — becomes a strong dot at favicon scale. Calm, present, unhurried.</p>
+  <div class="swatches">
+    <div class="sw">
+      <div class="sw-app dk">
+        <svg width="44" height="44" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c12dag" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#bfc6f0" stop-opacity="0.85"/>
+              <stop offset="38%" stop-color="#bfc6f0" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#bfc6f0" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c12daf"><feGaussianBlur stdDeviation="2.5"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="28" fill="url(#c12dag)" filter="url(#c12daf)"/>
+          <circle cx="32" cy="32" r="7" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-app lt">
+        <svg width="44" height="44" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c12lag" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#1a2ad4" stop-opacity="0.8"/>
+              <stop offset="38%" stop-color="#1a2ad4" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#1a2ad4" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c12laf"><feGaussianBlur stdDeviation="2.5"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="28" fill="url(#c12lag)" filter="url(#c12laf)"/>
+          <circle cx="32" cy="32" r="7" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">App<br>light</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav dk">
+        <svg width="14" height="14" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c12dfg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#bfc6f0" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#bfc6f0" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c12dff"><feGaussianBlur stdDeviation="2"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="28" fill="url(#c12dfg)" filter="url(#c12dff)"/>
+          <circle cx="32" cy="32" r="9" fill="#bfc6f0"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>dark</span>
+    </div>
+    <div class="sw">
+      <div class="sw-fav lt">
+        <svg width="14" height="14" viewBox="0 0 64 64">
+          <defs>
+            <radialGradient id="c12lfg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#1a2ad4" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#1a2ad4" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="c12lff"><feGaussianBlur stdDeviation="2"/></filter>
+          </defs>
+          <circle cx="32" cy="32" r="28" fill="url(#c12lfg)" filter="url(#c12lff)"/>
+          <circle cx="32" cy="32" r="9" fill="#1a2ad4"/>
+        </svg>
+      </div>
+      <span class="sw-lbl">Fav<br>light</span>
+    </div>
+  </div>
+</div>
+
+
+</div><!-- /grid -->
+
+
+<!-- ════════════════════════════════════════════
+     Recommendations
+     ════════════════════════════════════════════ -->
+<p class="recs-label">Strongest two directions</p>
+<div class="recs">
+
+  <!-- Rec 1 -->
+  <div class="rec">
+    <div class="rec-tag">
+      Recommendation 1
+      <span class="rec-tag-rule"></span>
+    </div>
+    <div class="rec-icons">
+      <!-- Large app icon dark -->
+      <div class="sw-app dk" style="width:96px;height:96px;border-radius:22px;">
+        <svg width="54" height="54" viewBox="0 0 64 64" fill="none">
+          <path d="M32,32 C32,24 40,18 48,23 C56,28 56,36 48,41 C40,46 32,40 32,32 C32,24 24,18 16,23 C8,28 8,36 16,41 C24,46 32,40 32,32"
+                fill="none" stroke="#bfc6f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <!-- Large app icon light -->
+      <div class="sw-app lt" style="width:96px;height:96px;border-radius:22px;">
+        <svg width="54" height="54" viewBox="0 0 64 64" fill="none">
+          <path d="M32,32 C32,24 40,18 48,23 C56,28 56,36 48,41 C40,46 32,40 32,32 C32,24 24,18 16,23 C8,28 8,36 16,41 C24,46 32,40 32,32"
+                fill="none" stroke="#1a2ad4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <!-- Favicon dark -->
+      <div class="sw-fav dk" style="width:32px;height:32px;border-radius:6px;">
+        <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+          <path d="M32,32 C32,24 40,18 48,23 C56,28 56,36 48,41 C40,46 32,40 32,32 C32,24 24,18 16,23 C8,28 8,36 16,41 C24,46 32,40 32,32"
+                fill="none" stroke="#bfc6f0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <p class="rec-name">C02 — Lemniscate</p>
+    <p class="rec-body">A continuous figure-eight with no start or end. It captures the flowing, ribbon-like quality of the reference images without copying them. The crossing point is the icon's centre of gravity — calm, balanced, slightly mathematical.</p>
+    <ul class="rec-points">
+      <li>No beginning, no end — suggests sustained, unhurried focus</li>
+      <li>Geometric but not rigid — the bezier curves give it life</li>
+      <li>Highly distinctive — nothing else in the app icon landscape looks like this</li>
+      <li>Works monochrome at every size; stroke weight scales cleanly</li>
+      <li>No symbolic baggage (not a checkmark, not a bolt, not a brain)</li>
+    </ul>
+  </div>
+
+  <!-- Rec 2 -->
+  <div class="rec">
+    <div class="rec-tag">
+      Recommendation 2
+      <span class="rec-tag-rule"></span>
+    </div>
+    <div class="rec-icons">
+      <!-- Large app icon dark -->
+      <div class="sw-app dk" style="width:96px;height:96px;border-radius:22px;">
+        <svg width="54" height="54" viewBox="0 0 64 64" fill="none">
+          <path d="M8,32 A24,8 0 0,1 56,32" fill="none" stroke="#bfc6f0" stroke-width="2" opacity="0.3" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="#14141f"/>
+          <path d="M8,32 A24,8 0 0,0 56,32" fill="none" stroke="#bfc6f0" stroke-width="2" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="none" stroke="#bfc6f0" stroke-width="2"/>
+        </svg>
+      </div>
+      <!-- Large app icon light -->
+      <div class="sw-app lt" style="width:96px;height:96px;border-radius:22px;">
+        <svg width="54" height="54" viewBox="0 0 64 64" fill="none">
+          <path d="M8,32 A24,8 0 0,1 56,32" fill="none" stroke="#1a2ad4" stroke-width="2" opacity="0.25" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="#f2f0e8"/>
+          <path d="M8,32 A24,8 0 0,0 56,32" fill="none" stroke="#1a2ad4" stroke-width="2" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="none" stroke="#1a2ad4" stroke-width="2"/>
+        </svg>
+      </div>
+      <!-- Favicon dark -->
+      <div class="sw-fav dk" style="width:32px;height:32px;border-radius:6px;">
+        <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+          <path d="M8,32 A24,8 0 0,1 56,32" fill="none" stroke="#bfc6f0" stroke-width="4" opacity="0.3" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="#14141f"/>
+          <path d="M8,32 A24,8 0 0,0 56,32" fill="none" stroke="#bfc6f0" stroke-width="4" transform="rotate(-22,32,32)"/>
+          <circle cx="32" cy="32" r="12" fill="none" stroke="#bfc6f0" stroke-width="4"/>
+        </svg>
+      </div>
+    </div>
+    <p class="rec-name">C03 — Saturn</p>
+    <p class="rec-body">A circle with a tilted orbital ring. Directly captures the planetary reference image while translating it to pure geometry. The faint back arc creates genuine depth — the ring goes around the planet, not through it.</p>
+    <ul class="rec-points">
+      <li>Immediate depth and dimensionality without gradients or blur</li>
+      <li>The orbit metaphor fits inFlow naturally — contained motion, regular rhythm</li>
+      <li>Two elements (planet + ring) create enough visual complexity without noise</li>
+      <li>Distinctive and memorable at dock/tab icon scale</li>
+      <li>Slightly warmer than a pure ring — the planet gives it a centre of gravity</li>
+    </ul>
+  </div>
+
+</div><!-- /recs -->
+
+</div><!-- /page -->
+</body>
+</html>
