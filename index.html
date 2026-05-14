@@ -183,22 +183,24 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   gap: 0.9rem;
   text-decoration: none;
   line-height: 1;
-  border: 1px solid rgba(26,42,212,0.38);
+  border: 1.5px solid rgba(26,42,212,0.55);
   padding: 0.4rem 0.65rem 0.4rem 0.5rem;
+  height: 52px;
+  box-sizing: border-box;
 }
-.nav-logo:hover, .nav-logo:focus-visible { border-color: rgba(26,42,212,0.65); }
-.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
-.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 1rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
-.nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.48); }
-.nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.48); }
+.nav-logo:hover, .nav-logo:focus-visible { border-color: rgba(26,42,212,0.8); }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0; line-height: 1; }
+.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1; display: block; transition: color 0.3s ease; }
+.nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.62); }
+.nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.62); }
 .nav-logo .nom-initial.landing { color: var(--blue); }
 .nav-logo:hover .fade-1,
-.nav-logo:focus-visible .fade-1 { color: rgba(17,17,36,0.65); }
+.nav-logo:focus-visible .fade-1 { color: rgba(17,17,36,0.8); }
 .nav-logo:hover .fade-2,
-.nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.65); }
+.nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.8); }
 .nav-logo:hover .landing,
 .nav-logo:focus-visible .landing { color: var(--deep-blue); }
-.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.28); flex-shrink: 0; }
 .nav-logo-descriptor { display: flex; align-items: center; }
 
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -1204,9 +1206,9 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <span class="nav-logo-divider" aria-hidden="true"></span>
       <span class="nav-logo-descriptor" aria-hidden="true">
         <span style="display:flex;flex-direction:column;gap:0.18rem;line-height:1;">
-          <span style="font-family:'DM Mono',monospace;font-size:0.55rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.75);display:block;">The</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.55rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.75);display:block;">Operating</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.55rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.75);display:block;">Partner</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.88);display:block;">The</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.88);display:block;">Operating</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.88);display:block;">Partner</span>
         </span>
       </span>
     </a>

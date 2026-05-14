@@ -88,15 +88,15 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 /* NAV */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(242,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,42,212,0.08); }
 .site-nav { padding: 0 4rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
-.nav-logo { display: inline-flex; flex-direction: row; align-items: center; gap: 0.9rem; text-decoration: none; line-height: 1; border: 1px solid rgba(26,42,212,0.38); padding: 0.4rem 0.65rem 0.4rem 0.5rem; }
-.nav-logo:hover, .nav-logo:focus-visible { border-color: rgba(26,42,212,0.65); }
-.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
-.nom-initial { font-family: 'DM Mono', monospace; font-size: 1rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
-.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.48); }
+.nav-logo { display: inline-flex; flex-direction: row; align-items: center; gap: 0.9rem; text-decoration: none; line-height: 1; border: 1.5px solid rgba(26,42,212,0.55); padding: 0.4rem 0.65rem 0.4rem 0.5rem; height: 52px; box-sizing: border-box; }
+.nav-logo:hover, .nav-logo:focus-visible { border-color: rgba(26,42,212,0.8); }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0; line-height: 1; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1; display: block; transition: color 0.3s ease; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.62); }
 .nom-initial.landing { color: var(--blue); }
-.nav-logo:hover .fade-1, .nav-logo:hover .fade-2, .nav-logo:focus-visible .fade-1, .nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.65); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2, .nav-logo:focus-visible .fade-1, .nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.8); }
 .nav-logo:hover .landing, .nav-logo:focus-visible .landing { color: var(--deep-blue); }
-.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.28); flex-shrink: 0; }
 .nav-logo-descriptor { display: flex; align-items: center; }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; font-weight: 300; padding: 0.25rem 0; }
@@ -388,9 +388,9 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <span class="nav-logo-divider" aria-hidden="true"></span>
       <span class="nav-logo-descriptor" aria-hidden="true">
         <span style="display:flex;flex-direction:column;gap:0.18rem;line-height:1;">
-          <span style="font-family:'DM Mono',monospace;font-size:0.52rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.6);">The</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.52rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.6);">Operating</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.52rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.6);">Partner</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.82);">The</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.82);">Operating</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.82);">Partner</span>
         </span>
       </span>
     </a>
