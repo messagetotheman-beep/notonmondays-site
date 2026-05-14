@@ -46,15 +46,15 @@ nav {
   position: static;
 }
 
-/* Shared logo frame — blue border around the nom initials block.
-   Pages define their own display:flex/gap for .nav-logo-initials;
-   this rule adds only the frame, which those rules do not override. */
-.nav-logo-initials {
+/* Shared logo frame — blue border around the full logo unit (initials + divider + wordmark).
+   Border lives on .nav-logo so the rectangle wraps the entire assembly.
+   On mobile the descriptor/divider are hidden, so the frame naturally collapses to the letters. */
+.nav-logo {
   border: 1px solid rgba(26,42,212,0.38);
-  padding: 0.35rem 0.5rem;
+  padding: 0.4rem 0.65rem 0.4rem 0.5rem;
 }
-.nav-logo:hover .nav-logo-initials,
-.nav-logo:focus-visible .nav-logo-initials {
+.nav-logo:hover,
+.nav-logo:focus-visible {
   border-color: rgba(26,42,212,0.65);
 }
 

@@ -183,10 +183,11 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   gap: 0.9rem;
   text-decoration: none;
   line-height: 1;
+  border: 1px solid rgba(26,42,212,0.38);
+  padding: 0.4rem 0.65rem 0.4rem 0.5rem;
 }
-.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; border: 1px solid rgba(26,42,212,0.38); padding: 0.35rem 0.5rem; }
-.nav-logo:hover .nav-logo-initials,
-.nav-logo:focus-visible .nav-logo-initials { border-color: rgba(26,42,212,0.65); }
+.nav-logo:hover, .nav-logo:focus-visible { border-color: rgba(26,42,212,0.65); }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
 .nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 1rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
 .nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.48); }
 .nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.48); }
@@ -304,7 +305,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 .about-body { font-size: 0.9rem; line-height: 1.9; color: var(--body-on-dark); font-weight: 300; margin-bottom: 1.5rem; }
 .about-right { padding-top: 1rem; }
 .values-list { display: flex; flex-direction: column; gap: 0; }
-.value-item { display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 1.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); align-items: start; }
+.value-item { display: block; padding: 1.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .value-num { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; color: var(--light-blue); padding-top: 0.3rem; }
 .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; color: var(--off-white); margin-bottom: 0.5rem; }
 .value-desc { font-size: 0.82rem; line-height: 1.7; color: var(--subtle-on-dark); font-weight: 300; }
@@ -343,7 +344,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
    ===================================================== */
 #how-we-work { background: var(--warm-white); padding: 9rem 4rem; }
 .how-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
-.how-principle { display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 1.8rem 0; border-bottom: 1px solid rgba(26,42,212,0.1); align-items: start; }
+.how-principle { display: block; padding: 1.8rem 0; border-bottom: 1px solid rgba(26,42,212,0.1); }
 .how-principle:first-child { border-top: 1px solid rgba(26,42,212,0.1); }
 .how-num { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; color: var(--blue); padding-top: 0.3rem; }
 .how-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: var(--dark); margin-bottom: 0.4rem; }
@@ -936,12 +937,9 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   border-top: 1px solid rgba(26,42,212,0.1);
 }
 .when-item {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 1rem;
+  display: block;
   padding: 1.75rem 0;
   border-bottom: 1px solid rgba(26,42,212,0.08);
-  align-items: start;
 }
 .when-item:nth-child(odd) {
   padding-right: 3rem;
@@ -1305,16 +1303,16 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       </div>
       <ul class="when-grid" aria-label="Common situations that lead people to us">
         <li class="when-item">
-<p class="when-text">Operations feel fragmented, with no clear owner</p>
+          <p class="when-text">Operations feel fragmented, with no clear owner</p>
         </li>
         <li class="when-item">
-<p class="when-text">Systems and tools are disconnected, and information lives in too many places</p>
+          <p class="when-text">Systems and tools are disconnected, and information lives in too many places</p>
         </li>
         <li class="when-item">
-<p class="when-text">The website no longer reflects the quality of the business</p>
+          <p class="when-text">The website no longer reflects the quality of the business</p>
         </li>
         <li class="when-item">
-<p class="when-text">Delivery is hard to move and progress feels inconsistent</p>
+          <p class="when-text">Delivery is hard to move and progress feels inconsistent</p>
         </li>
       </ul>
       <div class="when-section-footer">
@@ -1333,20 +1331,17 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       </div>
       <div class="about-right">
         <ul class="values-list" aria-label="Our principles">
-          <li class="value-item reveal">            <div>
-              <h3 class="value-title">Embedded, not parachuted</h3>
-              <p class="value-desc">We work inside your organisation, not from outside it. Working directly with your team is what turns advice into actual change.</p>
-            </div>
+          <li class="value-item reveal">
+            <h3 class="value-title">Embedded, not parachuted</h3>
+            <p class="value-desc">We work inside your organisation, not from outside it. Working directly with your team is what turns advice into actual change.</p>
           </li>
-          <li class="value-item reveal reveal-delay-1">            <div>
-              <h3 class="value-title">Outcomes over process</h3>
-              <p class="value-desc">We focus on what needs to change. If something does not move the work forward, we stop doing it.</p>
-            </div>
+          <li class="value-item reveal reveal-delay-1">
+            <h3 class="value-title">Outcomes over process</h3>
+            <p class="value-desc">We focus on what needs to change. If something does not move the work forward, we stop doing it.</p>
           </li>
-          <li class="value-item reveal reveal-delay-2">            <div>
-              <h3 class="value-title">Clear and direct</h3>
-              <p class="value-desc">We will tell you what we think, including when it is not what you want to hear. That is what makes us useful rather than comfortable.</p>
-            </div>
+          <li class="value-item reveal reveal-delay-2">
+            <h3 class="value-title">Clear and direct</h3>
+            <p class="value-desc">We will tell you what we think, including when it is not what you want to hear. That is what makes us useful rather than comfortable.</p>
           </li>
         </ul>
       </div>
@@ -1375,22 +1370,22 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
         <a href="/services/operating-layer/" class="cap-card" role="listitem">
           <h3 class="cap-card-title">The Operating Layer</h3>
           <p class="cap-card-body">For when you need an operator inside the work, not an advisor observing it. Retained fractional COO and embedded delivery leadership.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
         <a href="/services/website-clarity/" class="cap-card" role="listitem">
           <h3 class="cap-card-title">Website Clarity</h3>
           <p class="cap-card-body">When your digital presence no longer reflects what you do. Accessible, clearly structured, built around real user needs.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
         <a href="/services/search-visibility/" class="cap-card" role="listitem">
           <h3 class="cap-card-title">Search &amp; Visibility</h3>
           <p class="cap-card-body">When the right clients are searching for what you do and finding someone else. Organic visibility, AI search, and content that earns trust.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
         <a href="/services/delivery-operations/" class="cap-card" role="listitem">
           <h3 class="cap-card-title">Delivery &amp; Operations</h3>
           <p class="cap-card-body">When delivery has stalled or progress feels inconsistent. Clear plans, structured delivery, and someone who shares responsibility for the outcome.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
       </div>
     </div>
@@ -1532,25 +1527,21 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
         </div>
       </div>
       <ol class="how-principles" aria-label="How we work" style="list-style:none;">
-        <li class="how-principle reveal">          <div>
-            <h3 class="how-title">We embed with your team</h3>
-            <p class="how-desc">We join your team directly. We attend the meetings that matter, understand how decisions are made, and work within your existing structure, not around it.</p>
-          </div>
+        <li class="how-principle reveal">
+          <h3 class="how-title">We embed with your team</h3>
+          <p class="how-desc">We join your team directly. We attend the meetings that matter, understand how decisions are made, and work within your existing structure, not around it.</p>
         </li>
-        <li class="how-principle reveal reveal-delay-1">          <div>
-            <h3 class="how-title">We bring in specialists when the work needs them</h3>
-            <p class="how-desc">We have a network of delivery managers, designers, researchers, and legal tech specialists. We bring them in when the work needs them. We do not add people to an engagement unless there is a clear reason to.</p>
-          </div>
+        <li class="how-principle reveal reveal-delay-1">
+          <h3 class="how-title">We bring in specialists when the work needs them</h3>
+          <p class="how-desc">We have a network of delivery managers, designers, researchers, and legal tech specialists. We bring them in when the work needs them. We do not add people to an engagement unless there is a clear reason to.</p>
         </li>
-        <li class="how-principle reveal reveal-delay-2">          <div>
-            <h3 class="how-title">We stay close to delivery</h3>
-            <p class="how-desc">We do not hand over a plan and step back. We stay involved as the work is delivered, removing blockers, tracking progress, and adjusting when things change.</p>
-          </div>
+        <li class="how-principle reveal reveal-delay-2">
+          <h3 class="how-title">We stay close to delivery</h3>
+          <p class="how-desc">We do not hand over a plan and step back. We stay involved as the work is delivered, removing blockers, tracking progress, and adjusting when things change.</p>
         </li>
-        <li class="how-principle reveal reveal-delay-3">          <div>
-            <h3 class="how-title">We prioritise outcomes over process</h3>
-            <p class="how-desc">We use process where it helps and drop it where it does not. We do not run meetings, produce documents, or follow frameworks unless they contribute to getting the work done on time.</p>
-          </div>
+        <li class="how-principle reveal reveal-delay-3">
+          <h3 class="how-title">We prioritise outcomes over process</h3>
+          <p class="how-desc">We use process where it helps and drop it where it does not. We do not run meetings, produce documents, or follow frameworks unless they contribute to getting the work done on time.</p>
         </li>
       </ol>
     </div>
