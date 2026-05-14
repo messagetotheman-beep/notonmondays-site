@@ -88,13 +88,13 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 /* NAV */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(242,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,42,212,0.08); }
 .site-nav { padding: 0 4rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
-.nav-logo { display: inline-flex; flex-direction: row; align-items: center; gap: 0.9rem; text-decoration: none; line-height: 1; }
-.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; border: 1px solid rgba(26,42,212,0.2); padding: 0.3rem 0.45rem; }
-.nav-logo:hover .nav-logo-initials, .nav-logo:focus-visible .nav-logo-initials { border-color: rgba(26,42,212,0.4); }
-.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.9rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
-.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo { display: inline-flex; flex-direction: row; align-items: center; gap: 0.9rem; text-decoration: none; line-height: 1; border: 1px solid rgba(26,42,212,0.38); padding: 0.4rem 0.65rem 0.4rem 0.5rem; }
+.nav-logo:hover, .nav-logo:focus-visible { border-color: rgba(26,42,212,0.65); }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 1rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.48); }
 .nom-initial.landing { color: var(--blue); }
-.nav-logo:hover .fade-1, .nav-logo:hover .fade-2, .nav-logo:focus-visible .fade-1, .nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.55); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2, .nav-logo:focus-visible .fade-1, .nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.65); }
 .nav-logo:hover .landing, .nav-logo:focus-visible .landing { color: var(--deep-blue); }
 .nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
 .nav-logo-descriptor { display: flex; align-items: center; }
@@ -402,7 +402,6 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <li><a href="/how-we-work/">How We Work</a></li>
       <li><a href="/work/">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
-      <li><a href="/#contact">Contact</a></li>
     </ul>
     <a href="#contact-cta" class="nav-cta">Get in touch</a>
   </nav>
@@ -646,7 +645,6 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <li><a href="/how-we-work/">How We Work</a></li>
       <li><a href="/legal-tech-operations" aria-current="page">Legal Tech</a></li>
       <li><a href="/work/">Work</a></li>
-      <li><a href="/#contact">Contact</a></li>
     </ul>
     <ul class="footer-links" style="margin-top:1rem;">
       <li><a href="net-zero.html">Net Zero &amp; Environmental Policy</a></li>
