@@ -39,23 +39,24 @@
 :root {
   --bg:         #0e0e1a;
   --bg-2:       #111126;
-  --bg-3:       #141430;
+  --bg-3:       #14142e;
   --accent:     #7080f0;
-  --accent-dim: rgba(112,128,240,0.12);
-  --accent-mid: rgba(112,128,240,0.22);
+  --accent-dim: rgba(112,128,240,0.10);
+  --accent-mid: rgba(112,128,240,0.20);
+  --accent-glow:rgba(112,128,240,0.07);
   --text:       rgba(232,230,244,0.88);
   --text-dim:   rgba(232,230,244,0.50);
   --text-muted: rgba(232,230,244,0.28);
-  --border:     rgba(112,128,240,0.10);
-  --border-mid: rgba(112,128,240,0.18);
+  --border:     rgba(112,128,240,0.09);
+  --border-mid: rgba(112,128,240,0.16);
 
-  /* Mockup dark tokens */
-  --mk-bg:      #13131f;
-  --mk-card:    #1c1c2e;
+  /* Mockup tokens */
+  --mk-bg:      #12121e;
+  --mk-card:    #1b1b2c;
   --mk-border:  rgba(112,128,240,0.08);
-  --mk-label:   rgba(112,128,240,0.85);
+  --mk-label:   rgba(112,128,240,0.80);
   --mk-text:    rgba(232,230,244,0.82);
-  --mk-muted:   rgba(232,230,244,0.36);
+  --mk-muted:   rgba(232,230,244,0.34);
 }
 
 html {
@@ -100,8 +101,9 @@ body {
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   border-bottom: 1px solid var(--border);
-  background: rgba(14,14,26,0.88);
-  backdrop-filter: blur(16px);
+  background: rgba(14,14,26,0.90);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 .site-nav {
   max-width: 1100px;
@@ -113,24 +115,39 @@ body {
   justify-content: space-between;
 }
 
+/* Identity mark + wordmark */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--text);
+  opacity: 0.88;
+  transition: opacity 0.25s ease;
+}
+.nav-brand:hover,
+.nav-brand:focus-visible { opacity: 1; }
+
+/* Saturn mark: the C03 orbital identity */
+.saturn-mark {
+  display: block;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
 /* inFlow wordmark */
 .nav-wordmark {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-weight: 300;
-  color: var(--text);
-  text-decoration: none;
   letter-spacing: 0.02em;
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
+  color: inherit;
 }
-.nav-wordmark:hover,
-.nav-wordmark:focus-visible { opacity: 1; }
 
 /* Nav CTA */
 .nav-cta {
   font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
+  font-size: 0.57rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 300;
@@ -143,7 +160,7 @@ body {
 .nav-cta:hover,
 .nav-cta:focus-visible {
   background: var(--accent-dim);
-  border-color: rgba(112,128,240,0.4);
+  border-color: rgba(112,128,240,0.38);
   color: rgba(232,230,244,0.92);
 }
 
@@ -155,81 +172,116 @@ body {
 
 /* ── Layout scaffolding ────────────────────────────── */
 .layout {
-  padding-top: 64px; /* clear fixed nav */
+  padding-top: 64px;
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
 }
 
 .section {
-  padding: 5.5rem 0;
+  padding: 6rem 0;
   border-top: 1px solid var(--border);
 }
 
-.section:first-of-type {
-  border-top: none;
-}
-
 @media (min-width: 900px) {
-  .section { padding: 7rem 0; }
+  .section { padding: 8rem 0; }
 }
 
 @media (max-width: 640px) {
   .container { padding: 0 1.25rem; }
-  .section { padding: 4rem 0; }
+  .section { padding: 4.5rem 0; }
 }
 
 
 /* ── Hero ──────────────────────────────────────────── */
 .hero {
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
   position: relative;
   overflow: hidden;
-  border-top: none;
-  padding: 5rem 0 4rem;
+  padding: 5.5rem 0 5rem;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
 }
 
-/* Orbital depth: very faint radial glow — atmosphere, not decoration */
-.hero::before {
+/*
+  Orbital field: a large, tilted, very faint ellipse
+  behind the hero — the "gravitational space" of the product.
+  Not decorative. This is the atmosphere of the identity.
+*/
+.hero-orbital-field {
+  position: absolute;
+  top: 50%;
+  right: -8%;
+  width: 72vw;
+  max-width: 780px;
+  aspect-ratio: 1;
+  transform: translateY(-52%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radial glow centred on the orbital field — gravity, not glare */
+.hero-orbital-field::after {
   content: '';
   position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 60vw;
-  max-width: 700px;
-  aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(112,128,240,0.06) 0%, transparent 65%);
-  pointer-events: none;
+  inset: 10%;
+  background: radial-gradient(circle, rgba(112,128,240,0.055) 0%, transparent 62%);
+  border-radius: 50%;
 }
 
-.hero-inner {
+.hero-split {
   position: relative;
   z-index: 1;
-  max-width: 700px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-split {
+    grid-template-columns: 46fr 54fr;
+    gap: 3rem;
+  }
+}
+
+.hero-copy {
+  /* left column */
 }
 
 .hero-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.24em;
+  font-size: 0.54rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(112,128,240,0.55);
+  color: rgba(112,128,240,0.50);
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+/* tiny orbital arc before the label — identity system, not decoration */
+.hero-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(112,128,240,0.45));
+  flex-shrink: 0;
 }
 
 .hero-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-size: clamp(2.6rem, 5.5vw, 4rem);
   font-weight: 300;
-  line-height: 1.06;
-  color: rgba(232,230,244,0.92);
+  line-height: 1.04;
+  color: rgba(232,230,244,0.93);
   margin-bottom: 1.75rem;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 .hero-standfirst {
@@ -237,19 +289,19 @@ body {
   line-height: 1.85;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 52ch;
+  max-width: 48ch;
   margin-bottom: 1.5rem;
 }
 
 .hero-reassurance {
   font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.16em;
+  font-size: 0.54rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 2.75rem;
+  margin-bottom: 2.5rem;
 }
-.hero-reassurance span { margin: 0 0.6em; opacity: 0.4; }
+.hero-reassurance span { margin: 0 0.5em; opacity: 0.38; }
 
 .hero-ctas {
   display: flex;
@@ -263,17 +315,17 @@ body {
 .btn {
   display: inline-block;
   font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
+  font-size: 0.57rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 300;
   text-decoration: none;
-  padding: 0.85rem 1.6rem;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  padding: 0.85rem 1.65rem;
+  transition: background 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
 }
 
-/* Primary: soft filled */
 .btn--primary {
   background: var(--accent);
   color: var(--bg);
@@ -281,40 +333,237 @@ body {
 }
 .btn--primary:hover,
 .btn--primary:focus-visible {
-  background: rgba(112,128,240,0.85);
-  border-color: rgba(112,128,240,0.85);
+  background: rgba(112,128,240,0.82);
+  border-color: rgba(112,128,240,0.82);
+  box-shadow: 0 0 24px rgba(112,128,240,0.18);
 }
 
-/* Ghost */
 .btn--ghost {
   background: transparent;
-  color: rgba(232,230,244,0.52);
+  color: rgba(232,230,244,0.48);
   border: 1px solid var(--border-mid);
 }
 .btn--ghost:hover,
 .btn--ghost:focus-visible {
   color: var(--text);
-  border-color: rgba(112,128,240,0.35);
+  border-color: rgba(112,128,240,0.32);
   background: var(--accent-dim);
+}
+
+
+/* ── Mockup orbit (right hero column) ─────────────── */
+.hero-mockup-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Orbital ring system around the mockup.
+   These rings are the C03 Saturn language made spatial.
+   The mockup is the planet. The rings establish containment. */
+.orbit-rings {
+  position: absolute;
+  inset: -28%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glow behind the mockup */
+.hero-mockup-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(circle, rgba(112,128,240,0.065) 0%, transparent 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mockup {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  background: var(--mk-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(112,128,240,0.10);
+  box-shadow:
+    0 0 0 1px rgba(112,128,240,0.05),
+    0 12px 56px rgba(0,0,0,0.55),
+    0 2px 12px rgba(0,0,0,0.35);
+  overflow: hidden;
+  /* Lifted slightly from the page plane */
+  transform: translateY(-2px);
+}
+
+/* App titlebar */
+.mk-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1rem 0.6rem;
+  background: rgba(14,14,26,0.65);
+  border-bottom: 1px solid var(--mk-border);
+}
+
+/* Saturn mark + wordmark in the mockup titlebar */
+.mk-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(232,230,244,0.62);
+}
+.mk-bar-wordmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+}
+.mk-bar-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.40rem;
+  letter-spacing: 0.07em;
+  color: var(--mk-muted);
+}
+
+.mk-body {
+  padding: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Card base */
+.mk {
+  background: var(--mk-card);
+  border-radius: 7px;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--mk-border);
+}
+
+.mk-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.40rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--mk-label);
+  margin-bottom: 0.42rem;
+  opacity: 0.68;
+}
+
+.mk-focus {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.02rem;
+  font-weight: 300;
+  color: var(--mk-text);
+  line-height: 1.22;
+}
+.mk-sep {
+  border: none;
+  border-top: 1px solid var(--mk-border);
+  margin: 0.42rem 0;
+}
+.mk-next {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.66rem;
+  font-style: italic;
+  color: var(--mk-muted);
+  font-weight: 300;
+}
+
+/* Tasks */
+.mk-task {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.24rem 0;
+  border-bottom: 1px solid rgba(112,128,240,0.046);
+}
+.mk-task:last-child { border-bottom: none; }
+.mk-task-dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(112,128,240,0.26);
+  flex-shrink: 0;
+}
+.mk-task-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  color: var(--mk-text);
+  font-weight: 300;
+}
+.mk-task-text--muted { color: var(--mk-muted); }
+
+/* Timer */
+.mk-timer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.1rem;
+}
+.mk-timer-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.28rem;
+  font-weight: 300;
+  color: var(--mk-text);
+  line-height: 1;
+}
+.mk-timer-start {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.40rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(112,128,240,0.85);
+  background: rgba(112,128,240,0.12);
+  border: 1px solid rgba(112,128,240,0.22);
+  padding: 0.28rem 0.65rem;
+  border-radius: 2px;
+}
+
+/* Bottom row */
+.mk-row { display: flex; gap: 0.5rem; }
+.mk--half { flex: 1; min-width: 0; }
+.mk-empty {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-style: italic;
+  color: var(--mk-muted);
+  font-weight: 300;
+  margin-top: 0.2rem;
+  line-height: 1.45;
+  opacity: 0.65;
 }
 
 
 /* ── Section labels & headings ─────────────────────── */
 .section-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.24em;
+  font-size: 0.51rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(112,128,240,0.5);
-  margin-bottom: 1.25rem;
-  display: block;
+  color: rgba(112,128,240,0.46);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+/* Orbital arc before each section label.
+   A short arc suggests the label is a position on an orbit. */
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(112,128,240,0.40));
+  flex-shrink: 0;
 }
 
 .section-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
   font-weight: 300;
-  line-height: 1.12;
+  line-height: 1.1;
   color: rgba(232,230,244,0.88);
   margin-bottom: 1.5rem;
 }
@@ -329,170 +578,39 @@ body {
 
 .section-lede {
   font-size: 1.05rem;
-  line-height: 1.8;
+  line-height: 1.82;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 54ch;
+  max-width: 52ch;
 }
 
 
-/* ── App mockup (dark mode) ────────────────────────── */
-.preview-wrap {
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem 0;
+/* ── Why section layout ────────────────────────────── */
+.why-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 900px) {
+  .why-inner {
+    grid-template-columns: 5fr 4fr;
+    gap: 5rem;
+    align-items: start;
+  }
 }
 
-.preview {
-  width: 100%;
-  max-width: 400px;
-  background: var(--mk-bg);
-  border-radius: 14px;
-  border: 1px solid rgba(112,128,240,0.1);
-  box-shadow:
-    0 0 0 1px rgba(112,128,240,0.06),
-    0 8px 48px rgba(0,0,0,0.5),
-    0 2px 8px rgba(0,0,0,0.3);
-  overflow: hidden;
+.why-aside {
+  /* secondary column — a quiet observation */
 }
-
-.preview-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem 1rem 0.55rem;
-  background: rgba(14,14,26,0.7);
-  border-bottom: 1px solid var(--mk-border);
-}
-.preview-wordmark {
+.why-aside-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: rgba(232,230,244,0.7);
-}
-.preview-date {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.42rem;
-  letter-spacing: 0.08em;
-  color: var(--mk-muted);
-}
-
-.preview-body {
-  padding: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* Card */
-.mk {
-  background: var(--mk-card);
-  border-radius: 8px;
-  padding: 0.75rem 0.85rem;
-  border: 1px solid var(--mk-border);
-}
-
-.mk-label {
-  display: block;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.42rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mk-label);
-  margin-bottom: 0.4rem;
-  opacity: 0.7;
-}
-
-.mk-focus {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--mk-text);
-  line-height: 1.2;
-}
-.mk-sep {
-  border: none;
-  border-top: 1px solid var(--mk-border);
-  margin: 0.42rem 0;
-}
-.mk-next {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.68rem;
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
   font-style: italic;
-  color: var(--mk-muted);
   font-weight: 300;
-}
-
-/* Tasks */
-.mk-task {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.26rem 0;
-  border-bottom: 1px solid rgba(112,128,240,0.05);
-}
-.mk-task:last-child { border-bottom: none; }
-.mk-task-circle {
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(112,128,240,0.28);
-  flex-shrink: 0;
-}
-.mk-task-text {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  color: var(--mk-text);
-  font-weight: 300;
-}
-.mk-task-text--muted { color: var(--mk-muted); }
-
-/* Timer */
-.mk-timer-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.38rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mk-muted);
-  margin-bottom: 0.16rem;
-}
-.mk-timer-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.mk-timer-time {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
-  font-weight: 300;
-  color: var(--mk-text);
-  line-height: 1;
-}
-.mk-timer-btn {
-  background: rgba(112,128,240,0.18);
-  color: rgba(112,128,240,0.9);
-  border: 1px solid rgba(112,128,240,0.25);
-  padding: 0.3rem 0.7rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.42rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 3px;
-  pointer-events: none;
-  cursor: default;
-}
-
-/* Bottom pair */
-.mk-row { display: flex; gap: 0.5rem; }
-.mk--half { flex: 1; min-width: 0; }
-.mk-empty {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.64rem;
-  font-style: italic;
-  color: var(--mk-muted);
-  font-weight: 300;
-  margin-top: 0.18rem;
-  line-height: 1.45;
-  opacity: 0.7;
+  line-height: 1.65;
+  color: rgba(232,230,244,0.38);
+  border-left: 1px solid rgba(112,128,240,0.12);
+  padding-left: 1.25rem;
 }
 
 
@@ -503,32 +621,75 @@ body {
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
-  margin-top: 2.75rem;
+  margin-top: 3.5rem;
 }
+
 @media (min-width: 900px) {
   .feature-grid { grid-template-columns: repeat(4, 1fr); }
 }
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .feature-grid { grid-template-columns: 1fr; }
 }
 
 .feature-card {
   background: var(--bg-2);
-  padding: 1.5rem 1.35rem 1.75rem;
+  padding: 1.75rem 1.5rem 2rem;
+  position: relative;
+  transition: background 0.28s ease;
+  overflow: hidden;
+}
+
+/* Orbital glow that appears on hover — from within, not outside */
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(112,128,240,0.0) 20%,
+    rgba(112,128,240,0.0) 80%,
+    transparent
+  );
+  transition: background 0.3s ease;
+}
+.feature-card:hover::after {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(112,128,240,0.55) 30%,
+    rgba(112,128,240,0.55) 70%,
+    transparent
+  );
+}
+
+.feature-card:hover {
+  background: var(--bg-3);
+}
+
+/* Saturn micro-mark per feature card */
+.feature-mark {
+  margin-bottom: 1.1rem;
+  color: var(--accent);
+  opacity: 0.38;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+.feature-card:hover .feature-mark {
+  opacity: 0.65;
 }
 
 .feature-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 300;
-  color: rgba(232,230,244,0.82);
-  line-height: 1.2;
-  margin-bottom: 0.6rem;
+  color: rgba(232,230,244,0.80);
+  line-height: 1.22;
+  margin-bottom: 0.65rem;
 }
 
 .feature-body {
   font-size: 0.82rem;
-  line-height: 1.75;
+  line-height: 1.78;
   color: var(--text-muted);
   font-weight: 300;
 }
@@ -537,11 +698,11 @@ body {
 /* ── Install section ───────────────────────────────── */
 .install-intro {
   font-size: 0.95rem;
-  line-height: 1.8;
+  line-height: 1.82;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 50ch;
-  margin-bottom: 2.75rem;
+  max-width: 48ch;
+  margin-bottom: 3rem;
 }
 
 .os-grid {
@@ -558,17 +719,25 @@ body {
 
 .os-card {
   background: var(--bg-2);
-  padding: 1.75rem;
+  padding: 1.75rem 2rem;
 }
 
 .os-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   font-weight: 300;
-  color: rgba(232,230,244,0.78);
+  color: rgba(232,230,244,0.72);
   margin-bottom: 1.25rem;
   padding-bottom: 0.85rem;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* OS icon as SVG-equivalent mark */
+.os-icon {
+  opacity: 0.5;
 }
 
 .os-steps {
@@ -579,8 +748,8 @@ body {
 .os-steps li {
   counter-increment: os;
   position: relative;
-  padding-left: 2.1rem;
-  margin-bottom: 0.7rem;
+  padding-left: 2.2rem;
+  margin-bottom: 0.72rem;
   font-size: 0.875rem;
   line-height: 1.7;
   font-weight: 300;
@@ -591,38 +760,55 @@ body {
   content: counter(os, decimal-leading-zero);
   position: absolute; left: 0;
   font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
+  font-size: 0.52rem;
   letter-spacing: 0.08em;
-  color: rgba(112,128,240,0.5);
-  top: 0.28em;
+  color: rgba(112,128,240,0.42);
+  top: 0.3em;
 }
 
 .install-note {
   font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
+  font-size: 0.52rem;
   letter-spacing: 0.06em;
-  line-height: 1.7;
+  line-height: 1.72;
   color: var(--text-muted);
 }
 
 
-/* ── Privacy close section ─────────────────────────── */
+/* ── Privacy / close section ───────────────────────── */
 .close-section {
   border-top: 1px solid var(--border);
-  padding: 5.5rem 0;
+  padding: 7rem 0 6.5rem;
+  position: relative;
+  overflow: hidden;
 }
-@media (min-width: 900px) {
-  .close-section { padding: 7rem 0; }
+
+/* Very faint full orbit ring centred behind the heading.
+   The visual idea: your data stays inside this orbit. */
+.close-orbital {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(560px, 80vw);
+  aspect-ratio: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.close-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .close-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
   font-weight: 300;
   color: rgba(232,230,244,0.85);
-  line-height: 1.08;
-  margin-bottom: 1.1rem;
-  max-width: 520px;
+  line-height: 1.06;
+  margin-bottom: 1.15rem;
+  max-width: 480px;
 }
 
 .close-body {
@@ -630,15 +816,15 @@ body {
   line-height: 1.85;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 50ch;
-  margin-bottom: 2.5rem;
+  max-width: 46ch;
+  margin-bottom: 2.75rem;
 }
 
 
 /* ── Footer ────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -654,21 +840,29 @@ body {
   }
 }
 
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+}
+.footer-mark {
+  opacity: 0.45;
+  color: var(--accent);
+}
 .footer-attr {
   font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.1em;
+  font-size: 0.50rem;
+  letter-spacing: 0.10em;
   color: var(--text-muted);
 }
 .footer-attr a {
-  color: rgba(112,128,240,0.45);
+  color: rgba(112,128,240,0.40);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 .footer-attr a:hover,
-.footer-attr a:focus-visible {
-  color: rgba(112,128,240,0.75);
-}
+.footer-attr a:focus-visible { color: rgba(112,128,240,0.72); }
 
 .footer-legal {
   display: flex;
@@ -676,12 +870,12 @@ body {
 }
 .footer-legal a {
   font-family: 'DM Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.1em;
+  font-size: 0.50rem;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--text-muted);
   text-decoration: none;
-  opacity: 0.6;
+  opacity: 0.55;
   transition: opacity 0.2s ease;
 }
 .footer-legal a:hover,
@@ -711,8 +905,39 @@ body {
 
 <header class="site-header">
   <nav class="site-nav" aria-label="Main navigation">
-    <a href="/inflow/" class="nav-wordmark" aria-label="inFlow — focus board">inFlow</a>
+
+    <a href="/inflow/" class="nav-brand" aria-label="inFlow — focus board, return to top">
+      <!--
+        C03 Saturn mark. SVG paths:
+          Back arc  (top half, behind planet) — faint
+          Occlusion disk — matches nav bg, creates the "ring wraps around" depth
+          Planet    — solid fill, the contained point of gravity
+          Front arc (bottom half, in front of planet) — full opacity
+        Ring tilted ~−18° via group transform (standard Saturn orientation).
+      -->
+      <svg class="saturn-mark"
+           viewBox="0 0 30 22" width="22" height="16"
+           fill="none" aria-hidden="true" focusable="false">
+        <g transform="rotate(-18 15 11)">
+          <!-- back arc: very faint, behind planet -->
+          <path d="M 2,11 A 13,4.2 0 0,0 28,11"
+                stroke="currentColor" stroke-width="1.05"
+                stroke-linecap="round" opacity="0.18"/>
+          <!-- occlusion disk: hides where ring passes behind planet -->
+          <circle cx="15" cy="11" r="5.8" fill="#0e0e1a"/>
+          <!-- planet -->
+          <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
+          <!-- front arc: full opacity, ring in front of planet -->
+          <path d="M 2,11 A 13,4.2 0 0,1 28,11"
+                stroke="currentColor" stroke-width="1.15"
+                stroke-linecap="round" opacity="0.80"/>
+        </g>
+      </svg>
+      <span class="nav-wordmark">inFlow</span>
+    </a>
+
     <a href="/inflow/app/" class="nav-cta">Open inFlow</a>
+
   </nav>
 </header>
 
@@ -722,110 +947,175 @@ body {
 
   <!-- ── Hero ──────────────────────────────────────── -->
   <section class="hero" aria-labelledby="hero-heading">
+
+    <!--
+      Orbital field SVG: the gravitational atmosphere of the hero.
+      Concentric rings suggest orbit, containment, return.
+      Opacity values are tuned to be felt rather than seen.
+    -->
+    <svg class="hero-orbital-field" viewBox="0 0 600 600"
+         fill="none" aria-hidden="true" focusable="false"
+         style="position:absolute;top:50%;right:-6%;width:62vw;max-width:700px;
+                transform:translateY(-52%);pointer-events:none;z-index:0;">
+      <circle cx="300" cy="300" r="295" stroke="#7080f0" stroke-width="0.5" opacity="0.038"/>
+      <circle cx="300" cy="300" r="235" stroke="#7080f0" stroke-width="0.5" opacity="0.050"/>
+      <circle cx="300" cy="300" r="175" stroke="#7080f0" stroke-width="0.5" opacity="0.062"/>
+      <!-- Partial orbit arc — 200° sweep, sits at lower-right quadrant -->
+      <path d="M 455,415 A 175,175 0 0,0 125,300"
+            stroke="#7080f0" stroke-width="1.2"
+            stroke-linecap="round" opacity="0.072"/>
+      <!-- Object dot on the arc -->
+      <circle cx="455" cy="415" r="4" fill="#7080f0" opacity="0.10"/>
+    </svg>
+
     <div class="container">
-      <div class="hero-inner">
+      <div class="hero-split">
 
-        <p class="hero-label" aria-hidden="true">Focus board</p>
+        <!-- Copy column -->
+        <div class="hero-copy">
 
-        <h1 id="hero-heading" class="hero-heading">
-          A quieter way<br>to start work.
-        </h1>
+          <p class="hero-label" aria-hidden="true">Focus board</p>
 
-        <p class="hero-standfirst">
-          inFlow gives you one small place to choose what matters, park distracting thoughts, and ease back into work.
-        </p>
+          <h1 id="hero-heading" class="hero-heading">
+            A quieter way<br>to start work.
+          </h1>
 
-        <p class="hero-reassurance" aria-label="No account. No dashboard. No tracking.">
-          No account <span aria-hidden="true">·</span>
-          No dashboard <span aria-hidden="true">·</span>
-          No tracking
-        </p>
+          <p class="hero-standfirst">
+            inFlow gives you one small place to choose what matters, park distracting thoughts, and ease back into work.
+          </p>
 
-        <div class="hero-ctas">
-          <a href="/inflow/app/" class="btn btn--primary">Open inFlow</a>
-          <a href="#install" class="btn btn--ghost">How to install</a>
-        </div>
+          <p class="hero-reassurance" aria-label="No account. No dashboard. No tracking.">
+            No account <span aria-hidden="true">·</span>
+            No dashboard <span aria-hidden="true">·</span>
+            No tracking
+          </p>
 
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── Product preview ───────────────────────────── -->
-  <section class="section" aria-label="inFlow app preview" style="padding-top:3.5rem;padding-bottom:4rem;">
-    <div class="container">
-      <div class="preview-wrap">
-
-        <div class="preview" aria-hidden="true">
-
-          <div class="preview-bar">
-            <span class="preview-wordmark">inFlow</span>
-            <span class="preview-date">Tuesday, 13 May 2025</span>
+          <div class="hero-ctas">
+            <a href="/inflow/app/" class="btn btn--primary">Open inFlow</a>
+            <a href="#install" class="btn btn--ghost">How to install</a>
           </div>
 
-          <div class="preview-body">
-
-            <div class="mk">
-              <span class="mk-label">Today's focus</span>
-              <p class="mk-focus">Finish the client proposal</p>
-              <hr class="mk-sep">
-              <p class="mk-next">Send the first draft before lunch</p>
-            </div>
-
-            <div class="mk">
-              <span class="mk-label">Three priorities</span>
-              <div class="mk-task">
-                <span class="mk-task-circle"></span>
-                <span class="mk-task-text">Draft the proposal intro section</span>
-              </div>
-              <div class="mk-task">
-                <span class="mk-task-circle"></span>
-                <span class="mk-task-text">Review pricing with the team</span>
-              </div>
-              <div class="mk-task">
-                <span class="mk-task-circle"></span>
-                <span class="mk-task-text mk-task-text--muted">Only if there is capacity</span>
-              </div>
-            </div>
-
-            <div class="mk">
-              <span class="mk-label">Focus timer</span>
-              <p class="mk-timer-label">Just start</p>
-              <div class="mk-timer-row">
-                <span class="mk-timer-time">05:00</span>
-                <span class="mk-timer-btn">Start</span>
-              </div>
-            </div>
-
-            <div class="mk-row">
-              <div class="mk mk--half">
-                <span class="mk-label">Parking lot</span>
-                <p class="mk-empty">Nothing parked yet</p>
-              </div>
-              <div class="mk mk--half">
-                <span class="mk-label">Done today</span>
-                <p class="mk-empty">Complete a task to see it here</p>
-              </div>
-            </div>
-
-          </div>
         </div>
 
-      </div>
-    </div>
-  </section>
+        <!-- Mockup column: the "planet" in the orbital system -->
+        <div class="hero-mockup-wrap">
+
+          <!-- Orbital ring system — containment, not decoration -->
+          <svg class="orbit-rings" viewBox="0 0 500 500"
+               fill="none" aria-hidden="true" focusable="false">
+            <!-- Outer containment ring -->
+            <circle cx="250" cy="250" r="245" stroke="#7080f0" stroke-width="0.6" opacity="0.048"/>
+            <!-- Mid ring -->
+            <circle cx="250" cy="250" r="195" stroke="#7080f0" stroke-width="0.6" opacity="0.062"/>
+            <!-- Inner ring — close to mockup edges -->
+            <circle cx="250" cy="250" r="148" stroke="#7080f0" stroke-width="0.5" opacity="0.055"/>
+            <!-- Partial orbit arc at lower-right — suggests motion, not static display -->
+            <path d="M 388,355 A 148,148 0 0,0 108,218"
+                  stroke="#7080f0" stroke-width="1.0"
+                  stroke-linecap="round" opacity="0.078"/>
+          </svg>
+
+          <!-- App mockup — aria-hidden because it's decorative illustration -->
+          <div class="mockup" aria-hidden="true">
+
+            <div class="mk-bar">
+              <div class="mk-bar-brand">
+                <!-- Saturn mark echoed inside the app — identity consistency -->
+                <svg viewBox="0 0 30 22" width="14" height="10"
+                     fill="none" aria-hidden="true" focusable="false">
+                  <g transform="rotate(-18 15 11)">
+                    <path d="M 2,11 A 13,4.2 0 0,0 28,11"
+                          stroke="currentColor" stroke-width="1.2"
+                          stroke-linecap="round" opacity="0.18"/>
+                    <circle cx="15" cy="11" r="5.8" fill="#12121e"/>
+                    <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.82"/>
+                    <path d="M 2,11 A 13,4.2 0 0,1 28,11"
+                          stroke="currentColor" stroke-width="1.3"
+                          stroke-linecap="round" opacity="0.78"/>
+                  </g>
+                </svg>
+                <span class="mk-bar-wordmark">inFlow</span>
+              </div>
+              <span class="mk-bar-date">Wednesday, 14 May 2026</span>
+            </div>
+
+            <div class="mk-body">
+
+              <div class="mk">
+                <span class="mk-label">Today's focus</span>
+                <p class="mk-focus">Finish the client proposal</p>
+                <hr class="mk-sep">
+                <p class="mk-next">Send the first draft before lunch</p>
+              </div>
+
+              <div class="mk">
+                <span class="mk-label">Three priorities</span>
+                <div class="mk-task">
+                  <span class="mk-task-dot"></span>
+                  <span class="mk-task-text">Draft the proposal intro section</span>
+                </div>
+                <div class="mk-task">
+                  <span class="mk-task-dot"></span>
+                  <span class="mk-task-text">Review pricing with the team</span>
+                </div>
+                <div class="mk-task">
+                  <span class="mk-task-dot"></span>
+                  <span class="mk-task-text mk-task-text--muted">Only if there is capacity</span>
+                </div>
+              </div>
+
+              <div class="mk">
+                <span class="mk-label">Focus timer</span>
+                <div class="mk-timer-row">
+                  <span class="mk-timer-time">05:00</span>
+                  <span class="mk-timer-start">Start</span>
+                </div>
+              </div>
+
+              <div class="mk-row">
+                <div class="mk mk--half">
+                  <span class="mk-label">Parking lot</span>
+                  <p class="mk-empty">Nothing parked yet</p>
+                </div>
+                <div class="mk mk--half">
+                  <span class="mk-label">Done today</span>
+                  <p class="mk-empty">Complete a task to see it here</p>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- /.mockup -->
+
+        </div><!-- /.hero-mockup-wrap -->
+
+      </div><!-- /.hero-split -->
+    </div><!-- /.container -->
+
+  </section><!-- /.hero -->
 
 
   <!-- ── Why it exists ─────────────────────────────── -->
   <section class="section" aria-labelledby="why-heading">
     <div class="container">
-      <span class="section-label" aria-hidden="true">Why it exists</span>
-      <h2 id="why-heading" class="section-heading">
-        Built for the days when<br>starting is the hard part.
-      </h2>
-      <p class="section-lede">
-        Some days you do not need a bigger task system. You need a quiet place to land, choose the next step, and begin.
-      </p>
+      <div class="why-inner">
+
+        <div>
+          <span class="section-label" aria-hidden="true">Why it exists</span>
+          <h2 id="why-heading" class="section-heading">
+            Built for the days when<br>starting is the hard part.
+          </h2>
+          <p class="section-lede">
+            Some days you do not need a bigger task system. You need a quiet place to land, choose the next step, and begin.
+          </p>
+        </div>
+
+        <aside class="why-aside">
+          <p class="why-aside-text">
+            Most tools add weight. inFlow removes it. One focus. One next step. Whatever you need to park. Nothing more.
+          </p>
+        </aside>
+
+      </div>
     </div>
   </section>
 
@@ -835,24 +1125,82 @@ body {
     <div class="container">
       <span class="section-label" aria-hidden="true">What it helps with</span>
       <h2 id="features-heading" class="section-heading">Four things inFlow does well.</h2>
+
       <div class="feature-grid" role="list">
 
         <div class="feature-card" role="listitem">
+          <!-- Saturn mark per card: the identity system carries through -->
+          <svg class="feature-mark"
+               viewBox="0 0 30 22" width="20" height="15"
+               fill="none" aria-hidden="true" focusable="false">
+            <g transform="rotate(-18 15 11)">
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
+                    stroke="currentColor" stroke-width="1.1"
+                    stroke-linecap="round" opacity="0.25"/>
+              <circle cx="15" cy="11" r="5.8" fill="#111126"/>
+              <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
+                    stroke="currentColor" stroke-width="1.2"
+                    stroke-linecap="round" opacity="0.82"/>
+            </g>
+          </svg>
           <h3 class="feature-heading">Choose one focus</h3>
           <p class="feature-body">Write down what matters most today. Not the list. One thing. Then write the next small step.</p>
         </div>
 
         <div class="feature-card" role="listitem">
+          <svg class="feature-mark"
+               viewBox="0 0 30 22" width="20" height="15"
+               fill="none" aria-hidden="true" focusable="false">
+            <g transform="rotate(-18 15 11)">
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
+                    stroke="currentColor" stroke-width="1.1"
+                    stroke-linecap="round" opacity="0.25"/>
+              <circle cx="15" cy="11" r="5.8" fill="#111126"/>
+              <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
+                    stroke="currentColor" stroke-width="1.2"
+                    stroke-linecap="round" opacity="0.82"/>
+            </g>
+          </svg>
           <h3 class="feature-heading">Start with 5 minutes</h3>
           <p class="feature-body">When even 25 minutes feels like too much, start with 5. The timer is there to help you begin, not to track you.</p>
         </div>
 
         <div class="feature-card" role="listitem">
+          <svg class="feature-mark"
+               viewBox="0 0 30 22" width="20" height="15"
+               fill="none" aria-hidden="true" focusable="false">
+            <g transform="rotate(-18 15 11)">
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
+                    stroke="currentColor" stroke-width="1.1"
+                    stroke-linecap="round" opacity="0.25"/>
+              <circle cx="15" cy="11" r="5.8" fill="#111126"/>
+              <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
+                    stroke="currentColor" stroke-width="1.2"
+                    stroke-linecap="round" opacity="0.82"/>
+            </g>
+          </svg>
           <h3 class="feature-heading">Park distracting thoughts</h3>
           <p class="feature-body">Note the things pulling your attention. Get them out of your head so you can come back to them later.</p>
         </div>
 
         <div class="feature-card" role="listitem">
+          <svg class="feature-mark"
+               viewBox="0 0 30 22" width="20" height="15"
+               fill="none" aria-hidden="true" focusable="false">
+            <g transform="rotate(-18 15 11)">
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
+                    stroke="currentColor" stroke-width="1.1"
+                    stroke-linecap="round" opacity="0.25"/>
+              <circle cx="15" cy="11" r="5.8" fill="#111126"/>
+              <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
+                    stroke="currentColor" stroke-width="1.2"
+                    stroke-linecap="round" opacity="0.82"/>
+            </g>
+          </svg>
           <h3 class="feature-heading">Find your place again</h3>
           <p class="feature-body">After a meeting, a break, or an interruption. Open inFlow, see your focus, and remember where you left off.</p>
         </div>
@@ -878,7 +1226,13 @@ body {
       <div class="os-grid">
 
         <div class="os-card" aria-labelledby="install-mac">
-          <h3 id="install-mac" class="os-heading">Mac</h3>
+          <h3 id="install-mac" class="os-heading">
+            <svg class="os-icon" viewBox="0 0 14 16" width="13" height="15"
+                 fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M13.23 11.56c-.31.7-.46 1.01-.86 1.63-.56.85-1.34 1.9-2.32 1.91-.86.01-1.08-.56-2.25-.55-1.17.01-1.42.56-2.28.55-.97-.01-1.71-1-2.27-1.86C1.4 11.1.74 8.37 1.49 6.58c.52-1.23 1.6-2.03 2.72-2.03 1.06 0 1.73.57 2.6.57.87 0 1.4-.57 2.64-.57.99 0 1.97.6 2.5 1.62C9.6 7.27 9.97 9.96 13.23 11.56zM9.26 2.86c.48-.63.85-1.53.71-2.45-.79.06-1.72.6-2.26 1.26-.49.61-.9 1.52-.74 2.4.86.03 1.77-.53 2.29-1.21z"/>
+            </svg>
+            Mac
+          </h3>
           <ol class="os-steps">
             <li>Open inFlow in Chrome or Edge.</li>
             <li>Look for the install icon in the address bar.</li>
@@ -888,7 +1242,13 @@ body {
         </div>
 
         <div class="os-card" aria-labelledby="install-windows">
-          <h3 id="install-windows" class="os-heading">Windows</h3>
+          <h3 id="install-windows" class="os-heading">
+            <svg class="os-icon" viewBox="0 0 14 14" width="13" height="13"
+                 fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M0 1.93L5.73 1.1v5.52H0V1.93zM6.4 1L14 0v6.6H6.4V1zM0 7.38h5.73v5.52L0 12.07V7.38zM6.4 7.38H14V14L6.4 12.97V7.38z"/>
+            </svg>
+            Windows
+          </h3>
           <ol class="os-steps">
             <li>Open inFlow in Chrome or Edge.</li>
             <li>Look for the install icon in the address bar.</li>
@@ -909,20 +1269,39 @@ body {
 
   <!-- ── Privacy / close ───────────────────────────── -->
   <section class="close-section" aria-labelledby="privacy-heading">
+
+    <!--
+      Full orbit ring centred behind the closing section.
+      Visual idea: your data stays within this orbit.
+      Felt, not read.
+    -->
+    <svg class="close-orbital" viewBox="0 0 560 560"
+         fill="none" aria-hidden="true" focusable="false">
+      <circle cx="280" cy="280" r="275" stroke="#7080f0" stroke-width="0.5" opacity="0.045"/>
+      <circle cx="280" cy="280" r="220" stroke="#7080f0" stroke-width="0.5" opacity="0.058"/>
+      <!-- Orbital arc: 240° sweep, sense of movement and return -->
+      <path d="M 455,350 A 220,220 0 1,0 500,255"
+            stroke="#7080f0" stroke-width="0.8"
+            stroke-linecap="round" opacity="0.065"/>
+      <circle cx="500" cy="255" r="4" fill="#7080f0" opacity="0.085"/>
+    </svg>
+
     <div class="container">
+      <div class="close-inner">
 
-      <span class="section-label" aria-hidden="true">Privacy</span>
+        <span class="section-label" aria-hidden="true">Privacy</span>
 
-      <h2 id="privacy-heading" class="close-heading">
-        Private by default.
-      </h2>
+        <h2 id="privacy-heading" class="close-heading">
+          Private by default.
+        </h2>
 
-      <p class="close-body">
-        Your focus board stays on your device. inFlow does not need an account and does not track what you write.
-      </p>
+        <p class="close-body">
+          Your focus board stays on your device. inFlow does not need an account and does not track what you write.
+        </p>
 
-      <a href="/inflow/app/" class="btn btn--primary">Open inFlow</a>
+        <a href="/inflow/app/" class="btn btn--primary">Open inFlow</a>
 
+      </div>
     </div>
   </section>
 
@@ -932,10 +1311,27 @@ body {
 
 <footer>
   <div class="site-footer">
-    <p class="footer-attr">
-      inFlow is built by <a href="https://www.notonmondays.com" target="_blank" rel="noopener noreferrer">Not On Mondays</a>
-      <span aria-hidden="true"> &middot; </span>2026
-    </p>
+    <div class="footer-brand">
+      <!-- Saturn mark in footer — identity closure -->
+      <svg class="footer-mark"
+           viewBox="0 0 30 22" width="18" height="13"
+           fill="none" aria-hidden="true" focusable="false">
+        <g transform="rotate(-18 15 11)">
+          <path d="M 2,11 A 13,4.2 0 0,0 28,11"
+                stroke="currentColor" stroke-width="1.1"
+                stroke-linecap="round" opacity="0.20"/>
+          <circle cx="15" cy="11" r="5.8" fill="#0e0e1a"/>
+          <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.85"/>
+          <path d="M 2,11 A 13,4.2 0 0,1 28,11"
+                stroke="currentColor" stroke-width="1.2"
+                stroke-linecap="round" opacity="0.78"/>
+        </g>
+      </svg>
+      <p class="footer-attr">
+        inFlow is built by <a href="https://www.notonmondays.com" target="_blank" rel="noopener noreferrer">Not On Mondays</a>
+        <span aria-hidden="true"> &middot; </span>2026
+      </p>
+    </div>
     <nav class="footer-legal" aria-label="Legal">
       <a href="https://www.notonmondays.com/privacy-policy.html">Privacy</a>
     </nav>
