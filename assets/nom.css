@@ -50,7 +50,7 @@ nav {
    Border lives on .nav-logo so the rectangle wraps the entire assembly.
    On mobile the descriptor/divider are hidden, so the frame naturally collapses to the letters. */
 .nav-logo {
-  border: 1px solid rgba(26,42,212,0.55);
+  border: 1.5px solid rgba(26,42,212,0.55);
   padding: 0.4rem 0.65rem 0.4rem 0.5rem;
   height: 52px;
   box-sizing: border-box;
