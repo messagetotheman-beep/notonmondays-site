@@ -52,6 +52,8 @@ nav {
 .nav-logo {
   border: 1px solid rgba(26,42,212,0.38);
   padding: 0.4rem 0.65rem 0.4rem 0.5rem;
+  height: 52px;
+  box-sizing: border-box;
 }
 .nav-logo:hover,
 .nav-logo:focus-visible {
@@ -60,7 +62,7 @@ nav {
 
 /* Shared logo letter size — (0,2,0) wins over page .nom-initial (0,1,0). */
 .nav-logo .nom-initial {
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 /* Shared fade-letter colour — (0,3,0) overrides page .nom-initial.fade-* (0,2,0). */
