@@ -60,15 +60,50 @@ nav {
   border-color: rgba(26,42,212,0.8);
 }
 
-/* Shared logo letter size — (0,2,0) wins over page .nom-initial (0,1,0). */
+/* Logo internals — all at (0,2,0)+ to win over page-level (0,1,0) rules. */
+
+/* Letter size + line-height */
 .nav-logo .nom-initial {
   font-size: 0.75rem;
+  line-height: 1;
 }
 
-/* Shared fade-letter colour — (0,3,0) overrides page .nom-initial.fade-* (0,2,0). */
+/* Initials stack — no gap, tight */
+.nav-logo .nav-logo-initials {
+  gap: 0;
+  line-height: 1;
+}
+
+/* Divider opacity matches strengthened frame */
+.nav-logo .nav-logo-divider {
+  background: rgba(26,42,212,0.28);
+}
+
+/* Wordmark — matches homepage inline style values (0,2,1 beats page .nav-descriptor span 0,1,1) */
+.nav-logo .nav-descriptor span {
+  font-size: 0.62rem;
+  font-weight: 400;
+  color: rgba(17,17,36,0.88);
+}
+
+/* Fade-letter resting colour — (0,3,0) overrides page .nom-initial.fade-* (0,2,0). */
 .nav-logo .nom-initial.fade-1,
 .nav-logo .nom-initial.fade-2 {
   color: rgba(17,17,36,0.62);
+}
+
+/* Fade-letter hover colour — (0,4,0) overrides page .nav-logo:hover .fade-* (0,3,0). */
+.nav-logo:hover .nom-initial.fade-1,
+.nav-logo:hover .nom-initial.fade-2,
+.nav-logo:focus-visible .nom-initial.fade-1,
+.nav-logo:focus-visible .nom-initial.fade-2 {
+  color: rgba(17,17,36,0.8);
+}
+
+/* Nav link typography — (0,2,1) overrides page .nav-links a (0,1,1). */
+.site-nav .nav-links a {
+  font-size: 0.62rem;
+  font-weight: 400;
 }
 
 .nav-cta {
