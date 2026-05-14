@@ -37,32 +37,28 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg:         #0e0e1a;
-  --bg-2:       #111126;
-  --bg-3:       #14142e;
-  --accent:     #7080f0;
-  --accent-dim: rgba(112,128,240,0.10);
-  --accent-mid: rgba(112,128,240,0.20);
-  --accent-glow:rgba(112,128,240,0.07);
-  --text:       rgba(232,230,244,0.88);
-  --text-dim:   rgba(232,230,244,0.50);
-  --text-muted: rgba(232,230,244,0.28);
-  --border:     rgba(112,128,240,0.09);
-  --border-mid: rgba(112,128,240,0.16);
+  --bg:          #0e0e1a;
+  --bg-2:        #111126;
+  --bg-3:        #13132a;
+  --accent:      #7080f0;
+  --accent-dim:  rgba(112,128,240,0.10);
+  --accent-mid:  rgba(112,128,240,0.20);
+  --text:        rgba(232,230,244,0.88);
+  --text-dim:    rgba(232,230,244,0.50);
+  --text-muted:  rgba(232,230,244,0.28);
+  --border:      rgba(112,128,240,0.09);
+  --border-mid:  rgba(112,128,240,0.16);
 
   /* Mockup tokens */
-  --mk-bg:      #12121e;
-  --mk-card:    #1b1b2c;
-  --mk-border:  rgba(112,128,240,0.08);
-  --mk-label:   rgba(112,128,240,0.80);
-  --mk-text:    rgba(232,230,244,0.82);
-  --mk-muted:   rgba(232,230,244,0.34);
+  --mk-bg:     #11111d;
+  --mk-card:   #1a1a2c;
+  --mk-border: rgba(112,128,240,0.08);
+  --mk-label:  rgba(112,128,240,0.78);
+  --mk-text:   rgba(232,230,244,0.84);
+  --mk-muted:  rgba(232,230,244,0.34);
 }
 
-html {
-  scroll-behavior: smooth;
-  background: var(--bg);
-}
+html { scroll-behavior: smooth; background: var(--bg); }
 
 body {
   background: var(--bg);
@@ -78,13 +74,10 @@ body {
   * { transition-duration: 0.01ms !important; animation: none !important; }
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 
-/* ── Skip link ─────────────────────────────────────── */
+/* ── Skip link ──────────────────────────────────────── */
 .skip-link {
   position: absolute; top: -100%; left: 1rem;
   background: var(--accent); color: var(--bg);
@@ -97,64 +90,43 @@ body {
 .skip-link:focus { top: 1rem; }
 
 
-/* ── Nav ───────────────────────────────────────────── */
+/* ── Nav ────────────────────────────────────────────── */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   border-bottom: 1px solid var(--border);
-  background: rgba(14,14,26,0.90);
+  background: rgba(14,14,26,0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 .site-nav {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 2.5rem; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
 }
 
-/* Identity mark + wordmark */
 .nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  text-decoration: none;
-  color: var(--text);
-  opacity: 0.88;
-  transition: opacity 0.25s ease;
+  display: flex; align-items: center; gap: 0.55rem;
+  text-decoration: none; color: var(--text);
+  opacity: 0.88; transition: opacity 0.25s ease;
 }
 .nav-brand:hover,
 .nav-brand:focus-visible { opacity: 1; }
 
 /* Saturn mark: the C03 orbital identity */
-.saturn-mark {
-  display: block;
-  color: var(--accent);
-  flex-shrink: 0;
-}
+.saturn-mark { display: block; color: var(--accent); flex-shrink: 0; }
 
-/* inFlow wordmark */
 .nav-wordmark {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  font-weight: 300;
-  letter-spacing: 0.02em;
-  color: inherit;
+  font-size: 1.1rem; font-weight: 300;
+  letter-spacing: 0.02em; color: inherit;
 }
 
-/* Nav CTA */
 .nav-cta {
   font-family: 'DM Mono', monospace;
-  font-size: 0.57rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 300;
-  color: var(--accent);
-  text-decoration: none;
-  padding: 0.55rem 1.1rem;
-  border: 1px solid var(--accent-mid);
+  font-size: 0.57rem; letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 300;
+  color: var(--accent); text-decoration: none;
+  padding: 0.55rem 1.1rem; border: 1px solid var(--accent-mid);
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 .nav-cta:hover,
@@ -170,71 +142,72 @@ body {
 }
 
 
-/* ── Layout scaffolding ────────────────────────────── */
-.layout {
-  padding-top: 64px;
-}
+/* ── Layout scaffolding ─────────────────────────────── */
+.layout { padding-top: 64px; }
 
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
+  max-width: 1100px; margin: 0 auto; padding: 0 2.5rem;
 }
 
 .section {
   padding: 6rem 0;
-  border-top: 1px solid var(--border);
+  position: relative;
+  /* No hard border. Sections breathe into each other.
+     A faint centered fade acts as a spatial marker, not a wall. */
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12%; right: 12%; height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(112,128,240,0.055) 25%,
+    rgba(112,128,240,0.055) 75%,
+    transparent);
+  pointer-events: none;
 }
 
-@media (min-width: 900px) {
-  .section { padding: 8rem 0; }
-}
-
+@media (min-width: 900px) { .section { padding: 8rem 0; } }
 @media (max-width: 640px) {
   .container { padding: 0 1.25rem; }
   .section { padding: 4.5rem 0; }
 }
 
 
-/* ── Hero ──────────────────────────────────────────── */
+/* ── Hero ───────────────────────────────────────────── */
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding: 5.5rem 0 5rem;
-  min-height: 92vh;
-  display: flex;
-  align-items: center;
+  position: relative; overflow: visible;
+  padding: 5.5rem 0 4.5rem;
+  min-height: 94vh;
+  display: flex; align-items: center;
 }
 
 /*
-  Orbital field: a large, tilted, very faint ellipse
-  behind the hero — the "gravitational space" of the product.
-  Not decorative. This is the atmosphere of the identity.
+  Single compositional arc: frames the right side of the hero.
+  One clear sweep rather than invisible multi-ring system.
+  Acts as structural depth, not background decoration.
 */
-.hero-orbital-field {
+.hero-arc {
   position: absolute;
-  top: 50%;
-  right: -8%;
-  width: 72vw;
-  max-width: 780px;
-  aspect-ratio: 1;
-  transform: translateY(-52%);
-  pointer-events: none;
-  z-index: 0;
+  right: -4%; top: 8%; bottom: 5%;
+  width: 58vw; max-width: 640px;
+  pointer-events: none; z-index: 0;
+  overflow: visible;
 }
 
-/* Radial glow centred on the orbital field — gravity, not glare */
-.hero-orbital-field::after {
-  content: '';
+/* Central glow behind mockup area */
+.hero-glow {
   position: absolute;
-  inset: 10%;
-  background: radial-gradient(circle, rgba(112,128,240,0.055) 0%, transparent 62%);
-  border-radius: 50%;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 55vw; max-width: 600px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(112,128,240,0.07) 0%, transparent 62%);
+  pointer-events: none; z-index: 0;
 }
 
 .hero-split {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
   gap: 4rem;
@@ -243,104 +216,78 @@ body {
 
 @media (min-width: 900px) {
   .hero-split {
-    grid-template-columns: 46fr 54fr;
-    gap: 3rem;
+    grid-template-columns: 44fr 56fr;
+    gap: 2.5rem;
   }
-}
-
-.hero-copy {
-  /* left column */
 }
 
 .hero-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.54rem;
-  letter-spacing: 0.26em;
+  font-size: 0.54rem; letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(112,128,240,0.50);
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6em;
+  color: rgba(112,128,240,0.48);
+  margin-bottom: 1.75rem;
+  display: flex; align-items: center; gap: 0.6em;
 }
-
-/* tiny orbital arc before the label — identity system, not decoration */
 .hero-label::before {
   content: '';
-  display: inline-block;
-  width: 18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(112,128,240,0.45));
+  display: inline-block; width: 20px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(112,128,240,0.42));
   flex-shrink: 0;
 }
 
 .hero-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.6rem, 5.5vw, 4rem);
-  font-weight: 300;
-  line-height: 1.04;
+  font-size: clamp(2.7rem, 5.5vw, 4.2rem);
+  font-weight: 300; line-height: 1.03;
   color: rgba(232,230,244,0.93);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.65rem;
   letter-spacing: -0.015em;
 }
 
 .hero-standfirst {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--text-dim);
-  font-weight: 300;
-  max-width: 48ch;
-  margin-bottom: 1.5rem;
+  font-size: 1rem; line-height: 1.85;
+  color: var(--text-dim); font-weight: 300;
+  max-width: 46ch; margin-bottom: 1.4rem;
 }
 
 .hero-reassurance {
   font-family: 'DM Mono', monospace;
-  font-size: 0.54rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 2.5rem;
+  font-size: 0.53rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 2.4rem;
 }
-.hero-reassurance span { margin: 0 0.5em; opacity: 0.38; }
+.hero-reassurance span { margin: 0 0.5em; opacity: 0.36; }
 
 .hero-ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
+  display: flex; flex-wrap: wrap;
+  gap: 0.75rem; align-items: center;
 }
 
 
-/* ── Buttons ───────────────────────────────────────── */
+/* ── Buttons ────────────────────────────────────────── */
 .btn {
   display: inline-block;
   font-family: 'DM Mono', monospace;
-  font-size: 0.57rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 300;
-  text-decoration: none;
-  padding: 0.85rem 1.65rem;
+  font-size: 0.57rem; letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 300;
+  text-decoration: none; padding: 0.85rem 1.65rem;
   transition: background 0.25s ease, color 0.25s ease,
               border-color 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
 }
-
 .btn--primary {
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--accent); color: var(--bg);
   border: 1px solid var(--accent);
 }
 .btn--primary:hover,
 .btn--primary:focus-visible {
-  background: rgba(112,128,240,0.82);
-  border-color: rgba(112,128,240,0.82);
-  box-shadow: 0 0 24px rgba(112,128,240,0.18);
+  background: rgba(112,128,240,0.80);
+  border-color: rgba(112,128,240,0.80);
+  box-shadow: 0 0 28px rgba(112,128,240,0.16);
 }
-
 .btn--ghost {
-  background: transparent;
-  color: rgba(232,230,244,0.48);
+  background: transparent; color: rgba(232,230,244,0.46);
   border: 1px solid var(--border-mid);
 }
 .btn--ghost:hover,
@@ -351,306 +298,383 @@ body {
 }
 
 
-/* ── Mockup orbit (right hero column) ─────────────── */
-.hero-mockup-wrap {
+/* ── Hero mockup column ─────────────────────────────── */
+.hero-mockup-col {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
 
-/* Orbital ring system around the mockup.
-   These rings are the C03 Saturn language made spatial.
-   The mockup is the planet. The rings establish containment. */
+/* Orbital rings around the mockup.
+   Bumped to 7–10% — actually visible, creating genuine depth. */
 .orbit-rings {
   position: absolute;
-  inset: -28%;
-  pointer-events: none;
-  z-index: 0;
+  inset: -30%;
+  pointer-events: none; z-index: 0;
 }
 
-/* Glow behind the mockup */
-.hero-mockup-wrap::before {
+/* Radial glow — centred on the mockup, strengthened */
+.hero-mockup-col::before {
   content: '';
-  position: absolute;
-  inset: -15%;
-  background: radial-gradient(circle, rgba(112,128,240,0.065) 0%, transparent 62%);
-  pointer-events: none;
-  z-index: 0;
+  position: absolute; inset: -15%;
+  background: radial-gradient(circle, rgba(112,128,240,0.12) 0%, transparent 55%);
+  pointer-events: none; z-index: 0;
 }
 
+/*
+  Value chips: floating UI fragments from the product world.
+  Not marketing bullets — they feel like they escaped from the app.
+  Positioned to create depth above and below the mockup.
+*/
+/*
+  Chips share the same radius as mockup cards (8px) — they are the same
+  design system. Same background, same border, same typography weight.
+  They feel like they floated out of the app, not like they were added by marketing.
+*/
+.value-chip {
+  position: absolute;
+  z-index: 3;
+  background: rgba(14,14,26,0.90);
+  border: 1px solid rgba(112,128,240,0.16);
+  border-radius: 8px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.62rem 0.88rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  pointer-events: none;
+}
+
+.value-chip--top {
+  top: 2%; left: -4%;
+  /* falls above the mockup card — feels like it floated out */
+}
+
+.value-chip--bottom {
+  bottom: 5%; right: -2%;
+}
+
+@media (max-width: 899px) {
+  .value-chip { display: none; }
+}
+
+.chip-body { display: flex; flex-direction: column; gap: 0.18rem; }
+
+.chip-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.40rem; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(112,128,240,0.65);
+}
+
+.chip-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.88rem; font-weight: 300;
+  color: rgba(232,230,244,0.78);
+  line-height: 1.2;
+}
+
+/* Completion chip (checkmark style) */
+.chip-done {
+  display: flex; align-items: center; gap: 0.35rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 300;
+  color: rgba(232,230,244,0.58);
+}
+.chip-check {
+  width: 13px; height: 13px; border-radius: 50%;
+  background: rgba(112,128,240,0.18);
+  border: 1.5px solid rgba(112,128,240,0.38);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.chip-check::after {
+  content: '';
+  width: 5px; height: 3px;
+  border-left: 1.5px solid rgba(112,128,240,0.9);
+  border-bottom: 1.5px solid rgba(112,128,240,0.9);
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+
+/* ── App mockup ─────────────────────────────────────── */
+/*
+  The mockup needs to feel magnetic — like a real object with real depth.
+  Three shadow layers: ambient orbital glow, primary elevation, close contact.
+  The inset on the border adds a faint inner luminance that makes it feel lit from within.
+*/
 .mockup {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 2;
   width: 100%;
-  max-width: 380px;
+  max-width: 460px;
   background: var(--mk-bg);
-  border-radius: 12px;
-  border: 1px solid rgba(112,128,240,0.10);
+  border-radius: 13px;
+  border: 1px solid rgba(112,128,240,0.13);
   box-shadow:
     0 0 0 1px rgba(112,128,240,0.05),
-    0 12px 56px rgba(0,0,0,0.55),
-    0 2px 12px rgba(0,0,0,0.35);
+    0 0 60px rgba(112,128,240,0.07),
+    0 20px 80px rgba(0,0,0,0.65),
+    0 6px 20px rgba(0,0,0,0.45);
   overflow: hidden;
-  /* Lifted slightly from the page plane */
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
-/* App titlebar */
+/* Titlebar */
 .mk-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.65rem 1rem 0.6rem;
-  background: rgba(14,14,26,0.65);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.72rem 1rem 0.68rem;
+  background: rgba(13,13,24,0.70);
   border-bottom: 1px solid var(--mk-border);
 }
-
-/* Saturn mark + wordmark in the mockup titlebar */
 .mk-bar-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: rgba(232,230,244,0.62);
+  display: flex; align-items: center; gap: 0.42rem;
+  color: rgba(232,230,244,0.58);
 }
 .mk-bar-wordmark {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.82rem;
-  font-weight: 300;
+  font-size: 0.85rem; font-weight: 300;
 }
 .mk-bar-date {
   font-family: 'DM Mono', monospace;
-  font-size: 0.40rem;
-  letter-spacing: 0.07em;
+  font-size: 0.40rem; letter-spacing: 0.07em;
   color: var(--mk-muted);
 }
 
 .mk-body {
-  padding: 0.65rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  padding: 0.7rem;
+  display: flex; flex-direction: column; gap: 0.52rem;
 }
 
-/* Card base */
+/* Card */
 .mk {
   background: var(--mk-card);
-  border-radius: 7px;
-  padding: 0.75rem 0.85rem;
+  border-radius: 8px;
+  padding: 0.82rem 0.92rem;
   border: 1px solid var(--mk-border);
+}
+
+/*
+  The focus card is the heart of the product.
+  Left accent border + very subtle background tint signal it as the primary element.
+  Makes the most important thing immediately legible at mockup scale.
+*/
+.mk--focus {
+  border-left: 2px solid rgba(112,128,240,0.55);
+  padding-left: 0.80rem;
+  background: rgba(112,128,240,0.035);
 }
 
 .mk-label {
   display: block;
   font-family: 'DM Mono', monospace;
-  font-size: 0.40rem;
-  letter-spacing: 0.20em;
+  font-size: 0.40rem; letter-spacing: 0.20em;
   text-transform: uppercase;
   color: var(--mk-label);
-  margin-bottom: 0.42rem;
-  opacity: 0.68;
+  margin-bottom: 0.45rem; opacity: 0.70;
 }
 
-.mk-focus {
+.mk-focus-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.02rem;
-  font-weight: 300;
-  color: var(--mk-text);
-  line-height: 1.22;
+  font-size: 1.12rem; font-weight: 300;
+  color: var(--mk-text); line-height: 1.22;
 }
-.mk-sep {
-  border: none;
-  border-top: 1px solid var(--mk-border);
-  margin: 0.42rem 0;
-}
+
+.mk-sep { border: none; border-top: 1px solid var(--mk-border); margin: 0.45rem 0; }
+
 .mk-next {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.66rem;
-  font-style: italic;
-  color: var(--mk-muted);
-  font-weight: 300;
+  font-size: 0.70rem; font-style: italic;
+  color: var(--mk-muted); font-weight: 300;
 }
 
 /* Tasks */
 .mk-task {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.24rem 0;
+  display: flex; align-items: center; gap: 0.52rem;
+  padding: 0.26rem 0;
   border-bottom: 1px solid rgba(112,128,240,0.046);
 }
 .mk-task:last-child { border-bottom: none; }
 .mk-task-dot {
-  width: 11px; height: 11px;
-  border-radius: 50%;
+  width: 12px; height: 12px; border-radius: 50%;
   border: 1.5px solid rgba(112,128,240,0.26);
   flex-shrink: 0;
 }
 .mk-task-text {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.68rem;
-  color: var(--mk-text);
-  font-weight: 300;
+  font-size: 0.72rem; color: var(--mk-text); font-weight: 300;
 }
 .mk-task-text--muted { color: var(--mk-muted); }
 
 /* Timer */
 .mk-timer-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0.1rem;
+  display: flex; align-items: center;
+  justify-content: space-between; margin-top: 0.12rem;
 }
 .mk-timer-time {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.28rem;
-  font-weight: 300;
-  color: var(--mk-text);
-  line-height: 1;
+  font-size: 1.38rem; font-weight: 300;
+  color: var(--mk-text); line-height: 1;
 }
 .mk-timer-start {
   font-family: 'DM Mono', monospace;
-  font-size: 0.40rem;
-  letter-spacing: 0.12em;
+  font-size: 0.40rem; letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(112,128,240,0.85);
   background: rgba(112,128,240,0.12);
   border: 1px solid rgba(112,128,240,0.22);
-  padding: 0.28rem 0.65rem;
-  border-radius: 2px;
+  padding: 0.30rem 0.70rem; border-radius: 2px;
 }
 
-/* Bottom row */
-.mk-row { display: flex; gap: 0.5rem; }
+/* Bottom pair */
+.mk-row { display: flex; gap: 0.52rem; }
 .mk--half { flex: 1; min-width: 0; }
 .mk-empty {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.62rem;
-  font-style: italic;
-  color: var(--mk-muted);
-  font-weight: 300;
-  margin-top: 0.2rem;
-  line-height: 1.45;
-  opacity: 0.65;
+  font-size: 0.64rem; font-style: italic;
+  color: var(--mk-muted); font-weight: 300;
+  margin-top: 0.2rem; line-height: 1.45; opacity: 0.62;
 }
 
 
-/* ── Section labels & headings ─────────────────────── */
+/* ── Section label ──────────────────────────────────── */
 .section-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.51rem;
-  letter-spacing: 0.26em;
+  font-size: 0.51rem; letter-spacing: 0.26em;
   text-transform: uppercase;
   color: rgba(112,128,240,0.46);
   margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
+  display: flex; align-items: center; gap: 0.7em;
 }
-
-/* Orbital arc before each section label.
-   A short arc suggests the label is a position on an orbit. */
 .section-label::before {
   content: '';
-  display: inline-block;
-  width: 22px;
-  height: 1px;
+  display: inline-block; width: 22px; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(112,128,240,0.40));
   flex-shrink: 0;
 }
 
 .section-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
-  font-weight: 300;
-  line-height: 1.1;
+  font-size: clamp(1.75rem, 3vw, 2.65rem);
+  font-weight: 300; line-height: 1.1;
   color: rgba(232,230,244,0.88);
   margin-bottom: 1.5rem;
 }
 
-.section-body {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--text-dim);
-  font-weight: 300;
-  max-width: 54ch;
-}
-
 .section-lede {
-  font-size: 1.05rem;
-  line-height: 1.82;
-  color: var(--text-dim);
-  font-weight: 300;
-  max-width: 52ch;
+  font-size: 1.02rem; line-height: 1.84;
+  color: var(--text-dim); font-weight: 300; max-width: 52ch;
 }
 
 
-/* ── Why section layout ────────────────────────────── */
-.why-inner {
+/* ── Workflow strip ─────────────────────────────────── */
+/*
+  No hard border here — the workflow flows directly from the hero.
+  The hero's orbital atmosphere carries forward into the first
+  thing the user reads after seeing the product.
+*/
+.workflow-strip {
+  padding: 4.5rem 0 6rem;
+  position: relative;
+}
+/* Very subtle top fade — softer than a section border */
+.workflow-strip::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%; height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(112,128,240,0.040) 30%,
+    rgba(112,128,240,0.040) 70%,
+    transparent);
+}
+@media (min-width: 900px) { .workflow-strip { padding: 5.5rem 0 7rem; } }
+@media (max-width: 640px) { .workflow-strip { padding: 3.5rem 0 4.5rem; } }
+
+.workflow-inner {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
 }
-@media (min-width: 900px) {
-  .why-inner {
-    grid-template-columns: 5fr 4fr;
-    gap: 5rem;
-    align-items: start;
+@media (min-width: 640px) {
+  .workflow-inner {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
   }
 }
 
-.why-aside {
-  /* secondary column — a quiet observation */
+.workflow-step {
+  position: relative;
+  padding: 0 2rem 0 0;
 }
-.why-aside-text {
+
+/* Vertical separator between steps at desktop — a breath, not a wall */
+@media (min-width: 640px) {
+  .workflow-step + .workflow-step {
+    border-left: 1px solid rgba(112,128,240,0.052);
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+  .workflow-step:last-child { padding-right: 0; }
+}
+
+.workflow-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.50rem; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(112,128,240,0.44);
+  margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.6em;
+}
+
+/* Orbital arc before each step number */
+.workflow-num::before {
+  content: '';
+  display: inline-block;
+  width: 16px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(112,128,240,0.38));
+  flex-shrink: 0;
+}
+
+.workflow-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 1.5vw, 1.22rem);
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.65;
-  color: rgba(232,230,244,0.38);
-  border-left: 1px solid rgba(112,128,240,0.12);
-  padding-left: 1.25rem;
+  font-size: 1.42rem; font-weight: 300;
+  color: rgba(232,230,244,0.82); line-height: 1.18;
+  margin-bottom: 0.65rem;
 }
 
+.workflow-body {
+  font-size: 0.875rem; line-height: 1.78;
+  color: var(--text-muted); font-weight: 300; max-width: 28ch;
+}
 
-/* ── Feature cards ─────────────────────────────────── */
+/* workflow-mark removed — the numbers are the orbital markers.
+   Saturn marks belong on feature cards. Not here. */
+
+
+/* ── Why section ────────────────────────────────────── */
+/* Single column, no aside — cleaner and more focused */
+.why-inner { max-width: 600px; }
+
+
+/* ── Feature cards ──────────────────────────────────── */
 .feature-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
+  gap: 1px; background: var(--border);
   border: 1px solid var(--border);
   margin-top: 3.5rem;
 }
-
-@media (min-width: 900px) {
-  .feature-grid { grid-template-columns: repeat(4, 1fr); }
-}
-@media (max-width: 480px) {
-  .feature-grid { grid-template-columns: 1fr; }
-}
+@media (min-width: 900px) { .feature-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 480px) { .feature-grid { grid-template-columns: 1fr; } }
 
 .feature-card {
   background: var(--bg-2);
   padding: 1.75rem 1.5rem 2rem;
-  position: relative;
+  position: relative; overflow: hidden;
   transition: background 0.28s ease;
-  overflow: hidden;
 }
-
-/* Orbital glow that appears on hover — from within, not outside */
 .feature-card::after {
   content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(112,128,240,0.0) 20%,
-    rgba(112,128,240,0.0) 80%,
-    transparent
-  );
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: transparent;
   transition: background 0.3s ease;
 }
 .feature-card:hover::after {
@@ -658,224 +682,142 @@ body {
     transparent,
     rgba(112,128,240,0.55) 30%,
     rgba(112,128,240,0.55) 70%,
-    transparent
-  );
+    transparent);
 }
+.feature-card:hover { background: var(--bg-3); }
 
-.feature-card:hover {
-  background: var(--bg-3);
-}
-
-/* Saturn micro-mark per feature card */
 .feature-mark {
-  margin-bottom: 1.1rem;
-  color: var(--accent);
-  opacity: 0.38;
-  display: block;
+  margin-bottom: 1.1rem; color: var(--accent);
+  opacity: 0.36; display: block;
   transition: opacity 0.25s ease;
 }
-.feature-card:hover .feature-mark {
-  opacity: 0.65;
-}
+.feature-card:hover .feature-mark { opacity: 0.62; }
 
 .feature-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.08rem;
-  font-weight: 300;
-  color: rgba(232,230,244,0.80);
-  line-height: 1.22;
+  font-size: 1.08rem; font-weight: 300;
+  color: rgba(232,230,244,0.80); line-height: 1.22;
   margin-bottom: 0.65rem;
 }
-
 .feature-body {
-  font-size: 0.82rem;
-  line-height: 1.78;
-  color: var(--text-muted);
-  font-weight: 300;
+  font-size: 0.82rem; line-height: 1.78;
+  color: var(--text-muted); font-weight: 300;
 }
 
 
-/* ── Install section ───────────────────────────────── */
+/* ── Install section ────────────────────────────────── */
 .install-intro {
-  font-size: 0.95rem;
-  line-height: 1.82;
-  color: var(--text-dim);
-  font-weight: 300;
-  max-width: 48ch;
-  margin-bottom: 3rem;
+  font-size: 0.95rem; line-height: 1.82;
+  color: var(--text-dim); font-weight: 300;
+  max-width: 46ch; margin-bottom: 3rem;
 }
 
 .os-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  background: var(--border);
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: var(--border);
   border: 1px solid var(--border);
   margin-bottom: 1.75rem;
 }
-@media (min-width: 580px) {
-  .os-grid { grid-template-columns: 1fr 1fr; }
-}
+@media (min-width: 580px) { .os-grid { grid-template-columns: 1fr 1fr; } }
 
-.os-card {
-  background: var(--bg-2);
-  padding: 1.75rem 2rem;
-}
+.os-card { background: var(--bg-2); padding: 1.75rem 2rem; }
 
 .os-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.18rem;
-  font-weight: 300;
-  color: rgba(232,230,244,0.72);
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  font-size: 1.18rem; font-weight: 300;
+  color: rgba(232,230,244,0.72); margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.5rem;
 }
+.os-icon { opacity: 0.48; }
 
-/* OS icon as SVG-equivalent mark */
-.os-icon {
-  opacity: 0.5;
-}
-
-.os-steps {
-  list-style: none;
-  padding: 0; margin: 0;
-  counter-reset: os;
-}
+.os-steps { list-style: none; padding: 0; margin: 0; counter-reset: os; }
 .os-steps li {
   counter-increment: os;
-  position: relative;
-  padding-left: 2.2rem;
+  position: relative; padding-left: 2.2rem;
   margin-bottom: 0.72rem;
-  font-size: 0.875rem;
-  line-height: 1.7;
-  font-weight: 300;
-  color: var(--text-dim);
+  font-size: 0.875rem; line-height: 1.7;
+  font-weight: 300; color: var(--text-dim);
 }
 .os-steps li:last-child { margin-bottom: 0; }
 .os-steps li::before {
   content: counter(os, decimal-leading-zero);
   position: absolute; left: 0;
   font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.08em;
-  color: rgba(112,128,240,0.42);
-  top: 0.3em;
+  font-size: 0.52rem; letter-spacing: 0.08em;
+  color: rgba(112,128,240,0.42); top: 0.3em;
 }
 
 .install-note {
   font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.06em;
-  line-height: 1.72;
-  color: var(--text-muted);
+  font-size: 0.52rem; letter-spacing: 0.06em;
+  line-height: 1.72; color: var(--text-muted);
 }
 
 
-/* ── Privacy / close section ───────────────────────── */
+/* ── Privacy / close ────────────────────────────────── */
 .close-section {
   border-top: 1px solid var(--border);
   padding: 7rem 0 6.5rem;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 
-/* Very faint full orbit ring centred behind the heading.
-   The visual idea: your data stays inside this orbit. */
 .close-orbital {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: min(560px, 80vw);
-  aspect-ratio: 1;
-  pointer-events: none;
-  z-index: 0;
+  width: min(560px, 80vw); aspect-ratio: 1;
+  pointer-events: none; z-index: 0;
 }
 
-.close-inner {
-  position: relative;
-  z-index: 1;
-}
+.close-inner { position: relative; z-index: 1; }
 
 .close-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
-  font-weight: 300;
-  color: rgba(232,230,244,0.85);
-  line-height: 1.06;
-  margin-bottom: 1.15rem;
-  max-width: 480px;
+  font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+  font-weight: 300; color: rgba(232,230,244,0.85);
+  line-height: 1.06; margin-bottom: 1.15rem; max-width: 480px;
 }
 
 .close-body {
-  font-size: 0.95rem;
-  line-height: 1.85;
-  color: var(--text-dim);
-  font-weight: 300;
-  max-width: 46ch;
-  margin-bottom: 2.75rem;
+  font-size: 0.95rem; line-height: 1.85;
+  color: var(--text-dim); font-weight: 300;
+  max-width: 46ch; margin-bottom: 2.75rem;
 }
 
 
-/* ── Footer ────────────────────────────────────────── */
+/* ── Footer ─────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 2.5rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
+  padding: 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1100px; margin: 0 auto;
 }
 @media (max-width: 640px) {
   .site-footer {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-    padding: 2rem 1.25rem;
+    flex-direction: column; gap: 1rem;
+    text-align: center; padding: 2rem 1.25rem;
   }
 }
 
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--text-muted);
-}
-.footer-mark {
-  opacity: 0.45;
-  color: var(--accent);
-}
+.footer-brand { display: flex; align-items: center; gap: 0.45rem; }
+.footer-mark { opacity: 0.42; color: var(--accent); }
 .footer-attr {
   font-family: 'DM Mono', monospace;
-  font-size: 0.50rem;
-  letter-spacing: 0.10em;
-  color: var(--text-muted);
+  font-size: 0.50rem; letter-spacing: 0.10em; color: var(--text-muted);
 }
 .footer-attr a {
-  color: rgba(112,128,240,0.40);
-  text-decoration: none;
+  color: rgba(112,128,240,0.38); text-decoration: none;
   transition: color 0.2s ease;
 }
 .footer-attr a:hover,
-.footer-attr a:focus-visible { color: rgba(112,128,240,0.72); }
+.footer-attr a:focus-visible { color: rgba(112,128,240,0.70); }
 
-.footer-legal {
-  display: flex;
-  gap: 1.5rem;
-}
+.footer-legal { display: flex; gap: 1.5rem; }
 .footer-legal a {
   font-family: 'DM Mono', monospace;
-  font-size: 0.50rem;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  text-decoration: none;
-  opacity: 0.55;
+  font-size: 0.50rem; letter-spacing: 0.10em;
+  text-transform: uppercase; color: var(--text-muted);
+  text-decoration: none; opacity: 0.52;
   transition: opacity 0.2s ease;
 }
 .footer-legal a:hover,
@@ -890,11 +832,7 @@ body {
   "name": "inFlow — A quiet place to begin",
   "description": "inFlow is a calm focus board for starting work when your head feels full. One focus, three priorities, a timer, and a parking lot for distracting thoughts.",
   "url": "https://www.notonmondays.com/inflow/",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Not On Mondays",
-    "url": "https://www.notonmondays.com"
-  }
+  "publisher": { "@type": "Organization", "name": "Not On Mondays", "url": "https://www.notonmondays.com" }
 }
 </script>
 
@@ -906,28 +844,16 @@ body {
 <header class="site-header">
   <nav class="site-nav" aria-label="Main navigation">
 
-    <a href="/inflow/" class="nav-brand" aria-label="inFlow — focus board, return to top">
-      <!--
-        C03 Saturn mark. SVG paths:
-          Back arc  (top half, behind planet) — faint
-          Occlusion disk — matches nav bg, creates the "ring wraps around" depth
-          Planet    — solid fill, the contained point of gravity
-          Front arc (bottom half, in front of planet) — full opacity
-        Ring tilted ~−18° via group transform (standard Saturn orientation).
-      -->
-      <svg class="saturn-mark"
-           viewBox="0 0 30 22" width="22" height="16"
+    <a href="/inflow/" class="nav-brand" aria-label="inFlow — focus board">
+      <!-- C03 Saturn: back arc → occlusion → planet → front arc -->
+      <svg class="saturn-mark" viewBox="0 0 30 22" width="22" height="16"
            fill="none" aria-hidden="true" focusable="false">
         <g transform="rotate(-18 15 11)">
-          <!-- back arc: very faint, behind planet -->
           <path d="M 2,11 A 13,4.2 0 0,0 28,11"
                 stroke="currentColor" stroke-width="1.05"
                 stroke-linecap="round" opacity="0.18"/>
-          <!-- occlusion disk: hides where ring passes behind planet -->
           <circle cx="15" cy="11" r="5.8" fill="#0e0e1a"/>
-          <!-- planet -->
           <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
-          <!-- front arc: full opacity, ring in front of planet -->
           <path d="M 2,11 A 13,4.2 0 0,1 28,11"
                 stroke="currentColor" stroke-width="1.15"
                 stroke-linecap="round" opacity="0.80"/>
@@ -945,33 +871,37 @@ body {
 <main id="main-content" class="layout">
 
 
-  <!-- ── Hero ──────────────────────────────────────── -->
+  <!-- ── Hero ─────────────────────────────────────────── -->
   <section class="hero" aria-labelledby="hero-heading">
 
     <!--
-      Orbital field SVG: the gravitational atmosphere of the hero.
-      Concentric rings suggest orbit, containment, return.
-      Opacity values are tuned to be felt rather than seen.
+      Single compositional arc — sweeps the right edge of the hero.
+      Structural depth, not decoration. Opacity 8% = visible on dark displays.
     -->
-    <svg class="hero-orbital-field" viewBox="0 0 600 600"
-         fill="none" aria-hidden="true" focusable="false"
-         style="position:absolute;top:50%;right:-6%;width:62vw;max-width:700px;
-                transform:translateY(-52%);pointer-events:none;z-index:0;">
-      <circle cx="300" cy="300" r="295" stroke="#7080f0" stroke-width="0.5" opacity="0.038"/>
-      <circle cx="300" cy="300" r="235" stroke="#7080f0" stroke-width="0.5" opacity="0.050"/>
-      <circle cx="300" cy="300" r="175" stroke="#7080f0" stroke-width="0.5" opacity="0.062"/>
-      <!-- Partial orbit arc — 200° sweep, sits at lower-right quadrant -->
-      <path d="M 455,415 A 175,175 0 0,0 125,300"
+    <!--
+      One compositional arc. It sweeps from the upper-right corner
+      down past the mockup and into the lower-right.
+      Single, grounded, structural. Acts as a frame, not wallpaper.
+      10% opacity: visible and intentional.
+    -->
+    <svg fill="none" aria-hidden="true" focusable="false"
+         viewBox="0 0 520 900"
+         style="position:absolute;right:-2%;top:0;height:100%;width:44vw;
+                max-width:520px;pointer-events:none;z-index:0;overflow:visible;">
+      <path d="M 460,40 A 420,420 0 0,1 460,860"
             stroke="#7080f0" stroke-width="1.2"
-            stroke-linecap="round" opacity="0.072"/>
-      <!-- Object dot on the arc -->
-      <circle cx="455" cy="415" r="4" fill="#7080f0" opacity="0.10"/>
+            stroke-linecap="round" opacity="0.10"/>
+      <!-- Orbital object: a single dot that marks the arc as an orbit, not a decoration -->
+      <circle cx="460" cy="450" r="3.5" fill="#7080f0" opacity="0.18"/>
     </svg>
+
+    <!-- Soft radial glow centred on mockup zone -->
+    <div class="hero-glow" aria-hidden="true"></div>
 
     <div class="container">
       <div class="hero-split">
 
-        <!-- Copy column -->
+        <!-- Left: copy -->
         <div class="hero-copy">
 
           <p class="hero-label" aria-hidden="true">Focus board</p>
@@ -995,43 +925,62 @@ body {
             <a href="#install" class="btn btn--ghost">How to install</a>
           </div>
 
-        </div>
+        </div><!-- /.hero-copy -->
 
-        <!-- Mockup column: the "planet" in the orbital system -->
-        <div class="hero-mockup-wrap">
 
-          <!-- Orbital ring system — containment, not decoration -->
+        <!-- Right: mockup, contained in its orbital system -->
+        <div class="hero-mockup-col">
+
+          <!--
+            Orbital system: one ghost containment ring + one motion arc.
+            Economical. The mockup is the planet; the ring establishes orbit.
+          -->
           <svg class="orbit-rings" viewBox="0 0 500 500"
                fill="none" aria-hidden="true" focusable="false">
-            <!-- Outer containment ring -->
-            <circle cx="250" cy="250" r="245" stroke="#7080f0" stroke-width="0.6" opacity="0.048"/>
-            <!-- Mid ring -->
-            <circle cx="250" cy="250" r="195" stroke="#7080f0" stroke-width="0.6" opacity="0.062"/>
-            <!-- Inner ring — close to mockup edges -->
-            <circle cx="250" cy="250" r="148" stroke="#7080f0" stroke-width="0.5" opacity="0.055"/>
-            <!-- Partial orbit arc at lower-right — suggests motion, not static display -->
-            <path d="M 388,355 A 148,148 0 0,0 108,218"
+            <!-- Ghost ring: containment -->
+            <circle cx="250" cy="250" r="232" stroke="#7080f0" stroke-width="0.7" opacity="0.08"/>
+            <!-- Motion arc: ~200° sweep, lower-left quadrant — suggests active orbit -->
+            <path d="M 430,340 A 210,210 0 1,0 82,195"
                   stroke="#7080f0" stroke-width="1.0"
-                  stroke-linecap="round" opacity="0.078"/>
+                  stroke-linecap="round" opacity="0.10"/>
           </svg>
 
-          <!-- App mockup — aria-hidden because it's decorative illustration -->
+          <!--
+            Chips are product-world fragments, not marketing claims.
+            They look like pieces of the app that drifted into the hero space.
+            Same typographic system as the mockup cards. No icons, no stats.
+          -->
+
+          <!-- Top chip: an echo of the focus card — product state, not a headline -->
+          <div class="value-chip value-chip--top" aria-hidden="true">
+            <div class="chip-body">
+              <span class="chip-label">Focus set</span>
+              <span class="chip-value">Finish the client proposal</span>
+            </div>
+          </div>
+
+          <!-- Bottom chip: a completion state — what it feels like when it works -->
+          <div class="value-chip value-chip--bottom" aria-hidden="true">
+            <div class="chip-done">
+              <span class="chip-check" aria-hidden="true"></span>
+              Next step saved
+            </div>
+          </div>
+
+          <!-- The app — aria-hidden, decorative illustration -->
           <div class="mockup" aria-hidden="true">
 
             <div class="mk-bar">
               <div class="mk-bar-brand">
-                <!-- Saturn mark echoed inside the app — identity consistency -->
-                <svg viewBox="0 0 30 22" width="14" height="10"
-                     fill="none" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 30 22" width="13" height="10"
+                     fill="none" focusable="false">
                   <g transform="rotate(-18 15 11)">
-                    <path d="M 2,11 A 13,4.2 0 0,0 28,11"
-                          stroke="currentColor" stroke-width="1.2"
-                          stroke-linecap="round" opacity="0.18"/>
-                    <circle cx="15" cy="11" r="5.8" fill="#12121e"/>
+                    <path d="M 2,11 A 13,4.2 0 0,0 28,11" stroke="currentColor"
+                          stroke-width="1.2" stroke-linecap="round" opacity="0.18"/>
+                    <circle cx="15" cy="11" r="5.8" fill="#11111d"/>
                     <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.82"/>
-                    <path d="M 2,11 A 13,4.2 0 0,1 28,11"
-                          stroke="currentColor" stroke-width="1.3"
-                          stroke-linecap="round" opacity="0.78"/>
+                    <path d="M 2,11 A 13,4.2 0 0,1 28,11" stroke="currentColor"
+                          stroke-width="1.3" stroke-linecap="round" opacity="0.78"/>
                   </g>
                 </svg>
                 <span class="mk-bar-wordmark">inFlow</span>
@@ -1041,13 +990,15 @@ body {
 
             <div class="mk-body">
 
-              <div class="mk">
+              <!-- Focus card: primary element, left accent border -->
+              <div class="mk mk--focus">
                 <span class="mk-label">Today's focus</span>
-                <p class="mk-focus">Finish the client proposal</p>
+                <p class="mk-focus-text">Finish the client proposal</p>
                 <hr class="mk-sep">
                 <p class="mk-next">Send the first draft before lunch</p>
               </div>
 
+              <!-- Three priorities -->
               <div class="mk">
                 <span class="mk-label">Three priorities</span>
                 <div class="mk-task">
@@ -1064,6 +1015,7 @@ body {
                 </div>
               </div>
 
+              <!-- Timer -->
               <div class="mk">
                 <span class="mk-label">Focus timer</span>
                 <div class="mk-timer-row">
@@ -1072,6 +1024,7 @@ body {
                 </div>
               </div>
 
+              <!-- Parking lot + done -->
               <div class="mk-row">
                 <div class="mk mk--half">
                   <span class="mk-label">Parking lot</span>
@@ -1086,7 +1039,7 @@ body {
             </div>
           </div><!-- /.mockup -->
 
-        </div><!-- /.hero-mockup-wrap -->
+        </div><!-- /.hero-mockup-col -->
 
       </div><!-- /.hero-split -->
     </div><!-- /.container -->
@@ -1094,33 +1047,59 @@ body {
   </section><!-- /.hero -->
 
 
-  <!-- ── Why it exists ─────────────────────────────── -->
-  <section class="section" aria-labelledby="why-heading">
+  <!-- ── How it works ──────────────────────────────────── -->
+  <!--
+    The onboarding strip. Three steps that describe the inFlow experience.
+    This is where the user learns what the product actually does.
+    Low cognitive load: three short fragments, not a feature list.
+  -->
+  <section class="workflow-strip" aria-label="How inFlow works">
     <div class="container">
-      <div class="why-inner">
 
-        <div>
-          <span class="section-label" aria-hidden="true">Why it exists</span>
-          <h2 id="why-heading" class="section-heading">
-            Built for the days when<br>starting is the hard part.
-          </h2>
-          <p class="section-lede">
-            Some days you do not need a bigger task system. You need a quiet place to land, choose the next step, and begin.
-          </p>
+      <span class="section-label" aria-hidden="true">How it works</span>
+
+      <div class="workflow-inner" role="list">
+
+        <div class="workflow-step" role="listitem">
+          <p class="workflow-num" aria-hidden="true">01</p>
+          <h3 class="workflow-heading">Set your focus</h3>
+          <p class="workflow-body">One thing that matters today. Then the next small step.</p>
         </div>
 
-        <aside class="why-aside">
-          <p class="why-aside-text">
-            Most tools add weight. inFlow removes it. One focus. One next step. Whatever you need to park. Nothing more.
-          </p>
-        </aside>
+        <div class="workflow-step" role="listitem">
+          <p class="workflow-num" aria-hidden="true">02</p>
+          <h3 class="workflow-heading">Clear your head</h3>
+          <p class="workflow-body">Park the distracting thoughts. Get them out so you can begin.</p>
+        </div>
+
+        <div class="workflow-step" role="listitem">
+          <p class="workflow-num" aria-hidden="true">03</p>
+          <h3 class="workflow-heading">Begin</h3>
+          <p class="workflow-body">Five minutes is enough to start. The timer is there when you need it.</p>
+        </div>
 
       </div>
     </div>
   </section>
 
 
-  <!-- ── What it helps with ────────────────────────── -->
+  <!-- ── Why it exists ─────────────────────────────────── -->
+  <section class="section" aria-labelledby="why-heading">
+    <div class="container">
+      <div class="why-inner">
+        <span class="section-label" aria-hidden="true">Why it exists</span>
+        <h2 id="why-heading" class="section-heading">
+          Built for the days when<br>starting is the hard part.
+        </h2>
+        <p class="section-lede">
+          Some days you do not need a bigger task system. You need a quiet place to land, choose the next step, and begin.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── What it helps with ────────────────────────────── -->
   <section class="section" aria-labelledby="features-heading">
     <div class="container">
       <span class="section-label" aria-hidden="true">What it helps with</span>
@@ -1129,19 +1108,15 @@ body {
       <div class="feature-grid" role="list">
 
         <div class="feature-card" role="listitem">
-          <!-- Saturn mark per card: the identity system carries through -->
-          <svg class="feature-mark"
-               viewBox="0 0 30 22" width="20" height="15"
+          <svg class="feature-mark" viewBox="0 0 30 22" width="20" height="15"
                fill="none" aria-hidden="true" focusable="false">
             <g transform="rotate(-18 15 11)">
-              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
-                    stroke="currentColor" stroke-width="1.1"
-                    stroke-linecap="round" opacity="0.25"/>
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11" stroke="currentColor"
+                    stroke-width="1.1" stroke-linecap="round" opacity="0.25"/>
               <circle cx="15" cy="11" r="5.8" fill="#111126"/>
               <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
-              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
-                    stroke="currentColor" stroke-width="1.2"
-                    stroke-linecap="round" opacity="0.82"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11" stroke="currentColor"
+                    stroke-width="1.2" stroke-linecap="round" opacity="0.82"/>
             </g>
           </svg>
           <h3 class="feature-heading">Choose one focus</h3>
@@ -1149,18 +1124,15 @@ body {
         </div>
 
         <div class="feature-card" role="listitem">
-          <svg class="feature-mark"
-               viewBox="0 0 30 22" width="20" height="15"
+          <svg class="feature-mark" viewBox="0 0 30 22" width="20" height="15"
                fill="none" aria-hidden="true" focusable="false">
             <g transform="rotate(-18 15 11)">
-              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
-                    stroke="currentColor" stroke-width="1.1"
-                    stroke-linecap="round" opacity="0.25"/>
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11" stroke="currentColor"
+                    stroke-width="1.1" stroke-linecap="round" opacity="0.25"/>
               <circle cx="15" cy="11" r="5.8" fill="#111126"/>
               <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
-              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
-                    stroke="currentColor" stroke-width="1.2"
-                    stroke-linecap="round" opacity="0.82"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11" stroke="currentColor"
+                    stroke-width="1.2" stroke-linecap="round" opacity="0.82"/>
             </g>
           </svg>
           <h3 class="feature-heading">Start with 5 minutes</h3>
@@ -1168,18 +1140,15 @@ body {
         </div>
 
         <div class="feature-card" role="listitem">
-          <svg class="feature-mark"
-               viewBox="0 0 30 22" width="20" height="15"
+          <svg class="feature-mark" viewBox="0 0 30 22" width="20" height="15"
                fill="none" aria-hidden="true" focusable="false">
             <g transform="rotate(-18 15 11)">
-              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
-                    stroke="currentColor" stroke-width="1.1"
-                    stroke-linecap="round" opacity="0.25"/>
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11" stroke="currentColor"
+                    stroke-width="1.1" stroke-linecap="round" opacity="0.25"/>
               <circle cx="15" cy="11" r="5.8" fill="#111126"/>
               <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
-              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
-                    stroke="currentColor" stroke-width="1.2"
-                    stroke-linecap="round" opacity="0.82"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11" stroke="currentColor"
+                    stroke-width="1.2" stroke-linecap="round" opacity="0.82"/>
             </g>
           </svg>
           <h3 class="feature-heading">Park distracting thoughts</h3>
@@ -1187,18 +1156,15 @@ body {
         </div>
 
         <div class="feature-card" role="listitem">
-          <svg class="feature-mark"
-               viewBox="0 0 30 22" width="20" height="15"
+          <svg class="feature-mark" viewBox="0 0 30 22" width="20" height="15"
                fill="none" aria-hidden="true" focusable="false">
             <g transform="rotate(-18 15 11)">
-              <path d="M 2,11 A 13,4.2 0 0,0 28,11"
-                    stroke="currentColor" stroke-width="1.1"
-                    stroke-linecap="round" opacity="0.25"/>
+              <path d="M 2,11 A 13,4.2 0 0,0 28,11" stroke="currentColor"
+                    stroke-width="1.1" stroke-linecap="round" opacity="0.25"/>
               <circle cx="15" cy="11" r="5.8" fill="#111126"/>
               <circle cx="15" cy="11" r="5.2" fill="currentColor" opacity="0.88"/>
-              <path d="M 2,11 A 13,4.2 0 0,1 28,11"
-                    stroke="currentColor" stroke-width="1.2"
-                    stroke-linecap="round" opacity="0.82"/>
+              <path d="M 2,11 A 13,4.2 0 0,1 28,11" stroke="currentColor"
+                    stroke-width="1.2" stroke-linecap="round" opacity="0.82"/>
             </g>
           </svg>
           <h3 class="feature-heading">Find your place again</h3>
@@ -1210,7 +1176,7 @@ body {
   </section>
 
 
-  <!-- ── Install ───────────────────────────────────── -->
+  <!-- ── Install ───────────────────────────────────────── -->
   <section id="install" class="section" aria-labelledby="install-heading">
     <div class="container">
 
@@ -1227,7 +1193,7 @@ body {
 
         <div class="os-card" aria-labelledby="install-mac">
           <h3 id="install-mac" class="os-heading">
-            <svg class="os-icon" viewBox="0 0 14 16" width="13" height="15"
+            <svg class="os-icon" viewBox="0 0 14 16" width="12" height="14"
                  fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M13.23 11.56c-.31.7-.46 1.01-.86 1.63-.56.85-1.34 1.9-2.32 1.91-.86.01-1.08-.56-2.25-.55-1.17.01-1.42.56-2.28.55-.97-.01-1.71-1-2.27-1.86C1.4 11.1.74 8.37 1.49 6.58c.52-1.23 1.6-2.03 2.72-2.03 1.06 0 1.73.57 2.6.57.87 0 1.4-.57 2.64-.57.99 0 1.97.6 2.5 1.62C9.6 7.27 9.97 9.96 13.23 11.56zM9.26 2.86c.48-.63.85-1.53.71-2.45-.79.06-1.72.6-2.26 1.26-.49.61-.9 1.52-.74 2.4.86.03 1.77-.53 2.29-1.21z"/>
             </svg>
@@ -1243,7 +1209,7 @@ body {
 
         <div class="os-card" aria-labelledby="install-windows">
           <h3 id="install-windows" class="os-heading">
-            <svg class="os-icon" viewBox="0 0 14 14" width="13" height="13"
+            <svg class="os-icon" viewBox="0 0 14 14" width="12" height="12"
                  fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M0 1.93L5.73 1.1v5.52H0V1.93zM6.4 1L14 0v6.6H6.4V1zM0 7.38h5.73v5.52L0 12.07V7.38zM6.4 7.38H14V14L6.4 12.97V7.38z"/>
             </svg>
@@ -1267,23 +1233,18 @@ body {
   </section>
 
 
-  <!-- ── Privacy / close ───────────────────────────── -->
+  <!-- ── Privacy / close ───────────────────────────────── -->
   <section class="close-section" aria-labelledby="privacy-heading">
 
-    <!--
-      Full orbit ring centred behind the closing section.
-      Visual idea: your data stays within this orbit.
-      Felt, not read.
-    -->
+    <!-- Full orbit ring: data stays in your orbit — visual, not textual -->
     <svg class="close-orbital" viewBox="0 0 560 560"
          fill="none" aria-hidden="true" focusable="false">
-      <circle cx="280" cy="280" r="275" stroke="#7080f0" stroke-width="0.5" opacity="0.045"/>
+      <circle cx="280" cy="280" r="274" stroke="#7080f0" stroke-width="0.5" opacity="0.046"/>
       <circle cx="280" cy="280" r="220" stroke="#7080f0" stroke-width="0.5" opacity="0.058"/>
-      <!-- Orbital arc: 240° sweep, sense of movement and return -->
       <path d="M 455,350 A 220,220 0 1,0 500,255"
-            stroke="#7080f0" stroke-width="0.8"
-            stroke-linecap="round" opacity="0.065"/>
-      <circle cx="500" cy="255" r="4" fill="#7080f0" opacity="0.085"/>
+            stroke="#7080f0" stroke-width="0.9"
+            stroke-linecap="round" opacity="0.068"/>
+      <circle cx="500" cy="255" r="4" fill="#7080f0" opacity="0.088"/>
     </svg>
 
     <div class="container">
@@ -1312,9 +1273,7 @@ body {
 <footer>
   <div class="site-footer">
     <div class="footer-brand">
-      <!-- Saturn mark in footer — identity closure -->
-      <svg class="footer-mark"
-           viewBox="0 0 30 22" width="18" height="13"
+      <svg class="footer-mark" viewBox="0 0 30 22" width="18" height="13"
            fill="none" aria-hidden="true" focusable="false">
         <g transform="rotate(-18 15 11)">
           <path d="M 2,11 A 13,4.2 0 0,0 28,11"
@@ -1328,7 +1287,8 @@ body {
         </g>
       </svg>
       <p class="footer-attr">
-        inFlow is built by <a href="https://www.notonmondays.com" target="_blank" rel="noopener noreferrer">Not On Mondays</a>
+        inFlow is built by
+        <a href="https://www.notonmondays.com" target="_blank" rel="noopener noreferrer">Not On Mondays</a>
         <span aria-hidden="true"> &middot; </span>2026
       </p>
     </div>
