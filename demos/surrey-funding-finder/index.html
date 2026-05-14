@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Surrey Funding Finder | Not On Mondays</title>
+<meta name="description" content="A proof-of-concept showing how councils could help residents, charities, community groups and SMEs discover relevant funding opportunities in plain English.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ──────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ──────────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  line-height: 1;
+}
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── Mobile nav ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+/* ================================================================
+   SURREY FUNDING FINDER
+   All classes use sff- prefix.
+   ================================================================ */
+
+.sff-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* ── Hero ───────────────────────────────────────────── */
+.sff-hero {
+  background: var(--dark);
+  padding: 8rem 0 5rem;
+}
+.sff-hero .sff-container { max-width: 860px; }
+
+.sff-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 1.5rem;
+}
+
+.sff-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.sff-standfirst {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(242,240,232,0.65);
+  margin-bottom: 2rem;
+  max-width: 620px;
+}
+
+.sff-demo-notice {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.45);
+  border: 1px solid rgba(242,240,232,0.12);
+  padding: 0.45rem 0.85rem;
+  margin-bottom: 3rem;
+}
+
+.sff-search-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.5);
+  margin-bottom: 0.75rem;
+}
+.sff-search-row {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.sff-search-input {
+  flex: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--dark);
+  background: var(--off-white);
+  border: none;
+  padding: 1.1rem 1.5rem;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.sff-search-input:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+.sff-search-input::placeholder { color: rgba(17,17,36,0.38); }
+.sff-search-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--blue);
+  border: none;
+  padding: 1.1rem 2rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+.sff-search-btn:hover { background: var(--deep-blue); }
+.sff-search-btn:focus-visible {
+  background: var(--deep-blue);
+  outline: 2px solid var(--light-blue);
+  outline-offset: 2px;
+}
+
+.sff-prompts {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.sff-prompts-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.35);
+}
+.sff-prompt-chip {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(242,240,232,0.6);
+  background: rgba(242,240,232,0.05);
+  border: 1px solid rgba(242,240,232,0.14);
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sff-prompt-chip:hover,
+.sff-prompt-chip:focus-visible {
+  background: rgba(242,240,232,0.1);
+  border-color: rgba(242,240,232,0.28);
+  color: var(--off-white);
+}
+
+/* ── Results section ────────────────────────────────── */
+.sff-results {
+  background: var(--warm-white);
+  padding: 4rem 0 6rem;
+}
+
+.sff-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(26,42,212,0.1);
+  flex-wrap: wrap;
+}
+.sff-toolbar-left { margin-right: auto; }
+.sff-result-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sff-filters {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+.sff-filter-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  background: transparent;
+  border: 1px solid rgba(26,42,212,0.18);
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sff-filter-btn:hover,
+.sff-filter-btn:focus-visible {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.sff-filter-btn[aria-pressed="true"] {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.sff-shortlist-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: transparent;
+  border: 1px solid var(--blue);
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.sff-shortlist-btn:hover,
+.sff-shortlist-btn:focus-visible {
+  background: rgba(26,42,212,0.05);
+}
+.sff-shortlist-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.52rem;
+  padding: 0 0.2rem;
+}
+
+/* Card grid */
+.sff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sff-card {
+  background: #fff;
+  border: 1px solid rgba(26,42,212,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.sff-card:hover {
+  border-color: rgba(26,42,212,0.22);
+  box-shadow: 0 2px 16px rgba(26,42,212,0.05);
+}
+.sff-card.is-selected { border-color: var(--blue); border-width: 2px; }
+
+.sff-card-header { padding: 1.4rem 1.4rem 0; }
+
+.sff-card-fit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.6rem;
+  margin-bottom: 0.9rem;
+}
+.sff-card-fit::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sff-card-fit--good {
+  background: rgba(26,42,212,0.07);
+  color: var(--blue);
+  border: 1px solid rgba(26,42,212,0.18);
+}
+.sff-card-fit--good::before { background: var(--blue); }
+.sff-card-fit--maybe {
+  background: rgba(140,100,30,0.06);
+  color: #7a5c1e;
+  border: 1px solid rgba(140,100,30,0.18);
+}
+.sff-card-fit--maybe::before { background: #b8892c; }
+.sff-card-fit--check {
+  background: rgba(100,100,120,0.05);
+  color: var(--muted);
+  border: 1px solid rgba(100,100,120,0.14);
+}
+.sff-card-fit--check::before { background: var(--muted); }
+
+.sff-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: 0.3rem;
+}
+.sff-card-funder {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.sff-card-meta {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.9rem 1.4rem;
+  margin: 0.9rem 0 0;
+  border-top: 1px solid rgba(26,42,212,0.06);
+  border-bottom: 1px solid rgba(26,42,212,0.06);
+  flex-wrap: wrap;
+}
+.sff-card-meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.sff-card-meta-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--dark);
+}
+
+.sff-card-body { padding: 0.9rem 1.4rem; flex: 1; }
+.sff-card-summary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 300;
+  color: rgba(17,17,36,0.68);
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
+}
+
+.sff-card-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+.sff-card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.45);
+  background: rgba(26,42,212,0.04);
+  border: 1px solid rgba(26,42,212,0.08);
+  padding: 0.22rem 0.48rem;
+}
+
+.sff-card-footer {
+  padding: 1rem 1.4rem;
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  border-top: 1px solid rgba(26,42,212,0.06);
+}
+.sff-card-view-btn {
+  flex: 1;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: transparent;
+  border: 1px solid var(--blue);
+  padding: 0.6rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sff-card-view-btn:hover,
+.sff-card-view-btn:focus-visible {
+  background: var(--blue);
+  color: #fff;
+}
+.sff-card.is-selected .sff-card-view-btn {
+  background: var(--blue);
+  color: #fff;
+}
+.sff-card-save {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid rgba(26,42,212,0.14);
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.sff-card-save:hover,
+.sff-card-save:focus-visible {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.sff-card.is-saved .sff-card-save {
+  color: var(--blue);
+  border-color: var(--blue);
+  background: rgba(26,42,212,0.05);
+}
+
+.sff-no-results {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+/* Detail panel */
+.sff-detail-panel {
+  background: var(--off-white);
+  border: 1px solid rgba(26,42,212,0.14);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  scroll-margin-top: 90px;
+}
+.sff-detail-panel[hidden] { display: none; }
+
+.sff-detail-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: 1px solid rgba(26,42,212,0.14);
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.sff-detail-close:hover,
+.sff-detail-close:focus-visible {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.sff-detail-close-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.sff-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.sff-detail-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+  padding-right: 2.5rem;
+}
+.sff-detail-funder {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.sff-detail-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1.25rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(26,42,212,0.03);
+  border: 1px solid rgba(26,42,212,0.08);
+}
+.sff-detail-meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.sff-detail-meta-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--dark);
+  font-weight: 400;
+}
+.sff-detail-description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(17,17,36,0.75);
+}
+
+.sff-explain-panel {
+  background: #fff;
+  border: 1px solid rgba(26,42,212,0.1);
+  padding: 1.75rem;
+}
+.sff-explain-heading {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.sff-explain-heading::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sff-explain-section { margin-bottom: 1.25rem; }
+.sff-explain-section:last-child { margin-bottom: 0; }
+.sff-explain-section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.sff-explain-section-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--dark);
+}
+.sff-explain-docs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sff-explain-docs li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1.6;
+  padding: 0.3rem 0 0.3rem 1rem;
+  position: relative;
+  border-bottom: 1px solid rgba(26,42,212,0.06);
+}
+.sff-explain-docs li:last-child { border-bottom: none; }
+.sff-explain-docs li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 4px;
+  height: 4px;
+  background: rgba(26,42,212,0.35);
+  border-radius: 50%;
+}
+
+/* ── How it helps ───────────────────────────────────── */
+.sff-how {
+  background: var(--off-white);
+  border-top: 1px solid rgba(26,42,212,0.08);
+  padding: 6rem 0;
+}
+.sff-section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.25rem;
+}
+.sff-how h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  max-width: 580px;
+}
+.sff-how-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(17,17,36,0.62);
+  max-width: 600px;
+  margin-bottom: 4rem;
+}
+.sff-how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+.sff-how-item {
+  padding: 2rem;
+  border: 1px solid rgba(26,42,212,0.1);
+  background: var(--warm-white);
+}
+.sff-how-item-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.sff-how-item h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.sff-how-item p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(17,17,36,0.62);
+}
+
+/* ── Why Not On Mondays ─────────────────────────────── */
+.sff-why-nom {
+  background: var(--dark);
+  padding: 6rem 0;
+}
+.sff-why-nom .sff-section-eyebrow { color: var(--light-blue); }
+.sff-why-nom-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+.sff-why-nom h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.sff-why-nom-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(242,240,232,0.6);
+  margin-bottom: 2.5rem;
+}
+.sff-why-nom-list {
+  list-style: none;
+}
+.sff-why-nom-list li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: rgba(242,240,232,0.62);
+  line-height: 1.65;
+  padding: 0.75rem 0 0.75rem 1.3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+}
+.sff-why-nom-list li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+.sff-why-nom-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.1em;
+  width: 4px;
+  height: 4px;
+  background: var(--light-blue);
+  border-radius: 50%;
+}
+.sff-why-nom-side {}
+.sff-why-nom-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(242,240,232,0.55);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid rgba(191,198,240,0.25);
+}
+.sff-why-nom-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: transparent;
+  border: 1px solid rgba(242,240,232,0.3);
+  padding: 0.85rem 1.75rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+.sff-why-nom-cta:hover,
+.sff-why-nom-cta:focus-visible {
+  border-color: var(--off-white);
+  background: rgba(242,240,232,0.07);
+}
+
+/* ── CTA ────────────────────────────────────────────── */
+.sff-cta {
+  background: var(--blue);
+  padding: 5rem 0;
+}
+.sff-cta-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+.sff-cta .sff-section-eyebrow { color: rgba(255,255,255,0.6); }
+.sff-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.sff-cta-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.7);
+  max-width: 460px;
+}
+.sff-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+}
+.sff-cta-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 2rem;
+  transition: all 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
+  display: block;
+}
+.sff-cta-link--primary {
+  background: #fff;
+  color: var(--blue);
+}
+.sff-cta-link--primary:hover,
+.sff-cta-link--primary:focus-visible { background: var(--off-white); }
+.sff-cta-link--ghost {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.sff-cta-link--ghost:hover,
+.sff-cta-link--ghost:focus-visible {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── Shortlist panel ────────────────────────────────── */
+.sff-shortlist-panel {
+  background: var(--off-white);
+  border: 1px solid rgba(26,42,212,0.14);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+}
+.sff-shortlist-panel[hidden] { display: none; }
+.sff-shortlist-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(26,42,212,0.1);
+}
+.sff-shortlist-panel-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.sff-shortlist-close {
+  background: none;
+  border: 1px solid rgba(26,42,212,0.14);
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: all 0.2s ease;
+}
+.sff-shortlist-close:hover,
+.sff-shortlist-close:focus-visible { border-color: var(--blue); color: var(--blue); }
+.sff-shortlist-list { list-style: none; }
+.sff-shortlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(26,42,212,0.07);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--dark);
+}
+.sff-shortlist-item:last-child { border-bottom: none; }
+.sff-shortlist-remove {
+  background: none;
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.3rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.sff-shortlist-remove:hover,
+.sff-shortlist-remove:focus-visible { color: var(--blue); }
+.sff-shortlist-empty {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--muted);
+  padding: 0.5rem 0;
+}
+
+/* ── Data notice bar (above card grid) ─────────────── */
+.sff-data-notice {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: rgba(17,17,36,0.45);
+  border-left: 2px solid rgba(26,42,212,0.18);
+  padding: 0.45rem 0 0.45rem 0.85rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* ── Sample label at base of each card ─────────────── */
+.sff-card-sample-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.25);
+  padding: 0.4rem 1.4rem;
+  border-top: 1px solid rgba(26,42,212,0.05);
+  text-align: right;
+}
+
+/* ── Why NOM section note ───────────────────────────── */
+.sff-why-nom-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(242,240,232,0.45);
+  margin-bottom: 2rem;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .sff-container { padding: 0 1.5rem; }
+  .sff-hero { padding: 6rem 0 4rem; }
+  .sff-grid { grid-template-columns: 1fr 1fr; }
+  .sff-toolbar { flex-direction: column; align-items: flex-start; }
+  .sff-toolbar-left { width: 100%; }
+  .sff-how-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .sff-detail-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .sff-why-nom-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .sff-cta-inner { flex-direction: column; gap: 2rem; }
+  .sff-cta-actions { flex-direction: row; }
+}
+@media (max-width: 640px) {
+  .sff-grid { grid-template-columns: 1fr; }
+  .sff-detail-meta { grid-template-columns: 1fr; }
+  .sff-cta-actions { flex-direction: column; }
+  .sff-prompts { gap: 0.5rem; }
+}
+
+</style>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
+  </nav>
+</header>
+
+<main id="main-content">
+
+  <!-- Hero -->
+  <section class="sff-hero" aria-labelledby="hero-heading">
+    <div class="sff-container">
+      <p class="sff-eyebrow" aria-hidden="true">Proof of concept &middot; Surrey Funding Finder</p>
+      <h1 id="hero-heading">Find grants and funding<br>in plain English.</h1>
+      <p class="sff-standfirst">A proof-of-concept showing how councils could help residents, charities, community groups and SMEs discover relevant funding opportunities without navigating fragmented websites and PDFs.</p>
+      <p class="sff-demo-notice" role="note">Demo content only. Sample data, not verified. Always check with the funder before applying.</p>
+
+      <label for="funding-search" class="sff-search-label">What are you trying to fund?</label>
+      <div class="sff-search-row">
+        <input
+          type="search"
+          id="funding-search"
+          class="sff-search-input"
+          placeholder="e.g. community wellbeing programme"
+          autocomplete="off"
+          aria-controls="sff-grid result-count"
+        >
+        <button class="sff-search-btn" type="button" id="search-trigger">Search</button>
+      </div>
+
+      <div class="sff-prompts" aria-label="Example searches — click to populate the search field">
+        <span class="sff-prompts-label" aria-hidden="true">Try:</span>
+        <button class="sff-prompt-chip" type="button" data-prompt="community wellbeing">Community wellbeing</button>
+        <button class="sff-prompt-chip" type="button" data-prompt="energy efficiency">Energy efficiency</button>
+        <button class="sff-prompt-chip" type="button" data-prompt="youth sports">Youth sports</button>
+        <button class="sff-prompt-chip" type="button" data-prompt="business growth">Business growth</button>
+        <button class="sff-prompt-chip" type="button" data-prompt="digital inclusion">Digital inclusion</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="sff-results" aria-labelledby="results-label">
+    <div class="sff-container">
+
+      <div class="sff-toolbar">
+        <div class="sff-toolbar-left">
+          <span class="sff-result-count" id="result-count" aria-live="polite" aria-atomic="true">
+            Showing 12 opportunities
+          </span>
+        </div>
+        <div class="sff-filters" role="group" aria-label="Filter by category">
+          <button class="sff-filter-btn" data-filter="all" aria-pressed="true" type="button">All</button>
+          <button class="sff-filter-btn" data-filter="community" aria-pressed="false" type="button">Community</button>
+          <button class="sff-filter-btn" data-filter="business" aria-pressed="false" type="button">Business</button>
+          <button class="sff-filter-btn" data-filter="environment" aria-pressed="false" type="button">Environment</button>
+          <button class="sff-filter-btn" data-filter="young-people" aria-pressed="false" type="button">Young people</button>
+          <button class="sff-filter-btn" data-filter="digital" aria-pressed="false" type="button">Digital inclusion</button>
+          <button class="sff-filter-btn" data-filter="open" aria-pressed="false" type="button">Open now</button>
+        </div>
+        <button
+          class="sff-shortlist-btn"
+          type="button"
+          id="shortlist-toggle-btn"
+          aria-expanded="false"
+          aria-controls="sff-shortlist-panel"
+          aria-label="View shortlist. 0 opportunities saved."
+        >
+          Shortlist <span class="sff-shortlist-count" aria-hidden="true" id="shortlist-count">0</span>
+        </button>
+      </div>
+
+      <!-- Data notice -->
+      <p class="sff-data-notice" role="note">All entries are illustrative sample data. Deadlines, amounts and eligibility criteria have not been verified. Check directly with the funder before relying on any details shown here.</p>
+
+      <!-- Shortlist panel -->
+      <div class="sff-shortlist-panel" id="sff-shortlist-panel" hidden aria-label="Your shortlist">
+        <div class="sff-shortlist-panel-header">
+          <span class="sff-shortlist-panel-title">Your shortlist</span>
+          <button class="sff-shortlist-close" type="button" id="shortlist-close-btn">Close</button>
+        </div>
+        <ul class="sff-shortlist-list" id="shortlist-list" aria-live="polite">
+          <li class="sff-shortlist-empty" id="shortlist-empty">No opportunities saved yet. Click Save on any card to add it here.</li>
+        </ul>
+      </div>
+
+      <!-- Card grid -->
+      <div
+        class="sff-grid"
+        id="sff-grid"
+        role="list"
+        aria-label="Funding opportunities"
+        aria-live="polite"
+        aria-atomic="false"
+      >
+        <!-- Populated by JS -->
+      </div>
+
+      <p class="sff-no-results" id="sff-no-results" hidden role="status">
+        No matching opportunities found. Try adjusting your search or removing a filter.
+      </p>
+
+      <!-- Detail panel -->
+      <div
+        class="sff-detail-panel"
+        id="sff-detail-panel"
+        hidden
+        tabindex="-1"
+        aria-label="Grant details"
+      >
+        <!-- Populated by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How this helps councils and communities -->
+  <section class="sff-how" aria-labelledby="how-heading">
+    <div class="sff-container">
+      <p class="sff-section-eyebrow">Why it matters</p>
+      <h2 id="how-heading">How this helps councils and communities</h2>
+      <p class="sff-how-intro">Most funding information lives in PDFs, council newsletters, and fragmented government portals. Eligible organisations miss out because the process is too hard to navigate. This proof-of-concept explores what a plain-English, people-centred service could look like.</p>
+      <div class="sff-how-grid">
+        <div class="sff-how-item">
+          <p class="sff-how-item-number">01</p>
+          <h3>Plain English over jargon</h3>
+          <p>Funding guidance is often written for administrators, not applicants. A well-designed service translates eligibility criteria into language that residents and small organisations can actually use.</p>
+        </div>
+        <div class="sff-how-item">
+          <p class="sff-how-item-number">02</p>
+          <h3>One place, not many portals</h3>
+          <p>Relevant funding sits across county council websites, national government platforms, lottery portals, and charitable foundations. A unified service reduces the time spent searching and the opportunities missed.</p>
+        </div>
+        <div class="sff-how-item">
+          <p class="sff-how-item-number">03</p>
+          <h3>Matched to need, not category</h3>
+          <p>Search by what you are trying to do, not by which funding body runs the scheme. A good service surfaces relevant opportunities that applicants would not have found by browsing categories alone.</p>
+        </div>
+        <div class="sff-how-item">
+          <p class="sff-how-item-number">04</p>
+          <h3>Prepared applicants, stronger bids</h3>
+          <p>Knowing what documents are needed, who an organisation needs to be, and what the funder is actually looking for produces better applications and fewer failed bids.</p>
+        </div>
+        <div class="sff-how-item">
+          <p class="sff-how-item-number">05</p>
+          <h3>Shortlisting without spreadsheets</h3>
+          <p>Community groups and small charities rarely have a grants manager. A simple save-and-shortlist feature replaces the personal tracking that currently happens in email inboxes and sticky notes.</p>
+        </div>
+        <div class="sff-how-item">
+          <p class="sff-how-item-number">06</p>
+          <h3>Evidence for local government</h3>
+          <p>Search data and shortlisting behaviour shows which funding needs are unmet, which communities are searching most, and where guidance gaps exist. That data is genuinely useful for commissioning and policy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Not On Mondays -->
+  <section class="sff-why-nom" aria-labelledby="why-nom-heading">
+    <div class="sff-container">
+      <div class="sff-why-nom-inner">
+        <div>
+          <p class="sff-section-eyebrow">Why Not On Mondays built this</p>
+          <h2 id="why-nom-heading">Good public services are built around people, not processes.</h2>
+          <p class="sff-why-nom-body">We built this proof-of-concept to show what a funding discovery service could feel like when it is designed for the person applying, rather than for the organisation administering it. No jargon, no dead ends, no "call us for more information."</p>
+          <ul class="sff-why-nom-list" aria-label="What we do">
+            <li>Service design for local government and the public sector</li>
+            <li>Plain-English content and information architecture</li>
+            <li>Accessible digital products that meet WCAG standards</li>
+            <li>Discovery, prototyping, and user research</li>
+            <li>Delivery support for complex change programmes</li>
+          </ul>
+        </div>
+        <div class="sff-why-nom-side">
+          <blockquote class="sff-why-nom-quote">
+            "Residents are not failing to apply for funding because they are not trying. They are failing because the information is not designed to be found."
+          </blockquote>
+          <p class="sff-why-nom-note">The funding entries in this demo are illustrative. They are based on real funding types but have not been verified for accuracy, currency, or availability. Always check directly with the funder.</p>
+          <a href="/#contact" class="sff-why-nom-cta">Talk to us about this</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sff-cta" aria-labelledby="cta-heading">
+    <div class="sff-container">
+      <div class="sff-cta-inner">
+        <div>
+          <p class="sff-section-eyebrow">Start a conversation</p>
+          <h2 id="cta-heading">Interested in building this for your council or community?</h2>
+          <p class="sff-cta-body">We work with local authorities, housing associations, and community organisations to design and deliver digital services that actually reach the people they are meant for. Get in touch to talk about what this could look like for your context.</p>
+        </div>
+        <div class="sff-cta-actions">
+          <a href="/#contact" class="sff-cta-link sff-cta-link--primary">Get in touch</a>
+          <a href="/insights/" class="sff-cta-link sff-cta-link--ghost">Read our insights</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com &middot; 2026</small></p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Funding data ───────────────────────────────────────────── */
+  var FUNDS = [
+    {
+      id: 'your-fund-surrey',
+      name: 'Your Fund Surrey',
+      funder: 'Surrey County Council',
+      amount: 'Up to £50,000',
+      deadline: '2026-06-30',
+      deadlineLabel: '30 June 2026',
+      location: 'Surrey',
+      whoCanApply: 'Community groups, charities, voluntary organisations',
+      summary: 'Capital funding for community-led projects that improve local facilities or services across Surrey.',
+      description: 'Your Fund Surrey supports community-led capital projects that benefit residents across the county. Grants are available for physical improvements to community spaces, equipment, and facilities. Projects should demonstrate clear community need, local support, and the ability to sustain the outcomes beyond the grant period.',
+      tags: ['community', 'open'],
+      fit: 'good',
+      fitLabel: 'Good fit',
+      explain: {
+        whoFor: 'Constituted community groups, registered charities, and voluntary organisations based in or serving Surrey communities.',
+        whatFunds: 'Capital costs only: building works, refurbishment, equipment purchases, and facility improvements. Not revenue costs or salaries.',
+        checkBefore: 'Your organisation must be constituted and have a bank account in its own name. The project must deliver a tangible benefit to the local community. Maintenance costs after the project must be covered independently.',
+        documents: ['Governing document or constitution', 'Most recent set of accounts', 'Bank statement', 'Two independent quotes for all works', 'Evidence of community support (letters, survey results)', 'Photos of current condition']
+      }
+    },
+    {
+      id: 'community-foundation-surrey',
+      name: 'Community Foundation for Surrey: Small Grants',
+      funder: 'Community Foundation for Surrey',
+      amount: '£500 – £5,000',
+      deadline: '2026-07-15',
+      deadlineLabel: '15 July 2026',
+      location: 'Surrey',
+      whoCanApply: 'Small charities and community groups with income under £250,000',
+      summary: 'Accessible grants for small organisations making a positive difference in their local Surrey community.',
+      description: 'The Community Foundation for Surrey manages a range of grant funds on behalf of local donors and businesses. Small grants are particularly suited to grassroots organisations with limited fundraising capacity. Funding can cover both project and running costs, making it more flexible than many public sector grants.',
+      tags: ['community', 'open'],
+      fit: 'good',
+      fitLabel: 'Good fit',
+      explain: {
+        whoFor: 'Small registered charities, community interest companies, and unregistered voluntary groups in Surrey with annual income below £250,000.',
+        whatFunds: 'Project costs, small equipment, training, volunteer expenses, and in some rounds, core running costs.',
+        checkBefore: 'Check the current open fund on the Community Foundation website, as criteria vary by fund. Some funds are geographically restricted to specific boroughs.',
+        documents: ['Governing document or constitution', 'Latest accounts or income/expenditure statement', 'Bank statement', 'Brief project description and budget', 'Equal opportunities policy (if organisation has one)']
+      }
+    },
+    {
+      id: 'surrey-economic-growth-fund',
+      name: 'Surrey Economic Growth Fund',
+      funder: 'Surrey County Council / Business Surrey',
+      amount: 'Up to £100,000',
+      deadline: '2026-08-01',
+      deadlineLabel: '1 August 2026',
+      location: 'Surrey',
+      whoCanApply: 'SMEs trading in Surrey for at least 12 months',
+      summary: 'Capital grant support to help Surrey businesses grow, invest, and create local employment.',
+      description: 'The Surrey Economic Growth Fund provides capital grants to established small and medium-sized businesses looking to invest in their operations. Eligible projects include premises improvements, specialist equipment, and technology investments that lead to job creation or retention. Match funding from the business is typically required.',
+      tags: ['business', 'open'],
+      fit: 'good',
+      fitLabel: 'Good fit',
+      explain: {
+        whoFor: 'SMEs (fewer than 250 employees) that have been trading in Surrey for at least 12 months and are looking to grow or invest.',
+        whatFunds: 'Capital expenditure: equipment, machinery, premises improvements, and technology. Not working capital, salaries, or general running costs.',
+        checkBefore: 'You will typically need to contribute match funding (often 50% of total project cost). State aid rules may apply. Check that your sector is eligible before investing significant time in an application.',
+        documents: ['Business plan or growth plan', 'Last two years of filed accounts', 'Management accounts (if recent accounts are over 6 months old)', 'Two quotes for all planned expenditure', 'Evidence of match funding availability']
+      }
+    },
+    {
+      id: 'ukspf-communities',
+      name: 'UK Shared Prosperity Fund: Community Investment',
+      funder: 'HM Government via Local Authority',
+      amount: 'Up to £30,000',
+      deadline: '2026-07-31',
+      deadlineLabel: '31 July 2026',
+      location: 'Eligible areas in Surrey',
+      whoCanApply: 'Charities, community groups, social enterprises, voluntary organisations',
+      summary: 'National funding to strengthen community infrastructure and improve life outcomes in eligible local areas.',
+      description: 'The UK Shared Prosperity Fund is administered by local authorities, who each have an investment plan covering their area. Community and place priorities vary between districts. Check with your local borough or district council to find out what is open in your area, as not all UKSPF programmes are active simultaneously.',
+      tags: ['community'],
+      fit: 'maybe',
+      fitLabel: 'Maybe',
+      explain: {
+        whoFor: 'Voluntary, community, and social enterprise sector organisations. Eligibility varies by local investment plan.',
+        whatFunds: 'Varies by local programme: community events, volunteer coordination, skills development, and place-based projects.',
+        checkBefore: 'Contact your local borough or district council first. Not all areas have open UKSPF rounds at the same time. Funding must align with local investment plan priorities, which differ significantly across Surrey.',
+        documents: ['Organisation registration details', 'Governing document', 'Latest accounts', 'Project budget and outputs', 'Evidence of community need']
+      }
+    },
+    {
+      id: 'great-british-insulation',
+      name: 'Great British Insulation Scheme',
+      funder: 'Ofgem / Energy suppliers (administered)',
+      amount: 'Free insulation (variable value)',
+      deadline: 'Ongoing',
+      deadlineLabel: 'Ongoing',
+      location: 'England including Surrey',
+      whoCanApply: 'Homeowners and private renters on low incomes or receiving qualifying benefits',
+      summary: 'Free cavity wall, loft, and other insulation for eligible households to cut energy bills and reduce carbon emissions.',
+      description: 'The Great British Insulation Scheme (GBIS) offers free insulation upgrades to households in the lower council tax bands or on qualifying benefits. It is delivered through energy suppliers and approved installers. The scheme is separate from the Energy Company Obligation (ECO4), though both may be available to the same household.',
+      tags: ['environment', 'open'],
+      fit: 'check',
+      fitLabel: 'Check eligibility',
+      explain: {
+        whoFor: 'Homeowners and private tenants in properties rated EPC D to G. Either in council tax bands A to D, or receiving a qualifying benefit such as Universal Credit, Pension Credit, or Child Tax Credit.',
+        whatFunds: 'Loft insulation, cavity wall insulation, solid wall insulation, and other approved measures. Value depends on property type and works required.',
+        checkBefore: 'Check your EPC rating and council tax band first. Contact your energy supplier directly, or use the government\'s online checker. Landlords must give permission for tenants to apply.',
+        documents: ['Proof of benefit entitlement (if applicable)', 'Proof of address', 'Permission from landlord (if renting)']
+      }
+    },
+    {
+      id: 'warm-homes-social-housing',
+      name: 'Warm Homes: Social Housing Fund',
+      funder: 'Department for Energy Security and Net Zero',
+      amount: 'Up to £80,000 per property',
+      deadline: '2027-03-31',
+      deadlineLabel: '31 March 2027',
+      location: 'England including Surrey',
+      whoCanApply: 'Registered social landlords, local authorities, and housing providers',
+      summary: 'Capital funding to upgrade energy efficiency in social housing, reducing tenant bills and improving comfort in homes rated EPC E, F, or G.',
+      description: 'Wave 3 of the Social Housing Decarbonisation Fund (now part of the Warm Homes Plan) targets the least energy-efficient social housing stock. Eligible measures include heat pumps, solar panels, insulation, and low-carbon heating. Projects must demonstrate a measurable improvement in EPC rating.',
+      tags: ['environment'],
+      fit: 'check',
+      fitLabel: 'Check eligibility',
+      explain: {
+        whoFor: 'Registered providers of social housing, local authority housing departments, and arm\'s-length management organisations (ALMOs) in England.',
+        whatFunds: 'Low-carbon heating systems, heat pumps, solar PV, insulation, ventilation improvements, and smart heating controls. Not general repairs or maintenance.',
+        checkBefore: 'Properties must currently be EPC E, F, or G. You will need a delivery partner or contractor who is MCS-certified for most measures. Match funding contribution is required.',
+        documents: ['EPC data for proposed properties', 'Asset management plan or equivalent', 'Match funding evidence', 'Contractor accreditation details', 'Tenant consultation evidence']
+      }
+    },
+    {
+      id: 'sport-england-active-places',
+      name: 'Sport England: Active Places Fund',
+      funder: 'Sport England / National Lottery',
+      amount: 'Up to £150,000',
+      deadline: '2026-09-15',
+      deadlineLabel: '15 September 2026',
+      location: 'England',
+      whoCanApply: 'Clubs, charities, community organisations, local authorities',
+      summary: 'Investment in community sports facilities to make physical activity more accessible, with a focus on underserved communities and underrepresented groups.',
+      description: 'The Active Places Fund supports capital investment in community sports and physical activity facilities. Priority is given to projects that will increase participation among groups currently least active, including people from lower socioeconomic backgrounds, disabled people, women and girls, and those from ethnic minority communities.',
+      tags: ['community', 'young-people', 'open'],
+      fit: 'good',
+      fitLabel: 'Good fit',
+      explain: {
+        whoFor: 'Sports clubs, community organisations, charities, and local authorities planning to improve or create community sports facilities.',
+        whatFunds: 'Facility construction, refurbishment, or improvement. Equipment for permanent or long-term use. Changing rooms, floodlights, all-weather surfaces.',
+        checkBefore: 'Projects must demonstrate clear evidence of demand and a plan to sustain the facility long-term. Sport England expects robust community consultation and evidence that the investment will increase participation.',
+        documents: ['Business or development plan', 'Accounts', 'Land ownership or lease details', 'Planning permission (or evidence it is not needed)', 'Architect drawings or costings', 'Community needs evidence']
+      }
+    },
+    {
+      id: 'nlcf-awards-for-all',
+      name: 'National Lottery Community Fund: Awards for All',
+      funder: 'National Lottery Community Fund',
+      amount: '£300 – £20,000',
+      deadline: 'Rolling',
+      deadlineLabel: 'Rolling (no deadline)',
+      location: 'England',
+      whoCanApply: 'Voluntary and community sector organisations',
+      summary: 'Small, accessible grants for projects that bring people together, build community connections, and improve local wellbeing.',
+      description: 'Awards for All is one of the most accessible grant programmes in England. It is designed to fund small community projects with a light-touch application. Funding can cover almost any community-facing activity, from community events and volunteering to digital access and local wellbeing projects. Decisions are typically made within 12 weeks.',
+      tags: ['community', 'young-people', 'open'],
+      fit: 'good',
+      fitLabel: 'Good fit',
+      explain: {
+        whoFor: 'Voluntary and community organisations, charities, statutory bodies (in some cases), and constituted community groups.',
+        whatFunds: 'Almost any community-benefit activity: events, equipment, activities, volunteer costs, transport, and small capital items. Very flexible.',
+        checkBefore: 'Your organisation must have been running for at least 12 months. You need a bank account in your organisation\'s name. There are some excluded activities (check the National Lottery Community Fund website for the full list).',
+        documents: ['Governing document', 'Bank statement', 'Names and contact details of at least two unrelated trustees or committee members', 'Basic project plan and budget']
+      }
+    },
+    {
+      id: 'good-things-digital-inclusion',
+      name: 'Good Things Foundation: Digital Inclusion Grants',
+      funder: 'Good Things Foundation',
+      amount: 'Up to £10,000',
+      deadline: '2026-09-30',
+      deadlineLabel: '30 September 2026',
+      location: 'England',
+      whoCanApply: 'Community organisations, libraries, digital hubs, housing providers',
+      summary: 'Grants to improve digital access and skills for people who are offline or lack the confidence to use the internet safely.',
+      description: 'Good Things Foundation runs grant programmes to extend and strengthen the network of organisations helping people get online. Funding can support device lending, data provision, digital skills sessions, and volunteer training. Priority goes to organisations already working with digitally excluded groups.',
+      tags: ['digital', 'community', 'open'],
+      fit: 'good',
+      fitLabel: 'Good fit',
+      explain: {
+        whoFor: 'Libraries, community centres, housing associations, GP practices, food banks, and any organisation in regular contact with digitally excluded people.',
+        whatFunds: 'Devices for lending or gifting, SIM cards and data, facilitator training, digital champion volunteer recruitment, and basic equipment for running digital skills sessions.',
+        checkBefore: 'Your organisation should already be working with people who are digitally excluded. Pure infrastructure or broadband projects are not covered. Check whether your organisation is an existing Online Centres Network member.',
+        documents: ['Governing document or registration details', 'Evidence of existing work with digitally excluded people', 'Project budget', 'Description of target beneficiaries']
+      }
+    },
+    {
+      id: 'building-digital-uk-gigabit',
+      name: 'Community Gigabit Programme',
+      funder: 'Building Digital UK / DSIT',
+      amount: 'Up to £3,500 per premises',
+      deadline: 'Scheme-dependent',
+      deadlineLabel: 'Depends on local scheme',
+      location: 'Rural areas of Surrey',
+      whoCanApply: 'Rural businesses, community buildings, farm premises',
+      summary: 'Co-funding to bring full-fibre broadband to rural communities and premises that commercial providers will not reach on their own.',
+      description: 'The Community Gigabit Programme enables rural communities to "top up" public funding to make a full-fibre connection viable in their area. It works through local schemes run by county councils and local bodies. The gap funding reduces the cost for commercial providers to extend their build into commercially marginal areas.',
+      tags: ['digital', 'business'],
+      fit: 'check',
+      fitLabel: 'Check eligibility',
+      explain: {
+        whoFor: 'Rural businesses, community buildings (village halls, churches, sports clubs), and farm diversification enterprises in areas identified as not due to receive commercial gigabit build.',
+        whatFunds: 'The gap between what a commercial provider will invest and the cost of delivering full-fibre infrastructure to your premises.',
+        checkBefore: 'Check whether your area is already in a commercial build plan using the Ofcom checker. The programme only funds premises where there is no commercial gigabit build planned. Contact Surrey County Council\'s digital team for local scheme details.',
+        documents: ['Proof of premises address', 'Evidence of current broadband speed (speed test)', 'Expression of interest to local scheme']
+      }
+    },
+    {
+      id: 'historic-england-high-street',
+      name: 'High Street Heritage Action Zone',
+      funder: 'Historic England',
+      amount: 'Project-based (typically £50k–£250k)',
+      deadline: '2026-10-01',
+      deadlineLabel: 'Expression of interest by 1 October 2026',
+      location: 'Historic high streets in England',
+      whoCanApply: 'Local authorities, Business Improvement Districts, property owners',
+      summary: 'Funding to restore, repurpose, and regenerate historic high street buildings, with a focus on unlocking long-term economic and community value.',
+      description: 'The High Street Heritage Action Zone programme works with local authorities and partners to improve historic high street environments. It combines grant funding for physical works with cultural programming and community engagement. Applications are partnership-led, typically anchored by the local authority.',
+      tags: ['business', 'community'],
+      fit: 'maybe',
+      fitLabel: 'Maybe',
+      explain: {
+        whoFor: 'Local authorities working in partnership with Business Improvement Districts, landowners, and community organisations. Not directly available to individual businesses.',
+        whatFunds: 'Restoration and repair of historic facades, conversion of upper floors to residential, shopfront grants, public realm improvements, and cultural programming.',
+        checkBefore: 'Applications must be led by or have the backing of the local authority. The high street must have demonstrable historic significance. The programme is competitive and requires a strong partnership proposal.',
+        documents: ['Local authority partnership agreement', 'Heritage impact assessment', 'Evidence of economic and social need', 'Delivery plan', 'Conservation area appraisal or similar']
+      }
+    },
+    {
+      id: 'youth-futures-employment',
+      name: 'Youth Futures Foundation: Employment Fund',
+      funder: 'Youth Futures Foundation',
+      amount: 'Up to £500,000',
+      deadline: '2026-08-15',
+      deadlineLabel: '15 August 2026',
+      location: 'England',
+      whoCanApply: 'Charities, social enterprises, and voluntary organisations supporting young people',
+      summary: 'Funding for organisations helping young people who face the greatest barriers to finding and keeping good work, with a focus on marginalised groups.',
+      description: 'The Youth Futures Foundation funds organisations that have strong evidence of what works to improve employment outcomes for young people facing significant disadvantage. Priority populations include young people with experience of the care system, those with mental health challenges, young people from ethnic minority backgrounds, and those living in areas of concentrated disadvantage.',
+      tags: ['young-people'],
+      fit: 'good',
+      fitLabel: 'Good fit',
+      explain: {
+        whoFor: 'Established charities and social enterprises with a track record of delivering employment support to disadvantaged young people (age 16 to 24) in England.',
+        whatFunds: 'Staffing, programme delivery, evidence and evaluation, and some organisational development costs. Projects must have a clear employment or employability outcome.',
+        checkBefore: 'The Youth Futures Foundation funds at the higher end of the grant scale, so it expects organisations to have robust evidence of impact and sound financial management. A theory of change and MEL (monitoring, evaluation, and learning) plan will be needed.',
+        documents: ['Organisational accounts (last two years)', 'Theory of change or logic model', 'Evidence of impact or outcomes data', 'MEL framework', 'CV or profile of lead staff', 'Safeguarding policy']
+      }
+    }
+  ];
+
+  /* ── State ──────────────────────────────────────────────────── */
+  var state = {
+    query: '',
+    filter: 'all',
+    selectedId: null,
+    savedIds: [],
+    shortlistOpen: false
+  };
+
+  /* ── DOM refs ───────────────────────────────────────────────── */
+  var searchInput    = document.getElementById('funding-search');
+  var grid           = document.getElementById('sff-grid');
+  var noResults      = document.getElementById('sff-no-results');
+  var resultCount    = document.getElementById('result-count');
+  var detailPanel    = document.getElementById('sff-detail-panel');
+  var shortlistPanel = document.getElementById('sff-shortlist-panel');
+  var shortlistToggle= document.getElementById('shortlist-toggle-btn');
+  var shortlistClose = document.getElementById('shortlist-close-btn');
+  var shortlistCount = document.getElementById('shortlist-count');
+  var shortlistList  = document.getElementById('shortlist-list');
+  var shortlistEmpty = document.getElementById('shortlist-empty');
+  var filterBtns     = document.querySelectorAll('.sff-filter-btn');
+
+  /* ── Helpers ────────────────────────────────────────────────── */
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function matchesQuery(fund, q) {
+    if (!q) return true;
+    var s = q.toLowerCase();
+    return (
+      fund.name.toLowerCase().indexOf(s) !== -1 ||
+      fund.summary.toLowerCase().indexOf(s) !== -1 ||
+      fund.description.toLowerCase().indexOf(s) !== -1 ||
+      fund.whoCanApply.toLowerCase().indexOf(s) !== -1 ||
+      fund.tags.some(function (t) { return t.toLowerCase().indexOf(s) !== -1; }) ||
+      fund.funder.toLowerCase().indexOf(s) !== -1
+    );
+  }
+
+  function matchesFilter(fund, f) {
+    if (f === 'all') return true;
+    return fund.tags.indexOf(f) !== -1;
+  }
+
+  function getVisible() {
+    return FUNDS.filter(function (f) {
+      return matchesQuery(f, state.query) && matchesFilter(f, state.filter);
+    });
+  }
+
+  /* ── Render cards ───────────────────────────────────────────── */
+  function renderCards() {
+    var visible = getVisible();
+    grid.innerHTML = '';
+    detailPanel.hidden = true;
+    state.selectedId = null;
+
+    if (visible.length === 0) {
+      noResults.hidden = false;
+      resultCount.textContent = 'No opportunities found';
+      return;
+    }
+    noResults.hidden = true;
+    resultCount.textContent = 'Showing ' + visible.length + (visible.length === 1 ? ' opportunity' : ' opportunities');
+
+    visible.forEach(function (fund) {
+      var saved = state.savedIds.indexOf(fund.id) !== -1;
+      var card  = document.createElement('article');
+      card.className = 'sff-card' + (saved ? ' is-saved' : '');
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('data-id', fund.id);
+      card.setAttribute('aria-label', fund.name);
+
+      var tagsHtml = fund.tags.map(function (t) {
+        return '<span class="sff-card-tag">' + escapeHtml(t.replace('-', ' ')) + '</span>';
+      }).join('');
+
+      card.innerHTML =
+        '<div class="sff-card-header">' +
+          '<span class="sff-card-fit sff-card-fit--' + fund.fit + '" aria-label="Eligibility: ' + escapeHtml(fund.fitLabel) + '">' + escapeHtml(fund.fitLabel) + '</span>' +
+          '<h2 class="sff-card-name">' + escapeHtml(fund.name) + '</h2>' +
+          '<p class="sff-card-funder">' + escapeHtml(fund.funder) + '</p>' +
+        '</div>' +
+        '<dl class="sff-card-meta">' +
+          '<div class="sff-card-meta-item">' +
+            '<dt class="sff-card-meta-label">Amount</dt>' +
+            '<dd class="sff-card-meta-value">' + escapeHtml(fund.amount) + '</dd>' +
+          '</div>' +
+          '<div class="sff-card-meta-item">' +
+            '<dt class="sff-card-meta-label">Deadline</dt>' +
+            '<dd class="sff-card-meta-value">' + escapeHtml(fund.deadlineLabel) + '</dd>' +
+          '</div>' +
+        '</dl>' +
+        '<div class="sff-card-body">' +
+          '<p class="sff-card-summary">' + escapeHtml(fund.summary) + '</p>' +
+          '<div class="sff-card-tags" aria-label="Categories">' + tagsHtml + '</div>' +
+        '</div>' +
+        '<div class="sff-card-footer">' +
+          '<button class="sff-card-view-btn" type="button" aria-expanded="false" aria-controls="sff-detail-panel" data-action="view" data-id="' + fund.id + '">View details</button>' +
+          '<button class="sff-card-save" type="button" data-action="save" data-id="' + fund.id + '" aria-pressed="' + saved + '" aria-label="' + (saved ? 'Remove ' + escapeHtml(fund.name) + ' from shortlist' : 'Save ' + escapeHtml(fund.name) + ' to shortlist') + '">' + (saved ? 'Saved' : 'Save') + '</button>' +
+        '</div>' +
+        '<p class="sff-card-sample-label" aria-hidden="true">Sample entry</p>';
+
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── Render detail panel ─────────────────────────────────────── */
+  function renderDetail(id) {
+    var fund = FUNDS.find(function (f) { return f.id === id; });
+    if (!fund) return;
+
+    var docsHtml = fund.explain.documents.map(function (d) {
+      return '<li>' + escapeHtml(d) + '</li>';
+    }).join('');
+
+    detailPanel.innerHTML =
+      '<button class="sff-detail-close" type="button" id="detail-close-btn" aria-label="Close grant details">' +
+        '<span class="sff-detail-close-label" aria-hidden="true">Close</span>' +
+      '</button>' +
+      '<div class="sff-detail-grid">' +
+        '<div class="sff-detail-main">' +
+          '<h2 class="sff-detail-name">' + escapeHtml(fund.name) + '</h2>' +
+          '<p class="sff-detail-funder">' + escapeHtml(fund.funder) + '</p>' +
+          '<dl class="sff-detail-meta">' +
+            '<div class="sff-detail-meta-item"><dt class="sff-detail-meta-label">Amount</dt><dd class="sff-detail-meta-value">' + escapeHtml(fund.amount) + '</dd></div>' +
+            '<div class="sff-detail-meta-item"><dt class="sff-detail-meta-label">Deadline</dt><dd class="sff-detail-meta-value">' + escapeHtml(fund.deadlineLabel) + '</dd></div>' +
+            '<div class="sff-detail-meta-item"><dt class="sff-detail-meta-label">Location</dt><dd class="sff-detail-meta-value">' + escapeHtml(fund.location) + '</dd></div>' +
+            '<div class="sff-detail-meta-item"><dt class="sff-detail-meta-label">Who can apply</dt><dd class="sff-detail-meta-value">' + escapeHtml(fund.whoCanApply) + '</dd></div>' +
+          '</dl>' +
+          '<p class="sff-detail-description">' + escapeHtml(fund.description) + '</p>' +
+        '</div>' +
+        '<div class="sff-explain-panel" aria-label="Plain-English explanation">' +
+          '<p class="sff-explain-heading">In plain English</p>' +
+          '<div class="sff-explain-section">' +
+            '<p class="sff-explain-section-title">Who this is for</p>' +
+            '<p class="sff-explain-section-body">' + escapeHtml(fund.explain.whoFor) + '</p>' +
+          '</div>' +
+          '<div class="sff-explain-section">' +
+            '<p class="sff-explain-section-title">What it can fund</p>' +
+            '<p class="sff-explain-section-body">' + escapeHtml(fund.explain.whatFunds) + '</p>' +
+          '</div>' +
+          '<div class="sff-explain-section">' +
+            '<p class="sff-explain-section-title">Check before you apply</p>' +
+            '<p class="sff-explain-section-body">' + escapeHtml(fund.explain.checkBefore) + '</p>' +
+          '</div>' +
+          '<div class="sff-explain-section">' +
+            '<p class="sff-explain-section-title">Documents you will likely need</p>' +
+            '<ul class="sff-explain-docs" aria-label="Documents needed">' + docsHtml + '</ul>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    detailPanel.hidden = false;
+    document.getElementById('detail-close-btn').addEventListener('click', closeDetail);
+    detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    detailPanel.focus();
+  }
+
+  function closeDetail() {
+    var prevId = state.selectedId;
+    detailPanel.hidden = true;
+    state.selectedId = null;
+
+    /* Update card state */
+    document.querySelectorAll('.sff-card').forEach(function (c) {
+      c.classList.remove('is-selected');
+      var btn = c.querySelector('[data-action="view"]');
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'View details';
+      }
+    });
+
+    /* Return focus to the button that opened this panel */
+    if (prevId) {
+      var trigger = document.querySelector('[data-action="view"][data-id="' + prevId + '"]');
+      if (trigger) trigger.focus();
+    }
+  }
+
+  /* ── Shortlist ──────────────────────────────────────────────── */
+  function updateShortlist() {
+    var count = state.savedIds.length;
+    shortlistCount.textContent = count;
+    shortlistToggle.setAttribute('aria-label', 'View shortlist. ' + count + (count === 1 ? ' opportunity' : ' opportunities') + ' saved.');
+
+    if (shortlistEmpty) {
+      shortlistEmpty.hidden = count > 0;
+    }
+
+    /* Rebuild list items (excluding the empty message node) */
+    var items = shortlistList.querySelectorAll('.sff-shortlist-item');
+    items.forEach(function (el) { el.remove(); });
+
+    state.savedIds.forEach(function (id) {
+      var fund = FUNDS.find(function (f) { return f.id === id; });
+      if (!fund) return;
+      var li = document.createElement('li');
+      li.className = 'sff-shortlist-item';
+      li.innerHTML =
+        '<span>' + escapeHtml(fund.name) + '</span>' +
+        '<button class="sff-shortlist-remove" type="button" aria-label="Remove ' + escapeHtml(fund.name) + ' from shortlist" data-remove-id="' + fund.id + '">Remove</button>';
+      shortlistList.appendChild(li);
+    });
+
+    shortlistList.querySelectorAll('[data-remove-id]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        toggleSave(btn.getAttribute('data-remove-id'));
+      });
+    });
+  }
+
+  function toggleSave(id) {
+    var idx = state.savedIds.indexOf(id);
+    if (idx === -1) {
+      state.savedIds.push(id);
+    } else {
+      state.savedIds.splice(idx, 1);
+    }
+    updateShortlist();
+
+    /* Update all matching save buttons */
+    document.querySelectorAll('[data-action="save"][data-id="' + id + '"]').forEach(function (btn) {
+      var saved  = state.savedIds.indexOf(id) !== -1;
+      var fund   = FUNDS.find(function (f) { return f.id === id; });
+      var label  = fund ? fund.name : id;
+      btn.setAttribute('aria-pressed', saved);
+      btn.setAttribute('aria-label', saved ? 'Remove ' + label + ' from shortlist' : 'Save ' + label + ' to shortlist');
+      btn.textContent = saved ? 'Saved' : 'Save';
+      btn.closest('.sff-card').classList.toggle('is-saved', saved);
+    });
+  }
+
+  /* ── Events ─────────────────────────────────────────────────── */
+
+  /* Search input (debounced) */
+  var searchTimer;
+  searchInput.addEventListener('input', function () {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function () {
+      state.query = searchInput.value.trim();
+      state.selectedId = null;
+      renderCards();
+    }, 220);
+  });
+
+  /* Search button */
+  document.getElementById('search-trigger').addEventListener('click', function () {
+    state.query = searchInput.value.trim();
+    state.selectedId = null;
+    renderCards();
+    document.querySelector('.sff-results').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* Prompt chips */
+  document.querySelectorAll('.sff-prompt-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      searchInput.value = chip.getAttribute('data-prompt');
+      state.query = chip.getAttribute('data-prompt');
+      state.selectedId = null;
+      renderCards();
+      document.querySelector('.sff-results').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  /* Filter buttons */
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      state.filter = btn.getAttribute('data-filter');
+      state.selectedId = null;
+      filterBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      renderCards();
+    });
+  });
+
+  /* Card clicks (delegation) */
+  grid.addEventListener('click', function (e) {
+    var actionBtn = e.target.closest('[data-action]');
+    if (!actionBtn) return;
+
+    var action = actionBtn.getAttribute('data-action');
+    var id     = actionBtn.getAttribute('data-id');
+
+    if (action === 'save') {
+      toggleSave(id);
+      return;
+    }
+
+    if (action === 'view') {
+      if (state.selectedId === id) {
+        closeDetail();
+        return;
+      }
+      /* Deselect previous */
+      document.querySelectorAll('.sff-card.is-selected').forEach(function (c) {
+        c.classList.remove('is-selected');
+        var b = c.querySelector('[data-action="view"]');
+        if (b) { b.setAttribute('aria-expanded', 'false'); b.textContent = 'View details'; }
+      });
+      /* Select new */
+      var card = actionBtn.closest('.sff-card');
+      if (card) {
+        card.classList.add('is-selected');
+        actionBtn.setAttribute('aria-expanded', 'true');
+        actionBtn.textContent = 'Close details';
+      }
+      state.selectedId = id;
+      renderDetail(id);
+    }
+  });
+
+  /* Shortlist toggle */
+  shortlistToggle.addEventListener('click', function () {
+    state.shortlistOpen = !state.shortlistOpen;
+    shortlistPanel.hidden = !state.shortlistOpen;
+    shortlistToggle.setAttribute('aria-expanded', state.shortlistOpen);
+    if (state.shortlistOpen) {
+      shortlistPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+
+  shortlistClose.addEventListener('click', function () {
+    state.shortlistOpen = false;
+    shortlistPanel.hidden = true;
+    shortlistToggle.setAttribute('aria-expanded', 'false');
+    shortlistToggle.focus();
+  });
+
+  /* ── Init ───────────────────────────────────────────────────── */
+  renderCards();
+  updateShortlist();
+
+  /* Mobile nav toggle */
+  var navToggle = document.querySelector('.nav-toggle');
+  var navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
