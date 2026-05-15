@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Clients Need Before They Contact a Law Firm | Not On Mondays</title>
+<meta name="description" content="Most legal websites explain services. Few help people feel ready to take the first step. This concept explores how clearer digital journeys reduce uncertainty and build trust.">
+<link rel="canonical" href="https://www.notonmondays.com/proof/what-clients-need-before-they-contact-a-law-firm/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.notonmondays.com/proof/what-clients-need-before-they-contact-a-law-firm/">
+<meta property="og:title" content="What Clients Need Before They Contact a Law Firm | Not On Mondays">
+<meta property="og:description" content="Most legal websites explain services. Few help people feel ready to take the first step.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+<meta property="article:published_time" content="2026-05-15T00:00:00+00:00">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/proof/what-clients-need-before-they-contact-a-law-firm/">
+<meta name="twitter:title" content="What Clients Need Before They Contact a Law Firm | Not On Mondays">
+<meta name="twitter:description" content="Most legal websites explain services. Few help people feel ready to take the first step.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ───────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.65rem 1.4rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-weight: 300;
+}
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--deep-blue); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ──────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── Mobile nav ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .nav-cta { display: none; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What clients need before they contact a law firm",
+  "description": "Most legal websites explain services. Few help people feel ready to take the first step. This concept explores how clearer digital journeys reduce uncertainty and build trust.",
+  "image": "https://www.notonmondays.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.notonmondays.com/proof/what-clients-need-before-they-contact-a-law-firm/"
+  },
+  "url": "https://www.notonmondays.com/proof/what-clients-need-before-they-contact-a-law-firm/"
+}
+</script>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
+  </nav>
+</header>
+
+
+<main id="main-content" class="article-layout">
+
+  <!-- HERO -->
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="article-hero-inner">
+
+      <a href="/#case-studies" class="article-back-link" aria-label="Back to Work">← Work</a>
+
+      <p class="article-hero-eyebrow" aria-hidden="true">Service design · Legal sector · Digital experience</p>
+
+      <h1 id="article-heading" class="article-hero-headline">
+        What clients need before they <em>contact a law firm</em>
+      </h1>
+
+      <p class="article-hero-standfirst">
+        Most legal websites explain services. Few help people feel ready to take the first step. This concept explores how clearer digital journeys can reduce uncertainty, improve trust, and help people feel prepared to act during high-stakes moments.
+      </p>
+
+      <div class="article-meta article-meta--dark">
+        <time datetime="2026-05-15">May 2026</time>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span>8 min read</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Service Design</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Legal Sector</span>
+      </div>
+
+    </div>
+  </section>
+  <!-- /HERO -->
+
+
+  <!-- ARTICLE BODY -->
+  <section class="article-section article-section--light" aria-label="Article body">
+    <div class="article-container">
+
+      <!-- TOC -->
+      <nav class="article-toc" aria-label="On this page">
+        <p class="article-toc-label" aria-hidden="true">On this page</p>
+        <ul class="article-toc-list">
+          <li><a href="#the-problem">The problem</a></li>
+          <li><a href="#the-concept">The concept</a></li>
+          <li><a href="#key-improvements">Key improvements</a></li>
+          <li><a href="#before-and-after">Before and after</a></li>
+          <li><a href="#why-this-matters">Why this matters</a></li>
+          <li><a href="#see-it-in-practice">See it in practice</a></li>
+        </ul>
+      </nav>
+      <!-- /TOC -->
+
+
+      <!-- LEDE -->
+      <div class="article-body">
+
+        <p class="article-lede">People do not arrive at a legal website ready to act. They arrive anxious, uncertain, and unsure whether they have the right problem for the right firm.</p>
+
+        <p class="article-lede">The decision to contact a solicitor is not a simple one. It carries emotional weight, financial worry, and often a fear of saying the wrong thing to the wrong person. The website is not just a service directory. It is the moment trust either starts to form, or does not.</p>
+
+        <p>Most legal websites are built around the firm. Services are named in legal terms. Navigation reflects internal team structures. The message, often unintentionally, is: you need to already understand what you need before we can help you.</p>
+
+        <p>This concept explores a different approach: designing around the client's situation rather than the firm's taxonomy.</p>
+
+      </div>
+      <!-- /LEDE -->
+
+
+      <!-- KEY POINTS -->
+      <div class="article-tldr">
+        <p class="article-tldr-label" aria-hidden="true">Key points</p>
+        <ul>
+          <li>Uncertainty before first contact is a service design problem, not just a communication problem.</li>
+          <li>Situation-led navigation reduces cognitive load for people who do not yet know the legal name for their problem.</li>
+          <li>Reassurance-led copy at key decision points directly affects whether someone takes the next step.</li>
+          <li>Trust starts before first contact. The digital experience shapes perception of the whole firm.</li>
+        </ul>
+      </div>
+      <!-- /KEY POINTS -->
+
+
+      <!-- SECTION 1: THE PROBLEM -->
+      <div class="article-body">
+
+        <h2 id="the-problem">The gap between legal expertise and client experience</h2>
+
+        <p>Legal firms invest heavily in expertise. The people are good. The advice is sound. But the experience of finding that advice, and feeling confident enough to ask for it, is often poorly designed.</p>
+
+        <p>Consider what most people face when they first look for legal help. They are mid-situation: a marriage ending, a job lost, a property deal going wrong. They are not researchers. They are people trying to work out whether this problem is serious enough to bother a solicitor, whether they can afford it, and whether they will feel foolish asking.</p>
+
+        <h3>What the research consistently shows</h3>
+
+        <p>Studies on access to legal services show that a significant proportion of people who have a legal problem never seek legal advice. Not because the help is unavailable. Because they cannot find a clear way in, they do not know what to ask for, or the process felt too opaque to start.</p>
+
+        <p>This is not primarily a cost barrier. It is a clarity barrier. People who are unsure whether they have a problem worth solving will not call. A website that requires them to self-diagnose using legal terminology before they can navigate to the right place makes that barrier higher, not lower.</p>
+
+        <h3>The operational cost of unclear first contact</h3>
+
+        <p>When someone does contact a firm, the quality of that first enquiry varies enormously. Firms often receive calls from people who have misidentified their own situation, contacted the wrong department, or arrived with expectations that do not match the service on offer.</p>
+
+        <p>This is not a client failure. It is a design failure. Unclear digital journeys produce unclear enquiries. Better designed journeys produce better quality first contact, more confident clients, and less time spent on misrouted enquiries.</p>
+
+      </div>
+      <!-- /SECTION 1 -->
+
+
+    </div>
+  </section>
+  <!-- /ARTICLE BODY -->
+
+
+  <!-- SECTION 2: THE CONCEPT — warm background -->
+  <section class="article-section article-section--warm" aria-labelledby="concept-heading">
+    <div class="article-container">
+      <div class="article-body">
+
+        <h2 id="the-concept">Introducing the Latchmere concept</h2>
+
+        <p>To explore these questions practically, we created a fictional family law firm. Latchmere and Associates is a demonstration: a working concept built to test what a calmer, clearer digital journey could look like for someone approaching legal services during a difficult period.</p>
+
+        <p>The firm does not exist. But every design decision within it is grounded in real behaviour, real research, and real operational thinking. The annotations built into the demonstration explain the reasoning behind each choice.</p>
+
+        <div class="article-callout">
+          <p class="article-callout-label">On the word "fictional"</p>
+          <p>Latchmere is a design exploration, not a mockup of a client. It was built to give the thinking somewhere to live. The decisions it makes are the same decisions any legal firm faces when it considers how to improve first-contact experience. The firm name and branding are fictional. The problems it addresses are not.</p>
+        </div>
+
+        <p>The demonstration covers a full homepage, a situation-led service finder, a detailed service page for divorce and separation, and a contact journey designed to reduce anxiety at the point of first enquiry.</p>
+
+        <p>Each section is annotated. The annotations do not explain what is on the page. They explain why the decision was made: what behaviour or research supports the choice, and what the alternative would have cost the user.</p>
+
+      </div>
+
+      <!-- Visual: Demo homepage preview -->
+      <div class="article-img" role="img" aria-label="Latchmere concept homepage showing situation-led navigation">
+        <div class="article-img-placeholder" style="aspect-ratio: 16/9;">
+          Latchmere concept homepage — situation-led navigation and reassurance-first hero
+        </div>
+        <p class="article-img-caption">The Latchmere homepage. The hero addresses the emotional state of the user, not the services of the firm. Navigation is built around situations, not legal categories.</p>
+      </div>
+
+    </div>
+  </section>
+  <!-- /THE CONCEPT -->
+
+
+  <!-- SECTION 3: KEY IMPROVEMENTS -->
+  <section class="article-section article-section--light" aria-labelledby="improvements-heading">
+    <div class="article-container">
+
+      <div class="article-body">
+        <h2 id="key-improvements">What the concept changes, and why</h2>
+        <p>Six design decisions run through the demonstration. Each one addresses a specific failure mode in conventional legal websites. Taken together, they shift the experience from service-directory to guided pathway.</p>
+      </div>
+
+
+      <!-- Improvement 1: Situation-led navigation -->
+      <div class="article-body">
+
+        <h3>Situation-led navigation</h3>
+
+        <p>Conventional legal sites organise by service: Family Law, Conveyancing, Employment, Wills and Probate. This reflects the internal structure of the firm. It does not reflect how a client thinks about their problem.</p>
+
+        <p>People think in situations: "my marriage is ending," "I just lost my job," "I need to buy a flat." They do not arrive knowing whether their situation is a Family Law matter or whether their employment issue falls under unfair dismissal or wrongful termination.</p>
+
+        <p>The Latchmere service finder uses situation language throughout. The categories are named for what the user is experiencing, not for the legal specialism the firm has. Each card has a "not sure where to start" option that is prominently placed, not hidden at the bottom.</p>
+
+      </div>
+
+      <div class="article-img" role="img" aria-label="Latchmere service finder showing situation-led cards">
+        <div class="article-img-placeholder" style="aspect-ratio: 16/7;">
+          Service finder: "What do you need help with?" — six situation-led cards including divorce and separation, buying or selling a home, employment problems, wills and probate, and "not sure where to start"
+        </div>
+        <p class="article-img-caption">The service finder names situations, not legal specialisms. The "Not sure where to start" card is given equal prominence to the other services.</p>
+      </div>
+
+
+      <!-- Improvement 2: Plain-English reassurance -->
+      <div class="article-body">
+
+        <h3>Plain-English reassurance at key decision points</h3>
+
+        <p>The moment someone is deciding whether to contact a firm is a moment of high anxiety. They are asking themselves: will they judge me? Do I have enough of a problem to bother them? Will they push me into something I cannot afford? Can I trust them with something this personal?</p>
+
+        <p>Most firms answer this question with credentials: accreditations, awards, years of experience. This is credibility. But it is not reassurance. Reassurance answers the anxiety directly.</p>
+
+        <p>In Latchmere, the hero copy on the divorce and separation page reads: "You do not have to work this out on your own." The lead paragraph says "You do not need to understand the law to get started." These are not slogans. They are direct answers to the questions most users are silently asking before they decide to pick up the phone.</p>
+
+      </div>
+
+      <div class="article-img" role="img" aria-label="Latchmere divorce page hero showing reassurance-led copy">
+        <div class="article-img-placeholder" style="aspect-ratio: 16/7;">
+          Divorce and separation page hero: "You do not have to work this out on your own" — headline addresses the emotional state, not the legal service
+        </div>
+        <p class="article-img-caption">Reassurance-led copy on the service page. The headline names the feeling, not the firm's expertise. Two CTAs offer different routes: immediate action and exploration.</p>
+      </div>
+
+
+      <!-- Improvement 3: Guided next steps -->
+      <div class="article-body">
+
+        <h3>Guided next steps, not open-ended navigation</h3>
+
+        <p>A common failure in professional services websites is ending a section with a generic call-to-action that requires the user to make another decision. "Contact us" is not a guided next step. It asks the user to figure out what kind of contact, with whom, about what.</p>
+
+        <p>The Latchmere process section shows three steps: tell us what is happening, we explain your options, you choose what to do next. This is not a description of a legal process. It is a map of the user journey that makes the path feel finite and manageable. Step three explicitly gives control back to the user: "the decision is always yours."</p>
+
+        <p>This matters because one of the primary reasons people delay seeking legal help is a fear of being pushed into decisions before they are ready. A guided pathway removes that fear without removing the option to act.</p>
+
+      </div>
+
+
+      <!-- Improvement 4: Reducing emotional friction -->
+      <div class="article-body">
+
+        <h3>Reducing emotional friction at first contact</h3>
+
+        <p>The contact form in most legal websites asks for name, phone number, email, and a brief description of the enquiry. Professionally neutral. But for someone contacting about a divorce, a redundancy, or a dispute with a family member, that blank "brief description" field is a significant emotional hurdle.</p>
+
+        <p>In the Latchmere contact page, the opening line is: "Tell us what is happening. You do not need the right legal words." The form then guides the user through what they want to say rather than presenting a blank space to fill. The fee transparency section appears before any form field, not after.</p>
+
+        <p>This sequencing matters. Showing fee information early, before the user has committed to contact, builds trust. It removes a fear that was likely present but unspoken.</p>
+
+      </div>
+
+      <div class="article-img" role="img" aria-label="Latchmere contact page showing guided form introduction">
+        <div class="article-img-placeholder" style="aspect-ratio: 16/7;">
+          Contact page opening: "Tell us what is happening. You do not need the right legal words." — followed by fee transparency before the form fields
+        </div>
+        <p class="article-img-caption">The contact journey begins with reassurance, not data collection. Fee information appears before the form, removing an unspoken anxiety before it becomes a barrier.</p>
+      </div>
+
+
+      <!-- Improvement 5: Accessibility and readability -->
+      <div class="article-body">
+
+        <h3>Accessibility and readability as operational standards</h3>
+
+        <p>Legal services reach clients across a wide demographic range. People seeking help with wills and probate, employment problems, or housing issues include older adults, people under high stress, and people for whom English is not a first language. Readability is not a nice-to-have. It is part of the service delivery.</p>
+
+        <p>The Latchmere demonstration is built to WCAG 2.1 AA standards throughout. Typography is set at comfortable reading sizes. Contrast ratios are checked. The reading level of the copy is calibrated to plain English. Every interactive element has a visible focus state and an appropriate accessible label.</p>
+
+        <p>These are not decorative choices. They are operational ones. A site that is difficult to read produces clients who are less confident. Clients who are less confident produce lower-quality enquiries and higher drop-off rates before first contact.</p>
+
+      </div>
+
+
+      <!-- Improvement 6: Clearer calls-to-action -->
+      <div class="article-body">
+
+        <h3>Clearer calls-to-action with lower commitment signals</h3>
+
+        <p>The call-to-action "Contact us" asks for a significant commitment from someone who is still unsure. The call-to-action "Talk to someone" signals something lighter: a conversation, not a formal instruction.</p>
+
+        <p>Across the Latchmere demonstration, primary CTAs use lower-commitment language throughout. "Talk to someone today." "Tell us what is happening." "Find out more." These are not passive or weak. They are precise about what the next step actually is, and they reduce the perceived risk of taking it.</p>
+
+        <p>The secondary CTAs provide an alternative for users who are not yet ready to contact. "See how we help" and "Find the right service" acknowledge that some users need more information before they are ready to act. Both routes are honoured, not just one.</p>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- /KEY IMPROVEMENTS -->
+
+
+  <!-- SECTION 4: BEFORE AND AFTER -->
+  <section class="article-section article-section--warm" aria-labelledby="comparison-heading">
+    <div class="article-container">
+
+      <div class="article-body" style="margin-bottom: 2.5rem;">
+        <h2 id="before-and-after">Traditional approach compared with this concept</h2>
+        <p>The differences are not primarily visual. They are structural. The same information is present in both approaches. What changes is the order, the language, and the assumption about the user's starting point.</p>
+      </div>
+
+      <!-- Comparison pair 1 -->
+      <div class="article-cards" role="group" aria-label="Comparison: navigation approach">
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Conventional approach</p>
+          <h3 class="article-card-heading">Service-first navigation</h3>
+          <p class="article-card-body">Navigation reflects the internal structure of the firm: Family Law, Conveyancing, Employment, Wills. Users must already know the legal category for their problem in order to find the right section. Those who do not know are left to guess.</p>
+        </div>
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">This concept</p>
+          <h3 class="article-card-heading">Situation-first navigation</h3>
+          <p class="article-card-body">Navigation reflects the user's experience: "my marriage is ending," "I need to buy a home." Users do not need to know the legal name for their situation. A prominent "not sure where to start" option removes the anxiety of getting it wrong.</p>
+        </div>
+      </div>
+
+      <!-- Comparison pair 2 -->
+      <div class="article-cards" role="group" aria-label="Comparison: copy approach">
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Conventional approach</p>
+          <h3 class="article-card-heading">Expertise-led copy</h3>
+          <p class="article-card-body">Hero sections lead with the firm's credentials: years of experience, accreditations, service range. This builds credibility but does not address the anxiety that is present at the moment of first contact. The user's emotional state is not acknowledged.</p>
+        </div>
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">This concept</p>
+          <h3 class="article-card-heading">Reassurance-led copy</h3>
+          <p class="article-card-body">Hero sections address the user's emotional state directly. "You do not have to work this out on your own." The reassurance is not a promise of outcome. It is an acknowledgement that this is hard, and that a clear next step is available without pressure or commitment.</p>
+        </div>
+      </div>
+
+      <!-- Comparison pair 3 -->
+      <div class="article-cards" role="group" aria-label="Comparison: contact approach">
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Conventional approach</p>
+          <h3 class="article-card-heading">Information-heavy contact</h3>
+          <p class="article-card-body">Contact pages present a form with minimal guidance. Fee information is absent or buried. The "brief description" field asks the user to articulate something they may not yet have words for. The page assumes the user is ready to engage.</p>
+        </div>
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">This concept</p>
+          <h3 class="article-card-heading">Guided contact journey</h3>
+          <p class="article-card-body">The contact page begins with reassurance, not data fields. Fee information appears before the form. The copy explicitly says the user does not need the right legal words. The experience assumes the user is still deciding, and meets them there.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- /BEFORE AND AFTER -->
+
+
+  <!-- SECTION 5: WHY THIS MATTERS -->
+  <section class="article-section article-section--light" aria-labelledby="matters-heading">
+    <div class="article-container">
+      <div class="article-body">
+
+        <h2 id="why-this-matters">Why this matters beyond the website</h2>
+
+        <p>The changes described here are not cosmetic. They address a commercial and operational problem that sits upstream of the services a firm delivers.</p>
+
+        <h3>Trust starts before first contact</h3>
+
+        <p>The perception of a firm is shaped by the experience of finding and approaching it, not just by the quality of the legal advice delivered after engagement. A website that is unclear, anxiety-inducing, or structured around the firm's internal taxonomy communicates something to the potential client before a word is exchanged: this firm was designed for people who already know how to use it.</p>
+
+        <p>Firms that invest in clearer digital journeys are not just improving conversion rates. They are shaping the relationship before it starts.</p>
+
+        <h3>Enquiry quality improves with journey clarity</h3>
+
+        <p>When people arrive at first contact with a clearer understanding of their own situation, and with reduced anxiety about the process, the quality of that first conversation improves. The information they provide is more accurate. The expectations they hold are better calibrated. The likelihood of a good match between client need and firm capacity is higher.</p>
+
+        <p>This reduces friction throughout the engagement, not just at the point of first contact.</p>
+
+        <h3>Digital experience shapes perception of expertise</h3>
+
+        <p>This is counterintuitive but consistent. A firm with outstanding legal expertise that presents it through a confusing or dated digital experience will be perceived as less expert than a firm with adequate legal expertise that presents itself clearly. The medium shapes the message.</p>
+
+        <p>This does not mean that presentation matters more than substance. It means that substance, to be trusted, needs a presentation that earns that trust. The two are not in competition.</p>
+
+        <h3>Reducing uncertainty improves engagement rates</h3>
+
+        <p>People who feel more certain about what the next step is, and less anxious about what will happen when they take it, are more likely to take it. This is true for every professional services sector where the stakes feel high and the process feels opaque.</p>
+
+        <p>Legal services sits at the high end of both. The opportunity to close the gap between expertise and experience is significant.</p>
+
+      </div>
+
+      <!-- Stat cards -->
+      <div class="article-stat-cards" role="group" aria-label="Research context: access to legal services">
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Unmet legal need</p>
+          <p class="article-stat-card-number">36%</p>
+          <p class="article-stat-card-subtext">of people who experienced a legal problem in England and Wales took no action.</p>
+          <p class="article-stat-card-source">Legal Services Board, Legal Needs Survey, 2023</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">Not a cost problem alone</h3>
+          <p class="article-stat-card-body">Inaction is driven by uncertainty as much as affordability. Many people did not know whether they had a problem worth pursuing.</p>
+        </div>
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">First impressions</p>
+          <p class="article-stat-card-number">0.05s</p>
+          <p class="article-stat-card-subtext">is how long it takes users to form an opinion about a website's credibility.</p>
+          <p class="article-stat-card-source">Lindgaard et al., Behaviour and Information Technology, 2006</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">Trust forms before reading</h3>
+          <p class="article-stat-card-body">The initial impression of a professional services site is formed before a single word of copy is processed. Visual clarity and calm do the work that content cannot.</p>
+        </div>
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Digital expectation</p>
+          <p class="article-stat-card-number">67%</p>
+          <p class="article-stat-card-subtext">of people prefer to research professional services online before making contact.</p>
+          <p class="article-stat-card-source">SRA Consumer Research, 2022</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">The website is the first meeting</h3>
+          <p class="article-stat-card-body">For most potential clients, the website is the primary first interaction with a firm. The experience of that visit is the experience of the firm.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- /WHY THIS MATTERS -->
+
+
+  <!-- SECTION 6: SEE IT IN PRACTICE -->
+  <section class="article-section article-section--dark" aria-labelledby="walkthrough-heading">
+    <div class="article-container">
+
+      <div class="article-body" style="max-width: 68ch;">
+        <p class="article-section-label" style="color: var(--light-blue);" aria-hidden="true">The demonstration</p>
+        <h2 id="walkthrough-heading" style="color: var(--off-white);">See it in practice</h2>
+        <p style="color: rgba(242,240,232,0.75); font-size: 1rem; line-height: 1.85;">The full Latchmere demonstration is a working, interactive concept. It includes the homepage, service pages, and contact journey, with annotations throughout explaining each design decision and the reasoning behind it.</p>
+        <p style="color: rgba(242,240,232,0.75); font-size: 1rem; line-height: 1.85;">Selected sections are shown publicly here. We walk through the full interactive concept during discovery conversations, where we can discuss how the thinking applies to a specific firm's context and client base.</p>
+      </div>
+
+      <!-- Three curated preview placeholders -->
+      <div class="article-stat-cards" role="group" aria-label="Selected preview sections from the Latchmere demonstration" style="margin-top: 3rem;">
+
+        <div class="article-stat-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+          <p class="article-stat-card-label" style="color: var(--light-blue);">Homepage</p>
+          <div class="article-img-placeholder" style="aspect-ratio: 4/3; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;">
+            Homepage — situation-led entry
+          </div>
+          <p class="article-stat-card-body" style="color: rgba(242,240,232,0.6);">Situation-led service finder. Hero copy that addresses the user's emotional state before naming the firm's services.</p>
+        </div>
+
+        <div class="article-stat-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+          <p class="article-stat-card-label" style="color: var(--light-blue);">Service page</p>
+          <div class="article-img-placeholder" style="aspect-ratio: 4/3; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;">
+            Divorce and separation — guided pathway
+          </div>
+          <p class="article-stat-card-body" style="color: rgba(242,240,232,0.6);">Reassurance-first content structure. Process steps that return control to the user at every stage.</p>
+        </div>
+
+        <div class="article-stat-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+          <p class="article-stat-card-label" style="color: var(--light-blue);">Contact journey</p>
+          <div class="article-img-placeholder" style="aspect-ratio: 4/3; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;">
+            Contact page — low-friction enquiry
+          </div>
+          <p class="article-stat-card-body" style="color: rgba(242,240,232,0.6);">Fee transparency before the form. Guided language that removes the need to know the right legal words.</p>
+        </div>
+
+      </div>
+
+      <!-- Walkthrough CTA -->
+      <div style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 1.1rem;" aria-hidden="true">Request a walkthrough</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; line-height: 1.2; color: var(--off-white); max-width: 580px; margin-bottom: 1rem;">If this thinking is relevant to your firm, we are happy to walk through the full concept together.</p>
+        <p style="font-size: 0.92rem; line-height: 1.85; color: rgba(242,240,232,0.65); max-width: 520px; margin-bottom: 2rem; font-weight: 300;">The conversation usually starts with a question about where your current digital journey creates friction for people trying to get in touch. We take it from there.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+          <a href="/#contact" class="article-cta-link" style="background: var(--blue);">Start a conversation</a>
+          <a href="/insights/legal-digital-change" class="article-cta-link article-cta-link--ghost" style="border-color: rgba(255,255,255,0.2); color: rgba(242,240,232,0.75);">Read the insights article</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- /SEE IT IN PRACTICE -->
+
+
+  <!-- SOFT CTA -->
+  <aside class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+
+      <p class="article-cta-label" aria-hidden="true">Work with Not On Mondays</p>
+
+      <h2 id="cta-heading" class="article-cta-heading">
+        Help your clients feel ready to <em>take the first step</em>
+      </h2>
+
+      <p class="article-cta-body">
+        We work with professional services firms to improve the clarity and confidence of their digital first contact. If your enquiry rate, enquiry quality, or client onboarding experience is not where it should be, it is worth a conversation.
+      </p>
+
+      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Talk to Not On Mondays</a>
+
+    </div>
+  </aside>
+  <!-- /SOFT CTA -->
+
+
+</main>
+
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
