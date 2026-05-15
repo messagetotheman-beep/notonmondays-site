@@ -33,7 +33,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/nom.css">
 
@@ -195,6 +195,208 @@
   .footer-links { justify-content: center; gap: 1.5rem; }
 }
 
+/* ── Latchmere inline mockups ─────────────────────── */
+.lm-mockup {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.09);
+  pointer-events: none;
+}
+.lm-hero {
+  background: linear-gradient(180deg, #0f1d38 0%, #162847 100%);
+  padding: 2rem 2rem 1.75rem;
+}
+.lm-firm-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200,212,232,0.5);
+  margin-bottom: 0.85rem;
+}
+.lm-breadcrumb {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+.lm-breadcrumb span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  color: rgba(200,212,232,0.4);
+  letter-spacing: 0.1em;
+}
+.lm-hero-headline {
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(1.05rem, 2.8vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  max-width: 26ch;
+}
+.lm-hero-lead {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #c8d4e8;
+  margin-bottom: 1.25rem;
+  max-width: 42ch;
+  line-height: 1.5;
+}
+.lm-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.lm-btn-primary, .lm-btn-ghost {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  line-height: 1;
+  display: inline-block;
+}
+.lm-btn-primary { background: #157a6a; color: white; }
+.lm-btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+.lm-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  padding: 1.25rem;
+  background: #ede9de;
+}
+.lm-card {
+  background: white;
+  border: 1px solid #ccc8bc;
+  border-radius: 13px;
+  padding: 0.85rem;
+}
+.lm-card-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #e2f2ee 0%, #d0ebe5 100%);
+  margin-bottom: 0.5rem;
+}
+.lm-card-icon--home { background: linear-gradient(135deg, #e8f0f2, #d4e4e8); }
+.lm-card-icon--work { background: linear-gradient(135deg, #f2ede2, #ece3d0); }
+.lm-card-icon--wills { background: linear-gradient(135deg, #ede2f2, #e0d0ec); }
+.lm-card-heading {
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 0.2rem;
+  line-height: 1.25;
+}
+.lm-card-body {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  color: #595959;
+  line-height: 1.4;
+}
+.lm-card--unsure {
+  grid-column: 1 / -1;
+  background: #f6f3ea;
+  border-left: 3px solid #157a6a;
+}
+.lm-contact {
+  background: #f6f3ea;
+  padding: 1.75rem 2rem;
+}
+.lm-contact-headline {
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+.lm-contact-lead {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: #595959;
+  margin-bottom: 1.1rem;
+  line-height: 1.5;
+}
+.lm-fee-panel {
+  background: white;
+  border: 1px solid #ccc8bc;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.lm-fee-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #157a6a;
+  margin-bottom: 0.35rem;
+}
+.lm-fee-text {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+.lm-form-stub {
+  background: white;
+  border: 1px solid #ccc8bc;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+}
+.lm-form-stub-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+.lm-form-stub-field {
+  display: block;
+  width: 100%;
+  background: #f8f7f3;
+  border: 1px solid #ccc8bc;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  color: #9a9a9a;
+  min-height: 3.5rem;
+}
+.lm-thumb .lm-hero { padding: 1rem 1.1rem 0.85rem; }
+.lm-thumb .lm-hero-headline { font-size: 0.78rem; margin-bottom: 0.35rem; }
+.lm-thumb .lm-hero-lead { font-size: 0.6rem; margin-bottom: 0.65rem; }
+.lm-thumb .lm-btn-primary,
+.lm-thumb .lm-btn-ghost { font-size: 0.52rem; padding: 0.35rem 0.65rem; }
+.lm-thumb .lm-breadcrumb { margin-bottom: 0.65rem; }
+.lm-thumb .lm-breadcrumb span { font-size: 0.42rem; }
+.lm-thumb .lm-cards-grid { padding: 0.65rem; gap: 0.35rem; }
+.lm-thumb .lm-card { padding: 0.6rem; border-radius: 9px; }
+.lm-thumb .lm-card-icon { width: 1.25rem; height: 1.25rem; border-radius: 5px; margin-bottom: 0.3rem; }
+.lm-thumb .lm-card-heading { font-size: 0.62rem; }
+.lm-thumb .lm-card-body { font-size: 0.54rem; }
+.lm-thumb .lm-contact { padding: 1rem 1.1rem; }
+.lm-thumb .lm-contact-headline { font-size: 0.82rem; }
+.lm-thumb .lm-contact-lead { font-size: 0.6rem; margin-bottom: 0.65rem; }
+.lm-thumb .lm-fee-panel { padding: 0.6rem 0.75rem; margin-bottom: 0.5rem; }
+.lm-thumb .lm-fee-label { font-size: 0.42rem; }
+.lm-thumb .lm-fee-text { font-size: 0.58rem; }
+.lm-thumb .lm-form-stub { padding: 0.6rem 0.75rem; }
+.lm-thumb .lm-form-stub-label { font-size: 0.55rem; }
+.lm-thumb .lm-form-stub-field { font-size: 0.55rem; min-height: 2rem; }
+@media (max-width: 480px) {
+  .lm-cards-grid { grid-template-columns: 1fr; }
+  .lm-card--unsure { grid-column: auto; }
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -348,8 +550,42 @@
       </div>
 
       <div class="article-img" role="img" aria-label="Latchmere concept homepage showing situation-led navigation">
-        <div class="article-img-placeholder" style="aspect-ratio: 16/9;">
-          Latchmere concept homepage: situation-led navigation and reassurance-first hero
+        <div class="lm-mockup" aria-hidden="true">
+          <div class="lm-hero">
+            <span class="lm-firm-label">Latchmere Family Law</span>
+            <span class="lm-hero-headline">Clear legal help when life feels complicated.</span>
+            <span class="lm-hero-lead">Straightforward advice for families and individuals facing a legal situation for the first time.</span>
+            <div class="lm-btns">
+              <span class="lm-btn-primary">How we can help</span>
+              <span class="lm-btn-ghost">About us</span>
+            </div>
+          </div>
+          <div class="lm-cards-grid">
+            <div class="lm-card">
+              <div class="lm-card-icon"></div>
+              <span class="lm-card-heading">Divorce &amp; separation</span>
+              <span class="lm-card-body">When a relationship is ending</span>
+            </div>
+            <div class="lm-card">
+              <div class="lm-card-icon lm-card-icon--home"></div>
+              <span class="lm-card-heading">Buying or selling a home</span>
+              <span class="lm-card-body">Property and conveyancing</span>
+            </div>
+            <div class="lm-card">
+              <div class="lm-card-icon lm-card-icon--work"></div>
+              <span class="lm-card-heading">Help at work</span>
+              <span class="lm-card-body">Employment and workplace issues</span>
+            </div>
+            <div class="lm-card">
+              <div class="lm-card-icon lm-card-icon--wills"></div>
+              <span class="lm-card-heading">Wills &amp; probate</span>
+              <span class="lm-card-body">Planning ahead or dealing with an estate</span>
+            </div>
+            <div class="lm-card lm-card--unsure">
+              <span class="lm-card-heading">Not sure where to start?</span>
+              <span class="lm-card-body">Tell us what is happening and we will help you find the right place.</span>
+            </div>
+          </div>
         </div>
         <p class="article-img-caption">The Latchmere homepage. The hero addresses the user's emotional state, not the firm's service list. Navigation is built around situations, not legal categories.</p>
       </div>
@@ -371,8 +607,33 @@
 
       <!-- Moment 1: Situation-led navigation -->
       <div class="article-img" role="img" aria-label="Latchmere service finder showing situation-led cards">
-        <div class="article-img-placeholder" style="aspect-ratio: 16/7;">
-          Service finder: situation-led cards including "divorce and separation", "buying or selling a home", and "not sure where to start"
+        <div class="lm-mockup" aria-hidden="true">
+          <div class="lm-cards-grid">
+            <div class="lm-card">
+              <div class="lm-card-icon"></div>
+              <span class="lm-card-heading">Divorce &amp; separation</span>
+              <span class="lm-card-body">When a relationship is ending</span>
+            </div>
+            <div class="lm-card">
+              <div class="lm-card-icon lm-card-icon--home"></div>
+              <span class="lm-card-heading">Buying or selling a home</span>
+              <span class="lm-card-body">Property and conveyancing</span>
+            </div>
+            <div class="lm-card">
+              <div class="lm-card-icon lm-card-icon--work"></div>
+              <span class="lm-card-heading">Help at work</span>
+              <span class="lm-card-body">Employment and workplace issues</span>
+            </div>
+            <div class="lm-card">
+              <div class="lm-card-icon lm-card-icon--wills"></div>
+              <span class="lm-card-heading">Wills &amp; probate</span>
+              <span class="lm-card-body">Planning ahead or dealing with an estate</span>
+            </div>
+            <div class="lm-card lm-card--unsure">
+              <span class="lm-card-heading">Not sure where to start?</span>
+              <span class="lm-card-body">Tell us what is happening and we will help you find the right place.</span>
+            </div>
+          </div>
         </div>
         <p class="article-img-caption">The service finder. Categories are named for the user's situation, not the firm's legal specialisms.</p>
       </div>
@@ -396,8 +657,22 @@
 
       <!-- Moment 2: Reassurance at the critical moment -->
       <div class="article-img" role="img" aria-label="Latchmere divorce and separation page showing reassurance-first headline">
-        <div class="article-img-placeholder" style="aspect-ratio: 16/7;">
-          Divorce and separation service page: reassurance-first headline and two-route CTA
+        <div class="lm-mockup" aria-hidden="true">
+          <div class="lm-hero">
+            <div class="lm-breadcrumb">
+              <span>Home</span>
+              <span>&#47;</span>
+              <span>Services</span>
+              <span>&#47;</span>
+              <span>Divorce &amp; separation</span>
+            </div>
+            <span class="lm-hero-headline">You do not have to work this out on your own.</span>
+            <span class="lm-hero-lead">We help you understand your options at your own pace, without pressure to commit before you are ready.</span>
+            <div class="lm-btns">
+              <span class="lm-btn-primary">Talk to someone today</span>
+              <span class="lm-btn-ghost">See how we help</span>
+            </div>
+          </div>
         </div>
         <p class="article-img-caption">Divorce and separation. The headline names the feeling, not the firm's expertise.</p>
       </div>
@@ -421,8 +696,19 @@
 
       <!-- Moment 3: The contact journey -->
       <div class="article-img" role="img" aria-label="Latchmere contact page showing fee transparency placed before the form">
-        <div class="article-img-placeholder" style="aspect-ratio: 16/7;">
-          Contact page: reassurance copy and fee transparency placed before the form fields
+        <div class="lm-mockup" aria-hidden="true">
+          <div class="lm-contact">
+            <span class="lm-contact-headline">Tell us what is happening.</span>
+            <span class="lm-contact-lead">You do not need the right legal words. Just describe the situation and we will take it from there.</span>
+            <div class="lm-fee-panel">
+              <span class="lm-fee-label">About our fees</span>
+              <span class="lm-fee-text">Your first conversation is free. We will tell you clearly what any further advice would cost before we proceed.</span>
+            </div>
+            <div class="lm-form-stub">
+              <span class="lm-form-stub-label">What is your situation?</span>
+              <span class="lm-form-stub-field">Describe what is happening in your own words...</span>
+            </div>
+          </div>
         </div>
         <p class="article-img-caption">The contact journey. Fee information appears before the form. The copy says: you do not need the right legal words.</p>
       </div>
@@ -508,12 +794,12 @@
       <div class="article-cards" role="group" aria-label="Comparison: navigation approach">
         <div class="article-card">
           <p class="article-card-label" aria-hidden="true">Conventional</p>
-          <h3 class="article-card-heading">Service-first navigation</h3>
+          <h3 class="article-card-heading">Services</h3>
           <p class="article-card-body">Navigation reflects the firm's internal structure. Users must already know the legal category for their problem. Those who do not know are left to guess.</p>
         </div>
         <div class="article-card">
           <p class="article-card-label" aria-hidden="true">This concept</p>
-          <h3 class="article-card-heading">Situation-first navigation</h3>
+          <h3 class="article-card-heading">What are you dealing with?</h3>
           <p class="article-card-body">Navigation reflects the user's experience. Users do not need to know the legal name for their situation. A prominent "not sure where to start" option removes the anxiety of getting it wrong.</p>
         </div>
       </div>
@@ -521,12 +807,12 @@
       <div class="article-cards" role="group" aria-label="Comparison: copy approach">
         <div class="article-card">
           <p class="article-card-label" aria-hidden="true">Conventional</p>
-          <h3 class="article-card-heading">Expertise-led copy</h3>
+          <h3 class="article-card-heading">Credentials</h3>
           <p class="article-card-body">Hero sections lead with the firm's credentials. This builds credibility but does not address the anxiety present at the moment of first contact.</p>
         </div>
         <div class="article-card">
           <p class="article-card-label" aria-hidden="true">This concept</p>
-          <h3 class="article-card-heading">Reassurance-led copy</h3>
+          <h3 class="article-card-heading">Reassurance</h3>
           <p class="article-card-body">"You do not have to work this out on your own." The reassurance acknowledges that this is hard, and that a clear next step is available without pressure.</p>
         </div>
       </div>
@@ -534,12 +820,12 @@
       <div class="article-cards" role="group" aria-label="Comparison: contact approach">
         <div class="article-card">
           <p class="article-card-label" aria-hidden="true">Conventional</p>
-          <h3 class="article-card-heading">Form-first contact</h3>
+          <h3 class="article-card-heading">Form first</h3>
           <p class="article-card-body">Contact pages present a form with minimal guidance. Fee information is absent or buried. The page assumes the user is already ready to engage.</p>
         </div>
         <div class="article-card">
           <p class="article-card-label" aria-hidden="true">This concept</p>
-          <h3 class="article-card-heading">Guided contact journey</h3>
+          <h3 class="article-card-heading">Context first</h3>
           <p class="article-card-body">Reassurance and fee transparency come before the form. The copy says the user does not need the right legal words. The experience meets the user where they are.</p>
         </div>
       </div>
@@ -569,24 +855,62 @@
 
         <div class="article-stat-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
           <p class="article-stat-card-label" style="color: var(--light-blue);">Homepage</p>
-          <div class="article-img-placeholder" style="aspect-ratio: 4/3; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;">
-            Homepage: situation-led entry
+          <div class="lm-mockup lm-thumb" style="margin-bottom: 1.25rem;">
+            <div class="lm-hero">
+              <span class="lm-firm-label">Latchmere Family Law</span>
+              <span class="lm-hero-headline">Clear legal help when life feels complicated.</span>
+              <div class="lm-btns"><span class="lm-btn-primary">How we can help</span></div>
+            </div>
+            <div class="lm-cards-grid">
+              <div class="lm-card">
+                <div class="lm-card-icon"></div>
+                <span class="lm-card-heading">Divorce &amp; separation</span>
+              </div>
+              <div class="lm-card">
+                <div class="lm-card-icon lm-card-icon--home"></div>
+                <span class="lm-card-heading">Buying a home</span>
+              </div>
+              <div class="lm-card lm-card--unsure">
+                <span class="lm-card-heading">Not sure where to start?</span>
+              </div>
+            </div>
           </div>
           <p class="article-stat-card-body" style="color: rgba(242,240,232,0.6);">Situation-led service finder. Hero copy that addresses the user's emotional state before naming the firm's services.</p>
         </div>
 
         <div class="article-stat-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
           <p class="article-stat-card-label" style="color: var(--light-blue);">Service page</p>
-          <div class="article-img-placeholder" style="aspect-ratio: 4/3; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;">
-            Divorce and separation: guided pathway
+          <div class="lm-mockup lm-thumb" style="margin-bottom: 1.25rem;">
+            <div class="lm-hero">
+              <div class="lm-breadcrumb">
+                <span>Services</span>
+                <span>&#47;</span>
+                <span>Divorce &amp; separation</span>
+              </div>
+              <span class="lm-hero-headline">You do not have to work this out on your own.</span>
+              <div class="lm-btns">
+                <span class="lm-btn-primary">Talk to someone today</span>
+                <span class="lm-btn-ghost">See how we help</span>
+              </div>
+            </div>
           </div>
           <p class="article-stat-card-body" style="color: rgba(242,240,232,0.6);">Reassurance-first content structure. Process steps that return control to the user at every stage.</p>
         </div>
 
         <div class="article-stat-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
           <p class="article-stat-card-label" style="color: var(--light-blue);">Contact journey</p>
-          <div class="article-img-placeholder" style="aspect-ratio: 4/3; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;">
-            Contact page: low-friction enquiry
+          <div class="lm-mockup lm-thumb" style="margin-bottom: 1.25rem;">
+            <div class="lm-contact">
+              <span class="lm-contact-headline">Tell us what is happening.</span>
+              <span class="lm-contact-lead">You do not need the right legal words.</span>
+              <div class="lm-fee-panel">
+                <span class="lm-fee-label">About our fees</span>
+                <span class="lm-fee-text">Your first conversation is free.</span>
+              </div>
+              <div class="lm-form-stub">
+                <span class="lm-form-stub-field">Describe what is happening...</span>
+              </div>
+            </div>
           </div>
           <p class="article-stat-card-body" style="color: rgba(242,240,232,0.6);">Fee transparency before the form. Guided language that removes the need to know the right legal words.</p>
         </div>
@@ -594,11 +918,11 @@
       </div>
 
       <div style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
-        <p style="font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 1.1rem;" aria-hidden="true">Request a walkthrough</p>
-        <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; line-height: 1.2; color: var(--off-white); max-width: 580px; margin-bottom: 1rem;">If this thinking is relevant to your firm, we are happy to walk through the full concept together.</p>
-        <p style="font-size: 0.92rem; line-height: 1.85; color: rgba(242,240,232,0.65); max-width: 520px; margin-bottom: 2rem; font-weight: 300;">The conversation usually starts with a question about where your current digital journey creates friction for people trying to get in touch. We take it from there.</p>
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 1.1rem;" aria-hidden="true">The full concept</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; line-height: 1.2; color: var(--off-white); max-width: 580px; margin-bottom: 1rem;">Walk through the full interactive concept during a discovery conversation.</p>
+        <p style="font-size: 0.92rem; line-height: 1.85; color: rgba(242,240,232,0.65); max-width: 520px; margin-bottom: 2rem; font-weight: 300;">We cover the homepage, service pages, and contact journey together. Each design decision is annotated so the reasoning is visible, not just the outcome.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-          <a href="/#contact" class="article-cta-link" style="background: var(--blue);">Start a conversation</a>
+          <a href="/#contact" class="article-cta-link" style="background: var(--blue);">Walk through the concept</a>
           <a href="/insights/legal-digital-change" class="article-cta-link article-cta-link--ghost" style="border-color: rgba(255,255,255,0.2); color: rgba(242,240,232,0.75);">Read the insights article</a>
         </div>
       </div>
