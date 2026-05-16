@@ -400,6 +400,63 @@
 /* ── Proof page spacing refinements ─────────────────── */
 .article-img + .article-body { margin-top: 1.25rem; }
 
+/* ── Proof page comparison table ────────────────────── */
+.proof-compare {
+  border-top: 1px solid rgba(26,42,212,0.12);
+}
+.proof-compare-header,
+.proof-compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(26,42,212,0.06);
+  padding: 0.65rem 0;
+  gap: 1.5rem;
+  align-items: center;
+}
+.proof-compare-header span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.proof-compare-row span:first-child {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--muted);
+}
+.proof-compare-row span:last-child {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--dark);
+}
+
+/* ── Latchmere trust strip ───────────────────────────── */
+.lm-trust-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.lm-trust-stars {
+  font-size: 0.6rem;
+  color: #f5c518;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.lm-trust-text {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.15em;
+  color: rgba(200,212,232,0.5);
+  text-transform: uppercase;
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -519,7 +576,7 @@
           <p>The barrier is rarely cost. It is usually clarity.</p>
         </blockquote>
 
-        <p>Most legal websites are organised around the firm's internal structure, not around how a client thinks about their situation. We explored what the alternative looks like in practice.</p>
+        <p>Most legal websites are organised around the firm's internal structure, not around how a client thinks about their situation. The gap between those two approaches is where enquiries are lost.</p>
 
       </div>
 
@@ -563,34 +620,8 @@
               <span class="lm-btn-ghost">About us</span>
             </div>
           </div>
-          <div class="lm-cards-grid">
-            <div class="lm-card">
-              <div class="lm-card-icon"></div>
-              <span class="lm-card-heading">Divorce &amp; separation</span>
-              <span class="lm-card-body">When a relationship is ending</span>
-            </div>
-            <div class="lm-card">
-              <div class="lm-card-icon lm-card-icon--home"></div>
-              <span class="lm-card-heading">Buying or selling a home</span>
-              <span class="lm-card-body">Property and conveyancing</span>
-            </div>
-            <div class="lm-card">
-              <div class="lm-card-icon lm-card-icon--work"></div>
-              <span class="lm-card-heading">Help at work</span>
-              <span class="lm-card-body">Employment and workplace issues</span>
-            </div>
-            <div class="lm-card">
-              <div class="lm-card-icon lm-card-icon--wills"></div>
-              <span class="lm-card-heading">Wills &amp; probate</span>
-              <span class="lm-card-body">Planning ahead or dealing with an estate</span>
-            </div>
-            <div class="lm-card lm-card--unsure">
-              <span class="lm-card-heading">Not sure where to start?</span>
-              <span class="lm-card-body">Tell us what is happening and we will help you find the right place.</span>
-            </div>
-          </div>
         </div>
-        <p class="article-img-caption">The Latchmere homepage. The hero addresses the user's emotional state, not the firm's service list. Navigation is built around situations, not legal categories.</p>
+        <p class="article-img-caption">The Latchmere homepage. Plain language and visual calm create the first impression before any service information appears.</p>
       </div>
 
     </div>
@@ -675,16 +706,20 @@
               <span class="lm-btn-primary">Talk to someone today</span>
               <span class="lm-btn-ghost">See how we help</span>
             </div>
+            <div class="lm-trust-strip">
+              <span class="lm-trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="lm-trust-text">4.9 on Google · 86 reviews</span>
+            </div>
           </div>
         </div>
-        <p class="article-img-caption">Divorce and separation. The headline names the feeling, not the firm's expertise.</p>
+        <p class="article-img-caption">Divorce and separation. The headline names the feeling, not the firm's expertise. Reviews are placed here, beneath the reassurance.</p>
       </div>
 
       <div class="article-body">
         <blockquote>
           <p>Before someone contacts a firm, they are asking whether it is safe to ask.</p>
         </blockquote>
-        <p>This answers the question most visitors carry silently before they read anything about the firm. Two routes offer different paces: one for people ready to act, one for people still deciding.</p>
+        <p>This answers the question most visitors carry silently before they read anything about the firm. Two routes offer different paces: one for people ready to act, one for people still deciding. Trust signals, including reviews, are placed here, where the reassurance creates the conditions for them to land.</p>
         <details class="article-details">
           <summary>
             <span class="article-details-title">Credibility versus reassurance</span>
@@ -789,53 +824,32 @@
   <section class="article-section article-section--light">
     <div class="article-container">
 
-      <div class="article-body" style="margin-bottom: 2.5rem;">
+      <div class="article-body" style="margin-bottom: 1.5rem;">
         <h2 id="what-changed">What changed</h2>
-        <p>The differences are not primarily visual. What changes is the order, the language, and the assumption about who the user is when they arrive.</p>
       </div>
 
-      <div class="article-cards" role="group" aria-label="Comparison: navigation approach">
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">Conventional</p>
-          <h3 class="article-card-heading">Services</h3>
-          <p class="article-card-body">Navigation reflects the firm's internal structure. Users must already know the legal category for their problem. Those who do not know are left to guess.</p>
+      <div class="proof-compare" role="table" aria-label="Comparison of conventional and concept approaches">
+        <div class="proof-compare-header" role="row">
+          <span role="columnheader">Conventional</span>
+          <span role="columnheader">This concept</span>
         </div>
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">This concept</p>
-          <h3 class="article-card-heading">What are you dealing with?</h3>
-          <p class="article-card-body">Navigation reflects what the user is experiencing. No legal vocabulary needed.</p>
+        <div class="proof-compare-row" role="row">
+          <span role="cell">Services</span>
+          <span role="cell">Situations</span>
         </div>
-      </div>
-
-      <div class="article-cards" role="group" aria-label="Comparison: copy approach">
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">Conventional</p>
-          <h3 class="article-card-heading">Credentials</h3>
-          <p class="article-card-body">Hero sections lead with the firm's credentials. This builds credibility but does not address the anxiety present at the moment of first contact.</p>
+        <div class="proof-compare-row" role="row">
+          <span role="cell">Legal terminology</span>
+          <span role="cell">Human language</span>
         </div>
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">This concept</p>
-          <h3 class="article-card-heading">Reassurance</h3>
-          <p class="article-card-body">"You do not have to work this out on your own." The reassurance acknowledges that this is hard, and that a clear next step is available without pressure.</p>
+        <div class="proof-compare-row" role="row">
+          <span role="cell">Contact form</span>
+          <span role="cell">Guided next step</span>
         </div>
       </div>
 
-      <div class="article-cards" role="group" aria-label="Comparison: contact approach">
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">Conventional</p>
-          <h3 class="article-card-heading">Form first</h3>
-          <p class="article-card-body">Contact pages present a form with minimal guidance. Fee information is absent or buried. The page assumes the user is already ready to engage.</p>
-        </div>
-        <div class="article-card">
-          <p class="article-card-label" aria-hidden="true">This concept</p>
-          <h3 class="article-card-heading">Context first</h3>
-          <p class="article-card-body">Reassurance and fee transparency come before the form. The user does not need the right legal words.</p>
-        </div>
-      </div>
-
-      <div class="article-callout" style="margin-top: 3rem;">
+      <div class="article-callout" style="margin-top: 2rem;">
         <p class="article-callout-label">The operational point</p>
-        <p>Clearer digital journeys produce better first conversations. These are not cosmetic changes. They address a problem that sits upstream of the legal service itself.</p>
+        <p>Clearer digital journeys reduce the uncertainty that stops people from reaching out. They also shape how a firm is found, understood, and remembered before any conversation begins.</p>
       </div>
 
     </div>
