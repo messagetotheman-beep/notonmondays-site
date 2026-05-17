@@ -398,6 +398,46 @@
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 
+/* ── VISION INTERSTITIAL ─────────────────────────── */
+.proof-vision { background: var(--dark); border-top: 1px solid rgba(26,42,212,0.18); border-bottom: 1px solid rgba(26,42,212,0.18); padding: 4rem; }
+.proof-vision-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.proof-vision-label { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(191,198,240,0.32); margin-bottom: 2rem; }
+.proof-vision-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 1.8vw, 1.45rem); font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.52); font-style: italic; margin-bottom: 1.5rem; }
+.proof-vision-note { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.14em; color: rgba(191,198,240,0.25); }
+
+/* ── SPRINT CARDS ─────────────────────────────────── */
+.artifact-sprint-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.artifact-sprint-card { padding: 1.6rem 1.4rem; border-right: 1px solid rgba(255,255,255,0.04); }
+.artifact-sprint-card:last-child { border-right: none; }
+.artifact-sprint-timing { font-family: 'DM Mono', monospace; font-size: 0.44rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(191,198,240,0.3); margin-bottom: 0.55rem; }
+.artifact-sprint-name { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.65); margin-bottom: 0.2rem; }
+.artifact-sprint-sub { font-family: 'DM Mono', monospace; font-size: 0.44rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(191,198,240,0.36); margin-bottom: 1.1rem; }
+.artifact-sprint-items { list-style: none; margin-bottom: 1.1rem; }
+.artifact-sprint-items li { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.32); line-height: 1.5; padding: 0.18rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.artifact-sprint-items li:last-child { border-bottom: none; }
+.artifact-sprint-callout { padding: 0.6rem 0.85rem; border-left: 2px solid rgba(26,42,212,0.45); background: rgba(26,42,212,0.08); }
+.artifact-sprint-callout--note { border-left-color: rgba(191,198,240,0.22); background: rgba(191,198,240,0.04); }
+.artifact-sprint-callout-label { font-family: 'DM Mono', monospace; font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-blue); opacity: 0.6; margin-bottom: 0.2rem; }
+.artifact-sprint-callout--note .artifact-sprint-callout-label { color: rgba(191,198,240,0.5); opacity: 1; }
+.artifact-sprint-callout-body { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 300; color: rgba(255,255,255,0.36); line-height: 1.45; }
+
+/* ── TOOLS GRID ───────────────────────────────────── */
+.artifact-tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+.artifact-tool { padding: 1.6rem 1.4rem; border-right: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+.artifact-tool:nth-child(2n) { border-right: none; }
+.artifact-tool:nth-child(n+3) { border-bottom: none; }
+.artifact-tool-badge { font-family: 'DM Mono', monospace; font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase; display: inline-block; padding: 0.18rem 0.5rem; margin-bottom: 0.85rem; }
+.artifact-tool-badge--work { background: rgba(26,42,212,0.18); color: var(--light-blue); }
+.artifact-tool-badge--comms { background: rgba(40,120,80,0.13); color: rgba(100,190,130,0.7); }
+.artifact-tool-badge--knowledge { background: rgba(180,100,20,0.11); color: rgba(220,155,55,0.7); }
+.artifact-tool-badge--time { background: rgba(191,198,240,0.08); color: rgba(191,198,240,0.42); }
+.artifact-tool-name { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.62); margin-bottom: 0.2rem; }
+.artifact-tool-purpose { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); margin-bottom: 0.8rem; }
+.artifact-tool-items { list-style: none; margin-bottom: 0.7rem; }
+.artifact-tool-items li { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.28); padding: 0.15rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); line-height: 1.5; }
+.artifact-tool-items li:last-child { border-bottom: none; }
+.artifact-tool-principle { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.04em; font-style: italic; color: rgba(191,198,240,0.35); }
+
 /* ── RESPONSIVE ───────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 0 1.5rem; }
@@ -427,6 +467,10 @@
   .proof-cta-inner { grid-template-columns: 1fr; gap: 2rem; }
   .site-footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   .footer-links { justify-content: center; gap: 1.5rem; }
+  .proof-vision { padding: 3rem 1.5rem; }
+  .artifact-sprint-cards { grid-template-columns: 1fr; }
+  .artifact-sprint-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .artifact-sprint-card:last-child { border-bottom: none; }
 }
 
 @media (max-width: 640px) {
@@ -436,6 +480,10 @@
   .artifact-location-strip { flex-direction: column; gap: 0.5rem; }
   .artifact-location { border-right: none; padding-right: 0; margin-right: 0; }
   .artifact-jira-strip { gap: 0.35rem; }
+  .artifact-tools { grid-template-columns: 1fr; }
+  .artifact-tool { border-right: none; }
+  .artifact-tool:nth-child(n+3) { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .artifact-tool:last-child { border-bottom: none; }
 }
 
 </style>
@@ -523,6 +571,15 @@
       <p class="proof-quote-text">The clarity and shift in energy through the whole organisation when clear, consistent guidelines arrived — that was the moment everything changed.</p>
       <p class="proof-quote-attr">Azariah &#xB7; Founder</p>
     </div>
+  </div>
+</div>
+
+<!-- VISION INTERSTITIAL -->
+<div class="proof-vision" aria-label="Azariah mission">
+  <div class="proof-vision-inner reveal">
+    <p class="proof-vision-label" aria-hidden="true">Azariah &#xB7; Why it matters</p>
+    <p class="proof-vision-text">We enable the people who show up to care, by improving the systems that support them, so those who need help receive it when it matters most.</p>
+    <p class="proof-vision-note">Not a tagline. A principle grounded in every decision.</p>
   </div>
 </div>
 
@@ -653,109 +710,112 @@
           <span class="artifact-bar-label">Sprint Cadence &#xB7; 2-week cycle</span>
           <span class="artifact-bar-date">Ongoing</span>
         </div>
-        <div class="artifact-cadence">
-          <p class="artifact-cadence-title">Delivery rhythm</p>
-          <ul class="artifact-cadence-list" aria-label="Sprint phases">
-            <li class="artifact-cadence-item">
-              <p class="artifact-cadence-phase">Sprint planning</p>
-              <p class="artifact-cadence-desc">Goal agreed. Backlog refined. Priorities set. Work pulled into the sprint.</p>
-            </li>
-            <li class="artifact-cadence-item">
-              <p class="artifact-cadence-phase">In-sprint</p>
-              <p class="artifact-cadence-desc">Async standups via Slack thread. Blockers surfaced. Mid-sprint check with the full team.</p>
-            </li>
-            <li class="artifact-cadence-item">
-              <p class="artifact-cadence-phase">Sprint review</p>
-              <p class="artifact-cadence-desc">What shipped. What did not. Why. Shared with the whole team.</p>
-            </li>
-            <li class="artifact-cadence-item">
-              <p class="artifact-cadence-phase">Retrospective</p>
-              <p class="artifact-cadence-desc">What to carry forward. What to change. No blame.</p>
-            </li>
-          </ul>
-          <hr class="artifact-divider" aria-hidden="true">
-          <p class="artifact-jira-label">Jira workflow</p>
-          <div class="artifact-jira-strip" aria-label="Board columns: Backlog to Done">
-            <span class="artifact-jira-col">Backlog</span>
-            <span class="artifact-jira-arrow" aria-hidden="true">&#x203A;</span>
-            <span class="artifact-jira-col">To do</span>
-            <span class="artifact-jira-arrow" aria-hidden="true">&#x203A;</span>
-            <span class="artifact-jira-col artifact-jira-col--active">In progress</span>
-            <span class="artifact-jira-arrow" aria-hidden="true">&#x203A;</span>
-            <span class="artifact-jira-col">Review</span>
-            <span class="artifact-jira-arrow" aria-hidden="true">&#x203A;</span>
-            <span class="artifact-jira-col">Done</span>
+        <div class="artifact-sprint-cards" aria-label="Sprint ceremony structure">
+          <div class="artifact-sprint-card">
+            <p class="artifact-sprint-timing">Start of week &#xB7; 30&#x2013;45 mins</p>
+            <p class="artifact-sprint-name">Sprint Planning</p>
+            <p class="artifact-sprint-sub">Align on what matters</p>
+            <ul class="artifact-sprint-items">
+              <li>Review priorities and backlog</li>
+              <li>Agree the sprint goal</li>
+              <li>Pull work into the sprint</li>
+              <li>Assign owners</li>
+            </ul>
+            <div class="artifact-sprint-callout">
+              <p class="artifact-sprint-callout-label">Output</p>
+              <p class="artifact-sprint-callout-body">Agreed goal. Populated sprint. Everyone knows what to work on.</p>
+            </div>
+          </div>
+          <div class="artifact-sprint-card">
+            <p class="artifact-sprint-timing">Midweek &#xB7; twice &#xB7; 15 mins</p>
+            <p class="artifact-sprint-name">Standup</p>
+            <p class="artifact-sprint-sub">Stay on track, unblock fast</p>
+            <ul class="artifact-sprint-items">
+              <li>What did you work on?</li>
+              <li>What are you doing next?</li>
+              <li>What is blocking you?</li>
+            </ul>
+            <div class="artifact-sprint-callout artifact-sprint-callout--note">
+              <p class="artifact-sprint-callout-label">Note</p>
+              <p class="artifact-sprint-callout-body">Async by default. Written in #delivery. No call required.</p>
+            </div>
+          </div>
+          <div class="artifact-sprint-card">
+            <p class="artifact-sprint-timing">End of week &#xB7; 45&#x2013;60 mins</p>
+            <p class="artifact-sprint-name">Review, Demo and Reflect</p>
+            <p class="artifact-sprint-sub">Learn, improve, show progress</p>
+            <ul class="artifact-sprint-items">
+              <li>What shipped?</li>
+              <li>What did not ship, and why?</li>
+              <li>What to change next sprint?</li>
+              <li>Share with the whole team</li>
+            </ul>
+            <div class="artifact-sprint-callout">
+              <p class="artifact-sprint-callout-label">Output</p>
+              <p class="artifact-sprint-callout-body">Shared summary. Retro actions. Backlog updated.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 3: SHARED LANGUAGE -->
+    <!-- 3: OPERATING TOOLS -->
     <div class="proof-moment reveal">
       <div class="proof-moment-header">
         <div>
-          <p class="proof-moment-label" aria-hidden="true">Distributed coordination</p>
-          <h2 class="proof-moment-title">Coordination across three time zones</h2>
+          <p class="proof-moment-label" aria-hidden="true">Operating tools</p>
+          <h2 class="proof-moment-title">One system for the whole team</h2>
         </div>
-        <p class="proof-moment-body">Structured channels and async protocols replaced informal communication. People in different time zones could make decisions without waiting for real-time conversation.</p>
+        <p class="proof-moment-body">Not just tools — agreed protocols for how each one is used. Every team member, across three time zones, working inside the same structure.</p>
       </div>
-      <div class="artifact-shell" role="figure" aria-label="Distributed communication structure">
+      <div class="artifact-shell" role="figure" aria-label="Operating tool structure, Azariah">
         <div class="artifact-bar">
-          <span class="artifact-bar-label">Communication Structure &#xB7; Azariah Team</span>
+          <span class="artifact-bar-label">Operating Tools &#xB7; Azariah</span>
           <span class="artifact-bar-date">2026</span>
         </div>
-        <div class="artifact-comms">
-          <div class="artifact-comms-col">
-            <p class="artifact-comms-heading">Channel structure</p>
-            <div class="artifact-channel">
-              <span class="artifact-channel-name">#general</span>
-              <span class="artifact-channel-purpose">All-team comms and announcements.</span>
-            </div>
-            <div class="artifact-channel">
-              <span class="artifact-channel-name">#delivery</span>
-              <span class="artifact-channel-purpose">Sprint updates, blockers, daily async standup.</span>
-            </div>
-            <div class="artifact-channel">
-              <span class="artifact-channel-name">#engineering</span>
-              <span class="artifact-channel-purpose">Technical coordination and decisions.</span>
-            </div>
-            <div class="artifact-channel">
-              <span class="artifact-channel-name">#growth</span>
-              <span class="artifact-channel-purpose">Proposals, bids, pipeline updates.</span>
-            </div>
-            <div class="artifact-channel">
-              <span class="artifact-channel-name">#operations</span>
-              <span class="artifact-channel-purpose">Systems, tooling, process updates.</span>
-            </div>
+        <div class="artifact-tools">
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--work">Work</span>
+            <p class="artifact-tool-name">Jira</p>
+            <p class="artifact-tool-purpose">Work lives here</p>
+            <ul class="artifact-tool-items">
+              <li>All tasks go here</li>
+              <li>Track progress across the team</li>
+              <li>Manage priorities by sprint</li>
+            </ul>
+            <p class="artifact-tool-principle">"If it's not on Jira, it doesn't exist."</p>
           </div>
-          <div class="artifact-comms-col">
-            <p class="artifact-comms-heading">Async protocols</p>
-            <div class="artifact-protocol">
-              <p class="artifact-protocol-label">Daily standup</p>
-              <p class="artifact-protocol-body">Written, in #delivery. What you worked on. What is next. Any blockers. No call required.</p>
-            </div>
-            <div class="artifact-protocol">
-              <p class="artifact-protocol-label">Blocker escalation</p>
-              <p class="artifact-protocol-body">Named path. Who to contact and in what order. Removes the default of messaging the founder.</p>
-            </div>
-            <div class="artifact-protocol">
-              <p class="artifact-protocol-label">Decision log</p>
-              <p class="artifact-protocol-body">Significant decisions recorded in the team wiki. No reliance on tribal memory.</p>
-            </div>
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--comms">Comms</span>
+            <p class="artifact-tool-name">Slack</p>
+            <p class="artifact-tool-purpose">Conversation happens here</p>
+            <ul class="artifact-tool-items">
+              <li>Questions and updates</li>
+              <li>Quick decisions</li>
+              <li>Async standups in #delivery</li>
+            </ul>
+            <p class="artifact-tool-principle">"Default to channels, not DMs."</p>
           </div>
-        </div>
-        <div class="artifact-location-strip" aria-label="Team locations">
-          <div class="artifact-location">
-            <strong>London</strong>
-            Strategy &#xB7; Operations
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--knowledge">Knowledge</span>
+            <p class="artifact-tool-name">Confluence</p>
+            <p class="artifact-tool-purpose">Knowledge lives here</p>
+            <ul class="artifact-tool-items">
+              <li>Playbooks and decisions</li>
+              <li>Documentation and process records</li>
+              <li>No reliance on tribal memory</li>
+            </ul>
+            <p class="artifact-tool-principle">"If it matters beyond today, write it down."</p>
           </div>
-          <div class="artifact-location">
-            <strong>Manila</strong>
-            Engineering &#xB7; Development
-          </div>
-          <div class="artifact-location">
-            <strong>San Diego</strong>
-            Clinical &#xB7; Product
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--time">Time</span>
+            <p class="artifact-tool-name">Calendar</p>
+            <p class="artifact-tool-purpose">Time is visible here</p>
+            <ul class="artifact-tool-items">
+              <li>Ceremonies and key sessions</li>
+              <li>Milestones and review dates</li>
+              <li>Cross-timezone visibility</li>
+            </ul>
           </div>
         </div>
       </div>
