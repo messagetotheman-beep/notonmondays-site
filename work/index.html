@@ -4,30 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Work | Not On Mondays — Operating Partner</title>
-<meta name="description" content="A selection of the work Not On Mondays has delivered — operating partner support, project strategy, and systems improvement for ambitious organisations.">
+<title>Proof of Operation | Not On Mondays</title>
+<meta name="description" content="Selected examples of how operational clarity improves trust, delivery, and organisational coordination. Proof of the work Not On Mondays does.">
 <link rel="canonical" href="https://www.notonmondays.com/work/">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.notonmondays.com/work/">
-<meta property="og:title" content="Our Work | Not On Mondays">
-<meta property="og:description" content="A selection of the work Not On Mondays has delivered — operating partner support, project strategy, and systems improvement for ambitious organisations.">
+<meta property="og:title" content="Proof of Operation | Not On Mondays">
+<meta property="og:description" content="Selected examples of how operational clarity improves trust, delivery, and organisational coordination.">
 <meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Not On Mondays">
 <meta property="og:locale" content="en_GB">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://www.notonmondays.com/work/">
-<meta name="twitter:title" content="Our Work | Not On Mondays">
-<meta name="twitter:description" content="A selection of the work Not On Mondays has delivered — operating partner support, project strategy, and systems improvement for ambitious organisations.">
+<meta name="twitter:title" content="Proof of Operation | Not On Mondays">
+<meta name="twitter:description" content="Selected examples of how operational clarity improves trust, delivery, and organisational coordination.">
 <meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
 
 <link rel="icon" type="image/png" href="/assets/nomlogo400.png">
-<link rel="shortcut icon" href="/assets/nomlogo400.png">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -49,101 +45,259 @@
 .nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
 .nom-initial.landing { color: var(--blue); }
 .nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
-.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo:hover .landing { color: var(--dark); }
 .nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
 .nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
 .nav-descriptor span { font-family: 'DM Mono', monospace; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(17,17,36,0.6); }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; font-weight: 300; }
 .nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-cta { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 0.7rem 1.4rem; text-decoration: none; transition: background 0.3s ease; white-space: nowrap; }
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--dark); }
+.nav-cta:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--dark); font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
 .nav-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
-/* ── Page hero ───────────────────────────────────── */
+/* ── HERO ─────────────────────────────────────────── */
 .work-hero {
   background: var(--dark);
-  padding: calc(72px + 5rem) 4rem 5rem;
-  position: relative;
-  overflow: hidden;
+  padding: calc(72px + 3.5rem) 4rem 3rem;
 }
-.work-hero::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(26,42,212,0.18) 0%, transparent 70%);
-  pointer-events: none;
+.work-hero-inner { max-width: 1100px; margin: 0 auto; }
+.work-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 1.2rem;
 }
-.work-hero-inner { max-width: 700px; position: relative; z-index: 1; }
-.work-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 1.8rem; }
-.work-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 300; line-height: 1.08; color: var(--off-white); margin-bottom: 1.8rem; }
-.work-headline em { font-style: italic; color: var(--light-blue); }
-.work-standfirst { font-size: 0.95rem; line-height: 1.8; color: rgba(242,240,232,0.75); font-weight: 300; max-width: 560px; }
+.work-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--off-white);
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.02em;
+}
+.work-standfirst {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(242,240,232,0.42);
+  font-weight: 300;
+  max-width: 480px;
+}
 
-/* ── Case study grid ─────────────────────────────── */
-.work-section {
-  background: var(--warm-white);
-  padding: 6rem 4rem;
+/* ── FEATURED PROOF ───────────────────────────────── */
+.work-featured {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 0 4rem 5rem;
 }
-.cs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.work-featured-inner {
   max-width: 1100px;
   margin: 0 auto;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 5rem;
+  align-items: start;
+  border-top: 1px solid rgba(26,42,212,0.25);
+  padding-top: 3.5rem;
 }
-.cs-card {
-  background: var(--dark);
+.work-featured-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 1.4rem;
+  opacity: 0.7;
+}
+.work-featured-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  margin-bottom: 0.6rem;
+}
+.work-featured-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--off-white);
+  margin-bottom: 1.4rem;
+  max-width: 520px;
+}
+.work-featured-title em { font-style: italic; color: var(--light-blue); }
+.work-featured-body {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: rgba(242,240,232,0.48);
+  font-weight: 300;
+  max-width: 480px;
+  margin-bottom: 2.2rem;
+}
+.work-featured-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.9rem 1.8rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+.work-featured-link:hover { background: rgba(26,42,212,0.7); }
+.work-featured-link:focus-visible { outline: 2px solid var(--light-blue); outline-offset: 3px; }
+
+/* Operational signals sidebar */
+.work-featured-signals {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.work-signal {
+  padding: 1.3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.work-signal:last-child { border-bottom: none; }
+.work-signal-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 0.35rem;
+}
+.work-signal-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.45;
+}
+.work-signal-value strong {
+  color: rgba(255,255,255,0.72);
+  font-weight: 300;
+}
+
+/* Outcome dots */
+.work-featured-outcomes {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.6rem;
+}
+.work-featured-outcomes-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  margin-bottom: 1rem;
+}
+.work-featured-outcome {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1.6rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.7rem;
 }
-.cs-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(17,17,36,0.16); }
-@media (prefers-reduced-motion: reduce) { .cs-card:hover { transform: none; } }
-.cs-card--full { border-bottom: 3px solid var(--blue); }
-.cs-card--pending { opacity: 0.8; }
-.cs-card--pending:hover { opacity: 1; }
-.cs-card-top { margin-bottom: 1.4rem; }
-.cs-card-bottom { margin-top: auto; }
-.cs-num { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 0.35rem; }
-.cs-tag { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.9rem; }
-.cs-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 300; line-height: 1.2; color: var(--off-white); }
-.cs-title em { font-style: italic; color: var(--light-blue); }
-.cs-quote { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.55; margin-bottom: 1.1rem; border-left: 2px solid var(--blue); padding-left: 0.85rem; }
-.cs-outcomes { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.4rem; }
-.cs-outcomes li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.78rem; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.45; }
-.cs-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.35); border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem; }
-.cs-cta { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--light-blue); text-decoration: none; border-bottom: 1px solid rgba(191,198,240,0.3); padding-bottom: 0.2rem; transition: border-color 0.3s ease, color 0.3s ease; display: inline-block; }
-.cs-cta:hover, .cs-cta:focus-visible { color: #fff; border-color: rgba(255,255,255,0.45); }
-.cs-pending-desc { font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.55; margin-bottom: 1.1rem; }
-.cs-pending-label { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.08); display: inline-block; padding: 0.35rem 0.8rem; }
+.work-featured-outcome:last-child { margin-bottom: 0; }
+.work-featured-outcome-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(26,42,212,0.6);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.48rem;
+}
+.work-featured-outcome span {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.38);
+  font-weight: 300;
+}
 
-/* ── CTA band ─────────────────────────────────────── */
-.work-cta {
-  background: var(--dark);
-  border-top: 1px solid rgba(26,42,212,0.2);
+/* ── SECONDARY PROOF ──────────────────────────────── */
+.work-secondary {
+  background: var(--warm-white);
   padding: 5rem 4rem;
-  text-align: center;
+  border-top: 1px solid rgba(26,42,212,0.06);
 }
-.work-cta-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 1.5rem; }
-.work-cta-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--off-white); margin-bottom: 1.5rem; line-height: 1.1; }
-.work-cta-body { font-size: 0.88rem; line-height: 1.8; color: rgba(242,240,232,0.65); font-weight: 300; max-width: 520px; margin: 0 auto 2.5rem; }
-.work-cta-link { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 1rem 2rem; text-decoration: none; display: inline-block; transition: background 0.3s ease; }
-.work-cta-link:hover, .work-cta-link:focus-visible { background: var(--deep-blue); }
+.work-secondary-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.work-secondary-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+.work-secondary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5px;
+  background: rgba(26,42,212,0.08);
+}
+.work-secondary-card {
+  background: var(--warm-white);
+  padding: 2.2rem;
+}
+.work-secondary-card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.work-secondary-card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+  margin-bottom: 1.1rem;
+}
+.work-secondary-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--dark);
+  margin-bottom: 0.9rem;
+}
+.work-secondary-card-body {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1.4rem;
+}
+.work-secondary-card-status {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.22);
+  border: 1px solid rgba(17,17,36,0.1);
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+}
 
-/* ── Footer ──────────────────────────────────────── */
-.site-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+/* ── FOOTER ──────────────────────────────────────── */
+.site-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
 .footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
-.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s ease; }
-.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
-.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.7); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
 
-/* ── Responsive ──────────────────────────────────── */
+/* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 0 1.5rem; }
   .nav-toggle { display: flex; align-items: center; gap: 0.5rem; }
@@ -153,12 +307,19 @@
   .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
   .nav-links a { display: block; padding: 1rem 0; }
   .nav-cta { display: none; }
-  .work-hero { padding: calc(72px + 3.5rem) 1.5rem 3.5rem; }
-  .work-section { padding: 4rem 1.5rem; }
-  .cs-grid { grid-template-columns: 1fr; }
-  .work-cta { padding: 4rem 1.5rem; }
-  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .work-hero { padding: calc(72px + 2.5rem) 1.5rem 2.5rem; }
+  .work-featured { padding: 0 1.5rem 4rem; }
+  .work-featured-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+  .work-secondary { padding: 4rem 1.5rem; }
+  .work-secondary-grid { grid-template-columns: 1fr; }
+  .site-footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .work-secondary-grid { background: none; gap: 0; }
+  .work-secondary-card { border-bottom: 1px solid rgba(26,42,212,0.08); padding: 2rem 0; background: none; }
+  .work-secondary-card:last-child { border-bottom: none; }
 }
 
 </style>
@@ -186,12 +347,12 @@
       <span>Menu</span>
     </button>
     <ul class="nav-links" id="nav-menu" role="list">
-      <li><a href="/">Home</a></li>
       <li><a href="/why-not-on-mondays">About</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/how-we-work/">How We Work</a></li>
       <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
     </ul>
     <a href="/#contact" class="nav-cta">Start a conversation</a>
   </nav>
@@ -199,77 +360,116 @@
 
 <main id="main-content">
 
+  <!-- HERO -->
   <section class="work-hero" aria-labelledby="work-heading">
     <div class="work-hero-inner">
-      <p class="work-eyebrow" aria-hidden="true">Our Work · Not On Mondays</p>
-      <h1 id="work-heading" class="work-headline">What we have <em>delivered.</em></h1>
-      <p class="work-standfirst">A selection of the work we have done and the organisations we have worked with. Operating partner support, project strategy, and systems improvement.</p>
+      <p class="work-eyebrow" aria-hidden="true">Not On Mondays &#xB7; Operational Proof</p>
+      <h1 id="work-heading" class="work-headline">Proof.</h1>
+      <p class="work-standfirst">Selected examples of how operational clarity improves trust, delivery, and coordination.</p>
     </div>
   </section>
 
-  <section class="work-section" aria-label="Case studies">
+  <!-- FEATURED: AZARIAH -->
+  <section class="work-featured" aria-labelledby="featured-heading">
+    <div class="work-featured-inner">
 
-    <div class="cs-grid">
+      <div>
+        <p class="work-featured-num" aria-hidden="true">&#x2116; 001</p>
+        <p class="work-featured-tag" aria-hidden="true">Healthcare compliance &#xB7; MedTech &#xB7; NHS</p>
+        <h2 id="featured-heading" class="work-featured-title">
+          The operating layer behind <em>Azariah</em>
+        </h2>
+        <p class="work-featured-body">
+          A distributed healthcare startup with clinical credibility and a capable team — but an operation that had outgrown its informal structure. We became the layer between intention and delivery: introducing shared systems, delivery rhythms, and operational clarity across London, Manila, and San Diego.
+        </p>
+        <a href="/proof/azariah-operating-layer/" class="work-featured-link">Explore the operational proof</a>
 
-      <article class="cs-card cs-card--full" aria-labelledby="cs-title-001">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 001</p>
-          <p class="cs-tag">Operating Partner Support · MedTech / Healthcare Compliance</p>
-          <h2 id="cs-title-001" class="cs-title">The operating layer behind <em>Azariah.</em></h2>
+        <div class="work-featured-outcomes" aria-label="Engagement outcomes">
+          <p class="work-featured-outcomes-label" aria-hidden="true">Outcomes</p>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>Founder freed from day-to-day coordination overhead</span>
+          </div>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>Delivery visible and trackable across the whole team</span>
+          </div>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>Clear ownership across six core operational functions</span>
+          </div>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>NIHR THRIVE grant process supported through operational preparation</span>
+          </div>
         </div>
-        <div class="cs-card-bottom">
-          <blockquote class="cs-quote">"The clarity and shift in energy through the whole organisation when clear, consistent guidelines arrived — that was the moment everything changed."</blockquote>
-          <ul class="cs-outcomes" aria-label="Outcomes">
-            <li><span class="cs-dot" aria-hidden="true"></span>Operational clarity across a distributed, multidisciplinary team</li>
-            <li><span class="cs-dot" aria-hidden="true"></span>Founder freed from day-to-day coordination overhead</li>
-            <li><span class="cs-dot" aria-hidden="true"></span>Delivery visible and trackable across three time zones</li>
-          </ul>
-          <a href="/proof/azariah-operating-layer/" class="cs-cta">Read the operational proof</a>
-        </div>
-      </article>
+      </div>
 
-      <article class="cs-card cs-card--pending" aria-labelledby="cs-title-002">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 002</p>
-          <p class="cs-tag">Operating Partner Support · Professional Services</p>
-          <h2 id="cs-title-002" class="cs-title">Supporting a growing organisation to stabilise delivery and <em>improve client experience.</em></h2>
+      <aside aria-label="Engagement details">
+        <div class="work-featured-signals">
+          <div class="work-signal">
+            <p class="work-signal-label">Client</p>
+            <p class="work-signal-value"><strong>Azariah</strong></p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Locations</p>
+            <p class="work-signal-value">
+              <strong>London</strong> &#xB7; Strategy, operations<br>
+              <strong>Manila</strong> &#xB7; Engineering<br>
+              <strong>San Diego</strong> &#xB7; Clinical, product
+            </p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Functions covered</p>
+            <p class="work-signal-value">Direction &#xB7; Delivery &#xB7; Product &#xB7; Engineering &#xB7; Growth &#xB7; Systems</p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Engagement type</p>
+            <p class="work-signal-value">Retained operating partnership</p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Offering</p>
+            <p class="work-signal-value">The Operating Layer + Founder coaching</p>
+          </div>
         </div>
-        <div class="cs-card-bottom">
-          <p class="cs-pending-desc">Operational structure, delivery cadence, and client-facing processes redesigned across a 12-person team.</p>
-          <p class="cs-pending-label" aria-label="Case study coming soon">Case study coming soon</p>
-        </div>
-      </article>
-
-      <article class="cs-card cs-card--pending" aria-labelledby="cs-title-003">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 003</p>
-          <p class="cs-tag">Project Strategy · Leadership Team</p>
-          <h2 id="cs-title-003" class="cs-title">Helping a leadership team introduce structure, clarity and <em>predictable execution.</em></h2>
-        </div>
-        <div class="cs-card-bottom">
-          <p class="cs-pending-desc">90-day plan developed and delivered across operations, hiring, and product. Founder overhead reduced significantly.</p>
-          <p class="cs-pending-label" aria-label="Case study coming soon">Case study coming soon</p>
-        </div>
-      </article>
+      </aside>
 
     </div>
-
   </section>
 
-  <section class="work-cta" aria-labelledby="cta-heading">
-    <p class="work-cta-label" aria-hidden="true">Get in touch</p>
-    <h2 id="cta-heading" class="work-cta-heading">Want to talk about what we could do together?</h2>
-    <p class="work-cta-body">We work with founders, leadership teams, and organisations navigating genuine operational challenges. If that sounds like you, we are happy to talk.</p>
-    <a href="/#contact" class="work-cta-link">Start a conversation</a>
+  <!-- SECONDARY PROOF -->
+  <section class="work-secondary" aria-label="Further proof in preparation">
+    <div class="work-secondary-inner">
+      <p class="work-secondary-label" aria-hidden="true">Further proof</p>
+      <div class="work-secondary-grid">
+
+        <article class="work-secondary-card" aria-labelledby="cs-002-heading">
+          <p class="work-secondary-card-num" aria-hidden="true">&#x2116; 002</p>
+          <p class="work-secondary-card-tag">Operating partner support &#xB7; Professional services</p>
+          <h2 id="cs-002-heading" class="work-secondary-card-title">Stabilising delivery and improving client experience across a growing team.</h2>
+          <p class="work-secondary-card-body">Operational structure, delivery cadence, and client-facing processes redesigned across a 12-person professional services firm.</p>
+          <p class="work-secondary-card-status" aria-label="Proof page in preparation">In preparation</p>
+        </article>
+
+        <article class="work-secondary-card" aria-labelledby="cs-003-heading">
+          <p class="work-secondary-card-num" aria-hidden="true">&#x2116; 003</p>
+          <p class="work-secondary-card-tag">Project strategy &#xB7; Leadership team</p>
+          <h2 id="cs-003-heading" class="work-secondary-card-title">Introducing structure, clarity, and predictable execution to a leadership team.</h2>
+          <p class="work-secondary-card-body">90-day plan developed and delivered across operations, hiring, and product. Founder overhead reduced significantly.</p>
+          <p class="work-secondary-card-status" aria-label="Proof page in preparation">In preparation</p>
+        </article>
+
+      </div>
+    </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
   <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
-    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
   </a>
   <nav aria-label="Footer navigation">
     <ul class="footer-links">
@@ -278,13 +478,14 @@
       <li><a href="/how-we-work/">How We Work</a></li>
       <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
     </ul>
     <ul class="footer-links" style="margin-top:1rem;">
-      <li><a href="/net-zero">Net Zero Policy</a></li>
-      <li><a href="/privacy-policy" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy (opens in new tab)">Privacy Policy</a></li>
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy (opens in new tab)">Privacy Policy</a></li>
     </ul>
   </nav>
-  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+  <p class="footer-copy"><small>notonmondays.com &#xB7; 2026</small></p>
 </footer>
 
 <script>
