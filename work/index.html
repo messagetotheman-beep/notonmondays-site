@@ -4,23 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Proof of Operation | Not On Mondays</title>
-<meta name="description" content="Selected examples of how operational clarity improves trust, delivery, and organisational coordination. Proof of the work Not On Mondays does.">
+<title>Selected Work | Not On Mondays</title>
+<meta name="description" content="Selected examples of how operational clarity improves trust, delivery, and decision-making. Work from Not On Mondays.">
 <link rel="canonical" href="https://www.notonmondays.com/work/">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.notonmondays.com/work/">
-<meta property="og:title" content="Proof of Operation | Not On Mondays">
-<meta property="og:description" content="Selected examples of how operational clarity improves trust, delivery, and organisational coordination.">
+<meta property="og:title" content="Selected Work | Not On Mondays">
+<meta property="og:description" content="Selected examples of how operational clarity improves trust, delivery, and decision-making.">
 <meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
 <meta property="og:site_name" content="Not On Mondays">
 <meta property="og:locale" content="en_GB">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://www.notonmondays.com/work/">
-<meta name="twitter:title" content="Proof of Operation | Not On Mondays">
-<meta name="twitter:description" content="Selected examples of how operational clarity improves trust, delivery, and organisational coordination.">
+<meta name="twitter:title" content="Selected Work | Not On Mondays">
+<meta name="twitter:description" content="Selected examples of how operational clarity improves trust, delivery, and decision-making.">
 <meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
 
 <link rel="icon" type="image/png" href="/assets/nomlogo400.png">
@@ -113,14 +113,6 @@
   color: var(--light-blue);
   margin-bottom: 1.4rem;
   opacity: 0.7;
-}
-.work-featured-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.48rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.18);
-  margin-bottom: 0.6rem;
 }
 .work-featured-title {
   font-family: 'Cormorant Garamond', serif;
@@ -247,14 +239,7 @@
 .work-secondary-card {
   background: var(--warm-white);
   padding: 2.2rem;
-}
-.work-secondary-card-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.48rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
+  grid-column: 1 / -1;
 }
 .work-secondary-card-tag {
   font-family: 'DM Mono', monospace;
@@ -266,29 +251,35 @@
 }
 .work-secondary-card-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  font-size: clamp(1.3rem, 2vw, 1.9rem);
   font-weight: 300;
-  line-height: 1.25;
+  line-height: 1.2;
   color: var(--dark);
   margin-bottom: 0.9rem;
+  max-width: 600px;
 }
 .work-secondary-card-body {
-  font-size: 0.8rem;
-  line-height: 1.7;
+  font-size: 0.88rem;
+  line-height: 1.8;
   color: var(--muted);
   font-weight: 300;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
+  max-width: 520px;
 }
-.work-secondary-card-status {
+.work-secondary-card-link {
   font-family: 'DM Mono', monospace;
-  font-size: 0.46rem;
-  letter-spacing: 0.2em;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(17,17,36,0.22);
-  border: 1px solid rgba(17,17,36,0.1);
-  display: inline-block;
-  padding: 0.3rem 0.75rem;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(26,42,212,0.25);
+  padding-bottom: 0.15rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
+.work-secondary-card-link:hover,
+.work-secondary-card-link:focus-visible { color: var(--dark); border-color: var(--dark); }
+.work-secondary-card-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
 /* ── FOOTER ──────────────────────────────────────── */
 .site-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
@@ -363,9 +354,9 @@
   <!-- HERO -->
   <section class="work-hero" aria-labelledby="work-heading">
     <div class="work-hero-inner">
-      <p class="work-eyebrow" aria-hidden="true">Not On Mondays &#xB7; Operational Proof</p>
-      <h1 id="work-heading" class="work-headline">Proof.</h1>
-      <p class="work-standfirst">Selected examples of how operational clarity improves trust, delivery, and coordination.</p>
+      <p class="work-eyebrow" aria-hidden="true">Not On Mondays &#xB7; Work</p>
+      <h1 id="work-heading" class="work-headline">Selected work</h1>
+      <p class="work-standfirst">Examples of how operational clarity improves trust, delivery, and decision-making.</p>
     </div>
   </section>
 
@@ -374,13 +365,12 @@
     <div class="work-featured-inner">
 
       <div>
-        <p class="work-featured-num" aria-hidden="true">&#x2116; 001</p>
         <p class="work-featured-tag" aria-hidden="true">Healthcare compliance &#xB7; MedTech &#xB7; NHS</p>
         <h2 id="featured-heading" class="work-featured-title">
           The operating layer behind <em>Azariah</em>
         </h2>
         <p class="work-featured-body">
-          A distributed healthcare startup with clinical credibility and a capable team — but an operation that had outgrown its informal structure. We became the layer between intention and delivery: introducing shared systems, delivery rhythms, and operational clarity across London, Manila, and San Diego.
+          A distributed healthcare startup with clinical credibility and a capable team, but an operation that had outgrown its informal structure. We became the layer between intention and delivery: introducing shared systems, delivery rhythms, and operational clarity across London, Manila, and San Diego.
         </p>
         <a href="/proof/azariah-operating-layer/" class="work-featured-link">Explore the operational proof</a>
 
@@ -437,26 +427,17 @@
     </div>
   </section>
 
-  <!-- SECONDARY PROOF -->
-  <section class="work-secondary" aria-label="Further proof in preparation">
+  <!-- SECONDARY: LATCHMERE -->
+  <section class="work-secondary" aria-label="Further selected work">
     <div class="work-secondary-inner">
-      <p class="work-secondary-label" aria-hidden="true">Further proof</p>
+      <p class="work-secondary-label" aria-hidden="true">Also</p>
       <div class="work-secondary-grid">
 
-        <article class="work-secondary-card" aria-labelledby="cs-002-heading">
-          <p class="work-secondary-card-num" aria-hidden="true">&#x2116; 002</p>
-          <p class="work-secondary-card-tag">Operating partner support &#xB7; Professional services</p>
-          <h2 id="cs-002-heading" class="work-secondary-card-title">Stabilising delivery and improving client experience across a growing team.</h2>
-          <p class="work-secondary-card-body">Operational structure, delivery cadence, and client-facing processes redesigned across a 12-person professional services firm.</p>
-          <p class="work-secondary-card-status" aria-label="Proof page in preparation">In preparation</p>
-        </article>
-
-        <article class="work-secondary-card" aria-labelledby="cs-003-heading">
-          <p class="work-secondary-card-num" aria-hidden="true">&#x2116; 003</p>
-          <p class="work-secondary-card-tag">Project strategy &#xB7; Leadership team</p>
-          <h2 id="cs-003-heading" class="work-secondary-card-title">Introducing structure, clarity, and predictable execution to a leadership team.</h2>
-          <p class="work-secondary-card-body">90-day plan developed and delivered across operations, hiring, and product. Founder overhead reduced significantly.</p>
-          <p class="work-secondary-card-status" aria-label="Proof page in preparation">In preparation</p>
+        <article class="work-secondary-card" aria-labelledby="cs-latchmere-heading">
+          <p class="work-secondary-card-tag">Legal client journeys &#xB7; Service design &#xB7; Digital experience</p>
+          <h2 id="cs-latchmere-heading" class="work-secondary-card-title">What clients need before they contact a law firm</h2>
+          <p class="work-secondary-card-body">A concept walkthrough showing how clearer digital journeys can reduce uncertainty, improve trust, and create better first conversations.</p>
+          <a href="/proof/what-clients-need-before-they-contact-a-law-firm/" class="work-secondary-card-link">View the concept walkthrough</a>
         </article>
 
       </div>
