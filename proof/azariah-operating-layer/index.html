@@ -438,6 +438,53 @@
 .artifact-tool-items li:last-child { border-bottom: none; }
 .artifact-tool-principle { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.04em; font-style: italic; color: rgba(191,198,240,0.35); }
 
+/* ── SCREENSHOTS ─────────────────────────────────── */
+.proof-screenshot-inset {
+  margin-top: 1.8rem;
+  border: 1px solid rgba(26,42,212,0.1);
+  overflow: hidden;
+  max-width: 760px;
+}
+.proof-screenshot-inset img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.97);
+}
+.proof-screenshot-caption {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.65rem 0.9rem;
+  border-top: 1px solid rgba(26,42,212,0.08);
+  background: var(--off-white);
+}
+
+.proof-screenshot-strip {
+  margin-top: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-top: none;
+}
+.proof-screenshot-strip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.92) saturate(0.95);
+}
+.proof-screenshot-strip-caption {
+  background: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(191,198,240,0.32);
+  padding: 0.65rem 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
 /* ── RESPONSIVE ───────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 0 1.5rem; }
@@ -468,6 +515,7 @@
   .site-footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   .footer-links { justify-content: center; gap: 1.5rem; }
   .proof-vision { padding: 3rem 1.5rem; }
+  .proof-screenshot-inset { max-width: 100%; }
   .artifact-sprint-cards { grid-template-columns: 1fr; }
   .artifact-sprint-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
   .artifact-sprint-card:last-child { border-bottom: none; }
@@ -694,6 +742,13 @@
           </div>
         </div>
       </div>
+      <figure class="proof-screenshot-inset reveal reveal-delay-1" aria-label="Azariah design system — built and maintained by Not On Mondays">
+        <img src="/assets/proof/azariah/design-system.png"
+             alt="Azariah Design System portal — version 1.0, 2026. Maintained by David at Not On Mondays. NHS Blue colour palette. A single source of truth for how the team builds and communicates."
+             loading="lazy"
+             width="830" height="404">
+        <figcaption class="proof-screenshot-caption">Design system &#xB7; v1.0 &#xB7; 2026 &#xB7; Maintained by Not On Mondays</figcaption>
+      </figure>
     </div>
 
     <!-- 2: DELIVERY RHYTHM -->
@@ -766,7 +821,7 @@
           <p class="proof-moment-label" aria-hidden="true">Operating tools</p>
           <h2 class="proof-moment-title">One system for the whole team</h2>
         </div>
-        <p class="proof-moment-body">Not just tools — agreed protocols for how each one is used. Every team member, across three time zones, working inside the same structure.</p>
+        <p class="proof-moment-body">More than tools: agreed protocols for how each one is used. Every team member, across three time zones, working inside the same structure.</p>
       </div>
       <div class="artifact-shell" role="figure" aria-label="Operating tool structure, Azariah">
         <div class="artifact-bar">
@@ -819,6 +874,13 @@
           </div>
         </div>
       </div>
+      <figure class="proof-screenshot-strip reveal" aria-label="Azariah team wiki — live knowledge base maintained by Not On Mondays">
+        <img src="/assets/proof/azariah/wiki.png"
+             alt="Azariah team wiki — 47 entries covering NHS and clinical terminology, funding, tools and systems, NIHR grant terms, and roles and operations. Maintained by David. Live as of April 2026."
+             loading="lazy"
+             width="1440" height="395">
+        <figcaption class="proof-screenshot-strip-caption">Team wiki &#xB7; 47 entries &#xB7; Live &#xB7; April 2026</figcaption>
+      </figure>
     </div>
 
     <!-- 4: OPERATIONAL VALUES -->
