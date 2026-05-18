@@ -383,26 +383,55 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 .legal-service-desc { font-size: 0.8rem; line-height: 1.65; color: var(--subtle-on-dark); font-weight: 300; }
 
 /* =====================================================
-   CASE STUDIES
+   SELECTED WORK BRIDGE
    ===================================================== */
-#case-studies { background: var(--warm-white); padding: 6rem 4rem 1.5rem; }
-.case-feature { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
-.case-left { background: var(--dark); padding: 4rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
-.case-left::before { content: '001'; position: absolute; bottom: -2rem; right: -1rem; font-family: 'Cormorant Garamond', serif; font-size: 12rem; font-weight: 300; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
-.case-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); }
-.case-title { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1.1; color: var(--off-white); }
-.case-title em { font-style: italic; color: var(--light-blue); }
-.case-meta-row { display: flex; gap: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
-.case-meta-item label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); display: block; margin-bottom: 0.3rem; }
-.case-meta-item span { font-size: 0.82rem; color: rgba(255,255,255,0.85); font-weight: 300; }
-.case-right { background: var(--blue); padding: 4rem; display: flex; flex-direction: column; justify-content: space-between; }
-.case-insight { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; font-weight: 300; color: #fff; line-height: 1.5; margin-bottom: 2rem; }
-.case-outcomes { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
-.case-outcome { display: flex; align-items: center; gap: 0.8rem; }
-.case-outcome-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; flex-shrink: 0; }
-.case-outcome span { font-size: 0.83rem; color: rgba(255,255,255,0.85); font-weight: 300; }
-.case-cta { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 0.4rem; transition: gap 0.3s ease; }
-.case-cta:hover, .case-cta:focus-visible { gap: 1.2rem; }
+#case-studies {
+  background: var(--warm-white);
+  padding: 5rem 4rem 0;
+  border-top: 1px solid rgba(26,42,212,0.08);
+}
+.work-bridge-inner {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+.work-bridge-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.4rem;
+}
+.work-bridge-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+.work-bridge-body {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--mid);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+.work-bridge-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+.work-bridge-cta:hover,
+.work-bridge-cta:focus-visible { background: var(--deep-blue); }
 
 /* =====================================================
    PHILOSOPHY BAND — decorative, aria-hidden
@@ -546,12 +575,12 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   .hero-content { grid-template-columns: 1fr; padding: 2rem 1.5rem 5rem; }
   .hero-right { display: none; }
   .hero-headline { font-size: 3rem; }
-  #about, #offerings, #how-we-work, #ai, #legal-tech, #case-studies, #coaching, #contact { padding: 6rem 1.5rem; }
+  #about, #offerings, #how-we-work, #ai, #legal-tech, #coaching, #contact { padding: 6rem 1.5rem; }
+  #case-studies { padding: 4rem 1.5rem 0; }
   .about-grid, .how-grid, .ai-grid, .legal-grid, .inner-layer-grid, .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
   .section-header { grid-template-columns: 1fr; gap: 1.5rem; }
   .offering-row { grid-template-columns: 1fr; gap: 1rem; }
   .offering-price { text-align: left; }
-  .case-feature { grid-template-columns: 1fr; }
   .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
   .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
   .form-row { grid-template-columns: 1fr; }
@@ -561,136 +590,6 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   #nom-cookie { flex-direction: column; gap: 1.25rem; bottom: 1rem; width: calc(100% - 2rem); }
   #nom-cookie .cookie-actions { flex-direction: row; width: 100%; }
   #nom-cookie .cookie-accept, #nom-cookie .cookie-reject { flex: 1; text-align: center; }
-}
-/* =====================================================
-   CASE STUDY CARDS
-   ===================================================== */
-#case-studies { background: var(--warm-white); padding: 6rem 4rem 1.5rem; }
-
-.cs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 1100px;
-  margin: 0 auto;
-  gap: 2rem;
-}
-
-.cs-card {
-  background: var(--dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1.6rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.cs-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(17,17,36,0.16);
-}
-@media (prefers-reduced-motion: reduce) { .cs-card:hover { transform: none; } }
-
-.cs-card--full { border-bottom: 3px solid var(--blue); }
-.cs-card--pending { opacity: 0.8; }
-.cs-card--pending:hover { opacity: 1; }
-
-.cs-card-top { margin-bottom: 1.4rem; }
-.cs-card-bottom { margin-top: auto; }
-
-.cs-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--light-blue);
-  margin-bottom: 0.35rem;
-}
-.cs-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 0.9rem;
-}
-.cs-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-  font-weight: 300;
-  line-height: 1.2;
-  color: var(--off-white);
-}
-.cs-title em { font-style: italic; color: var(--light-blue); }
-
-.cs-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.55;
-  margin-bottom: 1.1rem;
-  border-left: 2px solid var(--blue);
-  padding-left: 0.85rem;
-}
-
-.cs-outcomes {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  margin-bottom: 1.4rem;
-}
-.cs-outcomes li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.7);
-  font-weight: 300;
-  line-height: 1.45;
-}
-.cs-dot {
-  width: 4px;
-  height: 4px;
-  background: rgba(255,255,255,0.35);
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 0.5rem;
-}
-
-.cs-cta {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--light-blue);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(191,198,240,0.3);
-  padding-bottom: 0.2rem;
-  transition: border-color 0.3s ease, color 0.3s ease;
-  display: inline-block;
-}
-.cs-cta:hover, .cs-cta:focus-visible { color: #fff; border-color: rgba(255,255,255,0.45); }
-
-.cs-pending-desc {
-  font-size: 0.78rem;
-  font-weight: 300;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.55;
-  margin-bottom: 1.1rem;
-}
-
-.cs-pending-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.08);
-  display: inline-block;
-  padding: 0.35rem 0.8rem;
 }
 
 /* =====================================================
@@ -852,7 +751,6 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 }
 
 @media (max-width: 900px) {
-  .cs-grid { grid-template-columns: 1fr; gap: 1rem; }
   .logo-item { padding: 0 2.5rem; height: 70px; }
   .logo-svg, .logo-img { height: 28px; max-width: 120px; }
 }
@@ -1247,7 +1145,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
         <p class="hero-sub">We work alongside founders and leadership teams as an embedded operating partner. We help when operations, systems or delivery are hard to move. We stay close to the work until things are working.</p>
         <div class="hero-actions">
           <a href="#offerings" class="btn-primary">See how we help</a>
-          <a href="#case-studies" class="btn-ghost">View our work</a>
+          <a href="/work/" class="btn-ghost">View our work</a>
         </div>
         <p class="hero-trust">Working with leadership teams in regulated, service-led and operationally complex organisations.</p>
       </div>
@@ -1549,63 +1447,14 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
     </div>
   </section>
 
-  <!-- CASE STUDIES -->
-  <section id="case-studies" aria-labelledby="work-heading">
-    <div class="section-header" style="max-width:1100px;margin:0 auto 4rem;">
-      <div>
-        <p class="section-label reveal" aria-hidden="true">Our Work</p>
-        <h2 id="work-heading" class="section-title reveal reveal-delay-1">What we have <em>delivered.</em></h2>
-      </div>
-      <p class="section-intro reveal reveal-delay-2">A selection of the work we have done and the organisations we have worked with.</p>
-    </div>
+  <!-- SELECTED WORK BRIDGE -->
+  <section id="case-studies" aria-labelledby="work-bridge-heading">
 
-    <!-- THREE CARD GRID -->
-    <div class="cs-grid" style="max-width:1100px;margin:0 auto;">
-
-      <!-- CARD 1 — Azariah (real) -->
-      <article class="cs-card cs-card--full reveal" aria-labelledby="cs-title-001">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 001</p>
-          <p class="cs-tag">Operating Partner Support · Tech / SaaS</p>
-          <h3 id="cs-title-001" class="cs-title">How Azariah raised funding and <em>restructured its team.</em></h3>
-        </div>
-        <div class="cs-card-bottom">
-          <blockquote class="cs-quote">"The clarity and shift in energy through the whole organisation when clear, consistent guidelines arrived — that was the moment everything changed."</blockquote>
-          <ul class="cs-outcomes" aria-label="Outcomes">
-            <li><span class="cs-dot" aria-hidden="true"></span>Funding successfully raised</li>
-            <li><span class="cs-dot" aria-hidden="true"></span>Team restructured with defined roles and accountability</li>
-            <li><span class="cs-dot" aria-hidden="true"></span>Founder freed up to focus on strategy and growth</li>
-          </ul>
-          <a href="azariah-case-study.html" class="cs-cta">Read the Azariah case study →</a>
-        </div>
-      </article>
-
-      <!-- CARD 2 — Placeholder -->
-      <article class="cs-card cs-card--pending reveal reveal-delay-1" aria-labelledby="cs-title-002">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 002</p>
-          <p class="cs-tag">Operating Partner Support · Professional Services</p>
-          <h3 id="cs-title-002" class="cs-title">Supporting a growing organisation to stabilise delivery and <em>improve client experience.</em></h3>
-        </div>
-        <div class="cs-card-bottom">
-          <p class="cs-pending-desc">Operational structure, delivery cadence, and client-facing processes redesigned across a 12-person team.</p>
-          <p class="cs-pending-label" aria-label="Case study coming soon">Case study coming soon</p>
-        </div>
-      </article>
-
-      <!-- CARD 3 — Placeholder -->
-      <article class="cs-card cs-card--pending reveal reveal-delay-2" aria-labelledby="cs-title-003">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 003</p>
-          <p class="cs-tag">Project Strategy · Leadership Team</p>
-          <h3 id="cs-title-003" class="cs-title">Helping a leadership team introduce structure, clarity and <em>predictable execution.</em></h3>
-        </div>
-        <div class="cs-card-bottom">
-          <p class="cs-pending-desc">90-day plan developed and delivered across operations, hiring, and product. Founder overhead reduced significantly.</p>
-          <p class="cs-pending-label" aria-label="Case study coming soon">Case study coming soon</p>
-        </div>
-      </article>
-
+    <div class="work-bridge-inner reveal">
+      <p class="work-bridge-eyebrow" aria-hidden="true">Selected work</p>
+      <h2 id="work-bridge-heading" class="work-bridge-heading">Operational systems, service redesigns, and the work behind better delivery.</h2>
+      <p class="work-bridge-body">We work closely with organisations to improve how digital services operate: from delivery structures and internal systems to service journeys, visibility, and operational clarity.</p>
+      <a href="/work/" class="work-bridge-cta">View selected work</a>
     </div>
 
     <!-- LOGO STRIP — TRUSTED THROUGH EXPERIENCE
