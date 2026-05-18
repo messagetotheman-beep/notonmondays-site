@@ -4,5 +4,10 @@ Disallow: /portal/
 Disallow: /p/
 Disallow: /demos/
 Disallow: /templates/
+Disallow: /kwc/
+Disallow: /not-on-mondays-design-system/
+Disallow: /assets/draftDesignStuff/
+Disallow: /assets/insights-visual.html
+Disallow: /index-new.html
 
-Sitemap: https://notonmondays.com/sitemap.xml
+Sitemap: https://www.notonmondays.com/sitemap.xml
