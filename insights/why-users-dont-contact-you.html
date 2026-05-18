@@ -193,6 +193,127 @@
   .footer-links { justify-content: center; gap: 1.5rem; }
 }
 
+/* ── Uncertainty gap diagram ─────────────────────── */
+.nom-diagram {
+  margin: 2.5rem 0 3rem;
+  border-top: 1px solid rgba(26,42,212,0.1);
+  padding-top: 1.25rem;
+}
+.nom-diagram-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.38);
+  margin: 0 0 1.5rem;
+}
+.nom-diagram-cols {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: start;
+}
+.nom-diagram-divider {
+  background: rgba(26,42,212,0.1);
+  align-self: stretch;
+}
+.nom-diagram-col {
+  padding: 0 2rem;
+}
+.nom-diagram-col:first-child { padding-left: 0; }
+.nom-diagram-col:last-child  { padding-right: 0; }
+.nom-diagram-col-label {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0 1.1rem;
+}
+.nom-diagram-col--muted .nom-diagram-col-label {
+  background: rgba(17,17,36,0.05);
+  color: rgba(17,17,36,0.45);
+}
+.nom-diagram-col--blue .nom-diagram-col-label {
+  background: rgba(26,42,212,0.07);
+  color: var(--blue);
+}
+.nom-diagram-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 1.75rem;
+}
+.nom-diagram-col--muted .nom-diagram-headline { color: rgba(17,17,36,0.4); }
+.nom-diagram-col--blue  .nom-diagram-headline { color: var(--dark); }
+.nom-diagram-stage { margin: 0 0 0.85rem; }
+.nom-diagram-stage-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 0.28rem;
+}
+.nom-diagram-col--muted .nom-diagram-stage-label { color: rgba(17,17,36,0.35); }
+.nom-diagram-col--blue  .nom-diagram-stage-label { color: var(--blue); }
+.nom-diagram-stage-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0;
+}
+.nom-diagram-col--muted .nom-diagram-stage-body { color: rgba(17,17,36,0.42); }
+.nom-diagram-col--blue  .nom-diagram-stage-body { color: rgba(17,17,36,0.65); }
+.nom-diagram-rule {
+  border: none;
+  border-top: 1px solid rgba(26,42,212,0.09);
+  margin: 1rem 0;
+  width: 2rem;
+}
+.nom-diagram-col--blue .nom-diagram-rule { border-color: rgba(26,42,212,0.2); }
+.nom-diagram-callout {
+  margin-top: 1.5rem;
+  padding: 0.75rem 0.9rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+.nom-diagram-callout p { margin: 0; }
+.nom-diagram-col--muted .nom-diagram-callout {
+  background: rgba(17,17,36,0.04);
+  color: rgba(17,17,36,0.42);
+}
+.nom-diagram-col--blue .nom-diagram-callout {
+  background: rgba(26,42,212,0.06);
+  color: var(--blue);
+}
+.nom-diagram-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(26,42,212,0.1);
+  padding-top: 0.85rem;
+  margin-top: 1.5rem;
+}
+.nom-diagram-footer p {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .nom-diagram-cols { grid-template-columns: 1fr; }
+  .nom-diagram-divider { height: 1px; width: 100%; margin: 1.5rem 0; }
+  .nom-diagram-col { padding: 0; }
+  .nom-diagram-footer { flex-direction: column; gap: 0.35rem; }
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -320,24 +441,61 @@
 
       </div>
 
-      <figure class="article-img" aria-label="Diagram: the uncertainty gap">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210" role="img" aria-labelledby="uncertainty-gap-title uncertainty-gap-desc" style="width:100%;max-width:400px;display:block;margin:0 auto;">
-          <title id="uncertainty-gap-title">The uncertainty gap</title>
-          <desc id="uncertainty-gap-desc">Two paths from interest to outcome. Without clarity: interest leads to uncertainty, then no contact. With clarity: interest leads to clarity, then conversation.</desc>
-          <text x="80" y="22" text-anchor="middle" font-family="'DM Mono', monospace" font-size="7.5" letter-spacing="2" fill="rgba(17,17,36,0.35)">WITHOUT CLARITY</text>
-          <text x="240" y="22" text-anchor="middle" font-family="'DM Mono', monospace" font-size="7.5" letter-spacing="2" fill="#1a2ad4">WITH CLARITY</text>
-          <line x1="160" y1="8" x2="160" y2="196" stroke="rgba(26,42,212,0.1)" stroke-width="1"/>
-          <text x="80" y="58" text-anchor="middle" font-family="'DM Mono', monospace" font-size="11" fill="rgba(17,17,36,0.4)">Interest</text>
-          <text x="80" y="80" text-anchor="middle" font-family="'DM Mono', monospace" font-size="16" fill="rgba(17,17,36,0.2)">&#8595;</text>
-          <text x="80" y="110" text-anchor="middle" font-family="'DM Mono', monospace" font-size="11" fill="rgba(17,17,36,0.4)">Uncertainty</text>
-          <text x="80" y="132" text-anchor="middle" font-family="'DM Mono', monospace" font-size="16" fill="rgba(17,17,36,0.2)">&#8595;</text>
-          <text x="80" y="162" text-anchor="middle" font-family="'DM Mono', monospace" font-size="11" fill="rgba(17,17,36,0.3)">No contact</text>
-          <text x="240" y="58" text-anchor="middle" font-family="'DM Mono', monospace" font-size="11" fill="rgba(17,17,36,0.55)">Interest</text>
-          <text x="240" y="80" text-anchor="middle" font-family="'DM Mono', monospace" font-size="16" fill="#1a2ad4">&#8595;</text>
-          <text x="240" y="110" text-anchor="middle" font-family="'DM Mono', monospace" font-size="11" fill="#1a2ad4">Clarity</text>
-          <text x="240" y="132" text-anchor="middle" font-family="'DM Mono', monospace" font-size="16" fill="#1a2ad4">&#8595;</text>
-          <text x="240" y="162" text-anchor="middle" font-family="'DM Mono', monospace" font-size="11" fill="#1a2ad4">Conversation</text>
-        </svg>
+      <figure class="article-img nom-diagram">
+        <p class="nom-diagram-header">Two paths. One decision point.</p>
+        <div class="nom-diagram-cols">
+
+          <div class="nom-diagram-col nom-diagram-col--muted">
+            <p class="nom-diagram-col-label">Without clarity</p>
+            <p class="nom-diagram-headline">Uncertainty creates distance.</p>
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Interest</p>
+              <p class="nom-diagram-stage-body">Something catches their attention.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Uncertainty</p>
+              <p class="nom-diagram-stage-body">Questions pile up. They are not sure this is the right move.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">No contact</p>
+              <p class="nom-diagram-stage-body">They step back. The moment passes.</p>
+            </div>
+            <div class="nom-diagram-callout">
+              <p>When uncertainty is high,<br>people choose silence.</p>
+            </div>
+          </div>
+
+          <div class="nom-diagram-divider" aria-hidden="true"></div>
+
+          <div class="nom-diagram-col nom-diagram-col--blue">
+            <p class="nom-diagram-col-label">With clarity</p>
+            <p class="nom-diagram-headline">Clarity creates confidence.</p>
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Interest</p>
+              <p class="nom-diagram-stage-body">Something catches their attention.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Clarity</p>
+              <p class="nom-diagram-stage-body">They understand what you do, for whom, and how to take the next step.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Conversation</p>
+              <p class="nom-diagram-stage-body">They get in touch. A relationship can begin.</p>
+            </div>
+            <div class="nom-diagram-callout">
+              <p>When clarity is high,<br>people feel safe to reach out.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="nom-diagram-footer">
+          <p>The difference is not need.</p>
+          <p>It is perspective.</p>
+        </div>
         <figcaption class="article-img-caption">Most of the gap is not a marketing problem. It is whether people feel safe enough to reach out.</figcaption>
       </figure>
 
