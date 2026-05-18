@@ -30,6 +30,162 @@ All asset paths use root-relative URLs (`/assets/nom.css`, `/assets/nomlogo400.p
 
 ---
 
+## NOM Operating Philosophy
+
+This section governs strategic and editorial decisions across all outputs. Apply it when making choices about UX, copy, service framing, information architecture, proof pages, insight articles, proposals, and operational content.
+
+It is not brand language. It is a set of decision-making principles.
+
+---
+
+### Core operating belief
+
+Most organisations do not primarily suffer from a lack of tools.
+
+They suffer from:
+
+- **Fragmentation** — work spread across disconnected systems and people
+- **Unclear ownership** — no one is accountable for the right things
+- **Operational drift** — processes that have evolved without intention
+- **Invisible user friction** — points of confusion or failure that no one has mapped
+- **Disconnected systems** — tools that do not talk to each other or to the people using them
+
+NOM exists to reduce that friction and create clearer operating environments.
+
+This belief should inform every output: UX decisions, service framing, article strategy, dashboard design, CRM thinking, platform choices, client communication, and governance structures. When in doubt about a design or copy choice, ask whether it reduces or increases fragmentation and cognitive load.
+
+---
+
+### What NOM actually sells
+
+NOM does not lead with deliverables. The value delivered is:
+
+- **Clarity** — operational, structural, informational
+- **Trust** — between teams, with clients, in the product
+- **Visibility** — into what is working, what is not, and why
+- **Operational improvement** — sustainable, not heroic
+
+Deliverables (a document, a website, a system, a plan) are evidence of this work. They are not the work itself. Frame services, proof pages, and proposals accordingly. A website is not a deliverable — it is how a business becomes legible to the people who need to understand it.
+
+---
+
+### Specialist positioning
+
+NOM is a specialist in operational clarity, not a general digital agency. Generic agency behaviour — broad service lists, vague positioning, deliverable-first framing — undermines this.
+
+Apply this principle when:
+
+- writing service descriptions or capability pages
+- framing proposals or engagement scopes
+- writing insight articles (one specific problem, developed fully)
+- deciding what to include or exclude from a proof page
+- describing what NOM does in any context
+
+Depth beats breadth. One well-framed problem is stronger than five loosely related capabilities. If copy could belong to any agency, it belongs to none.
+
+---
+
+### Cognitive load
+
+Every output — page, article, proposal, interface, form, navigation structure — should reduce cognitive load, not add to it.
+
+A user who feels confused is not ready to trust. Confusion produces exits. Clarity produces trust.
+
+Apply this as a filter on:
+
+- **Information architecture** — fewer options, clearer hierarchy
+- **Copy** — cut until only the essential remains
+- **Visual density** — whitespace is structural, not decorative
+- **Form design** — ask only what is needed, in the right order
+- **Navigation** — reflect how the buyer thinks, not how NOM is organised internally
+- **Proof pages** — orient the reader before asking them to believe anything
+
+---
+
+### Buyer psychology
+
+Buyers of operational and professional services are managing uncertainty and evaluating risk. They are not shopping. They are looking for evidence that this organisation understands their situation.
+
+This shapes how all public-facing content should be structured:
+
+- Orient the reader before asking anything of them
+- Name the problem before proposing a solution
+- Make it easy to understand what NOM does and for whom
+- Lead with the situation the buyer already has, not with NOM's capabilities
+
+A prospect who feels understood is more likely to enquire than one who has read a list of services. The site's job is not to impress — it is to make the right person feel recognised.
+
+---
+
+### Insight articles as trust infrastructure
+
+Insight articles are not for traffic generation. They are structural evidence that NOM understands the operational problems it claims to solve.
+
+When writing an insight article:
+
+- Write from demonstrated understanding, not general observation
+- Ground every claim in operational reality — avoid abstract theory
+- Develop one idea well rather than covering five points loosely
+- The reader should leave better informed, not merely impressed
+- Do not editorialise; let the analysis carry the authority
+
+See also: Default Article Structure (Mental Model).
+
+---
+
+### Calm authority
+
+NOM's voice should feel like a practitioner who has done the work, not a commentator or a salesperson.
+
+In practice:
+
+- Short, direct sentences
+- No superlatives or urgency language
+- Specific outcomes, not vague benefits
+- No unsupported assertions
+- No hedging that undercuts the point
+
+See Writing Behaviour (Non-negotiable) for the implementation rules. Apply the same standard to service copy, proof pages, proposal language, and UI text — not just articles.
+
+---
+
+### Orientation as a design principle
+
+Interfaces and communications should leave the user feeling:
+
+- **Oriented** — they know where they are and what the options are
+- **Reassured** — the organisation clearly knows what it is doing
+- **Understood** — the content speaks to their actual situation, not to a generic visitor
+
+This applies to page layout, navigation structure, heading hierarchy, dashboard design, onboarding flows, and any interface where a user is making a judgement or a decision. Disorientation produces exits and erodes trust.
+
+---
+
+### Reusable operational systems
+
+Prefer repeatable, reusable patterns over bespoke one-offs. Bespoke chaos is itself a form of fragmentation.
+
+When designing delivery systems, content structures, CRM flows, or proof page architecture, build for reuse. The NOM site itself is an example: the article system, shared nav, and CSS design tokens exist to enforce consistency. Extend them. Do not bypass them.
+
+This principle also applies to client work: a system that only one person understands is a single point of fragmentation.
+
+---
+
+### Language to avoid
+
+These categories signal generic agency thinking, not specialist operational clarity:
+
+| Category | Examples |
+|---|---|
+| Startup / hype | "seamless", "game-changing", "cutting-edge", "transformative", "innovative" |
+| Thought leadership | "the future of", "unlocking potential", "driving change", "industry-leading" |
+| Vague agency | "holistic", "end-to-end", "360-degree", "full-service", "omnichannel" |
+| Consultant bloat | "leverage", "synergies", "move the needle", "strategic alignment", "key stakeholders" |
+
+Prefer plain nouns and verbs. Specific outcomes over vague benefits. What something is over what it promises to become. If a sentence could appear in a generic agency brochure, rewrite it.
+
+---
+
 ## The shared article system
 
 `assets/nom.css` contains two things:
@@ -170,16 +326,21 @@ Claude should internally structure every article like this:
 
 ## Writing Behaviour (Non-negotiable)
 
+These rules apply to all visible copy: articles, service pages, proof pages, UI labels, CTAs, and proposals.
+
 - Use plain English
 - Keep sentences short and clear
 - Avoid buzzwords and hype
 - Avoid over-explaining
-- No em dashes
+- No em dashes in visible copy
 - No dramatic tone
 - No “thought leadership” language
+- No unsupported assertions
 
 Write like:
 > someone who has actually done the work
+
+The strategic reasoning behind these rules is in NOM Operating Philosophy — Calm Authority and Language to Avoid.
 
 ---
 
@@ -271,7 +432,7 @@ The homepage (`index.html`) is the **visual and structural source of truth** for
       <li><a href="/why-not-on-mondays">About</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/how-we-work/">How We Work</a></li>
-      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/work/">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
       <li><a href="/#contact">Contact</a></li>
     </ul>
@@ -303,7 +464,7 @@ The homepage (`index.html`) is the **visual and structural source of truth** for
       <li><a href="/why-not-on-mondays">About</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/how-we-work/">How We Work</a></li>
-      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/work/">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
       <li><a href="/#contact">Contact</a></li>
     </ul>
