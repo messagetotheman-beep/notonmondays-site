@@ -193,6 +193,127 @@
   .footer-links { justify-content: center; gap: 1.5rem; }
 }
 
+/* ── Uncertainty gap diagram ─────────────────────── */
+.nom-diagram {
+  margin: 2.5rem 0 3rem;
+  border-top: 1px solid rgba(26,42,212,0.1);
+  padding-top: 1.25rem;
+}
+.nom-diagram-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.38);
+  margin: 0 0 1.5rem;
+}
+.nom-diagram-cols {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: start;
+}
+.nom-diagram-divider {
+  background: rgba(26,42,212,0.1);
+  align-self: stretch;
+}
+.nom-diagram-col {
+  padding: 0 2rem;
+}
+.nom-diagram-col:first-child { padding-left: 0; }
+.nom-diagram-col:last-child  { padding-right: 0; }
+.nom-diagram-col-label {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0 1.1rem;
+}
+.nom-diagram-col--muted .nom-diagram-col-label {
+  background: rgba(17,17,36,0.05);
+  color: rgba(17,17,36,0.45);
+}
+.nom-diagram-col--blue .nom-diagram-col-label {
+  background: rgba(26,42,212,0.07);
+  color: var(--blue);
+}
+.nom-diagram-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 1.75rem;
+}
+.nom-diagram-col--muted .nom-diagram-headline { color: rgba(17,17,36,0.4); }
+.nom-diagram-col--blue  .nom-diagram-headline { color: var(--dark); }
+.nom-diagram-stage { margin: 0 0 0.85rem; }
+.nom-diagram-stage-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 0.28rem;
+}
+.nom-diagram-col--muted .nom-diagram-stage-label { color: rgba(17,17,36,0.35); }
+.nom-diagram-col--blue  .nom-diagram-stage-label { color: var(--blue); }
+.nom-diagram-stage-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0;
+}
+.nom-diagram-col--muted .nom-diagram-stage-body { color: rgba(17,17,36,0.42); }
+.nom-diagram-col--blue  .nom-diagram-stage-body { color: rgba(17,17,36,0.65); }
+.nom-diagram-rule {
+  border: none;
+  border-top: 1px solid rgba(26,42,212,0.09);
+  margin: 1rem 0;
+  width: 2rem;
+}
+.nom-diagram-col--blue .nom-diagram-rule { border-color: rgba(26,42,212,0.2); }
+.nom-diagram-callout {
+  margin-top: 1.5rem;
+  padding: 0.75rem 0.9rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+.nom-diagram-callout p { margin: 0; }
+.nom-diagram-col--muted .nom-diagram-callout {
+  background: rgba(17,17,36,0.04);
+  color: rgba(17,17,36,0.42);
+}
+.nom-diagram-col--blue .nom-diagram-callout {
+  background: rgba(26,42,212,0.06);
+  color: var(--blue);
+}
+.nom-diagram-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(26,42,212,0.1);
+  padding-top: 0.85rem;
+  margin-top: 1.5rem;
+}
+.nom-diagram-footer p {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .nom-diagram-cols { grid-template-columns: 1fr; }
+  .nom-diagram-divider { height: 1px; width: 100%; margin: 1.5rem 0; }
+  .nom-diagram-col { padding: 0; }
+  .nom-diagram-footer { flex-direction: column; gap: 0.35rem; }
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -276,7 +397,7 @@
       <div class="article-meta article-meta--dark">
         <time datetime="2026-05-18">May 2026</time>
         <span class="article-meta-sep" aria-hidden="true">·</span>
-        <span>5 min read</span>
+        <span>3 min read</span>
         <span class="article-meta-sep" aria-hidden="true">·</span>
         <span class="article-meta-tag">Service Design</span>
         <span class="article-meta-sep" aria-hidden="true">·</span>
@@ -301,108 +422,135 @@
   <section class="article-section article-section--light" aria-label="Article body">
     <div class="article-container">
 
-      <nav class="article-toc" aria-label="On this page">
-        <p class="article-toc-label" aria-hidden="true">On this page</p>
-        <ul class="article-toc-list">
-          <li><a href="#what-organisations-assume">What organisations usually assume</a></li>
-          <li><a href="#what-uncertainty-feels-like">What uncertainty actually looks like</a></li>
-          <li><a href="#the-website-problem">How websites make it worse</a></li>
-          <li><a href="#what-actually-helps">What actually helps</a></li>
-        </ul>
-      </nav>
-
       <div class="article-body">
 
         <div class="article-tldr">
           <p class="article-tldr-label" aria-hidden="true">Key points</p>
           <ul>
-            <li>Silence is often a signal of uncertainty, not an absence of need.</li>
-            <li>In professional services, people are often overwhelmed before they begin looking.</li>
-            <li>Many websites make that uncertainty worse, not because they are badly designed, but because they are written from the organisation's perspective rather than the user's.</li>
-            <li>The organisations that convert best are usually the clearest, not the loudest.</li>
+            <li>Silence is often uncertainty, not absence of need.</li>
+            <li>In professional services, people are often already overwhelmed when they begin looking.</li>
+            <li>Most websites are written for the organisation rather than the user.</li>
+            <li>The clearest organisations perform best. Not the loudest.</li>
           </ul>
         </div>
 
         <p class="article-lede">Most organisations assume silence means something is wrong with their marketing.</p>
         <p class="article-lede">It often means something is wrong with how they make people feel.</p>
 
-        <p>When enquiries drop, the usual explanations arrive quickly. Price is too high. The firm is not visible enough. The website needs a refresh. The marketing budget needs more.</p>
+        <p>Sometimes low enquiries are a marketing problem. But often people were interested, looked around, felt uncertain, and left. Without ever getting in touch.</p>
 
-        <p>Sometimes that is the right diagnosis. But often people were interested, looked around, felt uncertain, and left. Without ever getting in touch.</p>
+      </div>
 
-        <h2 id="what-organisations-assume">What organisations usually assume</h2>
+      <figure class="article-img nom-diagram">
+        <p class="nom-diagram-header">Two paths. One decision point.</p>
+        <div class="nom-diagram-cols">
 
-        <p>The default assumption is that contact is the natural endpoint of a successful marketing journey. People find you, they like what they see, they get in touch.</p>
+          <div class="nom-diagram-col nom-diagram-col--muted">
+            <p class="nom-diagram-col-label">Without clarity</p>
+            <p class="nom-diagram-headline">Uncertainty creates distance.</p>
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Interest</p>
+              <p class="nom-diagram-stage-body">Something catches their attention.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Uncertainty</p>
+              <p class="nom-diagram-stage-body">Questions pile up. They are not sure this is the right move.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">No contact</p>
+              <p class="nom-diagram-stage-body">They step back. The moment passes.</p>
+            </div>
+            <div class="nom-diagram-callout">
+              <p>When uncertainty is high,<br>people choose silence.</p>
+            </div>
+          </div>
 
-        <p>But that model skips something important: the moment between interest and action, when someone decides whether it is safe to reach out.</p>
+          <div class="nom-diagram-divider" aria-hidden="true"></div>
 
-        <p>In straightforward purchases, that moment is brief. In professional services, it can be the whole journey.</p>
+          <div class="nom-diagram-col nom-diagram-col--blue">
+            <p class="nom-diagram-col-label">With clarity</p>
+            <p class="nom-diagram-headline">Clarity creates confidence.</p>
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Interest</p>
+              <p class="nom-diagram-stage-body">Something catches their attention.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Clarity</p>
+              <p class="nom-diagram-stage-body">They understand what you do, for whom, and how to take the next step.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Conversation</p>
+              <p class="nom-diagram-stage-body">They get in touch. A relationship can begin.</p>
+            </div>
+            <div class="nom-diagram-callout">
+              <p>When clarity is high,<br>people feel safe to reach out.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="nom-diagram-footer">
+          <p>The difference is not need.</p>
+          <p>It is perspective.</p>
+        </div>
+        <figcaption class="article-img-caption">Most of the gap is not a marketing problem. It is whether people feel safe enough to reach out.</figcaption>
+      </figure>
+
+      <div class="article-body">
+
+        <h2 id="what-silence-signals">What silence usually signals</h2>
+
+        <p>The usual assumption is that contact follows naturally from good marketing. People find you, they like what they see, they get in touch. But that model skips the moment between interest and action, when someone decides whether it is safe to reach out. In professional services, that moment can be the whole journey.</p>
 
         <div class="article-callout">
           <p class="article-callout-label">Worth knowing</p>
           <p>Uncertainty is not the same as disinterest. It is interest that has not yet found enough safety to act.</p>
         </div>
 
-        <h2 id="what-uncertainty-feels-like">What uncertainty actually looks like</h2>
+        <p>People seeking help from a solicitor, a financial adviser or a healthcare provider are rarely starting from a calm place. They are often already anxious. Dealing with something they did not choose.</p>
 
-        <p>People seeking help from a solicitor, a financial adviser, a healthcare provider or a consultant are rarely starting from a calm place.</p>
-
-        <p>They are often already anxious. Dealing with something they did not choose. Unsure whether they are even asking the right person.</p>
-
-        <p>Before they contact anyone, they are quietly asking themselves:</p>
+        <p>Before they get in touch, they are asking:</p>
 
         <ul class="article-list">
-          <li>Is this the right kind of organisation for what I am dealing with?</li>
           <li>Will they understand my actual situation, or just the category it falls into?</li>
           <li>What happens after I get in touch?</li>
           <li>Will I feel pressured?</li>
           <li>Can I trust them?</li>
-          <li>Am I going to be out of my depth?</li>
         </ul>
 
-        <p>These are not questions about price. They are questions about safety. And most organisations are not answering them.</p>
+        <p>These are not questions about price. They are questions about safety.</p>
 
         <h2 id="the-website-problem">How websites make it worse</h2>
 
-        <p>A surprising number of websites make that uncertainty worse, not better.</p>
+        <p>Many websites make that uncertainty worse, not better. Not because they are badly designed. Because they are written from the organisation's perspective instead of the user's.</p>
 
-        <p>Not because they are badly designed. Because they are written from the organisation's perspective instead of the user's.</p>
+        <p>They list credentials. They explain the team. What they rarely do is help the user answer the questions they arrived with.</p>
 
-        <p>They describe what the firm does. They list credentials and case studies. They explain the team's experience.</p>
+        <p>The person looking for help with probate does not need the firm's history. They need to know you handle situations like theirs, what the process involves, and that getting in touch does not commit them to anything.</p>
 
-        <p>What they rarely do is help the user answer the questions they arrived with.</p>
-
-        <p>The person looking for help with probate does not need the firm's history. They need to know you handle situations like theirs. What the process involves. And that getting in touch does not commit them to anything.</p>
-
-        <p>In regulated sectors, the gap between how a firm describes itself and what users actually need to hear can be significant. In <a href="/insights/legal-digital-change">legal services in particular</a>, clients arrive already overwhelmed, and many firm websites do not reduce that feeling.</p>
-
-        <p>The result is that well-resourced, credible organisations lose work to simpler competitors who just made it easier to take the first step.</p>
+        <p>In <a href="/insights/legal-digital-change">legal services in particular</a>, this gap can be significant. Credible, well-resourced organisations lose work to simpler competitors who just made it easier to take the first step.</p>
 
         <h2 id="what-actually-helps">What actually helps</h2>
 
-        <p>The organisations that perform best digitally are often not the most sophisticated. They are the clearest.</p>
-
-        <p>They help people feel understood, safe, informed, and able to take the next step. Before a conversation even begins.</p>
-
-        <p>That means a few concrete things:</p>
+        <p>The organisations that perform best are not the most sophisticated. They are the clearest. They help people feel understood, safe, and ready to take the next step before a conversation has even begun.</p>
 
         <ul class="article-list">
-          <li>Writing for the user's situation, not the organisation's services</li>
+          <li>Writing for the user's situation, not the firm's services</li>
           <li>Answering the questions people have before they ask</li>
-          <li>Explaining what the process looks like from the user's side</li>
-          <li>Setting expectations about what happens when someone gets in touch</li>
-          <li>Making clear that the first conversation does not commit them to anything</li>
+          <li>Making clear the first conversation does not commit them to anything</li>
+          <li>Setting expectations about what comes next</li>
         </ul>
 
         <p>None of this requires a large programme. Most of it is writing. Some of it is structure. All of it is about perspective.</p>
 
-        <p>It also connects to something deeper in how organisations are run. Where clarity is missing on the outside, it is often because something in the <a href="/insights/operating-layer">operating layer</a> has not been resolved internally. When organisations are not clear about what they offer, that tends to show up in how they talk about themselves.</p>
+        <p>Where clarity is missing on the outside, it is often because the <a href="/insights/operating-layer">operating layer</a> has not been resolved internally. When organisations are not clear about what they offer, that tends to show up in how they talk about themselves.</p>
 
         <blockquote>
           <p>The question is not whether people need what you offer. The question is whether they feel safe enough to ask.</p>
         </blockquote>
-
-        <p>That is the gap most organisations are not measuring. Traffic numbers, page views, even enquiry rates can all look reasonable while interested people leave without ever getting in touch.</p>
 
         <p>The fix starts with understanding what your website communicates to someone who does not already know you. That is often a different picture from what the organisation assumes.</p>
 
