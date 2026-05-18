@@ -212,7 +212,122 @@
   font-weight: 300;
 }
 
-/* ── SECONDARY PROOF ──────────────────────────────── */
+/* ── PROOF ARTEFACT ─────────────────────────────── */
+.work-proof {
+  max-width: 1100px;
+  margin: 3.5rem auto 0;
+  padding: 2rem 2.5rem 2.25rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.02);
+}
+.work-proof-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.work-proof-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.4);
+}
+.work-proof-scale {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26,42,212,0.65);
+}
+.work-proof-grid {
+  display: grid;
+  grid-template-columns: 150px repeat(10, 1fr);
+  column-gap: 4px;
+  row-gap: 4px;
+  align-items: center;
+}
+.work-proof-row-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.5);
+}
+.work-proof-week-head {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 0.06em;
+  color: rgba(242,240,232,0.22);
+  text-align: center;
+  padding-bottom: 4px;
+}
+.work-proof-cell {
+  height: 16px;
+  border-radius: 1px;
+}
+.work-proof-cell--none { background: rgba(242,240,232,0.04); }
+.work-proof-cell--ok   { background: rgba(89,130,68,0.58); }
+.work-proof-cell--go   { background: rgba(26,42,212,0.62); }
+.work-proof-cell--warn { background: rgba(185,150,50,0.62); }
+.work-proof-cell--bad  { background: rgba(165,78,55,0.62); }
+.work-proof-cap {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.22);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.work-proof-cap em { color: rgba(242,240,232,0.42); font-style: normal; }
+
+/* ── INTERSTITIAL ──────────────────────────────── */
+.work-interstitial {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 4rem;
+}
+.work-interstitial-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.work-interstitial-frame {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.18);
+}
+.work-interstitial-caption {
+  margin-top: 0.9rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+}
+
+/* ── SECONDARY / ALSO ─────────────────────────── */
 .work-secondary {
   background: var(--warm-white);
   padding: 5rem 4rem;
@@ -230,16 +345,11 @@
   color: var(--muted);
   margin-bottom: 3rem;
 }
-.work-secondary-grid {
+.work-also-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5px;
-  background: rgba(26,42,212,0.08);
-}
-.work-secondary-card {
-  background: var(--warm-white);
-  padding: 2.2rem;
-  grid-column: 1 / -1;
+  grid-template-columns: 1fr 380px;
+  gap: 5rem;
+  align-items: start;
 }
 .work-secondary-card-tag {
   font-family: 'DM Mono', monospace;
@@ -281,6 +391,74 @@
 .work-secondary-card-link:focus-visible { color: var(--dark); border-color: var(--dark); }
 .work-secondary-card-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
+/* ── PREVIEW CARD STACK ────────────────────────── */
+.work-preview-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.32);
+  margin: 0 0 0.9rem;
+}
+.work-preview-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(26,42,212,0.07);
+  border: 1px solid rgba(26,42,212,0.07);
+}
+.work-pcard {
+  background: var(--warm-white);
+  padding: 1.4rem 1.3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.work-pcard-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+}
+.work-pcard h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--dark);
+  margin: 0;
+}
+.work-pcard p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--muted);
+  font-weight: 300;
+  margin: 0;
+}
+.work-preview-foot {
+  border: 1px solid rgba(26,42,212,0.07);
+  border-top: none;
+  padding: 0.85rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.32);
+}
+.work-preview-foot a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.work-preview-foot a:hover,
+.work-preview-foot a:focus-visible { color: var(--dark); }
+.work-preview-foot a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
 /* ── FOOTER ──────────────────────────────────────── */
 .site-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
 .footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
@@ -301,16 +479,23 @@
   .work-hero { padding: calc(72px + 2.5rem) 1.5rem 2.5rem; }
   .work-featured { padding: 0 1.5rem 4rem; }
   .work-featured-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+  .work-proof { padding: 1.5rem; }
+  .work-proof-grid { grid-template-columns: 110px repeat(10, 1fr); }
+  .work-interstitial { padding: 3rem 1.5rem; }
   .work-secondary { padding: 4rem 1.5rem; }
-  .work-secondary-grid { grid-template-columns: 1fr; }
+  .work-also-grid { grid-template-columns: 1fr; gap: 3rem; }
   .site-footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   .footer-links { justify-content: center; gap: 1.5rem; }
 }
 
 @media (max-width: 640px) {
-  .work-secondary-grid { background: none; gap: 0; }
-  .work-secondary-card { border-bottom: 1px solid rgba(26,42,212,0.08); padding: 2rem 0; background: none; }
-  .work-secondary-card:last-child { border-bottom: none; }
+  .work-proof { padding: 1.25rem; }
+  .work-proof-grid { grid-template-columns: 70px repeat(10, 1fr); column-gap: 3px; }
+  .work-proof-row-label { font-size: 0.38rem; }
+  .work-proof-cell { height: 13px; }
+  .work-proof-cap { font-size: 0.4rem; }
+  .work-interstitial { padding: 2.5rem 1.5rem; }
+  .work-preview-stack { grid-template-columns: 1fr; }
 }
 
 </style>
@@ -425,20 +610,162 @@
       </aside>
 
     </div>
+
+    <!-- PROOF ARTEFACT: status rollup -->
+    <figure class="work-proof" aria-label="Engagement status rollup: six operational streams over the first ten weeks">
+      <div class="work-proof-head">
+        <span class="work-proof-label">How the work ran &#xB7; first ten weeks</span>
+        <span class="work-proof-scale">Six streams</span>
+      </div>
+      <div class="work-proof-grid" aria-hidden="true">
+        <!-- week headers -->
+        <div></div>
+        <div class="work-proof-week-head">W1</div>
+        <div class="work-proof-week-head">W2</div>
+        <div class="work-proof-week-head">W3</div>
+        <div class="work-proof-week-head">W4</div>
+        <div class="work-proof-week-head">W5</div>
+        <div class="work-proof-week-head">W6</div>
+        <div class="work-proof-week-head">W7</div>
+        <div class="work-proof-week-head">W8</div>
+        <div class="work-proof-week-head">W9</div>
+        <div class="work-proof-week-head">W10</div>
+        <!-- Direction -->
+        <div class="work-proof-row-label">Direction</div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--warn"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <!-- Delivery -->
+        <div class="work-proof-row-label">Delivery</div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--warn"></div>
+        <div class="work-proof-cell work-proof-cell--warn"></div>
+        <div class="work-proof-cell work-proof-cell--bad"></div>
+        <div class="work-proof-cell work-proof-cell--warn"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <!-- Product -->
+        <div class="work-proof-row-label">Product</div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--go"></div>
+        <div class="work-proof-cell work-proof-cell--go"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--warn"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <!-- Engineering -->
+        <div class="work-proof-row-label">Engineering</div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--bad"></div>
+        <div class="work-proof-cell work-proof-cell--warn"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--go"></div>
+        <!-- Growth -->
+        <div class="work-proof-row-label">Growth</div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--warn"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <!-- Systems -->
+        <div class="work-proof-row-label">Systems</div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--none"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+        <div class="work-proof-cell work-proof-cell--ok"></div>
+      </div>
+      <figcaption class="work-proof-cap">
+        <span>Internal artefact &#xB7; first ten weeks</span>
+        <span><em>On track</em> &#xB7; <em>In flight</em> &#xB7; <em>Watching</em> &#xB7; <em>Intervened</em></span>
+      </figcaption>
+    </figure>
+
   </section>
 
-  <!-- SECONDARY: LATCHMERE -->
+  <!-- OBJECT BREAK -->
+  <section class="work-interstitial" aria-label="Object break">
+    <div class="work-interstitial-inner">
+      <div class="work-interstitial-frame" role="img" aria-label="Photograph placeholder — an artefact from the work">
+        Image
+      </div>
+      <p class="work-interstitial-caption">
+        <span>An artefact, not an illustration</span>
+        <span>The work itself, photographed quietly</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- SECONDARY: LATCHMERE (evolved) -->
   <section class="work-secondary" aria-label="Further selected work">
     <div class="work-secondary-inner">
       <p class="work-secondary-label" aria-hidden="true">Also</p>
-      <div class="work-secondary-grid">
+      <div class="work-also-grid">
 
-        <article class="work-secondary-card" aria-labelledby="cs-latchmere-heading">
+        <div>
           <p class="work-secondary-card-tag">Legal client journeys &#xB7; Service design &#xB7; Digital experience</p>
           <h2 id="cs-latchmere-heading" class="work-secondary-card-title">What clients need before they contact a law firm</h2>
           <p class="work-secondary-card-body">A concept walkthrough showing how clearer digital journeys can reduce uncertainty, improve trust, and create better first conversations.</p>
           <a href="/proof/what-clients-need-before-they-contact-a-law-firm/" class="work-secondary-card-link">View the concept walkthrough</a>
-        </article>
+        </div>
+
+        <aside aria-label="Preview of the walkthrough">
+          <p class="work-preview-label">Inside the walkthrough</p>
+          <div class="work-preview-stack">
+            <article class="work-pcard" aria-labelledby="pcard-divorce">
+              <p class="work-pcard-tag">Family law</p>
+              <h3 id="pcard-divorce">Divorce and separation</h3>
+              <p>For couples ending a marriage or civil partnership.</p>
+            </article>
+            <article class="work-pcard" aria-labelledby="pcard-property">
+              <p class="work-pcard-tag">Property</p>
+              <h3 id="pcard-property">Buying or selling a home</h3>
+              <p>The legal side of property and shared ownership.</p>
+            </article>
+            <article class="work-pcard" aria-labelledby="pcard-employment">
+              <p class="work-pcard-tag">Employment</p>
+              <h3 id="pcard-employment">Employment problems</h3>
+              <p>Unfair dismissal, discrimination, and disputes.</p>
+            </article>
+            <article class="work-pcard" aria-labelledby="pcard-wills">
+              <p class="work-pcard-tag">Estate planning</p>
+              <h3 id="pcard-wills">Wills and probate</h3>
+              <p>Writing a will, power of attorney, and estates.</p>
+            </article>
+          </div>
+          <div class="work-preview-foot">
+            <span>Four of nine journeys</span>
+            <a href="/proof/what-clients-need-before-they-contact-a-law-firm/" aria-label="See all journeys in the Latchmere walkthrough">See all</a>
+          </div>
+        </aside>
 
       </div>
     </div>
