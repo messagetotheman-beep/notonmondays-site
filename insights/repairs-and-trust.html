@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Repairs are rarely the whole problem | Not On Mondays</title>
+<meta name="description" content="In social housing, residents often lose trust long before a complaint is filed. The visible issue is a repair. The real problem is operational fragmentation.">
+<link rel="canonical" href="https://www.notonmondays.com/insights/repairs-and-trust">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.notonmondays.com/insights/repairs-and-trust">
+<meta property="og:title" content="Repairs are rarely the whole problem | Not On Mondays">
+<meta property="og:description" content="In housing, residents often lose trust long before a complaint is filed. The visible issue is a repair. The real problem is operational fragmentation.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+<meta property="article:published_time" content="2026-05-20T00:00:00+00:00">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/insights/repairs-and-trust">
+<meta name="twitter:title" content="Repairs are rarely the whole problem | Not On Mondays">
+<meta name="twitter:description" content="In housing, residents often lose trust long before a complaint is filed.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ───────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ──────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── Mobile nav ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+/* =====================================================
+   PAGE-SPECIFIC: comparison table, flow diagram, moments
+   None of these classes are in nom.css — they are new
+   patterns scoped to this article only.
+   ===================================================== */
+
+/* ── Comparison table ────────────────────────────── */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0 2.5rem;
+}
+.comparison-table thead th {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.1rem;
+  text-align: left;
+  border-bottom: 2px solid rgba(26,42,212,0.15);
+  font-weight: 300;
+}
+.comparison-table thead th:first-child { color: var(--blue); }
+.comparison-table thead th:last-child  { color: var(--muted); }
+.comparison-table tbody tr {
+  border-bottom: 1px solid rgba(26,42,212,0.07);
+}
+.comparison-table tbody tr:last-child { border-bottom: none; }
+.comparison-table tbody td {
+  padding: 0.9rem 1.1rem;
+  vertical-align: top;
+  font-weight: 300;
+}
+.comparison-table tbody td:first-child {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--dark);
+  width: 55%;
+}
+.comparison-table tbody td:last-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  color: var(--muted);
+  padding-top: 0.95rem;
+}
+@media (max-width: 580px) {
+  .comparison-table thead { display: none; }
+  .comparison-table tbody tr { display: block; padding: 1rem 0; border-bottom: 1px solid rgba(26,42,212,0.07); }
+  .comparison-table tbody td { display: block; padding: 0.25rem 0; width: 100%; }
+  .comparison-table tbody td:first-child::before {
+    content: 'Resident says';
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-style: normal;
+    margin-bottom: 0.2rem;
+  }
+  .comparison-table tbody td:last-child::before {
+    content: 'Organisation sees';
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* ── Flow diagram ────────────────────────────────── */
+.flow-diagram {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 2.5rem;
+  max-width: 420px;
+}
+.flow-diagram-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.flow-step {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.flow-step-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 20px;
+  padding-top: 0.2rem;
+}
+.flow-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+.flow-step--warn .flow-step-dot  { background: rgba(181,90,61,0.6); }
+.flow-step--break .flow-step-dot { background: var(--dark); }
+.flow-step-line {
+  width: 1px;
+  flex: 1;
+  background: rgba(26,42,212,0.15);
+  margin-top: 3px;
+  min-height: 20px;
+}
+.flow-step--warn .flow-step-line { background: rgba(181,90,61,0.15); }
+.flow-step:last-child .flow-step-line { display: none; }
+.flow-step-content {
+  padding: 0 0 1.1rem 0.75rem;
+  flex: 1;
+}
+.flow-step-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--dark);
+}
+.flow-step--warn .flow-step-text { color: var(--mid); }
+.flow-step--break .flow-step-text {
+  color: var(--dark);
+  font-weight: 400;
+}
+.flow-step-note {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(181,90,61,0.65);
+}
+
+/* ── Moments ─────────────────────────────────────── */
+.moments-section {
+  margin: 3.5rem 0 2rem;
+}
+.moment {
+  padding: 3rem 0;
+  border-top: 1px solid rgba(26,42,212,0.1);
+}
+.moment:first-child { border-top: none; padding-top: 0; }
+.moment-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+.moment-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  flex-shrink: 0;
+  padding-top: 0.2rem;
+}
+.moment-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--dark);
+}
+.moment-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+@media (min-width: 640px) {
+  .moment-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+.moment-artefact {
+  background: var(--warm-white);
+  border: 1px solid rgba(26,42,212,0.1);
+  padding: 1.5rem;
+}
+.moment-artefact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+  display: block;
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+  padding-bottom: 0.75rem;
+}
+.moment-body p {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--mid);
+  font-weight: 300;
+  margin-bottom: 0.85rem;
+}
+.moment-body p:last-child { margin-bottom: 0; }
+.moment-insight {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-left: 2px solid var(--blue);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  line-height: 1.65;
+}
+
+/* Ticket mockup */
+.mock-ticket {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.mock-ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(26,42,212,0.07);
+}
+.mock-ticket-row:last-child { border-bottom: none; }
+.mock-ticket-key { color: var(--muted); flex-shrink: 0; }
+.mock-ticket-val { color: var(--dark); text-align: right; }
+.mock-ticket-val--unknown { color: rgba(26,42,212,0.35); font-style: italic; }
+.mock-ticket-val--warn { color: rgba(181,90,61,0.85); }
+
+/* Ownership diagram */
+.mock-ownership {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.mock-owner-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.mock-owner-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--muted);
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.mock-owner-status {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  color: var(--dark);
+}
+.mock-owner-status em {
+  display: block;
+  font-style: normal;
+  color: rgba(181,90,61,0.8);
+  font-size: 0.5rem;
+  margin-top: 0.15rem;
+}
+
+/* Timeline mockup */
+.mock-timeline {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+}
+.mock-timeline-event {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+}
+.mock-timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+}
+.mock-timeline-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+.mock-timeline-dot--gap { background: rgba(26,42,212,0.18); }
+.mock-timeline-dot--warn { background: rgba(181,90,61,0.7); }
+.mock-timeline-connector {
+  width: 1px;
+  height: 16px;
+  background: rgba(26,42,212,0.12);
+  margin-top: 2px;
+}
+.mock-timeline-connector--gap { background: rgba(26,42,212,0.06); border-left: 1px dashed rgba(26,42,212,0.18); width: 0; }
+.mock-timeline-text { line-height: 1.4; }
+.mock-timeline-day { color: var(--muted); margin-right: 0.5rem; }
+.mock-timeline-desc { color: var(--dark); }
+.mock-timeline-desc--gap { color: rgba(26,42,212,0.35); font-style: italic; }
+.mock-timeline-desc--warn { color: rgba(181,90,61,0.85); }
+.mock-timeline-gap-block {
+  border: 1px dashed rgba(26,42,212,0.15);
+  padding: 0.65rem 0.75rem;
+  margin: 0.2rem 0;
+  color: rgba(26,42,212,0.35);
+  font-style: italic;
+  line-height: 1.5;
+  font-size: 0.52rem;
+}
+
+/* ── Sector note on CTA ──────────────────────────── */
+.article-cta-sector {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+/* ── Related cards override — 2-up on desktop ────── */
+@media (min-width: 900px) {
+  .article-cards--two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Repairs are rarely the whole problem",
+  "description": "In social housing, residents often lose trust long before a complaint is filed. The visible issue is a repair. The real problem is operational fragmentation.",
+  "image": "https://www.notonmondays.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "datePublished": "2026-05-20",
+  "dateModified": "2026-05-20",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.notonmondays.com/insights/repairs-and-trust"
+  },
+  "url": "https://www.notonmondays.com/insights/repairs-and-trust"
+}
+</script>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/" aria-current="page">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+
+<main id="main-content" class="article-layout">
+
+  <!-- HERO -->
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="article-hero-inner">
+
+      <a href="/insights/" class="article-back-link" aria-label="Back to Insights">← Insights</a>
+
+      <p class="article-hero-eyebrow" aria-hidden="true">Housing · Operations · Service Design</p>
+
+      <h1 id="article-heading" class="article-hero-headline">
+        Repairs are rarely<br><em>the whole problem</em>
+      </h1>
+
+      <p class="article-hero-standfirst">
+        In housing, residents often lose trust long before a complaint is filed.
+      </p>
+
+      <div class="article-meta article-meta--dark">
+        <time datetime="2026-05-20">May 2026</time>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span>7 min read</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Housing</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Operations</span>
+      </div>
+
+      <div class="article-share" data-share-text="Residents do not lose trust when the repair fails. They lose it in the silence, the handoffs, and the moments no one is clearly watching.">
+        <span class="article-share-label">Share</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-x" href="#" target="_blank" rel="noopener noreferrer">X</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-linkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <button class="article-share-link article-share-copy" id="share-copy" type="button">Copy link</button>
+        <span class="article-share-feedback" aria-live="polite" aria-atomic="true"></span>
+      </div>
+
+    </div>
+  </section>
+  <!-- /HERO -->
+
+
+  <section class="article-section article-section--light" aria-label="Article body">
+    <div class="article-container">
+
+      <!-- TOC -->
+      <nav class="article-toc" aria-label="On this page">
+        <p class="article-toc-label" aria-hidden="true">On this page</p>
+        <ul class="article-toc-list">
+          <li><a href="#the-pattern">The pattern</a></li>
+          <li><a href="#moments">Three moments</a></li>
+          <li><a href="#evidence">What the data shows</a></li>
+          <li><a href="#where-to-look">Where to look</a></li>
+        </ul>
+      </nav>
+      <!-- /TOC -->
+
+
+      <!-- Opening -->
+      <div class="article-body">
+
+        <p class="article-lede">Residents usually know whether a repair will be fixed. What they often do not know is what happens next, who is responsible, and whether anyone is watching.</p>
+
+        <p>That uncertainty is where trust starts to break.</p>
+
+        <p>The repair itself is the thing that triggers contact: the leak, the heating, the door that does not close. But the complaint that follows is rarely about the repair alone. It is about the silence afterwards, the repeated calls, the handoff nobody told them about, and the feeling that no one is actually holding the thread.</p>
+
+        <!-- TL;DR -->
+        <div class="article-tldr">
+          <p class="article-tldr-label" aria-hidden="true">Key points</p>
+          <ul>
+            <li>Most resident complaints about repairs are not really about the repair itself.</li>
+            <li>Trust breaks earlier: when no one updates, when ownership is unclear, when residents have to chase or repeat themselves.</li>
+            <li>This is an operational problem, not just a customer service one.</li>
+            <li>The Housing Ombudsman upheld 73% of property condition complaints in 2024/25. The pattern is not rare or isolated.</li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- /opening -->
+
+
+      <!-- THE PATTERN -->
+      <div class="article-body">
+        <h2 id="the-pattern">The pattern</h2>
+
+        <p>There is a consistent gap between what residents experience and what the organisation sees. Neither is wrong, exactly. They are just looking at different things.</p>
+
+      </div>
+
+      <!-- Comparison table — sits within article-body prose width -->
+      <div class="article-body">
+        <table class="comparison-table" aria-label="Gap between resident experience and what the organisation records">
+          <thead>
+            <tr>
+              <th scope="col">What the resident experiences</th>
+              <th scope="col">What the organisation records</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"Nobody updated me"</td>
+              <td>Job logged correctly</td>
+            </tr>
+            <tr>
+              <td>"I keep repeating myself"</td>
+              <td>Case transferred</td>
+            </tr>
+            <tr>
+              <td>"No one owns this"</td>
+              <td>Awaiting contractor response</td>
+            </tr>
+            <tr>
+              <td>"I had to call six times"</td>
+              <td>Six contact attempts recorded</td>
+            </tr>
+            <tr>
+              <td>"They knew about this for weeks"</td>
+              <td>Follow-up scheduled</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The records are accurate. The process was followed. And the resident still feels abandoned. That gap is not a communications failure. It is an operational one.</p>
+
+      </div>
+      <!-- /comparison table -->
+
+
+      <!-- FLOW DIAGRAM -->
+      <div class="article-body">
+
+        <h3>How a repair becomes a complaint</h3>
+
+        <p>The sequence below is not a worst-case scenario. It is the ordinary path when ownership is fragmented and there is no one watching the whole.</p>
+
+        <p class="flow-diagram-label" aria-hidden="true">Typical escalation sequence</p>
+        <ol class="flow-diagram" aria-label="How a repair typically escalates into a complaint: seven steps from report to trust collapse">
+          <li class="flow-step">
+            <div class="flow-step-connector" aria-hidden="true">
+              <span class="flow-step-dot"></span>
+              <span class="flow-step-line"></span>
+            </div>
+            <div class="flow-step-content">
+              <span class="flow-step-text">Resident reports issue</span>
+            </div>
+          </li>
+          <li class="flow-step">
+            <div class="flow-step-connector" aria-hidden="true">
+              <span class="flow-step-dot"></span>
+              <span class="flow-step-line"></span>
+            </div>
+            <div class="flow-step-content">
+              <span class="flow-step-text">Repairs team logs ticket</span>
+            </div>
+          </li>
+          <li class="flow-step">
+            <div class="flow-step-connector" aria-hidden="true">
+              <span class="flow-step-dot"></span>
+              <span class="flow-step-line"></span>
+            </div>
+            <div class="flow-step-content">
+              <span class="flow-step-text">Contractor assigned</span>
+            </div>
+          </li>
+          <li class="flow-step flow-step--warn">
+            <div class="flow-step-connector" aria-hidden="true">
+              <span class="flow-step-dot flow-step-dot--warn"></span>
+              <span class="flow-step-line"></span>
+            </div>
+            <div class="flow-step-content">
+              <span class="flow-step-text">Housing officer unaware <span class="flow-step-note">handoff without notification</span></span>
+            </div>
+          </li>
+          <li class="flow-step flow-step--warn">
+            <div class="flow-step-connector" aria-hidden="true">
+              <span class="flow-step-dot flow-step-dot--warn"></span>
+              <span class="flow-step-line"></span>
+            </div>
+            <div class="flow-step-content">
+              <span class="flow-step-text">Resident chases <span class="flow-step-note">no proactive contact in 18 days</span></span>
+            </div>
+          </li>
+          <li class="flow-step flow-step--warn">
+            <div class="flow-step-connector" aria-hidden="true">
+              <span class="flow-step-dot flow-step-dot--warn"></span>
+              <span class="flow-step-line"></span>
+            </div>
+            <div class="flow-step-content">
+              <span class="flow-step-text">Complaint created</span>
+            </div>
+          </li>
+          <li class="flow-step flow-step--break">
+            <div class="flow-step-connector" aria-hidden="true">
+              <span class="flow-step-dot"></span>
+            </div>
+            <div class="flow-step-content">
+              <span class="flow-step-text">Trust collapses</span>
+            </div>
+          </li>
+        </ol>
+
+        <p>The repair may eventually be completed. The complaint has already been filed. And the trust that was there at the start is gone.</p>
+
+      </div>
+      <!-- /flow diagram -->
+
+
+      <!-- THREE MOMENTS -->
+      <div class="article-body">
+        <h2 id="moments">Three moments</h2>
+        <p>Trust does not collapse at once. It erodes in specific moments. Here are three that appear consistently.</p>
+      </div>
+
+      <div class="moments-section" aria-label="Three moments where trust breaks down">
+
+        <!-- Moment 1: Uncertainty -->
+        <div class="moment" aria-labelledby="moment-1-label">
+          <div class="moment-header">
+            <span class="moment-number" id="moment-1-label" aria-label="Moment 1">01</span>
+            <h3 class="moment-label">Uncertainty</h3>
+          </div>
+          <div class="moment-layout">
+
+            <div class="moment-artefact" role="img" aria-label="System ticket showing status unknown, last updated 22 days ago, next contact not scheduled">
+              <span class="moment-artefact-label">Repair ticket: resident view</span>
+              <div class="mock-ticket">
+                <div class="mock-ticket-row">
+                  <span class="mock-ticket-key">Ref</span>
+                  <span class="mock-ticket-val">REP-2024-8847</span>
+                </div>
+                <div class="mock-ticket-row">
+                  <span class="mock-ticket-key">Issue</span>
+                  <span class="mock-ticket-val">Boiler — no hot water</span>
+                </div>
+                <div class="mock-ticket-row">
+                  <span class="mock-ticket-key">Reported</span>
+                  <span class="mock-ticket-val">3 Oct</span>
+                </div>
+                <div class="mock-ticket-row">
+                  <span class="mock-ticket-key">Status</span>
+                  <span class="mock-ticket-val mock-ticket-val--unknown">In progress</span>
+                </div>
+                <div class="mock-ticket-row">
+                  <span class="mock-ticket-key">Last updated</span>
+                  <span class="mock-ticket-val mock-ticket-val--warn">22 days ago</span>
+                </div>
+                <div class="mock-ticket-row">
+                  <span class="mock-ticket-key">Next contact</span>
+                  <span class="mock-ticket-val mock-ticket-val--unknown">Not scheduled</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="moment-body">
+              <p>A repair is reported. A ticket is raised. From that point, most residents receive nothing.</p>
+              <p>Not because nothing is happening. Often something is: the contractor has been assigned, a visit is being arranged. But the resident does not know that.</p>
+              <p>What they experience is silence. And silence, when your home is affected, reads as absence.</p>
+              <p>The status field says "in progress." It has said that for three weeks. That is not an update. It is the shape of uncertainty.</p>
+              <div class="moment-insight" aria-label="Key insight">Residents do not need constant updates. They need to know someone is watching.</div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /Moment 1 -->
+
+        <!-- Moment 2: Ownership -->
+        <div class="moment" aria-labelledby="moment-2-label">
+          <div class="moment-header">
+            <span class="moment-number" id="moment-2-label" aria-label="Moment 2">02</span>
+            <h3 class="moment-label">Ownership</h3>
+          </div>
+          <div class="moment-layout">
+
+            <div class="moment-artefact" role="img" aria-label="Three parties — repairs team, contractor, housing officer — each with an incomplete view of who owns the next step">
+              <span class="moment-artefact-label">Who owns this? Internal view</span>
+              <div class="mock-ownership">
+                <div class="mock-owner-row">
+                  <span class="mock-owner-badge">Repairs team</span>
+                  <span class="mock-owner-status">
+                    Job assigned to contractor
+                    <em>No further action expected</em>
+                  </span>
+                </div>
+                <div class="mock-owner-row">
+                  <span class="mock-owner-badge">Contractor</span>
+                  <span class="mock-owner-status">
+                    Access not confirmed
+                    <em>Waiting on housing officer</em>
+                  </span>
+                </div>
+                <div class="mock-owner-row">
+                  <span class="mock-owner-badge">Housing officer</span>
+                  <span class="mock-owner-status">
+                    No referral received
+                    <em>Unaware of open job</em>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="moment-body">
+              <p>When a repair crosses teams or contractors, ownership rarely transfers cleanly.</p>
+              <p>The repairs team considers the job dispatched. The housing officer has not been notified. The contractor is waiting for access confirmation that no one has requested. All three believe someone else is responsible for the next step.</p>
+              <p>The resident is not in any of those systems. They are in their home, waiting for a call that none of the three parties knows they should make.</p>
+              <div class="moment-insight" aria-label="Key insight">Handoffs without clear ownership create gaps that residents end up filling themselves.</div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /Moment 2 -->
+
+        <!-- Moment 3: Silence between stages -->
+        <div class="moment" aria-labelledby="moment-3-label">
+          <div class="moment-header">
+            <span class="moment-number" id="moment-3-label" aria-label="Moment 3">03</span>
+            <h3 class="moment-label">Silence between stages</h3>
+          </div>
+          <div class="moment-layout">
+
+            <div class="moment-artefact" role="img" aria-label="Timeline showing: Day 1 issue reported, Day 3 contractor assigned internally with no resident notification, then a 14-day gap, Day 17 resident calls to chase, Day 19 complaint created">
+              <span class="moment-artefact-label">Timeline: repair to complaint</span>
+              <div class="mock-timeline">
+                <div class="mock-timeline-event">
+                  <div class="mock-timeline-marker" aria-hidden="true">
+                    <span class="mock-timeline-dot"></span>
+                    <span class="mock-timeline-connector"></span>
+                  </div>
+                  <span class="mock-timeline-text">
+                    <span class="mock-timeline-day">Day 1</span>
+                    <span class="mock-timeline-desc">Issue reported by resident</span>
+                  </span>
+                </div>
+                <div class="mock-timeline-event">
+                  <div class="mock-timeline-marker" aria-hidden="true">
+                    <span class="mock-timeline-dot"></span>
+                    <span class="mock-timeline-connector"></span>
+                  </div>
+                  <span class="mock-timeline-text">
+                    <span class="mock-timeline-day">Day 3</span>
+                    <span class="mock-timeline-desc">Contractor assigned (internal only)</span>
+                  </span>
+                </div>
+                <div class="mock-timeline-event" aria-hidden="true">
+                  <div class="mock-timeline-marker">
+                    <span class="mock-timeline-dot mock-timeline-dot--gap"></span>
+                    <span class="mock-timeline-connector mock-timeline-connector--gap"></span>
+                  </div>
+                  <div class="mock-timeline-gap-block" aria-hidden="true">No resident contact<br>Days 3 to 17</div>
+                </div>
+                <div class="mock-timeline-event">
+                  <div class="mock-timeline-marker" aria-hidden="true">
+                    <span class="mock-timeline-dot mock-timeline-dot--warn"></span>
+                    <span class="mock-timeline-connector"></span>
+                  </div>
+                  <span class="mock-timeline-text">
+                    <span class="mock-timeline-day">Day 17</span>
+                    <span class="mock-timeline-desc mock-timeline-desc--warn">Resident calls to chase</span>
+                  </span>
+                </div>
+                <div class="mock-timeline-event">
+                  <div class="mock-timeline-marker" aria-hidden="true">
+                    <span class="mock-timeline-dot mock-timeline-dot--warn"></span>
+                  </div>
+                  <span class="mock-timeline-text">
+                    <span class="mock-timeline-day">Day 19</span>
+                    <span class="mock-timeline-desc mock-timeline-desc--warn">Complaint created</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="moment-body">
+              <p>The gap between stages is often where trust is lost, not in any single failure.</p>
+              <p>No one decides to leave a resident without contact for two weeks. It happens because each part of the process considers its own step complete, and no one is watching the whole journey.</p>
+              <p>When the resident eventually calls, they are already frustrated. The organisation receives that as a complaint. But the complaint was not created on day 19. It started on day 3, in the silence that followed a handoff nobody communicated.</p>
+              <div class="moment-insight" aria-label="Key insight">The gap between stages is not empty. It is where the resident is waiting.</div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /Moment 3 -->
+
+      </div>
+      <!-- /THREE MOMENTS -->
+
+
+      <!-- EVIDENCE STRIP -->
+      <div class="article-body">
+        <h2 id="evidence">What the data shows</h2>
+        <p>The Housing Ombudsman publishes detailed annual complaint reviews. The 2024/25 figures, released this year, show a pattern that is not exceptional. It is the norm.</p>
+      </div>
+
+      <div class="article-stat-cards" role="group" aria-label="Housing Ombudsman data 2024 to 2025">
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Volume</p>
+          <p class="article-stat-card-number">7,082</p>
+          <p class="article-stat-card-subtext">Formal determinations made in 2024/25, up 30% on the previous year.</p>
+          <p class="article-stat-card-source">Housing Ombudsman, Annual Complaints Review 2024-25</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">A growing caseload</h3>
+          <p class="article-stat-card-body">The increase reflects more residents escalating complaints, and improvements in the Ombudsman's own capacity to process cases.</p>
+        </div>
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Repairs upheld</p>
+          <p class="article-stat-card-number">73%</p>
+          <p class="article-stat-card-subtext">Of property condition complaints were upheld. The category includes repairs, leaks, damp and heating failures.</p>
+          <p class="article-stat-card-source">Housing Ombudsman, Annual Complaints Review 2024-25</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">Found in the resident's favour</h3>
+          <p class="article-stat-card-body">Not all complaints reach the Ombudsman. These are the cases that did, and three quarters were decided against the landlord.</p>
+        </div>
+
+        <div class="article-stat-card">
+          <p class="article-stat-card-label">Property condition</p>
+          <p class="article-stat-card-number">5,839</p>
+          <p class="article-stat-card-subtext">Property condition findings in 2024/25, up 43% from 4,092 the previous year.</p>
+          <p class="article-stat-card-source">Housing Ombudsman, Annual Complaints Review 2024-25</p>
+          <hr class="article-stat-card-rule" aria-hidden="true">
+          <h3 class="article-stat-card-heading">The largest category</h3>
+          <p class="article-stat-card-body">The Ombudsman noted the rise outpaced the overall 30% increase in caseload, driven by leaks, damp, mould and heating failures, many linked to protracted repairs handling.</p>
+        </div>
+
+      </div>
+      <!-- /EVIDENCE STRIP -->
+
+
+      <!-- Newsletter signup -->
+      <div class="article-signup">
+        <p class="article-signup-eyebrow" aria-hidden="true">Notes from Not On Mondays</p>
+        <h2 class="article-signup-heading">We write when there is something worth saying</h2>
+        <p class="article-signup-body">Notes on operating in regulated environments, and how to move with more clarity and less noise.</p>
+        <form class="article-signup-form" id="signup-form" action="https://ee38c099.sibforms.com/serve/MUIFAB4NlM_rcZZFXH9Oge-8RQS-eM_yrflIn9bjh7SzMDanlKTA8TQZ-5-Sia3AHn5aQc3_OFV56rpPj3IAImeiCIG5xfl9K9u_Nw8bLySXcE-ha5c6oSxw0KbMBHgV8RJbOH9u0Dfmsgw9YhE-ezGh0SdgPaqoWy6i0cuBMe7iua5eEYZS_l1TfNzfFSfQQZFo23CPwTO79vv4jg==" method="post">
+          <div class="article-signup-field">
+            <label for="signup-email" class="article-signup-label-sr">Email address</label>
+            <input type="email" id="signup-email" name="EMAIL" class="article-signup-input" placeholder="Your email address" required autocomplete="email">
+            <button type="submit" class="article-signup-btn">Send me the notes</button>
+          </div>
+          <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="locale" value="en">
+          <input type="hidden" name="html_type" value="simple">
+          <p class="article-signup-note">No spam. No content calendar. Just useful notes when there is something worth sharing.</p>
+          <div class="article-signup-feedback" aria-live="polite" aria-atomic="true"></div>
+        </form>
+      </div>
+      <!-- /Newsletter signup -->
+
+
+      <!-- WHERE TO LOOK -->
+      <div class="article-body">
+
+        <h2 id="where-to-look">Where to look</h2>
+
+        <p>Most organisations working in housing already know something is not quite right. Teams are stretched, systems are fragmented, and residents sometimes fall between processes that were never designed to hand off cleanly.</p>
+
+        <p>The question is rarely whether there is a problem. It is where trust is actually breaking down. That is usually harder to see from inside.</p>
+
+        <p>A few places worth examining:</p>
+
+        <ul>
+          <li>What does a resident actually experience between contact and resolution? Not the process map version. The lived version.</li>
+          <li>Where does ownership of a repair transfer, and who knows when that has happened?</li>
+          <li>What triggers proactive contact to a resident, and how often does it happen without them asking?</li>
+          <li>When a complaint is created, how far back does the breakdown actually start?</li>
+        </ul>
+
+        <p>These are not questions about whether your systems work. They are questions about whether your systems produce the outcome residents need: knowing someone is on it, knowing what happens next, and not having to carry the whole thing themselves.</p>
+
+        <p>The repair matters. The journey around the repair matters more.</p>
+
+      </div>
+      <!-- /WHERE TO LOOK -->
+
+
+      <!-- Related reading -->
+      <div class="article-cards article-cards--two" role="group" aria-label="Related reading">
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Related</p>
+          <h3 class="article-card-heading">Why many legal firms struggle to deliver digital change</h3>
+          <p class="article-card-body">The same gap between what clients experience and what the organisation records. A parallel pattern in a different regulated sector.</p>
+          <a href="/insights/legal-digital-change" class="article-card-link">Read the insight &#8594;</a>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Related</p>
+          <h3 class="article-card-heading">You do not need a full digital team. You need the right operating layer.</h3>
+          <p class="article-card-body">On how the gap between strategy and delivery is usually a structural problem, not a resourcing one.</p>
+          <a href="/insights/operating-layer" class="article-card-link">Read the insight &#8594;</a>
+        </div>
+
+      </div>
+      <!-- /Related reading -->
+
+
+    </div><!-- /article-container -->
+  </section>
+  <!-- /ARTICLE BODY -->
+
+
+  <!-- SOFT CTA -->
+  <aside class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+
+      <p class="article-cta-label" aria-hidden="true">Work with us</p>
+
+      <h2 id="cta-heading" class="article-cta-heading">
+        Many organisations already know something feels fragmented. The difficult part is <em>seeing where trust starts breaking down.</em>
+      </h2>
+
+      <p class="article-cta-body">
+        We help housing organisations and other regulated services map where the operational gaps are, and build clearer ways of moving work forward. Not a report. Actual change in how things run.
+      </p>
+
+      <p class="article-cta-sector" aria-label="Sectors we work in">
+        This work shows up across regulated environments, including housing providers, legal practices, healthcare organisations, and others where trust, compliance and operational clarity all matter.
+      </p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;">
+        <a href="/#contact" class="article-cta-link article-cta-link--ghost">Start a conversation</a>
+        <a href="/how-we-work/" class="article-cta-link article-cta-link--ghost">See how we work</a>
+      </div>
+
+    </div>
+  </aside>
+  <!-- /SOFT CTA -->
+
+
+</main>
+
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/#case-studies">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+
+
+<script>
+  // Share row
+  (function () {
+    var share = document.querySelector('.article-share');
+    if (!share) return;
+    var pageUrl   = window.location.href;
+    var shareText = share.getAttribute('data-share-text') || document.title;
+    var xLink     = document.getElementById('share-x');
+    var liLink    = document.getElementById('share-linkedin');
+    var copyBtn   = document.getElementById('share-copy');
+    var feedback  = share.querySelector('.article-share-feedback');
+    if (xLink)  xLink.href  = 'https://x.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(pageUrl);
+    if (liLink) liLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+    if (copyBtn && feedback) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(pageUrl).then(function () {
+          feedback.textContent = 'Link copied.';
+          setTimeout(function () { feedback.textContent = ''; }, 3000);
+        }).catch(function () { feedback.textContent = 'Copy failed.'; });
+      });
+    }
+  })();
+
+  // Newsletter signup
+  (function () {
+    var form = document.getElementById('signup-form');
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      var btn = form.querySelector('.article-signup-btn');
+      if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+    });
+  })();
+
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
