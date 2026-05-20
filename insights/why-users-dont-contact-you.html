@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Why People Do Not Contact You, Even When They Need Help | Not On Mondays</title>
+<meta name="description" content="Most organisations assume silence means low demand. It usually means something else. Here is what is actually stopping people from getting in touch.">
+<link rel="canonical" href="https://www.notonmondays.com/insights/why-users-dont-contact-you">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.notonmondays.com/insights/why-users-dont-contact-you">
+<meta property="og:title" content="Why People Do Not Contact You, Even When They Need Help | Not On Mondays">
+<meta property="og:description" content="Most organisations assume silence means low demand. It usually means something else.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+<meta property="article:published_time" content="2026-05-18T00:00:00+00:00">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/insights/why-users-dont-contact-you">
+<meta name="twitter:title" content="Why People Do Not Contact You, Even When They Need Help | Not On Mondays">
+<meta name="twitter:description" content="Most organisations assume silence means low demand. It usually means something else.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="shortcut icon" href="/assets/nomlogo400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 99999;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ───────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(242,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,42,212,0.08);
+}
+.site-nav {
+  padding: 0 4rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transition: color 0.3s ease;
+}
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--deep-blue); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.6);
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.65rem 1.4rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-weight: 300;
+}
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--deep-blue); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ──────────────────────────────────────── */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.75); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── Mobile nav ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(242,240,232,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(26,42,212,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .nav-cta { display: none; }
+  .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+/* ── Uncertainty gap diagram ─────────────────────── */
+.nom-diagram {
+  margin: 2.5rem 0 3rem;
+  border-top: 1px solid rgba(26,42,212,0.1);
+  padding-top: 1.25rem;
+}
+.nom-diagram-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.38);
+  margin: 0 0 1.5rem;
+}
+.nom-diagram-cols {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: start;
+}
+.nom-diagram-divider {
+  background: rgba(26,42,212,0.1);
+  align-self: stretch;
+}
+.nom-diagram-col {
+  padding: 0 2rem;
+}
+.nom-diagram-col:first-child { padding-left: 0; }
+.nom-diagram-col:last-child  { padding-right: 0; }
+.nom-diagram-col-label {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0 1.1rem;
+}
+.nom-diagram-col--muted .nom-diagram-col-label {
+  background: rgba(17,17,36,0.05);
+  color: rgba(17,17,36,0.45);
+}
+.nom-diagram-col--blue .nom-diagram-col-label {
+  background: rgba(26,42,212,0.07);
+  color: var(--blue);
+}
+.nom-diagram-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 1.75rem;
+}
+.nom-diagram-col--muted .nom-diagram-headline { color: rgba(17,17,36,0.4); }
+.nom-diagram-col--blue  .nom-diagram-headline { color: var(--dark); }
+.nom-diagram-stage { margin: 0 0 0.85rem; }
+.nom-diagram-stage-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 0.28rem;
+}
+.nom-diagram-col--muted .nom-diagram-stage-label { color: rgba(17,17,36,0.35); }
+.nom-diagram-col--blue  .nom-diagram-stage-label { color: var(--blue); }
+.nom-diagram-stage-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0;
+}
+.nom-diagram-col--muted .nom-diagram-stage-body { color: rgba(17,17,36,0.42); }
+.nom-diagram-col--blue  .nom-diagram-stage-body { color: rgba(17,17,36,0.65); }
+.nom-diagram-rule {
+  border: none;
+  border-top: 1px solid rgba(26,42,212,0.09);
+  margin: 1rem 0;
+  width: 2rem;
+}
+.nom-diagram-col--blue .nom-diagram-rule { border-color: rgba(26,42,212,0.2); }
+.nom-diagram-callout {
+  margin-top: 1.5rem;
+  padding: 0.75rem 0.9rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+.nom-diagram-callout p { margin: 0; }
+.nom-diagram-col--muted .nom-diagram-callout {
+  background: rgba(17,17,36,0.04);
+  color: rgba(17,17,36,0.42);
+}
+.nom-diagram-col--blue .nom-diagram-callout {
+  background: rgba(26,42,212,0.06);
+  color: var(--blue);
+}
+.nom-diagram-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(26,42,212,0.1);
+  padding-top: 0.85rem;
+  margin-top: 1.5rem;
+}
+.nom-diagram-footer p {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .nom-diagram-cols { grid-template-columns: 1fr; }
+  .nom-diagram-divider { height: 1px; width: 100%; margin: 1.5rem 0; }
+  .nom-diagram-col { padding: 0; }
+  .nom-diagram-footer { flex-direction: column; gap: 0.35rem; }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why people do not contact you, even when they need help",
+  "description": "Most organisations assume silence means low demand. It usually means something else. Here is what is actually stopping people from getting in touch.",
+  "image": "https://www.notonmondays.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Not On Mondays",
+    "url": "https://www.notonmondays.com"
+  },
+  "datePublished": "2026-05-18",
+  "dateModified": "2026-05-18",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.notonmondays.com/insights/why-users-dont-contact-you"
+  },
+  "url": "https://www.notonmondays.com/insights/why-users-dont-contact-you"
+}
+</script>
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
+  </nav>
+</header>
+
+
+<main id="main-content" class="article-layout">
+
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="article-hero-inner">
+
+      <a href="/insights/" class="article-back-link" aria-label="Back to Insights">← Insights</a>
+
+      <p class="article-hero-eyebrow" aria-hidden="true">Service Design · Professional Services</p>
+
+      <h1 id="article-heading" class="article-hero-headline">
+        Why people do not contact you,<br>even when they <em>need help</em>
+      </h1>
+
+      <p class="article-hero-standfirst">
+        Most organisations assume silence means low demand. It usually means something else.
+      </p>
+
+      <div class="article-meta article-meta--dark">
+        <time datetime="2026-05-18">May 2026</time>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span>3 min read</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Service Design</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <span class="article-meta-tag">Professional Services</span>
+      </div>
+
+      <div class="article-share" data-share-text="The organisations that convert best are not the loudest. They are the clearest.">
+        <span class="article-share-label">Share</span>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-x" href="#" target="_blank" rel="noopener noreferrer">X</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <a class="article-share-link" id="share-linkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="article-meta-sep" aria-hidden="true">·</span>
+        <button class="article-share-link article-share-copy" id="share-copy" type="button">Copy link</button>
+        <span class="article-share-feedback" aria-live="polite" aria-atomic="true"></span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="article-section article-section--light" aria-label="Article body">
+    <div class="article-container">
+
+      <div class="article-body">
+
+        <div class="article-tldr">
+          <p class="article-tldr-label" aria-hidden="true">Key points</p>
+          <ul>
+            <li>Silence is often uncertainty, not absence of need.</li>
+            <li>In professional services, people are often already overwhelmed when they begin looking.</li>
+            <li>Most websites are written for the organisation rather than the user.</li>
+            <li>The clearest organisations perform best. Not the loudest.</li>
+          </ul>
+        </div>
+
+        <p class="article-lede">Most organisations assume silence means something is wrong with their marketing.</p>
+        <p class="article-lede">It often means something is wrong with how they make people feel.</p>
+
+        <p>Sometimes low enquiries are a marketing problem. But often people were interested, looked around, felt uncertain, and left. Without ever getting in touch.</p>
+
+      </div>
+
+      <figure class="article-img nom-diagram">
+        <p class="nom-diagram-header">Two paths. One decision point.</p>
+        <div class="nom-diagram-cols">
+
+          <div class="nom-diagram-col nom-diagram-col--muted">
+            <p class="nom-diagram-col-label">Without clarity</p>
+            <p class="nom-diagram-headline">Uncertainty creates distance.</p>
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Interest</p>
+              <p class="nom-diagram-stage-body">Something catches their attention.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Uncertainty</p>
+              <p class="nom-diagram-stage-body">Questions pile up. They are not sure this is the right move.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">No contact</p>
+              <p class="nom-diagram-stage-body">They step back. The moment passes.</p>
+            </div>
+            <div class="nom-diagram-callout">
+              <p>When uncertainty is high,<br>people choose silence.</p>
+            </div>
+          </div>
+
+          <div class="nom-diagram-divider" aria-hidden="true"></div>
+
+          <div class="nom-diagram-col nom-diagram-col--blue">
+            <p class="nom-diagram-col-label">With clarity</p>
+            <p class="nom-diagram-headline">Clarity creates confidence.</p>
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Interest</p>
+              <p class="nom-diagram-stage-body">Something catches their attention.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Clarity</p>
+              <p class="nom-diagram-stage-body">They understand what you do, for whom, and how to take the next step.</p>
+            </div>
+            <hr class="nom-diagram-rule" aria-hidden="true">
+            <div class="nom-diagram-stage">
+              <p class="nom-diagram-stage-label">Conversation</p>
+              <p class="nom-diagram-stage-body">They get in touch. A relationship can begin.</p>
+            </div>
+            <div class="nom-diagram-callout">
+              <p>When clarity is high,<br>people feel safe to reach out.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="nom-diagram-footer">
+          <p>The difference is not need.</p>
+          <p>It is perspective.</p>
+        </div>
+        <figcaption class="article-img-caption">Most of the gap is not a marketing problem. It is whether people feel safe enough to reach out.</figcaption>
+      </figure>
+
+      <div class="article-body">
+
+        <h2 id="what-silence-signals">What silence usually signals</h2>
+
+        <p>The usual assumption is that contact follows naturally from good marketing. People find you, they like what they see, they get in touch. But that model skips the moment between interest and action, when someone decides whether it is safe to reach out. In professional services, that moment can be the whole journey.</p>
+
+        <div class="article-callout">
+          <p class="article-callout-label">Worth knowing</p>
+          <p>Uncertainty is not the same as disinterest. It is interest that has not yet found enough safety to act.</p>
+        </div>
+
+        <p>People seeking help from a solicitor, a financial adviser or a healthcare provider are rarely starting from a calm place. They are often already anxious. Dealing with something they did not choose.</p>
+
+        <p>Before they get in touch, they are asking:</p>
+
+        <ul class="article-list">
+          <li>Will they understand my actual situation, or just the category it falls into?</li>
+          <li>What happens after I get in touch?</li>
+          <li>Will I feel pressured?</li>
+          <li>Can I trust them?</li>
+        </ul>
+
+        <p>These are not questions about price. They are questions about safety.</p>
+
+        <h2 id="the-website-problem">How websites make it worse</h2>
+
+        <p>Many websites make that uncertainty worse, not better. Not because they are badly designed. Because they are written from the organisation's perspective instead of the user's.</p>
+
+        <p>They list credentials. They explain the team. What they rarely do is help the user answer the questions they arrived with.</p>
+
+        <p>The person looking for help with probate does not need the firm's history. They need to know you handle situations like theirs, what the process involves, and that getting in touch does not commit them to anything.</p>
+
+        <p>In <a href="/insights/legal-digital-change">legal services in particular</a>, this gap can be significant. Credible, well-resourced organisations lose work to simpler competitors who just made it easier to take the first step.</p>
+
+        <h2 id="what-actually-helps">What actually helps</h2>
+
+        <p>The organisations that perform best are not the most sophisticated. They are the clearest. They help people feel understood, safe, and ready to take the next step before a conversation has even begun.</p>
+
+        <ul class="article-list">
+          <li>Writing for the user's situation, not the firm's services</li>
+          <li>Answering the questions people have before they ask</li>
+          <li>Making clear the first conversation does not commit them to anything</li>
+          <li>Setting expectations about what comes next</li>
+        </ul>
+
+        <p>None of this requires a large programme. Most of it is writing. Some of it is structure. All of it is about perspective.</p>
+
+        <p>Where clarity is missing on the outside, it is often because the <a href="/insights/operating-layer">operating layer</a> has not been resolved internally. When organisations are not clear about what they offer, that tends to show up in how they talk about themselves.</p>
+
+        <blockquote>
+          <p>The question is not whether people need what you offer. The question is whether they feel safe enough to ask.</p>
+        </blockquote>
+
+        <p>The fix starts with understanding what your website communicates to someone who does not already know you. That is often a different picture from what the organisation assumes.</p>
+
+      </div>
+
+
+      <div class="article-signup">
+        <p class="article-signup-eyebrow" aria-hidden="true">Notes from Not On Mondays</p>
+        <h2 class="article-signup-heading">We write when there is something worth saying</h2>
+        <p class="article-signup-body">Notes on operating in professional services, and how to move with more clarity and less noise.</p>
+        <form class="article-signup-form" id="signup-form" action="https://ee38c099.sibforms.com/serve/MUIFAB4NlM_rcZZFXH9Oge-8RQS-eM_yrflIn9bjh7SzMDanlKTA8TQZ-5-Sia3AHn5aQc3_OFV56rpPj3IAImeiCIG5xfl9K9u_Nw8bLySXcE-ha5c6oSxw0KbMBHgV8RJbOH9u0Dfmsgw9YhE-ezGh0SdgPaqoWy6i0cuBMe7iua5eEYZS_l1TfNzfFSfQQZFo23CPwTO79vv4jg==" method="post">
+          <div class="article-signup-field">
+            <label for="signup-email" class="article-signup-label-sr">Email address</label>
+            <input type="email" id="signup-email" name="EMAIL" class="article-signup-input" placeholder="Your email address" required autocomplete="email">
+            <button type="submit" class="article-signup-btn">Send me the notes</button>
+          </div>
+          <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="locale" value="en">
+          <input type="hidden" name="html_type" value="simple">
+          <p class="article-signup-note">No spam. No content calendar. Just useful notes when there is something worth sharing.</p>
+          <div class="article-signup-feedback" aria-live="polite" aria-atomic="true"></div>
+        </form>
+      </div>
+
+
+      <div class="article-cards" role="group" aria-label="Related reading">
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Related</p>
+          <h3 class="article-card-heading">Why many legal firms struggle to deliver digital change</h3>
+          <p class="article-card-body">Most legal firms do not have a technology problem first. They have a service problem.</p>
+          <a href="/insights/legal-digital-change" class="article-card-link">Read the article</a>
+        </div>
+
+        <div class="article-card">
+          <p class="article-card-label" aria-hidden="true">Related</p>
+          <h3 class="article-card-heading">The operating layer most organisations are missing</h3>
+          <p class="article-card-body">The gap between strategy and delivery is rarely a strategy problem. It is an operating one.</p>
+          <a href="/insights/operating-layer" class="article-card-link">Read the article</a>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <aside class="article-cta" aria-labelledby="cta-heading">
+    <div class="article-cta-inner">
+
+      <p class="article-cta-label" aria-hidden="true">Work with us</p>
+
+      <h2 id="cta-heading" class="article-cta-heading">
+        If people are finding you but not getting in touch,
+        <em>that is usually a service design problem, not a marketing one.</em>
+      </h2>
+
+      <p class="article-cta-body">
+        We can help you understand what is creating friction and what to do about it. That often starts with a straightforward conversation.
+      </p>
+
+      <a href="/#contact" class="article-cta-link article-cta-link--ghost">Start a conversation</a>
+
+    </div>
+  </aside>
+
+
+</main>
+
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-label="opens in new tab">(new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com · 2026</small></p>
+</footer>
+
+
+<script>
+  (function () {
+    var share = document.querySelector('.article-share');
+    if (!share) return;
+    var pageUrl   = window.location.href;
+    var shareText = share.getAttribute('data-share-text') || document.title;
+    var xLink     = document.getElementById('share-x');
+    var liLink    = document.getElementById('share-linkedin');
+    var copyBtn   = document.getElementById('share-copy');
+    var feedback  = share.querySelector('.article-share-feedback');
+    if (xLink)  xLink.href  = 'https://x.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(pageUrl);
+    if (liLink) liLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+    if (copyBtn && feedback) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(pageUrl).then(function () {
+          feedback.textContent = 'Link copied.';
+          setTimeout(function () { feedback.textContent = ''; }, 3000);
+        }).catch(function () { feedback.textContent = 'Copy failed.'; });
+      });
+    }
+  })();
+
+  (function () {
+    var form = document.getElementById('signup-form');
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      var btn = form.querySelector('.article-signup-btn');
+      if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+    });
+  })();
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+      if (isOpen) navMenu.querySelector('a').focus();
+    });
+    navMenu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+        navToggle.focus();
+      }
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

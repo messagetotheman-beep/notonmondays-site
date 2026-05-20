@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Selected Work | Not On Mondays</title>
+<meta name="description" content="Selected examples of how operational clarity improves trust, delivery, and decision-making. Work from Not On Mondays.">
+<link rel="canonical" href="https://www.notonmondays.com/work/">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.notonmondays.com/work/">
+<meta property="og:title" content="Selected Work | Not On Mondays">
+<meta property="og:description" content="Selected examples of how operational clarity improves trust, delivery, and decision-making.">
+<meta property="og:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.notonmondays.com/work/">
+<meta name="twitter:title" content="Selected Work | Not On Mondays">
+<meta name="twitter:description" content="Selected examples of how operational clarity improves trust, delivery, and decision-making.">
+<meta name="twitter:image" content="https://www.notonmondays.com/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ───────────────────────────────────── */
+.skip-link { position: absolute; top: -100%; left: 1rem; background: var(--blue); color: #fff; padding: 0.75rem 1.25rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; z-index: 99999; transition: top 0.2s ease; }
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ───────────────────────────── */
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(242,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,42,212,0.08); }
+.site-nav { padding: 0 4rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: inline-flex; align-items: center; gap: 0.9rem; text-decoration: none; line-height: 1; }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--dark); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span { font-family: 'DM Mono', monospace; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(17,17,36,0.6); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; font-weight: 300; }
+.nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-cta { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 0.7rem 1.4rem; text-decoration: none; transition: background 0.3s ease; white-space: nowrap; }
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--dark); }
+.nav-cta:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--dark); font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.nav-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ── HERO ─────────────────────────────────────────── */
+.work-hero {
+  background: var(--dark);
+  padding: calc(72px + 3.5rem) 4rem 3rem;
+}
+.work-hero-inner { max-width: 1100px; margin: 0 auto; }
+.work-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 1.2rem;
+}
+.work-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--off-white);
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.02em;
+}
+.work-standfirst {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(242,240,232,0.42);
+  font-weight: 300;
+  max-width: 480px;
+}
+
+/* ── FEATURED PROOF ───────────────────────────────── */
+.work-featured {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 0 4rem 5rem;
+}
+.work-featured-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 5rem;
+  align-items: start;
+  border-top: 1px solid rgba(26,42,212,0.25);
+  padding-top: 3.5rem;
+}
+.work-featured-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 1.4rem;
+  opacity: 0.7;
+}
+.work-featured-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--off-white);
+  margin-bottom: 1.4rem;
+  max-width: 520px;
+}
+.work-featured-title em { font-style: italic; color: var(--light-blue); }
+.work-featured-body {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: rgba(242,240,232,0.48);
+  font-weight: 300;
+  max-width: 480px;
+  margin-bottom: 2.2rem;
+}
+.work-featured-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.9rem 1.8rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+.work-featured-link:hover { background: rgba(26,42,212,0.7); }
+.work-featured-link:focus-visible { outline: 2px solid var(--light-blue); outline-offset: 3px; }
+
+/* Operational signals sidebar */
+.work-featured-signals {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.work-signal {
+  padding: 1.3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.work-signal:last-child { border-bottom: none; }
+.work-signal-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 0.35rem;
+}
+.work-signal-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.45;
+}
+.work-signal-value strong {
+  color: rgba(255,255,255,0.72);
+  font-weight: 300;
+}
+
+/* Outcome dots */
+.work-featured-outcomes {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.6rem;
+}
+.work-featured-outcomes-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  margin-bottom: 1rem;
+}
+.work-featured-outcome {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.7rem;
+}
+.work-featured-outcome:last-child { margin-bottom: 0; }
+.work-featured-outcome-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(26,42,212,0.6);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.48rem;
+}
+.work-featured-outcome span {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.38);
+  font-weight: 300;
+}
+
+/* ── SECONDARY PROOF ──────────────────────────────── */
+.work-secondary {
+  background: var(--warm-white);
+  padding: 5rem 4rem;
+  border-top: 1px solid rgba(26,42,212,0.06);
+}
+.work-secondary-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.work-secondary-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+.work-secondary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5px;
+  background: rgba(26,42,212,0.08);
+}
+.work-secondary-card {
+  background: var(--warm-white);
+  padding: 2.2rem;
+  grid-column: 1 / -1;
+}
+.work-secondary-card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(17,17,36,0.3);
+  margin-bottom: 1.1rem;
+}
+.work-secondary-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2vw, 1.9rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 0.9rem;
+  max-width: 600px;
+}
+.work-secondary-card-body {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1.6rem;
+  max-width: 520px;
+}
+.work-secondary-card-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(26,42,212,0.25);
+  padding-bottom: 0.15rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.work-secondary-card-link:hover,
+.work-secondary-card-link:focus-visible { color: var(--dark); border-color: var(--dark); }
+.work-secondary-card-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ── FOOTER ──────────────────────────────────────── */
+.site-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.7); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; align-items: center; gap: 0.5rem; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(242,240,232,0.98); backdrop-filter: blur(12px); padding: 1.5rem 1.5rem 2rem; gap: 0; border-bottom: 1px solid rgba(26,42,212,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .nav-cta { display: none; }
+  .work-hero { padding: calc(72px + 2.5rem) 1.5rem 2.5rem; }
+  .work-featured { padding: 0 1.5rem 4rem; }
+  .work-featured-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+  .work-secondary { padding: 4rem 1.5rem; }
+  .work-secondary-grid { grid-template-columns: 1fr; }
+  .site-footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .work-secondary-grid { background: none; gap: 0; }
+  .work-secondary-card { border-bottom: 1px solid rgba(26,42,212,0.08); padding: 2rem 0; background: none; }
+  .work-secondary-card:last-child { border-bottom: none; }
+}
+
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span>Menu</span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
+  </nav>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="work-hero" aria-labelledby="work-heading">
+    <div class="work-hero-inner">
+      <p class="work-eyebrow" aria-hidden="true">Not On Mondays &#xB7; Work</p>
+      <h1 id="work-heading" class="work-headline">Selected work</h1>
+      <p class="work-standfirst">Examples of how operational clarity improves trust, delivery, and decision-making.</p>
+    </div>
+  </section>
+
+  <!-- FEATURED: AZARIAH -->
+  <section class="work-featured" aria-labelledby="featured-heading">
+    <div class="work-featured-inner">
+
+      <div>
+        <p class="work-featured-tag" aria-hidden="true">Healthcare compliance &#xB7; MedTech &#xB7; NHS</p>
+        <h2 id="featured-heading" class="work-featured-title">
+          The operating layer behind <em>Azariah</em>
+        </h2>
+        <p class="work-featured-body">
+          A distributed healthcare startup with clinical credibility and a capable team, but an operation that had outgrown its informal structure. We became the layer between intention and delivery: introducing shared systems, delivery rhythms, and operational clarity across London, Manila, and San Diego.
+        </p>
+        <a href="/proof/azariah-operating-layer/" class="work-featured-link">Explore the operational proof</a>
+
+        <div class="work-featured-outcomes" aria-label="Engagement outcomes">
+          <p class="work-featured-outcomes-label" aria-hidden="true">Outcomes</p>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>Founder freed from day-to-day coordination overhead</span>
+          </div>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>Delivery visible and trackable across the whole team</span>
+          </div>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>Clear ownership across six core operational functions</span>
+          </div>
+          <div class="work-featured-outcome">
+            <div class="work-featured-outcome-dot" aria-hidden="true"></div>
+            <span>NIHR THRIVE grant process supported through operational preparation</span>
+          </div>
+        </div>
+      </div>
+
+      <aside aria-label="Engagement details">
+        <div class="work-featured-signals">
+          <div class="work-signal">
+            <p class="work-signal-label">Client</p>
+            <p class="work-signal-value"><strong>Azariah</strong></p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Locations</p>
+            <p class="work-signal-value">
+              <strong>London</strong> &#xB7; Strategy, operations<br>
+              <strong>Manila</strong> &#xB7; Engineering<br>
+              <strong>San Diego</strong> &#xB7; Clinical, product
+            </p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Functions covered</p>
+            <p class="work-signal-value">Direction &#xB7; Delivery &#xB7; Product &#xB7; Engineering &#xB7; Growth &#xB7; Systems</p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Engagement type</p>
+            <p class="work-signal-value">Retained operating partnership</p>
+          </div>
+          <div class="work-signal">
+            <p class="work-signal-label">Offering</p>
+            <p class="work-signal-value">The Operating Layer + Founder coaching</p>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- SECONDARY: LATCHMERE -->
+  <section class="work-secondary" aria-label="Further selected work">
+    <div class="work-secondary-inner">
+      <p class="work-secondary-label" aria-hidden="true">Also</p>
+      <div class="work-secondary-grid">
+
+        <article class="work-secondary-card" aria-labelledby="cs-latchmere-heading">
+          <p class="work-secondary-card-tag">Legal client journeys &#xB7; Service design &#xB7; Digital experience</p>
+          <h2 id="cs-latchmere-heading" class="work-secondary-card-title">What clients need before they contact a law firm</h2>
+          <p class="work-secondary-card-body">A concept walkthrough showing how clearer digital journeys can reduce uncertainty, improve trust, and create better first conversations.</p>
+          <a href="/proof/what-clients-need-before-they-contact-a-law-firm/" class="work-secondary-card-link">View the concept walkthrough</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy (opens in new tab)">Privacy Policy</a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com &#xB7; 2026</small></p>
+</footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      const label = navToggle.querySelector('span');
+      if (label) label.textContent = open ? 'Close' : 'Menu';
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

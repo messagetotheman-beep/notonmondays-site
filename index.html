@@ -183,19 +183,24 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   gap: 0.9rem;
   text-decoration: none;
   line-height: 1;
+  border: 1.5px solid rgba(26,42,212,0.55);
+  padding: 0.4rem 0.65rem 0.4rem 0.5rem;
+  height: 52px;
+  box-sizing: border-box;
 }
-.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
-.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
-.nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.25); }
-.nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nav-logo:hover, .nav-logo:focus-visible { border-color: rgba(26,42,212,0.8); }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0; line-height: 1; }
+.nav-logo .nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1; display: block; transition: color 0.3s ease; }
+.nav-logo .nom-initial.fade-1 { color: rgba(17,17,36,0.62); }
+.nav-logo .nom-initial.fade-2 { color: rgba(17,17,36,0.62); }
 .nav-logo .nom-initial.landing { color: var(--blue); }
 .nav-logo:hover .fade-1,
-.nav-logo:focus-visible .fade-1 { color: rgba(17,17,36,0.4); }
+.nav-logo:focus-visible .fade-1 { color: rgba(17,17,36,0.8); }
 .nav-logo:hover .fade-2,
-.nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:focus-visible .fade-2 { color: rgba(17,17,36,0.8); }
 .nav-logo:hover .landing,
 .nav-logo:focus-visible .landing { color: var(--deep-blue); }
-.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.28); flex-shrink: 0; }
 .nav-logo-descriptor { display: flex; align-items: center; }
 
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -302,7 +307,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 .about-body { font-size: 0.9rem; line-height: 1.9; color: var(--body-on-dark); font-weight: 300; margin-bottom: 1.5rem; }
 .about-right { padding-top: 1rem; }
 .values-list { display: flex; flex-direction: column; gap: 0; }
-.value-item { display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 1.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); align-items: start; }
+.value-item { display: block; padding: 1.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .value-num { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; color: var(--light-blue); padding-top: 0.3rem; }
 .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; color: var(--off-white); margin-bottom: 0.5rem; }
 .value-desc { font-size: 0.82rem; line-height: 1.7; color: var(--subtle-on-dark); font-weight: 300; }
@@ -341,7 +346,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
    ===================================================== */
 #how-we-work { background: var(--warm-white); padding: 9rem 4rem; }
 .how-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
-.how-principle { display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 1.8rem 0; border-bottom: 1px solid rgba(26,42,212,0.1); align-items: start; }
+.how-principle { display: block; padding: 1.8rem 0; border-bottom: 1px solid rgba(26,42,212,0.1); }
 .how-principle:first-child { border-top: 1px solid rgba(26,42,212,0.1); }
 .how-num { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; color: var(--blue); padding-top: 0.3rem; }
 .how-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: var(--dark); margin-bottom: 0.4rem; }
@@ -378,26 +383,55 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 .legal-service-desc { font-size: 0.8rem; line-height: 1.65; color: var(--subtle-on-dark); font-weight: 300; }
 
 /* =====================================================
-   CASE STUDIES
+   SELECTED WORK BRIDGE
    ===================================================== */
-#case-studies { background: var(--warm-white); padding: 6rem 4rem 1.5rem; }
-.case-feature { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
-.case-left { background: var(--dark); padding: 4rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
-.case-left::before { content: '001'; position: absolute; bottom: -2rem; right: -1rem; font-family: 'Cormorant Garamond', serif; font-size: 12rem; font-weight: 300; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
-.case-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); }
-.case-title { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1.1; color: var(--off-white); }
-.case-title em { font-style: italic; color: var(--light-blue); }
-.case-meta-row { display: flex; gap: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
-.case-meta-item label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); display: block; margin-bottom: 0.3rem; }
-.case-meta-item span { font-size: 0.82rem; color: rgba(255,255,255,0.85); font-weight: 300; }
-.case-right { background: var(--blue); padding: 4rem; display: flex; flex-direction: column; justify-content: space-between; }
-.case-insight { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; font-weight: 300; color: #fff; line-height: 1.5; margin-bottom: 2rem; }
-.case-outcomes { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
-.case-outcome { display: flex; align-items: center; gap: 0.8rem; }
-.case-outcome-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; flex-shrink: 0; }
-.case-outcome span { font-size: 0.83rem; color: rgba(255,255,255,0.85); font-weight: 300; }
-.case-cta { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 0.4rem; transition: gap 0.3s ease; }
-.case-cta:hover, .case-cta:focus-visible { gap: 1.2rem; }
+#case-studies {
+  background: var(--warm-white);
+  padding: 5rem 4rem 0;
+  border-top: 1px solid rgba(26,42,212,0.08);
+}
+.work-bridge-inner {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+.work-bridge-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.4rem;
+}
+.work-bridge-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+.work-bridge-body {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--mid);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+.work-bridge-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: var(--blue);
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+.work-bridge-cta:hover,
+.work-bridge-cta:focus-visible { background: var(--deep-blue); }
 
 /* =====================================================
    PHILOSOPHY BAND — decorative, aria-hidden
@@ -541,12 +575,12 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   .hero-content { grid-template-columns: 1fr; padding: 2rem 1.5rem 5rem; }
   .hero-right { display: none; }
   .hero-headline { font-size: 3rem; }
-  #about, #offerings, #how-we-work, #ai, #legal-tech, #case-studies, #coaching, #contact { padding: 6rem 1.5rem; }
+  #about, #offerings, #how-we-work, #ai, #legal-tech, #coaching, #contact { padding: 6rem 1.5rem; }
+  #case-studies { padding: 4rem 1.5rem 0; }
   .about-grid, .how-grid, .ai-grid, .legal-grid, .inner-layer-grid, .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
   .section-header { grid-template-columns: 1fr; gap: 1.5rem; }
   .offering-row { grid-template-columns: 1fr; gap: 1rem; }
   .offering-price { text-align: left; }
-  .case-feature { grid-template-columns: 1fr; }
   .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
   .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
   .form-row { grid-template-columns: 1fr; }
@@ -556,136 +590,6 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   #nom-cookie { flex-direction: column; gap: 1.25rem; bottom: 1rem; width: calc(100% - 2rem); }
   #nom-cookie .cookie-actions { flex-direction: row; width: 100%; }
   #nom-cookie .cookie-accept, #nom-cookie .cookie-reject { flex: 1; text-align: center; }
-}
-/* =====================================================
-   CASE STUDY CARDS
-   ===================================================== */
-#case-studies { background: var(--warm-white); padding: 6rem 4rem 1.5rem; }
-
-.cs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 1100px;
-  margin: 0 auto;
-  gap: 2rem;
-}
-
-.cs-card {
-  background: var(--dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1.6rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.cs-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(17,17,36,0.16);
-}
-@media (prefers-reduced-motion: reduce) { .cs-card:hover { transform: none; } }
-
-.cs-card--full { border-bottom: 3px solid var(--blue); }
-.cs-card--pending { opacity: 0.8; }
-.cs-card--pending:hover { opacity: 1; }
-
-.cs-card-top { margin-bottom: 1.4rem; }
-.cs-card-bottom { margin-top: auto; }
-
-.cs-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--light-blue);
-  margin-bottom: 0.35rem;
-}
-.cs-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 0.9rem;
-}
-.cs-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-  font-weight: 300;
-  line-height: 1.2;
-  color: var(--off-white);
-}
-.cs-title em { font-style: italic; color: var(--light-blue); }
-
-.cs-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.55;
-  margin-bottom: 1.1rem;
-  border-left: 2px solid var(--blue);
-  padding-left: 0.85rem;
-}
-
-.cs-outcomes {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  margin-bottom: 1.4rem;
-}
-.cs-outcomes li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.7);
-  font-weight: 300;
-  line-height: 1.45;
-}
-.cs-dot {
-  width: 4px;
-  height: 4px;
-  background: rgba(255,255,255,0.35);
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 0.5rem;
-}
-
-.cs-cta {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--light-blue);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(191,198,240,0.3);
-  padding-bottom: 0.2rem;
-  transition: border-color 0.3s ease, color 0.3s ease;
-  display: inline-block;
-}
-.cs-cta:hover, .cs-cta:focus-visible { color: #fff; border-color: rgba(255,255,255,0.45); }
-
-.cs-pending-desc {
-  font-size: 0.78rem;
-  font-weight: 300;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.55;
-  margin-bottom: 1.1rem;
-}
-
-.cs-pending-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.08);
-  display: inline-block;
-  padding: 0.35rem 0.8rem;
 }
 
 /* =====================================================
@@ -847,7 +751,6 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 }
 
 @media (max-width: 900px) {
-  .cs-grid { grid-template-columns: 1fr; gap: 1rem; }
   .logo-item { padding: 0 2.5rem; height: 70px; }
   .logo-svg, .logo-img { height: 28px; max-width: 120px; }
 }
@@ -934,12 +837,9 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
   border-top: 1px solid rgba(26,42,212,0.1);
 }
 .when-item {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 1rem;
+  display: block;
   padding: 1.75rem 0;
   border-bottom: 1px solid rgba(26,42,212,0.08);
-  align-items: start;
 }
 .when-item:nth-child(odd) {
   padding-right: 3rem;
@@ -1204,9 +1104,9 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <span class="nav-logo-divider" aria-hidden="true"></span>
       <span class="nav-logo-descriptor" aria-hidden="true">
         <span style="display:flex;flex-direction:column;gap:0.18rem;line-height:1;">
-          <span style="font-family:'DM Mono',monospace;font-size:0.55rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.75);display:block;">The</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.55rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.75);display:block;">Operating</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.55rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.75);display:block;">Partner</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.88);display:block;">The</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.88);display:block;">Operating</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(17,17,36,0.88);display:block;">Partner</span>
         </span>
       </span>
     </a>
@@ -1217,12 +1117,12 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
     </button>
 
     <ul class="nav-links" id="nav-menu" role="list">
-      <li><a href="why-not-on-mondays.html">About</a></li>
+      <li><a href="#home" aria-current="page">Home</a></li>
+      <li><a href="/why-not-on-mondays">About</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/how-we-work/">How We Work</a></li>
-      <li><a href="#case-studies">Work</a></li>
+      <li><a href="/work/">Work</a></li>
       <li><a href="/insights/">Insights</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Start a conversation</a>
   </nav>
@@ -1239,14 +1139,13 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 
     <div class="hero-content">
       <div class="hero-left">
-        <p class="hero-eyebrow">The Operating Partner · London, Surrey &amp; across the UK</p>
         <h1 id="hero-heading" class="hero-headline">
           Operations, delivery<br>and digital, <em>working properly.</em>
         </h1>
         <p class="hero-sub">We work alongside founders and leadership teams as an embedded operating partner. We help when operations, systems or delivery are hard to move. We stay close to the work until things are working.</p>
         <div class="hero-actions">
           <a href="#offerings" class="btn-primary">See how we help</a>
-          <a href="#case-studies" class="btn-ghost">View our work →</a>
+          <a href="/work/" class="btn-ghost">View our work</a>
         </div>
         <p class="hero-trust">Working with leadership teams in regulated, service-led and operationally complex organisations.</p>
       </div>
@@ -1304,19 +1203,15 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       </div>
       <ul class="when-grid" aria-label="Common situations that lead people to us">
         <li class="when-item">
-          <span class="when-num" aria-hidden="true">01</span>
           <p class="when-text">Operations feel fragmented, with no clear owner</p>
         </li>
         <li class="when-item">
-          <span class="when-num" aria-hidden="true">02</span>
           <p class="when-text">Systems and tools are disconnected, and information lives in too many places</p>
         </li>
         <li class="when-item">
-          <span class="when-num" aria-hidden="true">03</span>
           <p class="when-text">The website no longer reflects the quality of the business</p>
         </li>
         <li class="when-item">
-          <span class="when-num" aria-hidden="true">04</span>
           <p class="when-text">Delivery is hard to move and progress feels inconsistent</p>
         </li>
       </ul>
@@ -1337,25 +1232,16 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <div class="about-right">
         <ul class="values-list" aria-label="Our principles">
           <li class="value-item reveal">
-            <span class="value-num" aria-hidden="true">01</span>
-            <div>
-              <h3 class="value-title">Embedded, not parachuted</h3>
-              <p class="value-desc">We work inside your organisation, not from outside it. Working directly with your team is what turns advice into actual change.</p>
-            </div>
+            <h3 class="value-title">Embedded, not parachuted</h3>
+            <p class="value-desc">We work inside your organisation, not from outside it. Working directly with your team is what turns advice into actual change.</p>
           </li>
           <li class="value-item reveal reveal-delay-1">
-            <span class="value-num" aria-hidden="true">02</span>
-            <div>
-              <h3 class="value-title">Outcomes over process</h3>
-              <p class="value-desc">We focus on what needs to change. If something does not move the work forward, we stop doing it.</p>
-            </div>
+            <h3 class="value-title">Outcomes over process</h3>
+            <p class="value-desc">We focus on what needs to change. If something does not move the work forward, we stop doing it.</p>
           </li>
           <li class="value-item reveal reveal-delay-2">
-            <span class="value-num" aria-hidden="true">03</span>
-            <div>
-              <h3 class="value-title">Clear and direct</h3>
-              <p class="value-desc">We will tell you what we think, including when it is not what you want to hear. That is what makes us useful rather than comfortable.</p>
-            </div>
+            <h3 class="value-title">Clear and direct</h3>
+            <p class="value-desc">We will tell you what we think, including when it is not what you want to hear. That is what makes us useful rather than comfortable.</p>
           </li>
         </ul>
       </div>
@@ -1382,28 +1268,24 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       <p class="cap-cards-label" aria-hidden="true">Four areas where we typically help</p>
       <div class="cap-cards-grid" role="list" aria-label="Our four capability areas">
         <a href="/services/operating-layer/" class="cap-card" role="listitem">
-          <p class="cap-card-num" aria-hidden="true">01</p>
           <h3 class="cap-card-title">The Operating Layer</h3>
           <p class="cap-card-body">For when you need an operator inside the work, not an advisor observing it. Retained fractional COO and embedded delivery leadership.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
         <a href="/services/website-clarity/" class="cap-card" role="listitem">
-          <p class="cap-card-num" aria-hidden="true">02</p>
           <h3 class="cap-card-title">Website Clarity</h3>
           <p class="cap-card-body">When your digital presence no longer reflects what you do. Accessible, clearly structured, built around real user needs.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
         <a href="/services/search-visibility/" class="cap-card" role="listitem">
-          <p class="cap-card-num" aria-hidden="true">03</p>
           <h3 class="cap-card-title">Search &amp; Visibility</h3>
           <p class="cap-card-body">When the right clients are searching for what you do and finding someone else. Organic visibility, AI search, and content that earns trust.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
         <a href="/services/delivery-operations/" class="cap-card" role="listitem">
-          <p class="cap-card-num" aria-hidden="true">04</p>
           <h3 class="cap-card-title">Delivery &amp; Operations</h3>
           <p class="cap-card-body">When delivery has stalled or progress feels inconsistent. Clear plans, structured delivery, and someone who shares responsibility for the outcome.</p>
-          <span class="cap-card-link" aria-hidden="true">Learn more →</span>
+          <span class="cap-card-link" aria-hidden="true">Learn more</span>
         </a>
       </div>
     </div>
@@ -1546,94 +1428,33 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
       </div>
       <ol class="how-principles" aria-label="How we work" style="list-style:none;">
         <li class="how-principle reveal">
-          <span class="how-num" aria-hidden="true">01</span>
-          <div>
-            <h3 class="how-title">We embed with your team</h3>
-            <p class="how-desc">We join your team directly. We attend the meetings that matter, understand how decisions are made, and work within your existing structure, not around it.</p>
-          </div>
+          <h3 class="how-title">We embed with your team</h3>
+          <p class="how-desc">We join your team directly. We attend the meetings that matter, understand how decisions are made, and work within your existing structure, not around it.</p>
         </li>
         <li class="how-principle reveal reveal-delay-1">
-          <span class="how-num" aria-hidden="true">02</span>
-          <div>
-            <h3 class="how-title">We bring in specialists when the work needs them</h3>
-            <p class="how-desc">We have a network of delivery managers, designers, researchers, and legal tech specialists. We bring them in when the work needs them. We do not add people to an engagement unless there is a clear reason to.</p>
-          </div>
+          <h3 class="how-title">We bring in specialists when the work needs them</h3>
+          <p class="how-desc">We have a network of delivery managers, designers, researchers, and legal tech specialists. We bring them in when the work needs them. We do not add people to an engagement unless there is a clear reason to.</p>
         </li>
         <li class="how-principle reveal reveal-delay-2">
-          <span class="how-num" aria-hidden="true">03</span>
-          <div>
-            <h3 class="how-title">We stay close to delivery</h3>
-            <p class="how-desc">We do not hand over a plan and step back. We stay involved as the work is delivered, removing blockers, tracking progress, and adjusting when things change.</p>
-          </div>
+          <h3 class="how-title">We stay close to delivery</h3>
+          <p class="how-desc">We do not hand over a plan and step back. We stay involved as the work is delivered, removing blockers, tracking progress, and adjusting when things change.</p>
         </li>
         <li class="how-principle reveal reveal-delay-3">
-          <span class="how-num" aria-hidden="true">04</span>
-          <div>
-            <h3 class="how-title">We prioritise outcomes over process</h3>
-            <p class="how-desc">We use process where it helps and drop it where it does not. We do not run meetings, produce documents, or follow frameworks unless they contribute to getting the work done on time.</p>
-          </div>
+          <h3 class="how-title">We prioritise outcomes over process</h3>
+          <p class="how-desc">We use process where it helps and drop it where it does not. We do not run meetings, produce documents, or follow frameworks unless they contribute to getting the work done on time.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- CASE STUDIES -->
-  <section id="case-studies" aria-labelledby="work-heading">
-    <div class="section-header" style="max-width:1100px;margin:0 auto 4rem;">
-      <div>
-        <p class="section-label reveal" aria-hidden="true">Our Work</p>
-        <h2 id="work-heading" class="section-title reveal reveal-delay-1">What we have <em>delivered.</em></h2>
-      </div>
-      <p class="section-intro reveal reveal-delay-2">A selection of the work we have done and the organisations we have worked with.</p>
-    </div>
+  <!-- SELECTED WORK BRIDGE -->
+  <section id="case-studies" aria-labelledby="work-bridge-heading">
 
-    <!-- THREE CARD GRID -->
-    <div class="cs-grid" style="max-width:1100px;margin:0 auto;">
-
-      <!-- CARD 1 — Azariah (real) -->
-      <article class="cs-card cs-card--full reveal" aria-labelledby="cs-title-001">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 001</p>
-          <p class="cs-tag">Operating Partner Support · Tech / SaaS</p>
-          <h3 id="cs-title-001" class="cs-title">How Azariah raised funding and <em>restructured its team.</em></h3>
-        </div>
-        <div class="cs-card-bottom">
-          <blockquote class="cs-quote">"The clarity and shift in energy through the whole organisation when clear, consistent guidelines arrived — that was the moment everything changed."</blockquote>
-          <ul class="cs-outcomes" aria-label="Outcomes">
-            <li><span class="cs-dot" aria-hidden="true"></span>Funding successfully raised</li>
-            <li><span class="cs-dot" aria-hidden="true"></span>Team restructured with defined roles and accountability</li>
-            <li><span class="cs-dot" aria-hidden="true"></span>Founder freed up to focus on strategy and growth</li>
-          </ul>
-          <a href="azariah-case-study.html" class="cs-cta">Read the Azariah case study →</a>
-        </div>
-      </article>
-
-      <!-- CARD 2 — Placeholder -->
-      <article class="cs-card cs-card--pending reveal reveal-delay-1" aria-labelledby="cs-title-002">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 002</p>
-          <p class="cs-tag">Operating Partner Support · Professional Services</p>
-          <h3 id="cs-title-002" class="cs-title">Supporting a growing organisation to stabilise delivery and <em>improve client experience.</em></h3>
-        </div>
-        <div class="cs-card-bottom">
-          <p class="cs-pending-desc">Operational structure, delivery cadence, and client-facing processes redesigned across a 12-person team.</p>
-          <p class="cs-pending-label" aria-label="Case study coming soon">Case study coming soon</p>
-        </div>
-      </article>
-
-      <!-- CARD 3 — Placeholder -->
-      <article class="cs-card cs-card--pending reveal reveal-delay-2" aria-labelledby="cs-title-003">
-        <div class="cs-card-top">
-          <p class="cs-num">№ 003</p>
-          <p class="cs-tag">Project Strategy · Leadership Team</p>
-          <h3 id="cs-title-003" class="cs-title">Helping a leadership team introduce structure, clarity and <em>predictable execution.</em></h3>
-        </div>
-        <div class="cs-card-bottom">
-          <p class="cs-pending-desc">90-day plan developed and delivered across operations, hiring, and product. Founder overhead reduced significantly.</p>
-          <p class="cs-pending-label" aria-label="Case study coming soon">Case study coming soon</p>
-        </div>
-      </article>
-
+    <div class="work-bridge-inner reveal">
+      <p class="work-bridge-eyebrow" aria-hidden="true">Selected work</p>
+      <h2 id="work-bridge-heading" class="work-bridge-heading">Operational systems, service redesigns, and the work behind better delivery.</h2>
+      <p class="work-bridge-body">We work closely with organisations to improve how digital services operate: from delivery structures and internal systems to service journeys, visibility, and operational clarity.</p>
+      <a href="/work/" class="work-bridge-cta">View selected work</a>
     </div>
 
     <!-- LOGO STRIP — TRUSTED THROUGH EXPERIENCE
@@ -1822,19 +1643,18 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
 <!-- SITE FOOTER — semantic landmark -->
 <footer class="site-footer">
   <a href="#home" aria-label="Not On Mondays — return to top" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
-    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
-    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.2);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
   </a>
   <nav aria-label="Footer navigation">
     <ul class="footer-links">
       <li><a href="/why-not-on-mondays">About</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/how-we-work/">How We Work</a></li>
-      <li><a href="#case-studies">Work</a></li>
-      <li><a href="legal-tech-operations.html">Legal Tech</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/legal-tech-operations">Legal Tech</a></li>
       <li><a href="/insights/">Insights</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
     <ul class="footer-links" style="margin-top:1rem;">
       <li><a href="net-zero.html">Net Zero &amp; Environmental Policy</a></li>
@@ -1886,7 +1706,7 @@ body { background: var(--off-white); color: var(--dark); font-family: 'DM Sans',
     if (el) {
       const e = 'hello' + '@' + 'notonmondays' + '.com';
       el.href = 'mailto:' + e;
-      el.textContent = e + ' →';
+      el.textContent = e;
     }
   })();
 

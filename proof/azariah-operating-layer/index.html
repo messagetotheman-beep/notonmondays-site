@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azariah — Operational Proof | Not On Mondays</title>
+<meta name="description" content="How Not On Mondays became the operating layer behind a globally distributed healthcare startup — introducing clarity, coordination, and operational maturity across three time zones.">
+<link rel="canonical" href="https://notonmondays.com/proof/azariah-operating-layer/">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://notonmondays.com/proof/azariah-operating-layer/">
+<meta property="og:title" content="Azariah — Operational Proof | Not On Mondays">
+<meta property="og:description" content="How Not On Mondays became the operating layer behind a globally distributed healthcare startup — introducing clarity, coordination, and operational maturity across three time zones.">
+<meta property="og:image" content="https://notonmondays.com/assets/og-image.jpg">
+<meta property="og:site_name" content="Not On Mondays">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://notonmondays.com/proof/azariah-operating-layer/">
+<meta name="twitter:title" content="Azariah — Operational Proof | Not On Mondays">
+<meta name="twitter:description" content="How Not On Mondays became the operating layer behind a globally distributed healthcare startup — introducing clarity, coordination, and operational maturity across three time zones.">
+<meta name="twitter:image" content="https://notonmondays.com/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The operating layer behind Azariah",
+  "description": "How Not On Mondays became the operating layer behind a globally distributed healthcare startup — introducing clarity, coordination, and operational maturity.",
+  "url": "https://notonmondays.com/proof/azariah-operating-layer/",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://notonmondays.com/proof/azariah-operating-layer/" },
+  "image": "https://notonmondays.com/assets/og-image.jpg",
+  "author": { "@type": "Organization", "name": "Not On Mondays" },
+  "publisher": { "@type": "Organization", "name": "Not On Mondays" },
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17"
+}
+</script>
+
+<link rel="icon" type="image/png" href="/assets/nomlogo400.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/nom.css">
+
+<style>
+
+/* ── Skip link ────────────────────────────────────── */
+.skip-link { position: absolute; top: -100%; left: 1rem; background: var(--blue); color: #fff; padding: 0.75rem 1.25rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; z-index: 99999; transition: top 0.2s ease; }
+.skip-link:focus { top: 1rem; }
+
+/* ── Site header & nav ────────────────────────────── */
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(242,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,42,212,0.08); }
+.site-nav { padding: 0 4rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: inline-flex; align-items: center; gap: 0.9rem; text-decoration: none; line-height: 1; }
+.nav-logo-initials { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1; }
+.nom-initial { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.5em; text-transform: lowercase; line-height: 1.2; display: block; transition: color 0.3s ease; }
+.nom-initial.fade-1, .nom-initial.fade-2 { color: rgba(17,17,36,0.25); }
+.nom-initial.landing { color: var(--blue); }
+.nav-logo:hover .fade-1, .nav-logo:hover .fade-2 { color: rgba(17,17,36,0.4); }
+.nav-logo:hover .landing { color: var(--dark); }
+.nav-logo-divider { width: 1px; height: 28px; background: rgba(26,42,212,0.15); flex-shrink: 0; }
+.nav-descriptor { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; }
+.nav-descriptor span { font-family: 'DM Mono', monospace; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(17,17,36,0.6); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s ease; font-weight: 300; }
+.nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current="page"] { color: var(--blue); }
+.nav-cta { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 0.7rem 1.4rem; text-decoration: none; transition: background 0.3s ease; white-space: nowrap; }
+.nav-cta:hover, .nav-cta:focus-visible { background: var(--dark); }
+.nav-cta:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--dark); font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.nav-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ── HERO ─────────────────────────────────────────── */
+.proof-hero {
+  background: var(--dark);
+  padding: calc(72px + 3.5rem) 4rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.proof-hero-inner { max-width: 1100px; margin: 0 auto; }
+.proof-back {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+.proof-back:hover, .proof-back:focus-visible { color: var(--light-blue); }
+.proof-back:focus-visible { outline: 2px solid var(--light-blue); outline-offset: 3px; }
+.proof-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 1.2rem;
+}
+.proof-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: var(--off-white);
+  margin-bottom: 2.5rem;
+  max-width: 800px;
+}
+.proof-headline em { font-style: italic; color: var(--light-blue); }
+.proof-meta-strip {
+  display: flex;
+  gap: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 1.8rem;
+  flex-wrap: wrap;
+}
+.proof-meta-item label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.proof-meta-item span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+}
+.proof-meta-loc { display: flex; gap: 0.55rem; align-items: center; }
+.proof-meta-loc-dot { width: 3px; height: 3px; background: rgba(191,198,240,0.35); border-radius: 50%; flex-shrink: 0; }
+
+/* ── PULL QUOTE ───────────────────────────────────── */
+.proof-pullquote { background: var(--blue); padding: 3.5rem 4rem; }
+.proof-pullquote-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.proof-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.15);
+  line-height: 0.85;
+  flex-shrink: 0;
+}
+.proof-quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: #fff;
+}
+.proof-quote-attr {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-top: 1.2rem;
+}
+
+/* ── BODY ─────────────────────────────────────────── */
+.proof-body { background: var(--warm-white); padding: 5rem 4rem; }
+.proof-body-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 6rem;
+  align-items: start;
+}
+.proof-prose p {
+  font-size: 0.95rem;
+  line-height: 1.95;
+  color: var(--mid);
+  font-weight: 300;
+  margin-bottom: 1.4rem;
+}
+.proof-prose p:last-child { margin-bottom: 0; }
+.proof-prose p strong { color: var(--dark); font-weight: 400; }
+.proof-prose a { color: var(--blue); font-weight: 300; }
+.proof-prose a:hover { opacity: 0.7; }
+
+.proof-sidebar { position: sticky; top: 100px; }
+.proof-sidebar-box { background: var(--dark); padding: 2rem; margin-bottom: 1.4rem; }
+.proof-sidebar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 1.4rem;
+}
+.proof-sidebar-outcome { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.9rem; }
+.proof-sidebar-outcome:last-child { margin-bottom: 0; }
+.proof-sidebar-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; flex-shrink: 0; margin-top: 0.48rem; }
+.proof-sidebar-outcome span { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.5); font-weight: 300; }
+
+.proof-offering-box { background: var(--off-white); border: 1px solid rgba(26,42,212,0.1); padding: 1.6rem 1.8rem; }
+.proof-offering-label { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+.proof-offering-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; color: var(--dark); margin-bottom: 0.7rem; }
+.proof-offering-desc { font-size: 0.78rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 1rem; }
+.proof-offering-link { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); text-decoration: none; transition: opacity 0.3s ease; }
+.proof-offering-link:hover { opacity: 0.6; }
+
+/* ── PROOF MOMENTS ────────────────────────────────── */
+.proof-moments {
+  background: var(--off-white);
+  padding: 5.5rem 4rem;
+  border-top: 1px solid rgba(26,42,212,0.07);
+}
+.proof-moments-inner { max-width: 1100px; margin: 0 auto; }
+
+.proof-moment { padding-top: 4rem; border-top: 1px solid rgba(26,42,212,0.1); }
+.proof-moment + .proof-moment { margin-top: 4.5rem; }
+.proof-moment-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 2.5rem;
+}
+.proof-moment-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.9rem;
+}
+.proof-moment-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 1.9vw, 1.7rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--dark);
+}
+.proof-moment-body {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--mid);
+  font-weight: 300;
+  padding-top: 0.2rem;
+}
+
+/* ── ARTIFACTS ────────────────────────────────────── */
+.artifact-shell { background: var(--dark); overflow: hidden; border: 1px solid rgba(255,255,255,0.04); }
+.artifact-bar {
+  background: rgba(255,255,255,0.025);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 0.7rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.artifact-bar-label { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.16); }
+.artifact-bar-date { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.1); }
+
+/* Ownership table */
+.artifact-fn-header {
+  display: grid;
+  grid-template-columns: 2rem 1fr 1fr auto;
+  gap: 1.2rem;
+  padding: 0.6rem 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.artifact-fn-header span { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.13); }
+.artifact-fn-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr 1fr auto;
+  gap: 1.2rem;
+  padding: 0.85rem 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: center;
+}
+.artifact-fn-row:last-child { border-bottom: none; }
+.artifact-fn-num { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.16); }
+.artifact-fn-name { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.62); line-height: 1.3; }
+.artifact-fn-owner { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.26); line-height: 1.5; }
+.artifact-fn-owner em { font-style: normal; color: var(--light-blue); opacity: 0.65; }
+.artifact-badge { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.42rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.55rem; white-space: nowrap; }
+.artifact-badge--covered { background: rgba(40,120,80,0.13); color: rgba(100,190,130,0.75); }
+.artifact-badge--monitor { background: rgba(180,100,20,0.11); color: rgba(220,155,55,0.75); }
+.artifact-badge--nom { background: rgba(26,42,212,0.2); color: var(--light-blue); }
+
+/* Sprint cadence */
+.artifact-cadence { padding: 1.5rem 1.4rem 1.8rem; }
+.artifact-cadence-title { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.16); margin-bottom: 1.5rem; }
+.artifact-cadence-list { list-style: none; border-left: 1px solid rgba(26,42,212,0.35); padding-left: 1.5rem; margin-bottom: 2rem; }
+.artifact-cadence-item { position: relative; padding: 0 0 1.3rem 0; }
+.artifact-cadence-item:last-child { padding-bottom: 0; }
+.artifact-cadence-item::before { content: ''; position: absolute; left: -1.57rem; top: 0.32em; width: 5px; height: 5px; border-radius: 50%; background: var(--dark); border: 1px solid rgba(26,42,212,0.55); }
+.artifact-cadence-phase { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(191,198,240,0.5); margin-bottom: 0.3rem; }
+.artifact-cadence-desc { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.artifact-divider { border: none; border-top: 1px solid rgba(255,255,255,0.05); margin-bottom: 1.3rem; }
+.artifact-jira-label { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.14); margin-bottom: 0.8rem; }
+.artifact-jira-strip { display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap; }
+.artifact-jira-col { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2); padding: 0.28rem 0.65rem; border: 1px solid rgba(255,255,255,0.06); }
+.artifact-jira-col--active { background: rgba(26,42,212,0.18); color: var(--light-blue); border-color: rgba(26,42,212,0.28); }
+.artifact-jira-arrow { font-size: 0.48rem; color: rgba(255,255,255,0.1); flex-shrink: 0; }
+
+/* Communication structure */
+.artifact-comms { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.artifact-comms-col { padding: 1.5rem 1.4rem; }
+.artifact-comms-col + .artifact-comms-col { border-left: 1px solid rgba(255,255,255,0.04); }
+.artifact-comms-heading { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.16); margin-bottom: 1.1rem; }
+.artifact-channel { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: start; }
+.artifact-channel:last-child { border-bottom: none; }
+.artifact-channel-name { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: rgba(191,198,240,0.55); white-space: nowrap; padding-top: 0.05em; }
+.artifact-channel-purpose { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.32); line-height: 1.4; }
+.artifact-protocol { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.artifact-protocol:last-child { border-bottom: none; }
+.artifact-protocol-label { font-family: 'DM Mono', monospace; font-size: 0.42rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(191,198,240,0.35); margin-bottom: 0.2rem; }
+.artifact-protocol-body { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.36); line-height: 1.4; }
+.artifact-location-strip {
+  padding: 0.8rem 1.4rem;
+  background: rgba(26,42,212,0.07);
+  border-top: 1px solid rgba(26,42,212,0.13);
+  display: flex;
+  gap: 0;
+}
+.artifact-location { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.18); padding-right: 1.4rem; margin-right: 1.4rem; border-right: 1px solid rgba(255,255,255,0.05); }
+.artifact-location:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.artifact-location strong { display: block; color: rgba(191,198,240,0.5); font-weight: 300; font-size: 0.52rem; margin-bottom: 0.1rem; }
+
+/* Values + principles artifact */
+.artifact-values { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.artifact-values-col { padding: 1.5rem 1.4rem; }
+.artifact-values-col + .artifact-values-col { border-left: 1px solid rgba(255,255,255,0.04); }
+.artifact-value-row { padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.artifact-value-row:last-child { border-bottom: none; }
+.artifact-value-name { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.6); display: block; margin-bottom: 0.18rem; }
+.artifact-value-q { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.04em; color: rgba(191,198,240,0.38); font-style: italic; display: block; }
+.artifact-principle-row { display: grid; grid-template-columns: 1.8rem 1fr; gap: 0.8rem; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: start; }
+.artifact-principle-row:last-child { border-bottom: none; }
+.artifact-principle-num { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.12em; color: rgba(191,198,240,0.3); padding-top: 0.15em; }
+.artifact-principle-text { font-family: 'DM Sans', sans-serif; font-size: 0.76rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.4; }
+.artifact-principle-row--note .artifact-principle-text { font-style: italic; color: rgba(191,198,240,0.45); font-size: 0.7rem; }
+
+/* ── OUTCOMES ─────────────────────────────────────── */
+.proof-outcomes { background: var(--dark); padding: 5rem 4rem; border-top: 1px solid rgba(26,42,212,0.12); }
+.proof-outcomes-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+.proof-outcomes-prose { font-size: 0.92rem; line-height: 1.9; color: rgba(242,240,232,0.48); font-weight: 300; }
+.proof-outcomes-prose p { margin-bottom: 1.2rem; }
+.proof-outcomes-prose p:last-child { margin-bottom: 0; }
+.proof-outcomes-label { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 1.8rem; opacity: 0.65; }
+.proof-outcome-item { padding: 1.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.proof-outcome-item:first-of-type { border-top: 1px solid rgba(255,255,255,0.05); }
+.proof-outcome-tag { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(191,198,240,0.3); margin-bottom: 0.35rem; }
+.proof-outcome-text { font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 300; color: rgba(242,240,232,0.6); line-height: 1.55; }
+
+/* ── CTA ──────────────────────────────────────────── */
+.proof-cta { background: var(--off-white); border-top: 1px solid rgba(26,42,212,0.08); padding: 5.5rem 4rem; }
+.proof-cta-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+}
+.proof-cta-label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+.proof-cta-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 2.8vw, 2.6rem); font-weight: 300; line-height: 1.1; color: var(--dark); }
+.proof-cta-heading em { font-style: italic; color: var(--blue); }
+.proof-cta-btn { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--off-white); background: var(--blue); padding: 1rem 2rem; text-decoration: none; white-space: nowrap; transition: background 0.3s ease; display: inline-block; }
+.proof-cta-btn:hover { background: var(--dark); }
+.proof-cta-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ── FOOTER ───────────────────────────────────────── */
+.site-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+.footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover, .footer-links a:focus-visible { color: rgba(255,255,255,0.7); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
+
+/* ── REVEAL ───────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+
+/* ── VISION INTERSTITIAL ─────────────────────────── */
+.proof-vision { background: var(--dark); border-top: 1px solid rgba(26,42,212,0.18); border-bottom: 1px solid rgba(26,42,212,0.18); padding: 4rem; }
+.proof-vision-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.proof-vision-label { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(191,198,240,0.32); margin-bottom: 2rem; }
+.proof-vision-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 1.8vw, 1.45rem); font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.52); font-style: italic; margin-bottom: 1.5rem; }
+.proof-vision-note { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.14em; color: rgba(191,198,240,0.25); }
+
+/* ── SPRINT CARDS ─────────────────────────────────── */
+.artifact-sprint-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.artifact-sprint-card { padding: 1.6rem 1.4rem; border-right: 1px solid rgba(255,255,255,0.04); }
+.artifact-sprint-card:last-child { border-right: none; }
+.artifact-sprint-timing { font-family: 'DM Mono', monospace; font-size: 0.44rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(191,198,240,0.3); margin-bottom: 0.55rem; }
+.artifact-sprint-name { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.65); margin-bottom: 0.2rem; }
+.artifact-sprint-sub { font-family: 'DM Mono', monospace; font-size: 0.44rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(191,198,240,0.36); margin-bottom: 1.1rem; }
+.artifact-sprint-items { list-style: none; margin-bottom: 1.1rem; }
+.artifact-sprint-items li { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.32); line-height: 1.5; padding: 0.18rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.artifact-sprint-items li:last-child { border-bottom: none; }
+.artifact-sprint-callout { padding: 0.6rem 0.85rem; border-left: 2px solid rgba(26,42,212,0.45); background: rgba(26,42,212,0.08); }
+.artifact-sprint-callout--note { border-left-color: rgba(191,198,240,0.22); background: rgba(191,198,240,0.04); }
+.artifact-sprint-callout-label { font-family: 'DM Mono', monospace; font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-blue); opacity: 0.6; margin-bottom: 0.2rem; }
+.artifact-sprint-callout--note .artifact-sprint-callout-label { color: rgba(191,198,240,0.5); opacity: 1; }
+.artifact-sprint-callout-body { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 300; color: rgba(255,255,255,0.36); line-height: 1.45; }
+
+/* ── TOOLS GRID ───────────────────────────────────── */
+.artifact-tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+.artifact-tool { padding: 1.6rem 1.4rem; border-right: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+.artifact-tool:nth-child(2n) { border-right: none; }
+.artifact-tool:nth-child(n+3) { border-bottom: none; }
+.artifact-tool-badge { font-family: 'DM Mono', monospace; font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase; display: inline-block; padding: 0.18rem 0.5rem; margin-bottom: 0.85rem; }
+.artifact-tool-badge--work { background: rgba(26,42,212,0.18); color: var(--light-blue); }
+.artifact-tool-badge--comms { background: rgba(40,120,80,0.13); color: rgba(100,190,130,0.7); }
+.artifact-tool-badge--knowledge { background: rgba(180,100,20,0.11); color: rgba(220,155,55,0.7); }
+.artifact-tool-badge--time { background: rgba(191,198,240,0.08); color: rgba(191,198,240,0.42); }
+.artifact-tool-name { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.62); margin-bottom: 0.2rem; }
+.artifact-tool-purpose { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); margin-bottom: 0.8rem; }
+.artifact-tool-items { list-style: none; margin-bottom: 0.7rem; }
+.artifact-tool-items li { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.28); padding: 0.15rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); line-height: 1.5; }
+.artifact-tool-items li:last-child { border-bottom: none; }
+.artifact-tool-principle { font-family: 'DM Mono', monospace; font-size: 0.46rem; letter-spacing: 0.04em; font-style: italic; color: rgba(191,198,240,0.35); }
+
+/* ── SCREENSHOTS ─────────────────────────────────── */
+.proof-screenshot-inset {
+  margin-top: 1.8rem;
+  border: 1px solid rgba(26,42,212,0.1);
+  overflow: hidden;
+  max-width: 760px;
+}
+.proof-screenshot-inset img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.97);
+}
+.proof-screenshot-caption {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.65rem 0.9rem;
+  border-top: 1px solid rgba(26,42,212,0.08);
+  background: var(--off-white);
+}
+
+.proof-screenshot-strip {
+  margin-top: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-top: none;
+}
+.proof-screenshot-strip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.92) saturate(0.95);
+}
+.proof-screenshot-strip-caption {
+  background: var(--dark);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(191,198,240,0.32);
+  padding: 0.65rem 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav { padding: 0 1.5rem; }
+  .nav-toggle { display: flex; align-items: center; gap: 0.5rem; }
+  .nav-logo-divider, .nav-descriptor { display: none; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(242,240,232,0.98); backdrop-filter: blur(12px); padding: 1.5rem 1.5rem 2rem; gap: 0; border-bottom: 1px solid rgba(26,42,212,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(26,42,212,0.08); }
+  .nav-links a { display: block; padding: 1rem 0; }
+  .nav-cta { display: none; }
+  .proof-hero { padding: calc(72px + 2.5rem) 1.5rem 2.5rem; }
+  .proof-pullquote { padding: 3rem 1.5rem; }
+  .proof-pullquote-inner { flex-direction: column; gap: 0.5rem; }
+  .proof-quote-mark { font-size: 2.5rem; }
+  .proof-body { padding: 4rem 1.5rem; }
+  .proof-body-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .proof-sidebar { position: static; }
+  .proof-moments { padding: 4rem 1.5rem; }
+  .proof-moment-header { grid-template-columns: 1fr; gap: 1rem; }
+  .artifact-comms, .artifact-values { grid-template-columns: 1fr; }
+  .artifact-comms-col + .artifact-comms-col, .artifact-values-col + .artifact-values-col { border-left: none; border-top: 1px solid rgba(255,255,255,0.04); }
+  .artifact-fn-row { grid-template-columns: 1.5rem 1fr auto; gap: 0.8rem; }
+  .artifact-fn-owner { display: none; }
+  .proof-outcomes { padding: 4rem 1.5rem; }
+  .proof-outcomes-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .proof-cta { padding: 4rem 1.5rem; }
+  .proof-cta-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .site-footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; gap: 1.5rem; }
+  .proof-vision { padding: 3rem 1.5rem; }
+  .proof-screenshot-inset { max-width: 100%; }
+  .artifact-sprint-cards { grid-template-columns: 1fr; }
+  .artifact-sprint-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .artifact-sprint-card:last-child { border-bottom: none; }
+}
+
+@media (max-width: 640px) {
+  .proof-meta-strip { gap: 1.8rem; }
+  .artifact-fn-row { grid-template-columns: 1fr auto; }
+  .artifact-fn-num { display: none; }
+  .artifact-location-strip { flex-direction: column; gap: 0.5rem; }
+  .artifact-location { border-right: none; padding-right: 0; margin-right: 0; }
+  .artifact-jira-strip { gap: 0.35rem; }
+  .artifact-tools { grid-template-columns: 1fr; }
+  .artifact-tool { border-right: none; }
+  .artifact-tool:nth-child(n+3) { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .artifact-tool:last-child { border-bottom: none; }
+}
+
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Not On Mondays — return to homepage">
+      <span class="nav-logo-initials" aria-hidden="true">
+        <span class="nom-initial fade-1">n</span>
+        <span class="nom-initial fade-2">o</span>
+        <span class="nom-initial landing">m</span>
+      </span>
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-descriptor" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span>Menu</span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Start a conversation</a>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section class="proof-hero" aria-labelledby="proof-heading">
+  <div class="proof-hero-inner">
+    <a href="/work/" class="proof-back">&#8592; Our Work</a>
+    <p class="proof-eyebrow" aria-hidden="true">Operational Proof &#xB7; Azariah</p>
+    <h1 id="proof-heading" class="proof-headline reveal">
+      The operating layer behind <em>Azariah</em>
+    </h1>
+    <div class="proof-meta-strip reveal reveal-delay-1" aria-label="Engagement details">
+      <div class="proof-meta-item">
+        <label>Client</label>
+        <span>Azariah</span>
+      </div>
+      <div class="proof-meta-item">
+        <label>Sector</label>
+        <span>MedTech &#xB7; Healthcare Compliance</span>
+      </div>
+      <div class="proof-meta-item">
+        <label>Locations</label>
+        <span class="proof-meta-loc">
+          London
+          <span class="proof-meta-loc-dot" aria-hidden="true"></span>
+          Manila
+          <span class="proof-meta-loc-dot" aria-hidden="true"></span>
+          San Diego
+        </span>
+      </div>
+      <div class="proof-meta-item">
+        <label>Duration</label>
+        <span>Retained partnership</span>
+      </div>
+      <div class="proof-meta-item">
+        <label>Offering</label>
+        <span>The Operating Layer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="proof-pullquote" role="figure" aria-label="Client quote">
+  <div class="proof-pullquote-inner">
+    <div class="proof-quote-mark" aria-hidden="true">&#8220;</div>
+    <div>
+      <p class="proof-quote-text">The clarity and shift in energy through the whole organisation when clear, consistent guidelines arrived — that was the moment everything changed.</p>
+      <p class="proof-quote-attr">Azariah &#xB7; Founder</p>
+    </div>
+  </div>
+</div>
+
+<!-- VISION INTERSTITIAL -->
+<div class="proof-vision" aria-label="Azariah mission">
+  <div class="proof-vision-inner reveal">
+    <p class="proof-vision-label" aria-hidden="true">Azariah &#xB7; Why it matters</p>
+    <p class="proof-vision-text">We enable the people who show up to care, by improving the systems that support them, so those who need help receive it when it matters most.</p>
+    <p class="proof-vision-note">Not a tagline. A principle grounded in every decision.</p>
+  </div>
+</div>
+
+<!-- BODY -->
+<section class="proof-body" aria-labelledby="body-heading">
+  <div class="proof-body-inner">
+    <div class="proof-prose">
+      <p id="body-heading" class="reveal">Azariah builds compliance infrastructure for the NHS. They came to us when the product was clear but the operation was not. Across London, Manila, and San Diego, work moved in bursts. Decisions accumulated around a single person. The team had everything it needed except a shared system to work within.</p>
+      <p class="reveal">We became the operating layer. Over a retained partnership, we introduced Agile practices and sprint rhythms, structured how the team communicated across time zones, mapped ownership across six core functions, built an internal hub, and coached the founder and COO through the shift from informal coordination to structured operation.</p>
+      <p class="reveal">We also supported the NIHR THRIVE grant application — coordinating the documentation, timelines, and evidence the bid required. The operational readiness we had helped build made that work possible.</p>
+      <p class="reveal" style="margin-top:0.5rem;"><a href="/insights/operating-layer.html">Read our thinking on operational clarity as infrastructure.</a></p>
+    </div>
+
+    <aside class="proof-sidebar" aria-label="Engagement context">
+      <div class="proof-sidebar-box reveal">
+        <div class="proof-sidebar-label">What changed</div>
+        <div class="proof-sidebar-outcome">
+          <div class="proof-sidebar-dot" aria-hidden="true"></div>
+          <span>Founder freed from day-to-day coordination</span>
+        </div>
+        <div class="proof-sidebar-outcome">
+          <div class="proof-sidebar-dot" aria-hidden="true"></div>
+          <span>Delivery visible and trackable across the team</span>
+        </div>
+        <div class="proof-sidebar-outcome">
+          <div class="proof-sidebar-dot" aria-hidden="true"></div>
+          <span>Clear ownership across six core functions</span>
+        </div>
+        <div class="proof-sidebar-outcome">
+          <div class="proof-sidebar-dot" aria-hidden="true"></div>
+          <span>Work progressing continuously across three time zones</span>
+        </div>
+        <div class="proof-sidebar-outcome">
+          <div class="proof-sidebar-dot" aria-hidden="true"></div>
+          <span>Shared language across a multidisciplinary team</span>
+        </div>
+        <div class="proof-sidebar-outcome">
+          <div class="proof-sidebar-dot" aria-hidden="true"></div>
+          <span>NIHR grant process supported through operational preparation</span>
+        </div>
+      </div>
+      <div class="proof-offering-box reveal reveal-delay-1">
+        <div class="proof-offering-label">Offering in use</div>
+        <div class="proof-offering-name">The Operating Layer</div>
+        <p class="proof-offering-desc">Retained monthly operating partnership. PMO function, managed VA support, and an embedded operator working inside the business.</p>
+        <a href="/services/operating-layer/" class="proof-offering-link">Learn more</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- PROOF MOMENTS -->
+<section class="proof-moments" aria-label="Operational proof moments">
+  <div class="proof-moments-inner">
+
+    <!-- 1: OWNERSHIP CLARITY -->
+    <div class="proof-moment reveal">
+      <div class="proof-moment-header">
+        <div>
+          <p class="proof-moment-label" aria-hidden="true">Function ownership</p>
+          <h2 class="proof-moment-title">Knowing who owns what</h2>
+        </div>
+        <p class="proof-moment-body">We mapped six core functions across the team and gave each a named owner. Not a restructure. Clarity — the kind that lets a small team move without waiting for permission.</p>
+      </div>
+      <div class="artifact-shell" role="figure" aria-label="Function ownership table, Azariah, March 2026">
+        <div class="artifact-bar">
+          <span class="artifact-bar-label">Function Ownership &#xB7; Azariah</span>
+          <span class="artifact-bar-date">March 2026</span>
+        </div>
+        <div role="table" aria-label="Six operational functions with owners and status">
+          <div class="artifact-fn-header" role="row">
+            <span role="columnheader">#</span>
+            <span role="columnheader">Function</span>
+            <span role="columnheader">Owner</span>
+            <span role="columnheader">Status</span>
+          </div>
+          <div class="artifact-fn-row" role="row">
+            <span class="artifact-fn-num" role="cell">01</span>
+            <span class="artifact-fn-name" role="cell">Direction &amp; Strategy</span>
+            <span class="artifact-fn-owner" role="cell">Jok + <em>David (fractional)</em></span>
+            <span class="artifact-badge artifact-badge--covered" role="cell">Covered</span>
+          </div>
+          <div class="artifact-fn-row" role="row">
+            <span class="artifact-fn-num" role="cell">02</span>
+            <span class="artifact-fn-name" role="cell">Delivery &amp; Operations</span>
+            <span class="artifact-fn-owner" role="cell">Jeff + <em>David (fractional)</em></span>
+            <span class="artifact-badge artifact-badge--covered" role="cell">Covered</span>
+          </div>
+          <div class="artifact-fn-row" role="row">
+            <span class="artifact-fn-num" role="cell">03</span>
+            <span class="artifact-fn-name" role="cell">Product &amp; Service Design</span>
+            <span class="artifact-fn-owner" role="cell">Jok + Jeff (joint)</span>
+            <span class="artifact-badge artifact-badge--monitor" role="cell">Monitor</span>
+          </div>
+          <div class="artifact-fn-row" role="row">
+            <span class="artifact-fn-num" role="cell">04</span>
+            <span class="artifact-fn-name" role="cell">Technology &amp; Engineering</span>
+            <span class="artifact-fn-owner" role="cell">Jun (acting CTO)</span>
+            <span class="artifact-badge artifact-badge--covered" role="cell">Covered</span>
+          </div>
+          <div class="artifact-fn-row" role="row">
+            <span class="artifact-fn-num" role="cell">05</span>
+            <span class="artifact-fn-name" role="cell">Growth &amp; Proposals</span>
+            <span class="artifact-fn-owner" role="cell">Jok + Jeff + <em>David</em></span>
+            <span class="artifact-badge artifact-badge--monitor" role="cell">Monitor</span>
+          </div>
+          <div class="artifact-fn-row" role="row">
+            <span class="artifact-fn-num" role="cell">06</span>
+            <span class="artifact-fn-name" role="cell">Systems &amp; Enablement</span>
+            <span class="artifact-fn-owner" role="cell"><em>David (primary)</em></span>
+            <span class="artifact-badge artifact-badge--nom" role="cell">NOM-led</span>
+          </div>
+        </div>
+      </div>
+      <figure class="proof-screenshot-inset reveal reveal-delay-1" aria-label="Azariah design system — built and maintained by Not On Mondays">
+        <img src="/assets/proof/azariah/design-system.png"
+             alt="Azariah Design System portal — version 1.0, 2026. Maintained by David at Not On Mondays. NHS Blue colour palette. A single source of truth for how the team builds and communicates."
+             loading="lazy"
+             width="830" height="404">
+        <figcaption class="proof-screenshot-caption">Design system &#xB7; v1.0 &#xB7; 2026 &#xB7; Maintained by Not On Mondays</figcaption>
+      </figure>
+    </div>
+
+    <!-- 2: DELIVERY RHYTHM -->
+    <div class="proof-moment reveal">
+      <div class="proof-moment-header">
+        <div>
+          <p class="proof-moment-label" aria-hidden="true">Delivery cadence</p>
+          <h2 class="proof-moment-title">Making delivery legible</h2>
+        </div>
+        <p class="proof-moment-body">Sprint planning gave the whole team a shared view of what was moving and why. Reviews created accountability that did not rely on chasing people.</p>
+      </div>
+      <div class="artifact-shell" role="figure" aria-label="Sprint cadence and Jira workflow structure">
+        <div class="artifact-bar">
+          <span class="artifact-bar-label">Sprint Cadence &#xB7; 2-week cycle</span>
+          <span class="artifact-bar-date">Ongoing</span>
+        </div>
+        <div class="artifact-sprint-cards" aria-label="Sprint ceremony structure">
+          <div class="artifact-sprint-card">
+            <p class="artifact-sprint-timing">Start of week &#xB7; 30&#x2013;45 mins</p>
+            <p class="artifact-sprint-name">Sprint Planning</p>
+            <p class="artifact-sprint-sub">Align on what matters</p>
+            <ul class="artifact-sprint-items">
+              <li>Review priorities and backlog</li>
+              <li>Agree the sprint goal</li>
+              <li>Pull work into the sprint</li>
+              <li>Assign owners</li>
+            </ul>
+            <div class="artifact-sprint-callout">
+              <p class="artifact-sprint-callout-label">Output</p>
+              <p class="artifact-sprint-callout-body">Agreed goal. Populated sprint. Everyone knows what to work on.</p>
+            </div>
+          </div>
+          <div class="artifact-sprint-card">
+            <p class="artifact-sprint-timing">Midweek &#xB7; twice &#xB7; 15 mins</p>
+            <p class="artifact-sprint-name">Standup</p>
+            <p class="artifact-sprint-sub">Stay on track, unblock fast</p>
+            <ul class="artifact-sprint-items">
+              <li>What did you work on?</li>
+              <li>What are you doing next?</li>
+              <li>What is blocking you?</li>
+            </ul>
+            <div class="artifact-sprint-callout artifact-sprint-callout--note">
+              <p class="artifact-sprint-callout-label">Note</p>
+              <p class="artifact-sprint-callout-body">Async by default. Written in #delivery. No call required.</p>
+            </div>
+          </div>
+          <div class="artifact-sprint-card">
+            <p class="artifact-sprint-timing">End of week &#xB7; 45&#x2013;60 mins</p>
+            <p class="artifact-sprint-name">Review, Demo and Reflect</p>
+            <p class="artifact-sprint-sub">Learn, improve, show progress</p>
+            <ul class="artifact-sprint-items">
+              <li>What shipped?</li>
+              <li>What did not ship, and why?</li>
+              <li>What to change next sprint?</li>
+              <li>Share with the whole team</li>
+            </ul>
+            <div class="artifact-sprint-callout">
+              <p class="artifact-sprint-callout-label">Output</p>
+              <p class="artifact-sprint-callout-body">Shared summary. Retro actions. Backlog updated.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: OPERATING TOOLS -->
+    <div class="proof-moment reveal">
+      <div class="proof-moment-header">
+        <div>
+          <p class="proof-moment-label" aria-hidden="true">Operating tools</p>
+          <h2 class="proof-moment-title">One system for the whole team</h2>
+        </div>
+        <p class="proof-moment-body">More than tools: agreed protocols for how each one is used. Every team member, across three time zones, working inside the same structure.</p>
+      </div>
+      <div class="artifact-shell" role="figure" aria-label="Operating tool structure, Azariah">
+        <div class="artifact-bar">
+          <span class="artifact-bar-label">Operating Tools &#xB7; Azariah</span>
+          <span class="artifact-bar-date">2026</span>
+        </div>
+        <div class="artifact-tools">
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--work">Work</span>
+            <p class="artifact-tool-name">Jira</p>
+            <p class="artifact-tool-purpose">Work lives here</p>
+            <ul class="artifact-tool-items">
+              <li>All tasks go here</li>
+              <li>Track progress across the team</li>
+              <li>Manage priorities by sprint</li>
+            </ul>
+            <p class="artifact-tool-principle">"If it's not on Jira, it doesn't exist."</p>
+          </div>
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--comms">Comms</span>
+            <p class="artifact-tool-name">Slack</p>
+            <p class="artifact-tool-purpose">Conversation happens here</p>
+            <ul class="artifact-tool-items">
+              <li>Questions and updates</li>
+              <li>Quick decisions</li>
+              <li>Async standups in #delivery</li>
+            </ul>
+            <p class="artifact-tool-principle">"Default to channels, not DMs."</p>
+          </div>
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--knowledge">Knowledge</span>
+            <p class="artifact-tool-name">Confluence</p>
+            <p class="artifact-tool-purpose">Knowledge lives here</p>
+            <ul class="artifact-tool-items">
+              <li>Playbooks and decisions</li>
+              <li>Documentation and process records</li>
+              <li>No reliance on tribal memory</li>
+            </ul>
+            <p class="artifact-tool-principle">"If it matters beyond today, write it down."</p>
+          </div>
+          <div class="artifact-tool">
+            <span class="artifact-tool-badge artifact-tool-badge--time">Time</span>
+            <p class="artifact-tool-name">Calendar</p>
+            <p class="artifact-tool-purpose">Time is visible here</p>
+            <ul class="artifact-tool-items">
+              <li>Ceremonies and key sessions</li>
+              <li>Milestones and review dates</li>
+              <li>Cross-timezone visibility</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <figure class="proof-screenshot-strip reveal" aria-label="Azariah team wiki — live knowledge base maintained by Not On Mondays">
+        <img src="/assets/proof/azariah/wiki.png"
+             alt="Azariah team wiki — 47 entries covering NHS and clinical terminology, funding, tools and systems, NIHR grant terms, and roles and operations. Maintained by David. Live as of April 2026."
+             loading="lazy"
+             width="1440" height="395">
+        <figcaption class="proof-screenshot-strip-caption">Team wiki &#xB7; 47 entries &#xB7; Live &#xB7; April 2026</figcaption>
+      </figure>
+    </div>
+
+    <!-- 4: OPERATIONAL VALUES -->
+    <div class="proof-moment reveal">
+      <div class="proof-moment-header">
+        <div>
+          <p class="proof-moment-label" aria-hidden="true">Operational language</p>
+          <h2 class="proof-moment-title">The principles behind the system</h2>
+        </div>
+        <p class="proof-moment-body">Every tool and rhythm was grounded in a shared operational language. These values and delivery principles became the basis for decision-making across a team that had never shared a room.</p>
+      </div>
+      <div class="artifact-shell" role="figure" aria-label="Operational values and delivery principles from the Azariah playbook">
+        <div class="artifact-bar">
+          <span class="artifact-bar-label">Operational Values + Delivery Principles &#xB7; Azariah Playbook</span>
+          <span class="artifact-bar-date">2026</span>
+        </div>
+        <div class="artifact-values">
+          <div class="artifact-values-col">
+            <p class="artifact-comms-heading">Values</p>
+            <div class="artifact-value-row">
+              <span class="artifact-value-name">Enable, don't obstruct</span>
+              <span class="artifact-value-q">"Does this make someone's job easier?"</span>
+            </div>
+            <div class="artifact-value-row">
+              <span class="artifact-value-name">Take responsibility</span>
+              <span class="artifact-value-q">"Who owns this outcome?"</span>
+            </div>
+            <div class="artifact-value-row">
+              <span class="artifact-value-name">Make complexity work</span>
+              <span class="artifact-value-q">"Have we made this clearer, or just added more?"</span>
+            </div>
+            <div class="artifact-value-row">
+              <span class="artifact-value-name">Work as one system</span>
+              <span class="artifact-value-q">"Who else needs to be part of this?"</span>
+            </div>
+            <div class="artifact-value-row">
+              <span class="artifact-value-name">Start with care</span>
+              <span class="artifact-value-q">"Have we spoken to the people delivering this?"</span>
+            </div>
+            <div class="artifact-value-row">
+              <span class="artifact-value-name">Improve what matters</span>
+              <span class="artifact-value-q">"Does this actually improve anything?"</span>
+            </div>
+          </div>
+          <div class="artifact-values-col">
+            <p class="artifact-comms-heading">Delivery principles</p>
+            <div class="artifact-principle-row">
+              <span class="artifact-principle-num">01</span>
+              <span class="artifact-principle-text">If it's not on Jira, it doesn't exist</span>
+            </div>
+            <div class="artifact-principle-row">
+              <span class="artifact-principle-num">02</span>
+              <span class="artifact-principle-text">Keep work small and clear</span>
+            </div>
+            <div class="artifact-principle-row">
+              <span class="artifact-principle-num">03</span>
+              <span class="artifact-principle-text">Focus on outcomes, not activity</span>
+            </div>
+            <div class="artifact-principle-row">
+              <span class="artifact-principle-num">04</span>
+              <span class="artifact-principle-text">Talk early — don't stay blocked</span>
+            </div>
+            <div class="artifact-principle-row">
+              <span class="artifact-principle-num">05</span>
+              <span class="artifact-principle-text">Make work visible to everyone</span>
+            </div>
+            <div class="artifact-principle-row artifact-principle-row--note">
+              <span class="artifact-principle-num" aria-hidden="true">&#x2015;</span>
+              <span class="artifact-principle-text">"Default to channels, not DMs."</span>
+            </div>
+            <div class="artifact-principle-row artifact-principle-row--note">
+              <span class="artifact-principle-num" aria-hidden="true">&#x2015;</span>
+              <span class="artifact-principle-text">"If it matters beyond today, write it down."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="proof-outcomes" aria-labelledby="outcomes-heading">
+  <div class="proof-outcomes-inner">
+    <div>
+      <p class="proof-outcomes-label" aria-hidden="true">The result</p>
+      <div class="proof-outcomes-prose">
+        <p>The outcome was not a set of tools. It was a more coherent operating environment — one where the right people have the right context, and work moves without waiting for a single bottleneck.</p>
+        <p>That is what operational clarity looks like in practice. Not a dashboard. A team that functions as a unit across disciplines, time zones, and ambiguity.</p>
+      </div>
+    </div>
+    <div>
+      <p id="outcomes-heading" class="proof-outcomes-label">Operational outcomes</p>
+      <div class="proof-outcome-item">
+        <p class="proof-outcome-tag">Founder enablement</p>
+        <p class="proof-outcome-text">Operational overhead shifted from founder to system. More time on strategy.</p>
+      </div>
+      <div class="proof-outcome-item">
+        <p class="proof-outcome-tag">Delivery visibility</p>
+        <p class="proof-outcome-text">Work visible and trackable across the team. Blockers surface earlier.</p>
+      </div>
+      <div class="proof-outcome-item">
+        <p class="proof-outcome-tag">Distributed clarity</p>
+        <p class="proof-outcome-text">Work progresses continuously across three time zones without real-time dependency.</p>
+      </div>
+      <div class="proof-outcome-item">
+        <p class="proof-outcome-tag">Grant readiness</p>
+        <p class="proof-outcome-text">NIHR THRIVE application supported through documentation and submission coordination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="proof-cta" aria-labelledby="cta-heading">
+  <div class="proof-cta-inner">
+    <div>
+      <p class="proof-cta-label" aria-hidden="true">Work with us</p>
+      <h2 id="cta-heading" class="proof-cta-heading">Sound familiar? <em>Let's talk.</em></h2>
+    </div>
+    <a href="/#contact" class="proof-cta-btn">Start a conversation</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <a href="/" aria-label="Not On Mondays — return to homepage" style="display:inline-flex;flex-direction:column;gap:0.15rem;text-decoration:none;line-height:1;">
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">n</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:rgba(255,255,255,0.18);line-height:1.2;" aria-hidden="true">o</span>
+    <span style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:300;letter-spacing:0.5em;text-transform:lowercase;color:var(--blue);line-height:1.2;" aria-hidden="true">m</span>
+  </a>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="/why-not-on-mondays">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/how-we-work/">How We Work</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <ul class="footer-links" style="margin-top:1rem;">
+      <li><a href="/net-zero.html">Net Zero &amp; Environmental Policy</a></li>
+      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+    </ul>
+  </nav>
+  <p class="footer-copy"><small>notonmondays.com &#xB7; 2026</small></p>
+</footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      const label = navToggle.querySelector('span');
+      if (label) label.textContent = open ? 'Close' : 'Menu';
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
