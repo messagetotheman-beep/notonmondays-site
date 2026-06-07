@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — Not On Mondays</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The page you were looking for doesn't exist. It might have moved, or the link might not be quite right.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+/* ─── PAGE ─── */
+body {
+  background: #111124;
+  color: #f2f0e8;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── BACKGROUND ─── */
+.bg-light {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 50% 45%, rgba(26,42,212,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 0% 100%, rgba(26,42,212,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 100% 0%, rgba(26,42,212,0.03) 0%, transparent 60%);
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(242,240,232,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,240,232,0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* ─── ACCENT BAR ─── */
+.accent-bar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #1a2ad4;
+  z-index: 10;
+}
+
+/* ─── RULE LINES ─── */
+.rule-top,
+.rule-bottom {
+  position: fixed;
+  left: 0; right: 0;
+  height: 1px;
+  z-index: 10;
+  pointer-events: none;
+}
+.rule-top {
+  top: 48px;
+  background: linear-gradient(90deg, transparent 0%, rgba(26,42,212,0.25) 20%, rgba(26,42,212,0.14) 60%, transparent 100%);
+}
+.rule-bottom {
+  bottom: 48px;
+  background: linear-gradient(90deg, transparent 0%, rgba(26,42,212,0.25) 20%, rgba(26,42,212,0.14) 60%, transparent 100%);
+}
+
+/* ─── LAYOUT ─── */
+.page {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ─── NOM WORDMARK ─── */
+.nom-wordmark {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  margin-bottom: 52px;
+  border: 1.5px solid rgba(26,42,212,0.3);
+  padding: 0.4rem 0.65rem 0.4rem 0.5rem;
+}
+
+.nom-wordmark:hover {
+  border-color: rgba(26,42,212,0.55);
+}
+
+.nom-initials {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 0;
+}
+
+.nom-initials span {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 0.75rem;
+  line-height: 1;
+  display: block;
+}
+
+.nm-n { color: rgba(242,240,232,0.28); }
+.nm-o { color: rgba(242,240,232,0.28); }
+.nm-m { color: #1a2ad4; }
+
+.nom-divider {
+  width: 1px;
+  background: rgba(26,42,212,0.28);
+  align-self: stretch;
+  margin: 0 0.65rem;
+  flex-shrink: 0;
+}
+
+.nom-tagline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1;
+}
+
+.nom-tagline span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.42);
+  display: block;
+}
+
+/* ─── EYEBROW ─── */
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26,42,212,0.8);
+  margin-bottom: 16px;
+}
+
+/* ─── HEADLINE ─── */
+.headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.1;
+  color: #f2f0e8;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+/* ─── BODY ─── */
+.body-copy {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(242,240,232,0.55);
+  letter-spacing: 0.03em;
+  margin-bottom: 40px;
+}
+
+/* ─── PONG TERMINAL ─── */
+.terminal-wrap {
+  margin-bottom: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.terminal-chrome {
+  display: inline-block;
+  border: 1px solid rgba(26,42,212,0.28);
+  background: rgba(8,8,20,0.7);
+  position: relative;
+  overflow: hidden;
+  /* max-width keeps it from overwhelming the layout on large screens */
+  max-width: 100%;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-bottom: 1px solid rgba(26,42,212,0.18);
+}
+
+.terminal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(242,240,232,0.07);
+  border: 1px solid rgba(242,240,232,0.1);
+  flex-shrink: 0;
+}
+
+.terminal-title {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.18);
+  margin-left: auto;
+}
+
+/* Scanline overlay */
+.terminal-chrome::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.055) 2px,
+    rgba(0,0,0,0.055) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+canvas#pong {
+  display: block;
+  width: 390px;
+  height: auto;
+  max-width: 100%;
+  touch-action: none;
+}
+
+/* ─── GAME INSTRUCTION ─── */
+.game-hint {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.22);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ─── CTA ─── */
+.cta-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 28px;
+  background: #1a2ad4;
+  color: #f2f0e8;
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid #1a2ad4;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.cta-btn::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.18s ease;
+}
+
+.cta-btn:hover { background: #141e9e; border-color: #141e9e; }
+.cta-btn:hover::after { transform: translateX(3px); }
+.cta-btn:focus-visible {
+  outline: 2px solid #bfc6f0;
+  outline-offset: 3px;
+}
+
+.secondary-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+  list-style: none;
+}
+
+.secondary-links a {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.35);
+  text-decoration: none;
+  transition: color 0.18s;
+  padding: 10px 4px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.secondary-links a:hover { color: rgba(242,240,232,0.65); }
+.secondary-links a:focus-visible {
+  outline: 2px solid #bfc6f0;
+  outline-offset: 3px;
+}
+
+/* ─── FOOTER ─── */
+.page-footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 52px 16px;
+  pointer-events: none;
+}
+
+.footer-url {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26,42,212,0.45);
+}
+
+.footer-corner {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.1);
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  .cta-btn,
+  .cta-btn::after,
+  .secondary-links a,
+  .nom-wordmark { transition: none; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  .page {
+    padding: 72px 24px 80px;
+    align-items: flex-start;
+    padding-top: 88px;
+  }
+  .headline { font-size: 36px; }
+  .nom-tagline span { font-size: 0.5rem; }
+  .page-footer { padding: 0 28px 14px; }
+  .footer-corner { display: none; }
+}
+
+@media (max-width: 375px) {
+  .page { padding: 80px 18px 80px; }
+}
+
+</style>
+</head>
+<body>
+
+<a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;focus-visible:static">Skip to main content</a>
+
+<div class="bg-light" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="accent-bar" aria-hidden="true"></div>
+<div class="rule-top" aria-hidden="true"></div>
+<div class="rule-bottom" aria-hidden="true"></div>
+
+<main class="page" id="main-content">
+  <div class="content">
+
+    <!-- NOM wordmark -->
+    <a href="/" class="nom-wordmark" aria-label="Not On Mondays — return to homepage">
+      <span class="nom-initials" aria-hidden="true">
+        <span class="nm-n">n</span>
+        <span class="nm-o">o</span>
+        <span class="nm-m">m</span>
+      </span>
+      <span class="nom-divider" aria-hidden="true"></span>
+      <span class="nom-tagline" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
+
+    <p class="eyebrow" aria-hidden="true">404 · page not found</p>
+
+    <h1 class="headline">This page doesn't exist.</h1>
+
+    <p class="body-copy">It might have moved, or the link might not be quite right.</p>
+
+    <!-- Pong terminal — decorative, game is optional -->
+    <div class="terminal-wrap" aria-hidden="true">
+      <div class="terminal-chrome">
+        <div class="terminal-bar">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-title">session terminated</span>
+        </div>
+        <canvas id="pong" width="390" height="178" tabindex="-1"></canvas>
+      </div>
+    </div>
+
+    <!-- Visible instruction for keyboard players; hidden from AT since canvas is decorative -->
+    <p class="game-hint" aria-hidden="true">Use &uarr;&darr; or W / S to move your paddle</p>
+
+    <nav class="cta-wrap" aria-label="Recovery navigation">
+      <a href="/hub/" class="cta-btn">Go to the workspace</a>
+      <ul class="secondary-links" role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/insights/">Insights</a></li>
+        <li><a href="/portal/">Portal</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="page-footer" aria-hidden="true">
+  <span class="footer-url">notonmondays.com</span>
+  <span class="footer-corner">London, Worldwide</span>
+</footer>
+
+<script>
+(function () {
+  var canvas = document.getElementById('pong');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  /* Canvas logical dimensions — always the pixel buffer size */
+  var W = canvas.width;   /* 390 */
+  var H = canvas.height;  /* 178 */
+
+  var PADDLE_W      = 4;
+  var PADDLE_H      = 28;
+  var PADDLE_MARGIN = 16;
+  var BALL          = 4;
+  var SPEED         = 1.45;
+
+  var bx = W / 2, by = H / 2;
+  var vx = SPEED * 0.82, vy = SPEED * 0.57;
+
+  /* Left = player paddle */
+  var leftY  = H / 2 - PADDLE_H / 2;
+  /* Right = AI paddle */
+  var rightY = H / 2 - PADDLE_H / 2;
+
+  /* Keyboard state */
+  var keyUp = false, keyDown = false;
+
+  var PLAYER_SPEED = 3.2;
+  var AI_SPEED     = 2.0;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    /* Centre dashed line */
+    ctx.save();
+    ctx.setLineDash([4, 7]);
+    ctx.strokeStyle = 'rgba(26,42,212,0.22)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(W / 2, 0);
+    ctx.lineTo(W / 2, H);
+    ctx.stroke();
+    ctx.restore();
+
+    /* Player label (left) */
+    ctx.font = '300 8px "DM Mono", monospace';
+    ctx.letterSpacing = '0.16em';
+    ctx.fillStyle = 'rgba(242,240,232,0.18)';
+    ctx.textAlign = 'left';
+    ctx.fillText('YOU', PADDLE_MARGIN, 14);
+
+    /* AI label (right) */
+    ctx.textAlign = 'right';
+    ctx.fillText('SYS', W - PADDLE_MARGIN, 14);
+
+    /* Player paddle (left) */
+    ctx.fillStyle = 'rgba(242,240,232,0.7)';
+    ctx.fillRect(PADDLE_MARGIN, leftY, PADDLE_W, PADDLE_H);
+
+    /* AI paddle (right) */
+    ctx.fillStyle = 'rgba(242,240,232,0.38)';
+    ctx.fillRect(W - PADDLE_MARGIN - PADDLE_W, rightY, PADDLE_W, PADDLE_H);
+
+    /* Ball */
+    ctx.fillStyle = 'rgba(242,240,232,0.82)';
+    ctx.fillRect(bx - BALL / 2, by - BALL / 2, BALL, BALL);
+  }
+
+  function step() {
+    /* Player paddle — keyboard */
+    if (keyUp)   leftY -= PLAYER_SPEED;
+    if (keyDown) leftY += PLAYER_SPEED;
+    leftY = clamp(leftY, 0, H - PADDLE_H);
+
+    /* Ball move */
+    bx += vx;
+    by += vy;
+
+    /* Top / bottom walls */
+    if (by - BALL / 2 <= 0)  { by = BALL / 2;      vy =  Math.abs(vy); }
+    if (by + BALL / 2 >= H)  { by = H - BALL / 2;  vy = -Math.abs(vy); }
+
+    /* Player paddle (left) collision */
+    var lEdge = PADDLE_MARGIN + PADDLE_W;
+    if (vx < 0 && bx - BALL / 2 <= lEdge && by >= leftY && by <= leftY + PADDLE_H) {
+      bx = lEdge + BALL / 2;
+      vx = Math.abs(vx);
+      vy += (by - (leftY + PADDLE_H / 2)) * 0.022;
+    }
+
+    /* AI paddle (right) collision */
+    var rEdge = W - PADDLE_MARGIN - PADDLE_W;
+    if (vx > 0 && bx + BALL / 2 >= rEdge && by >= rightY && by <= rightY + PADDLE_H) {
+      bx = rEdge - BALL / 2;
+      vx = -Math.abs(vx);
+      vy += (by - (rightY + PADDLE_H / 2)) * 0.022;
+    }
+
+    /* Normalise speed */
+    var spd = Math.sqrt(vx * vx + vy * vy);
+    if (spd > 0) { vx = vx / spd * SPEED; vy = vy / spd * SPEED; }
+
+    /* Keep vy from flattening */
+    if (Math.abs(vy) < 0.28) vy = vy < 0 ? -0.28 : 0.28;
+
+    /* AI tracks with deliberate lag — not perfectly skilled */
+    var aiCentre = rightY + PADDLE_H / 2;
+    rightY += clamp((by - aiCentre) * 0.78, -AI_SPEED, AI_SPEED);
+    rightY = clamp(rightY, 0, H - PADDLE_H);
+
+    /* Ball escapes a side — soft reset, no scoring */
+    if (bx < -20 || bx > W + 20) {
+      bx = W / 2; by = H / 2;
+      vx = (vx > 0 ? -1 : 1) * SPEED * 0.82;
+      vy = SPEED * 0.57;
+    }
+  }
+
+  /* ── Static frame (reduced motion) ── */
+  if (reduced) {
+    draw();
+    return;
+  }
+
+  /* ── Keyboard ── */
+  function onKeyDown(e) {
+    if (e.key === 'ArrowUp'   || e.key === 'w' || e.key === 'W') { keyUp   = true; }
+    if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') { keyDown = true; }
+    /* Do not call preventDefault — do not trap focus or scroll */
+  }
+  function onKeyUp(e) {
+    if (e.key === 'ArrowUp'   || e.key === 'w' || e.key === 'W') { keyUp   = false; }
+    if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') { keyDown = false; }
+  }
+  document.addEventListener('keydown', onKeyDown);
+  document.addEventListener('keyup',   onKeyUp);
+
+  /* ── Touch — drag maps touch Y to player paddle centre ── */
+  canvas.addEventListener('touchmove', function (e) {
+    var rect   = canvas.getBoundingClientRect();
+    /* canvas CSS height vs pixel height ratio */
+    var scaleY = H / rect.height;
+    var touchY = (e.touches[0].clientY - rect.top) * scaleY;
+    leftY = clamp(touchY - PADDLE_H / 2, 0, H - PADDLE_H);
+    /* Do not preventDefault — avoids passive listener violation and keeps scroll working */
+  }, { passive: true });
+
+  /* ── Loop ── */
+  function loop() {
+    step();
+    draw();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+}());
+</script>
+
+</body>
+</html>
