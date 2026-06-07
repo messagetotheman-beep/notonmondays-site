@@ -34,8 +34,9 @@ body {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 800px 600px at 65% 55%, rgba(26,42,212,0.055) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 300px at 0% 100%, rgba(26,42,212,0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 800px 600px at 50% 45%, rgba(26,42,212,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 0% 100%, rgba(26,42,212,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 100% 0%, rgba(26,42,212,0.03) 0%, transparent 60%);
 }
 
 .bg-grid {
@@ -69,46 +70,93 @@ body {
 }
 .rule-top {
   top: 48px;
-  background: linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.25) 30%, transparent 80%);
+  background: linear-gradient(90deg, transparent 0%, rgba(26,42,212,0.25) 20%, rgba(26,42,212,0.14) 60%, transparent 100%);
 }
 .rule-bottom {
   bottom: 48px;
-  background: linear-gradient(90deg, #1a2ad4 0%, rgba(26,42,212,0.25) 30%, transparent 80%);
+  background: linear-gradient(90deg, transparent 0%, rgba(26,42,212,0.25) 20%, rgba(26,42,212,0.14) 60%, transparent 100%);
 }
 
-/* ─── MAIN LAYOUT ─── */
+/* ─── LAYOUT ─── */
 .page {
   position: relative;
   z-index: 2;
   flex: 1;
   display: flex;
   align-items: center;
-  padding: 80px 64px 80px 72px;
+  justify-content: center;
+  padding: 80px 40px;
   min-height: 100vh;
 }
 
 .content {
-  max-width: 480px;
+  max-width: 520px;
   width: 100%;
-}
-
-/* ─── NOM MARK ─── */
-.nom-mark {
   display: flex;
   flex-direction: column;
-  line-height: 1.05;
-  margin-bottom: 36px;
+  align-items: center;
+  text-align: center;
 }
-.nom-mark span {
+
+/* ─── NOM WORDMARK ─── */
+.nom-wordmark {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  margin-bottom: 52px;
+  border: 1.5px solid rgba(26,42,212,0.3);
+  padding: 0.4rem 0.65rem 0.4rem 0.5rem;
+}
+
+.nom-wordmark:hover {
+  border-color: rgba(26,42,212,0.55);
+}
+
+.nom-initials {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 0;
+}
+
+.nom-initials span {
   font-family: 'DM Mono', monospace;
   font-weight: 300;
-  font-size: 28px;
-  letter-spacing: -0.02em;
+  font-size: 0.75rem;
+  line-height: 1;
   display: block;
 }
-.nom-mark .nm-n { color: rgba(242,240,232,0.14); }
-.nom-mark .nm-o { color: rgba(242,240,232,0.14); }
-.nom-mark .nm-m { color: #1a2ad4; }
+
+.nm-n { color: rgba(242,240,232,0.28); }
+.nm-o { color: rgba(242,240,232,0.28); }
+.nm-m { color: #1a2ad4; }
+
+.nom-divider {
+  width: 1px;
+  background: rgba(26,42,212,0.28);
+  align-self: stretch;
+  margin: 0 0.65rem;
+  flex-shrink: 0;
+}
+
+.nom-tagline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1;
+}
+
+.nom-tagline span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.42);
+  display: block;
+}
 
 /* ─── EYEBROW ─── */
 .eyebrow {
@@ -117,8 +165,8 @@ body {
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(26,42,212,0.75);
-  margin-bottom: 18px;
+  color: rgba(26,42,212,0.8);
+  margin-bottom: 16px;
 }
 
 /* ─── HEADLINE ─── */
@@ -126,10 +174,10 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(34px, 4vw, 48px);
+  font-size: clamp(34px, 5vw, 52px);
   line-height: 1.1;
   color: #f2f0e8;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   letter-spacing: -0.01em;
 }
 
@@ -139,29 +187,34 @@ body {
   font-weight: 300;
   font-size: 13px;
   line-height: 1.75;
-  color: rgba(242,240,232,0.6);
+  color: rgba(242,240,232,0.55);
   letter-spacing: 0.03em;
   margin-bottom: 40px;
 }
 
 /* ─── PONG TERMINAL ─── */
 .terminal-wrap {
-  margin-bottom: 44px;
+  margin-bottom: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .terminal-chrome {
   display: inline-block;
   border: 1px solid rgba(26,42,212,0.28);
-  background: rgba(10,10,22,0.65);
-  padding: 0;
+  background: rgba(8,8,20,0.7);
   position: relative;
+  overflow: hidden;
+  /* max-width keeps it from overwhelming the layout on large screens */
+  max-width: 100%;
 }
 
 .terminal-bar {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 10px;
+  padding: 7px 12px;
   border-bottom: 1px solid rgba(26,42,212,0.18);
 }
 
@@ -169,8 +222,9 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(242,240,232,0.08);
-  border: 1px solid rgba(242,240,232,0.12);
+  background: rgba(242,240,232,0.07);
+  border: 1px solid rgba(242,240,232,0.1);
+  flex-shrink: 0;
 }
 
 .terminal-title {
@@ -179,11 +233,11 @@ body {
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(242,240,232,0.2);
+  color: rgba(242,240,232,0.18);
   margin-left: auto;
 }
 
-/* Subtle scanline overlay */
+/* Scanline overlay */
 .terminal-chrome::after {
   content: '';
   position: absolute;
@@ -192,8 +246,8 @@ body {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0,0,0,0.06) 2px,
-    rgba(0,0,0,0.06) 4px
+    rgba(0,0,0,0.055) 2px,
+    rgba(0,0,0,0.055) 4px
   );
   pointer-events: none;
   z-index: 1;
@@ -201,6 +255,22 @@ body {
 
 canvas#pong {
   display: block;
+  width: 390px;
+  height: auto;
+  max-width: 100%;
+  touch-action: none;
+}
+
+/* ─── GAME INSTRUCTION ─── */
+.game-hint {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(242,240,232,0.22);
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 /* ─── CTA ─── */
@@ -208,14 +278,15 @@ canvas#pong {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
 .cta-btn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 13px 26px;
+  padding: 13px 28px;
   background: #1a2ad4;
   color: #f2f0e8;
   text-decoration: none;
@@ -237,18 +308,18 @@ canvas#pong {
   transition: transform 0.18s ease;
 }
 
-.cta-btn:hover {
-  background: #141e9e;
-  border-color: #141e9e;
-}
-.cta-btn:hover::after {
-  transform: translateX(3px);
+.cta-btn:hover { background: #141e9e; border-color: #141e9e; }
+.cta-btn:hover::after { transform: translateX(3px); }
+.cta-btn:focus-visible {
+  outline: 2px solid #bfc6f0;
+  outline-offset: 3px;
 }
 
 .secondary-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 20px;
+  justify-content: center;
+  gap: 4px 18px;
   list-style: none;
 }
 
@@ -258,17 +329,19 @@ canvas#pong {
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(242,240,232,0.38);
+  color: rgba(242,240,232,0.35);
   text-decoration: none;
-  transition: color 0.2s;
-  padding: 4px 0;
+  transition: color 0.18s;
+  padding: 10px 4px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
 }
 
-.secondary-links a:hover {
-  color: rgba(242,240,232,0.65);
+.secondary-links a:hover { color: rgba(242,240,232,0.65); }
+.secondary-links a:focus-visible {
+  outline: 2px solid #bfc6f0;
+  outline-offset: 3px;
 }
 
 /* ─── FOOTER ─── */
@@ -279,7 +352,7 @@ canvas#pong {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 72px 16px;
+  padding: 0 52px 16px;
   pointer-events: none;
 }
 
@@ -289,7 +362,7 @@ canvas#pong {
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(26,42,212,0.5);
+  color: rgba(26,42,212,0.45);
 }
 
 .footer-corner {
@@ -298,57 +371,39 @@ canvas#pong {
   font-size: 9px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(242,240,232,0.12);
+  color: rgba(242,240,232,0.1);
 }
 
 /* ─── REDUCED MOTION ─── */
 @media (prefers-reduced-motion: reduce) {
   .cta-btn,
   .cta-btn::after,
-  .secondary-links a { transition: none; }
+  .secondary-links a,
+  .nom-wordmark { transition: none; }
 }
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-  .page {
-    padding: 80px 40px 80px 52px;
-  }
-  .page-footer {
-    padding: 0 52px 16px;
-  }
-}
-
 @media (max-width: 640px) {
   .page {
-    padding: 72px 28px 80px 36px;
+    padding: 72px 24px 80px;
     align-items: flex-start;
-    padding-top: 96px;
+    padding-top: 88px;
   }
-  .headline {
-    font-size: 34px;
-  }
-  .nom-mark span {
-    font-size: 22px;
-  }
-  .page-footer {
-    padding: 0 36px 14px;
-  }
-  .footer-corner {
-    display: none;
-  }
+  .headline { font-size: 36px; }
+  .nom-tagline span { font-size: 0.5rem; }
+  .page-footer { padding: 0 28px 14px; }
+  .footer-corner { display: none; }
 }
 
 @media (max-width: 375px) {
-  .page {
-    padding: 80px 20px 80px 28px;
-  }
+  .page { padding: 80px 18px 80px; }
 }
 
 </style>
 </head>
 <body>
 
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+<a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;focus-visible:static">Skip to main content</a>
 
 <div class="bg-light" aria-hidden="true"></div>
 <div class="bg-grid" aria-hidden="true"></div>
@@ -359,11 +414,20 @@ canvas#pong {
 <main class="page" id="main-content">
   <div class="content">
 
-    <div class="nom-mark" aria-label="Not On Mondays">
-      <span class="nm-n" aria-hidden="true">n</span>
-      <span class="nm-o" aria-hidden="true">o</span>
-      <span class="nm-m" aria-hidden="true">m</span>
-    </div>
+    <!-- NOM wordmark -->
+    <a href="/" class="nom-wordmark" aria-label="Not On Mondays — return to homepage">
+      <span class="nom-initials" aria-hidden="true">
+        <span class="nm-n">n</span>
+        <span class="nm-o">o</span>
+        <span class="nm-m">m</span>
+      </span>
+      <span class="nom-divider" aria-hidden="true"></span>
+      <span class="nom-tagline" aria-hidden="true">
+        <span>The</span>
+        <span>Operating</span>
+        <span>Partner</span>
+      </span>
+    </a>
 
     <p class="eyebrow" aria-hidden="true">404 · page not found</p>
 
@@ -371,7 +435,7 @@ canvas#pong {
 
     <p class="body-copy">It might have moved, or the link might not be quite right.</p>
 
-    <!-- Pong terminal -->
+    <!-- Pong terminal — decorative, game is optional -->
     <div class="terminal-wrap" aria-hidden="true">
       <div class="terminal-chrome">
         <div class="terminal-bar">
@@ -380,9 +444,12 @@ canvas#pong {
           <span class="terminal-dot"></span>
           <span class="terminal-title">session terminated</span>
         </div>
-        <canvas id="pong" width="280" height="128"></canvas>
+        <canvas id="pong" width="390" height="178" tabindex="-1"></canvas>
       </div>
     </div>
+
+    <!-- Visible instruction for keyboard players; hidden from AT since canvas is decorative -->
+    <p class="game-hint" aria-hidden="true">Use &uarr;&darr; or W / S to move your paddle</p>
 
     <nav class="cta-wrap" aria-label="Recovery navigation">
       <a href="/hub/" class="cta-btn">Go to the workspace</a>
@@ -406,26 +473,30 @@ canvas#pong {
   var canvas = document.getElementById('pong');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var W = canvas.width;
-  var H = canvas.height;
 
-  var PADDLE_W = 3;
-  var PADDLE_H = 24;
-  var PADDLE_MARGIN = 14;
-  var BALL_SIZE = 3;
+  /* Canvas logical dimensions — always the pixel buffer size */
+  var W = canvas.width;   /* 390 */
+  var H = canvas.height;  /* 178 */
 
-  /* Calm initial velocity — neither axis is zero to avoid flat bounces */
-  var bx = W / 2;
-  var by = H / 2;
-  var vx = 1.05;
-  var vy = 0.72;
+  var PADDLE_W      = 4;
+  var PADDLE_H      = 28;
+  var PADDLE_MARGIN = 16;
+  var BALL          = 4;
+  var SPEED         = 1.45;
 
+  var bx = W / 2, by = H / 2;
+  var vx = SPEED * 0.82, vy = SPEED * 0.57;
+
+  /* Left = player paddle */
   var leftY  = H / 2 - PADDLE_H / 2;
+  /* Right = AI paddle */
   var rightY = H / 2 - PADDLE_H / 2;
 
-  /* Paddle tracking speed — deliberately slower than the ball
-     so there is occasional near-miss tension without ever scoring */
-  var TRACK_SPEED = 0.82;
+  /* Keyboard state */
+  var keyUp = false, keyDown = false;
+
+  var PLAYER_SPEED = 3.2;
+  var AI_SPEED     = 2.0;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -434,91 +505,128 @@ canvas#pong {
   function draw() {
     ctx.clearRect(0, 0, W, H);
 
-    /* Centre divider */
-    ctx.setLineDash([4, 6]);
-    ctx.strokeStyle = 'rgba(26,42,212,0.2)';
+    /* Centre dashed line */
+    ctx.save();
+    ctx.setLineDash([4, 7]);
+    ctx.strokeStyle = 'rgba(26,42,212,0.22)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(W / 2, 0);
     ctx.lineTo(W / 2, H);
     ctx.stroke();
-    ctx.setLineDash([]);
+    ctx.restore();
 
-    /* Paddles */
-    ctx.fillStyle = 'rgba(242,240,232,0.55)';
+    /* Player label (left) */
+    ctx.font = '300 8px "DM Mono", monospace';
+    ctx.letterSpacing = '0.16em';
+    ctx.fillStyle = 'rgba(242,240,232,0.18)';
+    ctx.textAlign = 'left';
+    ctx.fillText('YOU', PADDLE_MARGIN, 14);
+
+    /* AI label (right) */
+    ctx.textAlign = 'right';
+    ctx.fillText('SYS', W - PADDLE_MARGIN, 14);
+
+    /* Player paddle (left) */
+    ctx.fillStyle = 'rgba(242,240,232,0.7)';
     ctx.fillRect(PADDLE_MARGIN, leftY, PADDLE_W, PADDLE_H);
+
+    /* AI paddle (right) */
+    ctx.fillStyle = 'rgba(242,240,232,0.38)';
     ctx.fillRect(W - PADDLE_MARGIN - PADDLE_W, rightY, PADDLE_W, PADDLE_H);
 
     /* Ball */
-    ctx.fillStyle = 'rgba(242,240,232,0.75)';
-    ctx.fillRect(bx - BALL_SIZE / 2, by - BALL_SIZE / 2, BALL_SIZE, BALL_SIZE);
+    ctx.fillStyle = 'rgba(242,240,232,0.82)';
+    ctx.fillRect(bx - BALL / 2, by - BALL / 2, BALL, BALL);
   }
 
   function step() {
-    /* Move ball */
+    /* Player paddle — keyboard */
+    if (keyUp)   leftY -= PLAYER_SPEED;
+    if (keyDown) leftY += PLAYER_SPEED;
+    leftY = clamp(leftY, 0, H - PADDLE_H);
+
+    /* Ball move */
     bx += vx;
     by += vy;
 
-    /* Top / bottom wall */
-    if (by - BALL_SIZE / 2 <= 0) { by = BALL_SIZE / 2; vy = Math.abs(vy); }
-    if (by + BALL_SIZE / 2 >= H) { by = H - BALL_SIZE / 2; vy = -Math.abs(vy); }
+    /* Top / bottom walls */
+    if (by - BALL / 2 <= 0)  { by = BALL / 2;      vy =  Math.abs(vy); }
+    if (by + BALL / 2 >= H)  { by = H - BALL / 2;  vy = -Math.abs(vy); }
 
-    /* Left paddle collision */
-    var leftEdge  = PADDLE_MARGIN + PADDLE_W;
-    var rightEdge = W - PADDLE_MARGIN - PADDLE_W;
-
-    if (vx < 0 && bx - BALL_SIZE / 2 <= leftEdge && by >= leftY && by <= leftY + PADDLE_H) {
-      bx = leftEdge + BALL_SIZE / 2;
+    /* Player paddle (left) collision */
+    var lEdge = PADDLE_MARGIN + PADDLE_W;
+    if (vx < 0 && bx - BALL / 2 <= lEdge && by >= leftY && by <= leftY + PADDLE_H) {
+      bx = lEdge + BALL / 2;
       vx = Math.abs(vx);
-      /* Slight angle variation off the paddle */
-      vy += (by - (leftY + PADDLE_H / 2)) * 0.018;
+      vy += (by - (leftY + PADDLE_H / 2)) * 0.022;
     }
 
-    /* Right paddle collision */
-    if (vx > 0 && bx + BALL_SIZE / 2 >= rightEdge && by >= rightY && by <= rightY + PADDLE_H) {
-      bx = rightEdge - BALL_SIZE / 2;
+    /* AI paddle (right) collision */
+    var rEdge = W - PADDLE_MARGIN - PADDLE_W;
+    if (vx > 0 && bx + BALL / 2 >= rEdge && by >= rightY && by <= rightY + PADDLE_H) {
+      bx = rEdge - BALL / 2;
       vx = -Math.abs(vx);
-      vy += (by - (rightY + PADDLE_H / 2)) * 0.018;
+      vy += (by - (rightY + PADDLE_H / 2)) * 0.022;
     }
 
-    /* Keep velocity magnitude stable */
-    var speed = Math.sqrt(vx * vx + vy * vy);
-    var target = 1.3;
-    if (speed > 0) { vx = vx / speed * target; vy = vy / speed * target; }
+    /* Normalise speed */
+    var spd = Math.sqrt(vx * vx + vy * vy);
+    if (spd > 0) { vx = vx / spd * SPEED; vy = vy / spd * SPEED; }
 
-    /* Clamp vy so ball never becomes purely horizontal */
-    if (Math.abs(vy) < 0.25) vy = vy < 0 ? -0.25 : 0.25;
+    /* Keep vy from flattening */
+    if (Math.abs(vy) < 0.28) vy = vy < 0 ? -0.28 : 0.28;
 
-    /* Paddle AI — tracks with intentional lag so near-misses are possible */
-    var leftCenter  = leftY + PADDLE_H / 2;
-    var rightCenter = rightY + PADDLE_H / 2;
-    leftY  += clamp((by - leftCenter)  * TRACK_SPEED, -2.2, 2.2);
-    rightY += clamp((by - rightCenter) * TRACK_SPEED, -2.2, 2.2);
-    leftY  = clamp(leftY,  0, H - PADDLE_H);
+    /* AI tracks with deliberate lag — not perfectly skilled */
+    var aiCentre = rightY + PADDLE_H / 2;
+    rightY += clamp((by - aiCentre) * 0.78, -AI_SPEED, AI_SPEED);
     rightY = clamp(rightY, 0, H - PADDLE_H);
 
-    /* Ball escapes a side (shouldn't happen often, but reset gracefully) */
-    if (bx < 0 || bx > W) {
-      bx = W / 2;
-      by = H / 2;
-      vx = (bx < W / 2 ? 1 : -1) * 1.05;
-      vy = 0.72;
+    /* Ball escapes a side — soft reset, no scoring */
+    if (bx < -20 || bx > W + 20) {
+      bx = W / 2; by = H / 2;
+      vx = (vx > 0 ? -1 : 1) * SPEED * 0.82;
+      vy = SPEED * 0.57;
     }
   }
 
+  /* ── Static frame (reduced motion) ── */
   if (reduced) {
-    /* Static frame — ball parked centre, paddles centred */
     draw();
     return;
   }
 
+  /* ── Keyboard ── */
+  function onKeyDown(e) {
+    if (e.key === 'ArrowUp'   || e.key === 'w' || e.key === 'W') { keyUp   = true; }
+    if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') { keyDown = true; }
+    /* Do not call preventDefault — do not trap focus or scroll */
+  }
+  function onKeyUp(e) {
+    if (e.key === 'ArrowUp'   || e.key === 'w' || e.key === 'W') { keyUp   = false; }
+    if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') { keyDown = false; }
+  }
+  document.addEventListener('keydown', onKeyDown);
+  document.addEventListener('keyup',   onKeyUp);
+
+  /* ── Touch — drag maps touch Y to player paddle centre ── */
+  canvas.addEventListener('touchmove', function (e) {
+    var rect   = canvas.getBoundingClientRect();
+    /* canvas CSS height vs pixel height ratio */
+    var scaleY = H / rect.height;
+    var touchY = (e.touches[0].clientY - rect.top) * scaleY;
+    leftY = clamp(touchY - PADDLE_H / 2, 0, H - PADDLE_H);
+    /* Do not preventDefault — avoids passive listener violation and keeps scroll working */
+  }, { passive: true });
+
+  /* ── Loop ── */
   function loop() {
     step();
     draw();
     requestAnimationFrame(loop);
   }
-
   requestAnimationFrame(loop);
+
 }());
 </script>
 
