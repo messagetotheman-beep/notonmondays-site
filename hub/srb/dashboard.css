@@ -1281,6 +1281,15 @@ h3 { font-size: 1.1rem; }
   border-radius: 1px;
 }
 
+/* ── Upcoming event time inline ──────────────────────────── */
+
+.activity-event-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
 @media (max-width: 375px) {
   .doc-row { gap: 0.6rem; padding: 0.85rem 0; }
   .doc-body { padding-left: calc(28px + 0.6rem); }
